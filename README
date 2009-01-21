@@ -1,0 +1,16 @@
+This is a KControl Module which handles adding/editing/removing Telepathy
+Accounts. It interacts with any Telepathy Spec compliant AccountManager,
+such as telepathy-accountmanager-kwallet to manipulate the accounts. It is
+modular in design, with each ConnectionManager-Protocol combination having a
+plugin that provides customised forms for adding or editing their accounts,
+and also with a generic plugin which can be used as a fallback for
+ConnectionManager-Protocol combinations where no plugin exists.
+
+Installation instructions (including dependency information) can be found
+in the file 'INSTALL' in this directory.
+
+Please report all bugs to http://bugs.kde.org choosing product "telepathy" and
+component "accounts-kcm".
+
+Any other questions, or if you want to help out, ping grundleborg in #telepathy
+on irc.freenode.net.

@@ -1,0 +1,29 @@
+diff --git a/src/dbus/qdbusinternalfilters.cpp b/src/dbus/qdbusinternalfilters.cpp
+index be0034c..8965c2d 100644
+--- a/src/dbus/qdbusinternalfilters.cpp
++++ b/src/dbus/qdbusinternalfilters.cpp
+@@ -269,9 +269,23 @@ QDBusMessage qDBusPropertySet(const QDBusConnectionPrivate::ObjectTreeNode &node
+             QDBusAdaptorConnector::AdaptorMap::ConstIterator it;
+             it = qLowerBound(connector->adaptors.constBegin(), connector->adaptors.constEnd(),
+                              interface_name);
+-            if (it != connector->adaptors.end() && interface_name == QLatin1String(it->interface))
++            if (it != connector->adaptors.end() && interface_name == QLatin1String(it->interface)) {
++                if (value.userType() == qMetaTypeId<QDBusArgument>()) {
++                    QDBusArgument valueArg = qvariant_cast<QDBusArgument>(value);
++                    if (valueArg.currentType() != -1) {
++                        int mid = it->adaptor->metaObject()->property(it->adaptor->metaObject()->indexOfProperty(property_name)).userType();
++                        void *null = 0;
++                        QVariant valueStore(mid, null);
++                        QDBusMetaType::demarshall(valueArg, mid, valueStore.data());
++
++                        if (it->adaptor->setProperty(property_name, valueStore))
++                            return msg.createReply();
++                    }
++                }
++
+                 if (it->adaptor->setProperty(property_name, value))
+                     return msg.createReply();
++            }
+         }
+     }
+ 

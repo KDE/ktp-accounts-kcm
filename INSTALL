@@ -1,0 +1,22 @@
+This project has a cmake buildsystem which uses the KDE4 cmake macros. It will
+be very familiar to anyone who has built a KDE project before.
+
+A snapshot version of Qt 4.5 is required to compile this app. Also, due to some
+as-yet-unfixed bugs in QtDBus, the patches included in the patches directory
+will need to be applied to your copy of Qt before compiling it. Nb. these
+patches are just hacks to tide us over until the bugs are fixed upstream in Qt,
+so they *may* break other things. You have been warned...
+
+This project depends on the following packages:
+    kdelibs >= 4.2 (svn://anonsvn.kde.org/home/kde/trunk/KDE/kdelibs)
+    telepathyQt4 (git://git.collabora.co.uk/git/telepathy-qt4.git)
+
+To build, perform the usual cmake dance:
+
+    mkdir build && cd build
+    cmake ..
+    make && make install
+
+Or alternatively, if you have the .bashrc file from KDE Techbase
+http://techbase.kde.org/Getting_Started/Increased_Productivity_in_KDE4_with_Scripts/.bashrc
+you can simply run "cmakekde" to do everything by magic.
