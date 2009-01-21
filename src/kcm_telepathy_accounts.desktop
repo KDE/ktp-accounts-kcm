@@ -1,0 +1,16 @@
+[Desktop Entry]
+Comment=Add, edit and remove your instant messaging and VoIP accounts.
+Exec=kcmshell4 kcm_telepathy_accounts
+Icon=blockdevice
+Name=Instant Messaging and VoIP Accounts
+StartupNotify=true
+Terminal=false
+Type=Service
+X-KDE-ServiceTypes=KCModule
+X-DBUS-StartupType=
+X-KDE-HasReadOnlyMode=false
+X-KDE-Library=kcm_telepathy_accounts
+X-KDE-ParentApp=kcontrol
+X-KDE-SubstituteUID=false
+X-KDE-RootOnly=false
+Categories=Qt;KDE;X-KDE-settings-network;
