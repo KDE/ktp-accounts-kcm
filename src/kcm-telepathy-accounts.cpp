@@ -31,6 +31,7 @@ KCMTelepathyAccounts::KCMTelepathyAccounts(QWidget *parent, const QVariantList& 
  : KCModule(KCMTelepathyAccountsFactory::componentData(), parent, args)
 {
     // TODO: Implement me!
+    setupUi(this);
 }
 
 KCMTelepathyAccounts::~KCMTelepathyAccounts()

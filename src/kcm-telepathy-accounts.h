@@ -21,9 +21,13 @@
 #ifndef TELEPATHY_ACCOUNTS_KCM_KCM_TELEPATHY_ACCOUNTS_H
 #define TELEPATHY_ACCOUNTS_KCM_KCM_TELEPATHY_ACCOUNTS_H
 
+#include "ui_main-widget.h"
+
 #include <kcmodule.h>
 
-class KCMTelepathyAccounts : public KCModule
+class MainWidget;
+
+class KCMTelepathyAccounts : public KCModule, Ui::MainWidget
 {
     Q_OBJECT
 
@@ -31,6 +35,9 @@ public:
     explicit KCMTelepathyAccounts(QWidget *parent = 0,
                                   const QVariantList& args = QVariantList());
     ~KCMTelepathyAccounts();
+
+private:
+    MainWidget *m_mainWidget;
 
 };
 
