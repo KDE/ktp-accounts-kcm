@@ -25,8 +25,6 @@
 
 #include <kcmodule.h>
 
-class MainWidget;
-
 class KCMTelepathyAccounts : public KCModule, Ui::MainWidget
 {
     Q_OBJECT
@@ -35,9 +33,6 @@ public:
     explicit KCMTelepathyAccounts(QWidget *parent = 0,
                                   const QVariantList& args = QVariantList());
     ~KCMTelepathyAccounts();
-
-private:
-    MainWidget *m_mainWidget;
 
 };
 
