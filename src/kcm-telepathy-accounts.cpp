@@ -23,6 +23,9 @@
 #include <kcategorizedsortfilterproxymodel.h>
 #include <kgenericfactory.h>
 
+#include <TelepathyQt4/Client/AccountManager>
+#include <TelepathyQt4/Client/PendingOperation>
+
 
 K_PLUGIN_FACTORY(KCMTelepathyAccountsFactory, registerPlugin<KCMTelepathyAccounts>();)
 K_EXPORT_PLUGIN(KCMTelepathyAccountsFactory("telepathy_accounts", "kcm_telepathy_accounts"))
@@ -30,15 +33,52 @@ K_EXPORT_PLUGIN(KCMTelepathyAccountsFactory("telepathy_accounts", "kcm_telepathy
 
 KCMTelepathyAccounts::KCMTelepathyAccounts(QWidget *parent, const QVariantList& args)
  : KCModule(KCMTelepathyAccountsFactory::componentData(), parent, args),
-   m_accountsListProxyModel(0)
+   m_accountsListProxyModel(0),
+   m_accountManager(0)
 {
     // TODO: Implement me!
     setupUi(this);
+    startAccountManager();
 }
 
 KCMTelepathyAccounts::~KCMTelepathyAccounts()
 {
     // TODO: Implement me!
+}
+
+void KCMTelepathyAccounts::load()
+{
+    // This slot is called whenever the configuration data in this KCM should
+    // be reloaded from the store. We will not actually do anything here since
+    // all changes that are made in this KCM are, at the moment, saved
+    // immediately and cannot be reverted programatically.
+    return;
+}
+
+void KCMTelepathyAccounts::startAccountManager()
+{
+    // This slot is called on construction to set up a telepathy accountmanager
+    // instance.
+    m_accountManager = new Telepathy::Client::AccountManager(this);
+
+    connect(m_accountManager->becomeReady(), SIGNAL(finished(Telepathy::Client::PendingOperation*)),
+            this, SLOT(startAccountManagerFinished(Telepathy::Client::PendingOperation*)));
+}
+
+void KCMTelepathyAccounts::startAccountManagerFinished(Telepathy::Client::PendingOperation *op)
+{
+    Q_ASSERT(op->isFinished());
+    if(op->isError())
+    {
+        kDebug() << "An error occurred setting up the AccountManager.";
+        return;
+    }
+    else
+    {
+        kDebug() << "AccountManager set up successfully.";
+    }
+
+    // TODO: Load the model up with Accounts from the Account Manager.
 }
 
 

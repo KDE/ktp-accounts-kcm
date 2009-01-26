@@ -27,6 +27,13 @@
 
 class KCategorizedSortFilterProxyModel;
 
+namespace Telepathy {
+    namespace Client {
+        class AccountManager;
+        class PendingOperation;
+    }
+}
+
 class KCMTelepathyAccounts : public KCModule, Ui::MainWidget
 {
     Q_OBJECT
@@ -35,10 +42,18 @@ class KCMTelepathyAccounts : public KCModule, Ui::MainWidget
 public:
     explicit KCMTelepathyAccounts(QWidget *parent = 0,
                                   const QVariantList& args = QVariantList());
-    virtual ~KCMTelepathyAccounts();
+    ~KCMTelepathyAccounts();
+
+public Q_SLOTS:
+    void load();
+
+private Q_SLOTS:
+    void startAccountManager();
+    void startAccountManagerFinished(Telepathy::Client::PendingOperation *op);
 
 private:
     KCategorizedSortFilterProxyModel *m_accountsListProxyModel;
+    Telepathy::Client::AccountManager *m_accountManager;
 
 };
 
