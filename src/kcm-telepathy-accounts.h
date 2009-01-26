@@ -50,6 +50,7 @@ public Q_SLOTS:
 private Q_SLOTS:
     void startAccountManager();
     void startAccountManagerFinished(Telepathy::Client::PendingOperation *op);
+    void onAccountReady(Telepathy::Client::PendingOperation *op);
 
 private:
     KCategorizedSortFilterProxyModel *m_accountsListProxyModel;

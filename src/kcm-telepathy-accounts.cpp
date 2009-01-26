@@ -23,6 +23,7 @@
 #include <kcategorizedsortfilterproxymodel.h>
 #include <kgenericfactory.h>
 
+#include <TelepathyQt4/Client/Account>
 #include <TelepathyQt4/Client/AccountManager>
 #include <TelepathyQt4/Client/PendingOperation>
 
@@ -67,18 +68,45 @@ void KCMTelepathyAccounts::startAccountManager()
 
 void KCMTelepathyAccounts::startAccountManagerFinished(Telepathy::Client::PendingOperation *op)
 {
+    disconnect(op, SIGNAL(finished(Telepathy::Client::PendingOperation*)),
+            this, SLOT(startAccountManagerFinished(Telepathy::Client::PendingOperation*)));
+
     Q_ASSERT(op->isFinished());
     if(op->isError())
     {
-        kDebug() << "An error occurred setting up the AccountManager.";
+        kDebug() << "An error occurred making the AccountManager ready.";
         return;
     }
     else
     {
-        kDebug() << "AccountManager set up successfully.";
+        kDebug() << "AccountManager became ready successfully.";
     }
 
-    // TODO: Load the model up with Accounts from the Account Manager.
+    QList<Telepathy::Client::Account*> accounts = m_accountManager->allAccounts();
+    foreach(Telepathy::Client::Account* account, accounts)
+    {
+        connect(account->becomeReady(), SIGNAL(finished(Telepathy::Client::PendingOperation*)),
+                this, SLOT(onAccountReady(Telepathy::Client::PendingOperation*)));
+    }
+}
+
+void KCMTelepathyAccounts::onAccountReady(Telepathy::Client::PendingOperation *op)
+{
+    disconnect(op, SIGNAL(finished(Telepathy::Client::PendingOperation*)),
+            this, SLOT(onAccountReady(Telepathy::Client::PendingOperation*)));
+
+    Q_ASSERT(op->isFinished());
+    if(op->isError())
+    {
+        kDebug() << "An error occurred in making and Account ready.";
+    }
+    else
+    {
+        kDebug() << "An Account became ready successfully.";
+    }
+
+    // TODO: Add the account to the model.
+    // FIXME: Need to get the AccountManager::allAccounts() API fixed before can continue easily.
 }
 
 
