@@ -6,6 +6,7 @@ include_directories (${CMAKE_CURRENT_BINARY_DIR}
 
 set (telepathy_accounts_kcm_SRCS
      kcm-telepathy-accounts.cpp
+     accounts-list-model.cpp
 )
 
 kde4_add_ui_files (telepathy_accounts_kcm_SRCS
