@@ -20,6 +20,7 @@
 
 #include "kcm-telepathy-accounts.h"
 
+#include <kcategorizedsortfilterproxymodel.h>
 #include <kgenericfactory.h>
 
 
@@ -28,7 +29,8 @@ K_EXPORT_PLUGIN(KCMTelepathyAccountsFactory("telepathy_accounts", "kcm_telepathy
 
 
 KCMTelepathyAccounts::KCMTelepathyAccounts(QWidget *parent, const QVariantList& args)
- : KCModule(KCMTelepathyAccountsFactory::componentData(), parent, args)
+ : KCModule(KCMTelepathyAccountsFactory::componentData(), parent, args),
+   m_accountsListProxyModel(0)
 {
     // TODO: Implement me!
     setupUi(this);

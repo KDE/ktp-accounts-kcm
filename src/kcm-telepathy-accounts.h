@@ -25,14 +25,20 @@
 
 #include <kcmodule.h>
 
+class KCategorizedSortFilterProxyModel;
+
 class KCMTelepathyAccounts : public KCModule, Ui::MainWidget
 {
     Q_OBJECT
+    Q_DISABLE_COPY(KCMTelepathyAccounts);
 
 public:
     explicit KCMTelepathyAccounts(QWidget *parent = 0,
                                   const QVariantList& args = QVariantList());
-    ~KCMTelepathyAccounts();
+    virtual ~KCMTelepathyAccounts();
+
+private:
+    KCategorizedSortFilterProxyModel *m_accountsListProxyModel;
 
 };
 
