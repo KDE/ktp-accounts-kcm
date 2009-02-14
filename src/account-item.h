@@ -40,6 +40,7 @@ class AccountItem : public QObject
 public:
     explicit AccountItem(Telepathy::Client::Account *account, AccountsListModel *parent = 0);
     virtual ~AccountItem();
+    Telepathy::Client::Account* account() const;
 
 private Q_SLOTS:
     void onBecomeReadyFinished(Telepathy::Client::PendingOperation *op);

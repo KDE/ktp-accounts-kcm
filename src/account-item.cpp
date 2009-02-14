@@ -54,6 +54,11 @@ AccountItem::~AccountItem()
     // TODO: Implement me...
 }
 
+Telepathy::Client::Account* AccountItem::account() const
+{
+    return m_account;
+}
+
 void AccountItem::onBecomeReadyFinished(Telepathy::Client::PendingOperation *op)
 {
      Q_ASSERT(op->isFinished());
