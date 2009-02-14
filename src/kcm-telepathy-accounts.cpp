@@ -89,8 +89,7 @@ void KCMTelepathyAccounts::startAccountManagerFinished(Telepathy::Client::Pendin
     QList<Telepathy::Client::Account*> accounts = m_accountManager->allAccounts();
     foreach(Telepathy::Client::Account* account, accounts)
     {
-        // TODO: We should add them all to the model (which will create an
-        // AccountItem for each of them).
+        m_accountsListModel->addAccount(account);
     }
 }
 
