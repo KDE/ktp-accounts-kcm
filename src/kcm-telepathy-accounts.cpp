@@ -20,12 +20,15 @@
 
 #include "kcm-telepathy-accounts.h"
 
+#include "accounts-list-model.h"
+
 #include <kcategorizedsortfilterproxymodel.h>
 #include <kgenericfactory.h>
 
 #include <TelepathyQt4/Client/Account>
 #include <TelepathyQt4/Client/AccountManager>
 #include <TelepathyQt4/Client/PendingOperation>
+#include <TelepathyQt4/Client/PendingReadyAccount>
 
 
 K_PLUGIN_FACTORY(KCMTelepathyAccountsFactory, registerPlugin<KCMTelepathyAccounts>();)
@@ -35,11 +38,13 @@ K_EXPORT_PLUGIN(KCMTelepathyAccountsFactory("telepathy_accounts", "kcm_telepathy
 KCMTelepathyAccounts::KCMTelepathyAccounts(QWidget *parent, const QVariantList& args)
  : KCModule(KCMTelepathyAccountsFactory::componentData(), parent, args),
    m_accountsListProxyModel(0),
-   m_accountManager(0)
+   m_accountManager(0),
+   m_accountsListModel(0)
 {
     // TODO: Implement me!
     setupUi(this);
     startAccountManager();
+    m_accountsListModel = new AccountsListModel(this);
 }
 
 KCMTelepathyAccounts::~KCMTelepathyAccounts()
@@ -96,17 +101,20 @@ void KCMTelepathyAccounts::onAccountReady(Telepathy::Client::PendingOperation *o
             this, SLOT(onAccountReady(Telepathy::Client::PendingOperation*)));
 
     Q_ASSERT(op->isFinished());
-    if(op->isError())
+
+    Telepathy::Client::PendingReadyAccount *pra = qobject_cast<Telepathy::Client::PendingReadyAccount*>(op);
+    Q_ASSERT(0 != pra);
+
+    if(pra->isError())
     {
         kDebug() << "An error occurred in making and Account ready.";
+        return;
     }
     else
     {
         kDebug() << "An Account became ready successfully.";
+        // TODO: Add the account to the model.
     }
-
-    // TODO: Add the account to the model.
-    // FIXME: Need to get the AccountManager::allAccounts() API fixed before can continue easily.
 }
 
 

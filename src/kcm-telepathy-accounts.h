@@ -25,6 +25,8 @@
 
 #include <kcmodule.h>
 
+class AccountsListModel;
+
 class KCategorizedSortFilterProxyModel;
 
 namespace Telepathy {
@@ -55,6 +57,7 @@ private Q_SLOTS:
 private:
     KCategorizedSortFilterProxyModel *m_accountsListProxyModel;
     Telepathy::Client::AccountManager *m_accountManager;
+    AccountsListModel *m_accountsListModel;
 
 };
 
