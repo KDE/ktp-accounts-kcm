@@ -40,10 +40,15 @@ KCMTelepathyAccounts::KCMTelepathyAccounts(QWidget *parent, const QVariantList& 
    m_accountManager(0),
    m_accountsListModel(0)
 {
-    // TODO: Implement me!
-    setupUi(this);
+    // Start up required telepathy components.
     startAccountManager();
+
+    // Set up the UI stuff.
+    setupUi(this);
     m_accountsListModel = new AccountsListModel(this);
+    m_accountsListProxyModel = new KCategorizedSortFilterProxyModel(this);
+    m_accountsListProxyModel->setSourceModel(m_accountsListModel);
+    m_accountsListView->setModel(m_accountsListProxyModel);
 }
 
 KCMTelepathyAccounts::~KCMTelepathyAccounts()
