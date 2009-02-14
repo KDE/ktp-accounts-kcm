@@ -28,7 +28,6 @@
 #include <TelepathyQt4/Client/Account>
 #include <TelepathyQt4/Client/AccountManager>
 #include <TelepathyQt4/Client/PendingOperation>
-#include <TelepathyQt4/Client/PendingReadyAccount>
 
 
 K_PLUGIN_FACTORY(KCMTelepathyAccountsFactory, registerPlugin<KCMTelepathyAccounts>();)
@@ -90,30 +89,8 @@ void KCMTelepathyAccounts::startAccountManagerFinished(Telepathy::Client::Pendin
     QList<Telepathy::Client::Account*> accounts = m_accountManager->allAccounts();
     foreach(Telepathy::Client::Account* account, accounts)
     {
-        connect(account->becomeReady(), SIGNAL(finished(Telepathy::Client::PendingOperation*)),
-                this, SLOT(onAccountReady(Telepathy::Client::PendingOperation*)));
-    }
-}
-
-void KCMTelepathyAccounts::onAccountReady(Telepathy::Client::PendingOperation *op)
-{
-    disconnect(op, SIGNAL(finished(Telepathy::Client::PendingOperation*)),
-            this, SLOT(onAccountReady(Telepathy::Client::PendingOperation*)));
-
-    Q_ASSERT(op->isFinished());
-
-    Telepathy::Client::PendingReadyAccount *pra = qobject_cast<Telepathy::Client::PendingReadyAccount*>(op);
-    Q_ASSERT(0 != pra);
-
-    if(pra->isError())
-    {
-        kDebug() << "An error occurred in making and Account ready.";
-        return;
-    }
-    else
-    {
-        kDebug() << "An Account became ready successfully.";
-        // TODO: Add the account to the model.
+        // TODO: We should add them all to the model (which will create an
+        // AccountItem for each of them).
     }
 }
 

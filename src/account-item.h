@@ -28,6 +28,7 @@ class AccountsListModel;
 namespace Telepathy {
     namespace Client {
         class Account;
+        class PendingOperation;
     }
 }
 
@@ -37,11 +38,17 @@ class AccountItem : public QObject
     Q_DISABLE_COPY(AccountItem);
 
 public:
-    explicit AccountItem(const Telepathy::Client::Account *account, AccountsListModel *parent = 0);
+    explicit AccountItem(Telepathy::Client::Account *account, AccountsListModel *parent = 0);
     virtual ~AccountItem();
 
+private Q_SLOTS:
+    void onBecomeReadyFinished(Telepathy::Client::PendingOperation *op);
+
+Q_SIGNALS:
+    void ready();
+
 private:
-    const Telepathy::Client::Account *m_account;
+    Telepathy::Client::Account *m_account;
 
 };
 

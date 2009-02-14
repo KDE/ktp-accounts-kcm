@@ -22,16 +22,55 @@
 
 #include "accounts-list-model.h"
 
-AccountItem::AccountItem(const Telepathy::Client::Account *account, AccountsListModel *parent)
+#include <kdebug.h>
+
+#include <QtCore/QTimer>
+
+#include <TelepathyQt4/Client/Account>
+#include <TelepathyQt4/Client/PendingOperation>
+#include <TelepathyQt4/Client/PendingReadyAccount>
+
+AccountItem::AccountItem(Telepathy::Client::Account *account, AccountsListModel *parent)
  : QObject(parent),
    m_account(account)
 {
-    // TODO: Implement me...
+    // We should look to see if the "account" instance we are passed is ready
+    // yet. If not, we should get it ready now.
+    // FIXME: What features should we check are ready?
+    if(m_account->isReady())
+    {
+        QTimer::singleShot(0, this, SIGNAL(ready()));
+    }
+    else
+    {
+        // FIXME: What features should we get ready with?
+        connect(m_account->becomeReady(), SIGNAL(finished(Telepathy::Client::PendingOperation*)),
+                this, SLOT(onBecomeReadyFinished(Telepathy::Client::PendingOperation*)), Qt::QueuedConnection);
+    }
 }
 
 AccountItem::~AccountItem()
 {
     // TODO: Implement me...
+}
+
+void AccountItem::onBecomeReadyFinished(Telepathy::Client::PendingOperation *op)
+{
+     Q_ASSERT(op->isFinished());
+
+    Telepathy::Client::PendingReadyAccount *pra = qobject_cast<Telepathy::Client::PendingReadyAccount*>(op);
+    Q_ASSERT(0 != pra);
+
+    if(pra->isError())
+    {
+        kDebug() << "An error occurred in making and Account ready.";
+        return;
+    }
+    else
+    {
+        kDebug() << "An Account became ready successfully.";
+        Q_EMIT ready();
+    }
 }
 
 #include "account-item.moc"
