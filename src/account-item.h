@@ -47,6 +47,8 @@ private Q_SLOTS:
 
 Q_SIGNALS:
     void ready();
+    void removed();
+    void updated();
 
 private:
     Telepathy::Client::Account *m_account;
