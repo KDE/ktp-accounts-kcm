@@ -69,6 +69,9 @@ void AccountItem::onBecomeReadyFinished(Telepathy::Client::PendingOperation *op)
     else
     {
         kDebug() << "An Account became ready successfully.";
+        m_account = pra->account();
+        // FIXME: What features should we check its ready with?
+        Q_ASSERT(m_account->isReady());
         Q_EMIT ready();
     }
 }
