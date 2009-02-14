@@ -23,6 +23,7 @@
 #include "accounts-list-model.h"
 
 #include <kcategorizedsortfilterproxymodel.h>
+#include <kcategorydrawer.h>
 #include <kgenericfactory.h>
 
 #include <TelepathyQt4/Client/Account>
@@ -45,10 +46,13 @@ KCMTelepathyAccounts::KCMTelepathyAccounts(QWidget *parent, const QVariantList& 
 
     // Set up the UI stuff.
     setupUi(this);
+    m_accountsListView->setCategoryDrawer(new KCategoryDrawer);
+
     m_accountsListModel = new AccountsListModel(this);
     m_accountsListProxyModel = new KCategorizedSortFilterProxyModel(this);
     m_accountsListProxyModel->setSourceModel(m_accountsListModel);
     m_accountsListView->setModel(m_accountsListProxyModel);
+    m_accountsListProxyModel->setCategorizedModel(true);
 }
 
 KCMTelepathyAccounts::~KCMTelepathyAccounts()
