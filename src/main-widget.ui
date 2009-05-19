@@ -26,7 +26,7 @@
          <item>
           <widget class="KPushButton" name="m_addAccountButton">
            <property name="text">
-            <string>Add Accont</string>
+            <string>Add Account</string>
            </property>
           </widget>
          </item>
