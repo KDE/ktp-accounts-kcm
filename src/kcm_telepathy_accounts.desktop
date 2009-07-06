@@ -1,6 +1,7 @@
 [Desktop Entry]
 Comment=Add, edit and remove your instant messaging and VoIP accounts.
 Comment[et]=Kiirsuhtlus- ja VoIP kontaktide lisamine, muutmine ja eemaldamine.
+Comment[fr]=Ajouter, modifier et supprimer vos comptes des messageries instantanées et de VoIP.
 Comment[gl]=Engade, edita e elimina as súas contas de mensaxería instantánea e VoIP.
 Comment[km]=បន្ថែម កែសម្រួល និង​យក​ការ​ផ្ញើសារ​បន្ទាន់​ និង​គណនី VoIP របស់​អ្នក​ចេញ ។
 Comment[nb]=Legg til, rediger og slett dine kontoer for lynmelding og VoIP.
@@ -15,6 +16,7 @@ Exec=kcmshell4 kcm_telepathy_accounts
 Icon=blockdevice
 Name=Instant Messaging and VoIP Accounts
 Name[et]=Kiirsuhtlus- ja VoIP kontaktid
+Name[fr]=Comptes des messageries instantanées et de VoIP
 Name[gl]=Mensaxería instantánea e contas de VoIP
 Name[km]=ការ​ផ្ញើសារ​បន្ទាន់ និង​គណនី VoIP
 Name[nb]=Kontoer for lynmelding og VoIP
