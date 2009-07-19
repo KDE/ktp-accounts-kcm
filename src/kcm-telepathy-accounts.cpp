@@ -45,7 +45,7 @@ KCMTelepathyAccounts::KCMTelepathyAccounts(QWidget *parent, const QVariantList& 
 
     connect(m_accountManager->becomeReady(),
             SIGNAL(finished(Tp::PendingOperation*)),
-            SLOT(startAccountManagerFinished(Tp::PendingOperation*)));
+            SLOT(onAccountManagerReady(Tp::PendingOperation*)));
 
     // Set up the UI stuff.
     setupUi(this);
