@@ -23,13 +23,12 @@
 
 #include <QtCore/QObject>
 
+#include <TelepathyQt4/Account>
+
 class AccountsListModel;
 
 namespace Telepathy {
-    namespace Client {
-        class Account;
-        class PendingOperation;
-    }
+    class PendingOperation;
 }
 
 class AccountItem : public QObject
@@ -38,12 +37,12 @@ class AccountItem : public QObject
     Q_DISABLE_COPY(AccountItem);
 
 public:
-    explicit AccountItem(Telepathy::Client::Account *account, AccountsListModel *parent = 0);
+    explicit AccountItem(Tp::AccountPtr account, AccountsListModel *parent = 0);
     virtual ~AccountItem();
-    Telepathy::Client::Account* account() const;
+    Tp::AccountPtr account() const;
 
 private Q_SLOTS:
-    void onBecomeReadyFinished(Telepathy::Client::PendingOperation *op);
+    void onBecomeReadyFinished(Tp::PendingOperation *op);
 
 Q_SIGNALS:
     void ready();
@@ -51,7 +50,7 @@ Q_SIGNALS:
     void updated();
 
 private:
-    Telepathy::Client::Account *m_account;
+    Tp::AccountPtr m_account;
 
 };
 

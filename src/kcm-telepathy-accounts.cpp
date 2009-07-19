@@ -26,9 +26,9 @@
 #include <kcategorydrawer.h>
 #include <kgenericfactory.h>
 
-#include <TelepathyQt4/Client/Account>
-#include <TelepathyQt4/Client/AccountManager>
-#include <TelepathyQt4/Client/PendingOperation>
+#include <TelepathyQt4/Account>
+#include <TelepathyQt4/PendingOperation>
+#include <TelepathyQt4/PendingReady>
 
 
 K_PLUGIN_FACTORY(KCMTelepathyAccountsFactory, registerPlugin<KCMTelepathyAccounts>();)
@@ -38,7 +38,6 @@ K_EXPORT_PLUGIN(KCMTelepathyAccountsFactory("telepathy_accounts", "kcm_telepathy
 KCMTelepathyAccounts::KCMTelepathyAccounts(QWidget *parent, const QVariantList& args)
  : KCModule(KCMTelepathyAccountsFactory::componentData(), parent, args),
    m_accountsListProxyModel(0),
-   m_accountManager(0),
    m_accountsListModel(0)
 {
     // Start up required telepathy components.
@@ -73,18 +72,14 @@ void KCMTelepathyAccounts::startAccountManager()
 {
     // This slot is called on construction to set up a telepathy accountmanager
     // instance.
-    m_accountManager = new Telepathy::Client::AccountManager(this);
+    m_accountManager = Tp::AccountManager::create();
 
-    connect(m_accountManager->becomeReady(), SIGNAL(finished(Telepathy::Client::PendingOperation*)),
-            this, SLOT(startAccountManagerFinished(Telepathy::Client::PendingOperation*)));
+    connect(m_accountManager->becomeReady(), SIGNAL(finished(Tp::PendingOperation*)),
+            this, SLOT(startAccountManagerFinished(Tp::PendingOperation*)));
 }
 
-void KCMTelepathyAccounts::startAccountManagerFinished(Telepathy::Client::PendingOperation *op)
+void KCMTelepathyAccounts::startAccountManagerFinished(Tp::PendingOperation *op)
 {
-    disconnect(op, SIGNAL(finished(Telepathy::Client::PendingOperation*)),
-            this, SLOT(startAccountManagerFinished(Telepathy::Client::PendingOperation*)));
-
-    Q_ASSERT(op->isFinished());
     if(op->isError())
     {
         kDebug() << "An error occurred making the AccountManager ready.";
@@ -95,8 +90,8 @@ void KCMTelepathyAccounts::startAccountManagerFinished(Telepathy::Client::Pendin
         kDebug() << "AccountManager became ready successfully.";
     }
 
-    QList<Telepathy::Client::Account*> accounts = m_accountManager->allAccounts();
-    foreach(Telepathy::Client::Account* account, accounts)
+    QList<Tp::AccountPtr> accounts = m_accountManager->allAccounts();
+    foreach(Tp::AccountPtr account, accounts)
     {
         m_accountsListModel->addAccount(account);
     }

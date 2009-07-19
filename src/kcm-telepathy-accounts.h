@@ -25,15 +25,14 @@
 
 #include <kcmodule.h>
 
+#include <TelepathyQt4/AccountManager>
+
 class AccountsListModel;
 
 class KCategorizedSortFilterProxyModel;
 
-namespace Telepathy {
-    namespace Client {
-        class AccountManager;
-        class PendingOperation;
-    }
+namespace Tp {
+    class PendingOperation;
 }
 
 class KCMTelepathyAccounts : public KCModule, Ui::MainWidget
@@ -51,11 +50,11 @@ public Q_SLOTS:
 
 private Q_SLOTS:
     void startAccountManager();
-    void startAccountManagerFinished(Telepathy::Client::PendingOperation *op);
+    void startAccountManagerFinished(Tp::PendingOperation *op);
 
 private:
     KCategorizedSortFilterProxyModel *m_accountsListProxyModel;
-    Telepathy::Client::AccountManager *m_accountManager;
+    Tp::AccountManagerPtr m_accountManager;
     AccountsListModel *m_accountsListModel;
 
 };

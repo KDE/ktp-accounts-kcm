@@ -26,11 +26,10 @@
 
 #include <QtCore/QTimer>
 
-#include <TelepathyQt4/Client/Account>
-#include <TelepathyQt4/Client/PendingOperation>
-#include <TelepathyQt4/Client/PendingReadyAccount>
+#include <TelepathyQt4/PendingOperation>
+#include <TelepathyQt4/PendingReady>
 
-AccountItem::AccountItem(Telepathy::Client::Account *account, AccountsListModel *parent)
+AccountItem::AccountItem(Tp::AccountPtr account, AccountsListModel *parent)
  : QObject(parent),
    m_account(account)
 {
@@ -44,8 +43,8 @@ AccountItem::AccountItem(Telepathy::Client::Account *account, AccountsListModel 
     else
     {
         // FIXME: What features should we get ready with?
-        connect(m_account->becomeReady(), SIGNAL(finished(Telepathy::Client::PendingOperation*)),
-                this, SLOT(onBecomeReadyFinished(Telepathy::Client::PendingOperation*)), Qt::QueuedConnection);
+        connect(m_account->becomeReady(), SIGNAL(finished(Tp::PendingOperation*)),
+                this, SLOT(onBecomeReadyFinished(Tp::PendingOperation*)), Qt::QueuedConnection);
     }
 }
 
@@ -54,31 +53,21 @@ AccountItem::~AccountItem()
     // TODO: Implement me...
 }
 
-Telepathy::Client::Account* AccountItem::account() const
+Tp::AccountPtr AccountItem::account() const
 {
     return m_account;
 }
 
-void AccountItem::onBecomeReadyFinished(Telepathy::Client::PendingOperation *op)
+void AccountItem::onBecomeReadyFinished(Tp::PendingOperation *op)
 {
-     Q_ASSERT(op->isFinished());
 
-    Telepathy::Client::PendingReadyAccount *pra = qobject_cast<Telepathy::Client::PendingReadyAccount*>(op);
-    Q_ASSERT(0 != pra);
-
-    if(pra->isError())
+    if(op->isError())
     {
         kDebug() << "An error occurred in making and Account ready.";
         return;
     }
-    else
-    {
-        kDebug() << "An Account became ready successfully.";
-        m_account = pra->account();
-        // FIXME: What features should we check its ready with?
-        Q_ASSERT(m_account->isReady());
-        Q_EMIT ready();
-    }
+
+    Q_EMIT ready();
 }
 
 #include "account-item.moc"
