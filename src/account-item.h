@@ -42,7 +42,7 @@ public:
     Tp::AccountPtr account() const;
 
 private Q_SLOTS:
-    void onBecomeReadyFinished(Tp::PendingOperation *op);
+    void onAccountReady(Tp::PendingOperation *op);
 
 Q_SIGNALS:
     void ready();
@@ -51,8 +51,8 @@ Q_SIGNALS:
 
 private:
     Tp::AccountPtr m_account;
-
 };
+
 
 #endif // header guard
 

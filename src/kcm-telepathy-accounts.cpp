@@ -22,9 +22,9 @@
 
 #include "accounts-list-model.h"
 
-#include <kcategorizedsortfilterproxymodel.h>
-#include <kcategorydrawer.h>
-#include <kgenericfactory.h>
+#include <KCategorizedSortFilterProxyModel>
+#include <KCategoryDrawer>
+#include <KGenericFactory>
 
 #include <TelepathyQt4/Account>
 #include <TelepathyQt4/PendingOperation>
@@ -40,8 +40,12 @@ KCMTelepathyAccounts::KCMTelepathyAccounts(QWidget *parent, const QVariantList& 
    m_accountsListProxyModel(0),
    m_accountsListModel(0)
 {
-    // Start up required telepathy components.
-    startAccountManager();
+    // Start setting up the Telepathy AccountManager.
+    m_accountManager = Tp::AccountManager::create();
+
+    connect(m_accountManager->becomeReady(),
+            SIGNAL(finished(Tp::PendingOperation*)),
+            SLOT(startAccountManagerFinished(Tp::PendingOperation*)));
 
     // Set up the UI stuff.
     setupUi(this);
@@ -68,31 +72,19 @@ void KCMTelepathyAccounts::load()
     return;
 }
 
-void KCMTelepathyAccounts::startAccountManager()
+void KCMTelepathyAccounts::onAccountManagerReady(Tp::PendingOperation *op)
 {
-    // This slot is called on construction to set up a telepathy accountmanager
-    // instance.
-    m_accountManager = Tp::AccountManager::create();
+    kDebug();
 
-    connect(m_accountManager->becomeReady(), SIGNAL(finished(Tp::PendingOperation*)),
-            this, SLOT(startAccountManagerFinished(Tp::PendingOperation*)));
-}
-
-void KCMTelepathyAccounts::startAccountManagerFinished(Tp::PendingOperation *op)
-{
-    if(op->isError())
-    {
-        kDebug() << "An error occurred making the AccountManager ready.";
+    // Check the pending operation completed successfully.
+    if (op->isError()) {
+        kDebug() << "becomeReady() failed:" << op->errorName() << op->errorMessage();
         return;
     }
-    else
-    {
-        kDebug() << "AccountManager became ready successfully.";
-    }
 
+    // Add all the accounts to the Accounts Model.
     QList<Tp::AccountPtr> accounts = m_accountManager->allAccounts();
-    foreach(Tp::AccountPtr account, accounts)
-    {
+    foreach (Tp::AccountPtr account, accounts) {
         m_accountsListModel->addAccount(account);
     }
 }

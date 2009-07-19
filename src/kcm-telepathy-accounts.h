@@ -23,7 +23,7 @@
 
 #include "ui_main-widget.h"
 
-#include <kcmodule.h>
+#include <KCModule>
 
 #include <TelepathyQt4/AccountManager>
 
@@ -43,21 +43,20 @@ class KCMTelepathyAccounts : public KCModule, Ui::MainWidget
 public:
     explicit KCMTelepathyAccounts(QWidget *parent = 0,
                                   const QVariantList& args = QVariantList());
-    ~KCMTelepathyAccounts();
+    virtual ~KCMTelepathyAccounts();
 
 public Q_SLOTS:
-    void load();
+    virtual void load();
 
 private Q_SLOTS:
-    void startAccountManager();
-    void startAccountManagerFinished(Tp::PendingOperation *op);
+    void onAccountManagerReady(Tp::PendingOperation *op);
 
 private:
     KCategorizedSortFilterProxyModel *m_accountsListProxyModel;
     Tp::AccountManagerPtr m_accountManager;
     AccountsListModel *m_accountsListModel;
-
 };
+
 
 #endif // header guard
 

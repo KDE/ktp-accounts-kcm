@@ -22,7 +22,7 @@
 
 #include "accounts-list-model.h"
 
-#include <kdebug.h>
+#include <KDebug>
 
 #include <QtCore/QTimer>
 
@@ -36,15 +36,13 @@ AccountItem::AccountItem(Tp::AccountPtr account, AccountsListModel *parent)
     // We should look to see if the "account" instance we are passed is ready
     // yet. If not, we should get it ready now.
     // FIXME: What features should we check are ready?
-    if(m_account->isReady())
-    {
+    if (m_account->isReady()) {
         QTimer::singleShot(0, this, SIGNAL(ready()));
-    }
-    else
-    {
+    } else {
         // FIXME: What features should we get ready with?
-        connect(m_account->becomeReady(), SIGNAL(finished(Tp::PendingOperation*)),
-                this, SLOT(onBecomeReadyFinished(Tp::PendingOperation*)), Qt::QueuedConnection);
+        connect(m_account->becomeReady(),
+                SIGNAL(finished(Tp::PendingOperation*)),
+                SLOT(onAccountReady(Tp::PendingOperation*)));
     }
 }
 
@@ -58,17 +56,18 @@ Tp::AccountPtr AccountItem::account() const
     return m_account;
 }
 
-void AccountItem::onBecomeReadyFinished(Tp::PendingOperation *op)
+void AccountItem::onAccountReady(Tp::PendingOperation *op)
 {
-
-    if(op->isError())
-    {
-        kDebug() << "An error occurred in making and Account ready.";
+    if (op->isError()) {
+        kDebug() << "An error occurred in making and Account ready."
+                 << op->errorName()
+                 << op->errorMessage();
         return;
     }
 
     Q_EMIT ready();
 }
+
 
 #include "account-item.moc"
 
