@@ -108,13 +108,29 @@ void KCMTelepathyAccounts::onAddAccountClicked()
 
     // Ensure that there is not already an instance of the AddAccountAssistant before we create one.";
     if (!m_addAccountAssistant) {
-        // Create an AddAccountAssistant instance and show it.
+        // Create an AddAccountAssistant instance
         m_addAccountAssistant = new AddAccountAssistant(this);
+
+        // Connect to its completion signals...
+        connect(m_addAccountAssistant, SIGNAL(cancelled()),
+                this, SLOT(onAddAccountAssistantCancelled()));
+
+        // ...and finally show it.
         m_addAccountAssistant->show();
+
         return;
     }
 
     kWarning() << "Cannot create a new AddAccountAssistant. One already exists.";
+}
+
+void KCMTelepathyAccounts::onAddAccountAssistantCancelled()
+{
+    kDebug();
+
+    // Add account assistant has been cancelled. Delete it.
+    m_addAccountAssistant->deleteLater();
+    m_addAccountAssistant = 0;
 }
 
 

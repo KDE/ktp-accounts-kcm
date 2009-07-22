@@ -37,6 +37,9 @@ protected Q_SLOTS:
     virtual void accept();
     virtual void reject();
 
+Q_SIGNALS:
+    void cancelled();
+
 private:
     class Private;
     Private * const d;

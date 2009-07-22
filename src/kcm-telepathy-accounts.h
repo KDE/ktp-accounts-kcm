@@ -51,7 +51,9 @@ public Q_SLOTS:
 
 private Q_SLOTS:
     void onAccountManagerReady(Tp::PendingOperation *op);
+
     void onAddAccountClicked();
+    void onAddAccountAssistantCancelled();
 
 private:
     KCategorizedSortFilterProxyModel *m_accountsListProxyModel;

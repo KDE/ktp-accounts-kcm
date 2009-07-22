@@ -101,6 +101,10 @@ void AddAccountAssistant::reject()
 {
     kDebug();
 
-    // TODO: Implement me!
+    // Emit a signal to tell the assistant launcher that it was cancelled.
+    Q_EMIT cancelled();
+
+    // Close the assistant
+    KAssistantDialog::reject();
 }
 
