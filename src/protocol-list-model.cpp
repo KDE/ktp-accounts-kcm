@@ -123,6 +123,11 @@ void ProtocolListModel::onNewProtocol(const QString& protocol)
     endInsertRows();
 }
 
+ProtocolItem *ProtocolListModel::itemForIndex(const QModelIndex &index) const
+{
+    return m_protocolItems.at(index.row());
+}
+
 
 #include "protocol-list-model.moc"
 

@@ -36,7 +36,9 @@ public:
     }
 
     ProtocolSelectWidget *widgetOne;
+    QWidget *widgetTwo;
     KPageWidgetItem *pageOne;
+    KPageWidgetItem *pageTwo;
 };
 
 AddAccountAssistant::AddAccountAssistant(QWidget *parent)
@@ -49,8 +51,12 @@ AddAccountAssistant::AddAccountAssistant(QWidget *parent)
     d->widgetOne = new ProtocolSelectWidget(this);
     d->pageOne = new KPageWidgetItem(d->widgetOne);
     d->pageOne->setHeader(i18n("Step 1: Select an Instant Messaging Network."));
+    d->widgetTwo = new QWidget(this);
+    d->pageTwo = new KPageWidgetItem(d->widgetTwo);
+    d->pageTwo->setHeader(i18n("Step 2: Fill in the required Parameters."));
 
     addPage(d->pageOne);
+    addPage(d->pageTwo);
 }
 
 AddAccountAssistant::~AddAccountAssistant()
@@ -71,7 +77,17 @@ void AddAccountAssistant::next()
 {
     kDebug();
 
-    // TODO: Implement me!
+    // Check which page we are on.
+    if (currentPage() == d->pageOne) {
+        kDebug() << "Current page: Page 1.";
+        // Page 1
+
+        // Check if the protocol is selected. If it is, continue to the next page.
+        if (d->widgetOne->selectedProtocol()) {
+            kDebug() << "Protocol is selected. Continue to the next page.";
+            KAssistantDialog::next();
+        }
+    }
 }
 
 void AddAccountAssistant::accept()

@@ -23,6 +23,8 @@
 
 #include <QtGui/QWidget>
 
+class ProtocolItem;
+
 namespace Tp {
     class PendingOperation;
 }
@@ -34,6 +36,8 @@ class ProtocolSelectWidget : public QWidget
 public:
     explicit ProtocolSelectWidget(QWidget *parent = 0);
     ~ProtocolSelectWidget();
+
+    ProtocolItem *selectedProtocol();
 
 private Q_SLOTS:
     void getConnectionManagerList();

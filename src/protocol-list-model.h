@@ -36,10 +36,16 @@ class ProtocolListModel : public QAbstractListModel
 public:
     explicit ProtocolListModel(QObject *parent = 0);
     virtual ~ProtocolListModel();
+
     virtual int rowCount(const QModelIndex &index) const;
     virtual QVariant data(const QModelIndex &index, int role = Qt::DisplayRole) const;
+
+    ProtocolItem *itemForIndex(const QModelIndex &index) const;
+
     void addConnectionManager(Tp::ConnectionManagerPtr connectionManager);
     void addProtocolItem(ProtocolItem *item);
+
+
 
 private Q_SLOTS:
     void onNewProtocol(const QString& protocol);

@@ -20,6 +20,7 @@
 
 #include "protocol-select-widget.h"
 
+#include "protocol-item.h"
 #include "protocol-list-model.h"
 
 #include "ui_protocol-select-widget.h"
@@ -101,5 +102,28 @@ void ProtocolSelectWidget::onConnectionManagerListGot(Tp::PendingOperation *op)
         // Add the CM to the ProtocolListModel
         d->model->addConnectionManager(Tp::ConnectionManager::create(cmName));
     }
+}
+
+// Return the selected ProtocolItem or 0 if nothing is selected.
+ProtocolItem *ProtocolSelectWidget::selectedProtocol()
+{
+    kDebug();
+
+    // Get the indexes of the selected items from the view
+    QModelIndexList selectedIndexes = d->ui->protocolListView->selectionModel()->selectedIndexes();
+
+    // If more than 1 protocol is selected (shouldn't be possible, but just in case) error.
+    if (selectedIndexes.size() > 1) {
+        kWarning() << "More than 1 protocol is selected.";
+        return 0;
+    }
+
+    // If no indexes are selected, return 0.
+    if (selectedIndexes.size() == 0) {
+        return 0;
+    }
+
+    // 1 index is selected. Return the ProtocolItem for that.
+    return d->model->itemForIndex(selectedIndexes.at(0));
 }
 
