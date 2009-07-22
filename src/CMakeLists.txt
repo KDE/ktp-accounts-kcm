@@ -9,10 +9,12 @@ set (telepathy_accounts_kcm_SRCS
      accounts-list-model.cpp
      account-item.cpp
      add-account-wizard.cpp
+     protocol-select-widget.cpp
 )
 
 kde4_add_ui_files (telepathy_accounts_kcm_SRCS
                    main-widget.ui
+                   protocol-select-widget.ui
 )
 
 kde4_add_plugin (kcm_telepathy_accounts
