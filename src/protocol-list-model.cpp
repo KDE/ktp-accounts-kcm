@@ -75,7 +75,7 @@ QVariant ProtocolListModel::data(const QModelIndex &index, int role) const
 
 void ProtocolListModel::addConnectionManager(Tp::ConnectionManagerPtr connectionManager)
 {
-    kDebug() << "Creating a new ConnectionManagerItem from account:"
+    kDebug() << "Creating a new ConnectionManagerItem from connection manager:"
              << connectionManager.data();
 
     // Check if the cm is already in the list.
