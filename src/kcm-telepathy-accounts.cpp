@@ -21,7 +21,7 @@
 #include "kcm-telepathy-accounts.h"
 
 #include "accounts-list-model.h"
-#include "add-account-wizard.h"
+#include "add-account-assistant.h"
 
 #include <KCategorizedSortFilterProxyModel>
 #include <KCategoryDrawer>
@@ -40,7 +40,7 @@ KCMTelepathyAccounts::KCMTelepathyAccounts(QWidget *parent, const QVariantList& 
  : KCModule(KCMTelepathyAccountsFactory::componentData(), parent, args),
    m_accountsListProxyModel(0),
    m_accountsListModel(0),
-   m_addAccountWizard(0)
+   m_addAccountAssistant(0)
 {
     kDebug();
 
@@ -106,15 +106,15 @@ void KCMTelepathyAccounts::onAddAccountClicked()
 {
     kDebug();
 
-    // Ensure that there is not already an instance of the AddAccountWizard before we create one.";
-    if (!m_addAccountWizard) {
-        // Create an AddAccountWizard instance and show it.
-        m_addAccountWizard = new AddAccountWizard(this);
-        m_addAccountWizard->show();
+    // Ensure that there is not already an instance of the AddAccountAssistant before we create one.";
+    if (!m_addAccountAssistant) {
+        // Create an AddAccountAssistant instance and show it.
+        m_addAccountAssistant = new AddAccountAssistant(this);
+        m_addAccountAssistant->show();
         return;
     }
 
-    kWarning() << "Cannot create a new AddAccountWizard. One already exists.";
+    kWarning() << "Cannot create a new AddAccountAssistant. One already exists.";
 }
 
 

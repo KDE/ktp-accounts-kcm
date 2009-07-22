@@ -18,18 +18,18 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
-#ifndef TELEPATHY_ACCOUNTS_KCM_ADD_ACCOUNT_WIZARD_H
-#define TELEPATHY_ACCOUNTS_KCM_ADD_ACCOUNT_WIZARD_H
+#ifndef TELEPATHY_ACCOUNTS_KCM_ADD_ACCOUNT_ASSISTANT_H
+#define TELEPATHY_ACCOUNTS_KCM_ADD_ACCOUNT_ASSISTANT_H
 
 #include <KAssistantDialog>
 
-class AddAccountWizard : public KAssistantDialog
+class AddAccountAssistant : public KAssistantDialog
 {
     Q_OBJECT
 
 public:
-    explicit AddAccountWizard(QWidget *parent = 0);
-    ~AddAccountWizard();
+    explicit AddAccountAssistant(QWidget *parent = 0);
+    ~AddAccountAssistant();
 
 protected Q_SLOTS:
     virtual void back();

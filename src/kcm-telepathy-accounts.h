@@ -28,7 +28,7 @@
 #include <TelepathyQt4/AccountManager>
 
 class AccountsListModel;
-class AddAccountWizard;
+class AddAccountAssistant;
 
 class KCategorizedSortFilterProxyModel;
 
@@ -57,7 +57,7 @@ private:
     KCategorizedSortFilterProxyModel *m_accountsListProxyModel;
     Tp::AccountManagerPtr m_accountManager;
     AccountsListModel *m_accountsListModel;
-    AddAccountWizard *m_addAccountWizard;
+    AddAccountAssistant *m_addAccountAssistant;
 };
 
 

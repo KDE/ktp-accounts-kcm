@@ -18,7 +18,7 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
-#include "add-account-wizard.h"
+#include "add-account-assistant.h"
 
 #include "protocol-select-widget.h"
 
@@ -26,7 +26,7 @@
 #include <KLocale>
 #include <KPageWidgetItem>
 
-class AddAccountWizard::Private
+class AddAccountAssistant::Private
 {
 public:
     Private()
@@ -39,13 +39,13 @@ public:
     KPageWidgetItem *pageOne;
 };
 
-AddAccountWizard::AddAccountWizard(QWidget *parent)
+AddAccountAssistant::AddAccountAssistant(QWidget *parent)
  : KAssistantDialog(parent),
    d(new Private)
 {
     kDebug();
 
-    // Set up the pages of the Wizard.
+    // Set up the pages of the Assistant.
     d->widgetOne = new ProtocolSelectWidget(this);
     d->pageOne = new KPageWidgetItem(d->widgetOne);
     d->pageOne->setHeader(i18n("Step 1: Select an Instant Messaging Network."));
@@ -53,35 +53,35 @@ AddAccountWizard::AddAccountWizard(QWidget *parent)
     addPage(d->pageOne);
 }
 
-AddAccountWizard::~AddAccountWizard()
+AddAccountAssistant::~AddAccountAssistant()
 {
     kDebug();
 
     delete d;
 }
 
-void AddAccountWizard::back()
+void AddAccountAssistant::back()
 {
     kDebug();
 
     // TODO: Implement me!
 }
 
-void AddAccountWizard::next()
+void AddAccountAssistant::next()
 {
     kDebug();
 
     // TODO: Implement me!
 }
 
-void AddAccountWizard::accept()
+void AddAccountAssistant::accept()
 {
     kDebug();
 
     // TODO: Implement me!
 }
 
-void AddAccountWizard::reject()
+void AddAccountAssistant::reject()
 {
     kDebug();
 

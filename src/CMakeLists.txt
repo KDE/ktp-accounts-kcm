@@ -8,7 +8,7 @@ set (telepathy_accounts_kcm_SRCS
      kcm-telepathy-accounts.cpp
      accounts-list-model.cpp
      account-item.cpp
-     add-account-wizard.cpp
+     add-account-assistant.cpp
      protocol-select-widget.cpp
 )
 
