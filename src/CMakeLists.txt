@@ -8,6 +8,7 @@ set (telepathy_accounts_kcm_SRCS
      kcm-telepathy-accounts.cpp
      accounts-list-model.cpp
      account-item.cpp
+     add-account-wizard.cpp
 )
 
 kde4_add_ui_files (telepathy_accounts_kcm_SRCS
