@@ -29,7 +29,7 @@
 #include <TelepathyQt4/PendingOperation>
 #include <TelepathyQt4/PendingReady>
 
-AccountItem::AccountItem(Tp::AccountPtr account, AccountsListModel *parent)
+AccountItem::AccountItem(const Tp::AccountPtr &account, AccountsListModel *parent)
  : QObject(parent),
    m_account(account)
 {

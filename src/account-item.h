@@ -37,7 +37,7 @@ class AccountItem : public QObject
     Q_DISABLE_COPY(AccountItem);
 
 public:
-    explicit AccountItem(Tp::AccountPtr account, AccountsListModel *parent = 0);
+    explicit AccountItem(const Tp::AccountPtr &account, AccountsListModel *parent = 0);
     virtual ~AccountItem();
     Tp::AccountPtr account() const;
 
