@@ -29,7 +29,9 @@ class ProtocolSelectWidget::Private
 public:
     Private()
      : ui(0)
-    { }
+    {
+        kDebug();
+    }
 
     Ui::ProtocolSelectWidget *ui;
 };
@@ -48,6 +50,7 @@ ProtocolSelectWidget::ProtocolSelectWidget(QWidget *parent)
 ProtocolSelectWidget::~ProtocolSelectWidget()
 {
     kDebug();
+
     delete d;
 }
 

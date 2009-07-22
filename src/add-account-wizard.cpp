@@ -31,7 +31,9 @@ class AddAccountWizard::Private
 public:
     Private()
      : pageOne(0)
-    { }
+    {
+        kDebug();
+    }
 
     ProtocolSelectWidget *widgetOne;
     KPageWidgetItem *pageOne;

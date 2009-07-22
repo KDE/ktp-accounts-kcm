@@ -42,6 +42,8 @@ KCMTelepathyAccounts::KCMTelepathyAccounts(QWidget *parent, const QVariantList& 
    m_accountsListModel(0),
    m_addAccountWizard(0)
 {
+    kDebug();
+
     // Start setting up the Telepathy AccountManager.
     m_accountManager = Tp::AccountManager::create();
 
@@ -67,11 +69,15 @@ KCMTelepathyAccounts::KCMTelepathyAccounts(QWidget *parent, const QVariantList& 
 
 KCMTelepathyAccounts::~KCMTelepathyAccounts()
 {
+    kDebug();
+
     // TODO: Implement me!
 }
 
 void KCMTelepathyAccounts::load()
 {
+    kDebug();
+
     // This slot is called whenever the configuration data in this KCM should
     // be reloaded from the store. We will not actually do anything here since
     // all changes that are made in this KCM are, at the moment, saved
@@ -98,7 +104,11 @@ void KCMTelepathyAccounts::onAccountManagerReady(Tp::PendingOperation *op)
 
 void KCMTelepathyAccounts::onAddAccountClicked()
 {
+    kDebug();
+
+    // Ensure that there is not already an instance of the AddAccountWizard before we create one.";
     if (!m_addAccountWizard) {
+        // Create an AddAccountWizard instance and show it.
         m_addAccountWizard = new AddAccountWizard(this);
         m_addAccountWizard->show();
         return;
