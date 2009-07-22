@@ -23,6 +23,10 @@
 
 #include <QtGui/QWidget>
 
+namespace Tp {
+    class PendingOperation;
+}
+
 class ProtocolSelectWidget : public QWidget
 {
     Q_OBJECT
@@ -30,6 +34,10 @@ class ProtocolSelectWidget : public QWidget
 public:
     explicit ProtocolSelectWidget(QWidget *parent = 0);
     ~ProtocolSelectWidget();
+
+private Q_SLOTS:
+    void getConnectionManagerList();
+    void onConnectionManagerListGot(Tp::PendingOperation *op);
 
 private:
     class Private;

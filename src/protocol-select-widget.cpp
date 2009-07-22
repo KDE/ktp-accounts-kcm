@@ -24,6 +24,10 @@
 
 #include <KDebug>
 
+#include <TelepathyQt4/ConnectionManager>
+#include <TelepathyQt4/PendingOperation>
+#include <TelepathyQt4/PendingStringList>
+
 class ProtocolSelectWidget::Private
 {
 public:
@@ -45,6 +49,9 @@ ProtocolSelectWidget::ProtocolSelectWidget(QWidget *parent)
     // Set up the widget
     d->ui = new Ui::ProtocolSelectWidget;
     d->ui->setupUi(this);
+
+    // Load the list of all installed Telepathy Connection Managers Asynchronously
+    QTimer::singleShot(0, this, SLOT(getConnectionManagerList()));
 }
 
 ProtocolSelectWidget::~ProtocolSelectWidget()
@@ -52,5 +59,39 @@ ProtocolSelectWidget::~ProtocolSelectWidget()
     kDebug();
 
     delete d;
+}
+
+void ProtocolSelectWidget::getConnectionManagerList()
+{
+    kDebug();
+
+    // Ask TpQt4 for the list of all installed Connection Managers.
+    Tp::PendingStringList *psl = Tp::ConnectionManager::listNames();
+
+    connect(psl,
+            SIGNAL(finished(Tp::PendingOperation*)),
+            SLOT(onConnectionManagerListGot(Tp::PendingOperation*)));
+}
+
+void ProtocolSelectWidget::onConnectionManagerListGot(Tp::PendingOperation *op)
+{
+    kDebug();
+
+    // Check the operation completed successfully.
+    if (op->isError()) {
+        kWarning() << "Operation failed:" << op->errorName() << op->errorMessage();
+        return;
+    }
+
+    // Check the operation we were passed is of the correct type.
+    Tp::PendingStringList *psl = qobject_cast<Tp::PendingStringList*>(op);
+    if (!psl) {
+        kWarning() << "Operation is not of type PendingStringList.";
+        return;
+    }
+
+    foreach (QString cmName, psl->result()) {
+        // TODO: Add that CM to the protocol-list-model
+    }
 }
 
