@@ -20,6 +20,8 @@
 
 #include "protocol-select-widget.h"
 
+#include "protocol-list-model.h"
+
 #include "ui_protocol-select-widget.h"
 
 #include <KDebug>
@@ -32,12 +34,14 @@ class ProtocolSelectWidget::Private
 {
 public:
     Private()
-     : ui(0)
+     : ui(0),
+       model(0)
     {
         kDebug();
     }
 
     Ui::ProtocolSelectWidget *ui;
+    ProtocolListModel *model;
 };
 
 ProtocolSelectWidget::ProtocolSelectWidget(QWidget *parent)
@@ -47,8 +51,11 @@ ProtocolSelectWidget::ProtocolSelectWidget(QWidget *parent)
     kDebug();
 
     // Set up the widget
+    d->model = new ProtocolListModel(this);
+
     d->ui = new Ui::ProtocolSelectWidget;
     d->ui->setupUi(this);
+    d->ui->protocolListView->setModel(d->model);
 
     // Load the list of all installed Telepathy Connection Managers Asynchronously
     QTimer::singleShot(0, this, SLOT(getConnectionManagerList()));
@@ -91,7 +98,8 @@ void ProtocolSelectWidget::onConnectionManagerListGot(Tp::PendingOperation *op)
     }
 
     foreach (QString cmName, psl->result()) {
-        // TODO: Add that CM to the protocol-list-model
+        // Add the CM to the ProtocolListModel
+        d->model->addConnectionManager(Tp::ConnectionManager::create(cmName));
     }
 }
 

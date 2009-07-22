@@ -15,7 +15,7 @@
   </property>
   <layout class="QVBoxLayout" name="verticalLayout_2">
    <item>
-    <widget class="QListView" name="m_protocolListView"/>
+    <widget class="QListView" name="protocolListView"/>
    </item>
   </layout>
  </widget>
