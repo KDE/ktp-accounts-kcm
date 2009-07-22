@@ -33,6 +33,8 @@ AccountItem::AccountItem(const Tp::AccountPtr &account, AccountsListModel *paren
  : QObject(parent),
    m_account(account)
 {
+    kDebug();
+
     // We should look to see if the "account" instance we are passed is ready
     // yet. If not, we should get it ready now.
     // FIXME: What features should we check are ready?
@@ -48,6 +50,8 @@ AccountItem::AccountItem(const Tp::AccountPtr &account, AccountsListModel *paren
 
 AccountItem::~AccountItem()
 {
+    kDebug();
+
     // TODO: Implement me...
 }
 
@@ -58,6 +62,8 @@ Tp::AccountPtr AccountItem::account() const
 
 void AccountItem::onAccountReady(Tp::PendingOperation *op)
 {
+    kDebug();
+
     if (op->isError()) {
         kDebug() << "An error occurred in making and Account ready."
                  << op->errorName()
