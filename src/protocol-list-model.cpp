@@ -43,8 +43,6 @@ ProtocolListModel::~ProtocolListModel()
 
 int ProtocolListModel::rowCount(const QModelIndex &index) const
 {
-    kDebug();
-
     // If the index is the root item, then return the row count.
     if (index == QModelIndex()) {
        return m_protocolItems.size();

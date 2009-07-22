@@ -49,11 +49,15 @@ ConnectionManagerItem::~ConnectionManagerItem()
 
 Tp::ConnectionManagerPtr ConnectionManagerItem::connectionManager() const
 {
+    kDebug();
+
     return m_connectionManager;
 }
 
 void ConnectionManagerItem::onConnectionManagerReady(Tp::PendingOperation *op)
 {
+    kDebug();
+
     if (op->isError()) {
         kDebug() << "An error occurred in making the Connection Manager ready."
                  << op->errorName()
