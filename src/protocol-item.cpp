@@ -28,7 +28,7 @@ ProtocolItem::ProtocolItem(const QString &protocol, ConnectionManagerItem *paren
  : QObject(parent),
    m_protocol(protocol)
 {
-    kDebug();
+    kDebug() << "Creating new ProtocolItem with cmItem: " << parent << " and protocol;" << protocol;
 
     // TODO: Implement me!
 }

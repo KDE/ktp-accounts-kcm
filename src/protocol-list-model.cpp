@@ -62,7 +62,7 @@ QVariant ProtocolListModel::data(const QModelIndex &index, int role) const
     switch(role)
     {
     case Qt::DisplayRole:
-   //     data = QVariant(m_readyAccounts.at(index.row())->account()->displayName());
+        data = QVariant(m_protocolItems.at(index.row())->protocol());
         break;
     default:
         break;
@@ -117,8 +117,10 @@ void ProtocolListModel::onNewProtocol(const QString& protocol)
     }
 
     // Add the Protocol/CM pair to the model.
+    beginInsertRows(QModelIndex(), m_protocolItems.size(), m_protocolItems.size());
     ProtocolItem *item = new ProtocolItem(protocol, cmItem);
     m_protocolItems.append(item);
+    endInsertRows();
 }
 
 
