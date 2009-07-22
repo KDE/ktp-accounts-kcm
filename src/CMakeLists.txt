@@ -13,11 +13,13 @@ set (telepathy_accounts_kcm_SRCS
      protocol-list-model.cpp
      connection-manager-item.cpp
      protocol-item.cpp
+     parameter-edit-widget.cpp
 )
 
 kde4_add_ui_files (telepathy_accounts_kcm_SRCS
                    main-widget.ui
                    protocol-select-widget.ui
+                   parameter-edit-widget.ui
 )
 
 kde4_add_plugin (kcm_telepathy_accounts
