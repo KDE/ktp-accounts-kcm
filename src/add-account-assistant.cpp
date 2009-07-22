@@ -25,6 +25,7 @@
 #include <KDebug>
 #include <KLocale>
 #include <KPageWidgetItem>
+#include <KTabWidget>
 
 class AddAccountAssistant::Private
 {
@@ -36,7 +37,7 @@ public:
     }
 
     ProtocolSelectWidget *widgetOne;
-    QWidget *widgetTwo;
+    KTabWidget *widgetTwo;
     KPageWidgetItem *pageOne;
     KPageWidgetItem *pageTwo;
 };
@@ -51,7 +52,7 @@ AddAccountAssistant::AddAccountAssistant(QWidget *parent)
     d->widgetOne = new ProtocolSelectWidget(this);
     d->pageOne = new KPageWidgetItem(d->widgetOne);
     d->pageOne->setHeader(i18n("Step 1: Select an Instant Messaging Network."));
-    d->widgetTwo = new QWidget(this);
+    d->widgetTwo = new KTabWidget(this);
     d->pageTwo = new KPageWidgetItem(d->widgetTwo);
     d->pageTwo->setHeader(i18n("Step 2: Fill in the required Parameters."));
 
