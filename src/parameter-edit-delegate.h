@@ -18,47 +18,26 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
-#include "parameter-edit-widget.h"
+#ifndef TELEPATHY_ACCOUNTS_KCM_PARAMETER_EDIT_DELEGATE_H
+#define TELEPATHY_ACCOUNTS_KCM_PARAMETER_EDIT_DELEGATE_H
 
-#include "ui_parameter-edit-widget.h"
+#include <KWidgetItemDelegate>
 
-#include <KDebug>
-
-class ParameterEditWidget::Private
+class ParameterEditDelegate : public KWidgetItemDelegate
 {
-public:
-    Private()
-     : ui(0)
-    {
-        kDebug();
-    }
+    Q_OBJECT
 
-    Ui::ParameterEditWidget *ui;
-    Tp::ProtocolParameterList parameters;
+public:
+    explicit ParameterEditDelegate(QAbstractItemView *itemView, QObject *parent = 0);
+    virtual ~ParameterEditDelegate();
+
+protected:
+    virtual QList<QWidget*> createItemWidgets() const;
+    virtual void updateItemWidgets(const QList<QWidget*> widgets,
+                                   const QStyleOptionViewItem &option,
+                                   const QPersistentModelIndex &index) const;
 };
 
-ParameterEditWidget::ParameterEditWidget(QWidget *parent)
- : QWidget(parent),
-   d(new Private)
-{
-    kDebug();
 
-    // Set up the UI.
-    d->ui = new Ui::ParameterEditWidget;
-    d->ui->setupUi(this);
-}
-
-ParameterEditWidget::~ParameterEditWidget()
-{
-    kDebug();
-
-    delete d;
-}
-
-void ParameterEditWidget::setParameters(const Tp::ProtocolParameterList &parameters)
-{
-    d->parameters = parameters;
-
-    // TODO: Generate the UI
-}
+#endif  // Header guard
 

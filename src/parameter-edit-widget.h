@@ -23,6 +23,8 @@
 
 #include <QtGui/QWidget>
 
+#include <TelepathyQt4/ConnectionManager>
+
 class ParameterEditWidget : public QWidget
 {
     Q_OBJECT
@@ -30,6 +32,8 @@ class ParameterEditWidget : public QWidget
 public:
     explicit ParameterEditWidget(QWidget *parent = 0);
     ~ParameterEditWidget();
+
+    void setParameters(const Tp::ProtocolParameterList &parameters);
 
 protected:
     class Private;

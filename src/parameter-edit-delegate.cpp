@@ -18,47 +18,47 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
-#include "parameter-edit-widget.h"
-
-#include "ui_parameter-edit-widget.h"
+#include "parameter-edit-delegate.h"
 
 #include <KDebug>
 
-class ParameterEditWidget::Private
-{
-public:
-    Private()
-     : ui(0)
-    {
-        kDebug();
-    }
-
-    Ui::ParameterEditWidget *ui;
-    Tp::ProtocolParameterList parameters;
-};
-
-ParameterEditWidget::ParameterEditWidget(QWidget *parent)
- : QWidget(parent),
-   d(new Private)
+ParameterEditDelegate::ParameterEditDelegate(QAbstractItemView *itemView, QObject *parent)
+ : KWidgetItemDelegate(itemView, parent)
 {
     kDebug();
 
-    // Set up the UI.
-    d->ui = new Ui::ParameterEditWidget;
-    d->ui->setupUi(this);
+    // TODO: Implement me!
 }
 
-ParameterEditWidget::~ParameterEditWidget()
+ParameterEditDelegate::~ParameterEditDelegate()
 {
     kDebug();
 
-    delete d;
+    // TODO: Implement me!
 }
 
-void ParameterEditWidget::setParameters(const Tp::ProtocolParameterList &parameters)
+
+QList<QWidget*> ParameterEditDelegate::createItemWidgets() const
 {
-    d->parameters = parameters;
+    kDebug();
 
-    // TODO: Generate the UI
+    // TODO: Implement me!
+
+    return QList<QWidget*>();
 }
+
+void ParameterEditDelegate::updateItemWidgets(const QList<QWidget*> widgets,
+                                              const QStyleOptionViewItem &option,
+                                              const QPersistentModelIndex &index) const
+{
+    kDebug();
+
+    // TODO: Implement me!
+    Q_UNUSED(widgets);
+    Q_UNUSED(option);
+    Q_UNUSED(index);
+}
+
+
+#include "parameter-edit-delegate.moc"
 

@@ -14,6 +14,7 @@ set (telepathy_accounts_kcm_SRCS
      connection-manager-item.cpp
      protocol-item.cpp
      parameter-edit-widget.cpp
+     parameter-edit-delegate.cpp
 )
 
 kde4_add_ui_files (telepathy_accounts_kcm_SRCS
