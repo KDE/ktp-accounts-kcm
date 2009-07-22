@@ -39,6 +39,9 @@ ProtocolSelectWidget::ProtocolSelectWidget(QWidget *parent)
    d(new Private)
 {
     kDebug();
+
+    // Set up the widget
+    d->ui = new Ui::ProtocolSelectWidget;
     d->ui->setupUi(this);
 }
 

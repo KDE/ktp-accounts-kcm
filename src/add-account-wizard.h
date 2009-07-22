@@ -37,6 +37,9 @@ protected Q_SLOTS:
     virtual void accept();
     virtual void reject();
 
+private:
+    class Private;
+    Private * const d;
 };
 
 
