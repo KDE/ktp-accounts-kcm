@@ -21,6 +21,7 @@
 #include "kcm-telepathy-accounts.h"
 
 #include "accounts-list-model.h"
+#include "add-account-wizard.h"
 
 #include <KCategorizedSortFilterProxyModel>
 #include <KCategoryDrawer>
@@ -38,7 +39,8 @@ K_EXPORT_PLUGIN(KCMTelepathyAccountsFactory("telepathy_accounts", "kcm_telepathy
 KCMTelepathyAccounts::KCMTelepathyAccounts(QWidget *parent, const QVariantList& args)
  : KCModule(KCMTelepathyAccountsFactory::componentData(), parent, args),
    m_accountsListProxyModel(0),
-   m_accountsListModel(0)
+   m_accountsListModel(0),
+   m_addAccountWizard(0)
 {
     // Start setting up the Telepathy AccountManager.
     m_accountManager = Tp::AccountManager::create();
@@ -56,6 +58,11 @@ KCMTelepathyAccounts::KCMTelepathyAccounts(QWidget *parent, const QVariantList& 
     m_accountsListProxyModel->setSourceModel(m_accountsListModel);
     m_accountsListView->setModel(m_accountsListProxyModel);
     m_accountsListProxyModel->setCategorizedModel(true);
+
+    // Connect to useful signals from the UI elements.
+    connect(m_addAccountButton,
+            SIGNAL(clicked()),
+            SLOT(onAddAccountClicked()));
 }
 
 KCMTelepathyAccounts::~KCMTelepathyAccounts()
@@ -87,6 +94,17 @@ void KCMTelepathyAccounts::onAccountManagerReady(Tp::PendingOperation *op)
     foreach (Tp::AccountPtr account, accounts) {
         m_accountsListModel->addAccount(account);
     }
+}
+
+void KCMTelepathyAccounts::onAddAccountClicked()
+{
+    if (!m_addAccountWizard) {
+        m_addAccountWizard = new AddAccountWizard(this);
+        m_addAccountWizard->show();
+        return;
+    }
+
+    kWarning() << "Cannot create a new AddAccountWizard. One already exists.";
 }
 
 
