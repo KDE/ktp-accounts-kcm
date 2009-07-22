@@ -40,6 +40,11 @@ ProtocolItem::~ProtocolItem()
     // TODO: Implement me...
 }
 
+QString ProtocolItem::protocol() const
+{
+    return m_protocol;
+}
+
 
 #include "protocol-item.moc"
 

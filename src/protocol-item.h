@@ -35,6 +35,8 @@ public:
                           ConnectionManagerItem *parent = 0);
     virtual ~ProtocolItem();
 
+    QString protocol() const;
+
 private:
     QString m_protocol;
 };

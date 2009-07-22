@@ -65,7 +65,10 @@ void ConnectionManagerItem::onConnectionManagerReady(Tp::PendingOperation *op)
         return;
     }
 
-    // TODO: Implement me!
+    // Emit the protocol() signal for every protocol supported by this connection manager.
+    foreach (const QString &protocol, m_connectionManager->supportedProtocols()) {
+        Q_EMIT newProtocol(protocol);
+    }
 }
 
 

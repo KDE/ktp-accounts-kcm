@@ -91,6 +91,34 @@ void ProtocolListModel::addConnectionManager(Tp::ConnectionManagerPtr connection
 
     ConnectionManagerItem *item = new ConnectionManagerItem(connectionManager, this);
     m_connectionManagerItems.append(item);
+
+    connect(item, SIGNAL(newProtocol(const QString&)),
+            this, SLOT(onNewProtocol(const QString&)));
+}
+
+
+void ProtocolListModel::onNewProtocol(const QString& protocol)
+{
+    kDebug();
+
+    // New protocol supported by a connection manager. Get the ConnectionManagerItem for it.
+    ConnectionManagerItem *cmItem = qobject_cast<ConnectionManagerItem*>(sender());
+    if (!cmItem) {
+        kWarning() << "Slot was called by a non-ConnectionManagerItem object.";
+        return;
+    }
+
+    // Check that the protocol/cm pair are not already in the model.
+    foreach (ProtocolItem *pi, m_protocolItems) {
+        if ((pi->parent() == cmItem) && (pi->protocol() == protocol)) {
+            kWarning() << "Protocol/CM pair already in the model.";
+            return;
+        }
+    }
+
+    // Add the Protocol/CM pair to the model.
+    ProtocolItem *item = new ProtocolItem(protocol, cmItem);
+    m_protocolItems.append(item);
 }
 
 

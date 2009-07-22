@@ -41,6 +41,9 @@ public:
     void addConnectionManager(Tp::ConnectionManagerPtr connectionManager);
     void addProtocolItem(ProtocolItem *item);
 
+private Q_SLOTS:
+    void onNewProtocol(const QString& protocol);
+
 private:
     QList<ConnectionManagerItem*> m_connectionManagerItems;
     QList<ProtocolItem*> m_protocolItems;

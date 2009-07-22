@@ -42,6 +42,9 @@ public:
     virtual ~ConnectionManagerItem();
     Tp::ConnectionManagerPtr connectionManager() const;
 
+Q_SIGNALS:
+    void newProtocol(const QString &protocol);
+
 private Q_SLOTS:
     void onConnectionManagerReady(Tp::PendingOperation *op);
 
