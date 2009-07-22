@@ -27,7 +27,7 @@
 
 class AccountsListModel;
 
-namespace Telepathy {
+namespace Tp {
     class PendingOperation;
 }
 
