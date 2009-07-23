@@ -20,7 +20,14 @@
 
 #include "parameter-edit-delegate.h"
 
+#include "parameter-edit-model.h"
+
 #include <KDebug>
+
+#include <QtGui/QApplication>
+#include <QtGui/QLabel>
+#include <QtGui/QLineEdit>
+#include <QtGui/QPainter>
 
 ParameterEditDelegate::ParameterEditDelegate(QAbstractItemView *itemView, QObject *parent)
  : KWidgetItemDelegate(itemView, parent)
@@ -42,9 +49,14 @@ QList<QWidget*> ParameterEditDelegate::createItemWidgets() const
 {
     kDebug();
 
-    // TODO: Implement me!
+    QList<QWidget*> widgets;
 
-    return QList<QWidget*>();
+    QLabel *nameLabel = new QLabel();
+    QLineEdit *lineEdit = new QLineEdit();
+
+    widgets << nameLabel << lineEdit;
+
+    return widgets;
 }
 
 void ParameterEditDelegate::updateItemWidgets(const QList<QWidget*> widgets,
@@ -53,21 +65,36 @@ void ParameterEditDelegate::updateItemWidgets(const QList<QWidget*> widgets,
 {
     kDebug();
 
-    // TODO: Implement me!
-    Q_UNUSED(widgets);
-    Q_UNUSED(option);
-    Q_UNUSED(index);
+    int margin = option.fontMetrics.height() / 2;
+    int right = option.rect.width();
+
+    QLabel *nameLabel = qobject_cast<QLabel*>(widgets.at(0));
+    nameLabel->setText(index.model()->data(index, ParameterEditModel::NameRole).toString());
+    nameLabel->move(margin, 0);
+    nameLabel->resize(QSize(((right - (4 * margin)) / 2), option.rect.height()));
+
+    QLineEdit *lineEdit = qobject_cast<QLineEdit*>(widgets.at(1));
+    lineEdit->setText(index.model()->data(index, ParameterEditModel::ValueRole).toString());
+    lineEdit->move((right / 2) + margin, 0);
+    lineEdit->resize(QSize(((right - (4 * margin)) / 2), option.rect.height()));
 }
 
 void ParameterEditDelegate::paint(QPainter *painter,
                                   const QStyleOptionViewItem &option,
                                   const QModelIndex &index) const
 {
-    // TODO: Implement me!
+    int margin = option.fontMetrics.height() / 2;
 
-    Q_UNUSED(painter);
-    Q_UNUSED(option);
-    Q_UNUSED(index);
+    QStyle *style = QApplication::style();
+    style->drawPrimitive(QStyle::PE_PanelItemViewItem, &option, painter, 0);
+
+    painter->save();
+
+    if (option.state & QStyle::State_Selected) {
+        painter->setPen(QPen(option.palette.highlightedText().color()));
+    } else {
+        painter->setPen(QPen(option.palette.text().color()));
+    }
 }
 
 QSize ParameterEditDelegate::sizeHint(const QStyleOptionViewItem &option,
@@ -75,10 +102,12 @@ QSize ParameterEditDelegate::sizeHint(const QStyleOptionViewItem &option,
 {
     // TODO: Implement me!
 
-    Q_UNUSED(option);
-    Q_UNUSED(index);
+    QSize size;
 
-    return QSize();
+    size.setWidth(option.fontMetrics.height() * 4);
+    size.setHeight(option.fontMetrics.height() * 2);
+
+    return size;
 }
 
 
