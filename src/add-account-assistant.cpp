@@ -67,6 +67,8 @@ AddAccountAssistant::AddAccountAssistant(QWidget *parent)
 
     addPage(d->pageOne);
     addPage(d->pageTwo);
+
+    resize(QSize(400, 480));
 }
 
 AddAccountAssistant::~AddAccountAssistant()

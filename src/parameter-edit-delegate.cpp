@@ -47,8 +47,6 @@ ParameterEditDelegate::~ParameterEditDelegate()
 
 QList<QWidget*> ParameterEditDelegate::createItemWidgets() const
 {
-    kDebug();
-
     QList<QWidget*> widgets;
 
     QLabel *nameLabel = new QLabel();
@@ -63,8 +61,6 @@ void ParameterEditDelegate::updateItemWidgets(const QList<QWidget*> widgets,
                                               const QStyleOptionViewItem &option,
                                               const QPersistentModelIndex &index) const
 {
-    kDebug();
-
     int margin = option.fontMetrics.height() / 2;
     int right = option.rect.width();
 
@@ -95,13 +91,13 @@ void ParameterEditDelegate::paint(QPainter *painter,
     } else {
         painter->setPen(QPen(option.palette.text().color()));
     }
+
+    painter->restore();
 }
 
 QSize ParameterEditDelegate::sizeHint(const QStyleOptionViewItem &option,
                                       const QModelIndex &index) const
 {
-    // TODO: Implement me!
-
     QSize size;
 
     size.setWidth(option.fontMetrics.height() * 4);
