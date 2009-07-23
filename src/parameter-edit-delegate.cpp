@@ -73,6 +73,7 @@ void ParameterEditDelegate::updateItemWidgets(const QList<QWidget*> widgets,
 
     // Draw the label showing the name of the parameter
     QLabel *nameLabel = qobject_cast<QLabel*>(widgets.at(0));
+
     nameLabel->setText(index.model()->data(index, ParameterEditModel::NameRole).toString());
     nameLabel->move(margin, 0);
     nameLabel->resize(QSize(((right - (4 * margin)) / 2), option.rect.height()));
@@ -87,11 +88,12 @@ void ParameterEditDelegate::updateItemWidgets(const QList<QWidget*> widgets,
 
     // See what type the parameter is, and draw the appropriate widget for it.
     // FIXME: Support int/uint types with appropriate validation.
-    if (index.model()->data(index, ParameterEditModel::TypeRole) == QVariant::Bool) {
+    if (index.model()->data(index, ParameterEditModel::TypeRole).type() == QVariant::Bool) {
         // Bool type. Draw a checkbox.
         checkBox->setChecked(index.model()->data(index, ParameterEditModel::ValueRole).toBool());
         checkBox->move((right / 2) + margin, (option.rect.height() - checkBox->size().height()) / 2);
         checkBox->show();
+        checkBox->setFocus(Qt::OtherFocusReason);
     } else {
         // For any other type, treat it as a string type.
         // FIXME: Support asterisking out the entry in secret parameters
@@ -99,6 +101,7 @@ void ParameterEditDelegate::updateItemWidgets(const QList<QWidget*> widgets,
         lineEdit->move((right / 2) + margin, (option.rect.height() - lineEdit->size().height()) / 2);
         lineEdit->resize(QSize(((right - (4 * margin)) / 2), lineEdit->size().height()));
         lineEdit->show();
+        lineEdit->setFocus(Qt::OtherFocusReason);
     }
 }
 
@@ -139,12 +142,20 @@ QSize ParameterEditDelegate::sizeHint(const QStyleOptionViewItem &option,
 
 void ParameterEditDelegate::onLineEditTextChanged(QString text)
 {
-    // TODO: Implement me!
+    kDebug();
+
+    QModelIndex index = focusedIndex();
+
+    Q_EMIT dataChanged(index, QVariant(text), ParameterEditModel::ValueRole);
 }
 
 void ParameterEditDelegate::onCheckBoxToggled(bool checked)
 {
-    // TODO: Implement me!
+    kDebug();
+
+    QModelIndex index = focusedIndex();
+
+    Q_EMIT dataChanged(index, QVariant(checked), ParameterEditModel::ValueRole);
 }
 
 

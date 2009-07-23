@@ -56,6 +56,10 @@ ParameterEditWidget::ParameterEditWidget(QWidget *parent)
     d->ui->parameterListView->setModel(d->model);
     d->delegate = new ParameterEditDelegate(d->ui->parameterListView, this);
     d->ui->parameterListView->setItemDelegate(d->delegate);
+
+    connect(d->delegate,
+            SIGNAL(dataChanged(QModelIndex, QVariant, int)),
+            SLOT(onDelegateDataChanged(QModelIndex, QVariant, int)));
 }
 
 ParameterEditWidget::~ParameterEditWidget()
@@ -73,5 +77,10 @@ void ParameterEditWidget::setParameters(const Tp::ProtocolParameterList &paramet
     foreach (Tp::ProtocolParameter *parameter, parameters) {
         d->model->addItem(parameter, parameter->defaultValue());
     }
+}
+
+void ParameterEditWidget::onDelegateDataChanged(const QModelIndex &index, const QVariant &value, int role)
+{
+    d->model->setData(index, value, role);
 }
 

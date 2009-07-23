@@ -40,6 +40,9 @@ private Q_SLOTS:
     void onLineEditTextChanged(QString text);
     void onCheckBoxToggled(bool checked);
 
+Q_SIGNALS:
+    void dataChanged(const QModelIndex &index, const QVariant &value, int role);
+
 protected:
     virtual QList<QWidget*> createItemWidgets() const;
     virtual void updateItemWidgets(const QList<QWidget*> widgets,

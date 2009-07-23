@@ -86,6 +86,31 @@ QVariant ParameterEditModel::data(const QModelIndex &index, int role) const
     return data;
 }
 
+bool ParameterEditModel::setData(const QModelIndex &index, const QVariant &value, int role)
+{
+    if (index.row() == -1) {
+        kDebug() << "Invalid item row accessed.";
+        return false;
+    }
+
+    if (index.row() >= m_items.size()) {
+        kWarning() << "Out of range row accessed." << index.row();
+        return false;
+    }
+
+    switch(role)
+    {
+    case ParameterEditModel::ValueRole:
+        m_items.at(index.row())->setValue(value);
+        Q_EMIT dataChanged(index, index);
+        return true;
+        break;
+    default:
+        return false;
+        break;
+    }
+}
+
 void ParameterEditModel::addItem(Tp::ProtocolParameter *parameter, const QVariant &originalValue)
 {
     kDebug();

@@ -35,6 +35,9 @@ public:
 
     void setParameters(const Tp::ProtocolParameterList &parameters);
 
+private Q_SLOTS:
+    void onDelegateDataChanged(const QModelIndex &index, const QVariant &value, int role);
+
 protected:
     class Private;
     Private * const d;

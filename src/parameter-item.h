@@ -44,6 +44,8 @@ public:
     bool isRequired() const;
     bool isRequiredForRegistration() const;
 
+    void setValue(const QVariant &value);
+
 private:
     Tp::ProtocolParameter const *m_parameter;
     const QVariant m_originalValue;

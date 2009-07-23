@@ -29,7 +29,7 @@ ParameterItem::ParameterItem(Tp::ProtocolParameter *parameter,
    m_parameter(parameter),
    m_originalValue(originalValue)
 {
-    kDebug();
+    kDebug() << "New parameter:" << parameter->name() << "of type:" << parameter->type();
 
     // To begin with, the current value is the original value.
     m_currentValue = m_originalValue;
@@ -71,5 +71,10 @@ bool ParameterItem::isRequired() const
 bool ParameterItem::isRequiredForRegistration() const
 {
     return m_parameter->requiredForRegistration();
+}
+
+void ParameterItem::setValue(const QVariant &value)
+{
+    m_currentValue = value;
 }
 
