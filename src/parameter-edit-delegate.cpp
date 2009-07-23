@@ -25,6 +25,7 @@
 #include <KDebug>
 
 #include <QtGui/QApplication>
+#include <QtGui/QCheckBox>
 #include <QtGui/QLabel>
 #include <QtGui/QLineEdit>
 #include <QtGui/QPainter>
@@ -51,8 +52,9 @@ QList<QWidget*> ParameterEditDelegate::createItemWidgets() const
 
     QLabel *nameLabel = new QLabel();
     QLineEdit *lineEdit = new QLineEdit();
+    QCheckBox *checkBox = new QCheckBox();
 
-    widgets << nameLabel << lineEdit;
+    widgets << nameLabel << lineEdit << checkBox;
 
     return widgets;
 }
@@ -64,15 +66,35 @@ void ParameterEditDelegate::updateItemWidgets(const QList<QWidget*> widgets,
     int margin = option.fontMetrics.height() / 2;
     int right = option.rect.width();
 
+    // Draw the label showing the name of the parameter
     QLabel *nameLabel = qobject_cast<QLabel*>(widgets.at(0));
     nameLabel->setText(index.model()->data(index, ParameterEditModel::NameRole).toString());
     nameLabel->move(margin, 0);
     nameLabel->resize(QSize(((right - (4 * margin)) / 2), option.rect.height()));
 
+    // Get all the optional input widgets and hide them all so they don't all appear randomly
+    // for every single item in the view.
     QLineEdit *lineEdit = qobject_cast<QLineEdit*>(widgets.at(1));
-    lineEdit->setText(index.model()->data(index, ParameterEditModel::ValueRole).toString());
-    lineEdit->move((right / 2) + margin, 0);
-    lineEdit->resize(QSize(((right - (4 * margin)) / 2), option.rect.height()));
+    QCheckBox *checkBox = qobject_cast<QCheckBox*>(widgets.at(2));
+
+    lineEdit->hide();
+    checkBox->hide();
+
+    // See what type the parameter is, and draw the appropriate widget for it.
+    // FIXME: Support int/uint types with appropriate validation.
+    if (index.model()->data(index, ParameterEditModel::TypeRole) == QVariant::Bool) {
+        // Bool type. Draw a checkbox.
+        checkBox->setChecked(index.model()->data(index, ParameterEditModel::ValueRole).toBool());
+        checkBox->move((right / 2) + margin, (option.rect.height() - checkBox->size().height()) / 2);
+        checkBox->show();
+    } else {
+        // For any other type, treat it as a string type.
+        // FIXME: Support asterisking out the entry in secret parameters
+        lineEdit->setText(index.model()->data(index, ParameterEditModel::ValueRole).toString());
+        lineEdit->move((right / 2) + margin, (option.rect.height() - lineEdit->size().height()) / 2);
+        lineEdit->resize(QSize(((right - (4 * margin)) / 2), lineEdit->size().height()));
+        lineEdit->show();
+    }
 }
 
 void ParameterEditDelegate::paint(QPainter *painter,
