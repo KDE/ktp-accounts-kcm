@@ -21,6 +21,7 @@
 #include "parameter-edit-widget.h"
 
 #include "parameter-edit-delegate.h"
+#include "parameter-edit-model.h"
 
 #include "ui_parameter-edit-widget.h"
 
@@ -30,7 +31,7 @@ class ParameterEditWidget::Private
 {
 public:
     Private()
-     : ui(0), delegate(0)
+     : ui(0), delegate(0), model(0)
     {
         kDebug();
     }
@@ -38,6 +39,7 @@ public:
     Ui::ParameterEditWidget *ui;
     Tp::ProtocolParameterList parameters;
     ParameterEditDelegate *delegate;
+    ParameterEditModel *model;
 };
 
 ParameterEditWidget::ParameterEditWidget(QWidget *parent)
@@ -50,10 +52,10 @@ ParameterEditWidget::ParameterEditWidget(QWidget *parent)
     d->ui = new Ui::ParameterEditWidget;
     d->ui->setupUi(this);
 
-  //  d->delegate = new ParameterEditDelegate(d->ui->parameterListView, this);
-  //  d->ui->parameterListView->setItemDelegate(d->delegate);
-
-    // TODO: Model
+    d->model = new ParameterEditModel(this);
+    d->ui->parameterListView->setModel(d->model);
+    d->delegate = new ParameterEditDelegate(d->ui->parameterListView, this);
+    d->ui->parameterListView->setItemDelegate(d->delegate);
 }
 
 ParameterEditWidget::~ParameterEditWidget()
