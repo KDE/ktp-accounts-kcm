@@ -42,6 +42,34 @@ ParameterItem::~ParameterItem()
 
 QString ParameterItem::name() const
 {
+    // TODO: Try and translate common parameter names. Can we have a singleton registry where we can
+    // get the translation of common parameters from (which will allow i18n of that registries
+    // contents?
     return m_parameter->name();
+}
+
+QVariant::Type ParameterItem::type() const
+{
+    return m_parameter->type();
+}
+
+QVariant ParameterItem::value() const
+{
+    return m_currentValue;
+}
+
+bool ParameterItem::isSecret() const
+{
+    return m_parameter->isSecret();
+}
+
+bool ParameterItem::isRequired() const
+{
+    return m_parameter->isRequired();
+}
+
+bool ParameterItem::isRequiredForRegistration() const
+{
+    return m_parameter->requiredForRegistration();
 }
 

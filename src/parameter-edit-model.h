@@ -35,6 +35,16 @@ class ParameterEditModel : public QAbstractListModel
     Q_DISABLE_COPY(ParameterEditModel);
 
 public:
+    enum Roles {
+        NameRole = Qt::UserRole + 1,
+        TypeRole,
+        ValueRole,
+        SecretRole,
+        RequiredRole,
+        RequiredForRegistrationRole,
+        UserRole = Qt::UserRole + 42
+    };
+
     explicit ParameterEditModel(QObject *parent = 0);
     virtual ~ParameterEditModel();
 

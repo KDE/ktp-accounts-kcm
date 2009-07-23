@@ -38,6 +38,11 @@ public:
     virtual ~ParameterItem();
 
     QString name() const;
+    QVariant::Type type() const;
+    QVariant value() const;
+    bool isSecret() const;
+    bool isRequired() const;
+    bool isRequiredForRegistration() const;
 
 private:
     Tp::ProtocolParameter const *m_parameter;

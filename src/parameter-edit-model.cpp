@@ -61,8 +61,23 @@ QVariant ParameterEditModel::data(const QModelIndex &index, int role) const
 
     switch(role)
     {
-    case Qt::DisplayRole:
+    case ParameterEditModel::NameRole:
         data = QVariant(m_items.at(index.row())->name());
+        break;
+    case ParameterEditModel::TypeRole:
+        data = QVariant(m_items.at(index.row())->type());
+        break;
+    case ParameterEditModel::ValueRole:
+        data = QVariant(m_items.at(index.row())->value());
+        break;
+    case ParameterEditModel::SecretRole:
+        data = QVariant(m_items.at(index.row())->isSecret());
+        break;
+    case ParameterEditModel::RequiredRole:
+        data = QVariant(m_items.at(index.row())->isRequired());
+        break;
+    case ParameterEditModel::RequiredForRegistrationRole:
+        data = QVariant(m_items.at(index.row())->isRequiredForRegistration());
         break;
     default:
         break;
