@@ -31,6 +31,11 @@ public:
     explicit ParameterEditDelegate(QAbstractItemView *itemView, QObject *parent = 0);
     virtual ~ParameterEditDelegate();
 
+    virtual void paint(QPainter *painter,
+                       const QStyleOptionViewItem &option,
+                       const QModelIndex &index) const;
+    virtual QSize sizeHint(const QStyleOptionViewItem &option, const QModelIndex &index) const;
+
 protected:
     virtual QList<QWidget*> createItemWidgets() const;
     virtual void updateItemWidgets(const QList<QWidget*> widgets,

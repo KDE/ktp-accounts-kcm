@@ -23,6 +23,8 @@
 
 #include <QtCore/QObject>
 
+#include <TelepathyQt4/ConnectionManager>
+
 class ConnectionManagerItem;
 
 class ProtocolItem : public QObject
@@ -36,6 +38,9 @@ public:
     virtual ~ProtocolItem();
 
     QString protocol() const;
+
+    Tp::ProtocolParameterList mandatoryParameters() const;
+    Tp::ProtocolParameterList optionalParameters() const;
 
 private:
     QString m_protocol;

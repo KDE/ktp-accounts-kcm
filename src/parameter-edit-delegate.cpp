@@ -59,6 +59,28 @@ void ParameterEditDelegate::updateItemWidgets(const QList<QWidget*> widgets,
     Q_UNUSED(index);
 }
 
+void ParameterEditDelegate::paint(QPainter *painter,
+                                  const QStyleOptionViewItem &option,
+                                  const QModelIndex &index) const
+{
+    // TODO: Implement me!
+
+    Q_UNUSED(painter);
+    Q_UNUSED(option);
+    Q_UNUSED(index);
+}
+
+QSize ParameterEditDelegate::sizeHint(const QStyleOptionViewItem &option,
+                                      const QModelIndex &index) const
+{
+    // TODO: Implement me!
+
+    Q_UNUSED(option);
+    Q_UNUSED(index);
+
+    return QSize();
+}
+
 
 #include "parameter-edit-delegate.moc"
 
