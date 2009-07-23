@@ -101,7 +101,7 @@ void ParameterEditDelegate::paint(QPainter *painter,
                                   const QStyleOptionViewItem &option,
                                   const QModelIndex &index) const
 {
-    int margin = option.fontMetrics.height() / 2;
+    Q_UNUSED(index);
 
     QStyle *style = QApplication::style();
     style->drawPrimitive(QStyle::PE_PanelItemViewItem, &option, painter, 0);
@@ -120,6 +120,10 @@ void ParameterEditDelegate::paint(QPainter *painter,
 QSize ParameterEditDelegate::sizeHint(const QStyleOptionViewItem &option,
                                       const QModelIndex &index) const
 {
+    Q_UNUSED(index);
+
+    // FIXME: There must be a better way of calculating these?!?!
+
     QSize size;
 
     size.setWidth(option.fontMetrics.height() * 4);
