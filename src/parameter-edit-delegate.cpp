@@ -50,9 +50,14 @@ QList<QWidget*> ParameterEditDelegate::createItemWidgets() const
 {
     QList<QWidget*> widgets;
 
+    // Create all the possible widgets for displaying the parameter.
     QLabel *nameLabel = new QLabel();
     QLineEdit *lineEdit = new QLineEdit();
     QCheckBox *checkBox = new QCheckBox();
+
+    // Connect to the slots from the widgets that we are interested in.
+    connect(lineEdit, SIGNAL(textChanged(QString)), SLOT(onLineEditTextChanged(QString)));
+    connect(checkBox, SIGNAL(toggled(bool)), SLOT(onCheckBoxToggled(bool)));
 
     widgets << nameLabel << lineEdit << checkBox;
 
@@ -130,6 +135,16 @@ QSize ParameterEditDelegate::sizeHint(const QStyleOptionViewItem &option,
     size.setHeight(option.fontMetrics.height() * 2);
 
     return size;
+}
+
+void ParameterEditDelegate::onLineEditTextChanged(QString text)
+{
+    // TODO: Implement me!
+}
+
+void ParameterEditDelegate::onCheckBoxToggled(bool checked)
+{
+    // TODO: Implement me!
 }
 
 

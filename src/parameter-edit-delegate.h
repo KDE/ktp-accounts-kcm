@@ -36,6 +36,10 @@ public:
                        const QModelIndex &index) const;
     virtual QSize sizeHint(const QStyleOptionViewItem &option, const QModelIndex &index) const;
 
+private Q_SLOTS:
+    void onLineEditTextChanged(QString text);
+    void onCheckBoxToggled(bool checked);
+
 protected:
     virtual QList<QWidget*> createItemWidgets() const;
     virtual void updateItemWidgets(const QList<QWidget*> widgets,
