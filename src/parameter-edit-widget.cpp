@@ -67,8 +67,11 @@ ParameterEditWidget::~ParameterEditWidget()
 
 void ParameterEditWidget::setParameters(const Tp::ProtocolParameterList &parameters)
 {
-    d->parameters = parameters;
+    kDebug();
 
-    // TODO: Generate the UI
+    // Add the parameters to the model.
+    foreach (Tp::ProtocolParameter *parameter, parameters) {
+        d->model->addItem(parameter, parameter->defaultValue());
+    }
 }
 

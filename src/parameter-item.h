@@ -37,6 +37,8 @@ public:
                   QObject *parent = 0);
     virtual ~ParameterItem();
 
+    QString name() const;
+
 private:
     Tp::ProtocolParameter const *m_parameter;
     const QVariant m_originalValue;

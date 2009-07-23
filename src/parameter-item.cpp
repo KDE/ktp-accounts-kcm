@@ -40,3 +40,8 @@ ParameterItem::~ParameterItem()
     kDebug();
 }
 
+QString ParameterItem::name() const
+{
+    return m_parameter->name();
+}
+

@@ -20,7 +20,11 @@
 
 #include "parameter-edit-model.h"
 
+#include "parameter-item.h"
+
 #include <KDebug>
+
+#include <TelepathyQt4/ConnectionManager>
 
 ParameterEditModel::ParameterEditModel(QObject *parent)
  : QAbstractListModel(parent)
@@ -41,7 +45,7 @@ int ParameterEditModel::rowCount(const QModelIndex &index) const
 {
     // If the index is the root item, then return the row count.
     if (index == QModelIndex()) {
-  //     return m_protocolItems.size();
+       return m_items.size();
     }
 
     // Otherwise, return 0 (as this is a list model, so all items
@@ -58,13 +62,24 @@ QVariant ParameterEditModel::data(const QModelIndex &index, int role) const
     switch(role)
     {
     case Qt::DisplayRole:
-//        data = QVariant(m_protocolItems.at(index.row())->protocol());
+        data = QVariant(m_items.at(index.row())->name());
         break;
     default:
         break;
     }
 
     return data;
+}
+
+void ParameterEditModel::addItem(Tp::ProtocolParameter *parameter, const QVariant &originalValue)
+{
+    kDebug();
+    // FIXME: Check we are not creating duplicate items.
+
+    // Create a new ParameterItem and add it to the list.
+    beginInsertRows(QModelIndex(), m_items.size(), m_items.size());
+    m_items.append(new ParameterItem(parameter, originalValue, this));
+    endInsertRows();
 }
 
 

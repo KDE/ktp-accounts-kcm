@@ -23,6 +23,12 @@
 
 #include <QtCore/QAbstractListModel>
 
+class ParameterItem;
+
+namespace Tp {
+    class ProtocolParameter;
+}
+
 class ParameterEditModel : public QAbstractListModel
 {
     Q_OBJECT
@@ -34,6 +40,11 @@ public:
 
     virtual int rowCount(const QModelIndex &index) const;
     virtual QVariant data(const QModelIndex &index, int role = Qt::DisplayRole) const;
+
+    void addItem(Tp::ProtocolParameter *parameter, const QVariant &originalValue);
+
+private:
+    QList<ParameterItem*> m_items;
 };
 
 
