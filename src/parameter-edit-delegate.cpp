@@ -60,7 +60,7 @@ QList<QWidget*> ParameterEditDelegate::createItemWidgets() const
     // Connect to the slots from the widgets that we are interested in.
     connect(lineEdit, SIGNAL(textChanged(QString)), SLOT(onLineEditTextChanged(QString)));
     connect(checkBox, SIGNAL(toggled(bool)), SLOT(onCheckBoxToggled(bool)));
-    connect(integerEdit, SIGNAL(integerChanged(int)), SLOT(onIntegerEditIntegerChanged(int)));
+    connect(integerEdit, SIGNAL(textChanged(QString)), SLOT(onIntegerEditTextChanged(QString)));
 
     widgets << nameLabel << lineEdit << checkBox << integerEdit;
 
@@ -81,48 +81,73 @@ void ParameterEditDelegate::updateItemWidgets(const QList<QWidget*> widgets,
     nameLabel->move(margin, 0);
     nameLabel->resize(QSize(((right - (4 * margin)) / 2), option.rect.height()));
 
-    // Get all the optional input widgets and hide them all so they don't all appear randomly
-    // for every single item in the view.
+    // Get all the optional input widgets.
     QLineEdit *lineEdit = qobject_cast<QLineEdit*>(widgets.at(1));
     QCheckBox *checkBox = qobject_cast<QCheckBox*>(widgets.at(2));
     IntegerEdit *integerEdit = qobject_cast<IntegerEdit*>(widgets.at(3));
-
-    lineEdit->hide();
-    checkBox->hide();
-    integerEdit->hide();
 
     // See what type the parameter is, and draw the appropriate widget for it.
     // FIXME: Support uint types with appropriate validation.
     if (index.model()->data(index, ParameterEditModel::TypeRole).type() == QVariant::Bool) {
         // Bool type. Draw a checkbox.
         checkBox->move((right / 2) + margin, (option.rect.height() - checkBox->size().height()) / 2);
-        checkBox->show();
-        checkBox->setFocus(Qt::OtherFocusReason);
+
+        // checkBox->setFocus(Qt::OtherFocusReason);
         // NB: We must update the value of the widget AFTER setting it as focused, otherwise
         // focusedItem() returns the wrong value and we end up setting the data of the wrong item
         // in the model.
         checkBox->setChecked(index.model()->data(index, ParameterEditModel::ValueRole).toBool());
+
+        // Hide all the other input widgets for this item. This must be done in each condition
+        // to avoid them losing focus (and cursor position) when updating the content of them.
+        lineEdit->hide();
+        integerEdit->hide();
+
     } else if (index.model()->data(index, ParameterEditModel::TypeRole).type() == QVariant::Int) {
         // Integer type. Draw a integer edit.
         integerEdit->move((right / 2) + margin, (option.rect.height() - integerEdit->size().height()) / 2);
         integerEdit->resize(QSize(((right - (4 * margin)) / 2), integerEdit->size().height()));
-        integerEdit->show();
-        integerEdit->setFocus(Qt::OtherFocusReason);
+
+        // Save the cursor position within the widget so we can restore it after altering the data
+        int cursorPosition = integerEdit->cursorPosition();
+
+        // integerEdit->setFocus(Qt::OtherFocusReason);
         // NB: We must update the value of the widget AFTER setting it as focused, otherwise
         // focusedItem() returns the wrong value and we end up setting the data of the wrong item
         // in the model.
-        integerEdit->setValue(index.model()->data(index, ParameterEditModel::ValueRole).toInt());
+        integerEdit->setText(index.model()->data(index, ParameterEditModel::ValueRole).toString());
+
+        // Restore the cursor position now the data has been changed.
+        integerEdit->setCursorPosition(cursorPosition);
+
+        // Hide all the other input widgets for this item. This must be done in each condition
+        // to avoid them losing focus (and cursor position) when updating the content of them.
+        lineEdit->hide();
+        checkBox->hide();
+
     } else {
         // For any other type, treat it as a string type.
         // FIXME: Support asterisking out the entry in secret parameters
         lineEdit->move((right / 2) + margin, (option.rect.height() - lineEdit->size().height()) / 2);
         lineEdit->resize(QSize(((right - (4 * margin)) / 2), lineEdit->size().height()));
-        lineEdit->show();
-        lineEdit->setFocus(Qt::OtherFocusReason);
+
+        // Save the cursor position within the widget so we can restore it after altering the data
+        int cursorPosition = lineEdit->cursorPosition();
+
+        // lineEdit->setFocus(Qt::OtherFocusReason);
         // NB: We must update the value of the widget AFTER setting it as focused, otherwise
         // focusedItem() returns the wrong value and we end up setting the data of the wrong item
         // in the model.
         lineEdit->setText(index.model()->data(index, ParameterEditModel::ValueRole).toString());
+
+        // Restore the cursor position now the data has been changed.
+        lineEdit->setCursorPosition(cursorPosition);
+
+        // Hide all the other input widgets for this item. This must be done in each condition
+        // to avoid them losing focus (and cursor position) when updating the content of them.
+        checkBox->hide();
+        integerEdit->hide();
+
     }
 }
 
@@ -179,13 +204,13 @@ void ParameterEditDelegate::onCheckBoxToggled(bool checked)
     Q_EMIT dataChanged(index, QVariant(checked), ParameterEditModel::ValueRole);
 }
 
-void ParameterEditDelegate::onIntegerEditIntegerChanged(int integer)
+void ParameterEditDelegate::onIntegerEditTextChanged(const QString &text)
 {
     kDebug();
 
     QModelIndex index = focusedIndex();
 
-    Q_EMIT dataChanged(index, QVariant(integer), ParameterEditModel::ValueRole);
+    Q_EMIT dataChanged(index, QVariant(text), ParameterEditModel::ValueRole);
 }
 
 
