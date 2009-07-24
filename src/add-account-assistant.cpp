@@ -20,6 +20,7 @@
 
 #include "add-account-assistant.h"
 
+#include "connection-manager-item.h"
 #include "parameter-edit-widget.h"
 #include "protocol-item.h"
 #include "protocol-select-widget.h"
@@ -29,6 +30,9 @@
 #include <KMessageBox>
 #include <KPageWidgetItem>
 #include <KTabWidget>
+
+#include <TelepathyQt4/PendingAccount>
+#include <TelepathyQt4/PendingOperation>
 
 class AddAccountAssistant::Private
 {
@@ -153,6 +157,46 @@ void AddAccountAssistant::accept()
     // Get the optional properties
     QMap<Tp::ProtocolParameter*, QVariant> optionalParameterValues =
             d->optionalParametersWidget->parameterValues();
+
+    // Get the ProtocolItem that was selected and the corresponding ConnectionManagerItem.
+    ProtocolItem *protocolItem = d->protocolSelectWidget->selectedProtocol();
+    ConnectionManagerItem *connectionManagerItem = qobject_cast<ConnectionManagerItem*>(protocolItem->parent());
+
+    if (!connectionManagerItem) {
+        kWarning() << "Invalid ConnectionManager item.";
+        return;
+    }
+
+    // Merge the parameters into a QVariantMap for submitting to the Telepathy AM.
+    QVariantMap parameters;
+
+    foreach (Tp::ProtocolParameter *pp, mandatoryParameterValues.keys()) {
+        QVariant value = mandatoryParameterValues.value(pp);
+
+        // Don't try and add empty parameters.
+        if (!value.isNull()) {
+            parameters.insert(pp->name(), value);
+        }
+    }
+
+    foreach (Tp::ProtocolParameter *pp, optionalParameterValues.keys()) {
+        QVariant value = optionalParameterValues.value(pp);
+
+        // Don't try and add empty parameters.
+        if (!value.isNull()) {
+            parameters.insert(pp->name(), value);
+        }
+    }
+
+    // FIXME: Ask the user to submit a Display Name
+    Tp::PendingAccount *pa = d->accountManager->createAccount(connectionManagerItem->connectionManager()->name(),
+                                                              protocolItem->protocol(),
+                                                              parameters.value("account").toString(),
+                                                              parameters);
+
+    connect(pa,
+            SIGNAL(finished(Tp::PendingOperation*)),
+            SLOT(onAccountCreated(Tp::PendingOperation*)));
 }
 
 void AddAccountAssistant::reject()
@@ -164,5 +208,15 @@ void AddAccountAssistant::reject()
 
     // Close the assistant
     KAssistantDialog::reject();
+}
+
+void AddAccountAssistant::onAccountCreated(Tp::PendingOperation *op)
+{
+    if (op->isError()) {
+        kWarning() << "Adding Account failed:" << op->errorName() << op->errorMessage();
+        return;
+    }
+
+    KAssistantDialog::accept();
 }
 

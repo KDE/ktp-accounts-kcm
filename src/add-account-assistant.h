@@ -25,6 +25,10 @@
 
 #include <TelepathyQt4/AccountManager>
 
+namespace Tp {
+    class PendingOperation;
+}
+
 class AddAccountAssistant : public KAssistantDialog
 {
     Q_OBJECT
@@ -41,6 +45,9 @@ protected Q_SLOTS:
 
 Q_SIGNALS:
     void cancelled();
+
+private Q_SLOTS:
+    void onAccountCreated(Tp::PendingOperation *op);
 
 private:
     class Private;
