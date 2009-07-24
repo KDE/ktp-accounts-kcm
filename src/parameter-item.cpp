@@ -70,7 +70,7 @@ bool ParameterItem::isRequired() const
 
 bool ParameterItem::isRequiredForRegistration() const
 {
-    return m_parameter->requiredForRegistration();
+    return m_parameter->isRequiredForRegistration();
 }
 
 Tp::ProtocolParameter *ParameterItem::parameter()
