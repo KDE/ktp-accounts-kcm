@@ -20,6 +20,7 @@
 
 #include "parameter-edit-delegate.h"
 
+#include "integer-edit.h"
 #include "parameter-edit-model.h"
 
 #include <KDebug>
@@ -54,12 +55,14 @@ QList<QWidget*> ParameterEditDelegate::createItemWidgets() const
     QLabel *nameLabel = new QLabel();
     QLineEdit *lineEdit = new QLineEdit();
     QCheckBox *checkBox = new QCheckBox();
+    IntegerEdit *integerEdit = new IntegerEdit();
 
     // Connect to the slots from the widgets that we are interested in.
     connect(lineEdit, SIGNAL(textChanged(QString)), SLOT(onLineEditTextChanged(QString)));
     connect(checkBox, SIGNAL(toggled(bool)), SLOT(onCheckBoxToggled(bool)));
+    connect(integerEdit, SIGNAL(integerChanged(int)), SLOT(onIntegerEditIntegerChanged(int)));
 
-    widgets << nameLabel << lineEdit << checkBox;
+    widgets << nameLabel << lineEdit << checkBox << integerEdit;
 
     return widgets;
 }
@@ -82,12 +85,14 @@ void ParameterEditDelegate::updateItemWidgets(const QList<QWidget*> widgets,
     // for every single item in the view.
     QLineEdit *lineEdit = qobject_cast<QLineEdit*>(widgets.at(1));
     QCheckBox *checkBox = qobject_cast<QCheckBox*>(widgets.at(2));
+    IntegerEdit *integerEdit = qobject_cast<IntegerEdit*>(widgets.at(3));
 
     lineEdit->hide();
     checkBox->hide();
+    integerEdit->hide();
 
     // See what type the parameter is, and draw the appropriate widget for it.
-    // FIXME: Support int/uint types with appropriate validation.
+    // FIXME: Support uint types with appropriate validation.
     if (index.model()->data(index, ParameterEditModel::TypeRole).type() == QVariant::Bool) {
         // Bool type. Draw a checkbox.
         checkBox->move((right / 2) + margin, (option.rect.height() - checkBox->size().height()) / 2);
@@ -97,6 +102,16 @@ void ParameterEditDelegate::updateItemWidgets(const QList<QWidget*> widgets,
         // focusedItem() returns the wrong value and we end up setting the data of the wrong item
         // in the model.
         checkBox->setChecked(index.model()->data(index, ParameterEditModel::ValueRole).toBool());
+    } else if (index.model()->data(index, ParameterEditModel::TypeRole).type() == QVariant::Int) {
+        // Integer type. Draw a integer edit.
+        integerEdit->move((right / 2) + margin, (option.rect.height() - integerEdit->size().height()) / 2);
+        integerEdit->resize(QSize(((right - (4 * margin)) / 2), integerEdit->size().height()));
+        integerEdit->show();
+        integerEdit->setFocus(Qt::OtherFocusReason);
+        // NB: We must update the value of the widget AFTER setting it as focused, otherwise
+        // focusedItem() returns the wrong value and we end up setting the data of the wrong item
+        // in the model.
+        integerEdit->setValue(index.model()->data(index, ParameterEditModel::ValueRole).toInt());
     } else {
         // For any other type, treat it as a string type.
         // FIXME: Support asterisking out the entry in secret parameters
@@ -162,6 +177,15 @@ void ParameterEditDelegate::onCheckBoxToggled(bool checked)
     QModelIndex index = focusedIndex();
 
     Q_EMIT dataChanged(index, QVariant(checked), ParameterEditModel::ValueRole);
+}
+
+void ParameterEditDelegate::onIntegerEditIntegerChanged(int integer)
+{
+    kDebug();
+
+    QModelIndex index = focusedIndex();
+
+    Q_EMIT dataChanged(index, QVariant(integer), ParameterEditModel::ValueRole);
 }
 
 

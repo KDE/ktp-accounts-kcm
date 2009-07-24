@@ -39,6 +39,7 @@ public:
 private Q_SLOTS:
     void onLineEditTextChanged(QString text);
     void onCheckBoxToggled(bool checked);
+    void onIntegerEditIntegerChanged(int integer);
 
 Q_SIGNALS:
     void dataChanged(const QModelIndex &index, const QVariant &value, int role);

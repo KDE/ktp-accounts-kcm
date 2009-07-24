@@ -17,6 +17,7 @@ set (telepathy_accounts_kcm_SRCS
      parameter-edit-delegate.cpp
      parameter-edit-model.cpp
      parameter-item.cpp
+     integer-edit.cpp
 )
 
 kde4_add_ui_files (telepathy_accounts_kcm_SRCS
