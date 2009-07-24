@@ -71,6 +71,12 @@ void AccountItem::onAccountReady(Tp::PendingOperation *op)
         return;
     }
 
+    connect(m_account.data(),
+            SIGNAL(stateChanged(bool)),
+            SIGNAL(updated()));
+    connect(m_account.data(),
+            SIGNAL(displayNameChanged(const QString&)),
+            SIGNAL(updated()));
     Q_EMIT ready();
 }
 
