@@ -122,6 +122,17 @@ void ParameterEditModel::addItem(Tp::ProtocolParameter *parameter, const QVarian
     endInsertRows();
 }
 
+QMap<Tp::ProtocolParameter*, QVariant> ParameterEditModel::parameterValues() const
+{
+    QMap<Tp::ProtocolParameter*, QVariant> values;
+
+    foreach (ParameterItem *item, m_items) {
+        values.insert(item->parameter(), item->value());
+    }
+
+    return values;
+}
+
 
 #include "parameter-edit-model.moc"
 

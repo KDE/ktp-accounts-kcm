@@ -73,6 +73,11 @@ bool ParameterItem::isRequiredForRegistration() const
     return m_parameter->requiredForRegistration();
 }
 
+Tp::ProtocolParameter *ParameterItem::parameter()
+{
+    return m_parameter;
+}
+
 void ParameterItem::setValue(const QVariant &value)
 {
     m_currentValue = value;

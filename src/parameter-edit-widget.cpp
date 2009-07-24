@@ -79,6 +79,12 @@ void ParameterEditWidget::setParameters(const Tp::ProtocolParameterList &paramet
     }
 }
 
+QMap<Tp::ProtocolParameter*, QVariant> ParameterEditWidget::parameterValues() const
+{
+    return d->model->parameterValues();
+}
+
+
 void ParameterEditWidget::onDelegateDataChanged(const QModelIndex &index, const QVariant &value, int role)
 {
     d->model->setData(index, value, role);

@@ -43,11 +43,12 @@ public:
     bool isSecret() const;
     bool isRequired() const;
     bool isRequiredForRegistration() const;
+    Tp::ProtocolParameter *parameter();
 
     void setValue(const QVariant &value);
 
 private:
-    Tp::ProtocolParameter const *m_parameter;
+    Tp::ProtocolParameter *m_parameter;
     const QVariant m_originalValue;
     QVariant m_currentValue;
 };

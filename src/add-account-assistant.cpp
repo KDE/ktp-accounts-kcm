@@ -26,6 +26,7 @@
 
 #include <KDebug>
 #include <KLocale>
+#include <KMessageBox>
 #include <KPageWidgetItem>
 #include <KTabWidget>
 
@@ -129,7 +130,25 @@ void AddAccountAssistant::accept()
 {
     kDebug();
 
-    // TODO: Implement me!
+    // Check we are being called from page 2.
+    if (currentPage() != d->pageTwo) {
+        kWarning() << "Called accept() from a non-final page :(.";
+        return;
+    }
+
+    // Get the mandatory properties.
+    QMap<Tp::ProtocolParameter*, QVariant> mandatoryParameterValues =
+            d->mandatoryParametersWidget->parameterValues();
+
+    foreach (const QVariant &value, mandatoryParameterValues.values()) {
+        if (value.toString().isEmpty()) {
+            KMessageBox::error(this, i18n("Please enter all mandatory parameters."));
+            return;
+        }
+    }
+
+    QMap<Tp::ProtocolParameter*, QVariant> optionalParameterValues =
+            d->optionalParametersWidget->parameterValues();
 }
 
 void AddAccountAssistant::reject()

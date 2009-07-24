@@ -53,6 +53,7 @@ public:
     virtual bool setData(const QModelIndex &index, const QVariant &value, int role);
 
     void addItem(Tp::ProtocolParameter *parameter, const QVariant &originalValue);
+    QMap<Tp::ProtocolParameter*, QVariant> parameterValues() const;
 
 private:
     QList<ParameterItem*> m_items;

@@ -34,6 +34,7 @@ public:
     ~ParameterEditWidget();
 
     void setParameters(const Tp::ProtocolParameterList &parameters);
+    QMap<Tp::ProtocolParameter*, QVariant> parameterValues() const;
 
 private Q_SLOTS:
     void onDelegateDataChanged(const QModelIndex &index, const QVariant &value, int role);
