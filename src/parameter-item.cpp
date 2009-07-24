@@ -29,7 +29,7 @@ ParameterItem::ParameterItem(Tp::ProtocolParameter *parameter,
    m_parameter(parameter),
    m_originalValue(originalValue)
 {
-    kDebug() << "New parameter:" << parameter->name() << "of type:" << parameter->type();
+    kDebug() << "New parameter:" << parameter->name() << "of type:" << parameter->type() << "with value:" << m_originalValue;
 
     // To begin with, the current value is the original value.
     m_currentValue = m_originalValue;

@@ -90,18 +90,24 @@ void ParameterEditDelegate::updateItemWidgets(const QList<QWidget*> widgets,
     // FIXME: Support int/uint types with appropriate validation.
     if (index.model()->data(index, ParameterEditModel::TypeRole).type() == QVariant::Bool) {
         // Bool type. Draw a checkbox.
-        checkBox->setChecked(index.model()->data(index, ParameterEditModel::ValueRole).toBool());
         checkBox->move((right / 2) + margin, (option.rect.height() - checkBox->size().height()) / 2);
         checkBox->show();
         checkBox->setFocus(Qt::OtherFocusReason);
+        // NB: We must update the value of the widget AFTER setting it as focused, otherwise
+        // focusedItem() returns the wrong value and we end up setting the data of the wrong item
+        // in the model.
+        checkBox->setChecked(index.model()->data(index, ParameterEditModel::ValueRole).toBool());
     } else {
         // For any other type, treat it as a string type.
         // FIXME: Support asterisking out the entry in secret parameters
-        lineEdit->setText(index.model()->data(index, ParameterEditModel::ValueRole).toString());
         lineEdit->move((right / 2) + margin, (option.rect.height() - lineEdit->size().height()) / 2);
         lineEdit->resize(QSize(((right - (4 * margin)) / 2), lineEdit->size().height()));
         lineEdit->show();
         lineEdit->setFocus(Qt::OtherFocusReason);
+        // NB: We must update the value of the widget AFTER setting it as focused, otherwise
+        // focusedItem() returns the wrong value and we end up setting the data of the wrong item
+        // in the model.
+        lineEdit->setText(index.model()->data(index, ParameterEditModel::ValueRole).toString());
     }
 }
 
