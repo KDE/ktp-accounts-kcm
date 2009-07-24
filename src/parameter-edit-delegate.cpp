@@ -164,6 +164,11 @@ void ParameterEditDelegate::updateItemWidgets(const QList<QWidget*> widgets,
         lineEdit->move((right / 2) + margin, (option.rect.height() - lineEdit->size().height()) / 2);
         lineEdit->resize(QSize(((right - (4 * margin)) / 2), lineEdit->size().height()));
 
+        // If the parameter is secret, we should replace the contents with asterisks
+        if (index.model()->data(index, ParameterEditModel::SecretRole).toBool()) {
+            lineEdit->setEchoMode(QLineEdit::Password);
+        }
+
         // Save the cursor position within the widget so we can restore it after altering the data
         int cursorPosition = lineEdit->cursorPosition();
 
