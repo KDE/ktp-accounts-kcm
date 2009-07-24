@@ -22,6 +22,7 @@
 
 #include "integer-edit.h"
 #include "parameter-edit-model.h"
+#include "unsigned-integer-edit.h"
 
 #include <KDebug>
 
@@ -56,13 +57,17 @@ QList<QWidget*> ParameterEditDelegate::createItemWidgets() const
     QLineEdit *lineEdit = new QLineEdit();
     QCheckBox *checkBox = new QCheckBox();
     IntegerEdit *integerEdit = new IntegerEdit();
+    UnsignedIntegerEdit *unsignedIntegerEdit = new UnsignedIntegerEdit();
 
     // Connect to the slots from the widgets that we are interested in.
     connect(lineEdit, SIGNAL(textChanged(QString)), SLOT(onLineEditTextChanged(QString)));
     connect(checkBox, SIGNAL(toggled(bool)), SLOT(onCheckBoxToggled(bool)));
     connect(integerEdit, SIGNAL(textChanged(QString)), SLOT(onIntegerEditTextChanged(QString)));
+    connect(unsignedIntegerEdit,
+            SIGNAL(textChanged(QString)),
+            SLOT(onUnsignedIntegerEditTextChanged(QString)));
 
-    widgets << nameLabel << lineEdit << checkBox << integerEdit;
+    widgets << nameLabel << lineEdit << checkBox << integerEdit << unsignedIntegerEdit;
 
     return widgets;
 }
@@ -85,6 +90,7 @@ void ParameterEditDelegate::updateItemWidgets(const QList<QWidget*> widgets,
     QLineEdit *lineEdit = qobject_cast<QLineEdit*>(widgets.at(1));
     QCheckBox *checkBox = qobject_cast<QCheckBox*>(widgets.at(2));
     IntegerEdit *integerEdit = qobject_cast<IntegerEdit*>(widgets.at(3));
+    UnsignedIntegerEdit *unsignedIntegerEdit = qobject_cast<UnsignedIntegerEdit*>(widgets.at(4));
 
     // See what type the parameter is, and draw the appropriate widget for it.
     // FIXME: Support uint types with appropriate validation.
@@ -102,6 +108,7 @@ void ParameterEditDelegate::updateItemWidgets(const QList<QWidget*> widgets,
         // to avoid them losing focus (and cursor position) when updating the content of them.
         lineEdit->hide();
         integerEdit->hide();
+        unsignedIntegerEdit->hide();
 
     } else if (index.model()->data(index, ParameterEditModel::TypeRole).type() == QVariant::Int) {
         // Integer type. Draw a integer edit.
@@ -124,6 +131,32 @@ void ParameterEditDelegate::updateItemWidgets(const QList<QWidget*> widgets,
         // to avoid them losing focus (and cursor position) when updating the content of them.
         lineEdit->hide();
         checkBox->hide();
+        unsignedIntegerEdit->hide();
+
+    } else if (index.model()->data(index, ParameterEditModel::TypeRole).type() == QVariant::UInt) {
+        // Integer type. Draw a integer edit.
+        unsignedIntegerEdit->move((right / 2) + margin,
+                                  (option.rect.height() - unsignedIntegerEdit->size().height()) / 2);
+        unsignedIntegerEdit->resize(QSize(((right - (4 * margin)) / 2),
+                                          unsignedIntegerEdit->size().height()));
+
+        // Save the cursor position within the widget so we can restore it after altering the data
+        int cursorPosition = unsignedIntegerEdit->cursorPosition();
+
+        // integerEdit->setFocus(Qt::OtherFocusReason);
+        // NB: We must update the value of the widget AFTER setting it as focused, otherwise
+        // focusedItem() returns the wrong value and we end up setting the data of the wrong item
+        // in the model.
+        unsignedIntegerEdit->setText(index.model()->data(index, ParameterEditModel::ValueRole).toString());
+
+        // Restore the cursor position now the data has been changed.
+        unsignedIntegerEdit->setCursorPosition(cursorPosition);
+
+        // Hide all the other input widgets for this item. This must be done in each condition
+        // to avoid them losing focus (and cursor position) when updating the content of them.
+        lineEdit->hide();
+        checkBox->hide();
+        integerEdit->hide();
 
     } else {
         // For any other type, treat it as a string type.
@@ -147,6 +180,7 @@ void ParameterEditDelegate::updateItemWidgets(const QList<QWidget*> widgets,
         // to avoid them losing focus (and cursor position) when updating the content of them.
         checkBox->hide();
         integerEdit->hide();
+        unsignedIntegerEdit->hide();
 
     }
 }
@@ -205,6 +239,15 @@ void ParameterEditDelegate::onCheckBoxToggled(bool checked)
 }
 
 void ParameterEditDelegate::onIntegerEditTextChanged(const QString &text)
+{
+    kDebug();
+
+    QModelIndex index = focusedIndex();
+
+    Q_EMIT dataChanged(index, QVariant(text), ParameterEditModel::ValueRole);
+}
+
+void ParameterEditDelegate::onUnsignedIntegerEditTextChanged(const QString &text)
 {
     kDebug();
 
