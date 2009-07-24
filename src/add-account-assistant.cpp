@@ -44,6 +44,7 @@ public:
         kDebug();
     }
 
+    Tp::AccountManagerPtr accountManager;
     ProtocolSelectWidget *protocolSelectWidget;
     KTabWidget *tabWidget;
     ParameterEditWidget *mandatoryParametersWidget;
@@ -52,11 +53,13 @@ public:
     KPageWidgetItem *pageTwo;
 };
 
-AddAccountAssistant::AddAccountAssistant(QWidget *parent)
+AddAccountAssistant::AddAccountAssistant(Tp::AccountManagerPtr accountManager, QWidget *parent)
  : KAssistantDialog(parent),
    d(new Private)
 {
     kDebug();
+
+    d->accountManager = accountManager;
 
     // Set up the pages of the Assistant.
     d->protocolSelectWidget = new ProtocolSelectWidget(this);
@@ -147,6 +150,7 @@ void AddAccountAssistant::accept()
         }
     }
 
+    // Get the optional properties
     QMap<Tp::ProtocolParameter*, QVariant> optionalParameterValues =
             d->optionalParametersWidget->parameterValues();
 }

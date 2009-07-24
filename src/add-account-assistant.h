@@ -23,12 +23,14 @@
 
 #include <KAssistantDialog>
 
+#include <TelepathyQt4/AccountManager>
+
 class AddAccountAssistant : public KAssistantDialog
 {
     Q_OBJECT
 
 public:
-    explicit AddAccountAssistant(QWidget *parent = 0);
+    explicit AddAccountAssistant(Tp::AccountManagerPtr accountManager, QWidget *parent = 0);
     ~AddAccountAssistant();
 
 protected Q_SLOTS:

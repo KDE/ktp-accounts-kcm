@@ -106,10 +106,16 @@ void KCMTelepathyAccounts::onAddAccountClicked()
 {
     kDebug();
 
+    // Wizard only works if the AccountManager is ready.
+    if (!m_accountManager->isReady()) {
+        return;
+    }
+
     // Ensure that there is not already an instance of the AddAccountAssistant before we create one.";
     if (!m_addAccountAssistant) {
+
         // Create an AddAccountAssistant instance
-        m_addAccountAssistant = new AddAccountAssistant(this);
+        m_addAccountAssistant = new AddAccountAssistant(m_accountManager, this);
 
         // Connect to its completion signals...
         connect(m_addAccountAssistant, SIGNAL(cancelled()),
