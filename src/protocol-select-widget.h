@@ -25,6 +25,8 @@
 
 class ProtocolItem;
 
+class QModelIndex;
+
 namespace Tp {
     class PendingOperation;
 }
@@ -42,6 +44,10 @@ public:
 private Q_SLOTS:
     void getConnectionManagerList();
     void onConnectionManagerListGot(Tp::PendingOperation *op);
+    void onCurrentChanged(const QModelIndex &current);
+
+Q_SIGNALS:
+    void selectedProtocolChanged(ProtocolItem *item);
 
 private:
     class Private;

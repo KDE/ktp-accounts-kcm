@@ -58,6 +58,10 @@ ProtocolSelectWidget::ProtocolSelectWidget(QWidget *parent)
     d->ui->setupUi(this);
     d->ui->protocolListView->setModel(d->model);
 
+    connect(d->ui->protocolListView->selectionModel(),
+            SIGNAL(currentChanged(const QModelIndex &, const QModelIndex &)),
+            SLOT(onCurrentChanged(const QModelIndex &)));
+
     // Load the list of all installed Telepathy Connection Managers Asynchronously
     QTimer::singleShot(0, this, SLOT(getConnectionManagerList()));
 }
@@ -125,5 +129,12 @@ ProtocolItem *ProtocolSelectWidget::selectedProtocol()
 
     // 1 index is selected. Return the ProtocolItem for that.
     return d->model->itemForIndex(selectedIndexes.at(0));
+}
+
+void ProtocolSelectWidget::onCurrentChanged(const QModelIndex &current)
+{
+    kDebug();
+
+    Q_EMIT selectedProtocolChanged(d->model->itemForIndex(current));
 }
 
