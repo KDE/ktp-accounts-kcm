@@ -21,9 +21,13 @@
 #ifndef LIB_KCM_TELEPATHY_ACCOUNTS_ABSTRACT_ACCOUNT_UI_PLUGIN_H
 #define LIB_KCM_TELEPATHY_ACCOUNTS_ABSTRACT_ACCOUNT_UI_PLUGIN_H
 
-#include <QtCore/QObject>
+#include <kdemacros.h>
 
-class AbstractAccountUiPlugin : public QObject
+#include <QtCore/QMap>
+#include <QtCore/QObject>
+#include <QtCore/QString>
+
+class KDE_EXPORT AbstractAccountUiPlugin : public QObject
 {
     Q_OBJECT
     Q_DISABLE_COPY(AbstractAccountUiPlugin);
@@ -31,6 +35,15 @@ class AbstractAccountUiPlugin : public QObject
 public:
     AbstractAccountUiPlugin(QObject *parent = 0);
     virtual ~AbstractAccountUiPlugin();
+
+    virtual const QMap<QString, QString> &providedProtocols() const;
+
+protected:
+    virtual void registerProvidedProtocol(const QString &connectionManager, const QString &protocol);
+
+private:
+    class Private;
+    Private * const d;
 };
 
 

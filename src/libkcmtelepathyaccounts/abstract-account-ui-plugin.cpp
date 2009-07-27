@@ -18,17 +18,58 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
-
 #include "abstract-account-ui-plugin.h"
 
-AbstractAccountUiPlugin::AbstractAccountUiPlugin(QObject *parent)
-        : QObject(parent)
+#include <KDebug>
+
+class AbstractAccountUiPlugin::Private
 {
-    // TODO: Implement me!
+public:
+    Private()
+    {
+        kDebug();
+    }
+
+    QMap<QString, QString> providedProtocols;
+};
+
+
+AbstractAccountUiPlugin::AbstractAccountUiPlugin(QObject *parent)
+        : QObject(parent),
+          d(new Private)
+{
+    kDebug();
+
+    delete d;
 }
 
 AbstractAccountUiPlugin::~AbstractAccountUiPlugin()
 {
+    kDebug();
+
     // TODO: Implement me!
+}
+
+const QMap<QString, QString> &AbstractAccountUiPlugin::providedProtocols() const
+{
+    return d->providedProtocols;
+}
+
+void AbstractAccountUiPlugin::registerProvidedProtocol(const QString &connectionManager,
+                                                       const QString &protocol)
+{
+    kDebug();
+
+    // Check the protocol is not already entered
+    foreach (const QString &value, d->providedProtocols.values(connectionManager)) {
+        if (value == protocol) {
+            kWarning() << "Tried to add connection manager:" << connectionManager
+                       << "and protocol:" << protocol << "combination twice.";
+            return;
+        }
+    }
+
+    // Pair is not already added. Add it.
+    d->providedProtocols.insertMulti(connectionManager, protocol);
 }
 
