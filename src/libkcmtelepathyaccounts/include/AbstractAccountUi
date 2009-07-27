@@ -1,0 +1,7 @@
+#ifndef LIB_KCM_TELEPATHY_ACCOUNTS_ABSTRACT_ACCOUNT_UI_PRETTY_H
+#define LIB_KCM_TELEPATHY_ACCOUNTS_ABSTRACT_ACCOUNT_UI_PRETTY_H
+
+#include <KCMTelepathyAccounts/abstract-account-ui.h>
+
+#endif
+
