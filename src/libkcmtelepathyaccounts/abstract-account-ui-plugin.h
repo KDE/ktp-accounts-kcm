@@ -27,6 +27,8 @@
 #include <QtCore/QObject>
 #include <QtCore/QString>
 
+class AbstractAccountUi;
+
 class KDE_EXPORT AbstractAccountUiPlugin : public QObject
 {
     Q_OBJECT
@@ -37,6 +39,8 @@ public:
     virtual ~AbstractAccountUiPlugin();
 
     virtual const QMap<QString, QString> &providedProtocols() const;
+
+    virtual AbstractAccountUi* accountUi(const QString *connectionManager, const QString &protocol) = 0;
 
 protected:
     virtual void registerProvidedProtocol(const QString &connectionManager, const QString &protocol);
