@@ -1,3 +1,5 @@
+add_subdirectory (libkcmtelepathyaccounts)
+
 project (telepathy-accounts-kcm)
 
 include_directories (${CMAKE_CURRENT_BINARY_DIR}
