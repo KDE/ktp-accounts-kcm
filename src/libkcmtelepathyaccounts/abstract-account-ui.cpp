@@ -29,6 +29,9 @@ public:
     {
         kDebug();
     }
+
+    QMap<QString, QVariant::Type> supportedMandatoryParameters;
+    QMap<QString, QVariant::Type> supportedOptionalParameters;
 };
 
 AbstractAccountUi::AbstractAccountUi(QObject *parent)
@@ -41,8 +44,48 @@ AbstractAccountUi::AbstractAccountUi(QObject *parent)
 AbstractAccountUi::~AbstractAccountUi()
 {
     kDebug();
+
+    delete d;
+}
+
+const QMap<QString, QVariant::Type> &AbstractAccountUi::supportedMandatoryParameters() const
+{
+    return d->supportedMandatoryParameters;
+}
+
+const QMap<QString, QVariant::Type> &AbstractAccountUi::supportedOptionalParameters() const
+{
+    return d->supportedOptionalParameters;
+}
+
+void AbstractAccountUi::registerSupportedMandatoryParameter(const QString &name, QVariant::Type type)
+{
+    // Check that the parameter is not already in the list
+    foreach (QVariant::Type t, d->supportedMandatoryParameters.values(name)) {
+        if (t == type) {
+            kWarning() << "Parameter:" << name << "of type:" << type << "is already added.";
+            return;
+        }
+    }
+
+    // Add the parameter to the list.
+    d->supportedMandatoryParameters.insertMulti(name, type);
+}
+
+void AbstractAccountUi::registerSupportedOptionalParameter(const QString &name, QVariant::Type type)
+{
+    // Check that the parameter is not already in the list
+    foreach (QVariant::Type t, d->supportedOptionalParameters.values(name)) {
+        if (t == type) {
+            kWarning() << "Parameter:" << name << "of type:" << type << "is already added.";
+            return;
+        }
+    }
+
+    // Add the parameter to the list.
+    d->supportedOptionalParameters.insertMulti(name, type);
 }
 
 
-#include "abstract-account-ui.h"
+#include "abstract-account-ui.moc"
 

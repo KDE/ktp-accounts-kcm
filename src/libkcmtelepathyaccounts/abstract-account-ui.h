@@ -23,7 +23,9 @@
 
 #include <kdemacros.h>
 
+#include <QtCore/QMap>
 #include <QtCore/QObject>
+#include <QtCore/QVariant>
 
 class KDE_EXPORT AbstractAccountUi : public QObject
 {
@@ -33,6 +35,13 @@ class KDE_EXPORT AbstractAccountUi : public QObject
 public:
     AbstractAccountUi(QObject *parent = 0);
     virtual ~AbstractAccountUi();
+
+    virtual const QMap<QString, QVariant::Type> &supportedMandatoryParameters() const;
+    virtual const QMap<QString, QVariant::Type> &supportedOptionalParameters() const;
+
+protected:
+    virtual void registerSupportedMandatoryParameter(const QString &name, QVariant::Type type);
+    virtual void registerSupportedOptionalParameter(const QString &name, QVariant::Type type);
 
 private:
     class Private;
