@@ -23,9 +23,12 @@
 
 #include <kdemacros.h>
 
+#include <QtCore/QList>
 #include <QtCore/QMap>
 #include <QtCore/QObject>
 #include <QtCore/QVariant>
+
+class AbstractAccountParametersWidget;
 
 class KDE_EXPORT AbstractAccountUi : public QObject
 {
@@ -38,6 +41,9 @@ public:
 
     virtual const QMap<QString, QVariant::Type> &supportedMandatoryParameters() const;
     virtual const QMap<QString, QVariant::Type> &supportedOptionalParameters() const;
+
+    virtual AbstractAccountParametersWidget *mandatoryParametersWidget() const = 0;
+    virtual QList<AbstractAccountParametersWidget*> optionalParametersWidgets() const = 0;
 
 protected:
     virtual void registerSupportedMandatoryParameter(const QString &name, QVariant::Type type);
