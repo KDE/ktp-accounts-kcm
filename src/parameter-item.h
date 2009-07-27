@@ -38,6 +38,7 @@ public:
     virtual ~ParameterItem();
 
     QString name() const;
+    QString localizedName() const;
     QVariant::Type type() const;
     QVariant value() const;
     bool isSecret() const;
@@ -51,6 +52,7 @@ private:
     Tp::ProtocolParameter *m_parameter;
     const QVariant m_originalValue;
     QVariant m_currentValue;
+    QString m_localizedName;
 };
 
 

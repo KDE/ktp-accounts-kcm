@@ -20,6 +20,8 @@
 
 #include "parameter-item.h"
 
+#include "dictionary.h"
+
 #include <KDebug>
 
 ParameterItem::ParameterItem(Tp::ProtocolParameter *parameter,
@@ -33,6 +35,13 @@ ParameterItem::ParameterItem(Tp::ProtocolParameter *parameter,
 
     // To begin with, the current value is the original value.
     m_currentValue = m_originalValue;
+
+    // Set the localized name with the value from the dictionary if possible.
+    m_localizedName = Dictionary::instance()->string(parameter->name());
+
+    if (m_localizedName.isEmpty()) {
+        m_localizedName = parameter->name();
+    }
 }
 
 ParameterItem::~ParameterItem()
@@ -42,10 +51,12 @@ ParameterItem::~ParameterItem()
 
 QString ParameterItem::name() const
 {
-    // TODO: Try and translate common parameter names. Can we have a singleton registry where we can
-    // get the translation of common parameters from (which will allow i18n of that registries
-    // contents?
     return m_parameter->name();
+}
+
+QString ParameterItem::localizedName() const
+{
+    return m_localizedName;
 }
 
 QVariant::Type ParameterItem::type() const

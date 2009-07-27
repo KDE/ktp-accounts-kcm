@@ -64,6 +64,9 @@ QVariant ParameterEditModel::data(const QModelIndex &index, int role) const
     case ParameterEditModel::NameRole:
         data = QVariant(m_items.at(index.row())->name());
         break;
+    case ParameterEditModel::LocalizedNameRole:
+        data = QVariant(m_items.at(index.row())->localizedName());
+        break;
     case ParameterEditModel::TypeRole:
         data = QVariant(m_items.at(index.row())->type());
         break;

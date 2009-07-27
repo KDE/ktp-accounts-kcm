@@ -37,6 +37,7 @@ class ParameterEditModel : public QAbstractListModel
 public:
     enum Roles {
         NameRole = Qt::UserRole + 1,
+        LocalizedNameRole,
         TypeRole,
         ValueRole,
         SecretRole,
