@@ -23,7 +23,11 @@
 
 #include <kdemacros.h>
 
+#include <QtCore/QMap>
+#include <QtCore/QVariant>
 #include <QtGui/QWidget>
+
+#include <TelepathyQt4/ConnectionManager>
 
 class KDE_EXPORT AbstractAccountParametersWidget : public QWidget
 {
@@ -31,8 +35,14 @@ class KDE_EXPORT AbstractAccountParametersWidget : public QWidget
     Q_DISABLE_COPY(AbstractAccountParametersWidget);
 
 public:
-    explicit AbstractAccountParametersWidget(QWidget *parent = 0);
+    explicit AbstractAccountParametersWidget(Tp::ProtocolParameterList parameters,
+                                             QWidget *parent = 0);
     virtual ~AbstractAccountParametersWidget();
+
+    virtual QMap<Tp::ProtocolParameter*, QVariant> parameterValues() const = 0;
+
+protected:
+    virtual Tp::ProtocolParameterList parameters() const;
 
 private:
     class Private;

@@ -29,13 +29,18 @@ public:
     {
         kDebug();
     }
+
+    Tp::ProtocolParameterList parameters;
 };
 
-AbstractAccountParametersWidget::AbstractAccountParametersWidget(QWidget *parent)
+AbstractAccountParametersWidget::AbstractAccountParametersWidget(Tp::ProtocolParameterList parameters,
+                                                                 QWidget *parent)
         : QWidget(parent),
           d(new Private)
 {
     kDebug();
+
+    d->parameters = parameters;
 }
 
 AbstractAccountParametersWidget::~AbstractAccountParametersWidget()
@@ -43,6 +48,11 @@ AbstractAccountParametersWidget::~AbstractAccountParametersWidget()
     kDebug();
 
     delete d;
+}
+
+Tp::ProtocolParameterList AbstractAccountParametersWidget::parameters() const
+{
+    return d->parameters;
 }
 
 
