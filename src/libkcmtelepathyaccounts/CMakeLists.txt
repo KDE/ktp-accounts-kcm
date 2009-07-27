@@ -7,16 +7,19 @@ include_directories (${CMAKE_CURRENT_BINARY_DIR}
 set (libkcmtelepathyaccounts_SRCS
      abstract-account-ui-plugin.cpp
      abstract-account-ui.cpp
+     abstract-account-parameters-widget.cpp
 )
 
 set (libkcmtelepathyaccounts_HDRS
      abstract-account-ui-plugin.h
      abstract-account-ui.h
+     abstract-account-parameters-widget.h
 )
 
 set (libkcmtelepathyaccounts_PRETTY_HDRS
      include/AbstractAccountUiPlugin
      include/AbstractAccountUi
+     include/AbstractAccountParametersWidget
 )
 
 kde4_add_library (libkcmtelepathyaccounts

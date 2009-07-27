@@ -28,6 +28,8 @@
 #include <QtCore/QObject>
 #include <QtCore/QVariant>
 
+#include <TelepathyQt4/ConnectionManager>
+
 class AbstractAccountParametersWidget;
 
 class KDE_EXPORT AbstractAccountUi : public QObject
@@ -42,8 +44,10 @@ public:
     virtual const QMap<QString, QVariant::Type> &supportedMandatoryParameters() const;
     virtual const QMap<QString, QVariant::Type> &supportedOptionalParameters() const;
 
-    virtual AbstractAccountParametersWidget *mandatoryParametersWidget() const = 0;
-    virtual QList<AbstractAccountParametersWidget*> optionalParametersWidgets() const = 0;
+    virtual AbstractAccountParametersWidget
+              *mandatoryParametersWidget(Tp::ProtocolParameterList parameters) const = 0;
+    virtual QList<AbstractAccountParametersWidget*>
+              optionalParametersWidgets(Tp::ProtocolParameterList parameters) const = 0;
 
 protected:
     virtual void registerSupportedMandatoryParameter(const QString &name, QVariant::Type type);
