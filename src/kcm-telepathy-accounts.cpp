@@ -23,9 +23,10 @@
 #include "accounts-list-model.h"
 #include "add-account-assistant.h"
 
-#include <KCategorizedSortFilterProxyModel>
-#include <KCategoryDrawer>
 #include <KGenericFactory>
+#include <KIcon>
+#include <KLocale>
+#include <KMessageBox>
 
 #include <TelepathyQt4/Account>
 #include <TelepathyQt4/PendingOperation>
@@ -38,7 +39,6 @@ K_EXPORT_PLUGIN(KCMTelepathyAccountsFactory("telepathy_accounts", "kcm_telepathy
 
 KCMTelepathyAccounts::KCMTelepathyAccounts(QWidget *parent, const QVariantList& args)
  : KCModule(KCMTelepathyAccountsFactory::componentData(), parent, args),
-   m_accountsListProxyModel(0),
    m_accountsListModel(0),
    m_addAccountAssistant(0)
 {
@@ -53,18 +53,24 @@ KCMTelepathyAccounts::KCMTelepathyAccounts(QWidget *parent, const QVariantList& 
 
     // Set up the UI stuff.
     setupUi(this);
-    m_accountsListView->setCategoryDrawer(new KCategoryDrawer);
 
     m_accountsListModel = new AccountsListModel(this);
-    m_accountsListProxyModel = new KCategorizedSortFilterProxyModel(this);
-    m_accountsListProxyModel->setSourceModel(m_accountsListModel);
-    m_accountsListView->setModel(m_accountsListProxyModel);
-    m_accountsListProxyModel->setCategorizedModel(true);
+    m_accountsListView->setModel(m_accountsListModel);
+
+    m_addAccountButton->setIcon(KIcon("list-add"));
+    m_editAccountButton->setIcon(KIcon("configure"));
+    m_removeAccountButton->setIcon(KIcon("edit-delete"));
 
     // Connect to useful signals from the UI elements.
     connect(m_addAccountButton,
             SIGNAL(clicked()),
             SLOT(onAddAccountClicked()));
+    connect(m_removeAccountButton,
+            SIGNAL(clicked()),
+            SLOT(onRemoveAccountClicked()));
+    connect(m_accountsListView->selectionModel(),
+            SIGNAL(currentChanged(QModelIndex, QModelIndex)),
+            SLOT(onSelectedItemChanged()));
 }
 
 KCMTelepathyAccounts::~KCMTelepathyAccounts()
@@ -102,6 +108,13 @@ void KCMTelepathyAccounts::onAccountManagerReady(Tp::PendingOperation *op)
     }
 }
 
+void KCMTelepathyAccounts::onSelectedItemChanged()
+{
+    bool isAccount = m_accountsListView->currentIndex().isValid();
+    m_removeAccountButton->setEnabled(isAccount);
+    m_editAccountButton->setEnabled(isAccount);
+}
+
 void KCMTelepathyAccounts::onAddAccountClicked()
 {
     kDebug();
@@ -128,6 +141,19 @@ void KCMTelepathyAccounts::onAddAccountClicked()
     }
 
     kWarning() << "Cannot create a new AddAccountAssistant. One already exists.";
+}
+
+void KCMTelepathyAccounts::onRemoveAccountClicked()
+{
+    kDebug();
+    QModelIndex index = m_accountsListView->currentIndex();
+
+     if ( KMessageBox::warningContinueCancel( this, i18n( "Are you sure you want to remove the account \"%1\"?", m_accountsListModel->data(index, Qt::DisplayRole).toString()),
+                                        i18n( "Remove Account" ), KGuiItem(i18n( "Remove Account" ), "edit-delete"), KStandardGuiItem::cancel(),
+                                        QString(), KMessageBox::Notify | KMessageBox::Dangerous ) == KMessageBox::Continue )
+    {
+        m_accountsListModel->removeAccount(index);
+    }
 }
 
 void KCMTelepathyAccounts::onAddAccountAssistantCancelled()

@@ -14,7 +14,7 @@
    <item>
     <layout class="QHBoxLayout" name="horizontalLayout">
      <item>
-      <widget class="KCategorizedView" name="m_accountsListView">
+      <widget class="QListView" name="m_accountsListView">
        <property name="iconSize">
         <size>
          <width>32</width>
@@ -39,6 +39,9 @@
          </item>
          <item>
           <widget class="KPushButton" name="m_editAccountButton">
+           <property name="enabled">
+            <bool>false</bool>
+           </property>
            <property name="text">
             <string>Edit Account</string>
            </property>
@@ -46,6 +49,9 @@
          </item>
          <item>
           <widget class="KPushButton" name="m_removeAccountButton">
+           <property name="enabled">
+            <bool>false</bool>
+           </property>
            <property name="text">
             <string>Remove Account</string>
            </property>
@@ -73,11 +79,6 @@
   </layout>
  </widget>
  <customwidgets>
-  <customwidget>
-   <class>KCategorizedView</class>
-   <extends>QListView</extends>
-   <header>kcategorizedview.h</header>
-  </customwidget>
   <customwidget>
    <class>KPushButton</class>
    <extends>QPushButton</extends>

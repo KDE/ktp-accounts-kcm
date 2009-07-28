@@ -30,8 +30,6 @@
 class AccountsListModel;
 class AddAccountAssistant;
 
-class KCategorizedSortFilterProxyModel;
-
 namespace Tp {
     class PendingOperation;
 }
@@ -52,11 +50,12 @@ public Q_SLOTS:
 private Q_SLOTS:
     void onAccountManagerReady(Tp::PendingOperation *op);
 
+    void onSelectedItemChanged();
     void onAddAccountClicked();
+    void onRemoveAccountClicked();
     void onAddAccountAssistantCancelled();
 
 private:
-    KCategorizedSortFilterProxyModel *m_accountsListProxyModel;
     Tp::AccountManagerPtr m_accountManager;
     AccountsListModel *m_accountsListModel;
     AddAccountAssistant *m_addAccountAssistant;

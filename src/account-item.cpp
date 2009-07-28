@@ -35,6 +35,14 @@ AccountItem::AccountItem(const Tp::AccountPtr &account, AccountsListModel *paren
 {
     kDebug();
 
+    //connect AccountPtr signals to AccountItem signals
+    connect(m_account.data(),
+            SIGNAL(stateChanged(bool)),
+            SIGNAL(updated()));
+    connect(m_account.data(),
+            SIGNAL(displayNameChanged(const QString&)),
+            SIGNAL(updated()));
+
     // We should look to see if the "account" instance we are passed is ready
     // yet. If not, we should get it ready now.
     // FIXME: What features should we check are ready?
@@ -60,6 +68,16 @@ Tp::AccountPtr AccountItem::account() const
     return m_account;
 }
 
+void AccountItem::remove()
+{
+    kDebug() << "Account about to be removed";
+
+    Tp::PendingOperation *op = m_account->remove();
+    connect(op,
+            SIGNAL(finished(Tp::PendingOperation*)),
+            SLOT(onAccountRemoved(Tp::PendingOperation*)));
+}
+
 void AccountItem::onAccountReady(Tp::PendingOperation *op)
 {
     kDebug();
@@ -71,15 +89,22 @@ void AccountItem::onAccountReady(Tp::PendingOperation *op)
         return;
     }
 
-    connect(m_account.data(),
-            SIGNAL(stateChanged(bool)),
-            SIGNAL(updated()));
-    connect(m_account.data(),
-            SIGNAL(displayNameChanged(const QString&)),
-            SIGNAL(updated()));
     Q_EMIT ready();
 }
 
+void AccountItem::onAccountRemoved(Tp::PendingOperation *op)
+{
+    kDebug();
+
+    if (op->isError()) {
+        kDebug() << "An error occurred removing the Account."
+                 << op->errorName()
+                 << op->errorMessage();
+        return;
+    }
+
+    Q_EMIT removed();
+}
 
 #include "account-item.moc"
 

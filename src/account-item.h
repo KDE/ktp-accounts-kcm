@@ -40,9 +40,11 @@ public:
     explicit AccountItem(const Tp::AccountPtr &account, AccountsListModel *parent = 0);
     virtual ~AccountItem();
     Tp::AccountPtr account() const;
+    void remove();
 
 private Q_SLOTS:
     void onAccountReady(Tp::PendingOperation *op);
+    void onAccountRemoved(Tp::PendingOperation *op);
 
 Q_SIGNALS:
     void ready();
