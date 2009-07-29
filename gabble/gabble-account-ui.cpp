@@ -18,18 +18,15 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
-#include "gabble-account-ui-plugin.h"
-
 #include "gabble-account-ui.h"
 
-#include <KCMTelepathyAccounts/PluginMacros>
+#include "mandatory-parameters-widget.h"
+
+#include <KCMTelepathyAccounts/AbstractAccountParametersWidget>
 
 #include <KDebug>
-#include <KGenericFactory>
 
-#include <QtCore/QVariantList>
-
-class GabbleAccountUiPlugin::Private
+class GabbleAccountUi::Private
 {
 public:
     Private()
@@ -38,38 +35,36 @@ public:
     }
 };
 
-GabbleAccountUiPlugin::GabbleAccountUiPlugin(QObject *parent, const QVariantList &)
- : AbstractAccountUiPlugin(parent),
+GabbleAccountUi::GabbleAccountUi(QObject *parent)
+ : AbstractAccountUi(parent),
    d(new Private)
 {
     kDebug();
-
-    // Register supported cm/protocol combinations
-    registerProvidedProtocol("gabble", "jabber");
 }
 
-GabbleAccountUiPlugin::~GabbleAccountUiPlugin()
-{
-    kDebug();
-}
-
-AbstractAccountUi* GabbleAccountUiPlugin::accountUi(const QString &connectionManager, const QString &protocol)
+GabbleAccountUi::~GabbleAccountUi()
 {
     kDebug();
 
-    // We only support gabble/jabber combination.
-    if ((connectionManager == "gabble") && (protocol == "jabber")) {
-        return new GabbleAccountUi;
-    }
+    delete d;
+}
 
-    return 0;
+AbstractAccountParametersWidget *GabbleAccountUi::mandatoryParametersWidget(Tp::ProtocolParameterList parameters) const
+{
+    kDebug();
+
+    return new MandatoryParametersWidget(parameters);
+}
+
+QList<AbstractAccountParametersWidget*> GabbleAccountUi::optionalParametersWidgets(Tp::ProtocolParameterList parameters) const
+{
+    kDebug();
+
+    // TODO: Implement me!
+    Q_UNUSED(parameters);
+    return QList<AbstractAccountParametersWidget*>();
 }
 
 
-//KCMTELEPATHYACCOUNTS_PLUGIN_EXPORT("gabble", "GabbleAccountUiPlugin")
-  K_PLUGIN_FACTORY(factory, registerPlugin<GabbleAccountUiPlugin>();) \
-  K_EXPORT_PLUGIN(factory("kcmtelepathyaccounts_plugin_gabble"))
-
-
-#include "gabble-account-ui-plugin.moc"
+#include "gabble-account-ui.moc"
 

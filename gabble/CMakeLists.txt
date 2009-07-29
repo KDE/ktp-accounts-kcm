@@ -6,6 +6,8 @@ include_directories (${CMAKE_CURRENT_BINARY_DIR}
 
 set (kcmtelepathyaccounts_plugin_gabble_SRCS
      gabble-account-ui-plugin.cpp
+     gabble-account-ui.cpp
+     mandatory-parameters-widget.cpp
 )
 
 kde4_add_ui_files (kcmtelepathyaccounts_plugin_gabble_SRCS
