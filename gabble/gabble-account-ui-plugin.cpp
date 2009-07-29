@@ -41,6 +41,9 @@ GabbleAccountUiPlugin::GabbleAccountUiPlugin(QObject *parent, const QVariantList
    d(new Private)
 {
     kDebug();
+
+    // Register supported cm/protocol combinations
+    registerProvidedProtocol("gabble", "jabber");
 }
 
 GabbleAccountUiPlugin::~GabbleAccountUiPlugin()

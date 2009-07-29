@@ -1,3 +1,5 @@
+project (telepathy-accounts-kcm-plugins)
+
 # Add the modules we ship to the module path
 SET(CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake/modules" ${CMAKE_MODULE_PATH})
 
