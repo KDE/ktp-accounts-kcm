@@ -35,10 +35,9 @@ class AbstractAccountParametersWidget;
 class KDE_EXPORT AbstractAccountUi : public QObject
 {
     Q_OBJECT
-    Q_DISABLE_COPY(AbstractAccountUi);
 
 public:
-    AbstractAccountUi(QObject *parent = 0);
+    explicit AbstractAccountUi(QObject *parent = 0);
     virtual ~AbstractAccountUi();
 
     virtual const QMap<QString, QVariant::Type> &supportedMandatoryParameters() const;
@@ -54,6 +53,8 @@ protected:
     virtual void registerSupportedOptionalParameter(const QString &name, QVariant::Type type);
 
 private:
+    Q_DISABLE_COPY(AbstractAccountUi);
+
     class Private;
     Private * const d;
 };

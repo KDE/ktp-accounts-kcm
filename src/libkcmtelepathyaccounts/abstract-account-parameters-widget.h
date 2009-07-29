@@ -32,7 +32,6 @@
 class KDE_EXPORT AbstractAccountParametersWidget : public QWidget
 {
     Q_OBJECT
-    Q_DISABLE_COPY(AbstractAccountParametersWidget);
 
 public:
     explicit AbstractAccountParametersWidget(Tp::ProtocolParameterList parameters,
@@ -45,6 +44,8 @@ public:
 protected:
 
 private:
+    Q_DISABLE_COPY(AbstractAccountParametersWidget);
+
     class Private;
     Private * const d;
 };
