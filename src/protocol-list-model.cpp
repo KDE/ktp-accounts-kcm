@@ -23,6 +23,7 @@
 #include "connection-manager-item.h"
 #include "protocol-item.h"
 
+#include <KIcon>
 #include <KDebug>
 
 ProtocolListModel::ProtocolListModel(QObject *parent)
@@ -63,6 +64,10 @@ QVariant ProtocolListModel::data(const QModelIndex &index, int role) const
     {
     case Qt::DisplayRole:
         data = QVariant(m_protocolItems.at(index.row())->protocol());
+        break;
+    case Qt::DecorationRole:
+        // Look for an icon named im-<protocolname>
+        data = QVariant(KIcon((QString("im-%1").arg(m_protocolItems.at(index.row())->protocol()))));
         break;
     default:
         break;
