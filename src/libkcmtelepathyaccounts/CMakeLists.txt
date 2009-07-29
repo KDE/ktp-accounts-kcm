@@ -14,12 +14,14 @@ set (libkcmtelepathyaccounts_HDRS
      abstract-account-ui-plugin.h
      abstract-account-ui.h
      abstract-account-parameters-widget.h
+     plugin-macros.h
 )
 
 set (libkcmtelepathyaccounts_PRETTY_HDRS
      include/AbstractAccountUiPlugin
      include/AbstractAccountUi
      include/AbstractAccountParametersWidget
+     include/PluginMacros
 )
 
 kde4_add_library (libkcmtelepathyaccounts
