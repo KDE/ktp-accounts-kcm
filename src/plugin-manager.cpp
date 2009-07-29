@@ -21,6 +21,7 @@
 #include "plugin-manager.h"
 
 #include "libkcmtelepathyaccounts/abstract-account-ui-plugin.h"
+#include "libkcmtelepathyaccounts/abstract-account-ui.h"
 
 #include <KDebug>
 #include <KServiceTypeTrader>
@@ -85,4 +86,26 @@ void PluginManager::loadPlugins()
            kDebug() << error;
        }
     }
+}
+
+AbstractAccountUi *PluginManager::accountUiForProtocol(const QString &connectionManager,
+                                                       const QString &protocol)
+{
+    kDebug();
+
+    // Loop through all the plugins seeing if they provide an AccountUi for the connection manager
+    // and protocol combination we were provided with.
+
+    foreach (AbstractAccountUiPlugin *plugin, m_plugins) {
+        AbstractAccountUi *ui = plugin->accountUi(connectionManager, protocol);
+
+        // FIXME: Bug https://bugs.kde.org/201797 - we should check here to see which plugin
+        // provides the closest match for the desired parameters in the case that more than one
+        // plugin provides a UI for this protocol/cm pair.
+        if (ui) {
+            return ui;
+        }
+    }
+
+    return 0;
 }

@@ -24,6 +24,7 @@
 #include <QtCore/QList>
 #include <QtCore/QObject>
 
+class AbstractAccountUi;
 class AbstractAccountUiPlugin;
 
 class PluginManager : public QObject
@@ -35,6 +36,8 @@ public:
     static PluginManager *instance();
 
     virtual ~PluginManager();
+
+    AbstractAccountUi *accountUiForProtocol(const QString &connectionManager, const QString &protocol);
 
 private:
     explicit PluginManager(QObject *parent = 0);
