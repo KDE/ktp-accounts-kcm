@@ -91,13 +91,6 @@ AddAccountAssistant::~AddAccountAssistant()
     delete d;
 }
 
-void AddAccountAssistant::back()
-{
-    kDebug();
-
-    // TODO: Implement me!
-}
-
 void AddAccountAssistant::next()
 {
     kDebug();

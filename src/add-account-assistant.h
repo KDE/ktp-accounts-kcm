@@ -38,7 +38,6 @@ public:
     ~AddAccountAssistant();
 
 protected Q_SLOTS:
-    virtual void back();
     virtual void next();
     virtual void accept();
     virtual void reject();
