@@ -57,3 +57,8 @@ install (FILES
          DESTINATION ${INCLUDE_INSTALL_DIR}/KCMTelepathyAccounts COMPONENT Devel
 )
 
+install (FILES
+         kcmtelepathyaccounts-accountuiplugin.desktop
+         DESTINATION ${SERVICETYPES_INSTALL_DIR}
+)
+
