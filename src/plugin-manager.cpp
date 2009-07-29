@@ -20,7 +20,10 @@
 
 #include "plugin-manager.h"
 
+#include "libkcmtelepathyaccounts/abstract-account-ui-plugin.h"
+
 #include <KDebug>
+#include <KServiceTypeTrader>
 
 PluginManager* PluginManager::s_self = 0;
 
@@ -31,6 +34,8 @@ PluginManager::PluginManager(QObject *parent)
 
     // Set up the singleton instance
     s_self = this;
+
+    loadPlugins();
 }
 
 PluginManager::~PluginManager()
@@ -54,3 +59,30 @@ PluginManager *PluginManager::instance()
     return s_self;
 }
 
+void PluginManager::loadPlugins()
+{
+    kDebug();
+    KService::List offers = KServiceTypeTrader::self()->query("KCMTelepathyAccounts/AccountUiPlugin");
+
+    KService::List::const_iterator iter;
+    for (iter = offers.begin(); iter < offers.end(); ++iter) {
+       QString error;
+       KService::Ptr service = *iter;
+
+        KPluginFactory *factory = KPluginLoader(service->library()).factory();
+
+        if (!factory) {
+            kWarning() << "KPluginFactory could not load the plugin:" << service->library();
+            continue;
+        }
+
+       AbstractAccountUiPlugin *plugin = factory->create<AbstractAccountUiPlugin>(this);
+
+       if (plugin) {
+           kDebug() << "Loaded plugin:" << service->name();
+           m_plugins.append(plugin);
+       } else {
+           kDebug() << error;
+       }
+    }
+}

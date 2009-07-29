@@ -21,7 +21,10 @@
 #ifndef TELEPATHY_ACCOUNTS_KCM_PLUGIN_MANAGER_H
 #define TELEPATHY_ACCOUNTS_KCM_PLUGIN_MANAGER_H
 
+#include <QtCore/QList>
 #include <QtCore/QObject>
+
+class AbstractAccountUiPlugin;
 
 class PluginManager : public QObject
 {
@@ -36,6 +39,10 @@ public:
 private:
     explicit PluginManager(QObject *parent = 0);
     static PluginManager *s_self;
+
+    void loadPlugins();
+
+    QList<AbstractAccountUiPlugin*> m_plugins;
 };
 
 
