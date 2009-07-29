@@ -49,11 +49,12 @@ public Q_SLOTS:
 
 private Q_SLOTS:
     void onAccountManagerReady(Tp::PendingOperation *op);
+    void onAccountCreated(const QString &path);
 
     void onSelectedItemChanged();
     void onAddAccountClicked();
     void onRemoveAccountClicked();
-    void onAddAccountAssistantCancelled();
+    void onAddAccountAssistantClosed();
 
 private:
     Tp::AccountManagerPtr m_accountManager;

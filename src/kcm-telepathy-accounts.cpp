@@ -106,6 +106,16 @@ void KCMTelepathyAccounts::onAccountManagerReady(Tp::PendingOperation *op)
     foreach (Tp::AccountPtr account, accounts) {
         m_accountsListModel->addAccount(account);
     }
+
+    connect(m_accountManager.data(),
+            SIGNAL(accountCreated(const QString &)),
+            SLOT(onAccountCreated(const QString &)));
+}
+
+void KCMTelepathyAccounts::onAccountCreated(const QString &path)
+{
+    Tp::AccountPtr account = m_accountManager->accountForPath(path);
+    m_accountsListModel->addAccount(account);
 }
 
 void KCMTelepathyAccounts::onSelectedItemChanged()
@@ -132,7 +142,9 @@ void KCMTelepathyAccounts::onAddAccountClicked()
 
         // Connect to its completion signals...
         connect(m_addAccountAssistant, SIGNAL(cancelled()),
-                this, SLOT(onAddAccountAssistantCancelled()));
+                this, SLOT(onAddAccountAssistantClosed()));
+        connect(m_addAccountAssistant, SIGNAL(accepted()),
+                this, SLOT(onAddAccountAssistantClosed()));
 
         // ...and finally show it.
         m_addAccountAssistant->show();
@@ -156,7 +168,7 @@ void KCMTelepathyAccounts::onRemoveAccountClicked()
     }
 }
 
-void KCMTelepathyAccounts::onAddAccountAssistantCancelled()
+void KCMTelepathyAccounts::onAddAccountAssistantClosed()
 {
     kDebug();
 
