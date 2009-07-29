@@ -40,9 +40,9 @@ public:
     virtual ~AbstractAccountParametersWidget();
 
     virtual QMap<Tp::ProtocolParameter*, QVariant> parameterValues() const = 0;
+    virtual Tp::ProtocolParameterList parameters() const;
 
 protected:
-    virtual Tp::ProtocolParameterList parameters() const;
 
 private:
     class Private;

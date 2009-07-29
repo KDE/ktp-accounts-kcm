@@ -35,19 +35,17 @@ public:
 
 
 AbstractAccountUiPlugin::AbstractAccountUiPlugin(QObject *parent)
-        : QObject(parent),
-          d(new Private)
+ : QObject(parent),
+   d(new Private)
 {
     kDebug();
-
-    delete d;
 }
 
 AbstractAccountUiPlugin::~AbstractAccountUiPlugin()
 {
     kDebug();
 
-    // TODO: Implement me!
+    delete d;
 }
 
 const QMap<QString, QString> &AbstractAccountUiPlugin::providedProtocols() const
@@ -72,4 +70,7 @@ void AbstractAccountUiPlugin::registerProvidedProtocol(const QString &connection
     // Pair is not already added. Add it.
     d->providedProtocols.insertMulti(connectionManager, protocol);
 }
+
+
+#include "abstract-account-ui-plugin.moc"
 

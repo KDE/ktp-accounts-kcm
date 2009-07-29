@@ -32,10 +32,9 @@ class AbstractAccountUi;
 class KDE_EXPORT AbstractAccountUiPlugin : public QObject
 {
     Q_OBJECT
-    Q_DISABLE_COPY(AbstractAccountUiPlugin);
 
 public:
-    AbstractAccountUiPlugin(QObject *parent = 0);
+    explicit AbstractAccountUiPlugin(QObject *parent = 0);
     virtual ~AbstractAccountUiPlugin();
 
     virtual const QMap<QString, QString> &providedProtocols() const;
@@ -46,6 +45,8 @@ protected:
     virtual void registerProvidedProtocol(const QString &connectionManager, const QString &protocol);
 
 private:
+    Q_DISABLE_COPY(AbstractAccountUiPlugin);
+
     class Private;
     Private * const d;
 };
