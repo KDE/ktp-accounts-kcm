@@ -25,11 +25,15 @@
 #include "protocol-item.h"
 #include "protocol-select-widget.h"
 
+#include "libkcmtelepathyaccounts/abstract-account-parameters-widget.h"
+
 #include <KDebug>
 #include <KLocale>
 #include <KMessageBox>
 #include <KPageWidgetItem>
 #include <KTabWidget>
+
+#include <QtCore/QList>
 
 #include <TelepathyQt4/PendingAccount>
 #include <TelepathyQt4/PendingOperation>
@@ -41,7 +45,6 @@ public:
      : protocolSelectWidget(0),
        tabWidget(0),
        mandatoryParametersWidget(0),
-       optionalParametersWidget(0),
        pageOne(0),
        pageTwo(0)
     {
@@ -52,7 +55,7 @@ public:
     ProtocolSelectWidget *protocolSelectWidget;
     KTabWidget *tabWidget;
     ParameterEditWidget *mandatoryParametersWidget;
-    ParameterEditWidget *optionalParametersWidget;
+    QList<QWidget*> optionalParametersWidgets;
     KPageWidgetItem *pageOne;
     KPageWidgetItem *pageTwo;
 };
@@ -115,18 +118,21 @@ void AddAccountAssistant::next()
                 d->mandatoryParametersWidget = 0;
             }
 
-            if (d->optionalParametersWidget) {
-                d->optionalParametersWidget->deleteLater();
-                d->optionalParametersWidget = 0;
+            foreach (QWidget *w, d->optionalParametersWidgets) {
+                if (w) {
+                    w->deleteLater();
+                }
             }
+            d->optionalParametersWidgets.clear();
 
             d->mandatoryParametersWidget = new ParameterEditWidget(d->tabWidget);
             d->mandatoryParametersWidget->setParameters(item->mandatoryParameters());
             d->tabWidget->addTab(d->mandatoryParametersWidget, i18n("Mandatory Parameters"));
 
-            d->optionalParametersWidget = new ParameterEditWidget(d->tabWidget);
-            d->optionalParametersWidget->setParameters(item->optionalParameters());
-            d->tabWidget->addTab(d->optionalParametersWidget, i18n("Optional Parameters"));
+            ParameterEditWidget *pew = new ParameterEditWidget(d->tabWidget);
+            d->optionalParametersWidgets.append(pew);
+            pew->setParameters(item->optionalParameters());
+            d->tabWidget->addTab(pew, i18n("Optional Parameters"));
 
             KAssistantDialog::next();
         }
@@ -154,9 +160,45 @@ void AddAccountAssistant::accept()
         }
     }
 
+
     // Get the optional properties
-    QMap<Tp::ProtocolParameter*, QVariant> optionalParameterValues =
-            d->optionalParametersWidget->parameterValues();
+    QMap<Tp::ProtocolParameter*, QVariant> optionalParameterValues;
+
+    foreach (QWidget *w, d->optionalParametersWidgets) {
+        ParameterEditWidget *pew = qobject_cast<ParameterEditWidget*>(w);
+        if (pew) {
+            QMap<Tp::ProtocolParameter*, QVariant> parameters = pew->parameterValues();
+            QMap<Tp::ProtocolParameter*, QVariant>::const_iterator i = parameters.constBegin();
+            while (i != parameters.constEnd()) {
+                if (!optionalParameterValues.contains(i.key())) {
+                    optionalParameterValues.insert(i.key(), i.value());
+                } else {
+                    kWarning() << "Parameter:" << i.key()->name() << "is already in the map.";
+                }
+
+                ++i;
+            }
+            continue;
+        }
+
+        AbstractAccountParametersWidget *aapw = qobject_cast<AbstractAccountParametersWidget*>(w);
+        if (aapw) {
+            QMap<Tp::ProtocolParameter*, QVariant> parameters = aapw->parameterValues();
+            QMap<Tp::ProtocolParameter*, QVariant>::const_iterator i = parameters.constBegin();
+            while (i != parameters.constEnd()) {
+                if (!optionalParameterValues.contains(i.key())) {
+                    optionalParameterValues.insert(i.key(), i.value());
+                } else {
+                    kWarning() << "Parameter:" << i.key()->name() << "is already in the map.";
+                }
+
+                ++i;
+            }
+            continue;
+        }
+
+        kWarning() << "Widget type not recognised :(";
+    }
 
     // Get the ProtocolItem that was selected and the corresponding ConnectionManagerItem.
     ProtocolItem *protocolItem = d->protocolSelectWidget->selectedProtocol();
