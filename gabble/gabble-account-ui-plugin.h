@@ -28,15 +28,16 @@
 class GabbleAccountUiPlugin : public AbstractAccountUiPlugin
 {
     Q_OBJECT
-    Q_DISABLE_COPY(GabbleAccountUiPlugin);
 
 public:
     GabbleAccountUiPlugin(QObject *parent, const QVariantList &);
     virtual ~GabbleAccountUiPlugin();
 
-    virtual AbstractAccountUi* accountUi(const QString *connectionManager, const QString &protocol);
+    virtual AbstractAccountUi* accountUi(const QString &connectionManager, const QString &protocol);
 
 private:
+    Q_DISABLE_COPY(GabbleAccountUiPlugin);
+
     class Private;
     Private * const d;
 };
