@@ -23,15 +23,18 @@
 #include "accounts-list-model.h"
 
 #include <KDebug>
+#include <KIcon>
 
 #include <QtCore/QTimer>
+#include <QtGui/QPainter>
 
 #include <TelepathyQt4/PendingOperation>
 #include <TelepathyQt4/PendingReady>
 
 AccountItem::AccountItem(const Tp::AccountPtr &account, AccountsListModel *parent)
  : QObject(parent),
-   m_account(account)
+   m_account(account),
+   m_icon(new KIcon())
 {
     kDebug();
 
@@ -42,6 +45,9 @@ AccountItem::AccountItem(const Tp::AccountPtr &account, AccountsListModel *paren
     connect(m_account.data(),
             SIGNAL(displayNameChanged(const QString&)),
             SIGNAL(updated()));
+
+    //initialize icon only when the account is ready
+    connect(this, SIGNAL(ready()), SLOT(generateIcon()));
 
     // We should look to see if the "account" instance we are passed is ready
     // yet. If not, we should get it ready now.
@@ -60,7 +66,7 @@ AccountItem::~AccountItem()
 {
     kDebug();
 
-    // TODO: Implement me...
+    delete m_icon;
 }
 
 Tp::AccountPtr AccountItem::account() const
@@ -76,6 +82,39 @@ void AccountItem::remove()
     connect(op,
             SIGNAL(finished(Tp::PendingOperation*)),
             SLOT(onAccountRemoved(Tp::PendingOperation*)));
+}
+
+const KIcon& AccountItem::icon() const
+{
+    Q_ASSERT(m_icon != 0);
+
+    return *m_icon;
+}
+
+void AccountItem::generateIcon()
+{
+    kDebug();
+
+    QString iconPath = account()->icon();
+    //if the icon has not been setted, we use the protocol icon
+    if(iconPath.isEmpty()) {
+        iconPath = QString("im-%1").arg(account()->protocol());
+    }
+
+    delete m_icon;
+    m_icon = new KIcon(iconPath);
+
+    if(!account()->isValid()) {
+        //we paint a warning symbol in the right-bottom corner
+        QPixmap pixmap = m_icon->pixmap(32, 32);
+        QPainter painter(&pixmap);
+        KIcon("dialog-error").paint(&painter, 15, 15, 16, 16);
+
+        delete m_icon;
+        m_icon = new KIcon(pixmap);
+    }
+
+    Q_EMIT(updated());
 }
 
 void AccountItem::onAccountReady(Tp::PendingOperation *op)

@@ -25,6 +25,8 @@
 
 #include <TelepathyQt4/Account>
 
+class KIcon;
+
 class AccountsListModel;
 
 namespace Tp {
@@ -41,8 +43,10 @@ public:
     virtual ~AccountItem();
     Tp::AccountPtr account() const;
     void remove();
+    const KIcon& icon() const;
 
 private Q_SLOTS:
+    void generateIcon();
     void onAccountReady(Tp::PendingOperation *op);
     void onAccountRemoved(Tp::PendingOperation *op);
 
@@ -53,6 +57,7 @@ Q_SIGNALS:
 
 private:
     Tp::AccountPtr m_account;
+    KIcon* m_icon;
 };
 
 
