@@ -4,11 +4,13 @@ Comment=Custom account configuration user interface for accounts using the Gabbl
 Comment[pt]=Interface de configuração de contas personalizadas, usando o gestor de ligações Gabble.
 Comment[pt_BR]=Interface de configuração de contas personalizadas, usando o gestor de ligações Gabble.
 Comment[uk]=Інтерфейс користувача для нетипового налаштування облікового запису за допомогою керування з’єднаннями Gabble.
+Comment[x-test]=xxCustom account configuration user interface for accounts using the Gabble connection manager.xx
 Icon=blockdevice
 Name=Gabble Account Configuration User Interface
 Name[pt]=Interface de Configuração de Contas do Gabble
 Name[pt_BR]=Interface de Configuração de Contas do Gabble
 Name[uk]=Інтерфейс користувача Gabble для налаштування
+Name[x-test]=xxGabble Account Configuration User Interfacexx
 Type=Service
 ServiceTypes=KCMTelepathyAccounts/AccountUiPlugin
 
