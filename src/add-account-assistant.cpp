@@ -56,8 +56,8 @@ public:
     Tp::AccountManagerPtr accountManager;
     ProtocolSelectWidget *protocolSelectWidget;
     KTabWidget *tabWidget;
-    QWidget *mandatoryParametersWidget;
-    QList<QWidget*> optionalParametersWidgets;
+    AbstractAccountParametersWidget *mandatoryParametersWidget;
+    QList<AbstractAccountParametersWidget*> optionalParametersWidgets;
     KPageWidgetItem *pageOne;
     KPageWidgetItem *pageTwo;
 };
@@ -122,18 +122,14 @@ void AddAccountAssistant::next()
             AbstractAccountUi *ui = PluginManager::instance()->accountUiForProtocol(connectionManager,
                                                                                     protocol);
 
-
             // Delete the widgets for the next page if they already exist
             if (d->mandatoryParametersWidget) {
                 d->mandatoryParametersWidget->deleteLater();
                 d->mandatoryParametersWidget = 0;
             }
 
-            foreach (QWidget *w, d->optionalParametersWidgets) {
-                if (w) {
-                    w->deleteLater();
-                }
-            }
+            // TODO: Check if this calls delete, or ->deleteLater() once I have internet access again :)
+            qDeleteAll(d->optionalParametersWidgets);
             d->optionalParametersWidgets.clear();
 
             // Set up the Mandatory Parameters page
@@ -161,14 +157,17 @@ void AddAccountAssistant::next()
                 if (mandatoryParametersLeft.isEmpty()) {
                     d->mandatoryParametersWidget = widget;
                 } else {
+                    // FIXME: At the moment, if the custom widget can't handle all the mandatory
+                    // parameters we fall back to the generic one for all of them. It might be nicer
+                    // to have the custom UI for as many as possible, and stick a small generic one
+                    // underneath for those parameters it doesn't handle.
                     widget->deleteLater();
                     widget = 0;
                 }
             }
 
             if (!d->mandatoryParametersWidget) {
-                ParameterEditWidget *paramEditWidget = new ParameterEditWidget(item->mandatoryParameters(), d->tabWidget);
-                d->mandatoryParametersWidget = paramEditWidget;
+                d->mandatoryParametersWidget = new ParameterEditWidget(item->mandatoryParameters(), d->tabWidget);
             }
 
             d->tabWidget->addTab(d->mandatoryParametersWidget, i18n("Mandatory Parameters"));
@@ -226,21 +225,9 @@ void AddAccountAssistant::accept()
         return;
     }
 
-    // Get the mandatory properties.
+    // Get the mandatory parameters.
     QMap<Tp::ProtocolParameter*, QVariant> mandatoryParameterValues;
-
-    AbstractAccountParametersWidget *aapw = qobject_cast<AbstractAccountParametersWidget*>(d->mandatoryParametersWidget);
-    if (aapw) {
-        mandatoryParameterValues = aapw->parameterValues();
-    } else {
-        ParameterEditWidget *pew = qobject_cast<ParameterEditWidget*>(d->mandatoryParametersWidget);
-        if (pew) {
-            mandatoryParameterValues = pew->parameterValues();
-        } else {
-            kWarning() << "d->mandatoryParametersWidget has unrecognised type :(.";
-            return;
-        }
-    }
+    mandatoryParameterValues = d->mandatoryParametersWidget->parameterValues();
 
     foreach (const QVariant &value, mandatoryParameterValues.values()) {
         if (value.toString().isEmpty()) {
@@ -253,40 +240,19 @@ void AddAccountAssistant::accept()
     // Get the optional properties
     QMap<Tp::ProtocolParameter*, QVariant> optionalParameterValues;
 
-    foreach (QWidget *w, d->optionalParametersWidgets) {
-        ParameterEditWidget *pew = qobject_cast<ParameterEditWidget*>(w);
-        if (pew) {
-            QMap<Tp::ProtocolParameter*, QVariant> parameters = pew->parameterValues();
-            QMap<Tp::ProtocolParameter*, QVariant>::const_iterator i = parameters.constBegin();
-            while (i != parameters.constEnd()) {
-                if (!optionalParameterValues.contains(i.key())) {
-                    optionalParameterValues.insert(i.key(), i.value());
-                } else {
-                    kWarning() << "Parameter:" << i.key()->name() << "is already in the map.";
-                }
-
-                ++i;
+    foreach (AbstractAccountParametersWidget *w, d->optionalParametersWidgets) {
+        QMap<Tp::ProtocolParameter*, QVariant> parameters = w->parameterValues();
+        QMap<Tp::ProtocolParameter*, QVariant>::const_iterator i = parameters.constBegin();
+        while (i != parameters.constEnd()) {
+            if (!optionalParameterValues.contains(i.key())) {
+                optionalParameterValues.insert(i.key(), i.value());
+            } else {
+                kWarning() << "Parameter:" << i.key()->name() << "is already in the map.";
             }
-            continue;
+
+            ++i;
         }
-
-        AbstractAccountParametersWidget *aapw = qobject_cast<AbstractAccountParametersWidget*>(w);
-        if (aapw) {
-            QMap<Tp::ProtocolParameter*, QVariant> parameters = aapw->parameterValues();
-            QMap<Tp::ProtocolParameter*, QVariant>::const_iterator i = parameters.constBegin();
-            while (i != parameters.constEnd()) {
-                if (!optionalParameterValues.contains(i.key())) {
-                    optionalParameterValues.insert(i.key(), i.value());
-                } else {
-                    kWarning() << "Parameter:" << i.key()->name() << "is already in the map.";
-                }
-
-                ++i;
-            }
-            continue;
-        }
-
-        kWarning() << "Widget type not recognised :(";
+        continue;
     }
 
     // Get the ProtocolItem that was selected and the corresponding ConnectionManagerItem.
