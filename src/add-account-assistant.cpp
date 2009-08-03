@@ -128,8 +128,11 @@ void AddAccountAssistant::next()
                 d->mandatoryParametersWidget = 0;
             }
 
-            // TODO: Check if this calls delete, or ->deleteLater() once I have internet access again :)
-            qDeleteAll(d->optionalParametersWidgets);
+            foreach (AbstractAccountParametersWidget *w, d->optionalParametersWidgets) {
+                if (w) {
+                    w->deleteLater();
+                }
+            }
             d->optionalParametersWidgets.clear();
 
             // Set up the Mandatory Parameters page
