@@ -40,6 +40,7 @@ public:
 
     virtual QMap<Tp::ProtocolParameter*, QVariant> parameterValues() const = 0;
     virtual Tp::ProtocolParameterList parameters() const;
+    virtual bool validateParameterValues();
 
 protected:
 

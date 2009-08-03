@@ -55,6 +55,11 @@ Tp::ProtocolParameterList AbstractAccountParametersWidget::parameters() const
     return d->parameters;
 }
 
+bool AbstractAccountParametersWidget::validateParameterValues()
+{
+    return true;
+}
+
 
 #include "abstract-account-parameters-widget.moc"
 
