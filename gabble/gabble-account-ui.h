@@ -32,9 +32,11 @@ public:
     virtual ~GabbleAccountUi();
 
     virtual AbstractAccountParametersWidget
-              *mandatoryParametersWidget(Tp::ProtocolParameterList parameters) const;
+              *mandatoryParametersWidget(Tp::ProtocolParameterList parameters,
+                                         const QVariantMap &values = QVariantMap()) const;
     virtual QList<AbstractAccountParametersWidget*>
-              optionalParametersWidgets(Tp::ProtocolParameterList parameters) const;
+              optionalParametersWidgets(Tp::ProtocolParameterList parameters,
+                                        const QVariantMap &values = QVariantMap()) const;
 
 private:
     Q_DISABLE_COPY(GabbleAccountUi);

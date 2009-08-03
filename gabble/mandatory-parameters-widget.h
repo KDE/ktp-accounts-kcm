@@ -29,6 +29,7 @@ class MandatoryParametersWidget : public AbstractAccountParametersWidget
 
 public:
     explicit MandatoryParametersWidget(Tp::ProtocolParameterList parameters,
+                                       const QVariantMap &values = QVariantMap(),
                                        QWidget *parent = 0);
     virtual ~MandatoryParametersWidget();
 

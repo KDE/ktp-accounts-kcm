@@ -53,19 +53,24 @@ GabbleAccountUi::~GabbleAccountUi()
     delete d;
 }
 
-AbstractAccountParametersWidget *GabbleAccountUi::mandatoryParametersWidget(Tp::ProtocolParameterList parameters) const
+AbstractAccountParametersWidget *GabbleAccountUi::mandatoryParametersWidget(
+        Tp::ProtocolParameterList parameters,
+        const QVariantMap &values) const
 {
     kDebug();
 
-    return new MandatoryParametersWidget(parameters);
+    return new MandatoryParametersWidget(parameters, values);
 }
 
-QList<AbstractAccountParametersWidget*> GabbleAccountUi::optionalParametersWidgets(Tp::ProtocolParameterList parameters) const
+QList<AbstractAccountParametersWidget*> GabbleAccountUi::optionalParametersWidgets(
+        Tp::ProtocolParameterList parameters,
+        const QVariantMap &values) const
 {
     kDebug();
 
     // TODO: Implement me!
     Q_UNUSED(parameters);
+    Q_UNUSED(values);
     return QList<AbstractAccountParametersWidget*>();
 }
 

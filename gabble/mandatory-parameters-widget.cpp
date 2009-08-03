@@ -44,8 +44,9 @@ public:
 };
 
 MandatoryParametersWidget::MandatoryParametersWidget(Tp::ProtocolParameterList parameters,
+                                                     const QVariantMap &values,
                                                      QWidget *parent)
- : AbstractAccountParametersWidget(parameters, parent),
+ : AbstractAccountParametersWidget(parameters, values, parent),
    d(new Private)
 {
     kDebug();
@@ -69,6 +70,19 @@ MandatoryParametersWidget::MandatoryParametersWidget(Tp::ProtocolParameterList p
     // Set up the UI.
     d->ui = new Ui::MandatoryParametersWidget;
     d->ui->setupUi(this);
+
+    // Prefill UI elements if appropriate.
+    if (d->accountParameter) {
+        if (values.contains(d->accountParameter->name())) {
+            d->ui->accountLineEdit->setText(values.value(d->accountParameter->name()).toString());
+        }
+    }
+
+    if (d->passwordParameter) {
+        if (values.contains(d->passwordParameter->name())) {
+            d->ui->passwordLineEdit->setText(values.value(d->passwordParameter->name()).toString());
+        }
+    }
 
     // Hide any elements we don't have the parameters passed to show.
     if (!d->accountParameter) {
