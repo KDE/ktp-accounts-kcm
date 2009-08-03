@@ -28,6 +28,7 @@
 class KIcon;
 
 class AccountsListModel;
+class EditAccountDialog;
 
 namespace Tp {
     class PendingOperation;
@@ -42,6 +43,7 @@ public:
     explicit AccountItem(const Tp::AccountPtr &account, AccountsListModel *parent = 0);
     virtual ~AccountItem();
     Tp::AccountPtr account() const;
+    void edit();
     void remove();
     const KIcon& icon() const;
 
@@ -58,6 +60,7 @@ Q_SIGNALS:
 private:
     Tp::AccountPtr m_account;
     KIcon* m_icon;
+    EditAccountDialog *m_editAccountDialog;
 };
 
 

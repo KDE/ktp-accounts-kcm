@@ -65,6 +65,9 @@ KCMTelepathyAccounts::KCMTelepathyAccounts(QWidget *parent, const QVariantList& 
     connect(m_addAccountButton,
             SIGNAL(clicked()),
             SLOT(onAddAccountClicked()));
+    connect(m_editAccountButton,
+            SIGNAL(clicked()),
+            SLOT(onEditAccountClicked()));
     connect(m_removeAccountButton,
             SIGNAL(clicked()),
             SLOT(onRemoveAccountClicked()));
@@ -153,6 +156,26 @@ void KCMTelepathyAccounts::onAddAccountClicked()
     }
 
     kWarning() << "Cannot create a new AddAccountAssistant. One already exists.";
+}
+
+void KCMTelepathyAccounts::onEditAccountClicked()
+{
+    kDebug();
+
+    // Editing accounts is only possible if the Account Manager is ready.
+    if (!m_accountManager->isReady()) {
+        return;
+    }
+
+    QModelIndex index = m_accountsListView->currentIndex();
+
+    // A valid account must be selected in the list to allow editing
+    if (!index.isValid()) {
+        return;
+    }
+
+    // Item is OK. Edit the item.
+    m_accountsListModel->editAccount(index);
 }
 
 void KCMTelepathyAccounts::onRemoveAccountClicked()

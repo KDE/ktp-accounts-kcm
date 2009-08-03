@@ -21,7 +21,9 @@
 #include "account-item.h"
 
 #include "accounts-list-model.h"
+#include "edit-account-dialog.h"
 
+#include <KApplication>
 #include <KDebug>
 #include <KIcon>
 
@@ -34,7 +36,8 @@
 AccountItem::AccountItem(const Tp::AccountPtr &account, AccountsListModel *parent)
  : QObject(parent),
    m_account(account),
-   m_icon(new KIcon())
+   m_icon(new KIcon()),
+   m_editAccountDialog(0)
 {
     kDebug();
 
@@ -72,6 +75,22 @@ AccountItem::~AccountItem()
 Tp::AccountPtr AccountItem::account() const
 {
     return m_account;
+}
+
+void AccountItem::edit()
+{
+    kDebug();
+
+    // If the edit dialog already exists, focus it.
+    if (m_editAccountDialog) {
+        m_editAccountDialog->focusWidget();
+        return;
+    }
+
+    // FIXME: There should be a driving test for those who want to become parents... :'(
+    QWidget *p = qobject_cast<QWidget*>(parent()->parent());
+    m_editAccountDialog = new EditAccountDialog(this, p); // FIXME: Argh I'm going to jump off a bridge
+    m_editAccountDialog->show();
 }
 
 void AccountItem::remove()

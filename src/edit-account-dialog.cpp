@@ -35,7 +35,7 @@ public:
 };
 
 EditAccountDialog::EditAccountDialog(AccountItem *item, QWidget *parent)
-        : QWidget(parent),
+        : KDialog(parent),
           d(new Private)
 {
     kDebug();

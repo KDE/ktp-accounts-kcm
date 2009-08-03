@@ -53,6 +53,7 @@ private Q_SLOTS:
 
     void onSelectedItemChanged();
     void onAddAccountClicked();
+    void onEditAccountClicked();
     void onRemoveAccountClicked();
     void onAddAccountAssistantClosed();
 

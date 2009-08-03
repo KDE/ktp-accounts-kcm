@@ -25,15 +25,14 @@
 
 #include <kdemacros.h>
 
-#include <QtGui/QWidget>
+#include <KDialog>
 
-class KDE_EXPORT EditAccountDialog : public QWidget
+class KDE_EXPORT EditAccountDialog : public KDialog
 {
     Q_OBJECT
 
 public:
-    explicit EditAccountDialog(AccountItem *item,
-                               QWidget *parent = 0);
+    explicit EditAccountDialog(AccountItem *item, QWidget *parent = 0);
     virtual ~EditAccountDialog();
 
 private:
