@@ -27,6 +27,7 @@ set (telepathy_accounts_kcm_SRCS
      defaultaccountui/optional-parameter-edit-widget.cpp
      dictionary.cpp
      plugin-manager.cpp
+     edit-account-dialog.cpp
 )
 
 kde4_add_ui_files (telepathy_accounts_kcm_SRCS
