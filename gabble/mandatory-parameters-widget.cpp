@@ -23,6 +23,7 @@
 #include "ui_mandatory-parameters-widget.h"
 
 #include <KDebug>
+#include <KMessageBox>
 
 class MandatoryParametersWidget::Private
 {
@@ -104,6 +105,21 @@ QMap<Tp::ProtocolParameter*, QVariant> MandatoryParametersWidget::parameterValue
     }
 
     return parameters;
+}
+
+bool MandatoryParametersWidget::validateParameterValues()
+{
+    // Check if both the password and account have been entered. If not, alert the user.
+    if ((d->ui->passwordLineEdit->text().isEmpty()) ||
+        (d->ui->accountLineEdit->text().isEmpty())) {
+        kDebug() << "Returning false and alerting the user.";
+
+        KMessageBox::error(this, i18n("Please enter both a Jabber ID and a Password."));
+
+        return false;
+    }
+
+    return true;
 }
 
 

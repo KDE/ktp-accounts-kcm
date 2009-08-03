@@ -33,6 +33,7 @@ public:
     virtual ~MandatoryParametersWidget();
 
     virtual QMap<Tp::ProtocolParameter*, QVariant> parameterValues() const;
+    virtual bool validateParameterValues();
 
 private:
     Q_DISABLE_COPY(MandatoryParametersWidget);
