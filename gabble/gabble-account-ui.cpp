@@ -40,6 +40,10 @@ GabbleAccountUi::GabbleAccountUi(QObject *parent)
    d(new Private)
 {
     kDebug();
+
+    // Register supported parameters
+    registerSupportedMandatoryParameter("account", QVariant::String);
+    registerSupportedMandatoryParameter("password", QVariant::String);
 }
 
 GabbleAccountUi::~GabbleAccountUi()

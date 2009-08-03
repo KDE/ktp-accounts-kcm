@@ -11,6 +11,7 @@ set (kcmtelepathyaccounts_plugin_gabble_SRCS
 )
 
 kde4_add_ui_files (kcmtelepathyaccounts_plugin_gabble_SRCS
+                   mandatory-parameters-widget.ui
 )
 
 kde4_add_plugin (kcmtelepathyaccounts_plugin_gabble

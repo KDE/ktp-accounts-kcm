@@ -20,15 +20,26 @@
 
 #include "mandatory-parameters-widget.h"
 
+#include "ui_mandatory-parameters-widget.h"
+
 #include <KDebug>
 
 class MandatoryParametersWidget::Private
 {
 public:
     Private()
+            : accountParameter(0),
+              passwordParameter(0),
+              ui(0)
     {
         kDebug();
     }
+
+    Tp::ProtocolParameterList parameters;
+    Tp::ProtocolParameter *accountParameter;
+    Tp::ProtocolParameter *passwordParameter;
+
+    Ui::MandatoryParametersWidget *ui;
 };
 
 MandatoryParametersWidget::MandatoryParametersWidget(Tp::ProtocolParameterList parameters,
@@ -37,6 +48,37 @@ MandatoryParametersWidget::MandatoryParametersWidget(Tp::ProtocolParameterList p
    d(new Private)
 {
     kDebug();
+
+    // Save the parameters.
+    d->parameters = parameters;
+
+    // Store the parameters this widget supports
+    foreach (Tp::ProtocolParameter *parameter, d->parameters) {
+        if ((parameter->name() == "account") && (parameter->type() == QVariant::String)) {
+            if (!d->accountParameter) {
+                d->accountParameter = parameter;
+            }
+        } else if ((parameter->name() == "password") && (parameter->type() == QVariant::String)) {
+            if (!d->passwordParameter) {
+                d->passwordParameter = parameter;
+            }
+        }
+    }
+
+    // Set up the UI.
+    d->ui = new Ui::MandatoryParametersWidget;
+    d->ui->setupUi(this);
+
+    // Hide any elements we don't have the parameters passed to show.
+    if (!d->accountParameter) {
+        d->ui->accountLabel->hide();
+        d->ui->accountLineEdit->hide();
+    }
+
+    if (!d->passwordParameter) {
+        d->ui->passwordLabel->hide();
+        d->ui->passwordLineEdit->hide();
+    }
 }
 
 MandatoryParametersWidget::~MandatoryParametersWidget()
@@ -50,8 +92,18 @@ QMap<Tp::ProtocolParameter*, QVariant> MandatoryParametersWidget::parameterValue
 {
     kDebug();
 
-    // TODO: Implement me!
-    return QMap<Tp::ProtocolParameter*, QVariant>();
+    QMap<Tp::ProtocolParameter*, QVariant> parameters;
+
+    // Populate the map of parameters and their values with all the parameters this widget contains.
+    if (d->accountParameter) {
+        parameters.insert(d->accountParameter, d->ui->accountLineEdit->text());
+    }
+
+    if (d->passwordParameter) {
+        parameters.insert(d->passwordParameter, d->ui->passwordLineEdit->text());
+    }
+
+    return parameters;
 }
 
 
