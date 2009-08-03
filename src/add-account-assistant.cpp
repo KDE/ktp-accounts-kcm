@@ -171,7 +171,8 @@ void AddAccountAssistant::next()
             }
 
             if (!d->mandatoryParametersWidget) {
-                d->mandatoryParametersWidget = new MandatoryParameterEditWidget(item->mandatoryParameters(), d->tabWidget);
+                d->mandatoryParametersWidget = new MandatoryParameterEditWidget(
+                        item->mandatoryParameters(), QVariantMap(), d->tabWidget);
             }
 
             d->tabWidget->addTab(d->mandatoryParametersWidget, i18n("Mandatory Parameters"));
@@ -210,7 +211,9 @@ void AddAccountAssistant::next()
             // Show the generic UI if optionalParameters is not empty.
             if (optionalParametersLeft.size() > 0) {
                 OptionalParameterEditWidget *opew =
-                        new OptionalParameterEditWidget(optionalParametersLeft, d->tabWidget);
+                        new OptionalParameterEditWidget(optionalParametersLeft,
+                                                        QVariantMap(),
+                                                        d->tabWidget);
                 d->optionalParametersWidgets.append(opew);
                 d->tabWidget->addTab(opew, i18n("Optional Parameters"));
             }

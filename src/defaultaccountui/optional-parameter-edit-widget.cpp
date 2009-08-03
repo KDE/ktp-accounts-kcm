@@ -32,8 +32,9 @@ public:
 };
 
 OptionalParameterEditWidget::OptionalParameterEditWidget(Tp::ProtocolParameterList parameters,
-                                                           QWidget *parent)
- : ParameterEditWidget(parameters, parent),
+                                                         const QVariantMap &values,
+                                                         QWidget *parent)
+ : ParameterEditWidget(parameters, values, parent),
    d(new Private)
 {
     kDebug();

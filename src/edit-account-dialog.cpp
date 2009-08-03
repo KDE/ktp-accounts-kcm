@@ -95,7 +95,8 @@ EditAccountDialog::EditAccountDialog(AccountItem *item, QWidget *parent)
     // Create the custom UI or generic UI depending on available parameters.
     if (ui) {
         // UI does exist, set it up.
-        AbstractAccountParametersWidget *widget = ui->mandatoryParametersWidget(d->mandatoryProtocolParameters);
+        AbstractAccountParametersWidget *widget = ui->mandatoryParametersWidget(d->mandatoryProtocolParameters,
+                                                                                item->account()->parameters());
         QMap<QString, QVariant::Type> manParams = ui->supportedMandatoryParameters();
         QMap<QString, QVariant::Type>::const_iterator manIter = manParams.constBegin();
         while(manIter != manParams.constEnd()) {
@@ -123,7 +124,10 @@ EditAccountDialog::EditAccountDialog(AccountItem *item, QWidget *parent)
     }
 
     if (!d->mandatoryParametersWidget) {
-        d->mandatoryParametersWidget = new MandatoryParameterEditWidget(d->mandatoryProtocolParameters, d->tabWidget);
+        d->mandatoryParametersWidget = new MandatoryParameterEditWidget(
+                d->mandatoryProtocolParameters,
+                item->account()->parameters(),
+                d->tabWidget);
     }
 
     d->tabWidget->addTab(d->mandatoryParametersWidget, i18n("Mandatory Parameters"));
@@ -135,7 +139,9 @@ EditAccountDialog::EditAccountDialog(AccountItem *item, QWidget *parent)
     // everything.
     if (ui) {
         // UI Does exist, set it up.
-        QList<AbstractAccountParametersWidget*> widgets = ui->optionalParametersWidgets(d->optionalProtocolParameters);
+        QList<AbstractAccountParametersWidget*> widgets = ui->optionalParametersWidgets(
+                d->optionalProtocolParameters,
+                item->account()->parameters());
 
         // Remove all handled parameters from the optionalParameters list.
         QMap<QString, QVariant::Type> opParams = ui->supportedOptionalParameters();
@@ -161,7 +167,9 @@ EditAccountDialog::EditAccountDialog(AccountItem *item, QWidget *parent)
     // Show the generic UI if optionalParameters is not empty.
     if (optionalParametersLeft.size() > 0) {
         OptionalParameterEditWidget *opew =
-                new OptionalParameterEditWidget(optionalParametersLeft, d->tabWidget);
+                new OptionalParameterEditWidget(optionalParametersLeft,
+                                                item->account()->parameters(),
+                                                d->tabWidget);
         d->optionalParametersWidgets.append(opew);
         d->tabWidget->addTab(opew, i18n("Optional Parameters"));
     }

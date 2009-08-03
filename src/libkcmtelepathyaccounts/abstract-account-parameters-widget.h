@@ -35,6 +35,7 @@ class KDE_EXPORT AbstractAccountParametersWidget : public QWidget
 
 public:
     explicit AbstractAccountParametersWidget(Tp::ProtocolParameterList parameters,
+                                             const QVariantMap &values = QVariantMap(),
                                              QWidget *parent = 0);
     virtual ~AbstractAccountParametersWidget();
 

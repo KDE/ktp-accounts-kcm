@@ -34,6 +34,7 @@ public:
 };
 
 AbstractAccountParametersWidget::AbstractAccountParametersWidget(Tp::ProtocolParameterList parameters,
+                                                                 const QVariantMap &values,
                                                                  QWidget *parent)
         : QWidget(parent),
           d(new Private)
@@ -41,6 +42,8 @@ AbstractAccountParametersWidget::AbstractAccountParametersWidget(Tp::ProtocolPar
     kDebug();
 
     d->parameters = parameters;
+
+    Q_UNUSED(values);
 }
 
 AbstractAccountParametersWidget::~AbstractAccountParametersWidget()

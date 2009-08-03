@@ -42,8 +42,9 @@ public:
 };
 
 ParameterEditWidget::ParameterEditWidget(Tp::ProtocolParameterList parameters,
+                                         const QVariantMap &values,
                                          QWidget *parent)
- : AbstractAccountParametersWidget(parameters, parent),
+ : AbstractAccountParametersWidget(parameters, values, parent),
    d(new Private)
 {
     kDebug();
@@ -63,7 +64,7 @@ ParameterEditWidget::ParameterEditWidget(Tp::ProtocolParameterList parameters,
 
     // Add the parameters to the model.
     foreach (Tp::ProtocolParameter *parameter, parameters) {
-        d->model->addItem(parameter, parameter->defaultValue());
+        d->model->addItem(parameter, values.value(parameter->name(), parameter->defaultValue()));
     }
 }
 

@@ -34,8 +34,9 @@ public:
 };
 
 MandatoryParameterEditWidget::MandatoryParameterEditWidget(Tp::ProtocolParameterList parameters,
+                                                           const QVariantMap &values,
                                                            QWidget *parent)
- : ParameterEditWidget(parameters, parent),
+ : ParameterEditWidget(parameters, values, parent),
    d(new Private)
 {
     kDebug();

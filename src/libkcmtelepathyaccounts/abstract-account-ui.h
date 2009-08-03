@@ -44,9 +44,11 @@ public:
     virtual const QMap<QString, QVariant::Type> &supportedOptionalParameters() const;
 
     virtual AbstractAccountParametersWidget
-              *mandatoryParametersWidget(Tp::ProtocolParameterList parameters) const = 0;
+              *mandatoryParametersWidget(Tp::ProtocolParameterList parameters,
+                                         const QVariantMap &values = QVariantMap()) const = 0;
     virtual QList<AbstractAccountParametersWidget*>
-              optionalParametersWidgets(Tp::ProtocolParameterList parameters) const = 0;
+              optionalParametersWidgets(Tp::ProtocolParameterList parameters,
+                                        const QVariantMap &values = QVariantMap()) const = 0;
 
 protected:
     virtual void registerSupportedMandatoryParameter(const QString &name, QVariant::Type type);

@@ -29,7 +29,8 @@ class MandatoryParameterEditWidget : public ParameterEditWidget
 
 public:
     explicit MandatoryParameterEditWidget(Tp::ProtocolParameterList parameters,
-                                 QWidget *parent = 0);
+                                          const QVariantMap &values = QVariantMap(),
+                                          QWidget *parent = 0);
     ~MandatoryParameterEditWidget();
 
     virtual bool validateParameterValues();

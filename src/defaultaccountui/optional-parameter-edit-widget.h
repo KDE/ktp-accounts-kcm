@@ -29,7 +29,8 @@ class OptionalParameterEditWidget : public ParameterEditWidget
 
 public:
     explicit OptionalParameterEditWidget(Tp::ProtocolParameterList parameters,
-                                 QWidget *parent = 0);
+                                         const QVariantMap &values = QVariantMap(),
+                                         QWidget *parent = 0);
     ~OptionalParameterEditWidget();
 
     virtual bool validateParameterValues();

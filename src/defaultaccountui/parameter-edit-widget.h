@@ -31,6 +31,7 @@ class ParameterEditWidget : public AbstractAccountParametersWidget
 
 public:
     explicit ParameterEditWidget(Tp::ProtocolParameterList parameters,
+                                 const QVariantMap &values = QVariantMap(),
                                  QWidget *parent = 0);
     ~ParameterEditWidget();
 
