@@ -34,6 +34,7 @@
 #include <QtCore/QList>
 
 #include <TelepathyQt4/ConnectionManager>
+#include <TelepathyQt4/PendingStringList>
 
 class EditAccountDialog::Private
 {
@@ -179,6 +180,105 @@ EditAccountDialog::EditAccountDialog(AccountItem *item, QWidget *parent)
 EditAccountDialog::~EditAccountDialog()
 {
     kDebug();
+}
+
+void EditAccountDialog::slotButtonClicked(int button)
+{
+    kDebug() << "Button clicked:" << button;
+
+    if (button == KDialog::Ok) {
+        accept();
+    } else{
+        KDialog::slotButtonClicked(button);
+    }
+}
+
+void EditAccountDialog::accept()
+{
+    kDebug();
+
+    // Check all pages of parameters pass validation.
+    if (!d->mandatoryParametersWidget->validateParameterValues()) {
+        kDebug() << "A widget failed parameter validation. Not accepting wizard.";
+        return;
+    }
+
+    foreach (AbstractAccountParametersWidget *w, d->optionalParametersWidgets) {
+        if (!w->validateParameterValues()) {
+            kDebug() << "A widget failed parameter validation. Not accepting wizard.";
+            return;
+        }
+    }
+
+    // Get the mandatory parameters.
+    QMap<Tp::ProtocolParameter*, QVariant> mandatoryParameterValues;
+    mandatoryParameterValues = d->mandatoryParametersWidget->parameterValues();
+
+    // Get the optional parameters.
+    QMap<Tp::ProtocolParameter*, QVariant> optionalParameterValues;
+
+    foreach (AbstractAccountParametersWidget *w, d->optionalParametersWidgets) {
+        QMap<Tp::ProtocolParameter*, QVariant> parameters = w->parameterValues();
+        QMap<Tp::ProtocolParameter*, QVariant>::const_iterator i = parameters.constBegin();
+        while (i != parameters.constEnd()) {
+            if (!optionalParameterValues.contains(i.key())) {
+                optionalParameterValues.insert(i.key(), i.value());
+            } else {
+                kWarning() << "Parameter:" << i.key()->name() << "is already in the map.";
+            }
+
+            ++i;
+        }
+        continue;
+    }
+
+    // Merge the parameters into a QVariantMap for submitting to the Telepathy AM.
+    QVariantMap parameters;
+    QStringList unsetParameters;
+
+    foreach (Tp::ProtocolParameter *pp, mandatoryParameterValues.keys()) {
+        QVariant value = mandatoryParameterValues.value(pp);
+
+        // Unset empty parameters.
+        if (!value.isNull()) {
+            parameters.insert(pp->name(), value);
+            continue;
+        }
+
+        unsetParameters.append(pp->name());
+    }
+
+    foreach (Tp::ProtocolParameter *pp, optionalParameterValues.keys()) {
+        QVariant value = optionalParameterValues.value(pp);
+
+        // Unset empty parameters.
+        if (!value.isNull()) {
+            parameters.insert(pp->name(), value);
+            continue;
+        }
+
+        unsetParameters.append(pp->name());
+    }
+
+    // FIXME: Ask the user to submit a Display Name
+    Tp::PendingStringList *psl = d->item->account()->updateParameters(parameters, unsetParameters);
+
+    connect(psl,
+            SIGNAL(finished(Tp::PendingOperation*)),
+            SLOT(onParametersUpdated(Tp::PendingOperation*)));
+}
+
+void EditAccountDialog::onParametersUpdated(Tp::PendingOperation *op)
+{
+    kDebug();
+
+    if (op->isError()) {
+        // FIXME: Visual feedback in GUI to user.
+        kWarning() << "Could not update parameters:" << op->errorName() << op->errorMessage();
+        return;
+    }
+
+    emit finished();
 }
 
 

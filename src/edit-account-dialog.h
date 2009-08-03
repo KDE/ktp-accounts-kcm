@@ -35,8 +35,16 @@ public:
     explicit EditAccountDialog(AccountItem *item, QWidget *parent = 0);
     virtual ~EditAccountDialog();
 
+protected Q_SLOTS:
+    virtual void slotButtonClicked(int button);
+
+private Q_SLOTS:
+    void onParametersUpdated(Tp::PendingOperation *op);
+
 private:
     Q_DISABLE_COPY(EditAccountDialog);
+
+    void accept();
 
     class Private;
     Private * const d;
