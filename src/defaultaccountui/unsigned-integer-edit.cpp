@@ -80,3 +80,6 @@ void UnsignedIntegerEdit::onTextChanged(const QString &text)
     Q_EMIT unsignedIntegerChanged(text.toUInt());
 }
 
+
+#include "unsigned-integer-edit.moc"
+

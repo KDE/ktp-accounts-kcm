@@ -94,3 +94,6 @@ void ParameterItem::setValue(const QVariant &value)
     m_currentValue = value;
 }
 
+
+#include "parameter-item.moc"
+

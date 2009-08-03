@@ -138,3 +138,6 @@ void ProtocolSelectWidget::onCurrentChanged(const QModelIndex &current)
     Q_EMIT selectedProtocolChanged(d->model->itemForIndex(current));
 }
 
+
+#include "protocol-select-widget.moc"
+

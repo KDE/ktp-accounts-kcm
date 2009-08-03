@@ -93,3 +93,6 @@ void IntegerEdit::onTextChanged(const QString &text)
     Q_EMIT integerChanged(text.toInt());
 }
 
+
+#include "integer-edit.moc"
+
