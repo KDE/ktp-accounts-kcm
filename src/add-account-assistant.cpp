@@ -228,17 +228,22 @@ void AddAccountAssistant::accept()
         return;
     }
 
-    // Get the mandatory parameters.
-    QMap<Tp::ProtocolParameter*, QVariant> mandatoryParameterValues;
-    mandatoryParameterValues = d->mandatoryParametersWidget->parameterValues();
+    // Check all pages of parameters pass validation.
+    if (!d->mandatoryParametersWidget->validateParameterValues()) {
+        kDebug() << "A widget failed parameter validation. Not accepting wizard.";
+        return;
+    }
 
-    foreach (const QVariant &value, mandatoryParameterValues.values()) {
-        if (value.toString().isEmpty()) {
-            KMessageBox::error(this, i18n("Please enter all mandatory parameters."));
+    foreach (AbstractAccountParametersWidget *w, d->optionalParametersWidgets) {
+        if (!w->validateParameterValues()) {
+            kDebug() << "A widget failed parameter validation. Not accepting wizard.";
             return;
         }
     }
 
+    // Get the mandatory parameters.
+    QMap<Tp::ProtocolParameter*, QVariant> mandatoryParameterValues;
+    mandatoryParameterValues = d->mandatoryParametersWidget->parameterValues();
 
     // Get the optional properties
     QMap<Tp::ProtocolParameter*, QVariant> optionalParameterValues;
@@ -313,10 +318,14 @@ void AddAccountAssistant::reject()
 void AddAccountAssistant::onAccountCreated(Tp::PendingOperation *op)
 {
     if (op->isError()) {
+        // TODO: User feedback in this case.
         kWarning() << "Adding Account failed:" << op->errorName() << op->errorMessage();
         return;
     }
 
     KAssistantDialog::accept();
 }
+
+
+#include "add-account-assistant.moc"
 
