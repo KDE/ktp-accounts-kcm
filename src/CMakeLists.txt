@@ -23,6 +23,8 @@ set (telepathy_accounts_kcm_SRCS
      defaultaccountui/parameter-item.cpp
      defaultaccountui/integer-edit.cpp
      defaultaccountui/unsigned-integer-edit.cpp
+     defaultaccountui/mandatory-parameter-edit-widget.cpp
+     defaultaccountui/optional-parameter-edit-widget.cpp
      dictionary.cpp
      plugin-manager.cpp
 )

@@ -18,32 +18,42 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
-#ifndef TELEPATHY_ACCOUNTS_KCM_PARAMETER_EDIT_WIDGET_H
-#define TELEPATHY_ACCOUNTS_KCM_PARAMETER_EDIT_WIDGET_H
+#include "optional-parameter-edit-widget.h"
 
-#include "libkcmtelepathyaccounts/abstract-account-parameters-widget.h"
+#include <KDebug>
 
-#include <TelepathyQt4/ConnectionManager>
-
-class ParameterEditWidget : public AbstractAccountParametersWidget
+class OptionalParameterEditWidget::Private
 {
-    Q_OBJECT
-
 public:
-    explicit ParameterEditWidget(Tp::ProtocolParameterList parameters,
-                                 QWidget *parent = 0);
-    ~ParameterEditWidget();
-
-    virtual QMap<Tp::ProtocolParameter*, QVariant> parameterValues() const;
-
-private Q_SLOTS:
-    void onDelegateDataChanged(const QModelIndex &index, const QVariant &value, int role);
-
-private:
-    class Private;
-    Private * const d;
+    Private()
+    {
+        kDebug();
+    }
 };
 
+OptionalParameterEditWidget::OptionalParameterEditWidget(Tp::ProtocolParameterList parameters,
+                                                           QWidget *parent)
+ : ParameterEditWidget(parameters, parent),
+   d(new Private)
+{
+    kDebug();
+}
 
-#endif  // Header guard
+OptionalParameterEditWidget::~OptionalParameterEditWidget()
+{
+    kDebug();
+
+    delete d;
+}
+
+bool OptionalParameterEditWidget::validateParameterValues()
+{
+    kDebug();
+
+    // TODO: Implement me!
+    return true;
+}
+
+
+#include "optional-parameter-edit-widget.moc"
 
