@@ -54,12 +54,15 @@ AccountItem::AccountItem(const Tp::AccountPtr &account, AccountsListModel *paren
 
     // We should look to see if the "account" instance we are passed is ready
     // yet. If not, we should get it ready now.
-    // FIXME: What features should we check are ready?
-    if (m_account->isReady()) {
+    Tp::Features features;
+    features << Tp::Account::FeatureCore
+             << Tp::Account::FeatureAvatar
+             << Tp::Account::FeatureProtocolInfo;
+
+    if (m_account->isReady(features)) {
         QTimer::singleShot(0, this, SIGNAL(ready()));
     } else {
-        // FIXME: What features should we get ready with?
-        connect(m_account->becomeReady(),
+        connect(m_account->becomeReady(features),
                 SIGNAL(finished(Tp::PendingOperation*)),
                 SLOT(onAccountReady(Tp::PendingOperation*)));
     }
