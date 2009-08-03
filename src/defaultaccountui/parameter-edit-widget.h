@@ -21,20 +21,20 @@
 #ifndef TELEPATHY_ACCOUNTS_KCM_PARAMETER_EDIT_WIDGET_H
 #define TELEPATHY_ACCOUNTS_KCM_PARAMETER_EDIT_WIDGET_H
 
-#include <QtGui/QWidget>
+#include "libkcmtelepathyaccounts/abstract-account-parameters-widget.h"
 
 #include <TelepathyQt4/ConnectionManager>
 
-class ParameterEditWidget : public QWidget
+class ParameterEditWidget : public AbstractAccountParametersWidget
 {
     Q_OBJECT
 
 public:
-    explicit ParameterEditWidget(QWidget *parent = 0);
+    explicit ParameterEditWidget(Tp::ProtocolParameterList parameters,
+                                 QWidget *parent = 0);
     ~ParameterEditWidget();
 
-    void setParameters(const Tp::ProtocolParameterList &parameters);
-    QMap<Tp::ProtocolParameter*, QVariant> parameterValues() const;
+    virtual QMap<Tp::ProtocolParameter*, QVariant> parameterValues() const;
 
 private Q_SLOTS:
     void onDelegateDataChanged(const QModelIndex &index, const QVariant &value, int role);

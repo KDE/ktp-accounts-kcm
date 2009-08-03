@@ -167,9 +167,8 @@ void AddAccountAssistant::next()
             }
 
             if (!d->mandatoryParametersWidget) {
-                ParameterEditWidget *paramEditWidget = new ParameterEditWidget(d->tabWidget);
+                ParameterEditWidget *paramEditWidget = new ParameterEditWidget(item->mandatoryParameters(), d->tabWidget);
                 d->mandatoryParametersWidget = paramEditWidget;
-                paramEditWidget->setParameters(item->mandatoryParameters());
             }
 
             d->tabWidget->addTab(d->mandatoryParametersWidget, i18n("Mandatory Parameters"));
@@ -207,9 +206,8 @@ void AddAccountAssistant::next()
 
             // Show the generic UI if optionalParameters is not empty.
             if (optionalParametersLeft.size() > 0) {
-                ParameterEditWidget *pew = new ParameterEditWidget(d->tabWidget);
+                ParameterEditWidget *pew = new ParameterEditWidget(optionalParametersLeft, d->tabWidget);
                 d->optionalParametersWidgets.append(pew);
-                pew->setParameters(optionalParametersLeft);
                 d->tabWidget->addTab(pew, i18n("Optional Parameters"));
             }
 

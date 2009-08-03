@@ -37,13 +37,13 @@ public:
     }
 
     Ui::ParameterEditWidget *ui;
-    Tp::ProtocolParameterList parameters;
     ParameterEditDelegate *delegate;
     ParameterEditModel *model;
 };
 
-ParameterEditWidget::ParameterEditWidget(QWidget *parent)
- : QWidget(parent),
+ParameterEditWidget::ParameterEditWidget(Tp::ProtocolParameterList parameters,
+                                         QWidget *parent)
+ : AbstractAccountParametersWidget(parameters, parent),
    d(new Private)
 {
     kDebug();
@@ -60,6 +60,11 @@ ParameterEditWidget::ParameterEditWidget(QWidget *parent)
     connect(d->delegate,
             SIGNAL(dataChanged(QModelIndex, QVariant, int)),
             SLOT(onDelegateDataChanged(QModelIndex, QVariant, int)));
+
+    // Add the parameters to the model.
+    foreach (Tp::ProtocolParameter *parameter, parameters) {
+        d->model->addItem(parameter, parameter->defaultValue());
+    }
 }
 
 ParameterEditWidget::~ParameterEditWidget()
@@ -67,16 +72,6 @@ ParameterEditWidget::~ParameterEditWidget()
     kDebug();
 
     delete d;
-}
-
-void ParameterEditWidget::setParameters(const Tp::ProtocolParameterList &parameters)
-{
-    kDebug();
-
-    // Add the parameters to the model.
-    foreach (Tp::ProtocolParameter *parameter, parameters) {
-        d->model->addItem(parameter, parameter->defaultValue());
-    }
 }
 
 QMap<Tp::ProtocolParameter*, QVariant> ParameterEditWidget::parameterValues() const
@@ -89,4 +84,7 @@ void ParameterEditWidget::onDelegateDataChanged(const QModelIndex &index, const 
 {
     d->model->setData(index, value, role);
 }
+
+
+#include "parameter-edit-widget.moc"
 
