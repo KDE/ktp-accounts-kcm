@@ -51,6 +51,7 @@ private Q_SLOTS:
     void generateIcon();
     void onAccountReady(Tp::PendingOperation *op);
     void onAccountRemoved(Tp::PendingOperation *op);
+    void onAccountEdited();
 
 Q_SIGNALS:
     void ready();

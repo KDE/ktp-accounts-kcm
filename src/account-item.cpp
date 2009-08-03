@@ -90,6 +90,12 @@ void AccountItem::edit()
     // FIXME: There should be a driving test for those who want to become parents... :'(
     QWidget *p = qobject_cast<QWidget*>(parent()->parent());
     m_editAccountDialog = new EditAccountDialog(this, p); // FIXME: Argh I'm going to jump off a bridge
+
+    // Connect to the dialog's signals.
+    connect(m_editAccountDialog,
+            SIGNAL(finished()),
+            SLOT(onAccountEdited()));
+
     m_editAccountDialog->show();
 }
 
@@ -163,6 +169,17 @@ void AccountItem::onAccountRemoved(Tp::PendingOperation *op)
 
     Q_EMIT removed();
 }
+
+void AccountItem::onAccountEdited()
+{
+    kDebug();
+
+    m_editAccountDialog->deleteLater();
+    m_editAccountDialog = 0;
+
+    Q_EMIT updated();
+}
+
 
 #include "account-item.moc"
 
