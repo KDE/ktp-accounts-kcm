@@ -21,7 +21,8 @@
 #include "add-account-assistant.h"
 
 #include "connection-manager-item.h"
-#include "parameter-edit-widget.h"
+#include "mandatory-parameter-edit-widget.h"
+#include "optional-parameter-edit-widget.h"
 #include "plugin-manager.h"
 #include "protocol-item.h"
 #include "protocol-select-widget.h"
@@ -170,7 +171,7 @@ void AddAccountAssistant::next()
             }
 
             if (!d->mandatoryParametersWidget) {
-                d->mandatoryParametersWidget = new ParameterEditWidget(item->mandatoryParameters(), d->tabWidget);
+                d->mandatoryParametersWidget = new MandatoryParameterEditWidget(item->mandatoryParameters(), d->tabWidget);
             }
 
             d->tabWidget->addTab(d->mandatoryParametersWidget, i18n("Mandatory Parameters"));
@@ -208,9 +209,10 @@ void AddAccountAssistant::next()
 
             // Show the generic UI if optionalParameters is not empty.
             if (optionalParametersLeft.size() > 0) {
-                ParameterEditWidget *pew = new ParameterEditWidget(optionalParametersLeft, d->tabWidget);
-                d->optionalParametersWidgets.append(pew);
-                d->tabWidget->addTab(pew, i18n("Optional Parameters"));
+                OptionalParameterEditWidget *opew =
+                        new OptionalParameterEditWidget(optionalParametersLeft, d->tabWidget);
+                d->optionalParametersWidgets.append(opew);
+                d->tabWidget->addTab(opew, i18n("Optional Parameters"));
             }
 
             KAssistantDialog::next();
