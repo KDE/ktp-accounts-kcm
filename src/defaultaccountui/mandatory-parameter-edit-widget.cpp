@@ -21,6 +21,8 @@
 #include "mandatory-parameter-edit-widget.h"
 
 #include <KDebug>
+#include <KLocale>
+#include <KMessageBox>
 
 class MandatoryParameterEditWidget::Private
 {
@@ -50,7 +52,13 @@ bool MandatoryParameterEditWidget::validateParameterValues()
 {
     kDebug();
 
-    // TODO: Implement me!
+    foreach (const QVariant &value, parameterValues().values()) {
+        if (value.toString().isEmpty()) {
+            KMessageBox::error(this, i18n("Please enter all mandatory parameters."));
+            return false;
+        }
+    }
+
     return true;
 }
 
