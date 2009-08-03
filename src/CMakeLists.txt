@@ -4,6 +4,8 @@ project (telepathy-accounts-kcm)
 
 include_directories (${CMAKE_CURRENT_BINARY_DIR}
                      ${CMAKE_CURRENT_SOURCE_DIR}
+                     ${CMAKE_CURRENT_BINARY_DIR}/defaultaccountui
+                     ${CMAKE_CURRENT_SOURCE_DIR}/defaultaccountui
 )
 
 set (telepathy_accounts_kcm_SRCS
@@ -15,12 +17,12 @@ set (telepathy_accounts_kcm_SRCS
      protocol-list-model.cpp
      connection-manager-item.cpp
      protocol-item.cpp
-     parameter-edit-widget.cpp
-     parameter-edit-delegate.cpp
-     parameter-edit-model.cpp
-     parameter-item.cpp
-     integer-edit.cpp
-     unsigned-integer-edit.cpp
+     defaultaccountui/parameter-edit-widget.cpp
+     defaultaccountui/parameter-edit-delegate.cpp
+     defaultaccountui/parameter-edit-model.cpp
+     defaultaccountui/parameter-item.cpp
+     defaultaccountui/integer-edit.cpp
+     defaultaccountui/unsigned-integer-edit.cpp
      dictionary.cpp
      plugin-manager.cpp
 )
@@ -28,7 +30,7 @@ set (telepathy_accounts_kcm_SRCS
 kde4_add_ui_files (telepathy_accounts_kcm_SRCS
                    main-widget.ui
                    protocol-select-widget.ui
-                   parameter-edit-widget.ui
+                   defaultaccountui/parameter-edit-widget.ui
 )
 
 kde4_add_plugin (kcm_telepathy_accounts
