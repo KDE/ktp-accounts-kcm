@@ -24,30 +24,30 @@ set (libkcmtelepathyaccounts_PRETTY_HDRS
      include/PluginMacros
 )
 
-kde4_add_library (libkcmtelepathyaccounts
+kde4_add_library (kcmtelepathyaccounts
                   SHARED
                   ${libkcmtelepathyaccounts_SRCS}
 )
 
-target_link_libraries (libkcmtelepathyaccounts
+target_link_libraries (kcmtelepathyaccounts
                        ${QT_LIBRARIES}
                        ${KDE4_KDEUI_LIBS}
                        ${TELEPATHY_QT4_LIBRARIES}
 )
 
-set_target_properties (libkcmtelepathyaccounts PROPERTIES
+set_target_properties (kcmtelepathyaccounts PROPERTIES
                        VERSION ${GENERIC_LIB_VERSION}
                        SOVERSION ${GENERIC_LIB_SOVERSION}
 )
 
 if (MSVC)
-    set_target_properties (libkcmtelepathyaccounts PROPERTIES
+    set_target_properties (kcmtelepathyaccounts PROPERTIES
                            OUTPUT_NAME libkcmtelepathyaccounts
     )
 endif (MSVC)
 
 # Install:
-install (TARGETS libkcmtelepathyaccounts
+install (TARGETS kcmtelepathyaccounts
          ${INSTALL_TARGETS_DEFAULT_ARGS}
 )
 
