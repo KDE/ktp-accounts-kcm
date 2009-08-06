@@ -59,8 +59,11 @@ ProtocolSelectWidget::ProtocolSelectWidget(QWidget *parent)
     d->ui->protocolListView->setModel(d->model);
 
     connect(d->ui->protocolListView->selectionModel(),
-            SIGNAL(currentChanged(const QModelIndex &, const QModelIndex &)),
-            SLOT(onCurrentChanged(const QModelIndex &)));
+            SIGNAL(selectionChanged(const QItemSelection &, const QItemSelection &)),
+            SLOT(onSelectionChanged(const QItemSelection &)));
+    connect(d->ui->protocolListView,
+            SIGNAL(doubleClicked(QModelIndex)),
+            SIGNAL(protocolDoubleClicked()));
 
     // Load the list of all installed Telepathy Connection Managers Asynchronously
     QTimer::singleShot(0, this, SLOT(getConnectionManagerList()));
@@ -131,11 +134,11 @@ ProtocolItem *ProtocolSelectWidget::selectedProtocol()
     return d->model->itemForIndex(selectedIndexes.at(0));
 }
 
-void ProtocolSelectWidget::onCurrentChanged(const QModelIndex &current)
+void ProtocolSelectWidget::onSelectionChanged(const QItemSelection &selected)
 {
     kDebug();
 
-    Q_EMIT selectedProtocolChanged(d->model->itemForIndex(current));
+    Q_EMIT protocolGotSelected(!selected.isEmpty());
 }
 
 

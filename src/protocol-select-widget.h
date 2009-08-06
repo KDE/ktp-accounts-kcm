@@ -24,6 +24,7 @@
 #include <QtGui/QWidget>
 
 class ProtocolItem;
+class QItemSelection;
 
 class QModelIndex;
 
@@ -44,10 +45,11 @@ public:
 private Q_SLOTS:
     void getConnectionManagerList();
     void onConnectionManagerListGot(Tp::PendingOperation *op);
-    void onCurrentChanged(const QModelIndex &current);
+    void onSelectionChanged(const QItemSelection &selected);
 
 Q_SIGNALS:
-    void selectedProtocolChanged(ProtocolItem *item);
+    void protocolGotSelected(bool selected);
+    void protocolDoubleClicked();
 
 private:
     class Private;

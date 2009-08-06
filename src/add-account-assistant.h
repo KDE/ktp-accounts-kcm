@@ -47,6 +47,7 @@ Q_SIGNALS:
 
 private Q_SLOTS:
     void onAccountCreated(Tp::PendingOperation *op);
+    void onProtocolSelected(bool value);
 
 private:
     class Private;

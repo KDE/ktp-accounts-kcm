@@ -75,6 +75,14 @@ AddAccountAssistant::AddAccountAssistant(Tp::AccountManagerPtr accountManager, Q
     d->protocolSelectWidget = new ProtocolSelectWidget(this);
     d->pageOne = new KPageWidgetItem(d->protocolSelectWidget);
     d->pageOne->setHeader(i18n("Step 1: Select an Instant Messaging Network."));
+    setValid(d->pageOne, false);
+    connect(d->protocolSelectWidget,
+            SIGNAL(protocolGotSelected(bool)),
+            SLOT(onProtocolSelected(bool)));
+    connect(d->protocolSelectWidget,
+            SIGNAL(protocolDoubleClicked()),
+            SLOT(next()));
+
     d->tabWidget = new KTabWidget(this);
     d->pageTwo = new KPageWidgetItem(d->tabWidget);
     d->pageTwo->setHeader(i18n("Step 2: Fill in the required Parameters."));
@@ -102,124 +110,120 @@ void AddAccountAssistant::next()
     // Check which page we are on.
     if (currentPage() == d->pageOne) {
         kDebug() << "Current page: Page 1.";
-        // Page 1
 
-        // Check if the protocol is selected. If it is, set up the next page and continue to it.
-        if (d->protocolSelectWidget->selectedProtocol()) {
-            kDebug() << "Protocol is selected. Set up and continue to the next page.";
+        Q_ASSERT(d->protocolSelectWidget->selectedProtocol());
 
-            // Set up the next page.
-            ProtocolItem *item = d->protocolSelectWidget->selectedProtocol();
+        // Set up the next page.
+        ProtocolItem *item = d->protocolSelectWidget->selectedProtocol();
 
-            ConnectionManagerItem *cmItem = qobject_cast<ConnectionManagerItem*>(item->parent());
-            if (!cmItem) {
-                kWarning() << "cmItem is invalid.";
-            }
-
-            QString connectionManager = cmItem->connectionManager()->name();
-            QString protocol = item->protocol();
-
-            // Get the AccountsUi for the plugin, and get the optional parameter widgets for it.
-            AbstractAccountUi *ui = PluginManager::instance()->accountUiForProtocol(connectionManager,
-                                                                                    protocol);
-
-            // Delete the widgets for the next page if they already exist
-            if (d->mandatoryParametersWidget) {
-                d->mandatoryParametersWidget->deleteLater();
-                d->mandatoryParametersWidget = 0;
-            }
-
-            foreach (AbstractAccountParametersWidget *w, d->optionalParametersWidgets) {
-                if (w) {
-                    w->deleteLater();
-                }
-            }
-            d->optionalParametersWidgets.clear();
-
-            // Set up the Mandatory Parameters page
-            Tp::ProtocolParameterList mandatoryParameters = item->mandatoryParameters();
-            Tp::ProtocolParameterList mandatoryParametersLeft = item->mandatoryParameters();
-
-            // Create the custom UI or generic UI depending on available parameters.
-            if (ui) {
-                // UI does exist, set it up.
-                AbstractAccountParametersWidget *widget = ui->mandatoryParametersWidget(mandatoryParameters);
-                QMap<QString, QVariant::Type> manParams = ui->supportedMandatoryParameters();
-                QMap<QString, QVariant::Type>::const_iterator manIter = manParams.constBegin();
-                while(manIter != manParams.constEnd()) {
-                    foreach (Tp::ProtocolParameter *parameter, mandatoryParameters) {
-                        // If the parameter is not
-                        if ((parameter->name() == manIter.key()) &&
-                            (parameter->type() == manIter.value())) {
-                            mandatoryParametersLeft.removeAll(parameter);
-                        }
-                    }
-
-                    ++manIter;
-                }
-
-                if (mandatoryParametersLeft.isEmpty()) {
-                    d->mandatoryParametersWidget = widget;
-                } else {
-                    // FIXME: At the moment, if the custom widget can't handle all the mandatory
-                    // parameters we fall back to the generic one for all of them. It might be nicer
-                    // to have the custom UI for as many as possible, and stick a small generic one
-                    // underneath for those parameters it doesn't handle.
-                    widget->deleteLater();
-                    widget = 0;
-                }
-            }
-
-            if (!d->mandatoryParametersWidget) {
-                d->mandatoryParametersWidget = new MandatoryParameterEditWidget(
-                        item->mandatoryParameters(), QVariantMap(), d->tabWidget);
-            }
-
-            d->tabWidget->addTab(d->mandatoryParametersWidget, i18n("Mandatory Parameters"));
-
-            // Get the list of parameters
-            Tp::ProtocolParameterList optionalParameters = item->optionalParameters();
-            Tp::ProtocolParameterList optionalParametersLeft = item->optionalParameters();
-
-            // Check if the AbstractAccountUi exists. If not then we use the autogenerated UI for
-            // everything.
-            if (ui) {
-                // UI Does exist, set it up.
-                QList<AbstractAccountParametersWidget*> widgets = ui->optionalParametersWidgets(optionalParameters);
-
-                // Remove all handled parameters from the optionalParameters list.
-                QMap<QString, QVariant::Type> opParams = ui->supportedOptionalParameters();
-                QMap<QString, QVariant::Type>::const_iterator opIter = opParams.constBegin();
-                while(opIter != opParams.constEnd()) {
-                    foreach (Tp::ProtocolParameter *parameter, optionalParameters) {
-                        // If the parameter is not
-                        if ((parameter->name() == opIter.key()) &&
-                            (parameter->type() == opIter.value())) {
-                            optionalParametersLeft.removeAll(parameter);
-                        }
-                    }
-
-                    ++opIter;
-                }
-
-                foreach (AbstractAccountParametersWidget *widget, widgets) {
-                    d->optionalParametersWidgets.append(widget);
-                    d->tabWidget->addTab(widget, i18n("Optional Parameters"));
-                }
-            }
-
-            // Show the generic UI if optionalParameters is not empty.
-            if (optionalParametersLeft.size() > 0) {
-                OptionalParameterEditWidget *opew =
-                        new OptionalParameterEditWidget(optionalParametersLeft,
-                                                        QVariantMap(),
-                                                        d->tabWidget);
-                d->optionalParametersWidgets.append(opew);
-                d->tabWidget->addTab(opew, i18n("Optional Parameters"));
-            }
-
-            KAssistantDialog::next();
+        ConnectionManagerItem *cmItem = qobject_cast<ConnectionManagerItem*>(item->parent());
+        if (!cmItem) {
+            kWarning() << "cmItem is invalid.";
         }
+
+        QString connectionManager = cmItem->connectionManager()->name();
+        QString protocol = item->protocol();
+
+        // Get the AccountsUi for the plugin, and get the optional parameter widgets for it.
+        AbstractAccountUi *ui = PluginManager::instance()->accountUiForProtocol(connectionManager,
+                                                                                protocol);
+
+        // Delete the widgets for the next page if they already exist
+        if (d->mandatoryParametersWidget) {
+            d->mandatoryParametersWidget->deleteLater();
+            d->mandatoryParametersWidget = 0;
+        }
+
+        foreach (AbstractAccountParametersWidget *w, d->optionalParametersWidgets) {
+            if (w) {
+                w->deleteLater();
+            }
+        }
+        d->optionalParametersWidgets.clear();
+
+        // Set up the Mandatory Parameters page
+        Tp::ProtocolParameterList mandatoryParameters = item->mandatoryParameters();
+        Tp::ProtocolParameterList mandatoryParametersLeft = item->mandatoryParameters();
+
+        // Create the custom UI or generic UI depending on available parameters.
+        if (ui) {
+            // UI does exist, set it up.
+            AbstractAccountParametersWidget *widget = ui->mandatoryParametersWidget(mandatoryParameters);
+            QMap<QString, QVariant::Type> manParams = ui->supportedMandatoryParameters();
+            QMap<QString, QVariant::Type>::const_iterator manIter = manParams.constBegin();
+            while(manIter != manParams.constEnd()) {
+                foreach (Tp::ProtocolParameter *parameter, mandatoryParameters) {
+                    // If the parameter is not
+                    if ((parameter->name() == manIter.key()) &&
+                        (parameter->type() == manIter.value())) {
+                        mandatoryParametersLeft.removeAll(parameter);
+                    }
+                }
+
+                ++manIter;
+            }
+
+            if (mandatoryParametersLeft.isEmpty()) {
+                d->mandatoryParametersWidget = widget;
+            } else {
+                // FIXME: At the moment, if the custom widget can't handle all the mandatory
+                // parameters we fall back to the generic one for all of them. It might be nicer
+                // to have the custom UI for as many as possible, and stick a small generic one
+                // underneath for those parameters it doesn't handle.
+                widget->deleteLater();
+                widget = 0;
+            }
+        }
+
+        if (!d->mandatoryParametersWidget) {
+            d->mandatoryParametersWidget = new MandatoryParameterEditWidget(
+                    item->mandatoryParameters(), QVariantMap(), d->tabWidget);
+        }
+
+        d->tabWidget->addTab(d->mandatoryParametersWidget, i18n("Mandatory Parameters"));
+
+        // Get the list of parameters
+        Tp::ProtocolParameterList optionalParameters = item->optionalParameters();
+        Tp::ProtocolParameterList optionalParametersLeft = item->optionalParameters();
+
+        // Check if the AbstractAccountUi exists. If not then we use the autogenerated UI for
+        // everything.
+        if (ui) {
+            // UI Does exist, set it up.
+            QList<AbstractAccountParametersWidget*> widgets = ui->optionalParametersWidgets(optionalParameters);
+
+            // Remove all handled parameters from the optionalParameters list.
+            QMap<QString, QVariant::Type> opParams = ui->supportedOptionalParameters();
+            QMap<QString, QVariant::Type>::const_iterator opIter = opParams.constBegin();
+            while(opIter != opParams.constEnd()) {
+                foreach (Tp::ProtocolParameter *parameter, optionalParameters) {
+                    // If the parameter is not
+                    if ((parameter->name() == opIter.key()) &&
+                        (parameter->type() == opIter.value())) {
+                        optionalParametersLeft.removeAll(parameter);
+                    }
+                }
+
+                ++opIter;
+            }
+
+            foreach (AbstractAccountParametersWidget *widget, widgets) {
+                d->optionalParametersWidgets.append(widget);
+                d->tabWidget->addTab(widget, i18n("Optional Parameters"));
+            }
+        }
+
+        // Show the generic UI if optionalParameters is not empty.
+        if (optionalParametersLeft.size() > 0) {
+            OptionalParameterEditWidget *opew =
+                    new OptionalParameterEditWidget(optionalParametersLeft,
+                                                    QVariantMap(),
+                                                    d->tabWidget);
+            d->optionalParametersWidgets.append(opew);
+            d->tabWidget->addTab(opew, i18n("Optional Parameters"));
+        }
+
+        KAssistantDialog::next();
     }
 }
 
@@ -329,6 +333,12 @@ void AddAccountAssistant::onAccountCreated(Tp::PendingOperation *op)
     }
 
     KAssistantDialog::accept();
+}
+
+void AddAccountAssistant::onProtocolSelected(bool value)
+{
+    //if a protocol is selected, enable the next button on the first page
+    setValid(d->pageOne, value);
 }
 
 
