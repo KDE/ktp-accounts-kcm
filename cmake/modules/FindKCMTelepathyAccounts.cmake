@@ -16,7 +16,7 @@ endif (KCMTELEPATHYACCOUNTS_INCLUDE_DIR AND KCMTELEPATHYACCOUNTS_LIBRARIES)
 
 find_path(KCMTELEPATHYACCOUNTS_INCLUDE_DIR
   NAMES KCMTelepathyAccounts/AbstractAccountUi KCMTelepathyAccounts/abstract-account-parameters-widget.h)
-find_library(KCMTELEPATHYACCOUNTS_LIBRARIES NAMES libkcmtelepathyaccounts )
+find_library(KCMTELEPATHYACCOUNTS_LIBRARIES NAMES kcmtelepathyaccounts )
 
 include(FindPackageHandleStandardArgs)
 FIND_PACKAGE_HANDLE_STANDARD_ARGS(KCMTELEPATHYACCOUNTS DEFAULT_MSG
