@@ -8,6 +8,8 @@ set (libkcmtelepathyaccounts_SRCS
      abstract-account-ui-plugin.cpp
      abstract-account-ui.cpp
      abstract-account-parameters-widget.cpp
+     integer-edit.cpp
+     unsigned-integer-edit.cpp
 )
 
 set (libkcmtelepathyaccounts_HDRS
@@ -15,6 +17,8 @@ set (libkcmtelepathyaccounts_HDRS
      abstract-account-ui.h
      abstract-account-parameters-widget.h
      plugin-macros.h
+     integer-edit.h
+     unsigned-integer-edit.h
 )
 
 set (libkcmtelepathyaccounts_PRETTY_HDRS
@@ -22,6 +26,8 @@ set (libkcmtelepathyaccounts_PRETTY_HDRS
      include/AbstractAccountUi
      include/AbstractAccountParametersWidget
      include/PluginMacros
+     include/IntegerEdit
+     include/UnsignedIntegerEdit
 )
 
 kde4_add_library (kcmtelepathyaccounts

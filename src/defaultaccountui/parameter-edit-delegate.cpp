@@ -20,9 +20,10 @@
 
 #include "parameter-edit-delegate.h"
 
-#include "integer-edit.h"
 #include "parameter-edit-model.h"
-#include "unsigned-integer-edit.h"
+
+#include "libkcmtelepathyaccounts/integer-edit.h"
+#include "libkcmtelepathyaccounts/unsigned-integer-edit.h"
 
 #include <KDebug>
 

@@ -21,8 +21,6 @@ set (telepathy_accounts_kcm_SRCS
      defaultaccountui/parameter-edit-delegate.cpp
      defaultaccountui/parameter-edit-model.cpp
      defaultaccountui/parameter-item.cpp
-     defaultaccountui/integer-edit.cpp
-     defaultaccountui/unsigned-integer-edit.cpp
      defaultaccountui/mandatory-parameter-edit-widget.cpp
      defaultaccountui/optional-parameter-edit-widget.cpp
      dictionary.cpp
