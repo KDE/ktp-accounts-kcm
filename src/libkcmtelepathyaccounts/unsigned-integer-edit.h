@@ -33,6 +33,7 @@ public:
     explicit UnsignedIntegerEdit(QWidget *parent = 0);
     virtual ~UnsignedIntegerEdit();
 
+    uint value() const;
     void setValue(uint unsignedInteger);
 
 protected:

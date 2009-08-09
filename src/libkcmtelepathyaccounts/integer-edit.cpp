@@ -35,6 +35,11 @@ IntegerEdit::~IntegerEdit()
 
 }
 
+int IntegerEdit::value() const
+{
+    return text().toInt();
+}
+
 void IntegerEdit::setValue(int integer)
 {
     setText(QString::number(integer));

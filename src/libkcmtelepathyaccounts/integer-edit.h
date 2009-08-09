@@ -33,6 +33,7 @@ public:
     explicit IntegerEdit(QWidget *parent = 0);
     virtual ~IntegerEdit();
 
+    int value() const;
     void setValue(int integer);
 
 protected:

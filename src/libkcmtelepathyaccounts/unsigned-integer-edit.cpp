@@ -35,6 +35,11 @@ UnsignedIntegerEdit::~UnsignedIntegerEdit()
 
 }
 
+uint UnsignedIntegerEdit::value() const
+{
+    return text().toUInt();
+}
+
 void UnsignedIntegerEdit::setValue(uint unsignedInteger)
 {
     setText(QString::number(unsignedInteger));
