@@ -44,6 +44,14 @@ GabbleAccountUi::GabbleAccountUi(QObject *parent)
     // Register supported parameters
     registerSupportedMandatoryParameter("account", QVariant::String);
     registerSupportedMandatoryParameter("password", QVariant::String);
+
+    registerSupportedOptionalParameter("port", QVariant::UInt);
+    registerSupportedOptionalParameter("server", QVariant::String);
+    registerSupportedOptionalParameter("require-encryption", QVariant::Bool);
+    registerSupportedOptionalParameter("old-ssl", QVariant::Bool);
+    registerSupportedOptionalParameter("low-bandwidth", QVariant::Bool);
+    registerSupportedOptionalParameter("ignore-ssl-errors", QVariant::Bool);
+    registerSupportedOptionalParameter("keepalive-interval", QVariant::UInt);
 }
 
 GabbleAccountUi::~GabbleAccountUi()

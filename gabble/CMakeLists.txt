@@ -8,10 +8,12 @@ set (kcmtelepathyaccounts_plugin_gabble_SRCS
      gabble-account-ui-plugin.cpp
      gabble-account-ui.cpp
      mandatory-parameters-widget.cpp
+     server-settings-widget.cpp
 )
 
 kde4_add_ui_files (kcmtelepathyaccounts_plugin_gabble_SRCS
                    mandatory-parameters-widget.ui
+                   server-settings-widget.ui
 )
 
 kde4_add_plugin (kcmtelepathyaccounts_plugin_gabble
