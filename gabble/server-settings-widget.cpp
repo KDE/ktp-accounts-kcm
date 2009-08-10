@@ -244,6 +244,8 @@ QMap<Tp::ProtocolParameter*, QVariant> ServerSettingsWidget::parameterValues() c
 
 bool ServerSettingsWidget::validateParameterValues()
 {
+    kDebug();
+
     return true;
 }
 

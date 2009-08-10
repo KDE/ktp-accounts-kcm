@@ -21,6 +21,7 @@
 #include "gabble-account-ui.h"
 
 #include "mandatory-parameters-widget.h"
+#include "server-settings-widget.h"
 
 #include <KCMTelepathyAccounts/AbstractAccountParametersWidget>
 
@@ -76,10 +77,12 @@ QList<AbstractAccountParametersWidget*> GabbleAccountUi::optionalParametersWidge
 {
     kDebug();
 
-    // TODO: Implement me!
-    Q_UNUSED(parameters);
-    Q_UNUSED(values);
-    return QList<AbstractAccountParametersWidget*>();
+    QList<AbstractAccountParametersWidget*> widgets;
+
+    // Add each of the optional parameter widgets.
+    widgets.append(new ServerSettingsWidget(parameters, values));
+
+    return widgets;
 }
 
 

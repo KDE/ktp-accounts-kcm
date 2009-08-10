@@ -123,6 +123,8 @@ QMap<Tp::ProtocolParameter*, QVariant> MandatoryParametersWidget::parameterValue
 
 bool MandatoryParametersWidget::validateParameterValues()
 {
+    kDebug();
+
     // Check if both the password and account have been entered. If not, alert the user.
     if ((d->ui->passwordLineEdit->text().isEmpty()) ||
         (d->ui->accountLineEdit->text().isEmpty())) {
