@@ -75,12 +75,16 @@ MandatoryParametersWidget::MandatoryParametersWidget(Tp::ProtocolParameterList p
     if (d->accountParameter) {
         if (values.contains(d->accountParameter->name())) {
             d->ui->accountLineEdit->setText(values.value(d->accountParameter->name()).toString());
+        } else {
+            d->ui->accountLineEdit->setText(d->accountParameter->defaultValue().toString());
         }
     }
 
     if (d->passwordParameter) {
         if (values.contains(d->passwordParameter->name())) {
             d->ui->passwordLineEdit->setText(values.value(d->passwordParameter->name()).toString());
+        } else {
+            d->ui->passwordLineEdit->setText(d->passwordParameter->defaultValue().toString());
         }
     }
 

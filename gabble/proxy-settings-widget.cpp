@@ -118,12 +118,16 @@ ProxySettingsWidget::ProxySettingsWidget(Tp::ProtocolParameterList parameters,
         if (values.contains(d->stunServerParameter->name())) {
             d->ui->stunServerLineEdit->setText(values.value(
                     d->stunServerParameter->name()).toString());
+        } else {
+            d->ui->stunServerLineEdit->setText(d->stunServerParameter->defaultValue().toString());
         }
     }
 
     if (d->stunPortParameter) {
         if (values.contains(d->stunPortParameter->name())) {
             d->ui->stunPortLineEdit->setValue(values.value(d->stunPortParameter->name()).toUInt());
+        } else {
+            d->ui->stunPortLineEdit->setValue(d->stunPortParameter->defaultValue().toUInt());
         }
     }
 
@@ -131,6 +135,9 @@ ProxySettingsWidget::ProxySettingsWidget(Tp::ProtocolParameterList parameters,
         if (values.contains(d->fallbackStunServerParameter->name())) {
             d->ui->fallbackStunServerLineEdit->setText(values.value(
                     d->fallbackStunServerParameter->name()).toString());
+        } else {
+            d->ui->fallbackStunServerLineEdit->setText(
+                    d->fallbackStunServerParameter->defaultValue().toString());
         }
     }
 
@@ -138,6 +145,9 @@ ProxySettingsWidget::ProxySettingsWidget(Tp::ProtocolParameterList parameters,
         if (values.contains(d->fallbackStunPortParameter->name())) {
             d->ui->fallbackStunPortLineEdit->setValue(values.value(
                     d->fallbackStunPortParameter->name()).toUInt());
+        } else {
+            d->ui->fallbackStunPortLineEdit->setValue(
+                    d->fallbackStunPortParameter->defaultValue().toUInt());
         }
     }
 
@@ -145,6 +155,9 @@ ProxySettingsWidget::ProxySettingsWidget(Tp::ProtocolParameterList parameters,
         if (values.contains(d->httpsProxyServerParameter->name())) {
             d->ui->httpsProxyServerLineEdit->setText(values.value(
                     d->httpsProxyServerParameter->name()).toString());
+        } else {
+            d->ui->httpsProxyServerLineEdit->setText(
+                    d->httpsProxyServerParameter->defaultValue().toString());
         }
     }
 
@@ -152,6 +165,9 @@ ProxySettingsWidget::ProxySettingsWidget(Tp::ProtocolParameterList parameters,
         if (values.contains(d->httpsProxyPortParameter->name())) {
             d->ui->httpsProxyPortLineEdit->setValue(values.value(
                     d->httpsProxyPortParameter->name()).toUInt());
+        } else {
+            d->ui->httpsProxyPortLineEdit->setValue(
+                    d->httpsProxyServerParameter->defaultValue().toUInt());
         }
     }
 
@@ -161,6 +177,11 @@ ProxySettingsWidget::ProxySettingsWidget(Tp::ProtocolParameterList parameters,
                      values.value(d->fallbackSocks5ProxiesParameter->name()).toStringList()) {
                 d->ui->fallbackSocks5ProxiesTextEdit->append(line);
             }
+        } else {
+            foreach (const QString &line,
+                     d->fallbackSocks5ProxiesParameter->defaultValue().toStringList()) {
+                d->ui->fallbackSocks5ProxiesTextEdit->append(line);
+            }
         }
     }
 
@@ -168,6 +189,9 @@ ProxySettingsWidget::ProxySettingsWidget(Tp::ProtocolParameterList parameters,
         if (values.contains(d->fallbackConferenceServerParameter->name())) {
             d->ui->fallbackConferenceServerLineEdit->setText(values.value(
                     d->fallbackConferenceServerParameter->name()).toString());
+        } else {
+            d->ui->fallbackConferenceServerLineEdit->setText(
+                    d->fallbackConferenceServerParameter->defaultValue().toString());
         }
     }
 

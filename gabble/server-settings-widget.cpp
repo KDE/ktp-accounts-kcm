@@ -105,12 +105,16 @@ ServerSettingsWidget::ServerSettingsWidget(Tp::ProtocolParameterList parameters,
     if (d->serverParameter) {
         if (values.contains(d->serverParameter->name())) {
             d->ui->serverLineEdit->setText(values.value(d->serverParameter->name()).toString());
+        } else {
+            d->ui->serverLineEdit->setText(d->serverParameter->defaultValue().toString());
         }
     }
 
     if (d->portParameter) {
         if (values.contains(d->portParameter->name())) {
             d->ui->portLineEdit->setValue(values.value(d->portParameter->name()).toUInt());
+        } else {
+            d->ui->portLineEdit->setValue(d->portParameter->defaultValue().toUInt());
         }
     }
 
@@ -118,6 +122,9 @@ ServerSettingsWidget::ServerSettingsWidget(Tp::ProtocolParameterList parameters,
         if (values.contains(d->keepaliveIntervalParameter->name())) {
             d->ui->keepaliveIntervalLineEdit->setValue(values.value(
                     d->keepaliveIntervalParameter->name()).toUInt());
+        } else {
+            d->ui->keepaliveIntervalLineEdit->setValue(
+                    d->keepaliveIntervalParameter->defaultValue().toUInt());
         }
     }
 
@@ -125,6 +132,9 @@ ServerSettingsWidget::ServerSettingsWidget(Tp::ProtocolParameterList parameters,
         if (values.contains(d->lowBandwidthParameter->name())) {
             d->ui->lowBandwidthCheckBox->setChecked(values.value(
                     d->lowBandwidthParameter->name()).toBool());
+        } else {
+            d->ui->lowBandwidthCheckBox->setChecked(
+                    d->lowBandwidthParameter->defaultValue().toBool());
         }
     }
 
@@ -132,6 +142,9 @@ ServerSettingsWidget::ServerSettingsWidget(Tp::ProtocolParameterList parameters,
         if (values.contains(d->requireEncryptionParameter->name())) {
             d->ui->requireEncryptionCheckBox->setChecked(values.value(
                     d->requireEncryptionParameter->name()).toBool());
+        } else {
+            d->ui->requireEncryptionCheckBox->setChecked(
+                    d->requireEncryptionParameter->defaultValue().toBool());
         }
     }
 
@@ -139,12 +152,17 @@ ServerSettingsWidget::ServerSettingsWidget(Tp::ProtocolParameterList parameters,
         if (values.contains(d->ignoreSslErrorsParameter->name())) {
             d->ui->ignoreSslErrorsCheckBox->setChecked(values.value(
                     d->ignoreSslErrorsParameter->name()).toBool());
+        } else {
+            d->ui->ignoreSslErrorsCheckBox->setChecked(
+                    d->ignoreSslErrorsParameter->defaultValue().toBool());
         }
     }
 
     if (d->oldSslParameter) {
         if (values.contains(d->oldSslParameter->name())) {
             d->ui->oldSslCheckBox->setChecked(values.value(d->oldSslParameter->name()).toBool());
+        } else {
+            d->ui->oldSslCheckBox->setChecked(d->oldSslParameter->defaultValue().toBool());
         }
     }
 
