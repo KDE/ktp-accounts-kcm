@@ -31,6 +31,7 @@
 #include <TelepathyQt4/Account>
 #include <TelepathyQt4/PendingOperation>
 #include <TelepathyQt4/PendingReady>
+#include <TelepathyQt4/Types>
 
 
 K_PLUGIN_FACTORY(KCMTelepathyAccountsFactory, registerPlugin<KCMTelepathyAccounts>();)
@@ -43,6 +44,9 @@ KCMTelepathyAccounts::KCMTelepathyAccounts(QWidget *parent, const QVariantList& 
    m_addAccountAssistant(0)
 {
     kDebug();
+
+    // The first thing we must do is register Telepathy DBus Types.
+    Tp::registerTypes();
 
     // Start setting up the Telepathy AccountManager.
     m_accountManager = Tp::AccountManager::create();
