@@ -20,8 +20,8 @@
 
 #include "plugin-manager.h"
 
-#include "libkcmtelepathyaccounts/abstract-account-ui-plugin.h"
-#include "libkcmtelepathyaccounts/abstract-account-ui.h"
+#include "abstract-account-ui-plugin.h"
+#include "abstract-account-ui.h"
 
 #include <KDebug>
 #include <KServiceTypeTrader>

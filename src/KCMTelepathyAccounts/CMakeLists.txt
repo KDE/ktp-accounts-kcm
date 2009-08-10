@@ -10,6 +10,18 @@ set (libkcmtelepathyaccounts_SRCS
      abstract-account-parameters-widget.cpp
      integer-edit.cpp
      unsigned-integer-edit.cpp
+     protocol-select-widget.cpp
+     protocol-list-model.cpp
+     connection-manager-item.cpp
+     protocol-item.cpp
+     parameter-edit-widget.cpp
+     parameter-edit-delegate.cpp
+     parameter-edit-model.cpp
+     parameter-item.cpp
+     mandatory-parameter-edit-widget.cpp
+     optional-parameter-edit-widget.cpp
+     dictionary.cpp
+     plugin-manager.cpp
 )
 
 set (libkcmtelepathyaccounts_HDRS
@@ -19,6 +31,13 @@ set (libkcmtelepathyaccounts_HDRS
      plugin-macros.h
      integer-edit.h
      unsigned-integer-edit.h
+     connection-manager-item.h
+     mandatory-parameter-edit-widget.h
+     optional-parameter-edit-widget.h
+     plugin-manager.h
+     protocol-select-widget.h
+     protocol-item.h
+     parameter-edit-widget.h
 )
 
 set (libkcmtelepathyaccounts_PRETTY_HDRS
@@ -28,6 +47,18 @@ set (libkcmtelepathyaccounts_PRETTY_HDRS
      include/PluginMacros
      include/IntegerEdit
      include/UnsignedIntegerEdit
+     include/ConnectionManagerItem
+     include/MandatoryParameterEditWidget
+     include/OptionalParameterEditWidget
+     include/PluginManager
+     include/ProtocolSelectWidget
+     include/ProtocolItem
+     include/ParameterEditWidget
+)
+
+kde4_add_ui_files (libkcmtelepathyaccounts_SRCS
+                   parameter-edit-widget.ui
+                   protocol-select-widget.ui
 )
 
 kde4_add_library (kcmtelepathyaccounts

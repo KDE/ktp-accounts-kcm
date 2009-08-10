@@ -18,40 +18,30 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
-#ifndef TELEPATHY_ACCOUNTS_KCM_CONNECTION_MANAGER_ITEM_H
-#define TELEPATHY_ACCOUNTS_KCM_CONNECTION_MANAGER_ITEM_H
+#ifndef TELEPATHY_ACCOUNTS_KCM_MANDATORY_PARAMETER_EDIT_WIDGET_H
+#define TELEPATHY_ACCOUNTS_KCM_MANDATORY_PARAMETER_EDIT_WIDGET_H
 
-#include <QtCore/QObject>
+#include <KCMTelepathyAccounts/parameter-edit-widget.h>
 
-#include <TelepathyQt4/ConnectionManager>
+#include <kdemacros.h>
 
-class ProtocolListModel;
-
-namespace Tp {
-    class PendingOperation;
-}
-
-class ConnectionManagerItem : public QObject
+class KDE_EXPORT MandatoryParameterEditWidget : public ParameterEditWidget
 {
     Q_OBJECT
-    Q_DISABLE_COPY(ConnectionManagerItem);
 
 public:
-    explicit ConnectionManagerItem(const Tp::ConnectionManagerPtr &connectionManager,
-                                   ProtocolListModel *parent = 0);
-    virtual ~ConnectionManagerItem();
-    Tp::ConnectionManagerPtr connectionManager() const;
+    explicit MandatoryParameterEditWidget(Tp::ProtocolParameterList parameters,
+                                          const QVariantMap &values = QVariantMap(),
+                                          QWidget *parent = 0);
+    ~MandatoryParameterEditWidget();
 
-Q_SIGNALS:
-    void newProtocol(const QString &protocol);
-
-private Q_SLOTS:
-    void onConnectionManagerReady(Tp::PendingOperation *op);
+    virtual bool validateParameterValues();
 
 private:
-    Tp::ConnectionManagerPtr m_connectionManager;
+    class Private;
+    Private * const d;
 };
 
 
-#endif // header guard
+#endif  // Header guard
 

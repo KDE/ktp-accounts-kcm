@@ -1,37 +1,21 @@
-add_subdirectory (libkcmtelepathyaccounts)
-
-project (telepathy-accounts-kcm)
-
 include_directories (${CMAKE_CURRENT_BINARY_DIR}
                      ${CMAKE_CURRENT_SOURCE_DIR}
-                     ${CMAKE_CURRENT_BINARY_DIR}/defaultaccountui
-                     ${CMAKE_CURRENT_SOURCE_DIR}/defaultaccountui
 )
+
+add_subdirectory (KCMTelepathyAccounts)
+
+project (telepathy-accounts-kcm)
 
 set (telepathy_accounts_kcm_SRCS
      kcm-telepathy-accounts.cpp
      accounts-list-model.cpp
      account-item.cpp
      add-account-assistant.cpp
-     protocol-select-widget.cpp
-     protocol-list-model.cpp
-     connection-manager-item.cpp
-     protocol-item.cpp
-     defaultaccountui/parameter-edit-widget.cpp
-     defaultaccountui/parameter-edit-delegate.cpp
-     defaultaccountui/parameter-edit-model.cpp
-     defaultaccountui/parameter-item.cpp
-     defaultaccountui/mandatory-parameter-edit-widget.cpp
-     defaultaccountui/optional-parameter-edit-widget.cpp
-     dictionary.cpp
-     plugin-manager.cpp
      edit-account-dialog.cpp
 )
 
 kde4_add_ui_files (telepathy_accounts_kcm_SRCS
                    main-widget.ui
-                   protocol-select-widget.ui
-                   defaultaccountui/parameter-edit-widget.ui
 )
 
 kde4_add_plugin (kcm_telepathy_accounts

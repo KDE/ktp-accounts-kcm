@@ -20,12 +20,11 @@
 
 #include "edit-account-dialog.h"
 
-#include "mandatory-parameter-edit-widget.h"
-#include "optional-parameter-edit-widget.h"
-#include "plugin-manager.h"
-
-#include "libkcmtelepathyaccounts/abstract-account-parameters-widget.h"
-#include "libkcmtelepathyaccounts/abstract-account-ui.h"
+#include "KCMTelepathyAccounts/abstract-account-parameters-widget.h"
+#include "KCMTelepathyAccounts/abstract-account-ui.h"
+#include "KCMTelepathyAccounts/mandatory-parameter-edit-widget.h"
+#include "KCMTelepathyAccounts/optional-parameter-edit-widget.h"
+#include "KCMTelepathyAccounts/plugin-manager.h"
 
 #include <KDebug>
 #include <KLocale>
@@ -260,7 +259,6 @@ void EditAccountDialog::accept()
         unsetParameters.append(pp->name());
     }
 
-    // FIXME: Ask the user to submit a Display Name
     Tp::PendingStringList *psl = d->item->account()->updateParameters(parameters, unsetParameters);
 
     connect(psl,

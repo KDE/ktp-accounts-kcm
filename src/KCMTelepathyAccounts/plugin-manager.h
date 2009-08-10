@@ -1,5 +1,5 @@
-/*
- * This file is part of telepathy-accounts-kcm
+ /*
+ * This file is part of Kopete
  *
  * Copyright (C) 2009 Collabora Ltd. <http://www.collabora.co.uk/>
  *
@@ -18,26 +18,36 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
-#ifndef TELEPATHY_ACCOUNTS_KCM_MANDATORY_PARAMETER_EDIT_WIDGET_H
-#define TELEPATHY_ACCOUNTS_KCM_MANDATORY_PARAMETER_EDIT_WIDGET_H
+#ifndef TELEPATHY_ACCOUNTS_KCM_PLUGIN_MANAGER_H
+#define TELEPATHY_ACCOUNTS_KCM_PLUGIN_MANAGER_H
 
-#include "parameter-edit-widget.h"
+#include <kdemacros.h>
 
-class MandatoryParameterEditWidget : public ParameterEditWidget
+#include <QtCore/QList>
+#include <QtCore/QObject>
+
+class AbstractAccountUi;
+class AbstractAccountUiPlugin;
+
+class KDE_EXPORT PluginManager : public QObject
 {
     Q_OBJECT
+    Q_DISABLE_COPY(PluginManager)
 
 public:
-    explicit MandatoryParameterEditWidget(Tp::ProtocolParameterList parameters,
-                                          const QVariantMap &values = QVariantMap(),
-                                          QWidget *parent = 0);
-    ~MandatoryParameterEditWidget();
+    static PluginManager *instance();
 
-    virtual bool validateParameterValues();
+    virtual ~PluginManager();
+
+    AbstractAccountUi *accountUiForProtocol(const QString &connectionManager, const QString &protocol);
 
 private:
-    class Private;
-    Private * const d;
+    explicit PluginManager(QObject *parent = 0);
+    static PluginManager *s_self;
+
+    void loadPlugins();
+
+    QList<AbstractAccountUiPlugin*> m_plugins;
 };
 
 

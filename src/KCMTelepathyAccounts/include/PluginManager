@@ -1,0 +1,7 @@
+#ifndef LIB_KCM_TELEPATHY_ACCOUNTS_PLUGIN_MANAGER_PRETTY_H
+#define LIB_KCM_TELEPATHY_ACCOUNTS_PLUGIN_MANAGER_PRETTY_H
+
+#include <KCMTelepathyAccounts/plugin-manager.h>
+
+#endif
+

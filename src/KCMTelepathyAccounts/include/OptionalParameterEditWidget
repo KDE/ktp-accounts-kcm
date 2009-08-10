@@ -1,0 +1,7 @@
+#ifndef LIB_KCM_TELEPATHY_ACCOUNTS_OPTIONAL_PARAMETER_EDIT_WIDGET_PRETTY_H
+#define LIB_KCM_TELEPATHY_ACCOUNTS_OPTIONAL_PARAMETER_EDIT_WIDGET_PRETTY_H
+
+#include <KCMTelepathyAccounts/optional-parameter-edit-widget.h>
+
+#endif
+

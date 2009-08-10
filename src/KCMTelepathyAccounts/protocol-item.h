@@ -18,29 +18,34 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
-#ifndef TELEPATHY_ACCOUNTS_KCM_UNSIGNED_INTEGER_EDIT_H
-#define TELEPATHY_ACCOUNTS_KCM_UNSIGNED_INTEGER_EDIT_H
+#ifndef TELEPATHY_ACCOUNTS_KCM_PROTOCOL_ITEM_H
+#define TELEPATHY_ACCOUNTS_KCM_PROTOCOL_ITEM_H
 
-#include <QtGui/QLineEdit>
+#include <kdemacros.h>
 
-class UnsignedIntegerEdit : public QLineEdit
+#include <QtCore/QObject>
+
+#include <TelepathyQt4/ConnectionManager>
+
+class ConnectionManagerItem;
+
+class KDE_EXPORT ProtocolItem : public QObject
 {
     Q_OBJECT
+    Q_DISABLE_COPY(ProtocolItem);
 
 public:
-    explicit UnsignedIntegerEdit(QWidget *parent = 0);
-    virtual ~UnsignedIntegerEdit();
+    explicit ProtocolItem(const QString &protocol,
+                          ConnectionManagerItem *parent = 0);
+    virtual ~ProtocolItem();
 
-    void setValue(uint unsignedInteger);
+    QString protocol() const;
 
-protected:
-    void keyPressEvent(QKeyEvent *event);
+    Tp::ProtocolParameterList mandatoryParameters() const;
+    Tp::ProtocolParameterList optionalParameters() const;
 
-Q_SIGNALS:
-    void unsignedIntegerChanged(uint unsignedInteger);
-
-private Q_SLOTS:
-    void onTextChanged(const QString &text);
+private:
+    QString m_protocol;
 };
 
 

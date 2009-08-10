@@ -18,27 +18,40 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
-#ifndef TELEPATHY_ACCOUNTS_KCM_PARAMETER_EDIT_WIDGET_H
-#define TELEPATHY_ACCOUNTS_KCM_PARAMETER_EDIT_WIDGET_H
+#ifndef TELEPATHY_ACCOUNTS_KCM_PROTOCOL_SELECT_WIDGET_H
+#define TELEPATHY_ACCOUNTS_KCM_PROTOCOL_SELECT_WIDGET_H
 
-#include "libkcmtelepathyaccounts/abstract-account-parameters-widget.h"
+#include <kdemacros.h>
 
-#include <TelepathyQt4/ConnectionManager>
+#include <QtGui/QWidget>
 
-class ParameterEditWidget : public AbstractAccountParametersWidget
+class ProtocolItem;
+class QItemSelection;
+
+class QModelIndex;
+
+namespace Tp {
+    class PendingOperation;
+}
+
+class KDE_EXPORT ProtocolSelectWidget : public QWidget
 {
     Q_OBJECT
 
 public:
-    explicit ParameterEditWidget(Tp::ProtocolParameterList parameters,
-                                 const QVariantMap &values = QVariantMap(),
-                                 QWidget *parent = 0);
-    ~ParameterEditWidget();
+    explicit ProtocolSelectWidget(QWidget *parent = 0);
+    ~ProtocolSelectWidget();
 
-    virtual QMap<Tp::ProtocolParameter*, QVariant> parameterValues() const;
+    ProtocolItem *selectedProtocol();
 
 private Q_SLOTS:
-    void onDelegateDataChanged(const QModelIndex &index, const QVariant &value, int role);
+    void getConnectionManagerList();
+    void onConnectionManagerListGot(Tp::PendingOperation *op);
+    void onSelectionChanged(const QItemSelection &selected);
+
+Q_SIGNALS:
+    void protocolGotSelected(bool selected);
+    void protocolDoubleClicked();
 
 private:
     class Private;

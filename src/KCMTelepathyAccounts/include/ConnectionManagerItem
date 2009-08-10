@@ -1,0 +1,7 @@
+#ifndef LIB_KCM_TELEPATHY_ACCOUNTS_CONNECTION_MANAGER_ITEM_PRETTY_H
+#define LIB_KCM_TELEPATHY_ACCOUNTS_CONNECTION_MANAGER_ITEM_PRETTY_H
+
+#include <KCMTelepathyAccounts/connection-manager-item.h>
+
+#endif
+

@@ -1,0 +1,7 @@
+#ifndef LIB_KCM_TELEPATHY_ACCOUNTS_PROTOCOL_SELECT_WIDGET_PRETTY_H
+#define LIB_KCM_TELEPATHY_ACCOUNTS_PROTOCOL_SELECT_WIDGET_PRETTY_H
+
+#include <KCMTelepathyAccounts/protocol-select-widget.h>
+
+#endif
+

@@ -21,9 +21,8 @@
 #include "parameter-edit-delegate.h"
 
 #include "parameter-edit-model.h"
-
-#include "libkcmtelepathyaccounts/integer-edit.h"
-#include "libkcmtelepathyaccounts/unsigned-integer-edit.h"
+#include "integer-edit.h"
+#include "unsigned-integer-edit.h"
 
 #include <KDebug>
 

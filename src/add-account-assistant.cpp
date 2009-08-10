@@ -20,15 +20,14 @@
 
 #include "add-account-assistant.h"
 
-#include "connection-manager-item.h"
-#include "mandatory-parameter-edit-widget.h"
-#include "optional-parameter-edit-widget.h"
-#include "plugin-manager.h"
-#include "protocol-item.h"
-#include "protocol-select-widget.h"
-
-#include "libkcmtelepathyaccounts/abstract-account-parameters-widget.h"
-#include "libkcmtelepathyaccounts/abstract-account-ui.h"
+#include "KCMTelepathyAccounts/abstract-account-parameters-widget.h"
+#include "KCMTelepathyAccounts/abstract-account-ui.h"
+#include "KCMTelepathyAccounts/connection-manager-item.h"
+#include "KCMTelepathyAccounts/mandatory-parameter-edit-widget.h"
+#include "KCMTelepathyAccounts/optional-parameter-edit-widget.h"
+#include "KCMTelepathyAccounts/plugin-manager.h"
+#include "KCMTelepathyAccounts/protocol-item.h"
+#include "KCMTelepathyAccounts/protocol-select-widget.h"
 
 #include <KDebug>
 #include <KLocale>

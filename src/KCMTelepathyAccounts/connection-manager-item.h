@@ -18,29 +18,40 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
-#ifndef TELEPATHY_ACCOUNTS_KCM_INTEGER_EDIT_H
-#define TELEPATHY_ACCOUNTS_KCM_INTEGER_EDIT_H
+#ifndef TELEPATHY_ACCOUNTS_KCM_CONNECTION_MANAGER_ITEM_H
+#define TELEPATHY_ACCOUNTS_KCM_CONNECTION_MANAGER_ITEM_H
 
-#include <QtGui/QLineEdit>
+#include <kdemacros.h>
 
-class IntegerEdit : public QLineEdit
+#include <QtCore/QObject>
+
+#include <TelepathyQt4/ConnectionManager>
+
+class ProtocolListModel;
+
+namespace Tp {
+    class PendingOperation;
+}
+
+class KDE_EXPORT ConnectionManagerItem : public QObject
 {
     Q_OBJECT
+    Q_DISABLE_COPY(ConnectionManagerItem);
 
 public:
-    explicit IntegerEdit(QWidget *parent = 0);
-    virtual ~IntegerEdit();
-
-    void setValue(int integer);
-
-protected:
-    void keyPressEvent(QKeyEvent *event);
+    explicit ConnectionManagerItem(const Tp::ConnectionManagerPtr &connectionManager,
+                                   ProtocolListModel *parent = 0);
+    virtual ~ConnectionManagerItem();
+    Tp::ConnectionManagerPtr connectionManager() const;
 
 Q_SIGNALS:
-    void integerChanged(int integer);
+    void newProtocol(const QString &protocol);
 
 private Q_SLOTS:
-    void onTextChanged(const QString &text);
+    void onConnectionManagerReady(Tp::PendingOperation *op);
+
+private:
+    Tp::ConnectionManagerPtr m_connectionManager;
 };
 
 

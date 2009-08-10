@@ -18,22 +18,29 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
-#ifndef TELEPATHY_ACCOUNTS_KCM_OPTIONAL_PARAMETER_EDIT_WIDGET_H
-#define TELEPATHY_ACCOUNTS_KCM_OPTIONAL_PARAMETER_EDIT_WIDGET_H
+#ifndef TELEPATHY_ACCOUNTS_KCM_PARAMETER_EDIT_WIDGET_H
+#define TELEPATHY_ACCOUNTS_KCM_PARAMETER_EDIT_WIDGET_H
 
-#include "parameter-edit-widget.h"
+#include <KCMTelepathyAccounts/abstract-account-parameters-widget.h>
 
-class OptionalParameterEditWidget : public ParameterEditWidget
+#include <kdemacros.h>
+
+#include <TelepathyQt4/ConnectionManager>
+
+class KDE_EXPORT ParameterEditWidget : public AbstractAccountParametersWidget
 {
     Q_OBJECT
 
 public:
-    explicit OptionalParameterEditWidget(Tp::ProtocolParameterList parameters,
-                                         const QVariantMap &values = QVariantMap(),
-                                         QWidget *parent = 0);
-    ~OptionalParameterEditWidget();
+    explicit ParameterEditWidget(Tp::ProtocolParameterList parameters,
+                                 const QVariantMap &values = QVariantMap(),
+                                 QWidget *parent = 0);
+    ~ParameterEditWidget();
 
-    virtual bool validateParameterValues();
+    virtual QMap<Tp::ProtocolParameter*, QVariant> parameterValues() const;
+
+private Q_SLOTS:
+    void onDelegateDataChanged(const QModelIndex &index, const QVariant &value, int role);
 
 private:
     class Private;
