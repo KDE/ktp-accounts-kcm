@@ -21,6 +21,7 @@
 #include "gabble-account-ui.h"
 
 #include "mandatory-parameters-widget.h"
+#include "proxy-settings-widget.h"
 #include "server-settings-widget.h"
 
 #include <KCMTelepathyAccounts/AbstractAccountParametersWidget>
@@ -53,6 +54,15 @@ GabbleAccountUi::GabbleAccountUi(QObject *parent)
     registerSupportedOptionalParameter("low-bandwidth", QVariant::Bool);
     registerSupportedOptionalParameter("ignore-ssl-errors", QVariant::Bool);
     registerSupportedOptionalParameter("keepalive-interval", QVariant::UInt);
+
+    registerSupportedOptionalParameter("stun-server", QVariant::String);
+    registerSupportedOptionalParameter("stun-port", QVariant::UInt);
+    registerSupportedOptionalParameter("fallback-stun-server", QVariant::String);
+    registerSupportedOptionalParameter("fallback-stun-port", QVariant::UInt);
+    registerSupportedOptionalParameter("https-proxy-server", QVariant::String);
+    registerSupportedOptionalParameter("https-proxy-port", QVariant::UInt);
+    registerSupportedOptionalParameter("fallback-socks5-proxies", QVariant::StringList);
+    registerSupportedOptionalParameter("fallback-conference-server", QVariant::String);
 }
 
 GabbleAccountUi::~GabbleAccountUi()
@@ -81,6 +91,7 @@ QList<AbstractAccountParametersWidget*> GabbleAccountUi::optionalParametersWidge
 
     // Add each of the optional parameter widgets.
     widgets.append(new ServerSettingsWidget(parameters, values));
+    widgets.append(new ProxySettingsWidget(parameters, values));
 
     return widgets;
 }
