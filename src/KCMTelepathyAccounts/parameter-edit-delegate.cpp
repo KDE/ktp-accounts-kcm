@@ -98,7 +98,7 @@ void ParameterEditDelegate::updateItemWidgets(const QList<QWidget*> widgets,
         // Bool type. Draw a checkbox.
         checkBox->move((right / 2) + margin, (option.rect.height() - checkBox->size().height()) / 2);
 
-        // checkBox->setFocus(Qt::OtherFocusReason);
+        checkBox->setFocus(Qt::OtherFocusReason);
         // NB: We must update the value of the widget AFTER setting it as focused, otherwise
         // focusedItem() returns the wrong value and we end up setting the data of the wrong item
         // in the model.
@@ -118,7 +118,7 @@ void ParameterEditDelegate::updateItemWidgets(const QList<QWidget*> widgets,
         // Save the cursor position within the widget so we can restore it after altering the data
         int cursorPosition = integerEdit->cursorPosition();
 
-        // integerEdit->setFocus(Qt::OtherFocusReason);
+        integerEdit->setFocus(Qt::OtherFocusReason);
         // NB: We must update the value of the widget AFTER setting it as focused, otherwise
         // focusedItem() returns the wrong value and we end up setting the data of the wrong item
         // in the model.
@@ -143,7 +143,7 @@ void ParameterEditDelegate::updateItemWidgets(const QList<QWidget*> widgets,
         // Save the cursor position within the widget so we can restore it after altering the data
         int cursorPosition = unsignedIntegerEdit->cursorPosition();
 
-        // integerEdit->setFocus(Qt::OtherFocusReason);
+        integerEdit->setFocus(Qt::OtherFocusReason);
         // NB: We must update the value of the widget AFTER setting it as focused, otherwise
         // focusedItem() returns the wrong value and we end up setting the data of the wrong item
         // in the model.
@@ -172,7 +172,7 @@ void ParameterEditDelegate::updateItemWidgets(const QList<QWidget*> widgets,
         // Save the cursor position within the widget so we can restore it after altering the data
         int cursorPosition = lineEdit->cursorPosition();
 
-        // lineEdit->setFocus(Qt::OtherFocusReason);
+        lineEdit->setFocus(Qt::OtherFocusReason);
         // NB: We must update the value of the widget AFTER setting it as focused, otherwise
         // focusedItem() returns the wrong value and we end up setting the data of the wrong item
         // in the model.
