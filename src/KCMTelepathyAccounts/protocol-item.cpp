@@ -21,6 +21,7 @@
 #include "protocol-item.h"
 
 #include "connection-manager-item.h"
+#include "dictionary.h"
 
 #include <KDebug>
 
@@ -30,7 +31,10 @@ ProtocolItem::ProtocolItem(const QString &protocol, ConnectionManagerItem *paren
 {
     kDebug() << "Creating new ProtocolItem with cmItem: " << parent << " and protocol;" << protocol;
 
-    // TODO: Implement me!
+    m_localizedName = Dictionary::instance()->string(protocol);
+    if(m_localizedName.isEmpty()) {
+        m_localizedName = protocol;
+    }
 }
 
 ProtocolItem::~ProtocolItem()
@@ -43,6 +47,11 @@ ProtocolItem::~ProtocolItem()
 QString ProtocolItem::protocol() const
 {
     return m_protocol;
+}
+
+QString ProtocolItem::localizedName() const
+{
+    return m_localizedName;
 }
 
 Tp::ProtocolParameterList ProtocolItem::mandatoryParameters() const

@@ -40,12 +40,14 @@ public:
     virtual ~ProtocolItem();
 
     QString protocol() const;
+    QString localizedName() const;
 
     Tp::ProtocolParameterList mandatoryParameters() const;
     Tp::ProtocolParameterList optionalParameters() const;
 
 private:
     QString m_protocol;
+    QString m_localizedName;
 };
 
 

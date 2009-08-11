@@ -32,7 +32,7 @@ Dictionary::Dictionary()
     // Set up the singleton instance
     s_self = this;
 
-    // TODO: Populate the dictionary
+    // Parameters
     m_strings.insert("password", i18n("Password"));
     m_strings.insert("account", i18n("Account"));
     m_strings.insert("priority", i18n("Priority"));
@@ -54,6 +54,24 @@ Dictionary::Dictionary()
     m_strings.insert("https-proxy-server", i18n("HTTPS Proxy Server Address"));
     m_strings.insert("ignore-ssl-errors", i18n("Ignore SSL Errors"));
     m_strings.insert("keepalive-interval", i18n("Keepalive Interval"));
+
+    // Protocols
+    m_strings.insert("aim", i18n("AOL Instant Messenger"));
+    m_strings.insert("gadugadu", i18n("Gadu-Gadu"));
+    m_strings.insert("groupwise", i18n("Novell Groupwise"));
+    m_strings.insert("icq", i18n("ICQ"));
+    m_strings.insert("irc", i18n("Internet Relay Chat"));
+    m_strings.insert("jabber", i18n("Jabber/XMPP/Google Talk"));
+    m_strings.insert("local-xmpp", i18n("Bonjour/Salut"));
+    m_strings.insert("msn", i18n("Windows Live Messenger"));
+    m_strings.insert("myspace", i18n("MySpaceIM"));
+    m_strings.insert("qq", i18n("Tencent QQ"));
+    m_strings.insert("sametime", i18n("IBM Lotus Sametime"));
+    m_strings.insert("silc", i18n("SILC"));
+    m_strings.insert("sip", i18n("Session Initiation Protocol (SIP)"));
+    m_strings.insert("trepia", i18n("Trepia"));
+    m_strings.insert("yahoo", i18n("Yahoo! Messenger"));
+    m_strings.insert("zephyr", i18n("Zephyr"));
 }
 
 Dictionary::~Dictionary()

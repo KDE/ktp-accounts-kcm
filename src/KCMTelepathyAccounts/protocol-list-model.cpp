@@ -63,7 +63,7 @@ QVariant ProtocolListModel::data(const QModelIndex &index, int role) const
     switch(role)
     {
     case Qt::DisplayRole:
-        data = QVariant(m_protocolItems.at(index.row())->protocol());
+        data = QVariant(m_protocolItems.at(index.row())->localizedName());
         break;
     case Qt::DecorationRole:
         // Look for an icon named im-<protocolname>
