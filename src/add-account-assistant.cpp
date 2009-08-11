@@ -54,6 +54,7 @@ public:
     }
 
     Tp::AccountManagerPtr accountManager;
+    Tp::AccountPtr account;
     ProtocolSelectWidget *protocolSelectWidget;
     KTabWidget *tabWidget;
     AbstractAccountParametersWidget *mandatoryParametersWidget;
@@ -343,9 +344,39 @@ void AddAccountAssistant::reject()
 
 void AddAccountAssistant::onAccountCreated(Tp::PendingOperation *op)
 {
+    kDebug();
+
     if (op->isError()) {
         // TODO: User feedback in this case.
         kWarning() << "Adding Account failed:" << op->errorName() << op->errorMessage();
+        return;
+    }
+
+    // Get the PendingAccount.
+    Tp::PendingAccount *pendingAccount = qobject_cast<Tp::PendingAccount*>(op);
+    if (!pendingAccount) {
+        // TODO: User visible feedback
+        kWarning() << "Method called with wrong type.";
+        return;
+    }
+
+    // Get the account pointer.
+    d->account = pendingAccount->account();
+
+    kDebug() << "Calling set enabled.";
+
+    connect(d->account->setEnabled(true),
+            SIGNAL(finished(Tp::PendingOperation*)),
+            SLOT(onSetEnabledFinished(Tp::PendingOperation*)));
+}
+
+void AddAccountAssistant::onSetEnabledFinished(Tp::PendingOperation *op)
+{
+    kDebug();
+
+    if (op->isError()) {
+        // TODO: User feedback in this case.
+        kWarning() << "Enabling Account failed:" << op->errorName() << op->errorMessage();
         return;
     }
 
