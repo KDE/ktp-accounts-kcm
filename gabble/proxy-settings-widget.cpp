@@ -167,7 +167,7 @@ ProxySettingsWidget::ProxySettingsWidget(Tp::ProtocolParameterList parameters,
                     d->httpsProxyPortParameter->name()).toUInt());
         } else {
             d->ui->httpsProxyPortLineEdit->setValue(
-                    d->httpsProxyServerParameter->defaultValue().toUInt());
+                    d->httpsProxyPortParameter->defaultValue().toUInt());
         }
     }
 
