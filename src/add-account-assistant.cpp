@@ -286,8 +286,16 @@ void AddAccountAssistant::accept()
     foreach (Tp::ProtocolParameter *pp, mandatoryParameterValues.keys()) {
         QVariant value = mandatoryParameterValues.value(pp);
 
-        // Don't try and add empty parameters.
-        if (!value.isNull()) {
+        // Don't try and add empty parameters or ones where the default value is still set.
+        if ((!value.isNull()) && (value != pp->defaultValue())) {
+
+            // Check for params where they are empty and the default is null.
+            if (pp->type() == QVariant::String) {
+                if ((pp->defaultValue() == QVariant()) && (value.toString().isEmpty())) {
+                    continue;
+                }
+            }
+
             parameters.insert(pp->name(), value);
         }
     }
@@ -295,11 +303,21 @@ void AddAccountAssistant::accept()
     foreach (Tp::ProtocolParameter *pp, optionalParameterValues.keys()) {
         QVariant value = optionalParameterValues.value(pp);
 
-        // Don't try and add empty parameters.
-        if (!value.isNull()) {
+        // Don't try and add empty parameters or ones where the default value is still set.
+        if ((!value.isNull()) && (value != pp->defaultValue())) {
+
+            // Check for params where they are empty and the default is null.
+            if (pp->type() == QVariant::String) {
+                if ((pp->defaultValue() == QVariant()) && (value.toString().isEmpty())) {
+                    continue;
+                }
+            }
+
             parameters.insert(pp->name(), value);
         }
     }
+
+    // kDebug() << "Parameters to add with:" << parameters;
 
     // FIXME: Ask the user to submit a Display Name
     Tp::PendingAccount *pa = d->accountManager->createAccount(connectionManagerItem->connectionManager()->name(),
