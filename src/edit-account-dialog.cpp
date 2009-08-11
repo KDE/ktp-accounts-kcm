@@ -238,26 +238,59 @@ void EditAccountDialog::accept()
     foreach (Tp::ProtocolParameter *pp, mandatoryParameterValues.keys()) {
         QVariant value = mandatoryParameterValues.value(pp);
 
-        // Unset empty parameters.
-        if (!value.isNull()) {
-            parameters.insert(pp->name(), value);
+        // Unset null parameters.
+        if (value.isNull()) {
+            unsetParameters.append(pp->name());
             continue;
         }
 
-        unsetParameters.append(pp->name());
+        // Unset any parameters where the default value is equal to the current value.
+        if (pp->defaultValue() == value) {
+            unsetParameters.append(pp->name());
+            continue;
+        }
+
+        // Unset any strings where the default is empty, and the value is an empty string
+        if (pp->type() == QVariant::String) {
+            if ((pp->defaultValue().isNull()) && value.toString().isEmpty()) {
+                unsetParameters.append(pp->name());
+                continue;
+            }
+        }
+
+        // Parameter has a valid value, so set it.
+        parameters.insert(pp->name(), value);
     }
 
     foreach (Tp::ProtocolParameter *pp, optionalParameterValues.keys()) {
         QVariant value = optionalParameterValues.value(pp);
 
-        // Unset empty parameters.
-        if (!value.isNull()) {
-            parameters.insert(pp->name(), value);
+        // Unset null parameters.
+        if (value.isNull()) {
+            unsetParameters.append(pp->name());
             continue;
         }
 
-        unsetParameters.append(pp->name());
+        // Unset any parameters where the default value is equal to the current value.
+        if (pp->defaultValue() == value) {
+            unsetParameters.append(pp->name());
+            continue;
+        }
+
+        // Unset any strings where the default is empty, and the value is an empty string
+        if (pp->type() == QVariant::String) {
+            if ((pp->defaultValue().isNull()) && value.toString().isEmpty()) {
+                unsetParameters.append(pp->name());
+                continue;
+            }
+        }
+
+        // Parameter has a valid value, so set it.
+        parameters.insert(pp->name(), value);
     }
+
+    // kDebug() << "Set parameters:" << parameters;
+    // kDebug() << "Unset parameters:" << unsetParameters;
 
     Tp::PendingStringList *psl = d->item->account()->updateParameters(parameters, unsetParameters);
 
