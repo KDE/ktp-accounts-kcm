@@ -52,7 +52,7 @@ bool OptionalParameterEditWidget::validateParameterValues()
     kDebug();
 
     // TODO: Implement me!
-    return true;
+    return ParameterEditWidget::validateParameterValues();
 }
 
 

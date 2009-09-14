@@ -60,7 +60,7 @@ bool MandatoryParameterEditWidget::validateParameterValues()
         }
     }
 
-    return true;
+    return ParameterEditWidget::validateParameterValues();
 }
 
 

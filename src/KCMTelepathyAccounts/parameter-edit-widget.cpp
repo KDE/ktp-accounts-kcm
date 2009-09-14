@@ -86,6 +86,11 @@ void ParameterEditWidget::onDelegateDataChanged(const QModelIndex &index, const 
     d->model->setData(index, value, role);
 }
 
+bool ParameterEditWidget::validateParameterValues()
+{
+    return d->model->validateParameterValues();
+}
+
 
 #include "parameter-edit-widget.moc"
 

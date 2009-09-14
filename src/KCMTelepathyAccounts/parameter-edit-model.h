@@ -57,6 +57,8 @@ public:
     void addItem(Tp::ProtocolParameter *parameter, const QVariant &originalValue);
     QMap<Tp::ProtocolParameter*, QVariant> parameterValues() const;
 
+    bool validateParameterValues();
+
 private:
     QList<ParameterItem*> m_items;
 };

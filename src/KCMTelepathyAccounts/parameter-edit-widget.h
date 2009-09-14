@@ -39,6 +39,8 @@ public:
 
     virtual QMap<Tp::ProtocolParameter*, QVariant> parameterValues() const;
 
+    virtual bool validateParameterValues();
+
 private Q_SLOTS:
     void onDelegateDataChanged(const QModelIndex &index, const QVariant &value, int role);
 

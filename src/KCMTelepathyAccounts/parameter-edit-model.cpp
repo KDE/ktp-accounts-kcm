@@ -22,7 +22,10 @@
 
 #include "parameter-item.h"
 
+#include <KApplication>
 #include <KDebug>
+#include <KLocale>
+#include <KMessageBox>
 
 #include <QtGui/QValidator>
 
@@ -150,6 +153,22 @@ QMap<Tp::ProtocolParameter*, QVariant> ParameterEditModel::parameterValues() con
     }
 
     return values;
+}
+
+bool ParameterEditModel::validateParameterValues()
+{
+    foreach (ParameterItem *item, m_items) {
+        if (item->validity() != QValidator::Acceptable) {
+           // Display a more helpful error here.
+           KMessageBox::error(QApplication::activeWindow (),
+                              i18n("\"<b>%1</b>\" is not an acceptable value for <b>%2</b>")
+                              .arg(item->value().toString())
+                              .arg(item->localizedName()));
+           return false;
+       }
+    }
+
+    return true;
 }
 
 
