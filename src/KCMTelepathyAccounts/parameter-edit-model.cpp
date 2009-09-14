@@ -24,6 +24,8 @@
 
 #include <KDebug>
 
+#include <QtGui/QValidator>
+
 #include <TelepathyQt4/ConnectionManager>
 
 ParameterEditModel::ParameterEditModel(QObject *parent)
@@ -82,6 +84,9 @@ QVariant ParameterEditModel::data(const QModelIndex &index, int role) const
     case ParameterEditModel::RequiredForRegistrationRole:
         data = QVariant(m_items.at(index.row())->isRequiredForRegistration());
         break;
+    case ParameterEditModel::ValidityRole:
+        data = QVariant(m_items.at(index.row())->validity());
+        break;
     default:
         break;
     }
@@ -101,16 +106,27 @@ bool ParameterEditModel::setData(const QModelIndex &index, const QVariant &value
         return false;
     }
 
-    switch(role)
-    {
-    case ParameterEditModel::ValueRole:
+    if (role == ParameterEditModel::ValueRole) {
+
         m_items.at(index.row())->setValue(value);
         Q_EMIT dataChanged(index, index);
         return true;
-        break;
-    default:
+
+    } else if (ParameterEditModel::ValidityRole) {
+
+        if (value.toInt() == QValidator::Acceptable) {
+            m_items.at(index.row())->setValidity(QValidator::Acceptable);
+        } else if (value.toInt() == QValidator::Intermediate) {
+            m_items.at(index.row())->setValidity(QValidator::Intermediate);
+        } else {
+            m_items.at(index.row())->setValidity(QValidator::Invalid);
+        }
+
+        Q_EMIT dataChanged(index, index);
+        return true;
+
+    } else {
         return false;
-        break;
     }
 }
 

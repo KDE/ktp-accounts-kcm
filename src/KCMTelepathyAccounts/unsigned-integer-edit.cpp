@@ -22,12 +22,16 @@
 
 #include <KDebug>
 
-#include <QtGui/QKeyEvent>
+#include <QtGui/QIntValidator>
 
 UnsignedIntegerEdit::UnsignedIntegerEdit(QWidget *parent)
  : QLineEdit(parent)
 {
     connect(this, SIGNAL(textChanged(QString)), SLOT(onTextChanged(QString)));
+
+    // Set the validator range to the range of values in a 32 bit unsigned integer (dbus-type 'u').
+    // FIXME: Maximum value must be a valid type "int" for the validator to work. What a POS
+    setValidator(new QIntValidator(0, 2147483647, this));
 }
 
 UnsignedIntegerEdit::~UnsignedIntegerEdit()
@@ -45,39 +49,36 @@ void UnsignedIntegerEdit::setValue(uint unsignedInteger)
     setText(QString::number(unsignedInteger));
 }
 
-void UnsignedIntegerEdit::keyPressEvent(QKeyEvent *event)
+QValidator::State UnsignedIntegerEdit::validity() const
 {
-    kDebug() << "Key:" << event->key() << "Text:" << event->text();
+    int cursorPos = cursorPosition();
+    QString txt = text();
+    return validator()->validate(txt, cursorPos);
+}
 
-    // If the text is empty or a modifier, allow the keypress
-    if ((event->text().isEmpty()) || (event->key() < Qt::Key_Space)) {
-        event->ignore();
-        QLineEdit::keyPressEvent(event);
-        return;
+QPair<quint32, quint32> UnsignedIntegerEdit::validRange() const
+{
+    QPair<quint32, quint32> ret;
+    ret.first = 0;
+    ret.second = 0;
+
+    QIntValidator const *intValidator = qobject_cast<const QIntValidator*>(validator());
+
+    if (!intValidator) {
+        kWarning() << "Somehow this is not an int validator :/";
+        return ret;
     }
 
-    // If the key is backspace or delete, allow it
-    if ((event->key() == Qt::Key_Delete) || (event->key() == Qt::Key_Backspace)) {
-        event->ignore();
-        QLineEdit::keyPressEvent(event);
-        return;
-    }
+    ret.first = intValidator->bottom();
+    ret.second = intValidator->top();
 
-    // Check for numbers (and ensure maximum input length is not expended
-    // FIXME: Have a better check to make sure the user doesn't enter a number too large.
-    QString validKeys("0123456789");
-    if (validKeys.contains(event->text())) {
-        if ((text().length() + 1) <= 4)
-        {
-            kDebug() << "Key is a number.";
-            event->ignore();
-            QLineEdit::keyPressEvent(event);
-            return;
-        }
-    }
+    return ret;
+}
 
-    // Anything else, reject the keypress.
-    event->accept();
+// WARNING: Don't set a range outside of that supported by "int"!!!
+void UnsignedIntegerEdit::setValidRange(quint32 minimum, quint32 maximum)
+{
+    setValidator(new QIntValidator(static_cast<int>(minimum), static_cast<int>(maximum), this));
 }
 
 void UnsignedIntegerEdit::onTextChanged(const QString &text)

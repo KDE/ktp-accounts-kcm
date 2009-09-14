@@ -23,7 +23,9 @@
 
 #include <kdemacros.h>
 
+#include <QtCore/QPair>
 #include <QtGui/QLineEdit>
+#include <QtGui/QValidator>
 
 class KDE_EXPORT IntegerEdit : public QLineEdit
 {
@@ -33,14 +35,16 @@ public:
     explicit IntegerEdit(QWidget *parent = 0);
     virtual ~IntegerEdit();
 
-    int value() const;
-    void setValue(int integer);
+    qint32 value() const;
+    void setValue(qint32 integer);
 
-protected:
-    void keyPressEvent(QKeyEvent *event);
+    QValidator::State validity() const;
+
+    QPair<qint32, qint32> validRange() const;
+    void setValidRange(qint32 minimum, qint32 maximum);
 
 Q_SIGNALS:
-    void integerChanged(int integer);
+    void integerChanged(qint32 integer);
 
 private Q_SLOTS:
     void onTextChanged(const QString &text);

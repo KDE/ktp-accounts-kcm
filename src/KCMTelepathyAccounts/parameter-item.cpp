@@ -42,6 +42,9 @@ ParameterItem::ParameterItem(Tp::ProtocolParameter *parameter,
     if (m_localizedName.isEmpty()) {
         m_localizedName = parameter->name();
     }
+
+    // Assume the default/un-altered value is valid.
+    m_validity = QValidator::Acceptable;
 }
 
 ParameterItem::~ParameterItem()
@@ -87,6 +90,16 @@ bool ParameterItem::isRequiredForRegistration() const
 Tp::ProtocolParameter *ParameterItem::parameter()
 {
     return m_parameter;
+}
+
+QValidator::State ParameterItem::validity() const
+{
+    return m_validity;
+}
+
+void ParameterItem::setValidity(QValidator::State validity)
+{
+    m_validity = validity;
 }
 
 void ParameterItem::setValue(const QVariant &value)

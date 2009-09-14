@@ -247,18 +247,34 @@ void ParameterEditDelegate::onIntegerEditTextChanged(const QString &text)
 {
     kDebug();
 
+   IntegerEdit *widget = qobject_cast<IntegerEdit*>(sender());
+
+    if (!widget) {
+        kWarning() << "Slot called by object of the wrong type.";
+        return;
+    }
+
     QModelIndex index = focusedIndex();
 
     Q_EMIT dataChanged(index, QVariant(text), ParameterEditModel::ValueRole);
+    Q_EMIT dataChanged(index, QVariant(widget->validity()), ParameterEditModel::ValidityRole);
 }
 
 void ParameterEditDelegate::onUnsignedIntegerEditTextChanged(const QString &text)
 {
     kDebug();
 
+    UnsignedIntegerEdit *widget = qobject_cast<UnsignedIntegerEdit*>(sender());
+
+    if (!widget) {
+        kWarning() << "Slot called by object of the wrong type.";
+        return;
+    }
+
     QModelIndex index = focusedIndex();
 
     Q_EMIT dataChanged(index, QVariant(text), ParameterEditModel::ValueRole);
+    Q_EMIT dataChanged(index, QVariant(widget->validity()), ParameterEditModel::ValidityRole);
 }
 
 

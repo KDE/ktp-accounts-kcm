@@ -22,12 +22,15 @@
 
 #include <KDebug>
 
-#include <QtGui/QKeyEvent>
+#include <QtGui/QIntValidator>
 
 IntegerEdit::IntegerEdit(QWidget *parent)
  : QLineEdit(parent)
 {
     connect(this, SIGNAL(textChanged(QString)), SLOT(onTextChanged(QString)));
+
+    // Set the validator range to the range of values in a 32 bit integer (dbus-type 'i').
+    setValidator(new QIntValidator(-2147483648, 2147483647, this));
 }
 
 IntegerEdit::~IntegerEdit()
@@ -35,62 +38,45 @@ IntegerEdit::~IntegerEdit()
 
 }
 
-int IntegerEdit::value() const
+qint32 IntegerEdit::value() const
 {
     return text().toInt();
 }
 
-void IntegerEdit::setValue(int integer)
+void IntegerEdit::setValue(qint32 integer)
 {
     setText(QString::number(integer));
 }
 
-void IntegerEdit::keyPressEvent(QKeyEvent *event)
+QValidator::State IntegerEdit::validity() const
 {
-    kDebug() << "Key:" << event->key() << "Text:" << event->text();
+    int cursorPos = cursorPosition();
+    QString txt = text();
+    return validator()->validate(txt, cursorPos);
+}
 
-    // If the text is empty or a modifier, allow the keypress
-    if ((event->text().isEmpty()) || (event->key() < Qt::Key_Space)) {
-        event->ignore();
-        QLineEdit::keyPressEvent(event);
-        return;
+QPair<qint32, qint32> IntegerEdit::validRange() const
+{
+    QPair<qint32, qint32> ret;
+    ret.first = 0;
+    ret.second = 0;
+
+    const QIntValidator *intValidator = qobject_cast<const QIntValidator*>(validator());
+
+    if (!intValidator) {
+        kWarning() << "Somehow this is not an int validator :/";
+        return ret;
     }
 
-    // If the key is backspace or delete, allow it
-    if ((event->key() == Qt::Key_Delete) || (event->key() == Qt::Key_Backspace)) {
-        event->ignore();
-        QLineEdit::keyPressEvent(event);
-        return;
-    }
+    ret.first = intValidator->bottom();
+    ret.second = intValidator->top();
 
-    // Check for numbers (and ensure maximum input length is not expended
-    // FIXME: Have a better check to make sure the user doesn't enter a number too large.
-    QString validKeys("0123456789");
-    if (validKeys.contains(event->text())) {
-        if (((text().contains(QString("-"))) && ((text().length() + 1) <= 5)) ||
-            ((text().length() + 1) <= 4))
-        {
-            kDebug() << "Key is a number.";
-            event->ignore();
-            QLineEdit::keyPressEvent(event);
-            return;
-        }
-    }
+    return ret;
+}
 
-    // Check for minus sign as the first character
-    if (event->text() == QString("-")) {
-        if (cursorPosition() == 0) {
-            if (!text().contains(QString("-"))) {
-                kDebug() << "Key is a minus-sign at the start.";
-                event->ignore();
-                QLineEdit::keyPressEvent(event);
-                return;
-            }
-        }
-    }
-
-    // Anything else, reject the keypress.
-    event->accept();
+void IntegerEdit::setValidRange(qint32 minimum, qint32 maximum)
+{
+    setValidator(new QIntValidator(static_cast<int>(minimum), static_cast<int>(maximum), this));
 }
 
 void IntegerEdit::onTextChanged(const QString &text)

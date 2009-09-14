@@ -23,7 +23,9 @@
 
 #include <kdemacros.h>
 
+#include <QtCore/QPair>
 #include <QtGui/QLineEdit>
+#include <QtGui/QValidator>
 
 class KDE_EXPORT UnsignedIntegerEdit : public QLineEdit
 {
@@ -33,14 +35,16 @@ public:
     explicit UnsignedIntegerEdit(QWidget *parent = 0);
     virtual ~UnsignedIntegerEdit();
 
-    uint value() const;
-    void setValue(uint unsignedInteger);
+    quint32 value() const;
+    void setValue(quint32 unsignedInteger);
 
-protected:
-    void keyPressEvent(QKeyEvent *event);
+    QValidator::State validity() const;
+
+    QPair<quint32, quint32> validRange() const;
+    void setValidRange(quint32 minimum, quint32 maximum);
 
 Q_SIGNALS:
-    void unsignedIntegerChanged(uint unsignedInteger);
+    void unsignedIntegerChanged(quint32 unsignedInteger);
 
 private Q_SLOTS:
     void onTextChanged(const QString &text);

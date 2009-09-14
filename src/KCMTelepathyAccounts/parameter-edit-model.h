@@ -18,8 +18,8 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
-#ifndef TELEPATHY_ACCOUNTS_KCM_PARAMETER_EDIT_MODEL_H
-#define TELEPATHY_ACCOUNTS_KCM_PARAMETER_EDIT_MODEL_H
+#ifndef LIB_KCM_TELEPATHY_ACCOUNTS_PARAMETER_EDIT_MODEL_H
+#define LIB_KCM_TELEPATHY_ACCOUNTS_PARAMETER_EDIT_MODEL_H
 
 #include <QtCore/QAbstractListModel>
 
@@ -43,6 +43,7 @@ public:
         SecretRole,
         RequiredRole,
         RequiredForRegistrationRole,
+        ValidityRole,
         UserRole = Qt::UserRole + 42
     };
 

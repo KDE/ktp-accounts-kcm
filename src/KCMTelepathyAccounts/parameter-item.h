@@ -18,11 +18,12 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
-#ifndef TELEPATHY_ACCOUNTS_KCM_PARAMETER_ITEM_H
-#define TELEPATHY_ACCOUNTS_KCM_PARAMETER_ITEM_H
+#ifndef LIB_KCM_TELEPATHY_ACCOUNTS_PARAMETER_ITEM_H
+#define LIB_KCM_TELEPATHY_ACCOUNTS_PARAMETER_ITEM_H
 
 #include <QtCore/QObject>
 #include <QtCore/QVariant>
+#include <QtGui/QValidator>
 
 #include <TelepathyQt4/ConnectionManager>
 
@@ -45,14 +46,17 @@ public:
     bool isRequired() const;
     bool isRequiredForRegistration() const;
     Tp::ProtocolParameter *parameter();
+    QValidator::State validity() const;
 
     void setValue(const QVariant &value);
+    void setValidity(QValidator::State validity);
 
 private:
     Tp::ProtocolParameter *m_parameter;
     const QVariant m_originalValue;
     QVariant m_currentValue;
     QString m_localizedName;
+    QValidator::State m_validity;
 };
 
 
