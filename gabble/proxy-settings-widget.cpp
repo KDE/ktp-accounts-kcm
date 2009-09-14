@@ -312,6 +312,27 @@ bool ProxySettingsWidget::validateParameterValues()
 {
     kDebug();
 
+    // Validate all the int's and uint's.
+    if (d->ui->stunPortLineEdit->validity() != QValidator::Acceptable) {
+        KMessageBox::error(this,
+                              i18n("\"<b>%1</b>\" is not an acceptable value for <b>%2</b>")
+                              .arg(d->ui->stunPortLineEdit->text())
+                              .arg(d->ui->stunPortLabel->text()));
+        return false;
+    } else if (d->ui->fallbackStunPortLineEdit->validity() != QValidator::Acceptable) {
+        KMessageBox::error(this,
+                              i18n("\"<b>%1</b>\" is not an acceptable value for <b>%2</b>")
+                              .arg(d->ui->fallbackStunPortLineEdit->text())
+                              .arg(d->ui->fallbackStunPortLabel->text()));
+        return false;
+    } else if (d->ui->httpsProxyPortLineEdit->validity() != QValidator::Acceptable) {
+        KMessageBox::error(this,
+                              i18n("\"<b>%1</b>\" is not an acceptable value for <b>%2</b>")
+                              .arg(d->ui->httpsProxyPortLineEdit->text())
+                              .arg(d->ui->httpsProxyPortLabel->text()));
+        return false;
+    }
+
     return true;
 }
 

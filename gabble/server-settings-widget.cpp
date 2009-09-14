@@ -264,6 +264,20 @@ bool ServerSettingsWidget::validateParameterValues()
 {
     kDebug();
 
+    if (d->ui->portLineEdit->validity() != QValidator::Acceptable) {
+        KMessageBox::error(this,
+                              i18n("\"<b>%1</b>\" is not an acceptable value for <b>%2</b>")
+                              .arg(d->ui->portLineEdit->text())
+                              .arg(d->ui->portLabel->text()));
+        return false;
+    } else if (d->ui->keepaliveIntervalLineEdit->validity() != QValidator::Acceptable) {
+        KMessageBox::error(this,
+                              i18n("\"<b>%1</b>\" is not an acceptable value for <b>%2</b>")
+                              .arg(d->ui->keepaliveIntervalLineEdit->text())
+                              .arg(d->ui->keepaliveIntervalLabel->text()));
+        return false;
+    }
+
     return true;
 }
 
