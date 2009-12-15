@@ -44,11 +44,16 @@ protected Q_SLOTS:
 
 Q_SIGNALS:
     void cancelled();
+	void protocolSelected(QString, QString);
+
+public Q_SLOTS:
+	void onTitleForCustomPages(QString mandatoryPage, QList<QString> optionalPage);
 
 private Q_SLOTS:
     void onAccountCreated(Tp::PendingOperation *op);
     void onSetEnabledFinished(Tp::PendingOperation *op);
     void onProtocolSelected(bool value);
+	void onProtocolDoubleClicked();
 
 private:
     class Private;

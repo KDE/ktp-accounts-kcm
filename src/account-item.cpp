@@ -98,6 +98,10 @@ void AccountItem::edit()
     connect(m_editAccountDialog,
             SIGNAL(finished()),
             SLOT(onAccountEdited()));
+	connect(m_editAccountDialog, SIGNAL(protocolSelected(QString, QString)),
+			this, SIGNAL(protocolSelected(QString, QString)));
+	connect(this, SIGNAL(setTitleForCustomPages(QString, QList<QString>)),
+			m_editAccountDialog, SLOT(onTitleForCustomPages(QString, QList<QString>)));
 
     m_editAccountDialog->show();
 }
@@ -183,6 +187,11 @@ void AccountItem::onAccountEdited()
     Q_EMIT updated();
 }
 
+void AccountItem::onTitleForCustomPages(QString mandatoryPage, QList<QString> optionalPage)
+{
+	kDebug();
+	emit setTitleForCustomPages(mandatoryPage, optionalPage);
+}
 
 #include "account-item.moc"
 

@@ -35,6 +35,13 @@ public:
     explicit EditAccountDialog(AccountItem *item, QWidget *parent = 0);
     virtual ~EditAccountDialog();
 
+Q_SIGNALS:
+	void protocolSelected(QString, QString);
+
+public Q_SLOTS:
+	void onTitleForCustomPages(QString, QList<QString>);
+	void show();
+
 protected Q_SLOTS:
     virtual void slotButtonClicked(int button);
 

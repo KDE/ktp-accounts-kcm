@@ -44,6 +44,9 @@ public:
                                   const QVariantList& args = QVariantList());
     virtual ~KCMTelepathyAccounts();
 
+Q_SIGNALS:
+	void setTitleForCustomPages(QString mandatoryPage, QList<QString> optionalPage);
+
 public Q_SLOTS:
     virtual void load();
 
@@ -56,6 +59,7 @@ private Q_SLOTS:
     void onEditAccountClicked();
     void onRemoveAccountClicked();
     void onAddAccountAssistantClosed();
+	void onProtocolSelected(QString protocol, QString localizedName);
 
 private:
     Tp::AccountManagerPtr m_accountManager;

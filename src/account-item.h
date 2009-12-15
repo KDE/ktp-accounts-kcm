@@ -47,16 +47,21 @@ public:
     void remove();
     const KIcon& icon() const;
 
-private Q_SLOTS:
-    void generateIcon();
-    void onAccountReady(Tp::PendingOperation *op);
-    void onAccountRemoved(Tp::PendingOperation *op);
-    void onAccountEdited();
+public Q_SLOTS:
+	void onTitleForCustomPages(QString, QList<QString>);
 
 Q_SIGNALS:
     void ready();
     void removed();
     void updated();
+	void protocolSelected(QString, QString);
+	void setTitleForCustomPages(QString, QList<QString>);
+
+private Q_SLOTS:
+    void generateIcon();
+    void onAccountReady(Tp::PendingOperation *op);
+    void onAccountRemoved(Tp::PendingOperation *op);
+    void onAccountEdited();
 
 private:
     Tp::AccountPtr m_account;

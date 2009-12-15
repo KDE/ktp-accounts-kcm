@@ -152,6 +152,10 @@ void KCMTelepathyAccounts::onAddAccountClicked()
                 this, SLOT(onAddAccountAssistantClosed()));
         connect(m_addAccountAssistant, SIGNAL(accepted()),
                 this, SLOT(onAddAccountAssistantClosed()));
+		connect(m_addAccountAssistant, SIGNAL(protocolSelected(QString, QString)),
+				this, SLOT(onProtocolSelected(QString, QString)));
+		connect(this, SIGNAL(setTitleForCustomPages(QString, QList<QString>)),
+				m_addAccountAssistant, SLOT(onTitleForCustomPages(QString, QList<QString>)));
 
         // ...and finally show it.
         m_addAccountAssistant->show();
@@ -179,6 +183,11 @@ void KCMTelepathyAccounts::onEditAccountClicked()
     }
 
     // Item is OK. Edit the item.
+	m_accountsListModel->disconnect();
+	connect(m_accountsListModel, SIGNAL(protocolSelected(QString, QString)),
+			this, SLOT(onProtocolSelected(QString, QString)));
+	connect(this, SIGNAL(setTitleForCustomPages(QString, QList<QString>)),
+			m_accountsListModel, SLOT(onTitleForCustomPages(QString, QList<QString>)));
     m_accountsListModel->editAccount(index);
 }
 
@@ -204,6 +213,23 @@ void KCMTelepathyAccounts::onAddAccountAssistantClosed()
     m_addAccountAssistant = 0;
 }
 
+void KCMTelepathyAccounts::onProtocolSelected(QString protocol, QString localizedName)
+{
+	kDebug() << protocol << localizedName;
+
+	QString mandatoryPage;
+	QList<QString> optionalPage;
+
+	if(protocol == "jabber")
+	{
+		mandatoryPage = i18n("Basic setup");
+		optionalPage.push_back(i18n("Account preferences"));
+		optionalPage.push_back(i18n("Connection settings"));
+		optionalPage.push_back(i18n("Advanced options"));
+	}
+
+	emit setTitleForCustomPages(mandatoryPage, optionalPage);
+}
 
 #include "kcm-telepathy-accounts.moc"
 
