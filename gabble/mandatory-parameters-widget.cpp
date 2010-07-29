@@ -129,12 +129,11 @@ bool MandatoryParametersWidget::validateParameterValues()
 {
     kDebug();
 
-    // Check if both the password and account have been entered. If not, alert the user.
-    if ((d->ui->passwordLineEdit->text().isEmpty()) ||
-        (d->ui->accountLineEdit->text().isEmpty())) {
+    // Username is currently the only required parameter
+    if (d->ui->accountLineEdit->text().isEmpty()) {
         kDebug() << "Returning false and alerting the user.";
 
-        KMessageBox::error(this, i18n("Please enter both a Jabber ID and a Password."));
+        KMessageBox::error(this, i18n("Please enter a Jabber ID."));
 
         return false;
     }
