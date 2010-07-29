@@ -224,6 +224,10 @@ void EditAccountDialog::onTitleForCustomPages(QString mandatoryPageDesc, QList<Q
     foreach (Tp::ProtocolParameter *parameter, protocolParameters) {
         if (parameter->isRequired()) {
             d->mandatoryProtocolParameters.append(parameter);
+        // HACK Work around the password now optional in gabble issue
+        } else if (parameter->name() == "password") {
+            d->mandatoryProtocolParameters.append(parameter);
+        // HACK ends
         } else {
             d->optionalProtocolParameters.append(parameter);
         }
