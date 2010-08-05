@@ -397,6 +397,11 @@ void AddAccountAssistant::onAccountCreated(Tp::PendingOperation *op)
     // Get the account pointer.
     d->account = pendingAccount->account();
 
+    // Set the account icon
+    QString icon = QString("im-%1").arg(d->account->protocolName());
+    kDebug() << "Set account icon to: " << icon;
+    d->account->setIcon(icon);
+
     kDebug() << "Calling set enabled.";
 
     connect(d->account->setEnabled(true),
