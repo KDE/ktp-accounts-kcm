@@ -78,6 +78,9 @@ KCMTelepathyAccounts::KCMTelepathyAccounts(QWidget *parent, const QVariantList& 
     connect(m_accountsListView->selectionModel(),
             SIGNAL(currentChanged(QModelIndex, QModelIndex)),
             SLOT(onSelectedItemChanged()));
+      connect(this, SIGNAL(setTitleForCustomPages(QString, QList<QString>)),
+                  m_accountsListModel, SLOT(onTitleForCustomPages(QString, QList<QString>)));
+
 }
 
 KCMTelepathyAccounts::~KCMTelepathyAccounts()
@@ -186,8 +189,7 @@ void KCMTelepathyAccounts::onEditAccountClicked()
 	m_accountsListModel->disconnect();
 	connect(m_accountsListModel, SIGNAL(protocolSelected(QString, QString)),
 			this, SLOT(onProtocolSelected(QString, QString)));
-	connect(this, SIGNAL(setTitleForCustomPages(QString, QList<QString>)),
-			m_accountsListModel, SLOT(onTitleForCustomPages(QString, QList<QString>)));
+      
     m_accountsListModel->editAccount(index);
 }
 
