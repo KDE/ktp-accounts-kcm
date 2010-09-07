@@ -1,0 +1,14 @@
+[Desktop Entry]
+Encoding=UTF-8
+Comment=Custom account configuration user interface for accounts using the Butterfly connection manager.
+Type=Service
+ServiceTypes=KCMTelepathyAccounts/AccountUiPlugin
+
+X-KDE-Library=kcmtelepathyaccounts_plugin_butterfly
+X-KDE-PluginInfo-Author=David Edmundson
+X-KDE-PluginInfo-Email=kde@davidedmundson.co.uk
+X-KDE-PluginInfo-Name=butterfly
+X-KDE-PluginInfo-Version=0.1
+X-KDE-PluginInfo-Website=http://techbase.kde.org/Projects/Telepathy
+X-KDE-PluginInfo-License=GPL
+X-KDE-PluginInfo-EnabledByDefault=true
