@@ -1,6 +1,7 @@
 [Desktop Entry]
 Encoding=UTF-8
 Comment=Custom account configuration user interface for accounts using the Butterfly connection manager.
+Comment[x-test]=xxCustom account configuration user interface for accounts using the Butterfly connection manager.xx
 Type=Service
 ServiceTypes=KCMTelepathyAccounts/AccountUiPlugin
 
