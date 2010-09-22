@@ -162,10 +162,12 @@ void AddAccountAssistant::next()
         }
 
         // If the password parameter is optional, add it to the mandatory lot for now instead.
-        optionalParameters.removeAll(passwordParameter);
-        optionalParametersLeft.removeAll(passwordParameter);
-        mandatoryParameters.append(passwordParameter);
-        mandatoryParametersLeft.append(passwordParameter);
+        if (passwordParameter) {
+            optionalParameters.removeAll(passwordParameter);
+            optionalParametersLeft.removeAll(passwordParameter);
+            mandatoryParameters.append(passwordParameter);
+            mandatoryParametersLeft.append(passwordParameter);
+        }
 
         // HACK ends
 
