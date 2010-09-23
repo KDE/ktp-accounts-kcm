@@ -36,8 +36,7 @@
 AccountItem::AccountItem(const Tp::AccountPtr &account, AccountsListModel *parent)
  : QObject(parent),
    m_account(account),
-   m_icon(new KIcon()),
-   m_editAccountDialog(0)
+   m_icon(new KIcon())
 {
     kDebug();
 
@@ -78,32 +77,6 @@ AccountItem::~AccountItem()
 Tp::AccountPtr AccountItem::account() const
 {
     return m_account;
-}
-
-void AccountItem::edit()
-{
-    kDebug();
-
-    // If the edit dialog already exists, focus it.
-    if (m_editAccountDialog) {
-        m_editAccountDialog->focusWidget();
-        return;
-    }
-
-    // FIXME: There should be a driving test for those who want to become parents... :'(
-    QWidget *p = qobject_cast<QWidget*>(parent()->parent());
-    m_editAccountDialog = new EditAccountDialog(this, p); // FIXME: Argh I'm going to jump off a bridge
-
-    // Connect to the dialog's signals.
-    connect(m_editAccountDialog,
-            SIGNAL(finished()),
-            SLOT(onAccountEdited()));
-	connect(m_editAccountDialog, SIGNAL(protocolSelected(QString, QString)),
-			this, SIGNAL(protocolSelected(QString, QString)));
-	connect(this, SIGNAL(setTitleForCustomPages(QString, QList<QString>)),
-			m_editAccountDialog, SLOT(onTitleForCustomPages(QString, QList<QString>)));
-
-    m_editAccountDialog->show();
 }
 
 void AccountItem::remove()
@@ -175,16 +148,6 @@ void AccountItem::onAccountRemoved(Tp::PendingOperation *op)
     }
 
     Q_EMIT removed();
-}
-
-void AccountItem::onAccountEdited()
-{
-    kDebug();
-
-    m_editAccountDialog->deleteLater();
-    m_editAccountDialog = 0;
-
-    Q_EMIT updated();
 }
 
 void AccountItem::onTitleForCustomPages(QString mandatoryPage, QList<QString> optionalPage)

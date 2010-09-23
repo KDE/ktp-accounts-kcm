@@ -22,6 +22,7 @@
 
 #include "accounts-list-model.h"
 #include "add-account-assistant.h"
+#include "edit-account-dialog.h"
 
 #include <KGenericFactory>
 #include <KIcon>
@@ -78,9 +79,6 @@ KCMTelepathyAccounts::KCMTelepathyAccounts(QWidget *parent, const QVariantList& 
     connect(m_accountsListView->selectionModel(),
             SIGNAL(currentChanged(QModelIndex, QModelIndex)),
             SLOT(onSelectedItemChanged()));
-      connect(this, SIGNAL(setTitleForCustomPages(QString, QList<QString>)),
-                  m_accountsListModel, SLOT(onTitleForCustomPages(QString, QList<QString>)));
-
 }
 
 KCMTelepathyAccounts::~KCMTelepathyAccounts()
@@ -144,29 +142,9 @@ void KCMTelepathyAccounts::onAddAccountClicked()
         return;
     }
 
-    // Ensure that there is not already an instance of the AddAccountAssistant before we create one.";
-    if (!m_addAccountAssistant) {
-
-        // Create an AddAccountAssistant instance
-        m_addAccountAssistant = new AddAccountAssistant(m_accountManager, this);
-
-        // Connect to its completion signals...
-        connect(m_addAccountAssistant, SIGNAL(cancelled()),
-                this, SLOT(onAddAccountAssistantClosed()));
-        connect(m_addAccountAssistant, SIGNAL(accepted()),
-                this, SLOT(onAddAccountAssistantClosed()));
-		connect(m_addAccountAssistant, SIGNAL(protocolSelected(QString, QString)),
-				this, SLOT(onProtocolSelected(QString, QString)));
-		connect(this, SIGNAL(setTitleForCustomPages(QString, QList<QString>)),
-				m_addAccountAssistant, SLOT(onTitleForCustomPages(QString, QList<QString>)));
-
-        // ...and finally show it.
-        m_addAccountAssistant->show();
-
-        return;
-    }
-
-    kWarning() << "Cannot create a new AddAccountAssistant. One already exists.";
+    // ...and finally exec it.
+    AddAccountAssistant assistant(m_accountManager, this);
+    assistant.exec();
 }
 
 void KCMTelepathyAccounts::onEditAccountClicked()
@@ -179,18 +157,14 @@ void KCMTelepathyAccounts::onEditAccountClicked()
     }
 
     QModelIndex index = m_accountsListView->currentIndex();
+    AccountItem *item = m_accountsListModel->itemForIndex(index);
 
-    // A valid account must be selected in the list to allow editing
-    if (!index.isValid()) {
+    if (!item)
         return;
-    }
 
     // Item is OK. Edit the item.
-	m_accountsListModel->disconnect();
-	connect(m_accountsListModel, SIGNAL(protocolSelected(QString, QString)),
-			this, SLOT(onProtocolSelected(QString, QString)));
-      
-    m_accountsListModel->editAccount(index);
+    EditAccountDialog dialog(item, this);
+    dialog.exec();
 }
 
 void KCMTelepathyAccounts::onRemoveAccountClicked()
@@ -204,33 +178,6 @@ void KCMTelepathyAccounts::onRemoveAccountClicked()
     {
         m_accountsListModel->removeAccount(index);
     }
-}
-
-void KCMTelepathyAccounts::onAddAccountAssistantClosed()
-{
-    kDebug();
-
-    // Add account assistant has been cancelled. Delete it.
-    m_addAccountAssistant->deleteLater();
-    m_addAccountAssistant = 0;
-}
-
-void KCMTelepathyAccounts::onProtocolSelected(QString protocol, QString localizedName)
-{
-	kDebug() << protocol << localizedName;
-
-	QString mandatoryPage;
-	QList<QString> optionalPage;
-
-	if(protocol == "jabber")
-	{
-		mandatoryPage = i18n("Basic setup");
-		optionalPage.push_back(i18n("Account preferences"));
-		optionalPage.push_back(i18n("Connection settings"));
-		optionalPage.push_back(i18n("Advanced options"));
-	}
-
-	emit setTitleForCustomPages(mandatoryPage, optionalPage);
 }
 
 #include "kcm-telepathy-accounts.moc"
