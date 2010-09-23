@@ -10,6 +10,9 @@
     <height>431</height>
    </rect>
   </property>
+  <property name="windowTitle">
+   <string>Advanced Options</string>
+  </property>
   <layout class="QVBoxLayout" name="verticalLayout_4">
    <item>
     <widget class="QGroupBox" name="stunGroupBox">

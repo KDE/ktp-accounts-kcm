@@ -10,6 +10,9 @@
     <height>300</height>
    </rect>
   </property>
+  <property name="windowTitle">
+   <string>Account Preferences</string>
+  </property>
   <layout class="QFormLayout" name="formLayout">
    <property name="fieldGrowthPolicy">
     <enum>QFormLayout::ExpandingFieldsGrow</enum>

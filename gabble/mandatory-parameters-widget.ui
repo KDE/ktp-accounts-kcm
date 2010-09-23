@@ -10,6 +10,9 @@
     <height>300</height>
    </rect>
   </property>
+  <property name="windowTitle">
+   <string>Account Preferences</string>
+  </property>
   <layout class="QVBoxLayout" name="verticalLayout_2">
    <item>
     <layout class="QVBoxLayout" name="verticalLayout">
