@@ -137,6 +137,7 @@ void AddAccountAssistant::next()
                                                      parameters,
                                                      QVariantMap(),
                                                      d->pageTwoWidget);
+        d->pageTwoWidget->layout()->addWidget(d->accountEditWidget);
 
         KAssistantDialog::next();
     }
