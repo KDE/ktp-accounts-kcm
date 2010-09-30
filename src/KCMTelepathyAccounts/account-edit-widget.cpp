@@ -188,6 +188,15 @@ void AccountEditWidget::onAdvancedClicked()
 
             // at this point the values are fine
             d->advancedParameterValues = advancedWidget->parameterValues();
+            // update the parameter values in case the dialog is opened again
+            QMap<Tp::ProtocolParameter*,QVariant>::const_iterator paramIter;
+            paramIter = d->advancedParameterValues.constBegin();
+            while (paramIter != d->advancedParameterValues.constEnd())
+            {
+                 d->parameterValues[paramIter.key()->name()] = paramIter.value();
+                 paramIter++;
+            }
+
             break;
         }
         else
