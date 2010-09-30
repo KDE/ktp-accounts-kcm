@@ -18,31 +18,30 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
-#ifndef KCMTELEPATHYACCOUNTS_PLUGIN_BUTTERFLY_ACCOUNT_PARAMETERS_WIDGET_H
-#define KCMTELEPATHYACCOUNTS_PLUGIN_BUTTERFLY_ACCOUNT_PARAMETERS_WIDGET_H
+#ifndef KCMTELEPATHYACCOUNTS_PLUGIN_GABBLE_ACCOUNT_PARAMETERS_WIDGET_H
+#define KCMTELEPATHYACCOUNTS_PLUGIN_GABBLE_ACCOUNT_PARAMETERS_WIDGET_H
 
 #include <KCMTelepathyAccounts/AbstractAccountParametersWidget>
 
-class MandatoryParametersWidget : public AbstractAccountParametersWidget
+class MainOptionsWidget : public AbstractAccountParametersWidget
 {
     Q_OBJECT
 
 public:
-    explicit MandatoryParametersWidget(Tp::ProtocolParameterList parameters,
-                                       const QVariantMap &values = QVariantMap(),
-                                       QWidget *parent = 0);
-    virtual ~MandatoryParametersWidget();
+    explicit MainOptionsWidget(Tp::ProtocolParameterList parameters,
+                               const QVariantMap &values = QVariantMap(),
+                               QWidget *parent = 0);
+    virtual ~MainOptionsWidget();
 
     virtual QMap<Tp::ProtocolParameter*, QVariant> parameterValues() const;
     virtual bool validateParameterValues();
 
 private:
-    Q_DISABLE_COPY(MandatoryParametersWidget);
+    Q_DISABLE_COPY(MainOptionsWidget);
 
     class Private;
     Private * const d;
 };
-
 
 #endif // header guard
 

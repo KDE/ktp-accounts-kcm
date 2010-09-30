@@ -32,11 +32,14 @@ public:
     virtual ~GabbleAccountUi();
 
     virtual AbstractAccountParametersWidget
-              *mandatoryParametersWidget(Tp::ProtocolParameterList parameters,
-                                         const QVariantMap &values = QVariantMap()) const;
-    virtual QList<AbstractAccountParametersWidget*>
-              optionalParametersWidgets(Tp::ProtocolParameterList parameters,
-                                        const QVariantMap &values = QVariantMap()) const;
+              *mainOptionsWidget(Tp::ProtocolParameterList parameters,
+                                 const QVariantMap &values = QVariantMap(),
+                                 QWidget *parent = 0) const;
+    virtual bool hasAdvancedOptionsWidget() const;
+    virtual AbstractAccountParametersWidget
+              *advancedOptionsWidget(Tp::ProtocolParameterList parameters,
+                                     const QVariantMap &values = QVariantMap(),
+                                     QWidget *parent = 0) const;
 
 private:
     Q_DISABLE_COPY(GabbleAccountUi);
@@ -44,7 +47,6 @@ private:
     class Private;
     Private * const d;
 };
-
 
 #endif // header guard
 

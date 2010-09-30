@@ -18,50 +18,31 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
-#include "butterfly-account-ui.h"
-
-#include "main-options-widget.h"
+#ifndef KCMTELEPATHYACCOUNTS_PLUGIN_BUTTERFLY_ACCOUNT_PARAMETERS_WIDGET_H
+#define KCMTELEPATHYACCOUNTS_PLUGIN_BUTTERFLY_ACCOUNT_PARAMETERS_WIDGET_H
 
 #include <KCMTelepathyAccounts/AbstractAccountParametersWidget>
 
-#include <KDebug>
-
-class ButterflyAccountUi::Private
+class MainOptionsWidget : public AbstractAccountParametersWidget
 {
+    Q_OBJECT
+
 public:
-    Private()
-    {
-        kDebug();
-    }
+    explicit MainOptionsWidget(Tp::ProtocolParameterList parameters,
+                               const QVariantMap &values = QVariantMap(),
+                               QWidget *parent = 0);
+    virtual ~MainOptionsWidget();
+
+    virtual QMap<Tp::ProtocolParameter*, QVariant> parameterValues() const;
+    virtual bool validateParameterValues();
+
+private:
+    Q_DISABLE_COPY(MainOptionsWidget);
+
+    class Private;
+    Private * const d;
 };
 
-ButterflyAccountUi::ButterflyAccountUi(QObject *parent)
- : AbstractAccountUi(parent),
-   d(new Private)
-{
-    kDebug();
 
-    // Register supported parameters
-    registerSupportedParameter("account", QVariant::String);
-    registerSupportedParameter("password", QVariant::String);
-}
-
-ButterflyAccountUi::~ButterflyAccountUi()
-{
-    kDebug();
-
-    delete d;
-}
-
-AbstractAccountParametersWidget *ButterflyAccountUi::mainOptionsWidget(
-        Tp::ProtocolParameterList parameters,
-        const QVariantMap &values,
-        QWidget *parent) const
-{
-    kDebug();
-
-    return new MainOptionsWidget(parameters, values, parent);
-}
-
-#include "butterfly-account-ui.moc"
+#endif // header guard
 

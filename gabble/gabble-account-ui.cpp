@@ -20,9 +20,8 @@
 
 #include "gabble-account-ui.h"
 
-#include "mandatory-parameters-widget.h"
-#include "proxy-settings-widget.h"
-#include "server-settings-widget.h"
+#include "main-options-widget.h"
+#include "advanced-options-widget.h"
 
 #include <KCMTelepathyAccounts/AbstractAccountParametersWidget>
 
@@ -44,25 +43,25 @@ GabbleAccountUi::GabbleAccountUi(QObject *parent)
     kDebug();
 
     // Register supported parameters
-    registerSupportedMandatoryParameter("account", QVariant::String);
-    registerSupportedMandatoryParameter("password", QVariant::String);
+    registerSupportedParameter("account", QVariant::String);
+    registerSupportedParameter("password", QVariant::String);
 
-    registerSupportedOptionalParameter("port", QVariant::UInt);
-    registerSupportedOptionalParameter("server", QVariant::String);
-    registerSupportedOptionalParameter("require-encryption", QVariant::Bool);
-    registerSupportedOptionalParameter("old-ssl", QVariant::Bool);
-    registerSupportedOptionalParameter("low-bandwidth", QVariant::Bool);
-    registerSupportedOptionalParameter("ignore-ssl-errors", QVariant::Bool);
-    registerSupportedOptionalParameter("keepalive-interval", QVariant::UInt);
+    registerSupportedParameter("port", QVariant::UInt);
+    registerSupportedParameter("server", QVariant::String);
+    registerSupportedParameter("require-encryption", QVariant::Bool);
+    registerSupportedParameter("old-ssl", QVariant::Bool);
+    registerSupportedParameter("low-bandwidth", QVariant::Bool);
+    registerSupportedParameter("ignore-ssl-errors", QVariant::Bool);
+    registerSupportedParameter("keepalive-interval", QVariant::UInt);
 
-    registerSupportedOptionalParameter("stun-server", QVariant::String);
-    registerSupportedOptionalParameter("stun-port", QVariant::UInt);
-    registerSupportedOptionalParameter("fallback-stun-server", QVariant::String);
-    registerSupportedOptionalParameter("fallback-stun-port", QVariant::UInt);
-    registerSupportedOptionalParameter("https-proxy-server", QVariant::String);
-    registerSupportedOptionalParameter("https-proxy-port", QVariant::UInt);
-    registerSupportedOptionalParameter("fallback-socks5-proxies", QVariant::StringList);
-    registerSupportedOptionalParameter("fallback-conference-server", QVariant::String);
+    registerSupportedParameter("stun-server", QVariant::String);
+    registerSupportedParameter("stun-port", QVariant::UInt);
+    registerSupportedParameter("fallback-stun-server", QVariant::String);
+    registerSupportedParameter("fallback-stun-port", QVariant::UInt);
+    registerSupportedParameter("https-proxy-server", QVariant::String);
+    registerSupportedParameter("https-proxy-port", QVariant::UInt);
+    registerSupportedParameter("fallback-socks5-proxies", QVariant::StringList);
+    registerSupportedParameter("fallback-conference-server", QVariant::String);
 }
 
 GabbleAccountUi::~GabbleAccountUi()
@@ -72,28 +71,29 @@ GabbleAccountUi::~GabbleAccountUi()
     delete d;
 }
 
-AbstractAccountParametersWidget *GabbleAccountUi::mandatoryParametersWidget(
+AbstractAccountParametersWidget *GabbleAccountUi::mainOptionsWidget(
         Tp::ProtocolParameterList parameters,
-        const QVariantMap &values) const
+        const QVariantMap &values,
+        QWidget *parent) const
 {
     kDebug();
 
-    return new MandatoryParametersWidget(parameters, values);
+    return new MainOptionsWidget(parameters, values, parent);
 }
 
-QList<AbstractAccountParametersWidget*> GabbleAccountUi::optionalParametersWidgets(
+bool GabbleAccountUi::hasAdvancedOptionsWidget() const
+{
+    return true;
+}
+
+AbstractAccountParametersWidget *GabbleAccountUi::advancedOptionsWidget(
         Tp::ProtocolParameterList parameters,
-        const QVariantMap &values) const
+        const QVariantMap &values,
+        QWidget *parent) const
 {
     kDebug();
 
-    QList<AbstractAccountParametersWidget*> widgets;
-
-    // Add each of the optional parameter widgets.
-    widgets.append(new ServerSettingsWidget(parameters, values));
-    widgets.append(new ProxySettingsWidget(parameters, values));
-
-    return widgets;
+    return new AdvancedOptionsWidget(parameters, values, parent);
 }
 
 

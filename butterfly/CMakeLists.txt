@@ -7,11 +7,11 @@ include_directories (${CMAKE_CURRENT_BINARY_DIR}
 set (kcmtelepathyaccounts_plugin_butterfly_SRCS
      butterfly-account-ui-plugin.cpp
      butterfly-account-ui.cpp
-     mandatory-parameters-widget.cpp
+     main-options-widget.cpp
 )
 
 kde4_add_ui_files (kcmtelepathyaccounts_plugin_butterfly_SRCS
-                   mandatory-parameters-widget.ui
+                   main-options-widget.ui
 )
 
 kde4_add_plugin (kcmtelepathyaccounts_plugin_butterfly

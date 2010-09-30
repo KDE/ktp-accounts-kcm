@@ -18,14 +18,14 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
-#include "mandatory-parameters-widget.h"
+#include "main-options-widget.h"
 
-#include "ui_mandatory-parameters-widget.h"
+#include "ui_main-options-widget.h"
 
 #include <KDebug>
 #include <KMessageBox>
 
-class MandatoryParametersWidget::Private
+class MainOptionsWidget::Private
 {
 public:
     Private()
@@ -40,10 +40,10 @@ public:
     Tp::ProtocolParameter *accountParameter;
     Tp::ProtocolParameter *passwordParameter;
 
-    Ui::MandatoryParametersWidget *ui;
+    Ui::MainOptionsWidget *ui;
 };
 
-MandatoryParametersWidget::MandatoryParametersWidget(Tp::ProtocolParameterList parameters,
+MainOptionsWidget::MainOptionsWidget(Tp::ProtocolParameterList parameters,
                                                      const QVariantMap &values,
                                                      QWidget *parent)
  : AbstractAccountParametersWidget(parameters, values, parent),
@@ -56,6 +56,10 @@ MandatoryParametersWidget::MandatoryParametersWidget(Tp::ProtocolParameterList p
 
     // Store the parameters this widget supports
     foreach (Tp::ProtocolParameter *parameter, d->parameters) {
+      
+        qDebug() << parameter->name();
+      
+      
         if ((parameter->name() == "account") && (parameter->type() == QVariant::String)) {
             if (!d->accountParameter) {
                 d->accountParameter = parameter;
@@ -68,79 +72,70 @@ MandatoryParametersWidget::MandatoryParametersWidget(Tp::ProtocolParameterList p
     }
 
     // Set up the UI.
-    d->ui = new Ui::MandatoryParametersWidget;
+    d->ui = new Ui::MainOptionsWidget;
     d->ui->setupUi(this);
 
-    // Prefill UI elements if appropriate.
-    if (d->accountParameter) {
-        if (values.contains(d->accountParameter->name())) {
-            d->ui->accountLineEdit->setText(values.value(d->accountParameter->name()).toString());
-        } else {
-            d->ui->accountLineEdit->setText(d->accountParameter->defaultValue().toString());
-        }
-    }
+   // Prefill UI elements if appropriate.
+   if (d->accountParameter) {
+       if (values.contains(d->accountParameter->name())) {
+           d->ui->accountLineEdit->setText(values.value(d->accountParameter->name()).toString());
+       } else {
+           d->ui->accountLineEdit->setText(d->accountParameter->defaultValue().toString());
+       }
+   }
 
-    if (d->passwordParameter) {
-        if (values.contains(d->passwordParameter->name())) {
-            d->ui->passwordLineEdit->setText(values.value(d->passwordParameter->name()).toString());
-        } else {
-            d->ui->passwordLineEdit->setText(d->passwordParameter->defaultValue().toString());
-        }
-    }
+   if (d->passwordParameter) {
+       if (values.contains(d->passwordParameter->name())) {
+           d->ui->passwordLineEdit->setText(values.value(d->passwordParameter->name()).toString());
+       } else {
+           d->ui->passwordLineEdit->setText(d->passwordParameter->defaultValue().toString());
+       }
+   }
 
-    // Hide any elements we don't have the parameters passed to show.
-    if (!d->accountParameter) {
-        d->ui->accountLabel->hide();
-        d->ui->accountLineEdit->hide();
-    }
+//    Hide any elements we don't have the parameters passed to show.
+   if (!d->accountParameter) {
+       d->ui->accountLabel->hide();
+       d->ui->accountLineEdit->hide();
+   }
 
-    if (!d->passwordParameter) {
-        d->ui->passwordLabel->hide();
-        d->ui->passwordLineEdit->hide();
-    }
+   if (!d->passwordParameter) {
+       d->ui->passwordLabel->hide();
+       d->ui->passwordLineEdit->hide();
+   }
 }
 
-MandatoryParametersWidget::~MandatoryParametersWidget()
+MainOptionsWidget::~MainOptionsWidget()
 {
     kDebug();
 
     delete d;
 }
 
-QMap<Tp::ProtocolParameter*, QVariant> MandatoryParametersWidget::parameterValues() const
+QMap<Tp::ProtocolParameter*, QVariant> MainOptionsWidget::parameterValues() const
 {
     kDebug();
 
     QMap<Tp::ProtocolParameter*, QVariant> parameters;
 
-    // Populate the map of parameters and their values with all the parameters this widget contains.
-    if (d->accountParameter) {
-        parameters.insert(d->accountParameter, d->ui->accountLineEdit->text());
-    }
+   // Populate the map of parameters and their values with all the parameters this widget contains.
+   if (d->accountParameter) {
+       parameters.insert(d->accountParameter, d->ui->accountLineEdit->text());
+   }
 
-    if (d->passwordParameter) {
-        parameters.insert(d->passwordParameter, d->ui->passwordLineEdit->text());
-    }
+   if (d->passwordParameter) {
+       parameters.insert(d->passwordParameter, d->ui->passwordLineEdit->text());
+   }
 
-    return parameters;
+   return parameters;
 }
 
-bool MandatoryParametersWidget::validateParameterValues()
+bool MainOptionsWidget::validateParameterValues()
 {
     kDebug();
 
-    // Username is currently the only required parameter
-    if (d->ui->accountLineEdit->text().isEmpty()) {
-        kDebug() << "Returning false and alerting the user.";
-
-        KMessageBox::error(this, i18n("Please enter a Jabber ID."));
-
-        return false;
-    }
 
     return true;
 }
 
-
-#include "mandatory-parameters-widget.moc"
+#include "main-options-widget.moc"
 
