@@ -29,9 +29,7 @@ public:
     {
         kDebug();
     }
-
-    QMap<QString, QVariant::Type> supportedMandatoryParameters;
-    QMap<QString, QVariant::Type> supportedOptionalParameters;
+    QMap<QString, QVariant::Type> supportedParameters;
 };
 
 AbstractAccountUi::AbstractAccountUi(QObject *parent)
@@ -48,20 +46,27 @@ AbstractAccountUi::~AbstractAccountUi()
     delete d;
 }
 
-const QMap<QString, QVariant::Type> &AbstractAccountUi::supportedMandatoryParameters() const
+bool AbstractAccountUi::hasAdvancedOptionsWidget() const
 {
-    return d->supportedMandatoryParameters;
+    return false;
 }
 
-const QMap<QString, QVariant::Type> &AbstractAccountUi::supportedOptionalParameters() const
+AbstractAccountParametersWidget* AbstractAccountUi::advancedOptionsWidget(Tp::ProtocolParameterList parameters,
+                                                                          const QVariantMap &values,
+                                                                          QWidget *parent) const
 {
-    return d->supportedOptionalParameters;
+    return 0;
 }
 
-void AbstractAccountUi::registerSupportedMandatoryParameter(const QString &name, QVariant::Type type)
+const QMap<QString, QVariant::Type> &AbstractAccountUi::supportedParameters() const
+{
+    return d->supportedParameters;
+}
+
+void AbstractAccountUi::registerSupportedParameter(const QString &name, QVariant::Type type)
 {
     // Check that the parameter is not already in the list
-    foreach (QVariant::Type t, d->supportedMandatoryParameters.values(name)) {
+    foreach (QVariant::Type t, d->supportedParameters.values(name)) {
         if (t == type) {
             kWarning() << "Parameter:" << name << "of type:" << type << "is already added.";
             return;
@@ -69,22 +74,9 @@ void AbstractAccountUi::registerSupportedMandatoryParameter(const QString &name,
     }
 
     // Add the parameter to the list.
-    d->supportedMandatoryParameters.insertMulti(name, type);
+    d->supportedParameters.insertMulti(name, type);
 }
 
-void AbstractAccountUi::registerSupportedOptionalParameter(const QString &name, QVariant::Type type)
-{
-    // Check that the parameter is not already in the list
-    foreach (QVariant::Type t, d->supportedOptionalParameters.values(name)) {
-        if (t == type) {
-            kWarning() << "Parameter:" << name << "of type:" << type << "is already added.";
-            return;
-        }
-    }
-
-    // Add the parameter to the list.
-    d->supportedOptionalParameters.insertMulti(name, type);
-}
 
 
 #include "abstract-account-ui.moc"

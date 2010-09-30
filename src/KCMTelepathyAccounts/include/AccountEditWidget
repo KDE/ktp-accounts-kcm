@@ -1,0 +1,7 @@
+#ifndef LIB_KCM_TELEPATHY_ACCOUNTS_ACCOUNT_EDIT_WIDGET_PRETTY_H
+#define LIB_KCM_TELEPATHY_ACCOUNTS_ACCOUNT_EDIT_WIDGET_PRETTY_H
+
+#include <KCMTelepathyAccounts/account-edit-widget.h>
+
+#endif
+

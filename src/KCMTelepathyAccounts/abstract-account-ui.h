@@ -40,19 +40,20 @@ public:
     explicit AbstractAccountUi(QObject *parent = 0);
     virtual ~AbstractAccountUi();
 
-    virtual const QMap<QString, QVariant::Type> &supportedMandatoryParameters() const;
-    virtual const QMap<QString, QVariant::Type> &supportedOptionalParameters() const;
+    virtual const QMap<QString, QVariant::Type> &supportedParameters() const;
 
     virtual AbstractAccountParametersWidget
-              *mandatoryParametersWidget(Tp::ProtocolParameterList parameters,
-                                         const QVariantMap &values = QVariantMap()) const = 0;
-    virtual QList<AbstractAccountParametersWidget*>
-              optionalParametersWidgets(Tp::ProtocolParameterList parameters,
-                                        const QVariantMap &values = QVariantMap()) const = 0;
+              *mainOptionsWidget(Tp::ProtocolParameterList parameters,
+                                 const QVariantMap &values = QVariantMap(),
+                                 QWidget *parent = 0) const = 0;
+    virtual bool hasAdvancedOptionsWidget() const;
+    virtual AbstractAccountParametersWidget
+              *advancedOptionsWidget(Tp::ProtocolParameterList parameters,
+                                     const QVariantMap &values = QVariantMap(),
+                                     QWidget *parent = 0) const;
 
 protected:
-    virtual void registerSupportedMandatoryParameter(const QString &name, QVariant::Type type);
-    virtual void registerSupportedOptionalParameter(const QString &name, QVariant::Type type);
+    virtual void registerSupportedParameter(const QString &name, QVariant::Type type);
 
 private:
     Q_DISABLE_COPY(AbstractAccountUi);

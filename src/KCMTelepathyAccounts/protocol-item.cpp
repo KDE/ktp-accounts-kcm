@@ -54,7 +54,7 @@ QString ProtocolItem::localizedName() const
     return m_localizedName;
 }
 
-Tp::ProtocolParameterList ProtocolItem::mandatoryParameters() const
+Tp::ProtocolParameterList ProtocolItem::parameters() const
 {
     kDebug();
 
@@ -62,42 +62,13 @@ Tp::ProtocolParameterList ProtocolItem::mandatoryParameters() const
 
     Tp::ConnectionManagerPtr cm = item->connectionManager();
 
-    Tp::ProtocolParameterList mandatoryParameters;
+
     foreach (Tp::ProtocolInfo *info, cm->protocols()) {
-        if (info->name() == m_protocol) {
-            foreach (Tp::ProtocolParameter *parameter, info->parameters()) {
-                if (parameter->isRequired()) {
-                    mandatoryParameters << parameter;
-                }
-            }
-        }
+        if (info->name() == m_protocol)
+            return info->parameters();
     }
-
-    return mandatoryParameters;
+    return Tp::ProtocolParameterList();
 }
-
-Tp::ProtocolParameterList ProtocolItem::optionalParameters() const
-{
-    kDebug();
-
-    ConnectionManagerItem *item = qobject_cast<ConnectionManagerItem*>(parent());
-
-    Tp::ConnectionManagerPtr cm = item->connectionManager();
-
-    Tp::ProtocolParameterList optionalParameters;
-    foreach (Tp::ProtocolInfo *info, cm->protocols()) {
-        if (info->name() == m_protocol) {
-            foreach (Tp::ProtocolParameter *parameter, info->parameters()) {
-                if (!parameter->isRequired()) {
-                    optionalParameters << parameter;
-                }
-            }
-        }
-    }
-
-    return optionalParameters;
-}
-
 
 #include "protocol-item.moc"
 

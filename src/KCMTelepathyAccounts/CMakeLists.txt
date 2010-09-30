@@ -8,6 +8,7 @@ set (libkcmtelepathyaccounts_SRCS
      abstract-account-ui-plugin.cpp
      abstract-account-ui.cpp
      abstract-account-parameters-widget.cpp
+     account-edit-widget.cpp
      integer-edit.cpp
      unsigned-integer-edit.cpp
      protocol-select-widget.cpp
@@ -18,8 +19,6 @@ set (libkcmtelepathyaccounts_SRCS
      parameter-edit-delegate.cpp
      parameter-edit-model.cpp
      parameter-item.cpp
-     mandatory-parameter-edit-widget.cpp
-     optional-parameter-edit-widget.cpp
      dictionary.cpp
      plugin-manager.cpp
 )
@@ -28,12 +27,11 @@ set (libkcmtelepathyaccounts_HDRS
      abstract-account-ui-plugin.h
      abstract-account-ui.h
      abstract-account-parameters-widget.h
+     account-edit-widget.h
      plugin-macros.h
      integer-edit.h
      unsigned-integer-edit.h
      connection-manager-item.h
-     mandatory-parameter-edit-widget.h
-     optional-parameter-edit-widget.h
      plugin-manager.h
      protocol-select-widget.h
      protocol-item.h
@@ -44,12 +42,11 @@ set (libkcmtelepathyaccounts_PRETTY_HDRS
      include/AbstractAccountUiPlugin
      include/AbstractAccountUi
      include/AbstractAccountParametersWidget
+     include/AccountEditWidget
      include/PluginMacros
      include/IntegerEdit
      include/UnsignedIntegerEdit
      include/ConnectionManagerItem
-     include/MandatoryParameterEditWidget
-     include/OptionalParameterEditWidget
      include/PluginManager
      include/ProtocolSelectWidget
      include/ProtocolItem
@@ -57,6 +54,7 @@ set (libkcmtelepathyaccounts_PRETTY_HDRS
 )
 
 kde4_add_ui_files (libkcmtelepathyaccounts_SRCS
+                   account-edit-widget.ui
                    parameter-edit-widget.ui
                    protocol-select-widget.ui
 )
