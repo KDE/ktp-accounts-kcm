@@ -125,9 +125,9 @@ ProxySettingsWidget::ProxySettingsWidget(Tp::ProtocolParameterList parameters,
 
     if (d->stunPortParameter) {
         if (values.contains(d->stunPortParameter->name())) {
-            d->ui->stunPortLineEdit->setValue(values.value(d->stunPortParameter->name()).toUInt());
+            d->ui->stunPortSpinBox->setValue(values.value(d->stunPortParameter->name()).toUInt());
         } else {
-            d->ui->stunPortLineEdit->setValue(d->stunPortParameter->defaultValue().toUInt());
+            d->ui->stunPortSpinBox->setValue(d->stunPortParameter->defaultValue().toUInt());
         }
     }
 
@@ -143,10 +143,10 @@ ProxySettingsWidget::ProxySettingsWidget(Tp::ProtocolParameterList parameters,
 
     if (d->fallbackStunPortParameter) {
         if (values.contains(d->fallbackStunPortParameter->name())) {
-            d->ui->fallbackStunPortLineEdit->setValue(values.value(
+            d->ui->fallbackStunPortSpinBox->setValue(values.value(
                     d->fallbackStunPortParameter->name()).toUInt());
         } else {
-            d->ui->fallbackStunPortLineEdit->setValue(
+            d->ui->fallbackStunPortSpinBox->setValue(
                     d->fallbackStunPortParameter->defaultValue().toUInt());
         }
     }
@@ -163,10 +163,10 @@ ProxySettingsWidget::ProxySettingsWidget(Tp::ProtocolParameterList parameters,
 
     if (d->httpsProxyPortParameter) {
         if (values.contains(d->httpsProxyPortParameter->name())) {
-            d->ui->httpsProxyPortLineEdit->setValue(values.value(
+            d->ui->httpsProxyPortSpinBox->setValue(values.value(
                     d->httpsProxyPortParameter->name()).toUInt());
         } else {
-            d->ui->httpsProxyPortLineEdit->setValue(
+            d->ui->httpsProxyPortSpinBox->setValue(
                     d->httpsProxyPortParameter->defaultValue().toUInt());
         }
     }
@@ -203,7 +203,7 @@ ProxySettingsWidget::ProxySettingsWidget(Tp::ProtocolParameterList parameters,
 
     if (!d->stunPortParameter) {
         d->ui->stunPortLabel->hide();
-        d->ui->stunPortLineEdit->hide();
+        d->ui->stunPortSpinBox->hide();
     }
 
     if (!d->fallbackStunServerParameter) {
@@ -213,7 +213,7 @@ ProxySettingsWidget::ProxySettingsWidget(Tp::ProtocolParameterList parameters,
 
     if (!d->fallbackStunPortParameter) {
         d->ui->fallbackStunPortLabel->hide();
-        d->ui->fallbackStunPortLineEdit->hide();
+        d->ui->fallbackStunPortSpinBox->hide();
     }
 
     if (!d->httpsProxyServerParameter) {
@@ -223,7 +223,7 @@ ProxySettingsWidget::ProxySettingsWidget(Tp::ProtocolParameterList parameters,
 
     if (!d->httpsProxyPortParameter) {
         d->ui->httpsProxyPortLabel->hide();
-        d->ui->httpsProxyPortLineEdit->hide();
+        d->ui->httpsProxyPortSpinBox->hide();
     }
 
     if (!d->fallbackSocks5ProxiesParameter) {
@@ -274,7 +274,7 @@ QMap<Tp::ProtocolParameter*, QVariant> ProxySettingsWidget::parameterValues() co
     }
 
     if (d->stunPortParameter) {
-        parameters.insert(d->stunPortParameter, d->ui->stunPortLineEdit->value());
+        parameters.insert(d->stunPortParameter, d->ui->stunPortSpinBox->value());
     }
 
     if (d->fallbackStunServerParameter) {
@@ -283,7 +283,7 @@ QMap<Tp::ProtocolParameter*, QVariant> ProxySettingsWidget::parameterValues() co
     }
 
     if (d->fallbackStunPortParameter) {
-        parameters.insert(d->fallbackStunPortParameter, d->ui->fallbackStunPortLineEdit->value());
+        parameters.insert(d->fallbackStunPortParameter, d->ui->fallbackStunPortSpinBox->value());
     }
 
     if (d->httpsProxyServerParameter) {
@@ -291,7 +291,7 @@ QMap<Tp::ProtocolParameter*, QVariant> ProxySettingsWidget::parameterValues() co
     }
 
     if (d->httpsProxyPortParameter) {
-        parameters.insert(d->httpsProxyPortParameter, d->ui->httpsProxyPortLineEdit->value());
+        parameters.insert(d->httpsProxyPortParameter, d->ui->httpsProxyPortSpinBox->value());
     }
 
     if (d->fallbackSocks5ProxiesParameter) {
@@ -312,26 +312,7 @@ bool ProxySettingsWidget::validateParameterValues()
 {
     kDebug();
 
-    // Validate all the int's and uint's.
-    if (d->ui->stunPortLineEdit->validity() != QValidator::Acceptable) {
-        KMessageBox::error(this,
-                              i18n("\"<b>%1</b>\" is not an acceptable value for <b>%2</b>")
-                              .arg(d->ui->stunPortLineEdit->text())
-                              .arg(d->ui->stunPortLabel->text()));
-        return false;
-    } else if (d->ui->fallbackStunPortLineEdit->validity() != QValidator::Acceptable) {
-        KMessageBox::error(this,
-                              i18n("\"<b>%1</b>\" is not an acceptable value for <b>%2</b>")
-                              .arg(d->ui->fallbackStunPortLineEdit->text())
-                              .arg(d->ui->fallbackStunPortLabel->text()));
-        return false;
-    } else if (d->ui->httpsProxyPortLineEdit->validity() != QValidator::Acceptable) {
-        KMessageBox::error(this,
-                              i18n("\"<b>%1</b>\" is not an acceptable value for <b>%2</b>")
-                              .arg(d->ui->httpsProxyPortLineEdit->text())
-                              .arg(d->ui->httpsProxyPortLabel->text()));
-        return false;
-    }
+    //TODO: check what parameters should be validated
 
     return true;
 }

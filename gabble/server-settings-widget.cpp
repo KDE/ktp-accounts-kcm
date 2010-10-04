@@ -112,18 +112,18 @@ ServerSettingsWidget::ServerSettingsWidget(Tp::ProtocolParameterList parameters,
 
     if (d->portParameter) {
         if (values.contains(d->portParameter->name())) {
-            d->ui->portLineEdit->setValue(values.value(d->portParameter->name()).toUInt());
+            d->ui->portSpinBox->setValue(values.value(d->portParameter->name()).toUInt());
         } else {
-            d->ui->portLineEdit->setValue(d->portParameter->defaultValue().toUInt());
+            d->ui->portSpinBox->setValue(d->portParameter->defaultValue().toUInt());
         }
     }
 
     if (d->keepaliveIntervalParameter) {
         if (values.contains(d->keepaliveIntervalParameter->name())) {
-            d->ui->keepaliveIntervalLineEdit->setValue(values.value(
+            d->ui->keepaliveIntervalSpinBox->setValue(values.value(
                     d->keepaliveIntervalParameter->name()).toUInt());
         } else {
-            d->ui->keepaliveIntervalLineEdit->setValue(
+            d->ui->keepaliveIntervalSpinBox->setValue(
                     d->keepaliveIntervalParameter->defaultValue().toUInt());
         }
     }
@@ -174,12 +174,12 @@ ServerSettingsWidget::ServerSettingsWidget(Tp::ProtocolParameterList parameters,
 
     if (!d->portParameter) {
         d->ui->portLabel->hide();
-        d->ui->portLineEdit->hide();
+        d->ui->portSpinBox->hide();
     }
 
     if (!d->keepaliveIntervalParameter) {
         d->ui->keepaliveIntervalLabel->hide();
-        d->ui->keepaliveIntervalLineEdit->hide();
+        d->ui->keepaliveIntervalSpinBox->hide();
     }
 
     if (!d->lowBandwidthParameter) {
@@ -233,11 +233,11 @@ QMap<Tp::ProtocolParameter*, QVariant> ServerSettingsWidget::parameterValues() c
     }
 
     if (d->portParameter) {
-        parameters.insert(d->portParameter, d->ui->portLineEdit->value());
+        parameters.insert(d->portParameter, d->ui->portSpinBox->value());
     }
 
     if (d->keepaliveIntervalParameter) {
-        parameters.insert(d->keepaliveIntervalParameter, d->ui->keepaliveIntervalLineEdit->value());
+        parameters.insert(d->keepaliveIntervalParameter, d->ui->keepaliveIntervalSpinBox->value());
     }
 
     if (d->lowBandwidthParameter) {
@@ -264,19 +264,7 @@ bool ServerSettingsWidget::validateParameterValues()
 {
     kDebug();
 
-    if (d->ui->portLineEdit->validity() != QValidator::Acceptable) {
-        KMessageBox::error(this,
-                              i18n("\"<b>%1</b>\" is not an acceptable value for <b>%2</b>")
-                              .arg(d->ui->portLineEdit->text())
-                              .arg(d->ui->portLabel->text()));
-        return false;
-    } else if (d->ui->keepaliveIntervalLineEdit->validity() != QValidator::Acceptable) {
-        KMessageBox::error(this,
-                              i18n("\"<b>%1</b>\" is not an acceptable value for <b>%2</b>")
-                              .arg(d->ui->keepaliveIntervalLineEdit->text())
-                              .arg(d->ui->keepaliveIntervalLabel->text()));
-        return false;
-    }
+    //TODO: check which parameters need validation
 
     return true;
 }

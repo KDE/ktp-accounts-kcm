@@ -19,38 +19,38 @@
      <property name="title">
       <string>Server Settings</string>
      </property>
-     <layout class="QVBoxLayout" name="verticalLayout">
-      <item>
-       <layout class="QHBoxLayout" name="horizontalLayout_3">
-        <item>
-         <widget class="QLabel" name="serverLabel">
-          <property name="text">
-           <string>Server Address:</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="KLineEdit" name="serverLineEdit"/>
-        </item>
-       </layout>
+     <layout class="QFormLayout" name="formLayout">
+      <item row="0" column="0">
+       <widget class="QLabel" name="serverLabel">
+        <property name="text">
+         <string>Server Address:</string>
+        </property>
+       </widget>
       </item>
-      <item>
-       <layout class="QHBoxLayout" name="horizontalLayout_2">
-        <item>
-         <widget class="QLabel" name="portLabel">
-          <property name="text">
-           <string>Server Port:</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="UnsignedIntegerEdit" name="portLineEdit"/>
-        </item>
-       </layout>
+      <item row="0" column="1">
+       <widget class="KLineEdit" name="serverLineEdit"/>
+      </item>
+      <item row="1" column="0">
+       <widget class="QLabel" name="portLabel">
+        <property name="text">
+         <string>Server Port:</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="1">
+       <widget class="QSpinBox" name="portSpinBox">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+       </widget>
       </item>
      </layout>
      <zorder></zorder>
      <zorder></zorder>
+     <zorder>serverLineEdit</zorder>
     </widget>
    </item>
    <item>
@@ -69,7 +69,7 @@
          </widget>
         </item>
         <item>
-         <widget class="UnsignedIntegerEdit" name="keepaliveIntervalLineEdit"/>
+         <widget class="QSpinBox" name="keepaliveIntervalSpinBox"/>
         </item>
        </layout>
       </item>
@@ -120,11 +120,6 @@
    <class>KLineEdit</class>
    <extends>QLineEdit</extends>
    <header>klineedit.h</header>
-  </customwidget>
-  <customwidget>
-   <class>UnsignedIntegerEdit</class>
-   <extends>QLineEdit</extends>
-   <header location="global">KCMTelepathyAccounts/UnsignedIntegerEdit</header>
   </customwidget>
  </customwidgets>
  <resources/>

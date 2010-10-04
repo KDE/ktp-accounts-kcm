@@ -40,14 +40,7 @@
          </widget>
         </item>
         <item>
-         <widget class="UnsignedIntegerEdit" name="stunPortLineEdit">
-          <property name="maximumSize">
-           <size>
-            <width>60</width>
-            <height>16777215</height>
-           </size>
-          </property>
-         </widget>
+         <widget class="QSpinBox" name="stunPortSpinBox"/>
         </item>
        </layout>
       </item>
@@ -71,14 +64,7 @@
          </widget>
         </item>
         <item>
-         <widget class="UnsignedIntegerEdit" name="fallbackStunPortLineEdit">
-          <property name="maximumSize">
-           <size>
-            <width>60</width>
-            <height>16777215</height>
-           </size>
-          </property>
-         </widget>
+         <widget class="QSpinBox" name="fallbackStunPortSpinBox"/>
         </item>
        </layout>
       </item>
@@ -111,14 +97,7 @@
          </widget>
         </item>
         <item>
-         <widget class="UnsignedIntegerEdit" name="httpsProxyPortLineEdit">
-          <property name="maximumSize">
-           <size>
-            <width>60</width>
-            <height>16777215</height>
-           </size>
-          </property>
-         </widget>
+         <widget class="QSpinBox" name="httpsProxyPortSpinBox"/>
         </item>
        </layout>
       </item>
@@ -170,11 +149,6 @@
    <class>KTextEdit</class>
    <extends>QTextEdit</extends>
    <header>ktextedit.h</header>
-  </customwidget>
-  <customwidget>
-   <class>UnsignedIntegerEdit</class>
-   <extends>QLineEdit</extends>
-   <header location="global">KCMTelepathyAccounts/UnsignedIntegerEdit</header>
   </customwidget>
  </customwidgets>
  <resources/>
