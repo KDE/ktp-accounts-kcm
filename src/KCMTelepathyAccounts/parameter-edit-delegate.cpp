@@ -21,8 +21,6 @@
 #include "parameter-edit-delegate.h"
 
 #include "parameter-edit-model.h"
-#include "integer-edit.h"
-#include "unsigned-integer-edit.h"
 
 #include <KDebug>
 
@@ -30,6 +28,7 @@
 #include <QtGui/QCheckBox>
 #include <QtGui/QLabel>
 #include <QtGui/QLineEdit>
+#include <QtGui/QSpinBox>
 #include <QtGui/QPainter>
 
 ParameterEditDelegate::ParameterEditDelegate(QAbstractItemView *itemView, QObject *parent)
@@ -56,18 +55,17 @@ QList<QWidget*> ParameterEditDelegate::createItemWidgets() const
     QLabel *nameLabel = new QLabel();
     QLineEdit *lineEdit = new QLineEdit();
     QCheckBox *checkBox = new QCheckBox();
-    IntegerEdit *integerEdit = new IntegerEdit();
-    UnsignedIntegerEdit *unsignedIntegerEdit = new UnsignedIntegerEdit();
+    QSpinBox *spinBox = new QSpinBox();
+
+    // sets the maximum value. the minimum will be set according to the item type
+    spinBox->setMaximum(2147483647);
 
     // Connect to the slots from the widgets that we are interested in.
     connect(lineEdit, SIGNAL(textChanged(QString)), SLOT(onLineEditTextChanged(QString)));
     connect(checkBox, SIGNAL(toggled(bool)), SLOT(onCheckBoxToggled(bool)));
-    connect(integerEdit, SIGNAL(textChanged(QString)), SLOT(onIntegerEditTextChanged(QString)));
-    connect(unsignedIntegerEdit,
-            SIGNAL(textChanged(QString)),
-            SLOT(onUnsignedIntegerEditTextChanged(QString)));
+    connect(spinBox, SIGNAL(valueChanged(int)), SLOT(onSpinBoxValueChanged(int)));
 
-    widgets << nameLabel << lineEdit << checkBox << integerEdit << unsignedIntegerEdit;
+    widgets << nameLabel << lineEdit << checkBox << spinBox;
 
     return widgets;
 }
@@ -89,12 +87,13 @@ void ParameterEditDelegate::updateItemWidgets(const QList<QWidget*> widgets,
     // Get all the optional input widgets.
     QLineEdit *lineEdit = qobject_cast<QLineEdit*>(widgets.at(1));
     QCheckBox *checkBox = qobject_cast<QCheckBox*>(widgets.at(2));
-    IntegerEdit *integerEdit = qobject_cast<IntegerEdit*>(widgets.at(3));
-    UnsignedIntegerEdit *unsignedIntegerEdit = qobject_cast<UnsignedIntegerEdit*>(widgets.at(4));
+    QSpinBox  *spinBox  = qobject_cast<QSpinBox*>(widgets.at(3));
 
     // See what type the parameter is, and draw the appropriate widget for it.
     // FIXME: Support uint types with appropriate validation.
-    if (index.model()->data(index, ParameterEditModel::TypeRole).type() == QVariant::Bool) {
+    QVariant::Type type = index.data(ParameterEditModel::TypeRole).type();
+
+    if (type == QVariant::Bool) {
         // Bool type. Draw a checkbox.
         checkBox->move((right / 2) + margin, (option.rect.height() - checkBox->size().height()) / 2);
 
@@ -107,56 +106,29 @@ void ParameterEditDelegate::updateItemWidgets(const QList<QWidget*> widgets,
         // Hide all the other input widgets for this item. This must be done in each condition
         // to avoid them losing focus (and cursor position) when updating the content of them.
         lineEdit->hide();
-        integerEdit->hide();
-        unsignedIntegerEdit->hide();
+        spinBox->hide();
 
-    } else if (index.model()->data(index, ParameterEditModel::TypeRole).type() == QVariant::Int) {
-        // Integer type. Draw a integer edit.
-        integerEdit->move((right / 2) + margin, (option.rect.height() - integerEdit->size().height()) / 2);
-        integerEdit->resize(QSize(((right - (4 * margin)) / 2), integerEdit->size().height()));
+    } else if (type == QVariant::Int || type == QVariant::UInt) {
+        // Integer type. Draw a spinBox
+        spinBox->move((right / 2) + margin, (option.rect.height() - spinBox->size().height()) / 2);
+        spinBox->resize(QSize(((right - (4 * margin)) / 2), spinBox->size().height()));
 
-        // Save the cursor position within the widget so we can restore it after altering the data
-        int cursorPosition = integerEdit->cursorPosition();
+        // set the minimum value of the spinbox depending on whether it is signed or not
+        if (type == QVariant::UInt)
+            spinBox->setMinimum(0);
+        else
+            spinBox->setMinimum(-2147483648);
 
-        integerEdit->setFocus(Qt::OtherFocusReason);
+        spinBox->setFocus(Qt::OtherFocusReason);
         // NB: We must update the value of the widget AFTER setting it as focused, otherwise
         // focusedItem() returns the wrong value and we end up setting the data of the wrong item
         // in the model.
-        integerEdit->setText(index.model()->data(index, ParameterEditModel::ValueRole).toString());
-
-        // Restore the cursor position now the data has been changed.
-        integerEdit->setCursorPosition(cursorPosition);
+        spinBox->setValue(index.data(ParameterEditModel::ValueRole).toString().toInt());
 
         // Hide all the other input widgets for this item. This must be done in each condition
         // to avoid them losing focus (and cursor position) when updating the content of them.
         lineEdit->hide();
         checkBox->hide();
-        unsignedIntegerEdit->hide();
-
-    } else if (index.model()->data(index, ParameterEditModel::TypeRole).type() == QVariant::UInt) {
-        // Integer type. Draw a integer edit.
-        unsignedIntegerEdit->move((right / 2) + margin,
-                                  (option.rect.height() - unsignedIntegerEdit->size().height()) / 2);
-        unsignedIntegerEdit->resize(QSize(((right - (4 * margin)) / 2),
-                                          unsignedIntegerEdit->size().height()));
-
-        // Save the cursor position within the widget so we can restore it after altering the data
-        int cursorPosition = unsignedIntegerEdit->cursorPosition();
-
-        integerEdit->setFocus(Qt::OtherFocusReason);
-        // NB: We must update the value of the widget AFTER setting it as focused, otherwise
-        // focusedItem() returns the wrong value and we end up setting the data of the wrong item
-        // in the model.
-        unsignedIntegerEdit->setText(index.model()->data(index, ParameterEditModel::ValueRole).toString());
-
-        // Restore the cursor position now the data has been changed.
-        unsignedIntegerEdit->setCursorPosition(cursorPosition);
-
-        // Hide all the other input widgets for this item. This must be done in each condition
-        // to avoid them losing focus (and cursor position) when updating the content of them.
-        lineEdit->hide();
-        checkBox->hide();
-        integerEdit->hide();
 
     } else {
         // For any other type, treat it as a string type.
@@ -184,9 +156,7 @@ void ParameterEditDelegate::updateItemWidgets(const QList<QWidget*> widgets,
         // Hide all the other input widgets for this item. This must be done in each condition
         // to avoid them losing focus (and cursor position) when updating the content of them.
         checkBox->hide();
-        integerEdit->hide();
-        unsignedIntegerEdit->hide();
-
+        spinBox->hide();
     }
 }
 
@@ -243,11 +213,9 @@ void ParameterEditDelegate::onCheckBoxToggled(bool checked)
     Q_EMIT dataChanged(index, QVariant(checked), ParameterEditModel::ValueRole);
 }
 
-void ParameterEditDelegate::onIntegerEditTextChanged(const QString &text)
+void ParameterEditDelegate::onSpinBoxValueChanged(int value)
 {
-    kDebug();
-
-   IntegerEdit *widget = qobject_cast<IntegerEdit*>(sender());
+    QSpinBox *widget = qobject_cast<QSpinBox*>(sender());
 
     if (!widget) {
         kWarning() << "Slot called by object of the wrong type.";
@@ -256,25 +224,7 @@ void ParameterEditDelegate::onIntegerEditTextChanged(const QString &text)
 
     QModelIndex index = focusedIndex();
 
-    Q_EMIT dataChanged(index, QVariant(text), ParameterEditModel::ValueRole);
-    Q_EMIT dataChanged(index, QVariant(widget->validity()), ParameterEditModel::ValidityRole);
-}
-
-void ParameterEditDelegate::onUnsignedIntegerEditTextChanged(const QString &text)
-{
-    kDebug();
-
-    UnsignedIntegerEdit *widget = qobject_cast<UnsignedIntegerEdit*>(sender());
-
-    if (!widget) {
-        kWarning() << "Slot called by object of the wrong type.";
-        return;
-    }
-
-    QModelIndex index = focusedIndex();
-
-    Q_EMIT dataChanged(index, QVariant(text), ParameterEditModel::ValueRole);
-    Q_EMIT dataChanged(index, QVariant(widget->validity()), ParameterEditModel::ValidityRole);
+    Q_EMIT dataChanged(index, QVariant(QString::number(value)), ParameterEditModel::ValueRole);
 }
 
 

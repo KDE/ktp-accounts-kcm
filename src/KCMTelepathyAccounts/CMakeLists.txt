@@ -9,8 +9,6 @@ set (libkcmtelepathyaccounts_SRCS
      abstract-account-ui.cpp
      abstract-account-parameters-widget.cpp
      account-edit-widget.cpp
-     integer-edit.cpp
-     unsigned-integer-edit.cpp
      protocol-select-widget.cpp
      protocol-list-model.cpp
      connection-manager-item.cpp
@@ -29,8 +27,6 @@ set (libkcmtelepathyaccounts_HDRS
      abstract-account-parameters-widget.h
      account-edit-widget.h
      plugin-macros.h
-     integer-edit.h
-     unsigned-integer-edit.h
      connection-manager-item.h
      plugin-manager.h
      protocol-select-widget.h
@@ -44,8 +40,6 @@ set (libkcmtelepathyaccounts_PRETTY_HDRS
      include/AbstractAccountParametersWidget
      include/AccountEditWidget
      include/PluginMacros
-     include/IntegerEdit
-     include/UnsignedIntegerEdit
      include/ConnectionManagerItem
      include/PluginManager
      include/ProtocolSelectWidget
