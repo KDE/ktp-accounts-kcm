@@ -2,6 +2,7 @@
 Comment=Add, edit and remove your instant messaging and VoIP accounts.
 Comment[nds]=Kortnarichten- un VoIP-Kontos tofögen, bewerken oder wegmaken
 Comment[pt]=Adicionar, editar e remover as suas contas de mensagens instantâneas e VoIP.
+Comment[pt_BR]=Adicione, edite e remova suas contas de mensageiro instantâneo e VoIP.
 Comment[sv]=Lägg till, redigera och ta bort konton för direktmeddelanden och IP-telefon.
 Comment[uk]=Додавайте, змінюйте і вилучайте ваші облікові записи на службах миттєвого обміну повідомленнями та VoIP.
 Comment[x-test]=xxAdd, edit and remove your instant messaging and VoIP accounts.xx
@@ -10,6 +11,7 @@ Icon=blockdevice
 Name=Instant Messaging and VoIP Accounts
 Name[nds]=Kortnarichten- un VoIP-Kontos
 Name[pt]=Contas de Mensagens Instantâneas e VoIP
+Name[pt_BR]=Contas de mensageiro instantâneo e VoIP
 Name[sv]=Konton för direktmeddelande och IP-telefon
 Name[uk]=Облікові записи на службах миттєвого обміну повідомленнями та VoIP
 Name[x-test]=xxInstant Messaging and VoIP Accountsxx
