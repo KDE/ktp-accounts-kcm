@@ -1,6 +1,7 @@
 [Desktop Entry]
 Comment=Add, edit and remove your instant messaging and VoIP accounts.
 Comment[nds]=Kortnarichten- un VoIP-Kontos tofögen, bewerken oder wegmaken
+Comment[nl]=Voeg toe, bewerk en verwijder uw Instant Messaging- en VOIP-accounts.
 Comment[pa]=ਆਪਣੇ ਤੁਰੰਤ ਸੁਨੇਹੇ ਅਤੇ VoIP ਅਕਾਊਂਟ ਸ਼ਾਮਲ ਕਰੋ, ਸੋਧੋ ਅਤੇ ਹਟਾਉ।
 Comment[pt]=Adicionar, editar e remover as suas contas de mensagens instantâneas e VoIP.
 Comment[pt_BR]=Adicione, edite e remova suas contas de mensageiro instantâneo e VoIP.
@@ -11,6 +12,7 @@ Exec=kcmshell4 kcm_telepathy_accounts
 Icon=blockdevice
 Name=Instant Messaging and VoIP Accounts
 Name[nds]=Kortnarichten- un VoIP-Kontos
+Name[nl]=Instant Messaging- en VoIP-accounts
 Name[pa]=ਤੁਰੰਤ ਸੁਨੇਹੇ ਅਤੇ VoIP ਅਕਾਊਂਟ
 Name[pt]=Contas de Mensagens Instantâneas e VoIP
 Name[pt_BR]=Contas de mensageiro instantâneo e VoIP
