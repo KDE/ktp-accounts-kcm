@@ -39,7 +39,7 @@ public:
                                              QWidget *parent = 0);
     virtual ~AbstractAccountParametersWidget();
 
-    virtual QMap<Tp::ProtocolParameter*, QVariant> parameterValues() const = 0;
+    virtual QVariantMap parameterValues() const = 0;
     virtual Tp::ProtocolParameterList parameters() const;
     virtual bool validateParameterValues();
 

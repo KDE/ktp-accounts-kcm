@@ -133,7 +133,7 @@ bool ParameterEditModel::setData(const QModelIndex &index, const QVariant &value
     }
 }
 
-void ParameterEditModel::addItem(Tp::ProtocolParameter *parameter, const QVariant &originalValue)
+void ParameterEditModel::addItem(Tp::ProtocolParameter parameter, const QVariant &originalValue)
 {
     kDebug();
     // FIXME: Check we are not creating duplicate items.
@@ -144,12 +144,14 @@ void ParameterEditModel::addItem(Tp::ProtocolParameter *parameter, const QVarian
     endInsertRows();
 }
 
-QMap<Tp::ProtocolParameter*, QVariant> ParameterEditModel::parameterValues() const
+QVariantMap ParameterEditModel::parameterValues() const
 {
-    QMap<Tp::ProtocolParameter*, QVariant> values;
+    QVariantMap values;
 
     foreach (ParameterItem *item, m_items) {
-        values.insert(item->parameter(), item->value());
+        QVariant value = item->value();
+        value.convert(item->type());
+        values.insert(item->parameter().name(), value);
     }
 
     return values;

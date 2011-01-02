@@ -33,7 +33,7 @@ class ParameterItem : public QObject
     Q_DISABLE_COPY(ParameterItem);
 
 public:
-    ParameterItem(Tp::ProtocolParameter *parameter,
+    ParameterItem(Tp::ProtocolParameter parameter,
                   const QVariant &originalValue,
                   QObject *parent = 0);
     virtual ~ParameterItem();
@@ -45,14 +45,14 @@ public:
     bool isSecret() const;
     bool isRequired() const;
     bool isRequiredForRegistration() const;
-    Tp::ProtocolParameter *parameter();
+    Tp::ProtocolParameter parameter();
     QValidator::State validity() const;
 
     void setValue(const QVariant &value);
     void setValidity(QValidator::State validity);
 
 private:
-    Tp::ProtocolParameter *m_parameter;
+    Tp::ProtocolParameter m_parameter;
     const QVariant m_originalValue;
     QVariant m_currentValue;
     QString m_localizedName;

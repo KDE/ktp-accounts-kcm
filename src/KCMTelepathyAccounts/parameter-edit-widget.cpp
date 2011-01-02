@@ -63,8 +63,8 @@ ParameterEditWidget::ParameterEditWidget(Tp::ProtocolParameterList parameters,
             SLOT(onDelegateDataChanged(QModelIndex, QVariant, int)));
 
     // Add the parameters to the model.
-    foreach (Tp::ProtocolParameter *parameter, parameters) {
-        d->model->addItem(parameter, values.value(parameter->name(), parameter->defaultValue()));
+    foreach (Tp::ProtocolParameter parameter, parameters) {
+        d->model->addItem(parameter, values.value(parameter.name(), parameter.defaultValue()));
     }
 }
 
@@ -75,7 +75,7 @@ ParameterEditWidget::~ParameterEditWidget()
     delete d;
 }
 
-QMap<Tp::ProtocolParameter*, QVariant> ParameterEditWidget::parameterValues() const
+QVariantMap ParameterEditWidget::parameterValues() const
 {
     return d->model->parameterValues();
 }

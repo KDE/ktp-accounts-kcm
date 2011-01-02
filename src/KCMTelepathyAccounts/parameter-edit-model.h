@@ -54,8 +54,8 @@ public:
     virtual QVariant data(const QModelIndex &index, int role = Qt::DisplayRole) const;
     virtual bool setData(const QModelIndex &index, const QVariant &value, int role);
 
-    void addItem(Tp::ProtocolParameter *parameter, const QVariant &originalValue);
-    QMap<Tp::ProtocolParameter*, QVariant> parameterValues() const;
+    void addItem(Tp::ProtocolParameter parameter, const QVariant &originalValue);
+    QVariantMap parameterValues() const;
 
     bool validateParameterValues();
 

@@ -160,7 +160,7 @@ void AddAccountAssistant::accept()
     }
 
     // Get the parameter values.
-    QMap<Tp::ProtocolParameter*, QVariant> parameterValues;
+    QVariantMap parameterValues;
     parameterValues = d->accountEditWidget->parameterValues();
 
     // Get the ProtocolItem that was selected and the corresponding ConnectionManagerItem.
@@ -172,33 +172,23 @@ void AddAccountAssistant::accept()
         return;
     }
 
-    // Merge the parameters into a QVariantMap for submitting to the Telepathy AM.
-    QVariantMap parameters;
+    // kDebug() << "Parameters to add with:" << parameters;
 
-    foreach (Tp::ProtocolParameter *pp, parameterValues.keys()) {
-        QVariant value = parameterValues.value(pp);
-
-        // Don't try and add empty parameters or ones where the default value is still set.
-        if ((!value.isNull()) && (value != pp->defaultValue())) {
-
-            // Check for params where they are empty and the default is null.
-            if (pp->type() == QVariant::String) {
-                if ((pp->defaultValue() == QVariant()) && (value.toString().isEmpty())) {
-                    continue;
-                }
-            }
-
-            parameters.insert(pp->name(), value);
+    //remove any empty parameter values
+    QVariantMap::iterator i;
+    for (i = parameterValues.begin(); i != parameterValues.end(); ++i)
+    {
+        if (i.value().isNull())
+        {
+            parameterValues.remove(i.key());
         }
     }
-
-    // kDebug() << "Parameters to add with:" << parameters;
 
     // FIXME: Ask the user to submit a Display Name
     Tp::PendingAccount *pa = d->accountManager->createAccount(connectionManagerItem->connectionManager()->name(),
                                                               protocolItem->protocol(),
-                                                              parameters.value("account").toString(),
-                                                              parameters);
+                                                              parameterValues["account"].toString(),
+                                                              parameterValues);
 
     connect(pa,
             SIGNAL(finished(Tp::PendingOperation*)),
@@ -240,7 +230,7 @@ void AddAccountAssistant::onAccountCreated(Tp::PendingOperation *op)
     // Set the account icon
     QString icon = QString("im-%1").arg(d->account->protocolName());
     kDebug() << "Set account icon to: " << icon;
-    d->account->setIcon(icon);
+    d->account->setIconName(icon);
 
     kDebug() << "Calling set enabled.";
 

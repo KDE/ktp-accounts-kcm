@@ -40,7 +40,7 @@ public:
     virtual ~AccountEditWidget();
 
     virtual bool validateParameterValues() const;
-    virtual QMap<Tp::ProtocolParameter*, QVariant> parameterValues() const;
+    virtual QVariantMap parameterValues() const;
 
 private Q_SLOTS:
     void onAdvancedClicked();

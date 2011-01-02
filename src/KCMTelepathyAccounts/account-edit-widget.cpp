@@ -48,7 +48,7 @@ public:
     AbstractAccountUi *accountUi;
     Ui::AccountEditWidget ui;
     AbstractAccountParametersWidget *mainOptionsWidget;
-    QMap<Tp::ProtocolParameter*, QVariant> advancedParameterValues;
+    QVariantMap advancedParameterValues;
 };
 
 AccountEditWidget::AccountEditWidget(const QString &connectionManager,
@@ -91,19 +91,13 @@ bool AccountEditWidget::validateParameterValues() const
     return d->mainOptionsWidget->validateParameterValues();
 }
 
-QMap<Tp::ProtocolParameter*, QVariant> AccountEditWidget::parameterValues() const
+QVariantMap AccountEditWidget::parameterValues() const
 {
-    QMap<Tp::ProtocolParameter*, QVariant> values;
+    QVariantMap values;
     values = d->mainOptionsWidget->parameterValues();
 
     // append the advanced options, if any
-    QMap<Tp::ProtocolParameter*, QVariant>::const_iterator paramIter;
-    paramIter = d->advancedParameterValues.constBegin();
-    while (paramIter != d->advancedParameterValues.constEnd()) {
-        values.insert(paramIter.key(), paramIter.value());
-        paramIter++;
-    }
-
+    values.unite(d->advancedParameterValues);
     return values;
 }
 
@@ -111,8 +105,8 @@ void AccountEditWidget::loadWidgets()
 {
     Tp::ProtocolParameterList mandatoryParameters;
 
-    foreach (Tp::ProtocolParameter *parameter, d->parameters) {
-        if (parameter->isRequired())
+    foreach (Tp::ProtocolParameter parameter, d->parameters) {
+        if (parameter.isRequired())
             mandatoryParameters.append(parameter);
     }
 
@@ -135,9 +129,9 @@ void AccountEditWidget::loadWidgets()
         bool paramFound = false;
         while(paramIter != params.constEnd()) {
             paramFound = false;
-            foreach (Tp::ProtocolParameter *parameter, d->parameters) {
-                if ((parameter->name() == paramIter.key()) &&
-                    (parameter->type() == paramIter.value())) {
+            foreach (Tp::ProtocolParameter parameter, d->parameters) {
+                if ((parameter.name() == paramIter.key()) &&
+                    (parameter.type() == paramIter.value())) {
                     mandatoryParameters.removeAll(parameter);
                     paramFound = true;
                 }
@@ -180,6 +174,7 @@ void AccountEditWidget::onAdvancedClicked()
     dialog.setMainWidget(advancedWidget);
 
     // loop until the entered values are ok or the user cancels the dialog
+
     while(true) {
         if (dialog.exec() == KDialog::Accepted) {
             // validate the parameter values
@@ -189,11 +184,13 @@ void AccountEditWidget::onAdvancedClicked()
             // at this point the values are fine
             d->advancedParameterValues = advancedWidget->parameterValues();
             // update the parameter values in case the dialog is opened again
-            QMap<Tp::ProtocolParameter*,QVariant>::const_iterator paramIter;
+            //FIXME this concept of parameters and advanced parameter values get merged here. This seems broken.
+
+            QVariantMap::const_iterator paramIter;
             paramIter = d->advancedParameterValues.constBegin();
             while (paramIter != d->advancedParameterValues.constEnd())
             {
-                 d->parameterValues[paramIter.key()->name()] = paramIter.value();
+                 d->parameterValues[paramIter.key()] = paramIter.value();
                  paramIter++;
             }
 

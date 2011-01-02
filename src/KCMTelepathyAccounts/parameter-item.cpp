@@ -24,23 +24,23 @@
 
 #include <KDebug>
 
-ParameterItem::ParameterItem(Tp::ProtocolParameter *parameter,
+ParameterItem::ParameterItem(Tp::ProtocolParameter parameter,
                              const QVariant &originalValue,
                              QObject *parent)
  : QObject(parent),
    m_parameter(parameter),
    m_originalValue(originalValue)
 {
-    kDebug() << "New parameter:" << parameter->name() << "of type:" << parameter->type() << "with value:" << m_originalValue;
+    kDebug() << "New parameter:" << parameter.name() << "of type:" << parameter.type() << "with value:" << m_originalValue;
 
     // To begin with, the current value is the original value.
     m_currentValue = m_originalValue;
 
     // Set the localized name with the value from the dictionary if possible.
-    m_localizedName = Dictionary::instance()->string(parameter->name());
+    m_localizedName = Dictionary::instance()->string(parameter.name());
 
     if (m_localizedName.isEmpty()) {
-        m_localizedName = parameter->name();
+        m_localizedName = parameter.name();
     }
 
     // Assume the default/un-altered value is valid.
@@ -54,7 +54,7 @@ ParameterItem::~ParameterItem()
 
 QString ParameterItem::name() const
 {
-    return m_parameter->name();
+    return m_parameter.name();
 }
 
 QString ParameterItem::localizedName() const
@@ -64,7 +64,7 @@ QString ParameterItem::localizedName() const
 
 QVariant::Type ParameterItem::type() const
 {
-    return m_parameter->type();
+    return m_parameter.type();
 }
 
 QVariant ParameterItem::value() const
@@ -74,20 +74,20 @@ QVariant ParameterItem::value() const
 
 bool ParameterItem::isSecret() const
 {
-    return m_parameter->isSecret();
+    return m_parameter.isSecret();
 }
 
 bool ParameterItem::isRequired() const
 {
-    return m_parameter->isRequired();
+    return m_parameter.isRequired();
 }
 
 bool ParameterItem::isRequiredForRegistration() const
 {
-    return m_parameter->isRequiredForRegistration();
+    return m_parameter.isRequiredForRegistration();
 }
 
-Tp::ProtocolParameter *ParameterItem::parameter()
+Tp::ProtocolParameter ParameterItem::parameter()
 {
     return m_parameter;
 }

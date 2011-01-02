@@ -37,7 +37,7 @@ public:
                                  QWidget *parent = 0);
     ~ParameterEditWidget();
 
-    virtual QMap<Tp::ProtocolParameter*, QVariant> parameterValues() const;
+    virtual QVariantMap parameterValues() const;
 
     virtual bool validateParameterValues();
 

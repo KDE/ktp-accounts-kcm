@@ -57,13 +57,13 @@ EditAccountDialog::EditAccountDialog(AccountItem *item, QWidget *parent)
     d->item = item;
 
     // Get the protocol's parameters and values.
-    Tp::ProtocolInfo *protocolInfo = d->item->account()->protocolInfo();
-    Tp::ProtocolParameterList protocolParameters = protocolInfo->parameters();
+    Tp::ProtocolInfo protocolInfo = d->item->account()->protocolInfo();
+    Tp::ProtocolParameterList protocolParameters = protocolInfo.parameters();
     QVariantMap parameterValues = d->item->account()->parameters();
 
     // Set up the interface
     d->widget = new AccountEditWidget(d->item->account()->cmName(),
-                                      d->item->account()->protocol(),
+                                      d->item->account()->protocolName(),
                                       protocolParameters,
                                       parameterValues,
                                       this);
@@ -87,38 +87,20 @@ void EditAccountDialog::accept()
     }
 
     // Get the mandatory parameters.
-    QMap<Tp::ProtocolParameter*, QVariant> parameterValues;
-    parameterValues = d->widget->parameterValues();
-
-    // Merge the parameters into a QVariantMap for submitting to the Telepathy AM.
     QVariantMap parameters;
+    parameters = d->widget->parameterValues();
+
     QStringList unsetParameters;
 
-    foreach (Tp::ProtocolParameter *pp, parameterValues.keys()) {
-        QVariant value = parameterValues.value(pp);
-
-        // Unset null parameters.
-        if (value.isNull()) {
-            unsetParameters.append(pp->name());
-            continue;
+    //if the value is null for any parameter, don't set it, and add it to a list of parameters to remove.
+    QVariantMap::iterator i;
+    for (i = parameters.begin(); i != parameters.end(); ++i)
+    {
+        if (i.value().isNull())
+        {
+            unsetParameters.append(i.key());
+            parameters.remove(i.key());
         }
-
-        // Unset any parameters where the default value is equal to the current value.
-        if (pp->defaultValue() == value) {
-            unsetParameters.append(pp->name());
-            continue;
-        }
-
-        // Unset any strings where the default is empty, and the value is an empty string
-        if (pp->type() == QVariant::String) {
-            if ((pp->defaultValue().isNull()) && value.toString().isEmpty()) {
-                unsetParameters.append(pp->name());
-                continue;
-            }
-        }
-
-        // Parameter has a valid value, so set it.
-        parameters.insert(pp->name(), value);
     }
 
     // kDebug() << "Set parameters:" << parameters;

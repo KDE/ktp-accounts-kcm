@@ -100,10 +100,11 @@ void AccountItem::generateIcon()
 {
     kDebug();
 
-    QString iconPath = account()->icon();
+    QString iconPath = account()->iconName();
     //if the icon has not been setted, we use the protocol icon
+
     if(iconPath.isEmpty()) {
-        iconPath = QString("im-%1").arg(account()->protocol());
+        iconPath = QString("im-%1").arg(account()->protocolName());
     }
 
     delete m_icon;
