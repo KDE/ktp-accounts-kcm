@@ -66,7 +66,8 @@ AccountEditWidget::AccountEditWidget(const QString &connectionManager,
 
     // create a layout on the central widget so that the config page is properly
     // resized
-    new QHBoxLayout(d->ui.centralWidget);
+    QHBoxLayout* layout = new QHBoxLayout(d->ui.centralWidget);
+    layout->setContentsMargins(0,0,0,0);
 
     d->connectionManager = connectionManager;
     d->protocol = protocol;
@@ -159,6 +160,7 @@ void AccountEditWidget::loadWidgets()
                 d->ui.centralWidget);
         d->ui.advancedButton->setVisible(false);
     }
+
     d->ui.centralWidget->layout()->addWidget(d->mainOptionsWidget);
 }
 
