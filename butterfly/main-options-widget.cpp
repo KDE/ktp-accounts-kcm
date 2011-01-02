@@ -29,16 +29,13 @@ class MainOptionsWidget::Private
 {
 public:
     Private()
-            : accountParameter(0),
-              passwordParameter(0),
-              ui(0)
+            : ui(0)
     {
         kDebug();
     }
 
-    Tp::ProtocolParameterList parameters;
-    Tp::ProtocolParameter *accountParameter;
-    Tp::ProtocolParameter *passwordParameter;
+    Tp::ProtocolParameter accountParameter;
+    Tp::ProtocolParameter passwordParameter;
 
     Ui::MainOptionsWidget *ui;
 };
@@ -51,23 +48,16 @@ MainOptionsWidget::MainOptionsWidget(Tp::ProtocolParameterList parameters,
 {
     kDebug();
 
-    // Save the parameters.
-    d->parameters = parameters;
-
     // Store the parameters this widget supports
-    foreach (Tp::ProtocolParameter *parameter, d->parameters) {
+    foreach (Tp::ProtocolParameter parameter, parameters) {
       
-        qDebug() << parameter->name();
+        qDebug() << parameter.name();
       
       
-        if ((parameter->name() == "account") && (parameter->type() == QVariant::String)) {
-            if (!d->accountParameter) {
-                d->accountParameter = parameter;
-            }
-        } else if ((parameter->name() == "password") && (parameter->type() == QVariant::String)) {
-            if (!d->passwordParameter) {
-                d->passwordParameter = parameter;
-            }
+        if ((parameter.name() == "account") && (parameter.type() == QVariant::String)) {
+           d->accountParameter = parameter;
+        } else if ((parameter.name() == "password") && (parameter.type() == QVariant::String)) {
+           d->passwordParameter = parameter;
         }
     }
 
@@ -76,29 +66,29 @@ MainOptionsWidget::MainOptionsWidget(Tp::ProtocolParameterList parameters,
     d->ui->setupUi(this);
 
    // Prefill UI elements if appropriate.
-   if (d->accountParameter) {
-       if (values.contains(d->accountParameter->name())) {
-           d->ui->accountLineEdit->setText(values.value(d->accountParameter->name()).toString());
+   if (d->accountParameter.isValid()) {
+       if (values.contains(d->accountParameter.name())) {
+           d->ui->accountLineEdit->setText(values.value(d->accountParameter.name()).toString());
        } else {
-           d->ui->accountLineEdit->setText(d->accountParameter->defaultValue().toString());
+           d->ui->accountLineEdit->setText(d->accountParameter.defaultValue().toString());
        }
    }
 
-   if (d->passwordParameter) {
-       if (values.contains(d->passwordParameter->name())) {
-           d->ui->passwordLineEdit->setText(values.value(d->passwordParameter->name()).toString());
+   if (d->passwordParameter.isValid()) {
+       if (values.contains(d->passwordParameter.name())) {
+           d->ui->passwordLineEdit->setText(values.value(d->passwordParameter.name()).toString());
        } else {
-           d->ui->passwordLineEdit->setText(d->passwordParameter->defaultValue().toString());
+           d->ui->passwordLineEdit->setText(d->passwordParameter.defaultValue().toString());
        }
    }
 
 //    Hide any elements we don't have the parameters passed to show.
-   if (!d->accountParameter) {
+   if (!d->accountParameter.isValid()) {
        d->ui->accountLabel->hide();
        d->ui->accountLineEdit->hide();
    }
 
-   if (!d->passwordParameter) {
+   if (!d->passwordParameter.isValid()) {
        d->ui->passwordLabel->hide();
        d->ui->passwordLineEdit->hide();
    }
@@ -111,19 +101,19 @@ MainOptionsWidget::~MainOptionsWidget()
     delete d;
 }
 
-QMap<Tp::ProtocolParameter*, QVariant> MainOptionsWidget::parameterValues() const
+QVariantMap MainOptionsWidget::parameterValues() const
 {
     kDebug();
 
-    QMap<Tp::ProtocolParameter*, QVariant> parameters;
+    QVariantMap parameters;
 
    // Populate the map of parameters and their values with all the parameters this widget contains.
-   if (d->accountParameter) {
-       parameters.insert(d->accountParameter, d->ui->accountLineEdit->text());
+   if (d->accountParameter.isValid()) {
+       parameters.insert(d->accountParameter.name(), d->ui->accountLineEdit->text());
    }
 
-   if (d->passwordParameter) {
-       parameters.insert(d->passwordParameter, d->ui->passwordLineEdit->text());
+   if (d->passwordParameter.isValid()) {
+       parameters.insert(d->passwordParameter.name(), d->ui->passwordLineEdit->text());
    }
 
    return parameters;

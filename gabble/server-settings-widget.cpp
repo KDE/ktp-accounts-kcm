@@ -29,26 +29,18 @@ class ServerSettingsWidget::Private
 {
 public:
     Private()
-            : serverParameter(0),
-              portParameter(0),
-              keepaliveIntervalParameter(0),
-              lowBandwidthParameter(0),
-              requireEncryptionParameter(0),
-              ignoreSslErrorsParameter(0),
-              oldSslParameter(0),
-              ui(0)
+            : ui(0)
     {
         kDebug();
     }
 
-    Tp::ProtocolParameterList parameters;
-    Tp::ProtocolParameter *serverParameter;
-    Tp::ProtocolParameter *portParameter;
-    Tp::ProtocolParameter *keepaliveIntervalParameter;
-    Tp::ProtocolParameter *lowBandwidthParameter;
-    Tp::ProtocolParameter *requireEncryptionParameter;
-    Tp::ProtocolParameter *ignoreSslErrorsParameter;
-    Tp::ProtocolParameter *oldSslParameter;
+    Tp::ProtocolParameter serverParameter;
+    Tp::ProtocolParameter portParameter;
+    Tp::ProtocolParameter keepaliveIntervalParameter;
+    Tp::ProtocolParameter lowBandwidthParameter;
+    Tp::ProtocolParameter requireEncryptionParameter;
+    Tp::ProtocolParameter ignoreSslErrorsParameter;
+    Tp::ProtocolParameter oldSslParameter;
 
     Ui::ServerSettingsWidget *ui;
 };
@@ -61,39 +53,22 @@ ServerSettingsWidget::ServerSettingsWidget(Tp::ProtocolParameterList parameters,
 {
     kDebug();
 
-    // Save the parameters.
-    d->parameters = parameters;
-
     // Store the parameters this widget supports
-    foreach (Tp::ProtocolParameter *parameter, d->parameters) {
-        if ((parameter->name() == "server") && (parameter->type() == QVariant::String)) {
-            if (!d->serverParameter) {
-                d->serverParameter = parameter;
-            }
-        } else if ((parameter->name() == "port") && (parameter->type() == QVariant::UInt)) {
-            if (!d->portParameter) {
-                d->portParameter = parameter;
-            }
-        } else if ((parameter->name() == "keepalive-interval") && (parameter->type() == QVariant::UInt)) {
-            if (!d->keepaliveIntervalParameter) {
-                d->keepaliveIntervalParameter = parameter;
-            }
-        } else if ((parameter->name() == "low-bandwidth") && (parameter->type() == QVariant::Bool)) {
-            if (!d->lowBandwidthParameter) {
-                d->lowBandwidthParameter = parameter;
-            }
-        } else if ((parameter->name() == "require-encryption") && (parameter->type() == QVariant::Bool)) {
-            if (!d->requireEncryptionParameter) {
-                d->requireEncryptionParameter = parameter;
-            }
-        } else if ((parameter->name() == "ignore-ssl-errors") && (parameter->type() == QVariant::Bool)) {
-            if (!d->ignoreSslErrorsParameter) {
-                d->ignoreSslErrorsParameter = parameter;
-            }
-        } else if ((parameter->name() == "old-ssl") && (parameter->type() == QVariant::Bool)) {
-            if (!d->oldSslParameter) {
-                d->oldSslParameter = parameter;
-            }
+    foreach (Tp::ProtocolParameter parameter, parameters) {
+        if ((parameter.name() == "server") && (parameter.type() == QVariant::String)) {
+            d->serverParameter = parameter;
+        } else if ((parameter.name() == "port") && (parameter.type() == QVariant::UInt)) {
+            d->portParameter = parameter;
+        } else if ((parameter.name() == "keepalive-interval") && (parameter.type() == QVariant::UInt)) {
+            d->keepaliveIntervalParameter = parameter;
+        } else if ((parameter.name() == "low-bandwidth") && (parameter.type() == QVariant::Bool)) {
+            d->lowBandwidthParameter = parameter;
+        } else if ((parameter.name() == "require-encryption") && (parameter.type() == QVariant::Bool)) {
+            d->requireEncryptionParameter = parameter;
+        } else if ((parameter.name() == "ignore-ssl-errors") && (parameter.type() == QVariant::Bool)) {
+            d->ignoreSslErrorsParameter = parameter;
+        } else if ((parameter.name() == "old-ssl") && (parameter.type() == QVariant::Bool)) {
+            d->oldSslParameter = parameter;
         }
     }
 
@@ -102,114 +77,114 @@ ServerSettingsWidget::ServerSettingsWidget(Tp::ProtocolParameterList parameters,
     d->ui->setupUi(this);
 
     // Prefill UI elements if appropriate.
-    if (d->serverParameter) {
-        if (values.contains(d->serverParameter->name())) {
-            d->ui->serverLineEdit->setText(values.value(d->serverParameter->name()).toString());
+    if (d->serverParameter.isValid()) {
+        if (values.contains(d->serverParameter.name())) {
+            d->ui->serverLineEdit->setText(values.value(d->serverParameter.name()).toString());
         } else {
-            d->ui->serverLineEdit->setText(d->serverParameter->defaultValue().toString());
+            d->ui->serverLineEdit->setText(d->serverParameter.defaultValue().toString());
         }
     }
 
-    if (d->portParameter) {
-        if (values.contains(d->portParameter->name())) {
-            d->ui->portSpinBox->setValue(values.value(d->portParameter->name()).toUInt());
+    if (d->portParameter.isValid()) {
+        if (values.contains(d->portParameter.name())) {
+            d->ui->portSpinBox->setValue(values.value(d->portParameter.name()).toUInt());
         } else {
-            d->ui->portSpinBox->setValue(d->portParameter->defaultValue().toUInt());
+            d->ui->portSpinBox->setValue(d->portParameter.defaultValue().toUInt());
         }
     }
 
-    if (d->keepaliveIntervalParameter) {
-        if (values.contains(d->keepaliveIntervalParameter->name())) {
+    if (d->keepaliveIntervalParameter.isValid()) {
+        if (values.contains(d->keepaliveIntervalParameter.name())) {
             d->ui->keepaliveIntervalSpinBox->setValue(values.value(
-                    d->keepaliveIntervalParameter->name()).toUInt());
+                    d->keepaliveIntervalParameter.name()).toUInt());
         } else {
             d->ui->keepaliveIntervalSpinBox->setValue(
-                    d->keepaliveIntervalParameter->defaultValue().toUInt());
+                    d->keepaliveIntervalParameter.defaultValue().toUInt());
         }
     }
 
-    if (d->lowBandwidthParameter) {
-        if (values.contains(d->lowBandwidthParameter->name())) {
+    if (d->lowBandwidthParameter.isValid()) {
+        if (values.contains(d->lowBandwidthParameter.name())) {
             d->ui->lowBandwidthCheckBox->setChecked(values.value(
-                    d->lowBandwidthParameter->name()).toBool());
+                    d->lowBandwidthParameter.name()).toBool());
         } else {
             d->ui->lowBandwidthCheckBox->setChecked(
-                    d->lowBandwidthParameter->defaultValue().toBool());
+                    d->lowBandwidthParameter.defaultValue().toBool());
         }
     }
 
-    if (d->requireEncryptionParameter) {
-        if (values.contains(d->requireEncryptionParameter->name())) {
+    if (d->requireEncryptionParameter.isValid()) {
+        if (values.contains(d->requireEncryptionParameter.name())) {
             d->ui->requireEncryptionCheckBox->setChecked(values.value(
-                    d->requireEncryptionParameter->name()).toBool());
+                    d->requireEncryptionParameter.name()).toBool());
         } else {
             d->ui->requireEncryptionCheckBox->setChecked(
-                    d->requireEncryptionParameter->defaultValue().toBool());
+                    d->requireEncryptionParameter.defaultValue().toBool());
         }
     }
 
-    if (d->ignoreSslErrorsParameter) {
-        if (values.contains(d->ignoreSslErrorsParameter->name())) {
+    if (d->ignoreSslErrorsParameter.isValid()) {
+        if (values.contains(d->ignoreSslErrorsParameter.name())) {
             d->ui->ignoreSslErrorsCheckBox->setChecked(values.value(
-                    d->ignoreSslErrorsParameter->name()).toBool());
+                    d->ignoreSslErrorsParameter.name()).toBool());
         } else {
             d->ui->ignoreSslErrorsCheckBox->setChecked(
-                    d->ignoreSslErrorsParameter->defaultValue().toBool());
+                    d->ignoreSslErrorsParameter.defaultValue().toBool());
         }
     }
 
-    if (d->oldSslParameter) {
-        if (values.contains(d->oldSslParameter->name())) {
-            d->ui->oldSslCheckBox->setChecked(values.value(d->oldSslParameter->name()).toBool());
+    if (d->oldSslParameter.isValid()) {
+        if (values.contains(d->oldSslParameter.name())) {
+            d->ui->oldSslCheckBox->setChecked(values.value(d->oldSslParameter.name()).toBool());
         } else {
-            d->ui->oldSslCheckBox->setChecked(d->oldSslParameter->defaultValue().toBool());
+            d->ui->oldSslCheckBox->setChecked(d->oldSslParameter.defaultValue().toBool());
         }
     }
 
     // Hide any elements we don't have the parameters passed to show.
-    if (!d->serverParameter) {
+    if (!d->serverParameter.isValid()) {
         d->ui->serverLabel->hide();
         d->ui->serverLineEdit->hide();
     }
 
-    if (!d->portParameter) {
+    if (!d->portParameter.isValid()) {
         d->ui->portLabel->hide();
         d->ui->portSpinBox->hide();
     }
 
-    if (!d->keepaliveIntervalParameter) {
+    if (!d->keepaliveIntervalParameter.isValid()) {
         d->ui->keepaliveIntervalLabel->hide();
         d->ui->keepaliveIntervalSpinBox->hide();
     }
 
-    if (!d->lowBandwidthParameter) {
+    if (!d->lowBandwidthParameter.isValid()) {
         d->ui->lowBandwidthCheckBox->hide();
     }
 
-    if (!d->requireEncryptionParameter) {
+    if (!d->requireEncryptionParameter.isValid()) {
         d->ui->requireEncryptionCheckBox->hide();
     }
 
-    if (!d->ignoreSslErrorsParameter) {
+    if (!d->ignoreSslErrorsParameter.isValid()) {
         d->ui->ignoreSslErrorsCheckBox->hide();
     }
 
-    if (!d->oldSslParameter) {
+    if (!d->oldSslParameter.isValid()) {
         d->ui->oldSslCheckBox->hide();
     }
 
     // Hide the group boxes if they are empty.
-    if ((!d->serverParameter) && (!d->portParameter)) {
+    if ((!d->serverParameter.isValid()) && (!d->portParameter.isValid())) {
         d->ui->serverGroupBox->hide();
     }
 
-    if ((!d->keepaliveIntervalParameter) && (!d->lowBandwidthParameter)) {
+    if ((!d->keepaliveIntervalParameter.isValid()) && (!d->lowBandwidthParameter.isValid())) {
         d->ui->connectionGroupBox->hide();
     }
 
-    if ((!d->requireEncryptionParameter) &&
-        (!d->ignoreSslErrorsParameter) &&
-        (!d->oldSslParameter)) {
+    if ((!d->requireEncryptionParameter.isValid()) &&
+        (!d->ignoreSslErrorsParameter.isValid()) &&
+        (!d->oldSslParameter.isValid())) {
         d->ui->securityGroupBox->hide();
     }
 }
@@ -221,40 +196,40 @@ ServerSettingsWidget::~ServerSettingsWidget()
     delete d;
 }
 
-QMap<Tp::ProtocolParameter*, QVariant> ServerSettingsWidget::parameterValues() const
+QVariantMap ServerSettingsWidget::parameterValues() const
 {
     kDebug();
 
-    QMap<Tp::ProtocolParameter*, QVariant> parameters;
+    QVariantMap parameters;
 
     // Populate the map of parameters and their values with all the parameters this widget contains.
-    if (d->serverParameter) {
-        parameters.insert(d->serverParameter, d->ui->serverLineEdit->text());
+    if (d->serverParameter.isValid()) {
+        parameters.insert(d->serverParameter.name(), d->ui->serverLineEdit->text());
     }
 
-    if (d->portParameter) {
-        parameters.insert(d->portParameter, d->ui->portSpinBox->value());
+    if (d->portParameter.isValid()) {
+        parameters.insert(d->portParameter.name(), d->ui->portSpinBox->value());
     }
 
-    if (d->keepaliveIntervalParameter) {
-        parameters.insert(d->keepaliveIntervalParameter, d->ui->keepaliveIntervalSpinBox->value());
+    if (d->keepaliveIntervalParameter.isValid()) {
+        parameters.insert(d->keepaliveIntervalParameter.name(), d->ui->keepaliveIntervalSpinBox->value());
     }
 
-    if (d->lowBandwidthParameter) {
-        parameters.insert(d->lowBandwidthParameter, d->ui->lowBandwidthCheckBox->isChecked());
+    if (d->lowBandwidthParameter.isValid()) {
+        parameters.insert(d->lowBandwidthParameter.name(), d->ui->lowBandwidthCheckBox->isChecked());
     }
 
-    if (d->requireEncryptionParameter) {
-        parameters.insert(d->requireEncryptionParameter,
+    if (d->requireEncryptionParameter.isValid()) {
+        parameters.insert(d->requireEncryptionParameter.name(),
                           d->ui->requireEncryptionCheckBox->isChecked());
     }
 
-    if (d->ignoreSslErrorsParameter) {
-        parameters.insert(d->ignoreSslErrorsParameter, d->ui->ignoreSslErrorsCheckBox->isChecked());
+    if (d->ignoreSslErrorsParameter.isValid()) {
+        parameters.insert(d->ignoreSslErrorsParameter.name(), d->ui->ignoreSslErrorsCheckBox->isChecked());
     }
 
-    if (d->oldSslParameter) {
-        parameters.insert(d->oldSslParameter, d->ui->oldSslCheckBox->isChecked());
+    if (d->oldSslParameter.isValid()) {
+        parameters.insert(d->oldSslParameter.name(), d->ui->oldSslCheckBox->isChecked());
     }
 
     return parameters;

@@ -33,7 +33,7 @@ public:
                                        QWidget *parent = 0);
     virtual ~ServerSettingsWidget();
 
-    virtual QMap<Tp::ProtocolParameter*, QVariant> parameterValues() const;
+    virtual QVariantMap parameterValues() const;
     virtual bool validateParameterValues();
 
 private:

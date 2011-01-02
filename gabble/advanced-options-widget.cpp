@@ -68,23 +68,14 @@ AdvancedOptionsWidget::~AdvancedOptionsWidget()
     delete d;
 }
 
-QMap<Tp::ProtocolParameter*, QVariant> AdvancedOptionsWidget::parameterValues() const
+QVariantMap AdvancedOptionsWidget::parameterValues() const
 {
     kDebug();
 
     // the server parameter values
-    QMap<Tp::ProtocolParameter*, QVariant> parameters;
+    QVariantMap parameters;
     parameters = d->serverSettings->parameterValues();
-
-    // append the proxy parameter values
-    QMap<Tp::ProtocolParameter*, QVariant> proxyParameters;
-    proxyParameters = d->proxySettings->parameterValues();
-    QMap<Tp::ProtocolParameter*, QVariant>::const_iterator paramIter;
-    paramIter = proxyParameters.constBegin();
-    while (paramIter != proxyParameters.constEnd()) {
-        parameters.insert(paramIter.key(), paramIter.value());
-        paramIter++;
-    }
+    parameters.unite(d->proxySettings->parameterValues());
 
     return parameters;
 }
