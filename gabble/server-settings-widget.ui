@@ -45,11 +45,15 @@
           <verstretch>0</verstretch>
          </sizepolicy>
         </property>
+        <property name="maximum">
+         <number>65535</number>
+        </property>
        </widget>
       </item>
      </layout>
-     <zorder></zorder>
-     <zorder></zorder>
+     <zorder>portLabel</zorder>
+     <zorder>portSpinBox</zorder>
+     <zorder>serverLabel</zorder>
      <zorder>serverLineEdit</zorder>
     </widget>
    </item>

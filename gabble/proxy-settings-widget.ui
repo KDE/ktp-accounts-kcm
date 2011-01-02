@@ -40,7 +40,11 @@
          </widget>
         </item>
         <item>
-         <widget class="QSpinBox" name="stunPortSpinBox"/>
+         <widget class="QSpinBox" name="stunPortSpinBox">
+          <property name="maximum">
+           <number>65535</number>
+          </property>
+         </widget>
         </item>
        </layout>
       </item>
@@ -64,7 +68,11 @@
          </widget>
         </item>
         <item>
-         <widget class="QSpinBox" name="fallbackStunPortSpinBox"/>
+         <widget class="QSpinBox" name="fallbackStunPortSpinBox">
+          <property name="maximum">
+           <number>65535</number>
+          </property>
+         </widget>
         </item>
        </layout>
       </item>
@@ -97,7 +105,11 @@
          </widget>
         </item>
         <item>
-         <widget class="QSpinBox" name="httpsProxyPortSpinBox"/>
+         <widget class="QSpinBox" name="httpsProxyPortSpinBox">
+          <property name="maximum">
+           <number>65535</number>
+          </property>
+         </widget>
         </item>
        </layout>
       </item>
