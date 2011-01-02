@@ -246,7 +246,7 @@ QVariantMap ProxySettingsWidget::parameterValues() const
     }
 
     if (d->stunPortParameter.isValid()) {
-        parameters.insert(d->stunPortParameter.name(), d->ui->stunPortSpinBox->value());
+        parameters.insert(d->stunPortParameter.name(), (uint)d->ui->stunPortSpinBox->value());
     }
 
     if (d->fallbackStunServerParameter.isValid()) {
@@ -255,7 +255,7 @@ QVariantMap ProxySettingsWidget::parameterValues() const
     }
 
     if (d->fallbackStunPortParameter.isValid()) {
-        parameters.insert(d->fallbackStunPortParameter.name(), d->ui->fallbackStunPortSpinBox->value());
+        parameters.insert(d->fallbackStunPortParameter.name(), (uint)d->ui->fallbackStunPortSpinBox->value());
     }
 
     if (d->httpsProxyServerParameter.isValid()) {
@@ -263,7 +263,7 @@ QVariantMap ProxySettingsWidget::parameterValues() const
     }
 
     if (d->httpsProxyPortParameter.isValid()) {
-        parameters.insert(d->httpsProxyPortParameter.name(), d->ui->httpsProxyPortSpinBox->value());
+        parameters.insert(d->httpsProxyPortParameter.name(), (uint)d->ui->httpsProxyPortSpinBox->value());
     }
 
     if (d->fallbackSocks5ProxiesParameter.isValid()) {

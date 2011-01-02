@@ -208,11 +208,11 @@ QVariantMap ServerSettingsWidget::parameterValues() const
     }
 
     if (d->portParameter.isValid()) {
-        parameters.insert(d->portParameter.name(), d->ui->portSpinBox->value());
+        parameters.insert(d->portParameter.name(), (uint)d->ui->portSpinBox->value());
     }
 
     if (d->keepaliveIntervalParameter.isValid()) {
-        parameters.insert(d->keepaliveIntervalParameter.name(), d->ui->keepaliveIntervalSpinBox->value());
+        parameters.insert(d->keepaliveIntervalParameter.name(), (uint)d->ui->keepaliveIntervalSpinBox->value());
     }
 
     if (d->lowBandwidthParameter.isValid()) {
