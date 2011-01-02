@@ -76,6 +76,7 @@ AccountEditWidget::AccountEditWidget(const QString &connectionManager,
 
     connect(d->ui.advancedButton, SIGNAL(clicked()),
             this, SLOT(onAdvancedClicked()));
+    d->ui.advancedButton->setIcon(KIcon("configure"));
 
     loadWidgets();
 }
