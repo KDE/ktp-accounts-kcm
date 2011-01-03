@@ -50,7 +50,7 @@ public Q_SLOTS:
 
 private Q_SLOTS:
     void onAccountManagerReady(Tp::PendingOperation *op);
-    void onAccountCreated(const QString &path);
+    void onAccountCreated(const Tp::AccountPtr &account);
 
     void onSelectedItemChanged();
     void onAddAccountClicked();

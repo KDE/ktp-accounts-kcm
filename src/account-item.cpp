@@ -48,23 +48,7 @@ AccountItem::AccountItem(const Tp::AccountPtr &account, AccountsListModel *paren
             SIGNAL(displayNameChanged(const QString&)),
             SIGNAL(updated()));
 
-    //initialize icon only when the account is ready
-    connect(this, SIGNAL(ready()), SLOT(generateIcon()));
-
-    // We should look to see if the "account" instance we are passed is ready
-    // yet. If not, we should get it ready now.
-    Tp::Features features;
-    features << Tp::Account::FeatureCore
-             << Tp::Account::FeatureAvatar
-             << Tp::Account::FeatureProtocolInfo;
-
-    if (m_account->isReady(features)) {
-        QTimer::singleShot(0, this, SIGNAL(ready()));
-    } else {
-        connect(m_account->becomeReady(features),
-                SIGNAL(finished(Tp::PendingOperation*)),
-                SLOT(onAccountReady(Tp::PendingOperation*)));
-    }
+    generateIcon();
 }
 
 AccountItem::~AccountItem()
@@ -121,20 +105,6 @@ void AccountItem::generateIcon()
     }
 
     Q_EMIT(updated());
-}
-
-void AccountItem::onAccountReady(Tp::PendingOperation *op)
-{
-    kDebug();
-
-    if (op->isError()) {
-        kDebug() << "An error occurred in making and Account ready."
-                 << op->errorName()
-                 << op->errorMessage();
-        return;
-    }
-
-    Q_EMIT ready();
 }
 
 void AccountItem::onAccountRemoved(Tp::PendingOperation *op)

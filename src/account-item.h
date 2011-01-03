@@ -52,12 +52,11 @@ Q_SIGNALS:
     void ready();
     void removed();
     void updated();
-	void protocolSelected(QString, QString);
-	void setTitleForCustomPages(QString, QList<QString>);
+        void protocolSelected(QString, QString);
+        void setTitleForCustomPages(QString, QList<QString>);
 
 private Q_SLOTS:
     void generateIcon();
-    void onAccountReady(Tp::PendingOperation *op);
     void onAccountRemoved(Tp::PendingOperation *op);
 
 private:
