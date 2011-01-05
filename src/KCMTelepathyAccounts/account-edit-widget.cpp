@@ -48,7 +48,7 @@ public:
     AbstractAccountUi *accountUi;
     Ui::AccountEditWidget ui;
     AbstractAccountParametersWidget *mainOptionsWidget;
-    QVariantMap advancedParameterValues;
+    QList<ProtocolParameterValue> advancedParameterValues;
 };
 
 AccountEditWidget::AccountEditWidget(const QString &connectionManager,
@@ -91,13 +91,13 @@ bool AccountEditWidget::validateParameterValues() const
     return d->mainOptionsWidget->validateParameterValues();
 }
 
-QVariantMap AccountEditWidget::parameterValues() const
+QList<ProtocolParameterValue> AccountEditWidget::parameterValues() const
 {
-    QVariantMap values;
+    QList<ProtocolParameterValue> values;
     values = d->mainOptionsWidget->parameterValues();
 
     // append the advanced options, if any
-    values.unite(d->advancedParameterValues);
+    values.append(d->advancedParameterValues);
     return values;
 }
 
@@ -186,7 +186,10 @@ void AccountEditWidget::onAdvancedClicked()
             d->advancedParameterValues = advancedWidget->parameterValues();
             // update the parameter values in case the dialog is opened again
 
-            d->parameterValues.unite(d->advancedParameterValues);
+            foreach(const ProtocolParameterValue &ppv, d->advancedParameterValues)
+            {
+                d->parameterValues.insert(ppv.name(), ppv.value());
+            }
             break;
         }
         else

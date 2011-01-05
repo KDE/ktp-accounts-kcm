@@ -144,14 +144,12 @@ void ParameterEditModel::addItem(const Tp::ProtocolParameter &parameter, const Q
     endInsertRows();
 }
 
-QVariantMap ParameterEditModel::parameterValues() const
+QList<ProtocolParameterValue> ParameterEditModel::parameterValues() const
 {
-    QVariantMap values;
+    QList<ProtocolParameterValue> values;
 
     foreach (ParameterItem *item, m_items) {
-        QVariant value = item->value();
-        value.convert(item->type());
-        values.insert(item->parameter().name(), value);
+        values.append(ProtocolParameterValue(item->parameter(), item->value()));
     }
 
     return values;

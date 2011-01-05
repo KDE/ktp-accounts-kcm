@@ -22,6 +22,7 @@
 #define LIB_KCM_TELEPATHY_ACCOUNTS_PARAMETER_EDIT_MODEL_H
 
 #include <QtCore/QAbstractListModel>
+#include "protocol-parameter-value.h"
 
 class ParameterItem;
 
@@ -55,7 +56,7 @@ public:
     virtual bool setData(const QModelIndex &index, const QVariant &value, int role);
 
     void addItem(const Tp::ProtocolParameter &parameter, const QVariant &originalValue);
-    QVariantMap parameterValues() const;
+    QList<ProtocolParameterValue> parameterValues() const;
 
     bool validateParameterValues();
 

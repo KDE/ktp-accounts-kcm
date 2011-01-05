@@ -27,6 +27,8 @@
 
 #include <TelepathyQt4/ConnectionManager>
 
+#include "protocol-parameter-value.h"
+
 class KDE_EXPORT AccountEditWidget : public QWidget
 {
     Q_OBJECT
@@ -40,7 +42,7 @@ public:
     virtual ~AccountEditWidget();
 
     virtual bool validateParameterValues() const;
-    virtual QVariantMap parameterValues() const;
+    virtual QList<ProtocolParameterValue> parameterValues() const;
 
 private Q_SLOTS:
     void onAdvancedClicked();

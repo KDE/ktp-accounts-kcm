@@ -75,7 +75,7 @@ ParameterEditWidget::~ParameterEditWidget()
     delete d;
 }
 
-QVariantMap ParameterEditWidget::parameterValues() const
+QList<ProtocolParameterValue> ParameterEditWidget::parameterValues() const
 {
     return d->model->parameterValues();
 }

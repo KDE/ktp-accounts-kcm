@@ -160,7 +160,7 @@ void AddAccountAssistant::accept()
     }
 
     // Get the parameter values.
-    QVariantMap parameterValues;
+    QList<ProtocolParameterValue> parameterValues;
     parameterValues = d->accountEditWidget->parameterValues();
 
     // Get the ProtocolItem that was selected and the corresponding ConnectionManagerItem.
@@ -172,22 +172,19 @@ void AddAccountAssistant::accept()
         return;
     }
 
-    // kDebug() << "Parameters to add with:" << parameters;
-
-    //remove any empty parameter values
-    QVariantMap::iterator i = parameterValues.begin();
-    while (i != parameterValues.end()) {
-        if (i.value().isNull()) {
-            parameterValues.erase(i);
+    QVariantMap values;
+    foreach(const ProtocolParameterValue &ppv, parameterValues)
+    {
+        if (ppv.shouldSave()) {
+            values.insert(ppv.name(), ppv.value());
         }
-        i++;
     }
 
     // FIXME: Ask the user to submit a Display Name
     Tp::PendingAccount *pa = d->accountManager->createAccount(connectionManagerItem->connectionManager()->name(),
                                                               protocolItem->protocol(),
-                                                              parameterValues["account"].toString(),
-                                                              parameterValues);
+                                                              values["account"].toString(),
+                                                              values);
 
     connect(pa,
             SIGNAL(finished(Tp::PendingOperation*)),

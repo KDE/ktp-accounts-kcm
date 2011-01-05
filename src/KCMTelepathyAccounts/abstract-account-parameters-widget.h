@@ -29,6 +29,8 @@
 
 #include <TelepathyQt4/ConnectionManager>
 
+class ProtocolParameterValue;
+
 class KDE_EXPORT AbstractAccountParametersWidget : public QWidget
 {
     Q_OBJECT
@@ -39,7 +41,7 @@ public:
                                              QWidget *parent = 0);
     virtual ~AbstractAccountParametersWidget();
 
-    virtual QVariantMap parameterValues() const = 0;
+    virtual QList<ProtocolParameterValue> parameterValues() const = 0;
     virtual Tp::ProtocolParameterList parameters() const;
     virtual bool validateParameterValues();
 
