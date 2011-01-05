@@ -33,7 +33,7 @@ class ParameterItem : public QObject
     Q_DISABLE_COPY(ParameterItem);
 
 public:
-    ParameterItem(Tp::ProtocolParameter parameter,
+    ParameterItem(const Tp::ProtocolParameter &parameter,
                   const QVariant &originalValue,
                   QObject *parent = 0);
     virtual ~ParameterItem();

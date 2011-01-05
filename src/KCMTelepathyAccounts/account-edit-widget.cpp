@@ -130,7 +130,7 @@ void AccountEditWidget::loadWidgets()
         bool paramFound = false;
         while(paramIter != params.constEnd()) {
             paramFound = false;
-            foreach (Tp::ProtocolParameter parameter, d->parameters) {
+            foreach (const Tp::ProtocolParameter &parameter, d->parameters) {
                 if ((parameter.name() == paramIter.key()) &&
                     (parameter.type() == paramIter.value())) {
                     mandatoryParameters.removeAll(parameter);

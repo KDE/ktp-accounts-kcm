@@ -21,8 +21,9 @@
 #ifndef LIB_KCM_TELEPATHY_ACCOUNTS_PARAMETER_EDIT_MODEL_H
 #define LIB_KCM_TELEPATHY_ACCOUNTS_PARAMETER_EDIT_MODEL_H
 
-#include <QtCore/QAbstractListModel>
 #include "protocol-parameter-value.h"
+
+#include <QtCore/QAbstractListModel>
 
 class ParameterItem;
 

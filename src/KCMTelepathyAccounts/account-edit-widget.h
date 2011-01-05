@@ -21,13 +21,14 @@
 #ifndef KCM_TELEPATHY_ACCOUNTS_ACCOUNT_EDIT_WIDGET_H
 #define KCM_TELEPATHY_ACCOUNTS_ACCOUNT_EDIT_WIDGET_H
 
+#include "protocol-parameter-value.h"
+
 #include <kdemacros.h>
 
 #include <QWidget>
 
 #include <TelepathyQt4/ConnectionManager>
 
-#include "protocol-parameter-value.h"
 
 class KDE_EXPORT AccountEditWidget : public QWidget
 {

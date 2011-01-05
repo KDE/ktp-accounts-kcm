@@ -24,7 +24,7 @@
 
 #include <KDebug>
 
-ParameterItem::ParameterItem(Tp::ProtocolParameter parameter,
+ParameterItem::ParameterItem(const Tp::ProtocolParameter &parameter,
                              const QVariant &originalValue,
                              QObject *parent)
  : QObject(parent),
