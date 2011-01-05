@@ -105,9 +105,10 @@ void AccountEditWidget::loadWidgets()
 {
     Tp::ProtocolParameterList mandatoryParameters;
 
-    foreach (Tp::ProtocolParameter parameter, d->parameters) {
-        if (parameter.isRequired())
+    foreach (const Tp::ProtocolParameter &parameter, d->parameters) {
+        if (parameter.isRequired()) {
             mandatoryParameters.append(parameter);
+        }
     }
 
     // Get the AccountsUi for the plugin, and get the optional parameter widgets for it.
@@ -184,16 +185,8 @@ void AccountEditWidget::onAdvancedClicked()
             // at this point the values are fine
             d->advancedParameterValues = advancedWidget->parameterValues();
             // update the parameter values in case the dialog is opened again
-            //FIXME this concept of parameters and advanced parameter values get merged here. This seems broken.
 
-            QVariantMap::const_iterator paramIter;
-            paramIter = d->advancedParameterValues.constBegin();
-            while (paramIter != d->advancedParameterValues.constEnd())
-            {
-                 d->parameterValues[paramIter.key()] = paramIter.value();
-                 paramIter++;
-            }
-
+            d->parameterValues.unite(d->advancedParameterValues);
             break;
         }
         else

@@ -63,7 +63,7 @@ ParameterEditWidget::ParameterEditWidget(Tp::ProtocolParameterList parameters,
             SLOT(onDelegateDataChanged(QModelIndex, QVariant, int)));
 
     // Add the parameters to the model.
-    foreach (Tp::ProtocolParameter parameter, parameters) {
+    foreach (const Tp::ProtocolParameter &parameter, parameters) {
         d->model->addItem(parameter, values.value(parameter.name(), parameter.defaultValue()));
     }
 }

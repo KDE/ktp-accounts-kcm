@@ -175,13 +175,12 @@ void AddAccountAssistant::accept()
     // kDebug() << "Parameters to add with:" << parameters;
 
     //remove any empty parameter values
-    QVariantMap::iterator i;
-    for (i = parameterValues.begin(); i != parameterValues.end(); ++i)
-    {
-        if (i.value().isNull())
-        {
-            parameterValues.remove(i.key());
+    QVariantMap::iterator i = parameterValues.begin();
+    while (i != parameterValues.end()) {
+        if (i.value().isNull()) {
+            parameterValues.erase(i);
         }
+        i++;
     }
 
     // FIXME: Ask the user to submit a Display Name

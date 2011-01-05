@@ -63,7 +63,7 @@ Tp::ProtocolParameterList ProtocolItem::parameters() const
     Tp::ConnectionManagerPtr cm = item->connectionManager();
 
 
-    foreach (Tp::ProtocolInfo info, cm->protocols()) {
+    foreach (const Tp::ProtocolInfo &info, cm->protocols()) {
         if (info.name() == m_protocol)
             return info.parameters();
     }

@@ -133,7 +133,7 @@ bool ParameterEditModel::setData(const QModelIndex &index, const QVariant &value
     }
 }
 
-void ParameterEditModel::addItem(Tp::ProtocolParameter parameter, const QVariant &originalValue)
+void ParameterEditModel::addItem(const Tp::ProtocolParameter &parameter, const QVariant &originalValue)
 {
     kDebug();
     // FIXME: Check we are not creating duplicate items.

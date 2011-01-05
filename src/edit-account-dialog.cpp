@@ -93,14 +93,13 @@ void EditAccountDialog::accept()
     QStringList unsetParameters;
 
     //if the value is null for any parameter, don't set it, and add it to a list of parameters to remove.
-    QVariantMap::iterator i;
-    for (i = parameters.begin(); i != parameters.end(); ++i)
-    {
-        if (i.value().isNull())
-        {
+    QVariantMap::iterator i = parameters.begin();
+    while(i != parameters.end()) {
+        if (i.value().isNull()) {
             unsetParameters.append(i.key());
-            parameters.remove(i.key());
+            parameters.erase(i);
         }
+        i++;
     }
 
     // kDebug() << "Set parameters:" << parameters;

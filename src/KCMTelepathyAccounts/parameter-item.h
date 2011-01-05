@@ -45,7 +45,7 @@ public:
     bool isSecret() const;
     bool isRequired() const;
     bool isRequiredForRegistration() const;
-    Tp::ProtocolParameter parameter();
+    const Tp::ProtocolParameter parameter() const;
     QValidator::State validity() const;
 
     void setValue(const QVariant &value);
