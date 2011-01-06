@@ -30,6 +30,7 @@
 #include <KMessageBox>
 
 #include <TelepathyQt4/Account>
+#include <TelepathyQt4/AccountFactory>
 #include <TelepathyQt4/PendingOperation>
 #include <TelepathyQt4/PendingReady>
 #include <TelepathyQt4/Types>
@@ -50,7 +51,13 @@ KCMTelepathyAccounts::KCMTelepathyAccounts(QWidget *parent, const QVariantList& 
     Tp::registerTypes();
 
     // Start setting up the Telepathy AccountManager.
-    m_accountManager = Tp::AccountManager::create();
+
+    Tp::AccountFactoryPtr  accountFactory = Tp::AccountFactory::create(QDBusConnection::sessionBus(),
+                                                                       Tp::Features() << Tp::Account::FeatureCore
+                                                                       << Tp::Account::FeatureAvatar
+                                                                       << Tp::Account::FeatureProtocolInfo);
+
+    m_accountManager = Tp::AccountManager::create(accountFactory);
 
     connect(m_accountManager->becomeReady(),
             SIGNAL(finished(Tp::PendingOperation*)),
@@ -116,13 +123,12 @@ void KCMTelepathyAccounts::onAccountManagerReady(Tp::PendingOperation *op)
     }
 
     connect(m_accountManager.data(),
-            SIGNAL(accountCreated(const QString &)),
-            SLOT(onAccountCreated(const QString &)));
+            SIGNAL(newAccount (Tp::AccountPtr)),
+            SLOT(onAccountCreated(Tp::AccountPtr)));
 }
 
-void KCMTelepathyAccounts::onAccountCreated(const QString &path)
+void KCMTelepathyAccounts::onAccountCreated(const Tp::AccountPtr &account)
 {
-    Tp::AccountPtr account = m_accountManager->accountForPath(path);
     m_accountsListModel->addAccount(account);
 }
 
