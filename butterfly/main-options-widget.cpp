@@ -24,6 +24,7 @@
 
 #include <KDebug>
 #include <KMessageBox>
+#include <KCMTelepathyAccounts/ProtocolParameterValue>
 
 class MainOptionsWidget::Private
 {
@@ -49,11 +50,7 @@ MainOptionsWidget::MainOptionsWidget(Tp::ProtocolParameterList parameters,
     kDebug();
 
     // Store the parameters this widget supports
-    foreach (Tp::ProtocolParameter parameter, parameters) {
-      
-        qDebug() << parameter.name();
-      
-      
+    foreach (const Tp::ProtocolParameter &parameter, parameters) {
         if ((parameter.name() == "account") && (parameter.type() == QVariant::String)) {
            d->accountParameter = parameter;
         } else if ((parameter.name() == "password") && (parameter.type() == QVariant::String)) {
@@ -101,22 +98,22 @@ MainOptionsWidget::~MainOptionsWidget()
     delete d;
 }
 
-QVariantMap MainOptionsWidget::parameterValues() const
+QList<ProtocolParameterValue> MainOptionsWidget::parameterValues() const
 {
     kDebug();
 
-    QVariantMap parameters;
+    QList<ProtocolParameterValue> parameters;
 
-   // Populate the map of parameters and their values with all the parameters this widget contains.
-   if (d->accountParameter.isValid()) {
-       parameters.insert(d->accountParameter.name(), d->ui->accountLineEdit->text());
-   }
+    // Populate the map of parameters and their values with all the parameters this widget contains.
+    if (d->accountParameter.isValid()) {
+        parameters.append(ProtocolParameterValue(d->accountParameter, d->ui->accountLineEdit->text()));
+    }
 
-   if (d->passwordParameter.isValid()) {
-       parameters.insert(d->passwordParameter.name(), d->ui->passwordLineEdit->text());
-   }
+    if (d->passwordParameter.isValid()) {
+        parameters.append(ProtocolParameterValue(d->passwordParameter, d->ui->passwordLineEdit->text()));
+    }
 
-   return parameters;
+    return parameters;
 }
 
 bool MainOptionsWidget::validateParameterValues()

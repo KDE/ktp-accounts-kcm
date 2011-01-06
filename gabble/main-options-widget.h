@@ -33,7 +33,7 @@ public:
                                QWidget *parent = 0);
     virtual ~MainOptionsWidget();
 
-    virtual QVariantMap parameterValues() const;
+    virtual QList<ProtocolParameterValue> parameterValues() const;
     virtual bool validateParameterValues();
 
 private:

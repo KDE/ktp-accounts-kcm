@@ -22,11 +22,14 @@
 #include "proxy-settings-widget.h"
 #include "server-settings-widget.h"
 
+#include <KCMTelepathyAccounts/ProtocolParameterValue>
+
 #include <KDebug>
 #include <KTabWidget>
 #include <KLocale>
 
 #include <QHBoxLayout>
+
 
 class AdvancedOptionsWidget::Private
 {
@@ -68,14 +71,14 @@ AdvancedOptionsWidget::~AdvancedOptionsWidget()
     delete d;
 }
 
-QVariantMap AdvancedOptionsWidget::parameterValues() const
+QList<ProtocolParameterValue> AdvancedOptionsWidget::parameterValues() const
 {
     kDebug();
 
     // the server parameter values
-    QVariantMap parameters;
-    parameters = d->serverSettings->parameterValues();
-    parameters.unite(d->proxySettings->parameterValues());
+    QList<ProtocolParameterValue> parameters;
+    parameters.append(d->serverSettings->parameterValues());
+    parameters.append(d->proxySettings->parameterValues());
 
     return parameters;
 }

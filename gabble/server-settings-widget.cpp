@@ -22,8 +22,11 @@
 
 #include "ui_server-settings-widget.h"
 
+#include <KCMTelepathyAccounts/ProtocolParameterValue>
+
 #include <KDebug>
 #include <KMessageBox>
+
 
 class ServerSettingsWidget::Private
 {
@@ -54,7 +57,7 @@ ServerSettingsWidget::ServerSettingsWidget(Tp::ProtocolParameterList parameters,
     kDebug();
 
     // Store the parameters this widget supports
-    foreach (Tp::ProtocolParameter parameter, parameters) {
+    foreach (const Tp::ProtocolParameter &parameter, parameters) {
         if ((parameter.name() == "server") && (parameter.type() == QVariant::String)) {
             d->serverParameter = parameter;
         } else if ((parameter.name() == "port") && (parameter.type() == QVariant::UInt)) {
@@ -196,40 +199,40 @@ ServerSettingsWidget::~ServerSettingsWidget()
     delete d;
 }
 
-QVariantMap ServerSettingsWidget::parameterValues() const
+QList<ProtocolParameterValue> ServerSettingsWidget::parameterValues() const
 {
     kDebug();
 
-    QVariantMap parameters;
+    QList<ProtocolParameterValue> parameters;
 
     // Populate the map of parameters and their values with all the parameters this widget contains.
     if (d->serverParameter.isValid()) {
-        parameters.insert(d->serverParameter.name(), d->ui->serverLineEdit->text());
+        parameters.append(ProtocolParameterValue(d->serverParameter, d->ui->serverLineEdit->text()));
     }
 
     if (d->portParameter.isValid()) {
-        parameters.insert(d->portParameter.name(), (uint)d->ui->portSpinBox->value());
+        parameters.append(ProtocolParameterValue(d->portParameter, d->ui->portSpinBox->value()));
     }
 
     if (d->keepaliveIntervalParameter.isValid()) {
-        parameters.insert(d->keepaliveIntervalParameter.name(), (uint)d->ui->keepaliveIntervalSpinBox->value());
+        parameters.append(ProtocolParameterValue(d->keepaliveIntervalParameter, d->ui->keepaliveIntervalSpinBox->value()));
     }
 
     if (d->lowBandwidthParameter.isValid()) {
-        parameters.insert(d->lowBandwidthParameter.name(), d->ui->lowBandwidthCheckBox->isChecked());
+        parameters.append(ProtocolParameterValue(d->lowBandwidthParameter, d->ui->lowBandwidthCheckBox->isChecked()));
     }
 
     if (d->requireEncryptionParameter.isValid()) {
-        parameters.insert(d->requireEncryptionParameter.name(),
-                          d->ui->requireEncryptionCheckBox->isChecked());
+        parameters.append(ProtocolParameterValue(d->requireEncryptionParameter,
+                          d->ui->requireEncryptionCheckBox->isChecked()));
     }
 
     if (d->ignoreSslErrorsParameter.isValid()) {
-        parameters.insert(d->ignoreSslErrorsParameter.name(), d->ui->ignoreSslErrorsCheckBox->isChecked());
+        parameters.append(ProtocolParameterValue(d->ignoreSslErrorsParameter, d->ui->ignoreSslErrorsCheckBox->isChecked()));
     }
 
     if (d->oldSslParameter.isValid()) {
-        parameters.insert(d->oldSslParameter.name(), d->ui->oldSslCheckBox->isChecked());
+        parameters.append(ProtocolParameterValue(d->oldSslParameter, d->ui->oldSslCheckBox->isChecked()));
     }
 
     return parameters;

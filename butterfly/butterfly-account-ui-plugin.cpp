@@ -29,6 +29,8 @@
 
 #include <QtCore/QVariantList>
 
+#include <KCMTelepathyAccounts/ProtocolParameterValue>
+
 class ButterflyAccountUiPlugin::Private
 {
 public:

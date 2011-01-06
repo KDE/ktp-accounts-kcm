@@ -22,8 +22,11 @@
 
 #include "ui_proxy-settings-widget.h"
 
+#include <KCMTelepathyAccounts/ProtocolParameterValue>
+
 #include <KDebug>
 #include <KMessageBox>
+
 
 class ProxySettingsWidget::Private
 {
@@ -55,7 +58,7 @@ ProxySettingsWidget::ProxySettingsWidget(Tp::ProtocolParameterList parameters,
     kDebug();
 
     // Store the parameters this widget supports
-    foreach (Tp::ProtocolParameter parameter, parameters) {
+    foreach (const Tp::ProtocolParameter &parameter, parameters) {
         if ((parameter.name() == "stun-server") && (parameter.type() == QVariant::String)) {
                 d->stunServerParameter = parameter;
         } else if ((parameter.name() == "stun-port") && (parameter.type() == QVariant::UInt)) {
@@ -234,47 +237,46 @@ ProxySettingsWidget::~ProxySettingsWidget()
     delete d;
 }
 
-QVariantMap ProxySettingsWidget::parameterValues() const
+QList<ProtocolParameterValue> ProxySettingsWidget::parameterValues() const
 {
     kDebug();
 
-    QVariantMap parameters;
+    QList<ProtocolParameterValue> parameters;
 
     // Populate the map of parameters and their values with all the parameters this widget contains.
     if (d->stunServerParameter.isValid()) {
-        parameters.insert(d->stunServerParameter.name(), d->ui->stunServerLineEdit->text());
+        parameters.append(ProtocolParameterValue(d->stunServerParameter, d->ui->stunServerLineEdit->text()));
     }
 
     if (d->stunPortParameter.isValid()) {
-        parameters.insert(d->stunPortParameter.name(), (uint)d->ui->stunPortSpinBox->value());
+        parameters.append(ProtocolParameterValue(d->stunPortParameter, d->ui->stunPortSpinBox->value()));
     }
 
     if (d->fallbackStunServerParameter.isValid()) {
-        parameters.insert(d->fallbackStunServerParameter.name(),
-                          d->ui->fallbackStunServerLineEdit->text());
+        parameters.append(ProtocolParameterValue(d->fallbackStunServerParameter, d->ui->fallbackStunServerLineEdit->text()));
     }
 
     if (d->fallbackStunPortParameter.isValid()) {
-        parameters.insert(d->fallbackStunPortParameter.name(), (uint)d->ui->fallbackStunPortSpinBox->value());
+        parameters.append(ProtocolParameterValue(d->fallbackStunPortParameter, d->ui->fallbackStunPortSpinBox->value()));
     }
 
     if (d->httpsProxyServerParameter.isValid()) {
-        parameters.insert(d->httpsProxyServerParameter.name(), d->ui->httpsProxyServerLineEdit->text());
+        parameters.append(ProtocolParameterValue(d->httpsProxyServerParameter, d->ui->httpsProxyServerLineEdit->text()));
     }
 
     if (d->httpsProxyPortParameter.isValid()) {
-        parameters.insert(d->httpsProxyPortParameter.name(), (uint)d->ui->httpsProxyPortSpinBox->value());
+        parameters.append(ProtocolParameterValue(d->httpsProxyPortParameter, d->ui->httpsProxyPortSpinBox->value()));
     }
 
     if (d->fallbackSocks5ProxiesParameter.isValid()) {
         QString text = d->ui->fallbackSocks5ProxiesTextEdit->toPlainText();
         QStringList value = text.split("\n", QString::SkipEmptyParts);
-        parameters.insert(d->fallbackSocks5ProxiesParameter.name(), value);
+        parameters.append(ProtocolParameterValue(d->fallbackSocks5ProxiesParameter, value));
     }
 
     if (d->fallbackConferenceServerParameter.isValid()) {
-        parameters.insert(d->fallbackConferenceServerParameter.name(),
-                          d->ui->fallbackConferenceServerLineEdit->text());
+        parameters.append(ProtocolParameterValue(d->fallbackConferenceServerParameter,
+                                                 d->ui->fallbackConferenceServerLineEdit->text()));
     }
 
     return parameters;
