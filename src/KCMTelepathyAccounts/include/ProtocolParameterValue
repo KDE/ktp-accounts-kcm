@@ -1,0 +1,6 @@
+#ifndef LIB_KCM_TELEPATHY_ACCOUNTS_PROTOCOL_PARAMETER_VALUE_PRETTY_H
+#define LIB_KCM_TELEPATHY_ACCOUNTS_PROTOCOL_PARAMETER_VALUE_PRETTY_H
+
+#include <KCMTelepathyAccounts/protocol-parameter-value.h>
+
+#endif
