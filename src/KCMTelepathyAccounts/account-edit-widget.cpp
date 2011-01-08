@@ -51,9 +51,7 @@ public:
     QList<ProtocolParameterValue> advancedParameterValues;
 };
 
-AccountEditWidget::AccountEditWidget(const QString &connectionManager,
-                                     const QString &protocol,
-                                     const Tp::ProtocolParameterList &parameters,
+AccountEditWidget::AccountEditWidget(const Tp::ProtocolInfo &info,
                                      const QVariantMap &parameterValues,
                                      QWidget *parent)
         : QWidget(parent),
@@ -69,9 +67,9 @@ AccountEditWidget::AccountEditWidget(const QString &connectionManager,
     QHBoxLayout* layout = new QHBoxLayout(d->ui.centralWidget);
     layout->setContentsMargins(0,0,0,0);
 
-    d->connectionManager = connectionManager;
-    d->protocol = protocol;
-    d->parameters = parameters;
+    d->connectionManager = info.cmName();
+    d->protocol = info.name();
+    d->parameters = info.parameters();
     d->parameterValues = parameterValues;
 
     connect(d->ui.advancedButton, SIGNAL(clicked()),

@@ -35,9 +35,7 @@ class KDE_EXPORT AccountEditWidget : public QWidget
     Q_OBJECT
 
 public:
-    explicit AccountEditWidget(const QString &connectionManager,
-                               const QString &protocol,
-                               const Tp::ProtocolParameterList &parameters,
+    explicit AccountEditWidget(const Tp::ProtocolInfo &info,
                                const QVariantMap &parameterValues = QVariantMap(),
                                QWidget *parent = 0);
     virtual ~AccountEditWidget();
