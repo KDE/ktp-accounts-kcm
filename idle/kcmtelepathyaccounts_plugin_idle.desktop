@@ -1,0 +1,19 @@
+[Desktop Entry]
+Encoding=UTF-8
+Comment=Custom account configuration user interface for accounts using the Idle connection manager.
+Comment[pt]=Interface de configuração de contas personalizadas, usando o gestor de ligações Idle.
+Comment[pt_BR]=Interface de configuração de contas personalizadas, usando o gerenciador de conexão Idle.
+Comment[sv]=Användargränssnitt för anpassad kontoinställning av konton som använder anslutningshanteraren Idle.
+Comment[uk]=Інтерфейс користувача для нетипового налаштування облікового запису за допомогою керування з’єднаннями Idle.
+Comment[x-test]=xxCustom account configuration user interface for accounts using the Idle connection manager.xx
+Type=Service
+ServiceTypes=KCMTelepathyAccounts/AccountUiPlugin
+
+X-KDE-Library=kcmtelepathyaccounts_plugin_idle
+X-KDE-PluginInfo-Author=David Edmundson
+X-KDE-PluginInfo-Email=kde@davidedmundson.co.uk
+X-KDE-PluginInfo-Name=idle
+X-KDE-PluginInfo-Version=0.1
+X-KDE-PluginInfo-Website=http://techbase.kde.org/Projects/Telepathy
+X-KDE-PluginInfo-License=GPL
+X-KDE-PluginInfo-EnabledByDefault=true

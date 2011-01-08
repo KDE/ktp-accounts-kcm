@@ -22,4 +22,4 @@ include_directories (${KDE4_INCLUDES}
 
 add_subdirectory (gabble)
 add_subdirectory (butterfly)
-
+add_subdirectory (idle)
