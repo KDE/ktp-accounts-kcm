@@ -46,14 +46,14 @@ public:
     const KIcon& icon() const;
 
 public Q_SLOTS:
-	void onTitleForCustomPages(QString, QList<QString>);
+    void onTitleForCustomPages(QString, QList<QString>);
 
 Q_SIGNALS:
     void ready();
     void removed();
     void updated();
-        void protocolSelected(QString, QString);
-        void setTitleForCustomPages(QString, QList<QString>);
+    void protocolSelected(QString, QString);
+    void setTitleForCustomPages(QString, QList<QString>);
 
 private Q_SLOTS:
     void generateIcon();
