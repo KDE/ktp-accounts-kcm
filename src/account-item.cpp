@@ -23,9 +23,11 @@
 #include "accounts-list-model.h"
 #include "edit-account-dialog.h"
 
+
 #include <KApplication>
 #include <KDebug>
 #include <KIcon>
+#include <KLocalizedString>
 
 #include <QtCore/QTimer>
 #include <QtGui/QPainter>
@@ -46,6 +48,9 @@ AccountItem::AccountItem(const Tp::AccountPtr &account, AccountsListModel *paren
             SIGNAL(updated()));
     connect(m_account.data(),
             SIGNAL(displayNameChanged(const QString&)),
+            SIGNAL(updated()));
+    connect(m_account.data(),
+            SIGNAL(connectionStatusChanged(Tp::ConnectionStatus)),
             SIGNAL(updated()));
 
     generateIcon();
@@ -80,12 +85,40 @@ const KIcon& AccountItem::icon() const
     return *m_icon;
 }
 
+const QString AccountItem::connectionStateString() const
+{
+    switch (m_account->connectionStatus()) {
+    case Tp::ConnectionStatusConnected:
+        return i18n("Online");
+    case Tp::ConnectionStatusConnecting:
+        return i18n("Connecting");
+    case Tp::ConnectionStatusDisconnected:
+        return i18n("Disconnected");
+    default:
+        return "Unknown";
+    }
+}
+
+const KIcon AccountItem::connectionStateIcon() const
+{
+    switch (m_account->connectionStatus()) {
+    case Tp::ConnectionStatusConnected:
+        return KIcon("user-online");
+    case Tp::ConnectionStatusConnecting:
+        return KIcon("user-away"); //FIXME this is bit misleading
+    case Tp::ConnectionStatusDisconnected:
+        return KIcon("user-offline");
+    default:
+        return KIcon("user-offline");
+    }
+}
+
 void AccountItem::generateIcon()
 {
     kDebug();
 
     QString iconPath = account()->iconName();
-    //if the icon has not been setted, we use the protocol icon
+    //if the icon has not been set, we use the protocol icon
 
     if(iconPath.isEmpty()) {
         iconPath = QString("im-%1").arg(account()->protocolName());

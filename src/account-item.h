@@ -44,6 +44,8 @@ public:
     Tp::AccountPtr account() const;
     void remove();
     const KIcon& icon() const;
+    const QString connectionStateString() const;
+    const KIcon connectionStateIcon() const;
 
 public Q_SLOTS:
     void onTitleForCustomPages(QString, QList<QString>);
