@@ -25,6 +25,7 @@
 #include "abstract-account-ui.h"
 #include "parameter-edit-widget.h"
 #include "plugin-manager.h"
+#include "dictionary.h"
 
 #include <KDebug>
 #include <KLocale>
@@ -75,6 +76,9 @@ AccountEditWidget::AccountEditWidget(const Tp::ProtocolInfo &info,
     connect(d->ui.advancedButton, SIGNAL(clicked()),
             this, SLOT(onAdvancedClicked()));
     d->ui.advancedButton->setIcon(KIcon("configure"));
+    d->ui.titleLabel->setText(Dictionary::instance()->string(info.name()));
+    d->ui.iconLabel->setText("");
+    d->ui.iconLabel->setPixmap(KIcon(info.iconName()).pixmap(32));
 
     loadWidgets();
 }
