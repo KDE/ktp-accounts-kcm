@@ -25,6 +25,7 @@
 #include "accounts-list-model.h"
 #include "add-account-assistant.h"
 #include "edit-account-dialog.h"
+#include "accounts-list-delegate.h"
 
 #include <KGenericFactory>
 #include <KIcon>
@@ -75,6 +76,8 @@ KCMTelepathyAccounts::KCMTelepathyAccounts(QWidget *parent, const QVariantList& 
     m_ui->addAccountButton->setIcon(KIcon("list-add"));
     m_ui->editAccountButton->setIcon(KIcon("configure"));
     m_ui->removeAccountButton->setIcon(KIcon("edit-delete"));
+    m_ui->accountsListView->setItemDelegate(new AccountsListDelegate(this));
+
 
     // Connect to useful signals from the UI elements.
     connect(m_ui->addAccountButton,
