@@ -37,7 +37,6 @@ public:
 
     Tp::ProtocolParameter accountParameter;
     Tp::ProtocolParameter fullnameParameter;
-    Tp::ProtocolParameter usernameParameter;
     Tp::ProtocolParameter serverParameter;
 
     Ui::MainOptionsWidget *ui;
@@ -57,8 +56,6 @@ MainOptionsWidget::MainOptionsWidget(Tp::ProtocolParameterList parameters,
            d->accountParameter = parameter;
         } else if ((parameter.name() == "fullname") && (parameter.type() == QVariant::String)) {
           d->fullnameParameter = parameter;
-        } else if ((parameter.name() == "username") && (parameter.type() == QVariant::String)) {
-          d->usernameParameter = parameter;
         } else if ((parameter.name() == "server") && (parameter.type() == QVariant::String)) {
           d->serverParameter = parameter;
         }
@@ -93,14 +90,6 @@ MainOptionsWidget::MainOptionsWidget(Tp::ProtocolParameterList parameters,
        }
    }
 
-   if (d->usernameParameter.isValid()) {
-       if (values.contains(d->usernameParameter.name())) {
-           d->ui->usernameLineEdit->setText(values.value(d->usernameParameter.name()).toString());
-       } else {
-           d->ui->usernameLineEdit->setText(d->usernameParameter.defaultValue().toString());
-       }
-   }
-
 //    Hide any elements we don't have the parameters passed to show.
    if (!d->accountParameter.isValid()) {
        d->ui->accountLabel->hide();
@@ -110,11 +99,6 @@ MainOptionsWidget::MainOptionsWidget(Tp::ProtocolParameterList parameters,
    if (!d->fullnameParameter.isValid()) {
        d->ui->fullnameLabel->hide();
        d->ui->fullnameLineEdit->hide();
-   }
-
-   if (!d->usernameParameter.isValid()) {
-       d->ui->usernameLabel->hide();
-       d->ui->usernameLineEdit->hide();
    }
 
    if (!d->serverParameter.isValid()) {
@@ -143,10 +127,6 @@ QList<ProtocolParameterValue> MainOptionsWidget::parameterValues() const
 
     if (d->fullnameParameter.isValid()) {
         parameters.append(ProtocolParameterValue(d->fullnameParameter, d->ui->fullnameLineEdit->text()));
-    }
-
-    if (d->usernameParameter.isValid()) {
-        parameters.append(ProtocolParameterValue(d->usernameParameter, d->ui->usernameLineEdit->text()));
     }
 
     if (d->serverParameter.isValid()) {

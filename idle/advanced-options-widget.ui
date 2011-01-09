@@ -17,7 +17,7 @@
    <property name="fieldGrowthPolicy">
     <enum>QFormLayout::ExpandingFieldsGrow</enum>
    </property>
-   <item row="0" column="0">
+   <item row="2" column="0">
     <widget class="QLabel" name="passwordLabel">
      <property name="text">
       <string>Password:</string>
@@ -30,7 +30,7 @@
      </property>
     </widget>
    </item>
-   <item row="0" column="1">
+   <item row="2" column="1">
     <widget class="KLineEdit" name="passwordLineEdit">
      <property name="echoMode">
       <enum>QLineEdit::Password</enum>
@@ -43,14 +43,14 @@
      </property>
     </widget>
    </item>
-   <item row="1" column="1">
+   <item row="3" column="1">
     <widget class="QCheckBox" name="useSslCheckBox">
      <property name="text">
       <string/>
      </property>
     </widget>
    </item>
-   <item row="1" column="0">
+   <item row="3" column="0">
     <widget class="QLabel" name="useSslLabel">
      <property name="text">
       <string>Use SSL?</string>
@@ -60,10 +60,10 @@
      </property>
     </widget>
    </item>
-   <item row="3" column="1">
+   <item row="5" column="1">
     <widget class="KLineEdit" name="charsetLineEdit"/>
    </item>
-   <item row="3" column="0">
+   <item row="5" column="0">
     <widget class="QLabel" name="charsetLabel">
      <property name="text">
       <string>Character Set:</string>
@@ -73,7 +73,7 @@
      </property>
     </widget>
    </item>
-   <item row="4" column="0">
+   <item row="6" column="0">
     <widget class="QLabel" name="portLabel">
      <property name="text">
       <string>Server Port:</string>
@@ -83,10 +83,30 @@
      </property>
     </widget>
    </item>
-   <item row="4" column="1">
+   <item row="6" column="1">
     <widget class="KIntSpinBox" name="portSpinBox">
      <property name="maximum">
       <number>65535</number>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="1">
+    <widget class="KLineEdit" name="usernameLineEdit">
+     <property name="toolTip">
+      <string/>
+     </property>
+     <property name="whatsThis">
+      <string/>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="0">
+    <widget class="QLabel" name="usernameLabel">
+     <property name="text">
+      <string>Username:</string>
+     </property>
+     <property name="buddy">
+      <cstring>usernameLineEdit</cstring>
      </property>
     </widget>
    </item>
@@ -105,6 +125,7 @@
   </customwidget>
  </customwidgets>
  <tabstops>
+  <tabstop>usernameLineEdit</tabstop>
   <tabstop>passwordLineEdit</tabstop>
   <tabstop>useSslCheckBox</tabstop>
   <tabstop>charsetLineEdit</tabstop>

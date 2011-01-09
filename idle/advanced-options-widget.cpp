@@ -38,6 +38,7 @@ public:
     Tp::ProtocolParameter charsetParameter;
     Tp::ProtocolParameter portParameter;
     Tp::ProtocolParameter passwordParameter;
+    Tp::ProtocolParameter usernameParameter;
     Tp::ProtocolParameter useSslParameter;
 
     Ui::AdvancedOptionsWidget *ui;
@@ -59,6 +60,8 @@ AdvancedOptionsWidget::AdvancedOptionsWidget(
            d->portParameter = parameter;
         } else if ((parameter.name() == "password") && (parameter.type() == QVariant::String)) {
            d->passwordParameter = parameter;
+        } else if ((parameter.name() == "username") && (parameter.type() == QVariant::String)) {
+          d->usernameParameter = parameter;
         } else if ((parameter.name() == "use-ssl") && (parameter.type() == QVariant::Bool)) {
            d->useSslParameter = parameter;
         }
@@ -82,6 +85,14 @@ AdvancedOptionsWidget::AdvancedOptionsWidget(
            d->ui->portSpinBox->setValue(values.value(d->portParameter.name()).toUInt());
        } else {
            d->ui->portSpinBox->setValue(d->portParameter.defaultValue().toUInt());
+       }
+   }
+
+   if (d->usernameParameter.isValid()) {
+       if (values.contains(d->usernameParameter.name())) {
+           d->ui->usernameLineEdit->setText(values.value(d->usernameParameter.name()).toString());
+       } else {
+           d->ui->usernameLineEdit->setText(d->usernameParameter.defaultValue().toString());
        }
    }
 
@@ -110,6 +121,11 @@ AdvancedOptionsWidget::AdvancedOptionsWidget(
   if (!d->portParameter.isValid()) {
        d->ui->portLabel->hide();
        d->ui->portSpinBox->hide();
+   }
+
+   if (!d->usernameParameter.isValid()) {
+       d->ui->usernameLabel->hide();
+       d->ui->usernameLineEdit->hide();
    }
 
   if (!d->useSslParameter.isValid()) {
@@ -143,6 +159,10 @@ QList<ProtocolParameterValue> AdvancedOptionsWidget::parameterValues() const
 
     if (d->portParameter.isValid()) {
         parameters.append(ProtocolParameterValue(d->portParameter, d->ui->portSpinBox->value()));
+    }
+
+    if (d->usernameParameter.isValid()) {
+        parameters.append(ProtocolParameterValue(d->usernameParameter, d->ui->usernameLineEdit->text()));
     }
 
     if (d->useSslParameter.isValid()) {
