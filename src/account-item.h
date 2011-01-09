@@ -46,6 +46,7 @@ public:
     const KIcon& icon() const;
     const QString connectionStateString() const;
     const KIcon connectionStateIcon() const;
+    const QString connectionStatusReason() const;
 
 public Q_SLOTS:
     void onTitleForCustomPages(QString, QList<QString>);

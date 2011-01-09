@@ -113,6 +113,19 @@ const KIcon AccountItem::connectionStateIcon() const
     }
 }
 
+const QString AccountItem::connectionStatusReason() const
+{
+    switch (m_account->connectionStatusReason())
+    {
+    case Tp::ConnectionStatusReasonAuthenticationFailed:
+        return i18n("Authentication Failed");
+    case Tp::ConnectionStatusReasonNetworkError:
+        return i18n("Network Error");
+    default:
+        return QString();
+    }
+}
+
 void AccountItem::generateIcon()
 {
     kDebug();
