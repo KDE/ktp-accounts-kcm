@@ -140,8 +140,11 @@ bool MainOptionsWidget::validateParameterValues()
 {
     kDebug();
 
-
-    return true;
+    if ((!d->ui->accountLineEdit->text().isEmpty()) && (!d->ui->serverLineEdit->text().isEmpty()))
+    {
+        return true;
+    }
+    else return false;
 }
 
 #include "main-options-widget.moc"
