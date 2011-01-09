@@ -68,7 +68,7 @@ EditAccountDialog::EditAccountDialog(AccountItem *item, QWidget *parent)
                                       parameterValues,
                                       this);
     setMainWidget(d->widget);
-    resize(400, 480);
+    setMinimumWidth(400);
 }
 
 EditAccountDialog::~EditAccountDialog()
