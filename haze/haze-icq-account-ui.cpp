@@ -46,22 +46,14 @@ HazeIcqAccountUi::HazeIcqAccountUi(QObject *parent)
     registerSupportedParameter("account", QVariant::String);
     registerSupportedParameter("password", QVariant::String);
 
-    registerSupportedParameter("port", QVariant::UInt);
+    //registerSupportedParameter("port", QVariant::UInt);
     registerSupportedParameter("server", QVariant::String);
-    registerSupportedParameter("require-encryption", QVariant::Bool);
-    registerSupportedParameter("old-ssl", QVariant::Bool);
-    registerSupportedParameter("low-bandwidth", QVariant::Bool);
-    registerSupportedParameter("ignore-ssl-errors", QVariant::Bool);
-    registerSupportedParameter("keepalive-interval", QVariant::UInt);
 
-    registerSupportedParameter("stun-server", QVariant::String);
-    registerSupportedParameter("stun-port", QVariant::UInt);
-    registerSupportedParameter("fallback-stun-server", QVariant::String);
-    registerSupportedParameter("fallback-stun-port", QVariant::UInt);
-    registerSupportedParameter("https-proxy-server", QVariant::String);
-    registerSupportedParameter("https-proxy-port", QVariant::UInt);
-    registerSupportedParameter("fallback-socks5-proxies", QVariant::StringList);
-    registerSupportedParameter("fallback-conference-server", QVariant::String);
+    registerSupportedParameter("use-ssl", QVariant::Bool);
+    registerSupportedParameter("always-use-rv-proxy", QVariant::Bool);
+    registerSupportedParameter("allow-multiple-logins", QVariant::Bool);
+    registerSupportedParameter("charset", QVariant::String);
+    
 }
 
 HazeIcqAccountUi::~HazeIcqAccountUi()

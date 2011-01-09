@@ -6,7 +6,7 @@ Name=Haze Account Configuration User Interface
 Type=Service
 ServiceTypes=KCMTelepathyAccounts/AccountUiPlugin
 
-X-KDE-Library=kcmtelepathyaccounts_plugin_haze_
+X-KDE-Library=kcmtelepathyaccounts_plugin_haze
 X-KDE-PluginInfo-Author=Dominik Schmidt
 X-KDE-PluginInfo-Email=kde@dominik-schmidt.de
 X-KDE-PluginInfo-Name=haze
