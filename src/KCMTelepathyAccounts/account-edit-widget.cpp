@@ -46,7 +46,7 @@ public:
     QVariantMap parameterValues;
 
     AbstractAccountUi *accountUi;
-    Ui::AccountEditWidget ui;
+    Ui::AccountEditWidget *ui;
     AbstractAccountParametersWidget *mainOptionsWidget;
     QList<ProtocolParameterValue> advancedParameterValues;
 };
@@ -62,21 +62,17 @@ AccountEditWidget::AccountEditWidget(const QString &connectionManager,
     kDebug();
 
     // Set up the interface
-    d->ui.setupUi(this);
-
-    // create a layout on the central widget so that the config page is properly
-    // resized
-    QHBoxLayout* layout = new QHBoxLayout(d->ui.centralWidget);
-    layout->setContentsMargins(0,0,0,0);
+    d->ui = new Ui::AccountEditWidget;
+    d->ui->setupUi(this);
 
     d->connectionManager = connectionManager;
     d->protocol = protocol;
     d->parameters = parameters;
     d->parameterValues = parameterValues;
 
-    connect(d->ui.advancedButton, SIGNAL(clicked()),
+    connect(d->ui->advancedButton, SIGNAL(clicked()),
             this, SLOT(onAdvancedClicked()));
-    d->ui.advancedButton->setIcon(KIcon("configure"));
+    d->ui->advancedButton->setIcon(KIcon("configure"));
 
     loadWidgets();
 }
@@ -84,6 +80,9 @@ AccountEditWidget::AccountEditWidget(const QString &connectionManager,
 AccountEditWidget::~AccountEditWidget()
 {
     kDebug();
+
+    delete d->ui;
+    delete d;
 }
 
 bool AccountEditWidget::validateParameterValues() const
@@ -122,8 +121,11 @@ void AccountEditWidget::loadWidgets()
         // UI does exist, set it up.
         d->mainOptionsWidget = d->accountUi->mainOptionsWidget(d->parameters,
                                                                d->parameterValues,
-                                                               d->ui.centralWidget);
-        d->ui.advancedButton->setVisible(d->accountUi->hasAdvancedOptionsWidget());
+                                                               this);
+        //Widgets wrapped in a layout should not have double margins
+        d->mainOptionsWidget->layout()->setContentsMargins(0, 0, 0, 0);
+        d->ui->advancedButton->setVisible(d->accountUi->hasAdvancedOptionsWidget());
+        d->ui->verticalLayout->insertWidget(0, d->mainOptionsWidget);
 
         // check if all the parameters the UI supports are available in the CM plugin
         // also verify if the UI handle all mandatory parameters
@@ -159,11 +161,11 @@ void AccountEditWidget::loadWidgets()
         d->mainOptionsWidget = new ParameterEditWidget(
                 d->parameters,
                 d->parameterValues,
-                d->ui.centralWidget);
-        d->ui.advancedButton->setVisible(false);
+                this);
+        d->ui->advancedButton->setVisible(false);
+        d->ui->verticalLayout->insertWidget(0, d->mainOptionsWidget);
+        d->ui->verticalLayout->setStretch(0, 1);
     }
-
-    d->ui.centralWidget->layout()->addWidget(d->mainOptionsWidget);
 }
 
 void AccountEditWidget::onAdvancedClicked()

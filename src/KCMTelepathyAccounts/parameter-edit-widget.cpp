@@ -72,6 +72,7 @@ ParameterEditWidget::~ParameterEditWidget()
 {
     kDebug();
 
+    delete d->ui;
     delete d;
 }
 

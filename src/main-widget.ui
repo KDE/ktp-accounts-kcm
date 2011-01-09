@@ -14,7 +14,7 @@
    <item>
     <layout class="QHBoxLayout" name="horizontalLayout">
      <item>
-      <widget class="QListView" name="m_accountsListView">
+      <widget class="QListView" name="accountsListView">
        <property name="iconSize">
         <size>
          <width>32</width>
@@ -31,14 +31,14 @@
           <enum>QLayout::SetFixedSize</enum>
          </property>
          <item>
-          <widget class="KPushButton" name="m_addAccountButton">
+          <widget class="KPushButton" name="addAccountButton">
            <property name="text">
             <string>Add Account</string>
            </property>
           </widget>
          </item>
          <item>
-          <widget class="KPushButton" name="m_editAccountButton">
+          <widget class="KPushButton" name="editAccountButton">
            <property name="enabled">
             <bool>false</bool>
            </property>
@@ -48,7 +48,7 @@
           </widget>
          </item>
          <item>
-          <widget class="KPushButton" name="m_removeAccountButton">
+          <widget class="KPushButton" name="removeAccountButton">
            <property name="enabled">
             <bool>false</bool>
            </property>

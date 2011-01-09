@@ -73,6 +73,7 @@ ProtocolSelectWidget::~ProtocolSelectWidget()
 {
     kDebug();
 
+    delete d->ui;
     delete d;
 }
 

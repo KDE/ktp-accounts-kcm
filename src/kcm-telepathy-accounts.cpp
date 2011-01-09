@@ -20,6 +20,8 @@
 
 #include "kcm-telepathy-accounts.h"
 
+#include "ui_main-widget.h"
+
 #include "accounts-list-model.h"
 #include "add-account-assistant.h"
 #include "edit-account-dialog.h"
@@ -64,26 +66,27 @@ KCMTelepathyAccounts::KCMTelepathyAccounts(QWidget *parent, const QVariantList& 
             SLOT(onAccountManagerReady(Tp::PendingOperation*)));
 
     // Set up the UI stuff.
-    setupUi(this);
+    m_ui = new Ui::MainWidget;
+    m_ui->setupUi(this);
 
     m_accountsListModel = new AccountsListModel(this);
-    m_accountsListView->setModel(m_accountsListModel);
+    m_ui->accountsListView->setModel(m_accountsListModel);
 
-    m_addAccountButton->setIcon(KIcon("list-add"));
-    m_editAccountButton->setIcon(KIcon("configure"));
-    m_removeAccountButton->setIcon(KIcon("edit-delete"));
+    m_ui->addAccountButton->setIcon(KIcon("list-add"));
+    m_ui->editAccountButton->setIcon(KIcon("configure"));
+    m_ui->removeAccountButton->setIcon(KIcon("edit-delete"));
 
     // Connect to useful signals from the UI elements.
-    connect(m_addAccountButton,
+    connect(m_ui->addAccountButton,
             SIGNAL(clicked()),
             SLOT(onAddAccountClicked()));
-    connect(m_editAccountButton,
+    connect(m_ui->editAccountButton,
             SIGNAL(clicked()),
             SLOT(onEditAccountClicked()));
-    connect(m_removeAccountButton,
+    connect(m_ui->removeAccountButton,
             SIGNAL(clicked()),
             SLOT(onRemoveAccountClicked()));
-    connect(m_accountsListView->selectionModel(),
+    connect(m_ui->accountsListView->selectionModel(),
             SIGNAL(currentChanged(QModelIndex, QModelIndex)),
             SLOT(onSelectedItemChanged()));
 }
@@ -92,6 +95,7 @@ KCMTelepathyAccounts::~KCMTelepathyAccounts()
 {
     kDebug();
 
+    delete m_ui;
     // TODO: Implement me!
 }
 
@@ -134,9 +138,9 @@ void KCMTelepathyAccounts::onAccountCreated(const Tp::AccountPtr &account)
 
 void KCMTelepathyAccounts::onSelectedItemChanged()
 {
-    bool isAccount = m_accountsListView->currentIndex().isValid();
-    m_removeAccountButton->setEnabled(isAccount);
-    m_editAccountButton->setEnabled(isAccount);
+    bool isAccount = m_ui->accountsListView->currentIndex().isValid();
+    m_ui->removeAccountButton->setEnabled(isAccount);
+    m_ui->editAccountButton->setEnabled(isAccount);
 }
 
 void KCMTelepathyAccounts::onAddAccountClicked()
@@ -162,7 +166,7 @@ void KCMTelepathyAccounts::onEditAccountClicked()
         return;
     }
 
-    QModelIndex index = m_accountsListView->currentIndex();
+    QModelIndex index = m_ui->accountsListView->currentIndex();
     AccountItem *item = m_accountsListModel->itemForIndex(index);
 
     if (!item)
@@ -176,7 +180,7 @@ void KCMTelepathyAccounts::onEditAccountClicked()
 void KCMTelepathyAccounts::onRemoveAccountClicked()
 {
     kDebug();
-    QModelIndex index = m_accountsListView->currentIndex();
+    QModelIndex index = m_ui->accountsListView->currentIndex();
 
      if ( KMessageBox::warningContinueCancel( this, i18n( "Are you sure you want to remove the account \"%1\"?", m_accountsListModel->data(index, Qt::DisplayRole).toString()),
                                         i18n( "Remove Account" ), KGuiItem(i18n( "Remove Account" ), "edit-delete"), KStandardGuiItem::cancel(),

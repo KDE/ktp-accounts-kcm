@@ -21,8 +21,6 @@
 #ifndef TELEPATHY_ACCOUNTS_KCM_KCM_TELEPATHY_ACCOUNTS_H
 #define TELEPATHY_ACCOUNTS_KCM_KCM_TELEPATHY_ACCOUNTS_H
 
-#include "ui_main-widget.h"
-
 #include <KCModule>
 
 #include <TelepathyQt4/AccountManager>
@@ -34,7 +32,11 @@ namespace Tp {
     class PendingOperation;
 }
 
-class KCMTelepathyAccounts : public KCModule, Ui::MainWidget
+namespace Ui {
+    class MainWidget;
+}
+
+class KCMTelepathyAccounts : public KCModule
 {
     Q_OBJECT
     Q_DISABLE_COPY(KCMTelepathyAccounts);
@@ -58,6 +60,8 @@ private Q_SLOTS:
     void onRemoveAccountClicked();
 
 private:
+    Ui::MainWidget *m_ui;
+
     Tp::AccountManagerPtr m_accountManager;
     AccountsListModel *m_accountsListModel;
     AddAccountAssistant *m_addAccountAssistant;
