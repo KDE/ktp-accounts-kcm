@@ -72,10 +72,10 @@ AccountEditWidget::AccountEditWidget(const Tp::ProtocolInfo &info,
     connect(d->ui->advancedButton, SIGNAL(clicked()),
             this, SLOT(onAdvancedClicked()));
 
-    d->ui.advancedButton->setIcon(KIcon("configure"));
-    d->ui.titleLabel->setText(Dictionary::instance()->string(info.name()));
-    d->ui.iconLabel->setText("");
-    d->ui.iconLabel->setPixmap(KIcon(info.iconName()).pixmap(32));
+    d->ui->advancedButton->setIcon(KIcon("configure"));
+    d->ui->titleLabel->setText(Dictionary::instance()->string(info.name()));
+    d->ui->iconLabel->setText("");
+    d->ui->iconLabel->setPixmap(KIcon(info.iconName()).pixmap(32));
 
     loadWidgets();
 }
@@ -128,7 +128,7 @@ void AccountEditWidget::loadWidgets()
         //Widgets wrapped in a layout should not have double margins
         d->mainOptionsWidget->layout()->setContentsMargins(0, 0, 0, 0);
         d->ui->advancedButton->setVisible(d->accountUi->hasAdvancedOptionsWidget());
-        d->ui->verticalLayout->insertWidget(0, d->mainOptionsWidget);
+        d->ui->verticalLayout->insertWidget(1, d->mainOptionsWidget);
 
         // check if all the parameters the UI supports are available in the CM plugin
         // also verify if the UI handle all mandatory parameters
@@ -166,8 +166,8 @@ void AccountEditWidget::loadWidgets()
                 d->parameterValues,
                 this);
         d->ui->advancedButton->setVisible(false);
-        d->ui->verticalLayout->insertWidget(0, d->mainOptionsWidget);
-        d->ui->verticalLayout->setStretch(0, 1);
+        d->ui->verticalLayout->insertWidget(1, d->mainOptionsWidget);
+        d->ui->verticalLayout->setStretch(1, 1);
     }
 }
 
