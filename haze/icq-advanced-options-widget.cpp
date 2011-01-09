@@ -19,7 +19,6 @@
  */
 
 #include "icq-advanced-options-widget.h"
-#include "icq-proxy-settings-widget.h"
 #include "icq-server-settings-widget.h"
 
 #include <KCMTelepathyAccounts/ProtocolParameterValue>
@@ -35,14 +34,10 @@ class IcqAdvancedOptionsWidget::Private
 {
 public:
     Private()
-            : tabWidget(0),
-              proxySettings(0),
-              serverSettings(0)
+            : serverSettings(0)
     {
         kDebug();
     }
-    KTabWidget *tabWidget;
-    IcqProxySettingsWidget *proxySettings;
     IcqServerSettingsWidget *serverSettings;
 };
 
@@ -54,14 +49,8 @@ IcqAdvancedOptionsWidget::IcqAdvancedOptionsWidget(Tp::ProtocolParameterList par
 {
     // add a layout to the main widget
     QHBoxLayout *layout = new QHBoxLayout(this);
-    d->tabWidget = new KTabWidget(this);
-    layout->addWidget(d->tabWidget);
-
-    // create the pages
-    d->serverSettings = new IcqServerSettingsWidget(parameters, values, d->tabWidget);
-    d->tabWidget->addTab(d->serverSettings, i18n("Connection Settings"));
-    d->proxySettings = new IcqProxySettingsWidget(parameters, values, d->tabWidget);
-    d->tabWidget->addTab(d->proxySettings, i18n("Proxy Settings"));
+    d->serverSettings = new IcqServerSettingsWidget(parameters, values, 0);
+    layout->addWidget(d->serverSettings);
 }
 
 IcqAdvancedOptionsWidget::~IcqAdvancedOptionsWidget()
@@ -78,7 +67,6 @@ QList<ProtocolParameterValue> IcqAdvancedOptionsWidget::parameterValues() const
     // the server parameter values
     QList<ProtocolParameterValue> parameters;
     parameters.append(d->serverSettings->parameterValues());
-    parameters.append(d->proxySettings->parameterValues());
 
     return parameters;
 }
@@ -89,9 +77,6 @@ bool IcqAdvancedOptionsWidget::validateParameterValues()
 
     // validate one tab at a time so that the user is not flooded with dialogs
     if (!d->serverSettings->validateParameterValues())
-        return false;
-
-    if (!d->proxySettings->validateParameterValues())
         return false;
 
     return true;

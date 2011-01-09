@@ -39,11 +39,10 @@ public:
 
     Tp::ProtocolParameter serverParameter;
     Tp::ProtocolParameter portParameter;
-    Tp::ProtocolParameter keepaliveIntervalParameter;
-    Tp::ProtocolParameter lowBandwidthParameter;
-    Tp::ProtocolParameter requireEncryptionParameter;
-    Tp::ProtocolParameter ignoreSslErrorsParameter;
-    Tp::ProtocolParameter oldSslParameter;
+    Tp::ProtocolParameter useSslParameter;
+    Tp::ProtocolParameter alwaysUseRvProxyParameter;
+    Tp::ProtocolParameter allowMultipleLoginsParameter;
+    Tp::ProtocolParameter charsetParameter;
 
     Ui::IcqServerSettingsWidget *ui;
 };
@@ -58,26 +57,31 @@ IcqServerSettingsWidget::IcqServerSettingsWidget(Tp::ProtocolParameterList param
 
     // Store the parameters this widget supports
     foreach (const Tp::ProtocolParameter &parameter, parameters) {
+
+        kDebug() << parameter.name() << parameter.type();
+        
         if ((parameter.name() == "server") && (parameter.type() == QVariant::String)) {
             d->serverParameter = parameter;
-        } else if ((parameter.name() == "port") && (parameter.type() == QVariant::UInt)) {
+        } else if ((parameter.name() == "port") && (parameter.type() == QVariant::Int)) {
             d->portParameter = parameter;
-        } else if ((parameter.name() == "keepalive-interval") && (parameter.type() == QVariant::UInt)) {
-            d->keepaliveIntervalParameter = parameter;
-        } else if ((parameter.name() == "low-bandwidth") && (parameter.type() == QVariant::Bool)) {
-            d->lowBandwidthParameter = parameter;
-        } else if ((parameter.name() == "require-encryption") && (parameter.type() == QVariant::Bool)) {
-            d->requireEncryptionParameter = parameter;
-        } else if ((parameter.name() == "ignore-ssl-errors") && (parameter.type() == QVariant::Bool)) {
-            d->ignoreSslErrorsParameter = parameter;
-        } else if ((parameter.name() == "old-ssl") && (parameter.type() == QVariant::Bool)) {
-            d->oldSslParameter = parameter;
+        } else if ((parameter.name() == "use-ssl") && (parameter.type() == QVariant::Bool)) {
+            d->useSslParameter = parameter;
+        } else if ((parameter.name() == "always-use-rv-proxy") && (parameter.type() == QVariant::Bool)) {
+            d->alwaysUseRvProxyParameter = parameter;
+        } else if ((parameter.name() == "allow-multiple-logins") && (parameter.type() == QVariant::Bool)) {
+            d->allowMultipleLoginsParameter = parameter;
+        } else if ((parameter.name() == "charset") && (parameter.type() == QVariant::String)) {
+            d->charsetParameter = parameter;
         }
     }
 
     // Set up the UI.
     d->ui = new Ui::IcqServerSettingsWidget;
     d->ui->setupUi(this);
+
+    /*
+     * First subformular
+     */
 
     // Prefill UI elements if appropriate.
     if (d->serverParameter.isValid()) {
@@ -96,54 +100,6 @@ IcqServerSettingsWidget::IcqServerSettingsWidget(Tp::ProtocolParameterList param
         }
     }
 
-    if (d->keepaliveIntervalParameter.isValid()) {
-        if (values.contains(d->keepaliveIntervalParameter.name())) {
-            d->ui->keepaliveIntervalSpinBox->setValue(values.value(
-                    d->keepaliveIntervalParameter.name()).toUInt());
-        } else {
-            d->ui->keepaliveIntervalSpinBox->setValue(
-                    d->keepaliveIntervalParameter.defaultValue().toUInt());
-        }
-    }
-
-    if (d->lowBandwidthParameter.isValid()) {
-        if (values.contains(d->lowBandwidthParameter.name())) {
-            d->ui->lowBandwidthCheckBox->setChecked(values.value(
-                    d->lowBandwidthParameter.name()).toBool());
-        } else {
-            d->ui->lowBandwidthCheckBox->setChecked(
-                    d->lowBandwidthParameter.defaultValue().toBool());
-        }
-    }
-
-    if (d->requireEncryptionParameter.isValid()) {
-        if (values.contains(d->requireEncryptionParameter.name())) {
-            d->ui->requireEncryptionCheckBox->setChecked(values.value(
-                    d->requireEncryptionParameter.name()).toBool());
-        } else {
-            d->ui->requireEncryptionCheckBox->setChecked(
-                    d->requireEncryptionParameter.defaultValue().toBool());
-        }
-    }
-
-    if (d->ignoreSslErrorsParameter.isValid()) {
-        if (values.contains(d->ignoreSslErrorsParameter.name())) {
-            d->ui->ignoreSslErrorsCheckBox->setChecked(values.value(
-                    d->ignoreSslErrorsParameter.name()).toBool());
-        } else {
-            d->ui->ignoreSslErrorsCheckBox->setChecked(
-                    d->ignoreSslErrorsParameter.defaultValue().toBool());
-        }
-    }
-
-    if (d->oldSslParameter.isValid()) {
-        if (values.contains(d->oldSslParameter.name())) {
-            d->ui->oldSslCheckBox->setChecked(values.value(d->oldSslParameter.name()).toBool());
-        } else {
-            d->ui->oldSslCheckBox->setChecked(d->oldSslParameter.defaultValue().toBool());
-        }
-    }
-
     // Hide any elements we don't have the parameters passed to show.
     if (!d->serverParameter.isValid()) {
         d->ui->serverLabel->hide();
@@ -155,41 +111,83 @@ IcqServerSettingsWidget::IcqServerSettingsWidget(Tp::ProtocolParameterList param
         d->ui->portSpinBox->hide();
     }
 
-    if (!d->keepaliveIntervalParameter.isValid()) {
-        d->ui->keepaliveIntervalLabel->hide();
-        d->ui->keepaliveIntervalSpinBox->hide();
-    }
-
-    if (!d->lowBandwidthParameter.isValid()) {
-        d->ui->lowBandwidthCheckBox->hide();
-    }
-
-    if (!d->requireEncryptionParameter.isValid()) {
-        d->ui->requireEncryptionCheckBox->hide();
-    }
-
-    if (!d->ignoreSslErrorsParameter.isValid()) {
-        d->ui->ignoreSslErrorsCheckBox->hide();
-    }
-
-    if (!d->oldSslParameter.isValid()) {
-        d->ui->oldSslCheckBox->hide();
-    }
-
-    // Hide the group boxes if they are empty.
+    // Hide the headline if they are empty.
     if ((!d->serverParameter.isValid()) && (!d->portParameter.isValid())) {
-        d->ui->serverGroupBox->hide();
+        d->ui->serverHeadlineLabel->hide();
     }
 
-    if ((!d->keepaliveIntervalParameter.isValid()) && (!d->lowBandwidthParameter.isValid())) {
-        d->ui->connectionGroupBox->hide();
+    /*
+     * Second subformular
+     */
+    if (d->useSslParameter.isValid()) {
+        if (values.contains(d->useSslParameter.name())) {
+            d->ui->useSslCheckBox->setChecked(values.value(d->useSslParameter.name()).toBool());
+        } else {
+            d->ui->useSslCheckBox->setChecked(d->useSslParameter.defaultValue().toBool());
+        }
     }
 
-    if ((!d->requireEncryptionParameter.isValid()) &&
-        (!d->ignoreSslErrorsParameter.isValid()) &&
-        (!d->oldSslParameter.isValid())) {
-        d->ui->securityGroupBox->hide();
+    if (d->allowMultipleLoginsParameter.isValid()) {
+        if (values.contains(d->allowMultipleLoginsParameter.name())) {
+            d->ui->allowMultipleLoginsCheckBox->setChecked(values.value(d->allowMultipleLoginsParameter.name()).toBool());
+        } else {
+            d->ui->allowMultipleLoginsCheckBox->setChecked(d->allowMultipleLoginsParameter.defaultValue().toBool());
+        }
     }
+
+    // Hide any elements we don't have the parameters passed to show.
+    if (!d->useSslParameter.isValid()) {
+        d->ui->useSslCheckBox->hide();
+        // It's a checkbox, so no extra label here
+    }
+
+    if (!d->allowMultipleLoginsParameter.isValid()) {
+        d->ui->allowMultipleLoginsCheckBox->hide();
+        // It's a checkbox, so no extra label here
+    }
+    
+    // Hide the headline if they are empty.
+    if ((!d->useSslParameter.isValid()) && (!d->allowMultipleLoginsParameter.isValid())) {
+        d->ui->securityHeadlineLabel->hide();
+    }
+
+    /*
+     * Third subformular
+     */
+
+    // Prefill UI elements if appropriate.
+    if (d->charsetParameter.isValid()) {
+        if (values.contains(d->charsetParameter.name())) {
+            d->ui->charsetComboBox->setEditText(values.value(d->charsetParameter.name()).toString());
+        } else {
+            d->ui->charsetComboBox->setEditText(d->charsetParameter.defaultValue().toString());
+        }
+    }
+
+    if (d->alwaysUseRvProxyParameter.isValid()) {
+        if (values.contains(d->alwaysUseRvProxyParameter.name())) {
+            d->ui->alwaysUseRvProxyCheckBox->setChecked(values.value(d->alwaysUseRvProxyParameter.name()).toBool());
+        } else {
+            d->ui->alwaysUseRvProxyCheckBox->setChecked(d->alwaysUseRvProxyParameter.defaultValue().toBool());
+        }
+    }
+
+    // Hide any elements we don't have the parameters passed to show.
+    if (!d->charsetParameter.isValid()) {
+        d->ui->charsetComboBox->hide();
+        // It's a checkbox, so no extra label here
+    }
+
+    if (!d->alwaysUseRvProxyParameter.isValid()) {
+        d->ui->alwaysUseRvProxyCheckBox->hide();
+        // It's a checkbox, so no extra label here
+    }
+
+    // Hide the headline if they are empty.
+    if ((!d->charsetParameter.isValid()) && (!d->alwaysUseRvProxyParameter.isValid())) {
+        d->ui->otherHeadlineLabel->hide();
+    }
+    
 }
 
 IcqServerSettingsWidget::~IcqServerSettingsWidget()
@@ -214,25 +212,20 @@ QList<ProtocolParameterValue> IcqServerSettingsWidget::parameterValues() const
         parameters.append(ProtocolParameterValue(d->portParameter, d->ui->portSpinBox->value()));
     }
 
-    if (d->keepaliveIntervalParameter.isValid()) {
-        parameters.append(ProtocolParameterValue(d->keepaliveIntervalParameter, d->ui->keepaliveIntervalSpinBox->value()));
+    if (d->useSslParameter.isValid()) {
+        parameters.append(ProtocolParameterValue(d->useSslParameter, d->ui->useSslCheckBox->isChecked()));
     }
 
-    if (d->lowBandwidthParameter.isValid()) {
-        parameters.append(ProtocolParameterValue(d->lowBandwidthParameter, d->ui->lowBandwidthCheckBox->isChecked()));
+    if (d->allowMultipleLoginsParameter.isValid()) {
+        parameters.append(ProtocolParameterValue(d->allowMultipleLoginsParameter, d->ui->allowMultipleLoginsCheckBox->isChecked()));
     }
 
-    if (d->requireEncryptionParameter.isValid()) {
-        parameters.append(ProtocolParameterValue(d->requireEncryptionParameter,
-                          d->ui->requireEncryptionCheckBox->isChecked()));
+    if (d->alwaysUseRvProxyParameter.isValid()) {
+        parameters.append(ProtocolParameterValue(d->alwaysUseRvProxyParameter, d->ui->alwaysUseRvProxyCheckBox->isChecked()));
     }
 
-    if (d->ignoreSslErrorsParameter.isValid()) {
-        parameters.append(ProtocolParameterValue(d->ignoreSslErrorsParameter, d->ui->ignoreSslErrorsCheckBox->isChecked()));
-    }
-
-    if (d->oldSslParameter.isValid()) {
-        parameters.append(ProtocolParameterValue(d->oldSslParameter, d->ui->oldSslCheckBox->isChecked()));
+    if (d->charsetParameter.isValid()) {
+        parameters.append(ProtocolParameterValue(d->charsetParameter, d->ui->charsetComboBox->currentText()));
     }
 
     return parameters;

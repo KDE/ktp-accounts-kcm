@@ -126,7 +126,7 @@ bool IcqMainOptionsWidget::validateParameterValues()
     if (d->ui->accountLineEdit->text().isEmpty()) {
         kDebug() << "Returning false and alerting the user.";
 
-        KMessageBox::error(this, i18n("Please enter a Jabber ID."));
+        KMessageBox::error(this, i18n("Please enter an ICQ UIN."));
 
         return false;
     }
