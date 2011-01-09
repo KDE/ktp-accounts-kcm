@@ -28,7 +28,7 @@ class MainOptionsWidget : public AbstractAccountParametersWidget
     Q_OBJECT
 
 public:
-    explicit MainOptionsWidget(Tp::ProtocolParameterList parameters,
+    explicit MainOptionsWidget(const Tp::ProtocolParameterList& parameters,
                                const QVariantMap &values = QVariantMap(),
                                QWidget *parent = 0);
     virtual ~MainOptionsWidget();

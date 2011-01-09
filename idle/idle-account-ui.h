@@ -39,7 +39,7 @@ public:
     virtual AbstractAccountParametersWidget
               *advancedOptionsWidget(Tp::ProtocolParameterList parameters,
                                      const QVariantMap &values = QVariantMap(),
-                                     QWidget *parent = 0) const;                                 
+                                     QWidget *parent = 0) const;
 private:
     Q_DISABLE_COPY(IdleAccountUi);
 

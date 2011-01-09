@@ -28,7 +28,7 @@ class AdvancedOptionsWidget : public AbstractAccountParametersWidget
     Q_OBJECT
 
 public:
-    explicit AdvancedOptionsWidget(Tp::ProtocolParameterList parameters,
+    explicit AdvancedOptionsWidget(const Tp::ProtocolParameterList& parameters,
                                const QVariantMap &values = QVariantMap(),
                                QWidget *parent = 0);
     virtual ~AdvancedOptionsWidget();

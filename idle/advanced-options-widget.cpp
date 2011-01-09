@@ -45,7 +45,7 @@ public:
 };
 
 AdvancedOptionsWidget::AdvancedOptionsWidget(
-        Tp::ProtocolParameterList parameters, const QVariantMap &values,
+        const Tp::ProtocolParameterList& parameters, const QVariantMap &values,
         QWidget *parent)
          : AbstractAccountParametersWidget(parameters, values, parent),
            d(new Private)
@@ -71,72 +71,72 @@ AdvancedOptionsWidget::AdvancedOptionsWidget(
     d->ui = new Ui::AdvancedOptionsWidget;
     d->ui->setupUi(this);
 
-   // Prefill UI elements if appropriate.
-   if (d->charsetParameter.isValid()) {
-       if (values.contains(d->charsetParameter.name())) {
-           d->ui->charsetLineEdit->setText(values.value(d->charsetParameter.name()).toString());
-       } else {
-           d->ui->charsetLineEdit->setText(d->charsetParameter.defaultValue().toString());
-       }
-   }
+    // Prefill UI elements if appropriate.
+    if (d->charsetParameter.isValid()) {
+        if (values.contains(d->charsetParameter.name())) {
+            d->ui->charsetLineEdit->setText(values.value(d->charsetParameter.name()).toString());
+        } else {
+            d->ui->charsetLineEdit->setText(d->charsetParameter.defaultValue().toString());
+        }
+    }
 
-   if (d->portParameter.isValid()) {
-       if (values.contains(d->portParameter.name())) {
-           d->ui->portSpinBox->setValue(values.value(d->portParameter.name()).toUInt());
-       } else {
-           d->ui->portSpinBox->setValue(d->portParameter.defaultValue().toUInt());
-       }
-   }
+    if (d->portParameter.isValid()) {
+        if (values.contains(d->portParameter.name())) {
+            d->ui->portSpinBox->setValue(values.value(d->portParameter.name()).toUInt());
+        } else {
+            d->ui->portSpinBox->setValue(d->portParameter.defaultValue().toUInt());
+        }
+    }
 
-   if (d->usernameParameter.isValid()) {
-       if (values.contains(d->usernameParameter.name())) {
-           d->ui->usernameLineEdit->setText(values.value(d->usernameParameter.name()).toString());
-       } else {
-           d->ui->usernameLineEdit->setText(d->usernameParameter.defaultValue().toString());
-       }
-   }
+    if (d->usernameParameter.isValid()) {
+        if (values.contains(d->usernameParameter.name())) {
+            d->ui->usernameLineEdit->setText(values.value(d->usernameParameter.name()).toString());
+        } else {
+            d->ui->usernameLineEdit->setText(d->usernameParameter.defaultValue().toString());
+        }
+    }
 
-   if (d->useSslParameter.isValid()) {
-       if (values.contains(d->useSslParameter.name())) {
-           d->ui->useSslCheckBox->setChecked(values.value(d->useSslParameter.name()).toBool());
-       } else {
-           d->ui->useSslCheckBox->setChecked(d->useSslParameter.defaultValue().toBool());
-       }
-   }
+    if (d->useSslParameter.isValid()) {
+        if (values.contains(d->useSslParameter.name())) {
+            d->ui->useSslCheckBox->setChecked(values.value(d->useSslParameter.name()).toBool());
+        } else {
+            d->ui->useSslCheckBox->setChecked(d->useSslParameter.defaultValue().toBool());
+        }
+    }
 
-   if (d->passwordParameter.isValid()) {
-       if (values.contains(d->passwordParameter.name())) {
-           d->ui->passwordLineEdit->setText(values.value(d->passwordParameter.name()).toString());
-       } else {
-           d->ui->passwordLineEdit->setText(d->passwordParameter.defaultValue().toString());
-       }
-   }
+    if (d->passwordParameter.isValid()) {
+        if (values.contains(d->passwordParameter.name())) {
+            d->ui->passwordLineEdit->setText(values.value(d->passwordParameter.name()).toString());
+        } else {
+            d->ui->passwordLineEdit->setText(d->passwordParameter.defaultValue().toString());
+        }
+    }
 
-   // Hide any elements we don't have the parameters passed to show.
-  if (!d->charsetParameter.isValid()) {
-       d->ui->charsetLabel->hide();
-       d->ui->charsetLineEdit->hide();
-   }
+    // Hide any elements we don't have the parameters passed to show.
+    if (!d->charsetParameter.isValid()) {
+        d->ui->charsetLabel->hide();
+        d->ui->charsetLineEdit->hide();
+    }
 
-  if (!d->portParameter.isValid()) {
-       d->ui->portLabel->hide();
-       d->ui->portSpinBox->hide();
-   }
+    if (!d->portParameter.isValid()) {
+        d->ui->portLabel->hide();
+        d->ui->portSpinBox->hide();
+    }
 
-   if (!d->usernameParameter.isValid()) {
-       d->ui->usernameLabel->hide();
-       d->ui->usernameLineEdit->hide();
-   }
+    if (!d->usernameParameter.isValid()) {
+        d->ui->usernameLabel->hide();
+        d->ui->usernameLineEdit->hide();
+    }
 
-  if (!d->useSslParameter.isValid()) {
-       d->ui->useSslLabel->hide();
-       d->ui->useSslCheckBox->hide();
-   }
+    if (!d->useSslParameter.isValid()) {
+        d->ui->useSslLabel->hide();
+        d->ui->useSslCheckBox->hide();
+    }
 
-   if (!d->passwordParameter.isValid()) {
-       d->ui->passwordLabel->hide();
-       d->ui->passwordLineEdit->hide();
-   }
+    if (!d->passwordParameter.isValid()) {
+        d->ui->passwordLabel->hide();
+        d->ui->passwordLineEdit->hide();
+    }
 }
 
 AdvancedOptionsWidget::~AdvancedOptionsWidget()
@@ -179,7 +179,6 @@ QList<ProtocolParameterValue> AdvancedOptionsWidget::parameterValues() const
 bool AdvancedOptionsWidget::validateParameterValues()
 {
     kDebug();
-
 
     return true;
 }

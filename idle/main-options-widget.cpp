@@ -42,7 +42,7 @@ public:
     Ui::MainOptionsWidget *ui;
 };
 
-MainOptionsWidget::MainOptionsWidget(Tp::ProtocolParameterList parameters,
+MainOptionsWidget::MainOptionsWidget(const Tp::ProtocolParameterList& parameters,
         const QVariantMap &values,
         QWidget *parent)
          : AbstractAccountParametersWidget(parameters, values, parent),
@@ -65,46 +65,46 @@ MainOptionsWidget::MainOptionsWidget(Tp::ProtocolParameterList parameters,
     d->ui = new Ui::MainOptionsWidget;
     d->ui->setupUi(this);
 
-   // Prefill UI elements if appropriate.
-   if (d->accountParameter.isValid()) {
-       if (values.contains(d->accountParameter.name())) {
-           d->ui->accountLineEdit->setText(values.value(d->accountParameter.name()).toString());
-       } else {
-           d->ui->accountLineEdit->setText(d->accountParameter.defaultValue().toString());
-       }
-   }
+    // Prefill UI elements if appropriate.
+    if (d->accountParameter.isValid()) {
+        if (values.contains(d->accountParameter.name())) {
+            d->ui->accountLineEdit->setText(values.value(d->accountParameter.name()).toString());
+        } else {
+            d->ui->accountLineEdit->setText(d->accountParameter.defaultValue().toString());
+        }
+    }
 
-   if (d->fullnameParameter.isValid()) {
-       if (values.contains(d->fullnameParameter.name())) {
-           d->ui->fullnameLineEdit->setText(values.value(d->fullnameParameter.name()).toString());
-       } else {
-           d->ui->fullnameLineEdit->setText(d->fullnameParameter.defaultValue().toString());
-       }
-   }
+    if (d->fullnameParameter.isValid()) {
+        if (values.contains(d->fullnameParameter.name())) {
+            d->ui->fullnameLineEdit->setText(values.value(d->fullnameParameter.name()).toString());
+        } else {
+            d->ui->fullnameLineEdit->setText(d->fullnameParameter.defaultValue().toString());
+        }
+    }
 
-   if (d->serverParameter.isValid()) {
-       if (values.contains(d->serverParameter.name())) {
-           d->ui->serverLineEdit->setText(values.value(d->serverParameter.name()).toString());
-       } else {
-           d->ui->serverLineEdit->setText(d->serverParameter.defaultValue().toString());
-       }
-   }
+    if (d->serverParameter.isValid()) {
+        if (values.contains(d->serverParameter.name())) {
+            d->ui->serverLineEdit->setText(values.value(d->serverParameter.name()).toString());
+        } else {
+            d->ui->serverLineEdit->setText(d->serverParameter.defaultValue().toString());
+        }
+    }
 
-//    Hide any elements we don't have the parameters passed to show.
-   if (!d->accountParameter.isValid()) {
-       d->ui->accountLabel->hide();
-       d->ui->accountLineEdit->hide();
-   }
+    // Hide any elements we don't have the parameters passed to show.
+    if (!d->accountParameter.isValid()) {
+        d->ui->accountLabel->hide();
+        d->ui->accountLineEdit->hide();
+    }
 
-   if (!d->fullnameParameter.isValid()) {
-       d->ui->fullnameLabel->hide();
-       d->ui->fullnameLineEdit->hide();
-   }
+    if (!d->fullnameParameter.isValid()) {
+        d->ui->fullnameLabel->hide();
+        d->ui->fullnameLineEdit->hide();
+    }
 
-   if (!d->serverParameter.isValid()) {
-       d->ui->serverLabel->hide();
-       d->ui->serverLineEdit->hide();
-   }
+    if (!d->serverParameter.isValid()) {
+        d->ui->serverLabel->hide();
+        d->ui->serverLineEdit->hide();
+    }
 }
 
 MainOptionsWidget::~MainOptionsWidget()

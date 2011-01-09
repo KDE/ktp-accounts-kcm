@@ -58,8 +58,7 @@ IdleAccountUiPlugin::~IdleAccountUiPlugin()
 AbstractAccountUi* IdleAccountUiPlugin::accountUi(const QString &connectionManager, const QString &protocol)
 {
     kDebug();
-    
-    // We only support butterfly/xmpp combination.
+
     if ((connectionManager == "idle") && (protocol == "irc")) {
         return new IdleAccountUi;
     }
