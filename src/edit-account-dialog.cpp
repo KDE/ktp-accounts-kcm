@@ -20,6 +20,7 @@
 
 #include "edit-account-dialog.h"
 
+#include "KCMTelepathyAccounts/dictionary.h"
 #include "KCMTelepathyAccounts/abstract-account-parameters-widget.h"
 #include "KCMTelepathyAccounts/abstract-account-ui.h"
 #include "KCMTelepathyAccounts/account-edit-widget.h"
@@ -58,13 +59,10 @@ EditAccountDialog::EditAccountDialog(AccountItem *item, QWidget *parent)
 
     // Get the protocol's parameters and values.
     Tp::ProtocolInfo protocolInfo = d->item->account()->protocolInfo();
-    Tp::ProtocolParameterList protocolParameters = protocolInfo.parameters();
     QVariantMap parameterValues = d->item->account()->parameters();
 
     // Set up the interface
-    d->widget = new AccountEditWidget(d->item->account()->cmName(),
-                                      d->item->account()->protocolName(),
-                                      protocolParameters,
+    d->widget = new AccountEditWidget(protocolInfo,
                                       parameterValues,
                                       this);
     setMainWidget(d->widget);
