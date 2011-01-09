@@ -1,0 +1,16 @@
+[Desktop Entry]
+Encoding=UTF-8
+Comment=Custom account configuration user interface for accounts using the Haze connection manager.
+Icon=blockdevice
+Name=Haze Account Configuration User Interface
+Type=Service
+ServiceTypes=KCMTelepathyAccounts/AccountUiPlugin
+
+X-KDE-Library=kcmtelepathyaccounts_plugin_haze_
+X-KDE-PluginInfo-Author=Dominik Schmidt
+X-KDE-PluginInfo-Email=kde@dominik-schmidt.de
+X-KDE-PluginInfo-Name=haze
+X-KDE-PluginInfo-Version=0.1
+X-KDE-PluginInfo-Website=http://techbase.kde.org/Projects/Telepathy
+X-KDE-PluginInfo-License=GPL
+X-KDE-PluginInfo-EnabledByDefault=true
