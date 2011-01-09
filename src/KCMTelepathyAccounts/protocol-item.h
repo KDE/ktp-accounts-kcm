@@ -41,8 +41,7 @@ public:
 
     QString protocol() const;
     QString localizedName() const;
-
-    Tp::ProtocolParameterList parameters() const;
+    Tp::ProtocolInfo protocolInfo() const;
 
 private:
     QString m_protocol;

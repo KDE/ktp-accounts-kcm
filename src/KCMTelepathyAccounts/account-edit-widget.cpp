@@ -25,6 +25,7 @@
 #include "abstract-account-ui.h"
 #include "parameter-edit-widget.h"
 #include "plugin-manager.h"
+#include "dictionary.h"
 
 #include <KDebug>
 #include <KLocale>
@@ -51,9 +52,7 @@ public:
     QList<ProtocolParameterValue> advancedParameterValues;
 };
 
-AccountEditWidget::AccountEditWidget(const QString &connectionManager,
-                                     const QString &protocol,
-                                     const Tp::ProtocolParameterList &parameters,
+AccountEditWidget::AccountEditWidget(const Tp::ProtocolInfo &info,
                                      const QVariantMap &parameterValues,
                                      QWidget *parent)
         : QWidget(parent),
@@ -69,14 +68,17 @@ AccountEditWidget::AccountEditWidget(const QString &connectionManager,
     QHBoxLayout* layout = new QHBoxLayout(d->ui.centralWidget);
     layout->setContentsMargins(0,0,0,0);
 
-    d->connectionManager = connectionManager;
-    d->protocol = protocol;
-    d->parameters = parameters;
+    d->connectionManager = info.cmName();
+    d->protocol = info.name();
+    d->parameters = info.parameters();
     d->parameterValues = parameterValues;
 
     connect(d->ui.advancedButton, SIGNAL(clicked()),
             this, SLOT(onAdvancedClicked()));
     d->ui.advancedButton->setIcon(KIcon("configure"));
+    d->ui.titleLabel->setText(Dictionary::instance()->string(info.name()));
+    d->ui.iconLabel->setText("");
+    d->ui.iconLabel->setPixmap(KIcon(info.iconName()).pixmap(32));
 
     loadWidgets();
 }

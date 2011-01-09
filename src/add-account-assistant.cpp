@@ -121,10 +121,6 @@ void AddAccountAssistant::next()
             kWarning() << "cmItem is invalid.";
         }
 
-        QString connectionManager = cmItem->connectionManager()->name();
-        QString protocol = item->protocol();
-        Tp::ProtocolParameterList parameters = item->parameters();
-
         // Delete the widgets for the next page if they already exist
         if (d->accountEditWidget) {
             d->accountEditWidget->deleteLater();
@@ -132,9 +128,7 @@ void AddAccountAssistant::next()
         }
 
         // Set up the account edit widget
-        d->accountEditWidget = new AccountEditWidget(connectionManager,
-                                                     protocol,
-                                                     parameters,
+        d->accountEditWidget = new AccountEditWidget(item->protocolInfo(),
                                                      QVariantMap(),
                                                      d->pageTwoWidget);
         d->pageTwoWidget->layout()->addWidget(d->accountEditWidget);

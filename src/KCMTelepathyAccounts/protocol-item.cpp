@@ -54,7 +54,7 @@ QString ProtocolItem::localizedName() const
     return m_localizedName;
 }
 
-Tp::ProtocolParameterList ProtocolItem::parameters() const
+Tp::ProtocolInfo ProtocolItem::protocolInfo() const
 {
     kDebug();
 
@@ -65,9 +65,9 @@ Tp::ProtocolParameterList ProtocolItem::parameters() const
 
     foreach (const Tp::ProtocolInfo &info, cm->protocols()) {
         if (info.name() == m_protocol)
-            return info.parameters();
+            return info;
     }
-    return Tp::ProtocolParameterList();
+    return Tp::ProtocolInfo();
 }
 
 #include "protocol-item.moc"
