@@ -2,6 +2,7 @@
  * This file is part of telepathy-accounts-kcm
  *
  * Copyright (C) 2009 Collabora Ltd. <http://www.collabora.co.uk/>
+ * Copyright (C) 2011 Dominik Schmidt <kde@dominik-schmidt.de>
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -31,6 +32,8 @@
 
 class ProtocolParameterValue;
 
+typedef QMap<Tp::ProtocolParameter, QWidget*> ParametersWidgetsMap;
+
 class KDE_EXPORT AbstractAccountParametersWidget : public QWidget
 {
     Q_OBJECT
@@ -41,11 +44,25 @@ public:
                                              QWidget *parent = 0);
     virtual ~AbstractAccountParametersWidget();
 
-    virtual QList<ProtocolParameterValue> parameterValues() const = 0;
+    virtual QList<ProtocolParameterValue> parameterValues() const;
     virtual Tp::ProtocolParameterList parameters() const;
     virtual bool validateParameterValues();
 
 protected:
+    virtual ParametersWidgetsMap* internalParametersWidgetsMap() const;
+
+    void handleParameter(const Tp::ProtocolParameterList &parameters,
+                         const QString &parameterName,
+                         QVariant::Type parameterType,
+                         QWidget *dataWidget,
+                         QList<QWidget*> labelWidgets);
+    void handleParameter(const Tp::ProtocolParameterList &parameters,
+                         const QString &parameterName,
+                         QVariant::Type parameterType,
+                         QWidget *dataWidget,
+                         QWidget* labelWidget);
+
+    void prefillUI(const QVariantMap &values);
 
 private:
     Q_DISABLE_COPY(AbstractAccountParametersWidget);

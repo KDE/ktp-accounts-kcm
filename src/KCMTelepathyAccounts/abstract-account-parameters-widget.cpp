@@ -2,6 +2,7 @@
  * This file is part of telepathy-accounts-kcm
  *
  * Copyright (C) 2009 Collabora Ltd. <http://www.collabora.co.uk/>
+ * Copyright (C) 2011 Dominik Schmidt <kde@dominik-schmidt.de>
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -19,8 +20,13 @@
  */
 
 #include "abstract-account-parameters-widget.h"
+#include "protocol-parameter-value.h"
 
 #include <KDebug>
+#include <QLineEdit>
+#include <QCheckBox>
+#include <QComboBox>
+
 
 class AbstractAccountParametersWidget::Private
 {
@@ -53,6 +59,39 @@ AbstractAccountParametersWidget::~AbstractAccountParametersWidget()
     delete d;
 }
 
+QList<ProtocolParameterValue> AbstractAccountParametersWidget::parameterValues() const
+{
+    kDebug();
+
+    QList<ProtocolParameterValue> parameters;
+
+    ParametersWidgetsMap::const_iterator i = internalParametersWidgetsMap()->constBegin();
+    while (i != internalParametersWidgetsMap()->constEnd()) {
+
+        QLineEdit *lineEdit = qobject_cast<QLineEdit*>(i.value());
+        if(lineEdit)
+        {
+            parameters.append(ProtocolParameterValue(i.key(), lineEdit->text()));
+        }
+
+        QCheckBox *checkBox = qobject_cast<QCheckBox*>(i.value());
+        if(checkBox)
+        {
+            parameters.append(ProtocolParameterValue(i.key(), checkBox->isChecked()));
+        }
+
+        QComboBox *comboBox = qobject_cast<QComboBox*>(i.value());
+        if(comboBox)
+        {
+            parameters.append(ProtocolParameterValue(i.key(), comboBox->currentText()));
+        }
+
+        ++i;
+    }
+
+    return parameters;
+}
+
 Tp::ProtocolParameterList AbstractAccountParametersWidget::parameters() const
 {
     return d->parameters;
@@ -63,6 +102,109 @@ bool AbstractAccountParametersWidget::validateParameterValues()
     return true;
 }
 
+
+ParametersWidgetsMap* AbstractAccountParametersWidget::internalParametersWidgetsMap() const
+{
+    ParametersWidgetsMap *map = new ParametersWidgetsMap();
+    return map;
+}
+
+void AbstractAccountParametersWidget::handleParameter(const Tp::ProtocolParameterList& parameters,
+                                           const QString &parameterName,
+                                           QVariant::Type parameterType,
+                                           QWidget* dataWidget,
+                                           QWidget* labelWidget)
+{
+    kDebug();
+
+    QList<QWidget*> labelWidgets;
+    labelWidgets << labelWidget;
+    handleParameter(parameters, parameterName, parameterType, dataWidget, labelWidgets);
+}
+
+void AbstractAccountParametersWidget::handleParameter(const Tp::ProtocolParameterList& parameters,
+                                           const QString &parameterName,
+                                           QVariant::Type parameterType,
+                                           QWidget* dataWidget,
+                                           QList<QWidget*> labelWidgets)
+{
+    kDebug();
+
+    Tp::ProtocolParameter foundParameter;
+    foreach(const Tp::ProtocolParameter &parameter, parameters)
+    {
+        if ((parameter.name() == parameterName) && (parameter.type() == parameterType)) {
+            foundParameter = parameter;
+        }
+    }
+
+    if(foundParameter.isValid())
+    {
+        // insert it to valid parameters list
+        internalParametersWidgetsMap()->insert(foundParameter, dataWidget);
+    }
+    else
+    {
+        // hide widgets because they are not needed
+        dataWidget->hide();
+        foreach(QWidget *label, labelWidgets)
+        {
+            label->hide();
+        }
+    }
+
+
+}
+
+void AbstractAccountParametersWidget::prefillUI(const QVariantMap& values)
+{
+    kDebug();
+
+    ParametersWidgetsMap::const_iterator i = internalParametersWidgetsMap()->constBegin();
+    while (i != internalParametersWidgetsMap()->constEnd()) {
+
+        QLineEdit* lineEdit = qobject_cast<QLineEdit*>(i.value());
+        if(lineEdit)
+        {
+            if(values.value(i.key().name()).isValid())
+            {
+                lineEdit->setText(values.value(i.key().name()).toString());
+            }
+            else
+            {
+                lineEdit->setText(i.key().defaultValue().toString());
+            }
+        }
+
+        QCheckBox* checkBox = qobject_cast<QCheckBox*>(i.value());
+        if(checkBox)
+        {
+            if(values.value(i.key().name()).isValid())
+            {
+                checkBox->setChecked(i.key().defaultValue().toBool());
+            }
+            else
+            {
+                checkBox->setChecked(values.value(i.key().name()).toBool());
+            }
+        }
+
+        QComboBox* comboBox = qobject_cast<QComboBox*>(i.value());
+        if(checkBox)
+        {
+            if(values.value(i.key().name()).isValid())
+            {
+                comboBox->setEditText(i.key().defaultValue().toString());
+            }
+            else
+            {
+                comboBox->setEditText(values.value(i.key().name()).toString());
+            }
+        }
+
+        ++i;
+    }
+}
 
 #include "abstract-account-parameters-widget.moc"
 
