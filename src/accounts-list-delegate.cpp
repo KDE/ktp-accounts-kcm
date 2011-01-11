@@ -4,9 +4,12 @@
 
 #include <QApplication>
 #include <QPainter>
+#include <QCheckBox>
 
-AccountsListDelegate::AccountsListDelegate(QObject *parent) :
-    QAbstractItemDelegate(parent)
+#include <KDebug>
+
+AccountsListDelegate::AccountsListDelegate(QAbstractItemView *itemView, QObject *parent)
+    : KWidgetItemDelegate(itemView, parent)
 {
 }
 
@@ -14,14 +17,36 @@ QSize AccountsListDelegate::sizeHint(const QStyleOptionViewItem &option, const Q
 {
     Q_UNUSED(index);
 
-    int iconHeight = option.decorationSize.height() + (4*2);
+    int iconHeight = option.decorationSize.height() + (m_paddingSize*2);  //icon height + padding either side
+    int textHeight = option.fontMetrics.height()*2 + (m_paddingSize*2);
 
-    return QSize(iconHeight,50); //any width,the view should give us the whole thing.
+    return QSize(1,qMax(iconHeight, textHeight)); //any width,the view should give us the whole thing.
 }
+
+QList<QWidget*> AccountsListDelegate::createItemWidgets() const
+{
+    QCheckBox *checkbox = new QCheckBox();
+    return QList<QWidget*>() << checkbox;
+}
+
+
+void AccountsListDelegate::updateItemWidgets(const QList<QWidget *> widgets, const QStyleOptionViewItem &option, const QPersistentModelIndex &index) const
+{
+    QWidget* checkbox = widgets.at(0);
+    if (checkbox) {
+        int topMargin = (option.rect.height() - checkbox->height()) / 2;
+        checkbox->move(m_paddingSize, topMargin);
+    }
+    else {
+        kDebug() << "checkbox widget pointer is null..";
+    }
+}
+
 
 void AccountsListDelegate::paint(QPainter *painter, const QStyleOptionViewItem &option, const QModelIndex &index) const
 {
-    //draws Icon AccountName  ConnectionIcon ConnectionState
+    //draws Checkbox | Icon | AccountName  | ConnectionIcon | ConnectionState
+    //               |      | errorMessage |                |
 
     QStyle *style = QApplication::style();
 
@@ -34,41 +59,33 @@ void AccountsListDelegate::paint(QPainter *painter, const QStyleOptionViewItem &
     QIcon connectionStatusIcon = index.data(AccountsListModel::ConnectionStateIconRole).value<QIcon>();
 
 
-    QRect innerRect = option.rect.adjusted(4,4,-4,-4); //add some padding
+    QRect innerRect = option.rect.adjusted(m_paddingSize,m_paddingSize,-m_paddingSize,-m_paddingSize); //add some padding
 
-    int top = innerRect.top();
-    int bottom = innerRect.bottom();
-
+    QSize checkBoxSize(32,20);
     QSize decorationSize = option.decorationSize;
     QSize statusTextSize = style->itemTextRect(option.fontMetrics, option.rect, Qt::AlignCenter , false , connectionStatusString).size();
-    QSize statusIconSize = QSize(16,16); //a nice small icon
-    QSize statusSize = statusTextSize+statusIconSize;
-    //the main account label size = whatever's left.
+    QSize statusIconSize(16,16); //a nice small icon
 
-    QRect iconRect(innerRect.topLeft(), decorationSize);
-//    QRect statusTextRect(QPoint(top, innerRect.right() - statusTextSize.width()), QPoint(bottom, innerRect.right()));
+    QRect checkBoxRect(0, innerRect.top(), checkBoxSize.width(), innerRect.height());
+    QRect decorationRect(checkBoxRect.right(), innerRect.top(), decorationSize.width(), innerRect.height());
 
+    QRect statusTextRect(option.rect.right() - statusTextSize.width(), innerRect.top(), statusTextSize.width(), innerRect.height());
+    QRect statusIconRect(statusTextRect.left() - statusIconSize.width() -2, innerRect.top(), statusIconSize.width(), innerRect.height());
+    QRect mainTextRect(decorationRect.topRight() + QPoint(m_paddingSize,0), statusIconRect.bottomLeft());
 
-    QRect statusTextRect(QPoint(innerRect.right() - statusSize.width(), innerRect.top()), innerRect.bottomRight());
-    int statusIconTopPadding = (innerRect.height() - statusIconSize.height()) / 2 ;
-    QRect statusIconRect(QPoint(statusTextRect.left() - statusIconSize.width(), top + statusIconTopPadding), statusIconSize);
+    QPixmap iconPixmap = icon.pixmap(decorationSize);
+    QPixmap statusPixmap = connectionStatusIcon.pixmap(statusIconSize);
 
-    QRect textRect(iconRect.topRight() + QPoint(10,0), QPoint(innerRect.right() - statusIconSize.width() - statusTextSize.width(), bottom));
+    painter->drawPixmap(style->itemPixmapRect(decorationRect, Qt::AlignCenter, iconPixmap), iconPixmap);
 
     QFont boldFont = option.font;
     boldFont.setBold(true);
-
-    painter->drawPixmap(iconRect, icon.pixmap(option.decorationSize));
-    painter->drawPixmap(statusIconRect,connectionStatusIcon.pixmap(16,16));
-
-
     painter->setFont(boldFont);
-    painter->drawText(textRect, accountName);
+    painter->drawText(mainTextRect, Qt::AlignTop, accountName);
     painter->setFont(option.font);
+    painter->drawText(mainTextRect, Qt::AlignBottom, connectionErrorString);
 
-    textRect.adjust(0,option.fontMetrics.height()+2,0,0);
-    painter->drawText(textRect, connectionErrorString);
-
+    painter->drawPixmap(style->itemPixmapRect(statusIconRect, Qt::AlignCenter, statusPixmap), statusPixmap);
     painter->drawText(statusTextRect, Qt::AlignCenter, connectionStatusString);
 }
 

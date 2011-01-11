@@ -76,7 +76,9 @@ KCMTelepathyAccounts::KCMTelepathyAccounts(QWidget *parent, const QVariantList& 
     m_ui->addAccountButton->setIcon(KIcon("list-add"));
     m_ui->editAccountButton->setIcon(KIcon("configure"));
     m_ui->removeAccountButton->setIcon(KIcon("edit-delete"));
-    m_ui->accountsListView->setItemDelegate(new AccountsListDelegate(this));
+  
+    AccountsListDelegate* delegate = new AccountsListDelegate(m_accountsListView, this);
+    m_ui->accountsListView->setItemDelegate(delegate);
 
 
     // Connect to useful signals from the UI elements.
