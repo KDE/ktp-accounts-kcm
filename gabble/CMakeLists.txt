@@ -8,7 +8,6 @@ set (kcmtelepathyaccounts_plugin_gabble_SRCS
      gabble-account-ui-plugin.cpp
      gabble-account-ui.cpp
      main-options-widget.cpp
-     advanced-options-widget.cpp
      server-settings-widget.cpp
      proxy-settings-widget.cpp
 )

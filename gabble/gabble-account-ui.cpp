@@ -21,9 +21,11 @@
 #include "gabble-account-ui.h"
 
 #include "main-options-widget.h"
-#include "advanced-options-widget.h"
+#include "server-settings-widget.h"
+#include "proxy-settings-widget.h"
 
 #include <KCMTelepathyAccounts/AbstractAccountParametersWidget>
+#include <KCMTelepathyAccounts/GenericAdvancedOptionsWidget>
 
 #include <KDebug>
 
@@ -93,7 +95,14 @@ AbstractAccountParametersWidget *GabbleAccountUi::advancedOptionsWidget(
 {
     kDebug();
 
-    return new AdvancedOptionsWidget(parameters, values, parent);
+    GenericAdvancedOptionsWidget *widget = new GenericAdvancedOptionsWidget(parameters, values, parent);
+
+    AbstractAccountParametersWidget* serverSettingsWidget = new ServerSettingsWidget(parameters, values, widget);
+    widget->addTab(serverSettingsWidget, "Server");
+    AbstractAccountParametersWidget* proxySettingsWidget = new ProxySettingsWidget(parameters, values, widget);
+    widget->addTab(proxySettingsWidget, "Proxy");
+
+    return widget;
 }
 
 
