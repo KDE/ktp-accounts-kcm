@@ -1,7 +1,7 @@
 /*
  * This file is part of telepathy-accounts-kcm
  *
- * Copyright (C) 2009 Collabora Ltd. <http://www.collabora.co.uk/>
+ * Copyright (C) 2011 Dominik Schmidt <kde@dominik-schmidt.de>
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -18,14 +18,18 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
-#include "haze-icq-account-ui.h"
+#include <KDebug>
 
-#include "icq-main-options-widget.h"
-#include "icq-advanced-options-widget.h"
 
 #include <KCMTelepathyAccounts/AbstractAccountParametersWidget>
+#include <KCMTelepathyAccounts/GenericAdvancedOptionsWidget>
 
-#include <KDebug>
+#include "icq-main-options-widget.h"
+#include "icq-server-settings-widget.h"
+
+#include "haze-icq-account-ui.h"
+
+
 
 class HazeIcqAccountUi::Private
 {
@@ -46,7 +50,7 @@ HazeIcqAccountUi::HazeIcqAccountUi(QObject *parent)
     registerSupportedParameter("account", QVariant::String);
     registerSupportedParameter("password", QVariant::String);
 
-    //registerSupportedParameter("port", QVariant::UInt);
+    registerSupportedParameter("port", QVariant::Int);
     registerSupportedParameter("server", QVariant::String);
 
     registerSupportedParameter("use-ssl", QVariant::Bool);
@@ -85,7 +89,10 @@ AbstractAccountParametersWidget *HazeIcqAccountUi::advancedOptionsWidget(
 {
     kDebug();
 
-    return new IcqAdvancedOptionsWidget(parameters, values, parent);
+    GenericAdvancedOptionsWidget *advancedOptionsWidget = new GenericAdvancedOptionsWidget(parameters, values, parent);
+    AbstractAccountParametersWidget *icqServerSettingsWidget = new IcqServerSettingsWidget(parameters, values, 0);
+    advancedOptionsWidget->addTab(icqServerSettingsWidget, "Server");
+    return advancedOptionsWidget;
 }
 
 

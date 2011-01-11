@@ -1,7 +1,7 @@
 /*
  * This file is part of telepathy-accounts-kcm
  *
- * Copyright (C) 2009 Collabora Ltd. <http://www.collabora.co.uk/>
+ * Copyright (C) 2011 Dominik Schmidt <kde@dominik-schmidt.de>
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -26,10 +26,15 @@
 
 #include <KDebug>
 #include <KMessageBox>
+#include <QVariant>
+#include <QCheckBox>
+#include <QComboBox>
 
+typedef QMap<Tp::ProtocolParameter, QWidget*> ParametersWidgetsMap;
 
 class IcqMainOptionsWidget::Private
 {
+
 public:
     Private()
             : ui(0)
@@ -37,6 +42,8 @@ public:
         kDebug();
     }
 
+    ParametersWidgetsMap parameters;
+    
     Tp::ProtocolParameter accountParameter;
     Tp::ProtocolParameter passwordParameter;
 
@@ -51,46 +58,15 @@ IcqMainOptionsWidget::IcqMainOptionsWidget(Tp::ProtocolParameterList parameters,
 {
     kDebug();
 
-    // Store the parameters this widget supports
-    foreach (const Tp::ProtocolParameter &parameter, parameters) {
-        if ((parameter.name() == "account") && (parameter.type() == QVariant::String)) {
-                d->accountParameter = parameter;
-        } else if ((parameter.name() == "password") && (parameter.type() == QVariant::String)) {
-                d->passwordParameter = parameter;
-        }
-    }
-
     // Set up the UI.
     d->ui = new Ui::IcqMainOptionsWidget;
     d->ui->setupUi(this);
 
+    handleParameter(parameters, "account", QVariant::String, d->ui->accountLineEdit, d->ui->accountLabel);
+    handleParameter(parameters, "password", QVariant::String, d->ui->passwordLineEdit, d->ui->passwordLabel);
+
     // Prefill UI elements if appropriate.
-    if (d->accountParameter.isValid()) {
-        if (values.contains(d->accountParameter.name())) {
-            d->ui->accountLineEdit->setText(values.value(d->accountParameter.name()).toString());
-        } else {
-            d->ui->accountLineEdit->setText(d->accountParameter.defaultValue().toString());
-        }
-    }
-
-    if (d->passwordParameter.isValid()) {
-        if (values.contains(d->passwordParameter.name())) {
-            d->ui->passwordLineEdit->setText(values.value(d->passwordParameter.name()).toString());
-        } else {
-            d->ui->passwordLineEdit->setText(d->passwordParameter.defaultValue().toString());
-        }
-    }
-
-    // Hide any elements we don't have the parameters passed to show.
-    if (!d->accountParameter.isValid()) {
-        d->ui->accountLabel->hide();
-        d->ui->accountLineEdit->hide();
-    }
-
-    if (!d->passwordParameter.isValid()) {
-        d->ui->passwordLabel->hide();
-        d->ui->passwordLineEdit->hide();
-    }
+    prefillUI(values);
 }
 
 IcqMainOptionsWidget::~IcqMainOptionsWidget()
@@ -100,22 +76,9 @@ IcqMainOptionsWidget::~IcqMainOptionsWidget()
     delete d;
 }
 
-QList<ProtocolParameterValue> IcqMainOptionsWidget::parameterValues() const
+ParametersWidgetsMap* IcqMainOptionsWidget::internalParametersWidgetsMap() const
 {
-    kDebug();
-
-    QList<ProtocolParameterValue> parameters;
-
-    // Populate the map of parameters and their values with all the parameters this widget contains.
-    if (d->accountParameter.isValid()) {
-        parameters.append(ProtocolParameterValue(d->accountParameter, d->ui->accountLineEdit->text()));
-    }
-
-    if (d->passwordParameter.isValid()) {
-        parameters.append(ProtocolParameterValue(d->passwordParameter, d->ui->passwordLineEdit->text()));
-    }
-
-    return parameters;
+    return &(d->parameters);
 }
 
 bool IcqMainOptionsWidget::validateParameterValues()
@@ -133,7 +96,6 @@ bool IcqMainOptionsWidget::validateParameterValues()
 
     return true;
 }
-
 
 #include "icq-main-options-widget.moc"
 

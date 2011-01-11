@@ -8,7 +8,7 @@ set (kcmtelepathyaccounts_plugin_haze_SRCS
      haze-account-ui-plugin.cpp
      haze-icq-account-ui.cpp
      icq-main-options-widget.cpp
-     icq-advanced-options-widget.cpp
+    
      icq-server-settings-widget.cpp
     
 )

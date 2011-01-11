@@ -1,7 +1,7 @@
 /*
  * This file is part of telepathy-accounts-kcm
  *
- * Copyright (C) 2009 Collabora Ltd. <http://www.collabora.co.uk/>
+ * Copyright (C) 2011 Dominik Schmidt <kde@dominik-schmidt.de>
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -23,6 +23,8 @@
 
 #include <KCMTelepathyAccounts/AbstractAccountParametersWidget>
 
+#include <QString>
+
 class IcqMainOptionsWidget : public AbstractAccountParametersWidget
 {
     Q_OBJECT
@@ -33,8 +35,10 @@ public:
                                QWidget *parent = 0);
     virtual ~IcqMainOptionsWidget();
 
-    virtual QList<ProtocolParameterValue> parameterValues() const;
     virtual bool validateParameterValues();
+
+protected:
+    virtual ParametersWidgetsMap* internalParametersWidgetsMap() const;
 
 private:
     Q_DISABLE_COPY(IcqMainOptionsWidget);
@@ -42,6 +46,8 @@ private:
     class Private;
     Private * const d;
 };
+
+uint qHash(const Tp::ProtocolParameter&);
 
 #endif // header guard
 
