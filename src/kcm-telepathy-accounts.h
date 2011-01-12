@@ -54,6 +54,8 @@ private Q_SLOTS:
     void onAccountManagerReady(Tp::PendingOperation *op);
     void onAccountCreated(const Tp::AccountPtr &account);
 
+    void onAccountModelChange(const QModelIndex &index, const QVariant &value, int role);
+
     void onSelectedItemChanged();
     void onAddAccountClicked();
     void onEditAccountClicked();

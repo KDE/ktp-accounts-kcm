@@ -17,11 +17,15 @@ public:
     void updateItemWidgets(const QList<QWidget *> widgets, const QStyleOptionViewItem &option, const QPersistentModelIndex &index) const;
 
 signals:
+    void dataChanged(const QModelIndex &index, const QVariant &value, int role);
 
 public slots:
 
 private:
     static const int m_paddingSize = 7;
+
+private slots:
+    void onCheckBoxToggled(bool checked);
 };
 
 #endif // ACCOUNTLISTDELEGATE_H

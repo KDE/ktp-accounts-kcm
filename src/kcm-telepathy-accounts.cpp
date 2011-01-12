@@ -81,7 +81,9 @@ KCMTelepathyAccounts::KCMTelepathyAccounts(QWidget *parent, const QVariantList& 
     m_ui->accountsListView->setItemDelegate(delegate);
 
 
-    // Connect to useful signals from the UI elements.
+    connect(delegate,
+            SIGNAL(dataChanged(QModelIndex,QVariant,int)),
+            SLOT(onAccountModelChange(QModelIndex,QVariant,int)));
     connect(m_ui->addAccountButton,
             SIGNAL(clicked()),
             SLOT(onAddAccountClicked()));
@@ -113,6 +115,11 @@ void KCMTelepathyAccounts::load()
     // all changes that are made in this KCM are, at the moment, saved
     // immediately and cannot be reverted programatically.
     return;
+}
+
+void KCMTelepathyAccounts::onAccountModelChange(const QModelIndex &index, const QVariant &value, int role)
+{
+    m_accountsListModel->setData(index, value, role);
 }
 
 void KCMTelepathyAccounts::onAccountManagerReady(Tp::PendingOperation *op)
