@@ -8,6 +8,7 @@ set (libkcmtelepathyaccounts_SRCS
      abstract-account-ui-plugin.cpp
      abstract-account-ui.cpp
      abstract-account-parameters-widget.cpp
+     generic-advanced-options-widget.cpp
      account-edit-widget.cpp
      protocol-select-widget.cpp
      protocol-list-model.cpp
@@ -26,6 +27,7 @@ set (libkcmtelepathyaccounts_HDRS
      abstract-account-ui-plugin.h
      abstract-account-ui.h
      abstract-account-parameters-widget.h
+     generic-advanced-options-widget.h
      account-edit-widget.h
      plugin-macros.h
      connection-manager-item.h
@@ -40,6 +42,7 @@ set (libkcmtelepathyaccounts_PRETTY_HDRS
      include/AbstractAccountUiPlugin
      include/AbstractAccountUi
      include/AbstractAccountParametersWidget
+     include/GenericAdvancedOptionsWidget
      include/AccountEditWidget
      include/PluginMacros
      include/ConnectionManagerItem
