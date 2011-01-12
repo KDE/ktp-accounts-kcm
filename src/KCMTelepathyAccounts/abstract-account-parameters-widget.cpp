@@ -26,6 +26,7 @@
 #include <QLineEdit>
 #include <QCheckBox>
 #include <QComboBox>
+#include <QSpinBox>
 
 
 class AbstractAccountParametersWidget::Private
@@ -72,20 +73,35 @@ QList<ProtocolParameterValue> AbstractAccountParametersWidget::parameterValues()
         if(lineEdit)
         {
             parameters.append(ProtocolParameterValue(i.key(), lineEdit->text()));
+            ++i;
+            continue;
         }
 
         QCheckBox *checkBox = qobject_cast<QCheckBox*>(i.value());
         if(checkBox)
         {
             parameters.append(ProtocolParameterValue(i.key(), checkBox->isChecked()));
+            ++i;
+            continue;
         }
 
         QComboBox *comboBox = qobject_cast<QComboBox*>(i.value());
         if(comboBox)
         {
             parameters.append(ProtocolParameterValue(i.key(), comboBox->currentText()));
+            ++i;
+            continue;
         }
 
+        QSpinBox *spinBox = qobject_cast<QSpinBox*>(i.value());
+        if(spinBox)
+        {
+            parameters.append(ProtocolParameterValue(i.key(), spinBox->value()));
+            ++i;
+            continue;
+        }
+
+        kDebug() << "WIDGET TYPE NOT SUPPORTED!";
         ++i;
     }
 
@@ -128,7 +144,7 @@ void AbstractAccountParametersWidget::handleParameter(const Tp::ProtocolParamete
                                            QWidget* dataWidget,
                                            QList<QWidget*> labelWidgets)
 {
-    kDebug();
+    kDebug() << parameterName << parameterType;
 
     Tp::ProtocolParameter foundParameter;
     foreach(const Tp::ProtocolParameter &parameter, parameters)
@@ -162,7 +178,7 @@ void AbstractAccountParametersWidget::prefillUI(const QVariantMap& values)
 
     ParametersWidgetsMap::const_iterator i = internalParametersWidgetsMap()->constBegin();
     while (i != internalParametersWidgetsMap()->constEnd()) {
-
+        kDebug() << "Search widget for " << i.key().name();
         QLineEdit* lineEdit = qobject_cast<QLineEdit*>(i.value());
         if(lineEdit)
         {
@@ -174,6 +190,8 @@ void AbstractAccountParametersWidget::prefillUI(const QVariantMap& values)
             {
                 lineEdit->setText(i.key().defaultValue().toString());
             }
+            ++i;
+            continue;
         }
 
         QCheckBox* checkBox = qobject_cast<QCheckBox*>(i.value());
@@ -181,12 +199,14 @@ void AbstractAccountParametersWidget::prefillUI(const QVariantMap& values)
         {
             if(values.value(i.key().name()).isValid())
             {
-                checkBox->setChecked(i.key().defaultValue().toBool());
+                checkBox->setChecked(values.value(i.key().name()).toBool());
             }
             else
             {
-                checkBox->setChecked(values.value(i.key().name()).toBool());
+                checkBox->setChecked(i.key().defaultValue().toBool());
             }
+            ++i;
+            continue;
         }
 
         QComboBox* comboBox = qobject_cast<QComboBox*>(i.value());
@@ -194,14 +214,32 @@ void AbstractAccountParametersWidget::prefillUI(const QVariantMap& values)
         {
             if(values.value(i.key().name()).isValid())
             {
-                comboBox->setEditText(i.key().defaultValue().toString());
+                comboBox->setEditText(values.value(i.key().name()).toString());
             }
             else
             {
-                comboBox->setEditText(values.value(i.key().name()).toString());
+                comboBox->setEditText(i.key().defaultValue().toString());
             }
+            ++i;
+            continue;
         }
 
+        QSpinBox* spinBox = qobject_cast<QSpinBox*>(i.value());
+        if(spinBox)
+        {
+            if(values.value(i.key().name()).isValid())
+            {
+                spinBox->setValue(values.value(i.key().name()).toInt());
+            }
+            else
+            {                
+                spinBox->setValue(i.key().defaultValue().toInt());
+            }
+            ++i;
+            continue;
+        }
+
+        kDebug() << "WIDGET TYPE UNKNOWN!";
         ++i;
     }
 }
