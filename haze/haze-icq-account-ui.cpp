@@ -57,7 +57,6 @@ HazeIcqAccountUi::HazeIcqAccountUi(QObject *parent)
     registerSupportedParameter("always-use-rv-proxy", QVariant::Bool);
     registerSupportedParameter("allow-multiple-logins", QVariant::Bool);
     registerSupportedParameter("charset", QVariant::String);
-    
 }
 
 HazeIcqAccountUi::~HazeIcqAccountUi()
@@ -68,13 +67,12 @@ HazeIcqAccountUi::~HazeIcqAccountUi()
 }
 
 AbstractAccountParametersWidget *HazeIcqAccountUi::mainOptionsWidget(
-        Tp::ProtocolParameterList parameters,
-        const QVariantMap &values,
+        ParameterEditModel *model,
         QWidget *parent) const
 {
     kDebug();
 
-    return new IcqMainOptionsWidget(parameters, values, parent);
+    return new IcqMainOptionsWidget(model, parent);
 }
 
 bool HazeIcqAccountUi::hasAdvancedOptionsWidget() const
@@ -83,14 +81,13 @@ bool HazeIcqAccountUi::hasAdvancedOptionsWidget() const
 }
 
 AbstractAccountParametersWidget *HazeIcqAccountUi::advancedOptionsWidget(
-        Tp::ProtocolParameterList parameters,
-        const QVariantMap &values,
+        ParameterEditModel *model,
         QWidget *parent) const
 {
     kDebug();
 
-    GenericAdvancedOptionsWidget *advancedOptionsWidget = new GenericAdvancedOptionsWidget(parameters, values, parent);
-    AbstractAccountParametersWidget *icqServerSettingsWidget = new IcqServerSettingsWidget(parameters, values, 0);
+    GenericAdvancedOptionsWidget *advancedOptionsWidget = new GenericAdvancedOptionsWidget(model, parent);
+    AbstractAccountParametersWidget *icqServerSettingsWidget = new IcqServerSettingsWidget(model, parent);
     advancedOptionsWidget->addTab(icqServerSettingsWidget, "Server");
     return advancedOptionsWidget;
 }

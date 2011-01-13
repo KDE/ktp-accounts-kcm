@@ -1,7 +1,7 @@
 /*
  * This file is part of telepathy-accounts-kcm
  *
- * Copyright (C) 2009 Collabora Ltd. <http://www.collabora.co.uk/>
+ * Copyright (C) 2011 Dominik Schmidt <kde@dominik-schmidt.de>
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -32,13 +32,11 @@ public:
     virtual ~HazeIcqAccountUi();
 
     virtual AbstractAccountParametersWidget
-              *mainOptionsWidget(Tp::ProtocolParameterList parameters,
-                                 const QVariantMap &values = QVariantMap(),
+              *mainOptionsWidget(ParameterEditModel *model,
                                  QWidget *parent = 0) const;
     virtual bool hasAdvancedOptionsWidget() const;
     virtual AbstractAccountParametersWidget
-              *advancedOptionsWidget(Tp::ProtocolParameterList parameters,
-                                     const QVariantMap &values = QVariantMap(),
+              *advancedOptionsWidget(ParameterEditModel *model,
                                      QWidget *parent = 0) const;
 
 private:

@@ -30,15 +30,9 @@ class IcqMainOptionsWidget : public AbstractAccountParametersWidget
     Q_OBJECT
 
 public:
-    explicit IcqMainOptionsWidget(Tp::ProtocolParameterList parameters,
-                               const QVariantMap &values = QVariantMap(),
+    explicit IcqMainOptionsWidget(ParameterEditModel *model,
                                QWidget *parent = 0);
     virtual ~IcqMainOptionsWidget();
-
-    virtual bool validateParameterValues();
-
-protected:
-    virtual ParametersWidgetsMap* internalParametersWidgetsMap() const;
 
 private:
     Q_DISABLE_COPY(IcqMainOptionsWidget);

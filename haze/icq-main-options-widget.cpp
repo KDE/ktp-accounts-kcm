@@ -42,18 +42,12 @@ public:
         kDebug();
     }
 
-    ParametersWidgetsMap parameters;
-    
-    Tp::ProtocolParameter accountParameter;
-    Tp::ProtocolParameter passwordParameter;
-
     Ui::IcqMainOptionsWidget *ui;
 };
 
-IcqMainOptionsWidget::IcqMainOptionsWidget(Tp::ProtocolParameterList parameters,
-                                     const QVariantMap &values,
+IcqMainOptionsWidget::IcqMainOptionsWidget(ParameterEditModel *model,
                                      QWidget *parent)
- : AbstractAccountParametersWidget(parameters, values, parent),
+ : AbstractAccountParametersWidget(model, parent),
    d(new Private)
 {
     kDebug();
@@ -62,11 +56,8 @@ IcqMainOptionsWidget::IcqMainOptionsWidget(Tp::ProtocolParameterList parameters,
     d->ui = new Ui::IcqMainOptionsWidget;
     d->ui->setupUi(this);
 
-    handleParameter(parameters, "account", QVariant::String, d->ui->accountLineEdit, d->ui->accountLabel);
-    handleParameter(parameters, "password", QVariant::String, d->ui->passwordLineEdit, d->ui->passwordLabel);
-
-    // Prefill UI elements if appropriate.
-    prefillUI(values);
+    handleParameter("account", QVariant::String, d->ui->accountLineEdit, d->ui->accountLabel);
+    handleParameter("password", QVariant::String, d->ui->passwordLineEdit, d->ui->passwordLabel);
 }
 
 IcqMainOptionsWidget::~IcqMainOptionsWidget()
@@ -74,27 +65,6 @@ IcqMainOptionsWidget::~IcqMainOptionsWidget()
     kDebug();
 
     delete d;
-}
-
-ParametersWidgetsMap* IcqMainOptionsWidget::internalParametersWidgetsMap() const
-{
-    return &(d->parameters);
-}
-
-bool IcqMainOptionsWidget::validateParameterValues()
-{
-    kDebug();
-
-    // Username is currently the only required parameter
-    if (d->ui->accountLineEdit->text().isEmpty()) {
-        kDebug() << "Returning false and alerting the user.";
-
-        KMessageBox::error(this, i18n("Please enter an ICQ UIN."));
-
-        return false;
-    }
-
-    return true;
 }
 
 #include "icq-main-options-widget.moc"

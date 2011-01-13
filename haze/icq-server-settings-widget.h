@@ -1,7 +1,7 @@
 /*
  * This file is part of telepathy-accounts-kcm
  *
- * Copyright (C) 2009 Collabora Ltd. <http://www.collabora.co.uk/>
+ * Copyright (C) 2011 Dominik Schmidt <kde@dominik-schmidt.de>
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -28,13 +28,9 @@ class IcqServerSettingsWidget : public AbstractAccountParametersWidget
     Q_OBJECT
 
 public:
-    explicit IcqServerSettingsWidget(Tp::ProtocolParameterList parameters,
-                                       const QVariantMap &values = QVariantMap(),
+    explicit IcqServerSettingsWidget(ParameterEditModel *model,
                                        QWidget *parent = 0);
     virtual ~IcqServerSettingsWidget();
-
-    virtual QList<ProtocolParameterValue> parameterValues() const;
-    virtual bool validateParameterValues();
 
 private:
     Q_DISABLE_COPY(IcqServerSettingsWidget);
