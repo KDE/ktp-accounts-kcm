@@ -168,8 +168,9 @@ void AccountEditWidget::loadWidgets()
 
 void AccountEditWidget::onAdvancedClicked()
 {
-    if(!d->parameterModel->validateParameterValues())
+    if(!d->parameterModel->validateParameterValues()) {
         return;
+    }
 
     KDialog dialog(this);
     dialog.setWindowTitle(i18n("Advanced Options"));
@@ -184,12 +185,11 @@ void AccountEditWidget::onAdvancedClicked()
     while(true) {
         if (dialog.exec() == KDialog::Accepted) {
             // validate the parameter values
-            if (!advancedWidget->validateParameterValues())
+            if (!advancedWidget->validateParameterValues()) {
                 continue;
-            break;
+            }
         }
-        else
-            break;
+        break;
     }
 }
 

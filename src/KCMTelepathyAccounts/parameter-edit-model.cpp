@@ -147,8 +147,9 @@ bool ParameterEditModel::setData(const QModelIndex &index, const QVariant &value
 QModelIndex ParameterEditModel::indexForParameter(const Tp::ProtocolParameter &parameter) const
 {
     for(int i=0; i<m_items.size(); ++i) {
-        if(m_items.at(i)->parameter() == parameter)
+        if(m_items.at(i)->parameter() == parameter) {
             return createIndex(i,0);
+        }
     }
     return QModelIndex();
 }

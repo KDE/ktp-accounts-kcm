@@ -54,11 +54,11 @@ protected:
     void handleParameter(const QString &parameterName,
                          QVariant::Type parameterType,
                          QWidget *dataWidget,
-                         QList<QWidget*> labelWidgets);
+                         const QList<QWidget*> &labelWidgets);
     void handleParameter(const QString &parameterName,
                          QVariant::Type parameterType,
                          QWidget *dataWidget,
-                         QWidget* labelWidget);
+                         QWidget *labelWidget);
 
     ParameterEditModel *parameterModel() const;
 

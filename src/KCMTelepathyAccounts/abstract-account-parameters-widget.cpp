@@ -94,8 +94,7 @@ void AbstractAccountParametersWidget::handleParameter(const QString &parameterNa
     kDebug();
 
     QList<QWidget*> labelWidgets;
-    if(labelWidget)
-    {
+    if(labelWidget) {
         labelWidgets << labelWidget;
     }
     handleParameter(parameterName, parameterType, dataWidget, labelWidgets);
@@ -104,13 +103,13 @@ void AbstractAccountParametersWidget::handleParameter(const QString &parameterNa
 void AbstractAccountParametersWidget::handleParameter(const QString &parameterName,
                                            QVariant::Type parameterType,
                                            QWidget* dataWidget,
-                                           QList<QWidget*> labelWidgets)
+                                           const QList<QWidget*> &labelWidgets)
 {
     kDebug() << parameterType << parameterName;
 
     Tp::ProtocolParameter foundParameter = d->parameterModel->parameter(parameterName);
 
-    if(!foundParameter.isValid())
+    if(!foundParameter.isValid() || foundParameter.type() != parameterType)
     {
         // hide widgets because they are not needed
         dataWidget->hide();
