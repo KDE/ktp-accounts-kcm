@@ -28,13 +28,9 @@ class ProxySettingsWidget : public AbstractAccountParametersWidget
     Q_OBJECT
 
 public:
-    explicit ProxySettingsWidget(Tp::ProtocolParameterList parameters,
-                                 const QVariantMap &values = QVariantMap(),
+    explicit ProxySettingsWidget(ParameterEditModel *model,
                                  QWidget *parent = 0);
     virtual ~ProxySettingsWidget();
-
-    virtual QList<ProtocolParameterValue> parameterValues() const;
-    virtual bool validateParameterValues();
 
 private:
     Q_DISABLE_COPY(ProxySettingsWidget);

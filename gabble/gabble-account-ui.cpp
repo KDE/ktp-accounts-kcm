@@ -74,13 +74,11 @@ GabbleAccountUi::~GabbleAccountUi()
 }
 
 AbstractAccountParametersWidget *GabbleAccountUi::mainOptionsWidget(
-        Tp::ProtocolParameterList parameters,
-        const QVariantMap &values,
+        ParameterEditModel *model,
         QWidget *parent) const
 {
-    kDebug();
 
-    return new MainOptionsWidget(parameters, values, parent);
+    return new MainOptionsWidget(model, parent);
 }
 
 bool GabbleAccountUi::hasAdvancedOptionsWidget() const
@@ -89,17 +87,16 @@ bool GabbleAccountUi::hasAdvancedOptionsWidget() const
 }
 
 AbstractAccountParametersWidget *GabbleAccountUi::advancedOptionsWidget(
-        Tp::ProtocolParameterList parameters,
-        const QVariantMap &values,
+        ParameterEditModel *model,
         QWidget *parent) const
 {
     kDebug();
 
-    GenericAdvancedOptionsWidget *widget = new GenericAdvancedOptionsWidget(parameters, values, parent);
+    GenericAdvancedOptionsWidget *widget = new GenericAdvancedOptionsWidget(model, parent);
 
-    AbstractAccountParametersWidget* serverSettingsWidget = new ServerSettingsWidget(parameters, values, widget);
+    AbstractAccountParametersWidget* serverSettingsWidget = new ServerSettingsWidget(model, widget);
     widget->addTab(serverSettingsWidget, "Server");
-    AbstractAccountParametersWidget* proxySettingsWidget = new ProxySettingsWidget(parameters, values, widget);
+    AbstractAccountParametersWidget* proxySettingsWidget = new ProxySettingsWidget(model, widget);
     widget->addTab(proxySettingsWidget, "Proxy");
 
     return widget;
