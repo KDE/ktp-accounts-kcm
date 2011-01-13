@@ -42,7 +42,7 @@ class KDE_EXPORT AbstractAccountParametersWidget : public QWidget
     Q_OBJECT
 
 public:
-    explicit AbstractAccountParametersWidget(ParameterEditModel *model,
+    explicit AbstractAccountParametersWidget(ParameterEditModel *parameterModel,
                                              QWidget *parent = 0);
     virtual ~AbstractAccountParametersWidget();
 
@@ -60,7 +60,7 @@ protected:
                          QWidget *dataWidget,
                          QWidget* labelWidget);
 
-    ParameterEditModel *model() const;
+    ParameterEditModel *parameterModel() const;
 
 private:
     Q_DISABLE_COPY(AbstractAccountParametersWidget);

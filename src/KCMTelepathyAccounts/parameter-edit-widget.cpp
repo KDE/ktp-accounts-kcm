@@ -41,9 +41,9 @@ public:
     ParameterEditDelegate *delegate;
 };
 
-ParameterEditWidget::ParameterEditWidget(ParameterEditModel *model,
+ParameterEditWidget::ParameterEditWidget(ParameterEditModel *parameterModel,
                                          QWidget *parent)
- : AbstractAccountParametersWidget(model, parent),
+ : AbstractAccountParametersWidget(parameterModel, parent),
    d(new Private)
 {
     kDebug();
@@ -52,18 +52,13 @@ ParameterEditWidget::ParameterEditWidget(ParameterEditModel *model,
     d->ui = new Ui::ParameterEditWidget;
     d->ui->setupUi(this);
 
-    d->ui->parameterListView->setModel(this->model());
+    d->ui->parameterListView->setModel(parameterModel);
     d->delegate = new ParameterEditDelegate(d->ui->parameterListView, this);
     d->ui->parameterListView->setItemDelegate(d->delegate);
 
     connect(d->delegate,
             SIGNAL(dataChanged(QModelIndex, QVariant, int)),
             SLOT(onDelegateDataChanged(QModelIndex, QVariant, int)));
-
-    /*// Add the parameters to the model.
-    foreach (const Tp::ProtocolParameter &parameter, parameters) {
-        d->model->addItem(parameter, values.value(parameter.name(), parameter.defaultValue()));
-    }*/
 }
 
 ParameterEditWidget::~ParameterEditWidget()
@@ -74,20 +69,9 @@ ParameterEditWidget::~ParameterEditWidget()
     delete d;
 }
 
-QList<ProtocolParameterValue> ParameterEditWidget::parameterValues() const
-{
-    return model()->parameterValues();
-}
-
-
 void ParameterEditWidget::onDelegateDataChanged(const QModelIndex &index, const QVariant &value, int role)
 {
-    model()->setData(index, value, role);
-}
-
-bool ParameterEditWidget::validateParameterValues()
-{
-    return model()->validateParameterValues();
+    parameterModel()->setData(index, value, role);
 }
 
 #include "parameter-edit-widget.moc"

@@ -38,7 +38,7 @@ class KDE_EXPORT AccountEditWidget : public QWidget
 
 public:
     explicit AccountEditWidget(const Tp::ProtocolInfo &info,
-                               ParameterEditModel *model,
+                               ParameterEditModel *parameterModel,
                                QWidget *parent = 0);
     virtual ~AccountEditWidget();
 
@@ -46,7 +46,7 @@ public:
     virtual QList<ProtocolParameterValue> parameterValues() const;
 
 protected:
-    ParameterEditModel *model() const;
+    ParameterEditModel *parameterModel() const;
 
 private Q_SLOTS:
     void onAdvancedClicked();

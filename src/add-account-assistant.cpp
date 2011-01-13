@@ -133,12 +133,12 @@ void AddAccountAssistant::next()
         Tp::ProtocolParameterList parameters = protocolInfo.parameters();
 
         // Add the parameters to the model.
-        ParameterEditModel *model = new ParameterEditModel(this);
-        model->addItems(parameters);
+        ParameterEditModel *parameterModel = new ParameterEditModel(this);
+        parameterModel->addItems(parameters);
 
         // Set up the account edit widget
         d->accountEditWidget = new AccountEditWidget(item->protocolInfo(),
-                                                     model,
+                                                     parameterModel,
                                                      d->pageTwoWidget);
         d->pageTwoWidget->layout()->addWidget(d->accountEditWidget);
 

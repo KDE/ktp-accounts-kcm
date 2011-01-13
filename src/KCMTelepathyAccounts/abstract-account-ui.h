@@ -44,11 +44,11 @@ public:
     virtual const QMap<QString, QVariant::Type> &supportedParameters() const;
 
     virtual AbstractAccountParametersWidget
-              *mainOptionsWidget(ParameterEditModel *model,
+              *mainOptionsWidget(ParameterEditModel *parameterModel,
                                  QWidget *parent = 0) const = 0;
     virtual bool hasAdvancedOptionsWidget() const;
     virtual AbstractAccountParametersWidget
-              *advancedOptionsWidget(ParameterEditModel *model,
+              *advancedOptionsWidget(ParameterEditModel *parameterModel,
                                      QWidget *parent = 0) const;
 
 protected:

@@ -66,12 +66,12 @@ EditAccountDialog::EditAccountDialog(AccountItem *item, QWidget *parent)
     QVariantMap parameterValues = d->item->account()->parameters();
 
     // Add the parameters to the model.
-    ParameterEditModel *model = new ParameterEditModel(this);
-    model->addItems(parameters, parameterValues);
+    ParameterEditModel *parameterModel = new ParameterEditModel(this);
+    parameterModel->addItems(parameters, parameterValues);
 
     // Set up the interface
     d->widget = new AccountEditWidget(protocolInfo,
-                                      model,
+                                      parameterModel,
                                       this);
     setMainWidget(d->widget);
     setMinimumWidth(400);

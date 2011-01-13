@@ -53,9 +53,11 @@ bool AbstractAccountUi::hasAdvancedOptionsWidget() const
     return false;
 }
 
-AbstractAccountParametersWidget* AbstractAccountUi::advancedOptionsWidget(ParameterEditModel *model,
+AbstractAccountParametersWidget* AbstractAccountUi::advancedOptionsWidget(ParameterEditModel *parameterModel,
                                                                           QWidget *parent) const
 {
+    Q_UNUSED(parameterModel);
+    Q_UNUSED(parent);
     return 0;
 }
 

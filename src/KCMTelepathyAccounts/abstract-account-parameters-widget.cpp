@@ -36,27 +36,27 @@ class AbstractAccountParametersWidget::Private
 {
 public:
     Private()
-        : model(0),
+        : parameterModel(0),
         mapper(0)
     {
         kDebug();
     }
-    ParameterEditModel *model;
+    ParameterEditModel *parameterModel;
     QDataWidgetMapper *mapper;
     Tp::ProtocolParameterList parameters;
 };
 
-AbstractAccountParametersWidget::AbstractAccountParametersWidget(ParameterEditModel *model,
+AbstractAccountParametersWidget::AbstractAccountParametersWidget(ParameterEditModel *parameterModel,
                                                                  QWidget *parent)
         : QWidget(parent),
           d(new Private)
 {
     kDebug();
 
-    d->model = model;
+    d->parameterModel = parameterModel;
 
     d->mapper = new QDataWidgetMapper(this);
-    d->mapper->setModel(d->model);
+    d->mapper->setModel(d->parameterModel);
 
     d->mapper->setOrientation(Qt::Vertical);
 }
@@ -73,7 +73,7 @@ QList<ProtocolParameterValue> AbstractAccountParametersWidget::parameterValues()
 {
     kDebug();
 
-    return d->model->parameterValues();
+    return d->parameterModel->parameterValues();
 }
 
 Tp::ProtocolParameterList AbstractAccountParametersWidget::parameters() const
@@ -83,7 +83,7 @@ Tp::ProtocolParameterList AbstractAccountParametersWidget::parameters() const
 
 bool AbstractAccountParametersWidget::validateParameterValues()
 {
-    return d->model->validateParameterValues();
+    return d->parameterModel->validateParameterValues();
 }
 
 void AbstractAccountParametersWidget::handleParameter(const QString &parameterName,
@@ -94,7 +94,10 @@ void AbstractAccountParametersWidget::handleParameter(const QString &parameterNa
     kDebug();
 
     QList<QWidget*> labelWidgets;
-    labelWidgets << labelWidget;
+    if(labelWidget)
+    {
+        labelWidgets << labelWidget;
+    }
     handleParameter(parameterName, parameterType, dataWidget, labelWidgets);
 }
 
@@ -105,13 +108,7 @@ void AbstractAccountParametersWidget::handleParameter(const QString &parameterNa
 {
     kDebug() << parameterType << parameterName;
 
-    Tp::ProtocolParameter foundParameter;
-    foreach(const Tp::ProtocolParameter &parameter, model()->parameters())
-    {
-        if ((parameter.name() == parameterName) && (parameter.type() == parameterType)) {
-            foundParameter = parameter;
-        }
-    }
+    Tp::ProtocolParameter foundParameter = d->parameterModel->parameter(parameterName);
 
     if(!foundParameter.isValid())
     {
@@ -119,17 +116,15 @@ void AbstractAccountParametersWidget::handleParameter(const QString &parameterNa
         dataWidget->hide();
         foreach(QWidget *label, labelWidgets)
         {
-            if(label)
-            {
+            if(label) {
                 label->hide();
             }
         }
         return;
     }
-    
-    QModelIndex index = d->model->indexForParameter(foundParameter);
-    if(index.isValid())
-    {
+
+    QModelIndex index = d->parameterModel->indexForParameter(foundParameter);
+    if(index.isValid()) {
         kDebug() << index << parameterName;
         // insert it to valid parameters list
         d->mapper->addMapping(dataWidget, index.row());
@@ -137,9 +132,9 @@ void AbstractAccountParametersWidget::handleParameter(const QString &parameterNa
     }
 }
 
-ParameterEditModel* AbstractAccountParametersWidget::model() const
+ParameterEditModel* AbstractAccountParametersWidget::parameterModel() const
 {
-    return d->model;
+    return d->parameterModel;
 }
 
 

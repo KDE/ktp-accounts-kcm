@@ -62,7 +62,10 @@ int ParameterEditModel::rowCount(const QModelIndex &index) const
 
 QVariant ParameterEditModel::data(const QModelIndex &index, int role) const
 {
-   // kDebug() << index << role;
+    if(!index.isValid()) {
+        return QVariant();
+    }
+
     // FIXME: This is a basic implementation just so I can see what's going
     // on while developing this code further. Needs expanding.
     QVariant data;
@@ -70,20 +73,7 @@ QVariant ParameterEditModel::data(const QModelIndex &index, int role) const
     switch(role)
     {
     case Qt::DisplayRole:
-        data = this->data(index, ParameterEditModel::ValueRole);
-        break;
     case Qt::EditRole:
-        data = this->data(index, ParameterEditModel::ValueRole);
-        break;
-    case ParameterEditModel::NameRole:
-        data = QVariant(m_items.at(index.row())->name());
-        break;
-    case ParameterEditModel::LocalizedNameRole:
-        data = QVariant(m_items.at(index.row())->localizedName());
-        break;
-    case ParameterEditModel::TypeRole:
-        data = QVariant(m_items.at(index.row())->type());
-        break;
     case ParameterEditModel::ValueRole:
         data = QVariant(m_items.at(index.row())->value());
         if(!data.isValid())
@@ -93,6 +83,15 @@ QVariant ParameterEditModel::data(const QModelIndex &index, int role) const
         break;
     case ParameterEditModel::DefaultValueRole:
         data = QVariant(m_items.at(index.row())->parameter().defaultValue());
+        break;
+    case ParameterEditModel::NameRole:
+        data = QVariant(m_items.at(index.row())->name());
+        break;
+    case ParameterEditModel::LocalizedNameRole:
+        data = QVariant(m_items.at(index.row())->localizedName());
+        break;
+    case ParameterEditModel::TypeRole:
+        data = QVariant(m_items.at(index.row())->type());
         break;
     case ParameterEditModel::SecretRole:
         data = QVariant(m_items.at(index.row())->isSecret());
@@ -115,15 +114,8 @@ QVariant ParameterEditModel::data(const QModelIndex &index, int role) const
 
 bool ParameterEditModel::setData(const QModelIndex &index, const QVariant &value, int role)
 {
-    //kDebug() << index << value << role;
-
-    if (index.row() == -1) {
+    if (!index.isValid()) {
         kDebug() << "Invalid item row accessed.";
-        return false;
-    }
-
-    if (index.row() >= m_items.size()) {
-        kWarning() << "Out of range row accessed." << index.row();
         return false;
     }
 
@@ -156,10 +148,22 @@ QModelIndex ParameterEditModel::indexForParameter(const Tp::ProtocolParameter &p
 {
     for(int i=0; i<m_items.size(); ++i) {
         if(m_items.at(i)->parameter() == parameter)
-            return createIndex(i,0,0);
+            return createIndex(i,0);
     }
     return QModelIndex();
 }
+
+Tp::ProtocolParameter ParameterEditModel::parameter(const QString &parameterName) const
+{
+    foreach(ParameterItem* item, m_items) {
+        if(item->parameter().name() == parameterName) {
+            return item->parameter();
+        }
+    }
+
+    return Tp::ProtocolParameter();
+}
+
 
 void ParameterEditModel::addItem(const Tp::ProtocolParameter &parameter, const QVariant &originalValue)
 {

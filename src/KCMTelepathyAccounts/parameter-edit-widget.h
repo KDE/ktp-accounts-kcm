@@ -33,13 +33,9 @@ class KDE_EXPORT ParameterEditWidget : public AbstractAccountParametersWidget
     Q_OBJECT
 
 public:
-    explicit ParameterEditWidget(ParameterEditModel *model,
+    explicit ParameterEditWidget(ParameterEditModel *parameterModel,
                                  QWidget *parent = 0);
     ~ParameterEditWidget();
-
-    virtual QList<ProtocolParameterValue> parameterValues() const;
-
-    virtual bool validateParameterValues();
 
 private Q_SLOTS:
     void onDelegateDataChanged(const QModelIndex &index, const QVariant &value, int role);

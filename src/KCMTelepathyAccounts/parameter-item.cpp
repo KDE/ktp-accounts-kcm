@@ -49,7 +49,6 @@ ParameterItem::ParameterItem(const Tp::ProtocolParameter &parameter,
 
 ParameterItem::~ParameterItem()
 {
-    //kDebug();
 }
 
 QString ParameterItem::name() const

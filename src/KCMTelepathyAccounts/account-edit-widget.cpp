@@ -44,19 +44,16 @@ public:
 
     QString connectionManager;
     QString protocol;
-    Tp::ProtocolParameterList parameters;
-    QVariantMap parameterValues;
 
-    ParameterEditModel *model;
+    ParameterEditModel *parameterModel;
 
     AbstractAccountUi *accountUi;
     Ui::AccountEditWidget *ui;
     AbstractAccountParametersWidget *mainOptionsWidget;
-    QList<ProtocolParameterValue> advancedParameterValues;
 };
 
 AccountEditWidget::AccountEditWidget(const Tp::ProtocolInfo &info,
-                                     ParameterEditModel *model,
+                                     ParameterEditModel *parameterModel,
                                      QWidget *parent)
         : QWidget(parent),
           d(new Private)
@@ -67,10 +64,9 @@ AccountEditWidget::AccountEditWidget(const Tp::ProtocolInfo &info,
     d->ui = new Ui::AccountEditWidget;
     d->ui->setupUi(this);
 
-    d->model = model;
+    d->parameterModel = parameterModel;
     d->connectionManager = info.cmName();
     d->protocol = info.name();
-    d->parameters = info.parameters();
 
     connect(d->ui->advancedButton, SIGNAL(clicked()),
             this, SLOT(onAdvancedClicked()));
@@ -95,16 +91,14 @@ bool AccountEditWidget::validateParameterValues() const
 {
     // the parameters handle by the advanced dialog are validated when the
     // dialog exits, so no need to validate them here
-    return d->mainOptionsWidget->validateParameterValues();
+    return d->parameterModel->validateParameterValues();
 }
 
 QList<ProtocolParameterValue> AccountEditWidget::parameterValues() const
 {
     QList<ProtocolParameterValue> values;
-    values = d->mainOptionsWidget->parameterValues();
+    values = d->parameterModel->parameterValues();
 
-    // append the advanced options, if any
-    values.append(d->advancedParameterValues);
     return values;
 }
 
@@ -112,7 +106,7 @@ void AccountEditWidget::loadWidgets()
 {
     Tp::ProtocolParameterList mandatoryParameters;
 
-    foreach (const Tp::ProtocolParameter &parameter, d->parameters) {
+    foreach (const Tp::ProtocolParameter &parameter, d->parameterModel->parameters()) {
         if (parameter.isRequired()) {
             mandatoryParameters.append(parameter);
         }
@@ -125,7 +119,7 @@ void AccountEditWidget::loadWidgets()
     // Create the custom UI or generic UI depending on available parameters.
     if (d->accountUi) {
         // UI does exist, set it up.
-        d->mainOptionsWidget = d->accountUi->mainOptionsWidget(d->model,
+        d->mainOptionsWidget = d->accountUi->mainOptionsWidget(d->parameterModel,
                                                                this);
         //Widgets wrapped in a layout should not have double margins
         d->mainOptionsWidget->layout()->setContentsMargins(0, 0, 0, 0);
@@ -139,7 +133,7 @@ void AccountEditWidget::loadWidgets()
         bool paramFound = false;
         while(paramIter != params.constEnd()) {
             paramFound = false;
-            foreach (const Tp::ProtocolParameter &parameter, d->parameters) {
+            foreach (const Tp::ProtocolParameter &parameter, d->parameterModel->parameters()) {
                 if ((parameter.name() == paramIter.key()) &&
                     (parameter.type() == paramIter.value())) {
                     mandatoryParameters.removeAll(parameter);
@@ -164,7 +158,7 @@ void AccountEditWidget::loadWidgets()
 
     if (!d->mainOptionsWidget) {
         d->mainOptionsWidget = new ParameterEditWidget(
-                d->model,
+                d->parameterModel,
                 this);
         d->ui->advancedButton->setVisible(false);
         d->ui->verticalLayout->insertWidget(1, d->mainOptionsWidget);
@@ -174,11 +168,14 @@ void AccountEditWidget::loadWidgets()
 
 void AccountEditWidget::onAdvancedClicked()
 {
+    if(!d->parameterModel->validateParameterValues())
+        return;
+
     KDialog dialog(this);
     dialog.setWindowTitle(i18n("Advanced Options"));
 
     AbstractAccountParametersWidget *advancedWidget;
-    advancedWidget = d->accountUi->advancedOptionsWidget(model(),
+    advancedWidget = d->accountUi->advancedOptionsWidget(d->parameterModel,
                                                          &dialog);
     dialog.setMainWidget(advancedWidget);
 
@@ -189,15 +186,6 @@ void AccountEditWidget::onAdvancedClicked()
             // validate the parameter values
             if (!advancedWidget->validateParameterValues())
                 continue;
-
-            // at this point the values are fine
-            d->advancedParameterValues = advancedWidget->parameterValues();
-            // update the parameter values in case the dialog is opened again
-
-            foreach(const ProtocolParameterValue &ppv, d->advancedParameterValues)
-            {
-                d->parameterValues.insert(ppv.name(), ppv.value());
-            }
             break;
         }
         else
@@ -205,9 +193,9 @@ void AccountEditWidget::onAdvancedClicked()
     }
 }
 
-ParameterEditModel* AccountEditWidget::model() const
+ParameterEditModel* AccountEditWidget::parameterModel() const
 {
-    return d->model;
+    return d->parameterModel;
 }
 
 #include "account-edit-widget.moc"
