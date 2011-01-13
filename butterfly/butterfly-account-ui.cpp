@@ -54,13 +54,12 @@ ButterflyAccountUi::~ButterflyAccountUi()
 }
 
 AbstractAccountParametersWidget *ButterflyAccountUi::mainOptionsWidget(
-        Tp::ProtocolParameterList parameters,
-        const QVariantMap &values,
+        ParameterEditModel *model,
         QWidget *parent) const
 {
     kDebug();
 
-    return new MainOptionsWidget(parameters, values, parent);
+    return new MainOptionsWidget(model, parent);
 }
 
 #include "butterfly-account-ui.moc"

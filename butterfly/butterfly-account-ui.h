@@ -32,8 +32,7 @@ public:
     virtual ~ButterflyAccountUi();
 
     virtual AbstractAccountParametersWidget
-              *mainOptionsWidget(Tp::ProtocolParameterList parameters,
-                                 const QVariantMap &values = QVariantMap(),
+              *mainOptionsWidget(ParameterEditModel *model,
                                  QWidget *parent = 0) const;
 private:
     Q_DISABLE_COPY(ButterflyAccountUi);
