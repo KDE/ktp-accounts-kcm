@@ -3,6 +3,7 @@
  *
  * Copyright (C) 2009 Collabora Ltd. <http://www.collabora.co.uk/>
  * Copyright (C) 2011 Dominik Schmidt <kde@dominik-schmidt.de>
+ * Copyright (C) 2011 Thomas Richard
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -41,8 +42,7 @@ class KDE_EXPORT AbstractAccountParametersWidget : public QWidget
     Q_OBJECT
 
 public:
-    explicit AbstractAccountParametersWidget(Tp::ProtocolParameterList parameters,
-                                             const QVariantMap &values = QVariantMap(),
+    explicit AbstractAccountParametersWidget(ParameterEditModel *model,
                                              QWidget *parent = 0);
     virtual ~AbstractAccountParametersWidget();
 
@@ -51,20 +51,15 @@ public:
     virtual bool validateParameterValues();
 
 protected:
-    virtual ParametersWidgetsMap* internalParametersWidgetsMap() const;
-
-    void handleParameter(const Tp::ProtocolParameterList &parameters,
-                         const QString &parameterName,
+    void handleParameter(const QString &parameterName,
                          QVariant::Type parameterType,
                          QWidget *dataWidget,
                          QList<QWidget*> labelWidgets);
-    void handleParameter(const Tp::ProtocolParameterList &parameters,
-                         const QString &parameterName,
+    void handleParameter(const QString &parameterName,
                          QVariant::Type parameterType,
                          QWidget *dataWidget,
                          QWidget* labelWidget);
 
-    void prefillUI(const QVariantMap &values);
     ParameterEditModel *model() const;
 
 private:

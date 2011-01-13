@@ -40,16 +40,11 @@ public:
     QList<AbstractAccountParametersWidget*> widgets;
 };
 
-GenericAdvancedOptionsWidget::GenericAdvancedOptionsWidget(Tp::ProtocolParameterList parameters,
-                                             const QVariantMap &values,
+GenericAdvancedOptionsWidget::GenericAdvancedOptionsWidget(ParameterEditModel *model,
                                              QWidget *parent)
- : AbstractAccountParametersWidget(parameters, values, parent),
+ : AbstractAccountParametersWidget(model, parent),
    d(new Private)
 {
-    Q_UNUSED(parameters);
-    Q_UNUSED(values);
-    Q_UNUSED(parent);
-
     QHBoxLayout *layout = new QHBoxLayout(this);
     layout->addWidget(&(d->tabWidget));
 

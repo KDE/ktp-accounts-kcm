@@ -2,6 +2,8 @@
  * This file is part of telepathy-accounts-kcm
  *
  * Copyright (C) 2009 Collabora Ltd. <http://www.collabora.co.uk/>
+ * Copyright (C) 2011 Dominik Schmidt <kde@dominik-schmidt.de>
+ * Copyright (C) 2011 Thomas Richard
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -68,10 +70,10 @@ QVariant ParameterEditModel::data(const QModelIndex &index, int role) const
     switch(role)
     {
     case Qt::DisplayRole:
-        data = QVariant(m_items.at(index.row())->value());
+        data = this->data(index, ParameterEditModel::ValueRole);
         break;
     case Qt::EditRole:
-        data = QVariant(m_items.at(index.row())->value());
+        data = this->data(index, ParameterEditModel::ValueRole);
         break;
     case ParameterEditModel::NameRole:
         data = QVariant(m_items.at(index.row())->name());
@@ -84,6 +86,13 @@ QVariant ParameterEditModel::data(const QModelIndex &index, int role) const
         break;
     case ParameterEditModel::ValueRole:
         data = QVariant(m_items.at(index.row())->value());
+        if(!data.isValid())
+        {
+            data = this->data(index, ParameterEditModel::DefaultValueRole);
+        }
+        break;
+    case ParameterEditModel::DefaultValueRole:
+        data = QVariant(m_items.at(index.row())->parameter().defaultValue());
         break;
     case ParameterEditModel::SecretRole:
         data = QVariant(m_items.at(index.row())->isSecret());
@@ -143,13 +152,13 @@ bool ParameterEditModel::setData(const QModelIndex &index, const QVariant &value
 }
 
 
-int ParameterEditModel::rowForParameter(const Tp::ProtocolParameter &parameter)
+QModelIndex ParameterEditModel::indexForParameter(const Tp::ProtocolParameter &parameter) const
 {
     for(int i=0; i<m_items.size(); ++i) {
         if(m_items.at(i)->parameter() == parameter)
-            return i;
+            return createIndex(i,0,0);
     }
-    return -1;
+    return QModelIndex();
 }
 
 void ParameterEditModel::addItem(const Tp::ProtocolParameter &parameter, const QVariant &originalValue)
@@ -163,6 +172,14 @@ void ParameterEditModel::addItem(const Tp::ProtocolParameter &parameter, const Q
     endInsertRows();
 }
 
+void ParameterEditModel::addItems(const Tp::ProtocolParameterList& parameters, const QVariantMap& parameterValues)
+{
+    foreach (const Tp::ProtocolParameter &parameter, parameters) {
+        addItem(parameter, parameterValues[parameter.name()]);
+    }
+}
+
+
 QList<ProtocolParameterValue> ParameterEditModel::parameterValues() const
 {
     QList<ProtocolParameterValue> values;
@@ -173,6 +190,18 @@ QList<ProtocolParameterValue> ParameterEditModel::parameterValues() const
 
     return values;
 }
+
+Tp::ProtocolParameterList ParameterEditModel::parameters() const
+{
+    Tp::ProtocolParameterList parameters;
+
+    foreach (ParameterItem *item, m_items) {
+        parameters.append(item->parameter());
+    }
+
+    return parameters;
+}
+
 
 bool ParameterEditModel::validateParameterValues()
 {

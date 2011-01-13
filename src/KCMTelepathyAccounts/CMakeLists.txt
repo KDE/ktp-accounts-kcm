@@ -35,6 +35,7 @@ set (libkcmtelepathyaccounts_HDRS
      protocol-select-widget.h
      protocol-item.h
      parameter-edit-widget.h
+     parameter-edit-model.h
      protocol-parameter-value.h
 )
 
@@ -50,6 +51,7 @@ set (libkcmtelepathyaccounts_PRETTY_HDRS
      include/ProtocolSelectWidget
      include/ProtocolItem
      include/ParameterEditWidget
+     include/ParameterEditModel
      include/ProtocolParameterValue
 )
 

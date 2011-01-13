@@ -2,6 +2,7 @@
  * This file is part of telepathy-accounts-kcm
  *
  * Copyright (C) 2010 Collabora Ltd. <http://www.collabora.co.uk/>
+ * Copyright (C) 2011 Dominik Schmidt <kde@dominik-schmidt.de>
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -28,6 +29,7 @@
 #include <QWidget>
 
 #include <TelepathyQt4/ConnectionManager>
+#include "parameter-edit-model.h"
 
 
 class KDE_EXPORT AccountEditWidget : public QWidget
@@ -36,12 +38,15 @@ class KDE_EXPORT AccountEditWidget : public QWidget
 
 public:
     explicit AccountEditWidget(const Tp::ProtocolInfo &info,
-                               const QVariantMap &parameterValues = QVariantMap(),
+                               ParameterEditModel *model,
                                QWidget *parent = 0);
     virtual ~AccountEditWidget();
 
     virtual bool validateParameterValues() const;
     virtual QList<ProtocolParameterValue> parameterValues() const;
+
+protected:
+    ParameterEditModel *model() const;
 
 private Q_SLOTS:
     void onAdvancedClicked();

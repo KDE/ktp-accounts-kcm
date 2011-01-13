@@ -2,6 +2,7 @@
  * This file is part of telepathy-accounts-kcm
  *
  * Copyright (C) 2010 Collabora Ltd. <http://www.collabora.co.uk/>
+ * Copyright (C) 2011 Dominik Schmidt <kde@dominik-schmidt.de>
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -46,6 +47,8 @@ public:
     Tp::ProtocolParameterList parameters;
     QVariantMap parameterValues;
 
+    ParameterEditModel *model;
+
     AbstractAccountUi *accountUi;
     Ui::AccountEditWidget *ui;
     AbstractAccountParametersWidget *mainOptionsWidget;
@@ -53,7 +56,7 @@ public:
 };
 
 AccountEditWidget::AccountEditWidget(const Tp::ProtocolInfo &info,
-                                     const QVariantMap &parameterValues,
+                                     ParameterEditModel *model,
                                      QWidget *parent)
         : QWidget(parent),
           d(new Private)
@@ -64,10 +67,10 @@ AccountEditWidget::AccountEditWidget(const Tp::ProtocolInfo &info,
     d->ui = new Ui::AccountEditWidget;
     d->ui->setupUi(this);
 
+    d->model = model;
     d->connectionManager = info.cmName();
     d->protocol = info.name();
     d->parameters = info.parameters();
-    d->parameterValues = parameterValues;
 
     connect(d->ui->advancedButton, SIGNAL(clicked()),
             this, SLOT(onAdvancedClicked()));
@@ -122,8 +125,7 @@ void AccountEditWidget::loadWidgets()
     // Create the custom UI or generic UI depending on available parameters.
     if (d->accountUi) {
         // UI does exist, set it up.
-        d->mainOptionsWidget = d->accountUi->mainOptionsWidget(d->parameters,
-                                                               d->parameterValues,
+        d->mainOptionsWidget = d->accountUi->mainOptionsWidget(d->model,
                                                                this);
         //Widgets wrapped in a layout should not have double margins
         d->mainOptionsWidget->layout()->setContentsMargins(0, 0, 0, 0);
@@ -162,8 +164,7 @@ void AccountEditWidget::loadWidgets()
 
     if (!d->mainOptionsWidget) {
         d->mainOptionsWidget = new ParameterEditWidget(
-                d->parameters,
-                d->parameterValues,
+                d->model,
                 this);
         d->ui->advancedButton->setVisible(false);
         d->ui->verticalLayout->insertWidget(1, d->mainOptionsWidget);
@@ -177,8 +178,7 @@ void AccountEditWidget::onAdvancedClicked()
     dialog.setWindowTitle(i18n("Advanced Options"));
 
     AbstractAccountParametersWidget *advancedWidget;
-    advancedWidget = d->accountUi->advancedOptionsWidget(d->parameters,
-                                                         d->parameterValues,
+    advancedWidget = d->accountUi->advancedOptionsWidget(model(),
                                                          &dialog);
     dialog.setMainWidget(advancedWidget);
 
@@ -203,6 +203,11 @@ void AccountEditWidget::onAdvancedClicked()
         else
             break;
     }
+}
+
+ParameterEditModel* AccountEditWidget::model() const
+{
+    return d->model;
 }
 
 #include "account-edit-widget.moc"

@@ -2,6 +2,7 @@
  * This file is part of telepathy-accounts-kcm
  *
  * Copyright (C) 2009 Collabora Ltd. <http://www.collabora.co.uk/>
+ * Copyright (C) 2011 Dominik Schmidt <kde@dominik-schmidt.de>
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -40,10 +41,9 @@ public:
     ParameterEditDelegate *delegate;
 };
 
-ParameterEditWidget::ParameterEditWidget(Tp::ProtocolParameterList parameters,
-                                         const QVariantMap &values,
+ParameterEditWidget::ParameterEditWidget(ParameterEditModel *model,
                                          QWidget *parent)
- : AbstractAccountParametersWidget(parameters, values, parent),
+ : AbstractAccountParametersWidget(model, parent),
    d(new Private)
 {
     kDebug();
@@ -52,7 +52,7 @@ ParameterEditWidget::ParameterEditWidget(Tp::ProtocolParameterList parameters,
     d->ui = new Ui::ParameterEditWidget;
     d->ui->setupUi(this);
 
-    d->ui->parameterListView->setModel(model());
+    d->ui->parameterListView->setModel(this->model());
     d->delegate = new ParameterEditDelegate(d->ui->parameterListView, this);
     d->ui->parameterListView->setItemDelegate(d->delegate);
 
@@ -89,7 +89,6 @@ bool ParameterEditWidget::validateParameterValues()
 {
     return model()->validateParameterValues();
 }
-
 
 #include "parameter-edit-widget.moc"
 

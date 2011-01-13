@@ -31,6 +31,7 @@
 #include <TelepathyQt4/ConnectionManager>
 
 class AbstractAccountParametersWidget;
+class ParameterEditModel;
 
 class KDE_EXPORT AbstractAccountUi : public QObject
 {
@@ -43,13 +44,11 @@ public:
     virtual const QMap<QString, QVariant::Type> &supportedParameters() const;
 
     virtual AbstractAccountParametersWidget
-              *mainOptionsWidget(Tp::ProtocolParameterList parameters,
-                                 const QVariantMap &values = QVariantMap(),
+              *mainOptionsWidget(ParameterEditModel *model,
                                  QWidget *parent = 0) const = 0;
     virtual bool hasAdvancedOptionsWidget() const;
     virtual AbstractAccountParametersWidget
-              *advancedOptionsWidget(Tp::ProtocolParameterList parameters,
-                                     const QVariantMap &values = QVariantMap(),
+              *advancedOptionsWidget(ParameterEditModel *model,
                                      QWidget *parent = 0) const;
 
 protected:
