@@ -18,46 +18,37 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
-#ifndef TELEPATHY_ACCOUNTS_KCM_PROTOCOL_SELECT_WIDGET_H
-#define TELEPATHY_ACCOUNTS_KCM_PROTOCOL_SELECT_WIDGET_H
+#ifndef TELEPATHY_ACCOUNTS_KCM_PROTOCOL_ITEM_H
+#define TELEPATHY_ACCOUNTS_KCM_PROTOCOL_ITEM_H
 
 #include <kdemacros.h>
 
-#include <QtGui/QWidget>
+#include <QtCore/QObject>
 
-class ProtocolItem;
-class QItemSelection;
+#include <TelepathyQt4/Profile>
 
-class QModelIndex;
+class ProfileListModel;
 
-namespace Tp {
-    class PendingOperation;
-}
-
-class KDE_EXPORT ProtocolSelectWidget : public QWidget
+class KDE_EXPORT ProfileItem : public QObject
 {
     Q_OBJECT
+    Q_DISABLE_COPY(ProfileItem);
 
 public:
-    explicit ProtocolSelectWidget(QWidget *parent = 0);
-    ~ProtocolSelectWidget();
+    explicit ProfileItem(const Tp::ProfilePtr &profile, ProfileListModel *parent);
+    virtual ~ProfileItem();
 
-    ProtocolItem *selectedProtocol();
-
-private Q_SLOTS:
-    void getConnectionManagerList();
-    void onConnectionManagerListGot(Tp::PendingOperation *op);
-    void onSelectionChanged(const QItemSelection &selected);
-
-Q_SIGNALS:
-    void protocolGotSelected(bool selected);
-    void protocolDoubleClicked();
+    QString name() const;
+    QString localizedName() const;
+    QString iconName() const;
+    QString cmName() const;
+    QString protocolName() const;
 
 private:
-    class Private;
-    Private * const d;
+    Tp::ProfilePtr m_profile;
+    QString m_localizedName;
 };
 
 
-#endif  // Header guard
+#endif // header guard
 

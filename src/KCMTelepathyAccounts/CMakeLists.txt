@@ -9,10 +9,10 @@ set (libkcmtelepathyaccounts_SRCS
      abstract-account-ui.cpp
      abstract-account-parameters-widget.cpp
      account-edit-widget.cpp
-     protocol-select-widget.cpp
-     protocol-list-model.cpp
+     profile-select-widget.cpp
+     profile-list-model.cpp
      connection-manager-item.cpp
-     protocol-item.cpp
+     profile-item.cpp
      parameter-edit-widget.cpp
      parameter-edit-delegate.cpp
      parameter-edit-model.cpp
@@ -30,8 +30,8 @@ set (libkcmtelepathyaccounts_HDRS
      plugin-macros.h
      connection-manager-item.h
      plugin-manager.h
-     protocol-select-widget.h
-     protocol-item.h
+     profile-select-widget.h
+     profile-item.h
      parameter-edit-widget.h
      protocol-parameter-value.h
 )
@@ -53,7 +53,7 @@ set (libkcmtelepathyaccounts_PRETTY_HDRS
 kde4_add_ui_files (libkcmtelepathyaccounts_SRCS
                    account-edit-widget.ui
                    parameter-edit-widget.ui
-                   protocol-select-widget.ui
+                   profile-select-widget.ui
 )
 
 kde4_add_library (kcmtelepathyaccounts

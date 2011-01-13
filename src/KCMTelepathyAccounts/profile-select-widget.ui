@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>ProtocolSelectWidget</class>
- <widget class="QWidget" name="ProtocolSelectWidget">
+ <class>ProfileSelectWidget</class>
+ <widget class="QWidget" name="ProfileSelectWidget">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -12,7 +12,7 @@
   </property>
   <layout class="QVBoxLayout" name="verticalLayout_2">
    <item>
-    <widget class="QListView" name="protocolListView"/>
+    <widget class="QListView" name="profileListView"/>
    </item>
   </layout>
  </widget>

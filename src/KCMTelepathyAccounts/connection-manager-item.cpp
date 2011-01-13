@@ -20,13 +20,13 @@
 
 #include "connection-manager-item.h"
 
-#include "protocol-list-model.h"
+#include "profile-list-model.h"
 
 #include <KDebug>
 
 #include <TelepathyQt4/PendingOperation>
 #include <TelepathyQt4/PendingReady>
-
+/*
 ConnectionManagerItem::ConnectionManagerItem(const Tp::ConnectionManagerPtr &connectionManager,
                                              ProtocolListModel *parent)
  : QObject(parent),
@@ -74,3 +74,4 @@ void ConnectionManagerItem::onConnectionManagerReady(Tp::PendingOperation *op)
 
 #include "connection-manager-item.moc"
 
+*/

@@ -18,57 +18,58 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
-#include "protocol-item.h"
+#include "profile-item.h"
 
+#include "profile-list-model.h"
 #include "connection-manager-item.h"
 #include "dictionary.h"
 
+#include <TelepathyQt4/Profile>
 #include <KDebug>
 
-ProtocolItem::ProtocolItem(const QString &protocol, ConnectionManagerItem *parent)
+ProfileItem::ProfileItem(const Tp::ProfilePtr &profile, ProfileListModel *parent)
  : QObject(parent),
-   m_protocol(protocol)
+   m_profile(profile)
 {
-    kDebug() << "Creating new ProtocolItem with cmItem: " << parent << " and protocol;" << protocol;
+    kDebug() << "Creating new ProfileItem with and profile;" << profile.data()->name();
 
-    m_localizedName = Dictionary::instance()->string(protocol);
+    m_localizedName = Dictionary::instance()->string(profile.data()->name());
     if(m_localizedName.isEmpty()) {
-        m_localizedName = protocol;
+        m_localizedName = profile.data()->name();
     }
 }
 
-ProtocolItem::~ProtocolItem()
+ProfileItem::~ProfileItem()
 {
     kDebug();
 
     // TODO: Implement me...
 }
 
-QString ProtocolItem::protocol() const
+QString ProfileItem::name() const
 {
-    return m_protocol;
+    return m_profile.data()->name();
 }
 
-QString ProtocolItem::localizedName() const
+QString ProfileItem::localizedName() const
 {
     return m_localizedName;
 }
 
-Tp::ProtocolInfo ProtocolItem::protocolInfo() const
+QString ProfileItem::iconName() const
 {
-    kDebug();
-
-    ConnectionManagerItem *item = qobject_cast<ConnectionManagerItem*>(parent());
-
-    Tp::ConnectionManagerPtr cm = item->connectionManager();
-
-
-    foreach (const Tp::ProtocolInfo &info, cm->protocols()) {
-        if (info.name() == m_protocol)
-            return info;
-    }
-    return Tp::ProtocolInfo();
+    return m_profile.data()->iconName();
 }
 
-#include "protocol-item.moc"
+QString ProfileItem::cmName() const
+{
+    return m_profile.data()->cmName();
+}
+
+QString ProfileItem::protocolName() const
+{
+    return m_profile.data()->protocolName();
+}
+
+#include "profile-item.moc"
 

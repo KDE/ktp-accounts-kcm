@@ -25,8 +25,8 @@
 #include "KCMTelepathyAccounts/account-edit-widget.h"
 #include "KCMTelepathyAccounts/connection-manager-item.h"
 #include "KCMTelepathyAccounts/plugin-manager.h"
-#include "KCMTelepathyAccounts/protocol-item.h"
-#include "KCMTelepathyAccounts/protocol-select-widget.h"
+#include "KCMTelepathyAccounts/profile-item.h"
+#include "KCMTelepathyAccounts/profile-select-widget.h"
 
 #include <KDebug>
 #include <KLocale>
@@ -43,7 +43,7 @@ class AddAccountAssistant::Private
 {
 public:
     Private()
-     : protocolSelectWidget(0),
+     : profileSelectWidget(0),
        accountEditWidget(0),
        pageOne(0),
        pageTwo(0)
@@ -53,7 +53,7 @@ public:
 
     Tp::AccountManagerPtr accountManager;
     Tp::AccountPtr account;
-    ProtocolSelectWidget *protocolSelectWidget;
+    ProfileSelectWidget *profileSelectWidget;
     AccountEditWidget *accountEditWidget;
     QWidget *pageTwoWidget;
     KPageWidgetItem *pageOne;
@@ -69,15 +69,15 @@ AddAccountAssistant::AddAccountAssistant(Tp::AccountManagerPtr accountManager, Q
     d->accountManager = accountManager;
 
     // Set up the pages of the Assistant.
-    d->protocolSelectWidget = new ProtocolSelectWidget(this);
-    d->pageOne = new KPageWidgetItem(d->protocolSelectWidget);
+    d->profileSelectWidget = new ProfileSelectWidget(this);
+    d->pageOne = new KPageWidgetItem(d->profileSelectWidget);
     d->pageOne->setHeader(i18n("Step 1: Select an Instant Messaging Network."));
     setValid(d->pageOne, false);
-    connect(d->protocolSelectWidget,
-            SIGNAL(protocolGotSelected(bool)),
-            SLOT(onProtocolSelected(bool)));
-    connect(d->protocolSelectWidget,
-            SIGNAL(protocolDoubleClicked()),
+    connect(d->profileSelectWidget,
+            SIGNAL(profileGotSelected(bool)),
+            SLOT(onProfileSelected(bool)));
+    connect(d->profileSelectWidget,
+            SIGNAL(profileDoubleClicked()),
             SLOT(next()));
 
     // we will build the page widget later, but the constructor of
@@ -111,11 +111,11 @@ void AddAccountAssistant::next()
     if (currentPage() == d->pageOne) {
         kDebug() << "Current page: Page 1.";
 
-        Q_ASSERT(d->protocolSelectWidget->selectedProtocol());
+        Q_ASSERT(d->profileSelectWidget->selectedProfile());
 
         // Set up the next page.
-        ProtocolItem *item = d->protocolSelectWidget->selectedProtocol();
-
+        ProfileItem *item = d->profileSelectWidget->selectedProfile();
+/*
         ConnectionManagerItem *cmItem = qobject_cast<ConnectionManagerItem*>(item->parent());
         if (!cmItem) {
             kWarning() << "cmItem is invalid.";
@@ -132,7 +132,7 @@ void AddAccountAssistant::next()
                                                      QVariantMap(),
                                                      d->pageTwoWidget);
         d->pageTwoWidget->layout()->addWidget(d->accountEditWidget);
-
+*/
         KAssistantDialog::next();
     }
 }
@@ -158,13 +158,13 @@ void AddAccountAssistant::accept()
     parameterValues = d->accountEditWidget->parameterValues();
 
     // Get the ProtocolItem that was selected and the corresponding ConnectionManagerItem.
-    ProtocolItem *protocolItem = d->protocolSelectWidget->selectedProtocol();
-    ConnectionManagerItem *connectionManagerItem = qobject_cast<ConnectionManagerItem*>(protocolItem->parent());
+    //ProtocolItem *protocolItem = d->protocolSelectWidget->selectedProtocol();
+    //ConnectionManagerItem *connectionManagerItem = qobject_cast<ConnectionManagerItem*>(protocolItem->parent());
 
-    if (!connectionManagerItem) {
-        kWarning() << "Invalid ConnectionManager item.";
-        return;
-    }
+    //if (!connectionManagerItem) {
+    //    kWarning() << "Invalid ConnectionManager item.";
+    //    return;
+    //}
 
     QVariantMap values;
     foreach(const ProtocolParameterValue &ppv, parameterValues)
@@ -174,6 +174,7 @@ void AddAccountAssistant::accept()
         }
     }
 
+    /*
     // FIXME: Ask the user to submit a Display Name
     Tp::PendingAccount *pa = d->accountManager->createAccount(connectionManagerItem->connectionManager()->name(),
                                                               protocolItem->protocol(),
@@ -183,6 +184,7 @@ void AddAccountAssistant::accept()
     connect(pa,
             SIGNAL(finished(Tp::PendingOperation*)),
             SLOT(onAccountCreated(Tp::PendingOperation*)));
+            */
 }
 
 void AddAccountAssistant::reject()
@@ -242,7 +244,7 @@ void AddAccountAssistant::onSetEnabledFinished(Tp::PendingOperation *op)
     KAssistantDialog::accept();
 }
 
-void AddAccountAssistant::onProtocolSelected(bool value)
+void AddAccountAssistant::onProfileSelected(bool value)
 {
     kDebug();
     //if a protocol is selected, enable the next button on the first page

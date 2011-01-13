@@ -26,7 +26,7 @@
 #include <QtCore/QObject>
 
 #include <TelepathyQt4/ConnectionManager>
-
+/*
 class ProtocolListModel;
 
 namespace Tp {
@@ -53,7 +53,7 @@ private Q_SLOTS:
 private:
     Tp::ConnectionManagerPtr m_connectionManager;
 };
-
+*/
 
 #endif // header guard
 
