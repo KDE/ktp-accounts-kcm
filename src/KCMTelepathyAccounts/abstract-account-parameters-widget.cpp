@@ -135,25 +135,23 @@ void AbstractAccountParametersWidget::handleParameter(const Tp::ProtocolParamete
 
     if(!foundParameter.isValid())
     {
-        return;
-    }
-    
-    int modelRow = d->model->rowForParameter(foundParameter);
-    if(modelRow != -1)
-    {
-        // insert it to valid parameters list
-        d->mapper->addMapping(dataWidget, modelRow);
-    }
-    else
-    {
         // hide widgets because they are not needed
         dataWidget->hide();
         foreach(QWidget *label, labelWidgets)
         {
             label->hide();
         }
+        return;
     }
-    d->mapper->toFirst();
+    
+    int modelRow = d->model->rowForParameter(foundParameter);
+    if(modelRow != -1)
+    {
+        kDebug() << modelRow << parameterName;
+        // insert it to valid parameters list
+        d->mapper->addMapping(dataWidget, modelRow);
+        d->mapper->toFirst();
+    }
 }
 
 ParameterEditModel* AbstractAccountParametersWidget::model() const
