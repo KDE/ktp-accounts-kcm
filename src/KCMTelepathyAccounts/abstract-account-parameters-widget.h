@@ -30,7 +30,9 @@
 
 #include <TelepathyQt4/ConnectionManager>
 
+class ParameterEditModel;
 class ProtocolParameterValue;
+class ParameterEditModel;
 
 typedef QMap<Tp::ProtocolParameter, QWidget*> ParametersWidgetsMap;
 
@@ -63,6 +65,7 @@ protected:
                          QWidget* labelWidget);
 
     void prefillUI(const QVariantMap &values);
+    ParameterEditModel *model() const;
 
 private:
     Q_DISABLE_COPY(AbstractAccountParametersWidget);

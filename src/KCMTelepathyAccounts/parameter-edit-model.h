@@ -55,6 +55,7 @@ public:
     virtual int rowCount(const QModelIndex &index) const;
     virtual QVariant data(const QModelIndex &index, int role = Qt::DisplayRole) const;
     virtual bool setData(const QModelIndex &index, const QVariant &value, int role);
+    int rowForParameter(const Tp::ProtocolParameter &parameter);
 
     void addItem(const Tp::ProtocolParameter &parameter, const QVariant &originalValue);
     QList<ProtocolParameterValue> parameterValues() const;

@@ -60,12 +60,19 @@ int ParameterEditModel::rowCount(const QModelIndex &index) const
 
 QVariant ParameterEditModel::data(const QModelIndex &index, int role) const
 {
+   // kDebug() << index << role;
     // FIXME: This is a basic implementation just so I can see what's going
     // on while developing this code further. Needs expanding.
     QVariant data;
 
     switch(role)
     {
+    case Qt::DisplayRole:
+        data = QVariant(m_items.at(index.row())->value());
+        break;
+    case Qt::EditRole:
+        data = QVariant(m_items.at(index.row())->value());
+        break;
     case ParameterEditModel::NameRole:
         data = QVariant(m_items.at(index.row())->name());
         break;
@@ -99,6 +106,8 @@ QVariant ParameterEditModel::data(const QModelIndex &index, int role) const
 
 bool ParameterEditModel::setData(const QModelIndex &index, const QVariant &value, int role)
 {
+    //kDebug() << index << value << role;
+
     if (index.row() == -1) {
         kDebug() << "Invalid item row accessed.";
         return false;
@@ -109,7 +118,7 @@ bool ParameterEditModel::setData(const QModelIndex &index, const QVariant &value
         return false;
     }
 
-    if (role == ParameterEditModel::ValueRole) {
+    if (role == ParameterEditModel::ValueRole || role == Qt::EditRole) {
 
         m_items.at(index.row())->setValue(value);
         Q_EMIT dataChanged(index, index);
@@ -131,6 +140,16 @@ bool ParameterEditModel::setData(const QModelIndex &index, const QVariant &value
     } else {
         return false;
     }
+}
+
+
+int ParameterEditModel::rowForParameter(const Tp::ProtocolParameter &parameter)
+{
+    for(int i=0; i<m_items.size(); ++i) {
+        if(m_items.at(i)->parameter() == parameter)
+            return i;
+    }
+    return -1;
 }
 
 void ParameterEditModel::addItem(const Tp::ProtocolParameter &parameter, const QVariant &originalValue)

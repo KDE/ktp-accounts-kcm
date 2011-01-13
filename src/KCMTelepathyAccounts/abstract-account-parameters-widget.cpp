@@ -21,22 +21,27 @@
 
 #include "abstract-account-parameters-widget.h"
 #include "protocol-parameter-value.h"
+#include "parameter-edit-model.h"
 
 #include <KDebug>
 #include <QLineEdit>
 #include <QCheckBox>
 #include <QComboBox>
 #include <QSpinBox>
+#include <QDataWidgetMapper>
 
 
 class AbstractAccountParametersWidget::Private
 {
 public:
     Private()
+        : model(0),
+        mapper(0)
     {
         kDebug();
     }
-
+    ParameterEditModel *model;
+    QDataWidgetMapper *mapper;
     Tp::ProtocolParameterList parameters;
 };
 
@@ -49,8 +54,20 @@ AbstractAccountParametersWidget::AbstractAccountParametersWidget(Tp::ProtocolPar
     kDebug();
 
     d->parameters = parameters;
+    d->model = new ParameterEditModel(this);
+    d->mapper = new QDataWidgetMapper(this);
+    d->mapper->setModel(d->model);
+    foreach(const QString &key, values.keys())
+    {
+        kDebug() << key << values[key];
+    }
 
-    Q_UNUSED(values);
+    // Add the parameters to the model.
+    foreach (const Tp::ProtocolParameter &parameter, parameters) {
+        kDebug() << "Add Parameter:" << parameter.name() << "default:" << parameter.defaultValue() << values.value(parameter.name()) << values.value(parameter.name(), parameter.defaultValue());
+        d->model->addItem(parameter, values.value(parameter.name(), parameter.defaultValue()));
+    }
+    d->mapper->setOrientation(Qt::Vertical);
 }
 
 AbstractAccountParametersWidget::~AbstractAccountParametersWidget()
@@ -61,51 +78,11 @@ AbstractAccountParametersWidget::~AbstractAccountParametersWidget()
 }
 
 QList<ProtocolParameterValue> AbstractAccountParametersWidget::parameterValues() const
+
 {
     kDebug();
 
-    QList<ProtocolParameterValue> parameters;
-
-    ParametersWidgetsMap::const_iterator i = internalParametersWidgetsMap()->constBegin();
-    while (i != internalParametersWidgetsMap()->constEnd()) {
-
-        QLineEdit *lineEdit = qobject_cast<QLineEdit*>(i.value());
-        if(lineEdit)
-        {
-            parameters.append(ProtocolParameterValue(i.key(), lineEdit->text()));
-            ++i;
-            continue;
-        }
-
-        QCheckBox *checkBox = qobject_cast<QCheckBox*>(i.value());
-        if(checkBox)
-        {
-            parameters.append(ProtocolParameterValue(i.key(), checkBox->isChecked()));
-            ++i;
-            continue;
-        }
-
-        QComboBox *comboBox = qobject_cast<QComboBox*>(i.value());
-        if(comboBox)
-        {
-            parameters.append(ProtocolParameterValue(i.key(), comboBox->currentText()));
-            ++i;
-            continue;
-        }
-
-        QSpinBox *spinBox = qobject_cast<QSpinBox*>(i.value());
-        if(spinBox)
-        {
-            parameters.append(ProtocolParameterValue(i.key(), spinBox->value()));
-            ++i;
-            continue;
-        }
-
-        kDebug() << "WIDGET TYPE NOT SUPPORTED!";
-        ++i;
-    }
-
-    return parameters;
+    return d->model->parameterValues();
 }
 
 Tp::ProtocolParameterList AbstractAccountParametersWidget::parameters() const
@@ -115,12 +92,14 @@ Tp::ProtocolParameterList AbstractAccountParametersWidget::parameters() const
 
 bool AbstractAccountParametersWidget::validateParameterValues()
 {
-    return true;
+    return d->model->validateParameterValues();
 }
 
 
 ParametersWidgetsMap* AbstractAccountParametersWidget::internalParametersWidgetsMap() const
 {
+    
+    kDebug() << "DEPRECATED";
     ParametersWidgetsMap *map = new ParametersWidgetsMap();
     return map;
 }
@@ -154,10 +133,16 @@ void AbstractAccountParametersWidget::handleParameter(const Tp::ProtocolParamete
         }
     }
 
-    if(foundParameter.isValid())
+    if(!foundParameter.isValid())
+    {
+        return;
+    }
+    
+    int modelRow = d->model->rowForParameter(foundParameter);
+    if(modelRow != -1)
     {
         // insert it to valid parameters list
-        internalParametersWidgetsMap()->insert(foundParameter, dataWidget);
+        d->mapper->addMapping(dataWidget, modelRow);
     }
     else
     {
@@ -168,80 +153,18 @@ void AbstractAccountParametersWidget::handleParameter(const Tp::ProtocolParamete
             label->hide();
         }
     }
-
-
+    d->mapper->toFirst();
 }
+
+ParameterEditModel* AbstractAccountParametersWidget::model() const
+{
+    return d->model;
+}
+
 
 void AbstractAccountParametersWidget::prefillUI(const QVariantMap& values)
 {
-    kDebug();
-
-    ParametersWidgetsMap::const_iterator i = internalParametersWidgetsMap()->constBegin();
-    while (i != internalParametersWidgetsMap()->constEnd()) {
-        kDebug() << "Search widget for " << i.key().name();
-        QLineEdit* lineEdit = qobject_cast<QLineEdit*>(i.value());
-        if(lineEdit)
-        {
-            if(values.value(i.key().name()).isValid())
-            {
-                lineEdit->setText(values.value(i.key().name()).toString());
-            }
-            else
-            {
-                lineEdit->setText(i.key().defaultValue().toString());
-            }
-            ++i;
-            continue;
-        }
-
-        QCheckBox* checkBox = qobject_cast<QCheckBox*>(i.value());
-        if(checkBox)
-        {
-            if(values.value(i.key().name()).isValid())
-            {
-                checkBox->setChecked(values.value(i.key().name()).toBool());
-            }
-            else
-            {
-                checkBox->setChecked(i.key().defaultValue().toBool());
-            }
-            ++i;
-            continue;
-        }
-
-        QComboBox* comboBox = qobject_cast<QComboBox*>(i.value());
-        if(checkBox)
-        {
-            if(values.value(i.key().name()).isValid())
-            {
-                comboBox->setEditText(values.value(i.key().name()).toString());
-            }
-            else
-            {
-                comboBox->setEditText(i.key().defaultValue().toString());
-            }
-            ++i;
-            continue;
-        }
-
-        QSpinBox* spinBox = qobject_cast<QSpinBox*>(i.value());
-        if(spinBox)
-        {
-            if(values.value(i.key().name()).isValid())
-            {
-                spinBox->setValue(values.value(i.key().name()).toInt());
-            }
-            else
-            {                
-                spinBox->setValue(i.key().defaultValue().toInt());
-            }
-            ++i;
-            continue;
-        }
-
-        kDebug() << "WIDGET TYPE UNKNOWN!";
-        ++i;
-    }
+    kDebug() << "DEPRECATED";
 }
 
 #include "abstract-account-parameters-widget.moc"
