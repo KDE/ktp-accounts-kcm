@@ -28,13 +28,9 @@ class MainOptionsWidget : public AbstractAccountParametersWidget
     Q_OBJECT
 
 public:
-    explicit MainOptionsWidget(const Tp::ProtocolParameterList& parameters,
-                               const QVariantMap &values = QVariantMap(),
+    explicit MainOptionsWidget(ParameterEditModel *model,
                                QWidget *parent = 0);
     virtual ~MainOptionsWidget();
-
-    virtual QList<ProtocolParameterValue> parameterValues() const;
-    virtual bool validateParameterValues();
 
 private:
     Q_DISABLE_COPY(MainOptionsWidget);
