@@ -17,7 +17,7 @@ public:
     void updateItemWidgets(const QList<QWidget *> widgets, const QStyleOptionViewItem &option, const QPersistentModelIndex &index) const;
 
 signals:
-    void dataChanged(const QModelIndex &index, const QVariant &value, int role);
+    void itemChecked(const QModelIndex &index, bool checked);
 
 public slots:
 

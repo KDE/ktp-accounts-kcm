@@ -77,13 +77,13 @@ KCMTelepathyAccounts::KCMTelepathyAccounts(QWidget *parent, const QVariantList& 
     m_ui->editAccountButton->setIcon(KIcon("configure"));
     m_ui->removeAccountButton->setIcon(KIcon("edit-delete"));
   
-    AccountsListDelegate* delegate = new AccountsListDelegate(m_accountsListView, this);
+    AccountsListDelegate* delegate = new AccountsListDelegate(m_ui->accountsListView, this);
     m_ui->accountsListView->setItemDelegate(delegate);
 
 
     connect(delegate,
-            SIGNAL(dataChanged(QModelIndex,QVariant,int)),
-            SLOT(onAccountModelChange(QModelIndex,QVariant,int)));
+            SIGNAL(itemChecked(QModelIndex, bool)),
+            SLOT(onAccountEnabledChanged(QModelIndex, bool)));
     connect(m_ui->addAccountButton,
             SIGNAL(clicked()),
             SLOT(onAddAccountClicked()));
@@ -117,9 +117,16 @@ void KCMTelepathyAccounts::load()
     return;
 }
 
-void KCMTelepathyAccounts::onAccountModelChange(const QModelIndex &index, const QVariant &value, int role)
+void KCMTelepathyAccounts::onAccountEnabledChanged(const QModelIndex &index, bool enabled)
 {
-    m_accountsListModel->setData(index, value, role);
+    QVariant value;
+    if (enabled) {
+        value = QVariant(Qt::Checked);
+    }
+    else {
+        value = QVariant(Qt::Unchecked);
+    }
+    m_accountsListModel->setData(index, value, Qt::CheckStateRole);
 }
 
 void KCMTelepathyAccounts::onAccountManagerReady(Tp::PendingOperation *op)
