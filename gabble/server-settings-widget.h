@@ -28,13 +28,9 @@ class ServerSettingsWidget : public AbstractAccountParametersWidget
     Q_OBJECT
 
 public:
-    explicit ServerSettingsWidget(Tp::ProtocolParameterList parameters,
-                                       const QVariantMap &values = QVariantMap(),
+    explicit ServerSettingsWidget(ParameterEditModel *model,
                                        QWidget *parent = 0);
     virtual ~ServerSettingsWidget();
-
-    virtual QList<ProtocolParameterValue> parameterValues() const;
-    virtual bool validateParameterValues();
 
 private:
     Q_DISABLE_COPY(ServerSettingsWidget);

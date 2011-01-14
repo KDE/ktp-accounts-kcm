@@ -32,13 +32,11 @@ public:
     virtual ~GabbleAccountUi();
 
     virtual AbstractAccountParametersWidget
-              *mainOptionsWidget(Tp::ProtocolParameterList parameters,
-                                 const QVariantMap &values = QVariantMap(),
+              *mainOptionsWidget(ParameterEditModel *model,
                                  QWidget *parent = 0) const;
     virtual bool hasAdvancedOptionsWidget() const;
     virtual AbstractAccountParametersWidget
-              *advancedOptionsWidget(Tp::ProtocolParameterList parameters,
-                                     const QVariantMap &values = QVariantMap(),
+              *advancedOptionsWidget(ParameterEditModel *model,
                                      QWidget *parent = 0) const;
 
 private:

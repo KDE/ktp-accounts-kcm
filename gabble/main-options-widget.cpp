@@ -37,60 +37,22 @@ public:
         kDebug();
     }
 
-    Tp::ProtocolParameter accountParameter;
-    Tp::ProtocolParameter passwordParameter;
-
     Ui::MainOptionsWidget *ui;
 };
 
-MainOptionsWidget::MainOptionsWidget(Tp::ProtocolParameterList parameters,
-                                     const QVariantMap &values,
+MainOptionsWidget::MainOptionsWidget(ParameterEditModel *model,
                                      QWidget *parent)
- : AbstractAccountParametersWidget(parameters, values, parent),
+ : AbstractAccountParametersWidget(model, parent),
    d(new Private)
 {
     kDebug();
-
-    // Store the parameters this widget supports
-    foreach (const Tp::ProtocolParameter &parameter, parameters) {
-        if ((parameter.name() == "account") && (parameter.type() == QVariant::String)) {
-                d->accountParameter = parameter;
-        } else if ((parameter.name() == "password") && (parameter.type() == QVariant::String)) {
-                d->passwordParameter = parameter;
-        }
-    }
 
     // Set up the UI.
     d->ui = new Ui::MainOptionsWidget;
     d->ui->setupUi(this);
 
-    // Prefill UI elements if appropriate.
-    if (d->accountParameter.isValid()) {
-        if (values.contains(d->accountParameter.name())) {
-            d->ui->accountLineEdit->setText(values.value(d->accountParameter.name()).toString());
-        } else {
-            d->ui->accountLineEdit->setText(d->accountParameter.defaultValue().toString());
-        }
-    }
-
-    if (d->passwordParameter.isValid()) {
-        if (values.contains(d->passwordParameter.name())) {
-            d->ui->passwordLineEdit->setText(values.value(d->passwordParameter.name()).toString());
-        } else {
-            d->ui->passwordLineEdit->setText(d->passwordParameter.defaultValue().toString());
-        }
-    }
-
-    // Hide any elements we don't have the parameters passed to show.
-    if (!d->accountParameter.isValid()) {
-        d->ui->accountLabel->hide();
-        d->ui->accountLineEdit->hide();
-    }
-
-    if (!d->passwordParameter.isValid()) {
-        d->ui->passwordLabel->hide();
-        d->ui->passwordLineEdit->hide();
-    }
+    handleParameter("account", QVariant::String, d->ui->accountLineEdit, d->ui->accountLabel);
+    handleParameter("password", QVariant::String, d->ui->passwordLineEdit, d->ui->passwordLabel);
 }
 
 MainOptionsWidget::~MainOptionsWidget()
@@ -99,41 +61,6 @@ MainOptionsWidget::~MainOptionsWidget()
 
     delete d;
 }
-
-QList<ProtocolParameterValue> MainOptionsWidget::parameterValues() const
-{
-    kDebug();
-
-    QList<ProtocolParameterValue> parameters;
-
-    // Populate the map of parameters and their values with all the parameters this widget contains.
-    if (d->accountParameter.isValid()) {
-        parameters.append(ProtocolParameterValue(d->accountParameter, d->ui->accountLineEdit->text()));
-    }
-
-    if (d->passwordParameter.isValid()) {
-        parameters.append(ProtocolParameterValue(d->passwordParameter, d->ui->passwordLineEdit->text()));
-    }
-
-    return parameters;
-}
-
-bool MainOptionsWidget::validateParameterValues()
-{
-    kDebug();
-
-    // Username is currently the only required parameter
-    if (d->ui->accountLineEdit->text().isEmpty()) {
-        kDebug() << "Returning false and alerting the user.";
-
-        KMessageBox::error(this, i18n("Please enter a Jabber ID."));
-
-        return false;
-    }
-
-    return true;
-}
-
 
 #include "main-options-widget.moc"
 

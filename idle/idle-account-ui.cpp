@@ -62,13 +62,12 @@ IdleAccountUi::~IdleAccountUi()
 }
 
 AbstractAccountParametersWidget *IdleAccountUi::mainOptionsWidget(
-        Tp::ProtocolParameterList parameters,
-        const QVariantMap &values,
+        ParameterEditModel *model,
         QWidget *parent) const
 {
     kDebug();
 
-    return new MainOptionsWidget(parameters, values, parent);
+    return new MainOptionsWidget(model, parent);
 }
 
 bool IdleAccountUi::hasAdvancedOptionsWidget() const
@@ -77,13 +76,12 @@ bool IdleAccountUi::hasAdvancedOptionsWidget() const
 }
 
 AbstractAccountParametersWidget *IdleAccountUi::advancedOptionsWidget(
-        Tp::ProtocolParameterList parameters,
-        const QVariantMap &values,
+        ParameterEditModel *model,
         QWidget *parent) const
 {
     kDebug();
 
-    return new AdvancedOptionsWidget(parameters, values, parent);
+    return new AdvancedOptionsWidget(model, parent);
 }
 
 #include "idle-account-ui.moc"
