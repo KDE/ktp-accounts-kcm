@@ -45,7 +45,7 @@ public:
 
     QString connectionManager;
     QString protocol;
-    QString profileName;
+    QString serviceName;
 
     ParameterEditModel *parameterModel;
 
@@ -67,22 +67,22 @@ AccountEditWidget::AccountEditWidget(const Tp::ProfilePtr &profile,
     d->ui->setupUi(this);
 
     d->parameterModel = parameterModel;
-    d->profileName = profile.data()->serviceName();
-    d->connectionManager = profile.data()->cmName();
-    d->protocol = profile.data()->protocolName();
+    d->serviceName = profile->serviceName();
+    d->connectionManager = profile->cmName();
+    d->protocol = profile->protocolName();
 
     connect(d->ui->advancedButton, SIGNAL(clicked()),
             this, SLOT(onAdvancedClicked()));
 
     d->ui->advancedButton->setIcon(KIcon("configure"));
     //FIXME: Dictionary should not be needed anymore when distros ship profiles
-    QString localizedName = Dictionary::instance()->string(profile.data()->name());
+    QString localizedName = Dictionary::instance()->string(profile->name());
     if(localizedName.isEmpty()) {
-        localizedName = profile.data()->name();
+        localizedName = profile->name();
     }
     d->ui->titleLabel->setText(localizedName);
     d->ui->iconLabel->setText("");
-    d->ui->iconLabel->setPixmap(KIcon(profile.data()->iconName()).pixmap(32));
+    d->ui->iconLabel->setPixmap(KIcon(profile->iconName()).pixmap(32));
 
     loadWidgets();
 }
@@ -122,13 +122,13 @@ void AccountEditWidget::loadWidgets()
 
     // Get the AccountsUi for the plugin, and get the optional parameter widgets for it.
     d->accountUi = PluginManager::instance()->accountUiForProtocol(d->connectionManager,
-                                                                   d->protocol);
+                                                                   d->protocol,
+                                                                   d->serviceName);
 
     // Create the custom UI or generic UI depending on available parameters.
     if (d->accountUi) {
         // UI does exist, set it up.
         d->mainOptionsWidget = d->accountUi->mainOptionsWidget(d->parameterModel,
-                                                               d->profileName,
                                                                this);
         //Widgets wrapped in a layout should not have double margins
         d->mainOptionsWidget->layout()->setContentsMargins(0, 0, 0, 0);
@@ -186,7 +186,6 @@ void AccountEditWidget::onAdvancedClicked()
 
     AbstractAccountParametersWidget *advancedWidget;
     advancedWidget = d->accountUi->advancedOptionsWidget(d->parameterModel,
-                                                         d->profileName,
                                                          &dialog);
     dialog.setMainWidget(advancedWidget);
 

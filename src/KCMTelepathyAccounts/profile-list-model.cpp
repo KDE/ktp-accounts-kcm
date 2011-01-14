@@ -86,8 +86,8 @@ void ProfileListModel::setProfileManager(Tp::ProfileManagerPtr profileManager)
         item = 0;
     }
 
-    beginInsertRows(QModelIndex(), 0, profileManager.data()->profiles().size());
-    foreach(Tp::ProfilePtr ptr, profileManager.data()->profiles()) {
+    beginInsertRows(QModelIndex(), 0, profileManager->profiles().size());
+    foreach(Tp::ProfilePtr ptr, profileManager->profiles()) {
         m_profileItems.append(new ProfileItem(ptr, this));
     }
 

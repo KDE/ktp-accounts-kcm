@@ -70,8 +70,8 @@ ProfileSelectWidget::ProfileSelectWidget(QWidget *parent)
 
     d->profileManager = Tp::ProfileManager::create(QDBusConnection::sessionBus());
 
-    // Until all distros ship correct profile files, we should fake them
-    connect(d->profileManager.data()->becomeReady(Tp::Features() << Tp::ProfileManager::FeatureFakeProfiles),
+    // FIXME: Until all distros ship correct profile files, we should fake them
+    connect(d->profileManager->becomeReady(Tp::Features() << Tp::ProfileManager::FeatureFakeProfiles),
             SIGNAL(finished(Tp::PendingOperation*)),
             SLOT(onProfileManagerReady(Tp::PendingOperation*)));
 }

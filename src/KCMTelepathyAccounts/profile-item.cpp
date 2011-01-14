@@ -32,9 +32,9 @@ ProfileItem::ProfileItem(const Tp::ProfilePtr &profile, ProfileListModel *parent
    m_profile(profile)
 {
     //FIXME: Dictionary should not be needed anymore when distros ship profiles
-    m_localizedName = Dictionary::instance()->string(profile.data()->name());
+    m_localizedName = Dictionary::instance()->string(profile->name());
     if(m_localizedName.isEmpty()) {
-        m_localizedName = profile.data()->name();
+        m_localizedName = profile->name();
     }
 }
 
@@ -47,12 +47,12 @@ ProfileItem::~ProfileItem()
 
 QString ProfileItem::serviceName() const
 {
-    return m_profile.data()->serviceName();
+    return m_profile->serviceName();
 }
 
 QString ProfileItem::name() const
 {
-    return m_profile.data()->name();
+    return m_profile->name();
 }
 
 QString ProfileItem::localizedName() const
@@ -62,17 +62,17 @@ QString ProfileItem::localizedName() const
 
 QString ProfileItem::iconName() const
 {
-    return m_profile.data()->iconName();
+    return m_profile->iconName();
 }
 
 QString ProfileItem::cmName() const
 {
-    return m_profile.data()->cmName();
+    return m_profile->cmName();
 }
 
 QString ProfileItem::protocolName() const
 {
-    return m_profile.data()->protocolName();
+    return m_profile->protocolName();
 }
 
 Tp::ProfilePtr ProfileItem::profile() const

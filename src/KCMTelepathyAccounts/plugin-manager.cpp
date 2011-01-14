@@ -89,7 +89,8 @@ void PluginManager::loadPlugins()
 }
 
 AbstractAccountUi *PluginManager::accountUiForProtocol(const QString &connectionManager,
-                                                       const QString &protocol)
+                                                       const QString &protocol,
+                                                       const QString &serviceName)
 {
     kDebug();
 
@@ -97,7 +98,7 @@ AbstractAccountUi *PluginManager::accountUiForProtocol(const QString &connection
     // and protocol combination we were provided with.
 
     foreach (AbstractAccountUiPlugin *plugin, m_plugins) {
-        AbstractAccountUi *ui = plugin->accountUi(connectionManager, protocol);
+        AbstractAccountUi *ui = plugin->accountUi(connectionManager, protocol, serviceName);
 
         // FIXME: Bug https://bugs.kde.org/201797 - we should check here to see which plugin
         // provides the closest match for the desired parameters in the case that more than one

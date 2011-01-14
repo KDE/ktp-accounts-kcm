@@ -39,7 +39,7 @@ public:
 
     virtual ~PluginManager();
 
-    AbstractAccountUi *accountUiForProtocol(const QString &connectionManager, const QString &protocol);
+    AbstractAccountUi *accountUiForProtocol(const QString &connectionManager, const QString &protocol, const QString &serviceName);
 
 private:
     explicit PluginManager(QObject *parent = 0);

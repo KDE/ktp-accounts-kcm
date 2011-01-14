@@ -43,12 +43,10 @@ public:
     }
     ParameterEditModel *parameterModel;
     QDataWidgetMapper *mapper;
-    QString profile;
     Tp::ProtocolParameterList parameters;
 };
 
 AbstractAccountParametersWidget::AbstractAccountParametersWidget(ParameterEditModel *parameterModel,
-                                                                 const QString &profile,
                                                                  QWidget *parent)
         : QWidget(parent),
           d(new Private)
@@ -61,8 +59,6 @@ AbstractAccountParametersWidget::AbstractAccountParametersWidget(ParameterEditMo
     d->mapper->setModel(d->parameterModel);
 
     d->mapper->setOrientation(Qt::Vertical);
-
-    d->profile = profile;
 }
 
 AbstractAccountParametersWidget::~AbstractAccountParametersWidget()
@@ -116,7 +112,7 @@ void AbstractAccountParametersWidget::handleParameter(const QString &parameterNa
     if(!foundParameter.isValid() || foundParameter.type() != parameterType)
     {
         // hide widgets because they are not needed
-        kDebug() << "WARNING: Field" << parameterName << "hidden";
+        kDebug() << "Field" << parameterName << "hidden";
         dataWidget->hide();
         foreach(QWidget *label, labelWidgets)
         {
@@ -141,12 +137,6 @@ ParameterEditModel* AbstractAccountParametersWidget::parameterModel() const
 {
     return d->parameterModel;
 }
-
-QString AbstractAccountParametersWidget::profile() const
-{
-    return d->profile;
-}
-
 
 #include "abstract-account-parameters-widget.moc"
 

@@ -125,7 +125,7 @@ void AddAccountAssistant::next()
             d->currentProfileItem = selectedItem;
 
             d->connectionManager = Tp::ConnectionManager::create(selectedItem->cmName());
-            connect(d->connectionManager.data()->becomeReady(),
+            connect(d->connectionManager->becomeReady(),
                     SIGNAL(finished(Tp::PendingOperation*)),
                     SLOT(onConnectionManagerReady(Tp::PendingOperation*)));
         }
@@ -163,6 +163,8 @@ void AddAccountAssistant::accept()
         }
     }
 
+    // FIXME: In some next version of tp-qt4 there should be a convenience class for this
+    // https://bugs.freedesktop.org/show_bug.cgi?id=33153
     QVariantMap properties;
 
     properties.insert("org.freedesktop.Telepathy.Account.Service", d->currentProfileItem->serviceName());
@@ -178,7 +180,6 @@ void AddAccountAssistant::accept()
     connect(pa,
             SIGNAL(finished(Tp::PendingOperation*)),
             SLOT(onAccountCreated(Tp::PendingOperation*)));
-
 }
 
 void AddAccountAssistant::reject()
@@ -221,7 +222,7 @@ void AddAccountAssistant::onConnectionManagerReady(Tp::PendingOperation *op)
         kWarning() << "Creating ConnectionManager failed:" << op->errorName() << op->errorMessage();
     }
 
-    if(!d->connectionManager.data()->isValid()) {
+    if(!d->connectionManager->isValid()) {
         kWarning() << "Invalid ConnectionManager";
     }
 
@@ -238,14 +239,14 @@ void AddAccountAssistant::onProfileSelected(bool value)
 void AddAccountAssistant::pageTwo()
 {
     // Get the protocol's parameters and values.
-    Tp::ProtocolInfo protocolInfo = d->connectionManager.data()->protocol(d->currentProfileItem->protocolName());
+    Tp::ProtocolInfo protocolInfo = d->connectionManager->protocol(d->currentProfileItem->protocolName());
     Tp::ProtocolParameterList parameters = protocolInfo.parameters();
 
     // Add the parameters to the model.
     ParameterEditModel *parameterModel = new ParameterEditModel(this);
     parameterModel->addItems(parameters);
 
-    foreach(const Tp::Profile::Parameter &parameter, d->currentProfileItem->profile().data()->parameters()) {
+    foreach(const Tp::Profile::Parameter &parameter, d->currentProfileItem->profile()->parameters()) {
         parameterModel->setData(parameterModel->indexForParameter(parameter), parameter.value(), Qt::EditRole);
     }
 
