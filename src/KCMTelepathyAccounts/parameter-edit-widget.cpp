@@ -2,6 +2,7 @@
  * This file is part of telepathy-accounts-kcm
  *
  * Copyright (C) 2009 Collabora Ltd. <http://www.collabora.co.uk/>
+ * Copyright (C) 2011 Dominik Schmidt <kde@dominik-schmidt.de>
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -31,20 +32,18 @@ class ParameterEditWidget::Private
 {
 public:
     Private()
-     : ui(0), delegate(0), model(0)
+     : ui(0), delegate(0)
     {
         kDebug();
     }
 
     Ui::ParameterEditWidget *ui;
     ParameterEditDelegate *delegate;
-    ParameterEditModel *model;
 };
 
-ParameterEditWidget::ParameterEditWidget(Tp::ProtocolParameterList parameters,
-                                         const QVariantMap &values,
+ParameterEditWidget::ParameterEditWidget(ParameterEditModel *parameterModel,
                                          QWidget *parent)
- : AbstractAccountParametersWidget(parameters, values, parent),
+ : AbstractAccountParametersWidget(parameterModel, parent),
    d(new Private)
 {
     kDebug();
@@ -53,19 +52,13 @@ ParameterEditWidget::ParameterEditWidget(Tp::ProtocolParameterList parameters,
     d->ui = new Ui::ParameterEditWidget;
     d->ui->setupUi(this);
 
-    d->model = new ParameterEditModel(this);
-    d->ui->parameterListView->setModel(d->model);
+    d->ui->parameterListView->setModel(parameterModel);
     d->delegate = new ParameterEditDelegate(d->ui->parameterListView, this);
     d->ui->parameterListView->setItemDelegate(d->delegate);
 
     connect(d->delegate,
             SIGNAL(dataChanged(QModelIndex, QVariant, int)),
             SLOT(onDelegateDataChanged(QModelIndex, QVariant, int)));
-
-    // Add the parameters to the model.
-    foreach (const Tp::ProtocolParameter &parameter, parameters) {
-        d->model->addItem(parameter, values.value(parameter.name(), parameter.defaultValue()));
-    }
 }
 
 ParameterEditWidget::~ParameterEditWidget()
@@ -76,22 +69,10 @@ ParameterEditWidget::~ParameterEditWidget()
     delete d;
 }
 
-QList<ProtocolParameterValue> ParameterEditWidget::parameterValues() const
-{
-    return d->model->parameterValues();
-}
-
-
 void ParameterEditWidget::onDelegateDataChanged(const QModelIndex &index, const QVariant &value, int role)
 {
-    d->model->setData(index, value, role);
+    parameterModel()->setData(index, value, role);
 }
-
-bool ParameterEditWidget::validateParameterValues()
-{
-    return d->model->validateParameterValues();
-}
-
 
 #include "parameter-edit-widget.moc"
 

@@ -2,6 +2,7 @@
  * This file is part of telepathy-accounts-kcm
  *
  * Copyright (C) 2009 Collabora Ltd. <http://www.collabora.co.uk/>
+ * Copyright (C) 2011 Dominik Schmidt <kde@dominik-schmidt.de>
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -20,11 +21,13 @@
 
 #include "edit-account-dialog.h"
 
+
 #include "KCMTelepathyAccounts/dictionary.h"
 #include "KCMTelepathyAccounts/abstract-account-parameters-widget.h"
 #include "KCMTelepathyAccounts/abstract-account-ui.h"
 #include "KCMTelepathyAccounts/account-edit-widget.h"
 #include "KCMTelepathyAccounts/parameter-edit-widget.h"
+#include "KCMTelepathyAccounts/parameter-edit-model.h"
 #include "KCMTelepathyAccounts/plugin-manager.h"
 
 #include <KDebug>
@@ -59,11 +62,16 @@ EditAccountDialog::EditAccountDialog(AccountItem *item, QWidget *parent)
 
     // Get the protocol's parameters and values.
     Tp::ProtocolInfo protocolInfo = d->item->account()->protocolInfo();
+    Tp::ProtocolParameterList parameters = protocolInfo.parameters();
     QVariantMap parameterValues = d->item->account()->parameters();
+
+    // Add the parameters to the model.
+    ParameterEditModel *parameterModel = new ParameterEditModel(this);
+    parameterModel->addItems(parameters, parameterValues);
 
     // Set up the interface
     d->widget = new AccountEditWidget(protocolInfo,
-                                      parameterValues,
+                                      parameterModel,
                                       this);
     setMainWidget(d->widget);
     setMinimumWidth(400);

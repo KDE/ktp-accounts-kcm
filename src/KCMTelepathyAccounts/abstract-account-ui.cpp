@@ -2,6 +2,8 @@
  * This file is part of telepathy-accounts-kcm
  *
  * Copyright (C) 2009 Collabora Ltd. <http://www.collabora.co.uk/>
+ * Copyright (C) 2011 Dominik Schmidt <kde@dominik-schmidt.de>
+ * Copyright (C) 2011 Thomas Richard
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -51,10 +53,11 @@ bool AbstractAccountUi::hasAdvancedOptionsWidget() const
     return false;
 }
 
-AbstractAccountParametersWidget* AbstractAccountUi::advancedOptionsWidget(Tp::ProtocolParameterList parameters,
-                                                                          const QVariantMap &values,
+AbstractAccountParametersWidget* AbstractAccountUi::advancedOptionsWidget(ParameterEditModel *parameterModel,
                                                                           QWidget *parent) const
 {
+    Q_UNUSED(parameterModel);
+    Q_UNUSED(parent);
     return 0;
 }
 

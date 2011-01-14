@@ -1,7 +1,6 @@
 /*
  * This file is part of telepathy-accounts-kcm
  *
- * Copyright (C) 2009 Collabora Ltd. <http://www.collabora.co.uk/>
  * Copyright (C) 2011 Dominik Schmidt <kde@dominik-schmidt.de>
  *
  * This library is free software; you can redistribute it and/or
@@ -19,32 +18,35 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
-#ifndef TELEPATHY_ACCOUNTS_KCM_PARAMETER_EDIT_WIDGET_H
-#define TELEPATHY_ACCOUNTS_KCM_PARAMETER_EDIT_WIDGET_H
-
-#include <KCMTelepathyAccounts/abstract-account-parameters-widget.h>
+#ifndef KCMTELEPATHYACCOUNTS_GENERIC_ADVANCED_OPTIONS_WIDGET_H
+#define KCMTELEPATHYACCOUNTS_GENERIC_ADVANCED_OPTIONS_WIDGET_H
 
 #include <kdemacros.h>
 
-#include <TelepathyQt4/ConnectionManager>
+#include "abstract-account-parameters-widget.h"
 
-class KDE_EXPORT ParameterEditWidget : public AbstractAccountParametersWidget
+class KDE_EXPORT GenericAdvancedOptionsWidget : public AbstractAccountParametersWidget
 {
     Q_OBJECT
 
 public:
-    explicit ParameterEditWidget(ParameterEditModel *parameterModel,
-                                 QWidget *parent = 0);
-    ~ParameterEditWidget();
+    explicit GenericAdvancedOptionsWidget(ParameterEditModel* model,
+                                   QWidget *parent = 0);
+    virtual ~GenericAdvancedOptionsWidget();
 
-private Q_SLOTS:
-    void onDelegateDataChanged(const QModelIndex &index, const QVariant &value, int role);
+    virtual QList<ProtocolParameterValue> parameterValues() const;
+    virtual bool validateParameterValues();
+
+    void setTabBarHidden(bool hidden);
+
+    void addTab(AbstractAccountParametersWidget *tab, const QString &label);
 
 private:
+    Q_DISABLE_COPY(GenericAdvancedOptionsWidget);
+
     class Private;
     Private * const d;
 };
 
-
-#endif  // Header guard
+#endif // header guard
 

@@ -2,6 +2,8 @@
  * This file is part of telepathy-accounts-kcm
  *
  * Copyright (C) 2009 Collabora Ltd. <http://www.collabora.co.uk/>
+ * Copyright (C) 2011 Dominik Schmidt <kde@dominik-schmidt.de>
+ * Copyright (C) 2011 Thomas Richard
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -31,7 +33,7 @@ namespace Tp {
     class ProtocolParameter;
 }
 
-class ParameterEditModel : public QAbstractListModel
+class KDE_EXPORT ParameterEditModel : public QAbstractListModel
 {
     Q_OBJECT
     Q_DISABLE_COPY(ParameterEditModel);
@@ -42,6 +44,7 @@ public:
         LocalizedNameRole,
         TypeRole,
         ValueRole,
+        DefaultValueRole,
         SecretRole,
         RequiredRole,
         RequiredForRegistrationRole,
@@ -55,9 +58,13 @@ public:
     virtual int rowCount(const QModelIndex &index) const;
     virtual QVariant data(const QModelIndex &index, int role = Qt::DisplayRole) const;
     virtual bool setData(const QModelIndex &index, const QVariant &value, int role);
+    QModelIndex indexForParameter(const Tp::ProtocolParameter &parameter) const;
+    Tp::ProtocolParameter parameter(const QString &parameterName) const;
 
     void addItem(const Tp::ProtocolParameter &parameter, const QVariant &originalValue);
+    void addItems(const Tp::ProtocolParameterList &parameters, const QVariantMap &parameterValues = QVariantMap());
     QList<ProtocolParameterValue> parameterValues() const;
+    Tp::ProtocolParameterList parameters() const;
 
     bool validateParameterValues();
 
