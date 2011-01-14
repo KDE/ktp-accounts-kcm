@@ -45,10 +45,12 @@ public:
 
     virtual AbstractAccountParametersWidget
               *mainOptionsWidget(ParameterEditModel *parameterModel,
+                                 const QString &profile,
                                  QWidget *parent = 0) const = 0;
     virtual bool hasAdvancedOptionsWidget() const;
     virtual AbstractAccountParametersWidget
               *advancedOptionsWidget(ParameterEditModel *parameterModel,
+                                     const QString &profile,
                                      QWidget *parent = 0) const;
 
 protected:

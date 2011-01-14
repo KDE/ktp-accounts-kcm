@@ -31,7 +31,7 @@ class KDE_EXPORT GenericAdvancedOptionsWidget : public AbstractAccountParameters
 
 public:
     explicit GenericAdvancedOptionsWidget(ParameterEditModel* model,
-                                   QWidget *parent = 0);
+                                          QWidget *parent = 0);
     virtual ~GenericAdvancedOptionsWidget();
 
     virtual QList<ProtocolParameterValue> parameterValues() const;

@@ -2,6 +2,7 @@
  * This file is part of telepathy-accounts-kcm
  *
  * Copyright (C) 2009 Collabora Ltd. <http://www.collabora.co.uk/>
+ * Copyright (C) 2011 Thomas Richard <thomas.richard@proan.be>
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -20,7 +21,6 @@
 
 #include "profile-list-model.h"
 
-#include "connection-manager-item.h"
 #include "profile-item.h"
 
 #include <TelepathyQt4/ProfileManager>
@@ -89,13 +89,6 @@ void ProfileListModel::setProfileManager(Tp::ProfileManagerPtr profileManager)
     beginInsertRows(QModelIndex(), 0, profileManager.data()->profiles().size());
     foreach(Tp::ProfilePtr ptr, profileManager.data()->profiles()) {
         m_profileItems.append(new ProfileItem(ptr, this));
-        Tp::Profile::ParameterList list = ptr.data()->parameters();
-        foreach(Tp::Profile::Parameter parameter, list)
-        {
-            kDebug() << parameter.name();
-        }
-
-        kDebug() << "list size is" << list.size();
     }
 
 

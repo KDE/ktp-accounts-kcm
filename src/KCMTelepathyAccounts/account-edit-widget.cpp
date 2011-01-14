@@ -31,6 +31,7 @@
 #include <KDebug>
 #include <KLocale>
 
+#include <TelepathyQt4/Profile>
 #include <QtCore/QList>
 
 class AccountEditWidget::Private
@@ -44,6 +45,7 @@ public:
 
     QString connectionManager;
     QString protocol;
+    QString profileName;
 
     ParameterEditModel *parameterModel;
 
@@ -52,7 +54,7 @@ public:
     AbstractAccountParametersWidget *mainOptionsWidget;
 };
 
-AccountEditWidget::AccountEditWidget(const Tp::ProtocolInfo &info,
+AccountEditWidget::AccountEditWidget(const Tp::ProfilePtr &profile,
                                      ParameterEditModel *parameterModel,
                                      QWidget *parent)
         : QWidget(parent),
@@ -65,16 +67,22 @@ AccountEditWidget::AccountEditWidget(const Tp::ProtocolInfo &info,
     d->ui->setupUi(this);
 
     d->parameterModel = parameterModel;
-    d->connectionManager = info.cmName();
-    d->protocol = info.name();
+    d->profileName = profile.data()->serviceName();
+    d->connectionManager = profile.data()->cmName();
+    d->protocol = profile.data()->protocolName();
 
     connect(d->ui->advancedButton, SIGNAL(clicked()),
             this, SLOT(onAdvancedClicked()));
 
     d->ui->advancedButton->setIcon(KIcon("configure"));
-    d->ui->titleLabel->setText(Dictionary::instance()->string(info.name()));
+    //FIXME: Dictionary should not be needed anymore when distros ship profiles
+    QString localizedName = Dictionary::instance()->string(profile.data()->name());
+    if(localizedName.isEmpty()) {
+        localizedName = profile.data()->name();
+    }
+    d->ui->titleLabel->setText(localizedName);
     d->ui->iconLabel->setText("");
-    d->ui->iconLabel->setPixmap(KIcon(info.iconName()).pixmap(32));
+    d->ui->iconLabel->setPixmap(KIcon(profile.data()->iconName()).pixmap(32));
 
     loadWidgets();
 }
@@ -120,6 +128,7 @@ void AccountEditWidget::loadWidgets()
     if (d->accountUi) {
         // UI does exist, set it up.
         d->mainOptionsWidget = d->accountUi->mainOptionsWidget(d->parameterModel,
+                                                               d->profileName,
                                                                this);
         //Widgets wrapped in a layout should not have double margins
         d->mainOptionsWidget->layout()->setContentsMargins(0, 0, 0, 0);
@@ -146,7 +155,7 @@ void AccountEditWidget::loadWidgets()
             ++paramIter;
         }
 
-        // if a parameter is missing or a mandatory parameter is not being handle,
+        // if a parameter is missing or a mandatory parameter is not being handled,
         // fall back to the generic interface.
         // FIXME: not sure this is the best way to handle the situation, but
         //        it is like this in a hope the case won't happen often
@@ -177,6 +186,7 @@ void AccountEditWidget::onAdvancedClicked()
 
     AbstractAccountParametersWidget *advancedWidget;
     advancedWidget = d->accountUi->advancedOptionsWidget(d->parameterModel,
+                                                         d->profileName,
                                                          &dialog);
     dialog.setMainWidget(advancedWidget);
 

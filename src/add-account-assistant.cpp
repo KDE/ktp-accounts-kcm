@@ -3,6 +3,7 @@
  *
  * Copyright (C) 2009 Collabora Ltd. <http://www.collabora.co.uk/>
  * Copyright (C) 2011 Dominik Schmidt <kde@dominik-schmidt.de>
+ * Copyright (C) 2011 Thomas Richard <thomas.richard@proan.be>
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -37,6 +38,7 @@
 #include <QtCore/QList>
 #include <QtGui/QHBoxLayout>
 
+#include <TelepathyQt4/PendingReady>
 #include <TelepathyQt4/PendingAccount>
 #include <TelepathyQt4/PendingOperation>
 
@@ -44,7 +46,8 @@ class AddAccountAssistant::Private
 {
 public:
     Private()
-     : profileSelectWidget(0),
+     : currentProfileItem(0),
+       profileSelectWidget(0),
        accountEditWidget(0),
        pageOne(0),
        pageTwo(0)
@@ -53,7 +56,8 @@ public:
     }
 
     Tp::AccountManagerPtr accountManager;
-    Tp::AccountPtr account;
+    Tp::ConnectionManagerPtr connectionManager;
+    ProfileItem *currentProfileItem;
     ProfileSelectWidget *profileSelectWidget;
     AccountEditWidget *accountEditWidget;
     QWidget *pageTwoWidget;
@@ -114,35 +118,20 @@ void AddAccountAssistant::next()
 
         Q_ASSERT(d->profileSelectWidget->selectedProfile());
 
+        ProfileItem *selectedItem = d->profileSelectWidget->selectedProfile();
+
         // Set up the next page.
-        ProfileItem *item = d->profileSelectWidget->selectedProfile();
-/*
-        ConnectionManagerItem *cmItem = qobject_cast<ConnectionManagerItem*>(item->parent());
-        if (!cmItem) {
-            kWarning() << "cmItem is invalid.";
+        if(d->currentProfileItem != selectedItem) {
+            d->currentProfileItem = selectedItem;
+
+            d->connectionManager = Tp::ConnectionManager::create(selectedItem->cmName());
+            connect(d->connectionManager.data()->becomeReady(),
+                    SIGNAL(finished(Tp::PendingOperation*)),
+                    SLOT(onConnectionManagerReady(Tp::PendingOperation*)));
         }
-
-        // Delete the widgets for the next page if they already exist
-        if (d->accountEditWidget) {
-            d->accountEditWidget->deleteLater();
-            d->accountEditWidget = 0;
+        else {
+            pageTwo();
         }
-
-        // Get the protocol's parameters and values.
-        Tp::ProtocolInfo protocolInfo = item->protocolInfo();
-        Tp::ProtocolParameterList parameters = protocolInfo.parameters();
-
-        // Add the parameters to the model.
-        ParameterEditModel *parameterModel = new ParameterEditModel(this);
-        parameterModel->addItems(parameters);
-
-        // Set up the account edit widget
-        d->accountEditWidget = new AccountEditWidget(item->protocolInfo(),
-                                                     parameterModel,
-                                                     d->pageTwoWidget);
-        d->pageTwoWidget->layout()->addWidget(d->accountEditWidget);
-*/
-        KAssistantDialog::next();
     }
 }
 
@@ -166,15 +155,6 @@ void AddAccountAssistant::accept()
     QList<ProtocolParameterValue> parameterValues;
     parameterValues = d->accountEditWidget->parameterValues();
 
-    // Get the ProtocolItem that was selected and the corresponding ConnectionManagerItem.
-    //ProtocolItem *protocolItem = d->protocolSelectWidget->selectedProtocol();
-    //ConnectionManagerItem *connectionManagerItem = qobject_cast<ConnectionManagerItem*>(protocolItem->parent());
-
-    //if (!connectionManagerItem) {
-    //    kWarning() << "Invalid ConnectionManager item.";
-    //    return;
-    //}
-
     QVariantMap values;
     foreach(const ProtocolParameterValue &ppv, parameterValues)
     {
@@ -183,17 +163,22 @@ void AddAccountAssistant::accept()
         }
     }
 
-    /*
+    QVariantMap properties;
+
+    properties.insert("org.freedesktop.Telepathy.Account.Service", d->currentProfileItem->serviceName());
+    properties.insert("org.freedesktop.Telepathy.Account.Enabled", true);
+
     // FIXME: Ask the user to submit a Display Name
-    Tp::PendingAccount *pa = d->accountManager->createAccount(connectionManagerItem->connectionManager()->name(),
-                                                              protocolItem->protocol(),
+    Tp::PendingAccount *pa = d->accountManager->createAccount(d->currentProfileItem->cmName(),
+                                                              d->currentProfileItem->protocolName(),
                                                               values["account"].toString(),
-                                                              values);
+                                                              values,
+                                                              properties);
 
     connect(pa,
             SIGNAL(finished(Tp::PendingOperation*)),
             SLOT(onAccountCreated(Tp::PendingOperation*)));
-            */
+
 }
 
 void AddAccountAssistant::reject()
@@ -225,32 +210,22 @@ void AddAccountAssistant::onAccountCreated(Tp::PendingOperation *op)
         return;
     }
 
-    // Get the account pointer.
-    d->account = pendingAccount->account();
-
-    // Set the account icon
-    QString icon = QString("im-%1").arg(d->account->protocolName());
-    kDebug() << "Set account icon to: " << icon;
-    d->account->setIconName(icon);
-
-    kDebug() << "Calling set enabled.";
-
-    connect(d->account->setEnabled(true),
-            SIGNAL(finished(Tp::PendingOperation*)),
-            SLOT(onSetEnabledFinished(Tp::PendingOperation*)));
+    KAssistantDialog::accept();
 }
 
-void AddAccountAssistant::onSetEnabledFinished(Tp::PendingOperation *op)
+void AddAccountAssistant::onConnectionManagerReady(Tp::PendingOperation *op)
 {
     kDebug();
 
-    if (op->isError()) {
-        // TODO: User feedback in this case.
-        kWarning() << "Enabling Account failed:" << op->errorName() << op->errorMessage();
-        return;
+    if(op->isError()) {
+        kWarning() << "Creating ConnectionManager failed:" << op->errorName() << op->errorMessage();
     }
 
-    KAssistantDialog::accept();
+    if(!d->connectionManager.data()->isValid()) {
+        kWarning() << "Invalid ConnectionManager";
+    }
+
+    pageTwo();
 }
 
 void AddAccountAssistant::onProfileSelected(bool value)
@@ -258,6 +233,35 @@ void AddAccountAssistant::onProfileSelected(bool value)
     kDebug();
     //if a protocol is selected, enable the next button on the first page
     setValid(d->pageOne, value);
+}
+
+void AddAccountAssistant::pageTwo()
+{
+    // Get the protocol's parameters and values.
+    Tp::ProtocolInfo protocolInfo = d->connectionManager.data()->protocol(d->currentProfileItem->protocolName());
+    Tp::ProtocolParameterList parameters = protocolInfo.parameters();
+
+    // Add the parameters to the model.
+    ParameterEditModel *parameterModel = new ParameterEditModel(this);
+    parameterModel->addItems(parameters);
+
+    foreach(const Tp::Profile::Parameter &parameter, d->currentProfileItem->profile().data()->parameters()) {
+        parameterModel->setData(parameterModel->indexForParameter(parameter), parameter.value(), Qt::EditRole);
+    }
+
+    // Delete account previous widget if it already existed.
+    if (d->accountEditWidget) {
+        d->accountEditWidget->deleteLater();
+        d->accountEditWidget = 0;
+    }
+
+    // Set up the account edit widget.
+    d->accountEditWidget = new AccountEditWidget(d->currentProfileItem->profile(),
+                                                 parameterModel,
+                                                 d->pageTwoWidget);
+    d->pageTwoWidget->layout()->addWidget(d->accountEditWidget);
+
+    KAssistantDialog::next();
 }
 
 #include "add-account-assistant.moc"

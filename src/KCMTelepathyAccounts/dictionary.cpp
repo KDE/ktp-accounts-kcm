@@ -71,6 +71,7 @@ Dictionary::Dictionary()
     m_strings.insert("sip", i18n("Session Initiation Protocol (SIP)"));
     m_strings.insert("trepia", i18n("Trepia"));
     m_strings.insert("yahoo", i18n("Yahoo! Messenger"));
+    m_strings.insert("yahoojp", i18n("Yahoo! Messenger Japan"));
     m_strings.insert("zephyr", i18n("Zephyr"));
 }
 

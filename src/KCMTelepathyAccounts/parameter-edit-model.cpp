@@ -31,6 +31,7 @@
 
 #include <QtGui/QValidator>
 
+#include <TelepathyQt4/Profile>
 #include <TelepathyQt4/ConnectionManager>
 
 ParameterEditModel::ParameterEditModel(QObject *parent)
@@ -154,6 +155,17 @@ QModelIndex ParameterEditModel::indexForParameter(const Tp::ProtocolParameter &p
     return QModelIndex();
 }
 
+QModelIndex ParameterEditModel::indexForParameter(const Tp::Profile::Parameter &parameter) const
+{
+    for(int i=0; i<m_items.size(); ++i) {
+        ParameterItem *item = m_items.at(i);
+        if(item->parameter().name() == parameter.name() && item->parameter().type() == parameter.type()) {
+            return createIndex(i,0);
+        }
+    }
+    return QModelIndex();
+}
+
 Tp::ProtocolParameter ParameterEditModel::parameter(const QString &parameterName) const
 {
     foreach(ParameterItem* item, m_items) {
@@ -168,7 +180,6 @@ Tp::ProtocolParameter ParameterEditModel::parameter(const QString &parameterName
 
 void ParameterEditModel::addItem(const Tp::ProtocolParameter &parameter, const QVariant &originalValue)
 {
-    kDebug();
     // FIXME: Check we are not creating duplicate items.
 
     // Create a new ParameterItem and add it to the list.

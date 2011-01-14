@@ -2,6 +2,7 @@
  * This file is part of telepathy-accounts-kcm
  *
  * Copyright (C) 2009 Collabora Ltd. <http://www.collabora.co.uk/>
+ * Copyright (C) 2011 Thomas Richard <thomas.richard@proan.be>
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -21,7 +22,6 @@
 #include "profile-item.h"
 
 #include "profile-list-model.h"
-#include "connection-manager-item.h"
 #include "dictionary.h"
 
 #include <TelepathyQt4/Profile>
@@ -31,8 +31,7 @@ ProfileItem::ProfileItem(const Tp::ProfilePtr &profile, ProfileListModel *parent
  : QObject(parent),
    m_profile(profile)
 {
-    kDebug() << "Creating new ProfileItem with and profile;" << profile.data()->name();
-
+    //FIXME: Dictionary should not be needed anymore when distros ship profiles
     m_localizedName = Dictionary::instance()->string(profile.data()->name());
     if(m_localizedName.isEmpty()) {
         m_localizedName = profile.data()->name();
@@ -44,6 +43,11 @@ ProfileItem::~ProfileItem()
     kDebug();
 
     // TODO: Implement me...
+}
+
+QString ProfileItem::serviceName() const
+{
+    return m_profile.data()->serviceName();
 }
 
 QString ProfileItem::name() const
@@ -69,6 +73,11 @@ QString ProfileItem::cmName() const
 QString ProfileItem::protocolName() const
 {
     return m_profile.data()->protocolName();
+}
+
+Tp::ProfilePtr ProfileItem::profile() const
+{
+    return m_profile;
 }
 
 #include "profile-item.moc"

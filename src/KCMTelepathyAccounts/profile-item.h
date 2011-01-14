@@ -2,6 +2,7 @@
  * This file is part of telepathy-accounts-kcm
  *
  * Copyright (C) 2009 Collabora Ltd. <http://www.collabora.co.uk/>
+ * Copyright (C) 2011 Thomas Richard <thomas.richard@proan.be>
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -38,11 +39,13 @@ public:
     explicit ProfileItem(const Tp::ProfilePtr &profile, ProfileListModel *parent);
     virtual ~ProfileItem();
 
+    QString serviceName() const;
     QString name() const;
     QString localizedName() const;
     QString iconName() const;
     QString cmName() const;
     QString protocolName() const;
+    Tp::ProfilePtr profile() const;
 
 private:
     Tp::ProfilePtr m_profile;

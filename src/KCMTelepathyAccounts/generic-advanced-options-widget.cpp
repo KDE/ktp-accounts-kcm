@@ -41,8 +41,8 @@ public:
 };
 
 GenericAdvancedOptionsWidget::GenericAdvancedOptionsWidget(ParameterEditModel *parameterModel,
-                                             QWidget *parent)
- : AbstractAccountParametersWidget(parameterModel, parent),
+                                                           QWidget *parent)
+ : AbstractAccountParametersWidget(parameterModel, QString(), parent),
    d(new Private)
 {
     QHBoxLayout *layout = new QHBoxLayout(this);

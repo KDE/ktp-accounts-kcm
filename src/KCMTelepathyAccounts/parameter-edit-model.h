@@ -26,11 +26,14 @@
 #include "protocol-parameter-value.h"
 
 #include <QtCore/QAbstractListModel>
+#include <TelepathyQt4/Profile>
 
 class ParameterItem;
 
 namespace Tp {
     class ProtocolParameter;
+    class Profile;
+    class Parameter;
 }
 
 class KDE_EXPORT ParameterEditModel : public QAbstractListModel
@@ -59,6 +62,7 @@ public:
     virtual QVariant data(const QModelIndex &index, int role = Qt::DisplayRole) const;
     virtual bool setData(const QModelIndex &index, const QVariant &value, int role);
     QModelIndex indexForParameter(const Tp::ProtocolParameter &parameter) const;
+    QModelIndex indexForParameter(const Tp::Profile::Parameter &parameter) const;
     Tp::ProtocolParameter parameter(const QString &parameterName) const;
 
     void addItem(const Tp::ProtocolParameter &parameter, const QVariant &originalValue);

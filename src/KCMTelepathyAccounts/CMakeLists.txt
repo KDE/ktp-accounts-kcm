@@ -12,7 +12,6 @@ set (libkcmtelepathyaccounts_SRCS
      account-edit-widget.cpp
      profile-select-widget.cpp
      profile-list-model.cpp
-     connection-manager-item.cpp
      profile-item.cpp
      parameter-edit-widget.cpp
      parameter-edit-delegate.cpp
@@ -30,7 +29,6 @@ set (libkcmtelepathyaccounts_HDRS
      generic-advanced-options-widget.h
      account-edit-widget.h
      plugin-macros.h
-     connection-manager-item.h
      plugin-manager.h
      profile-select-widget.h
      profile-item.h

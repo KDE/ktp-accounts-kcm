@@ -2,6 +2,7 @@
  * This file is part of telepathy-accounts-kcm
  *
  * Copyright (C) 2009 Collabora Ltd. <http://www.collabora.co.uk/>
+ * Copyright (C) 2011 Thomas Richard <thomas.richard@proan.be>
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -68,6 +69,7 @@ ProfileSelectWidget::ProfileSelectWidget(QWidget *parent)
             SIGNAL(profileDoubleClicked()));
 
     d->profileManager = Tp::ProfileManager::create(QDBusConnection::sessionBus());
+
     // Until all distros ship correct profile files, we should fake them
     connect(d->profileManager.data()->becomeReady(Tp::Features() << Tp::ProfileManager::FeatureFakeProfiles),
             SIGNAL(finished(Tp::PendingOperation*)),
@@ -81,7 +83,6 @@ ProfileSelectWidget::~ProfileSelectWidget()
     delete d->ui;
     delete d;
 }
-
 
 void ProfileSelectWidget::onProfileManagerReady(Tp::PendingOperation *op)
 {

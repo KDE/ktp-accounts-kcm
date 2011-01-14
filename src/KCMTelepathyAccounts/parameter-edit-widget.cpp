@@ -43,7 +43,7 @@ public:
 
 ParameterEditWidget::ParameterEditWidget(ParameterEditModel *parameterModel,
                                          QWidget *parent)
- : AbstractAccountParametersWidget(parameterModel, parent),
+ : AbstractAccountParametersWidget(parameterModel, QString(), parent),
    d(new Private)
 {
     kDebug();

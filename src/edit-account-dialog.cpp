@@ -70,7 +70,7 @@ EditAccountDialog::EditAccountDialog(AccountItem *item, QWidget *parent)
     parameterModel->addItems(parameters, parameterValues);
 
     // Set up the interface
-    d->widget = new AccountEditWidget(protocolInfo,
+    d->widget = new AccountEditWidget(d->item->account().data()->profile(),
                                       parameterModel,
                                       this);
     setMainWidget(d->widget);
