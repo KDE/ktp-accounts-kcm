@@ -38,8 +38,6 @@ ProfileListModel::ProfileListModel(QObject *parent)
 ProfileListModel::~ProfileListModel()
 {
     kDebug();
-
-    // TODO: Implement me!
 }
 
 int ProfileListModel::rowCount(const QModelIndex &index) const
@@ -66,8 +64,7 @@ QVariant ProfileListModel::data(const QModelIndex &index, int role) const
         data = QVariant(m_profileItems.at(index.row())->localizedName());
         break;
     case Qt::DecorationRole:
-        // Look for an icon named im-<iconname>
-        data = QVariant(KIcon((QString("im-%1").arg(m_profileItems.at(index.row())->iconName()))));
+        data = QVariant(m_profileItems.at(index.row())->icon());
         break;
     default:
         break;
@@ -90,9 +87,6 @@ void ProfileListModel::setProfileManager(Tp::ProfileManagerPtr profileManager)
     foreach(Tp::ProfilePtr ptr, profileManager->profiles()) {
         m_profileItems.append(new ProfileItem(ptr, this));
     }
-
-
-
     endInsertRows();
 }
 

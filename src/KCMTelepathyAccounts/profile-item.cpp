@@ -26,23 +26,27 @@
 
 #include <TelepathyQt4/Profile>
 #include <KDebug>
+#include <KIcon>
 
 ProfileItem::ProfileItem(const Tp::ProfilePtr &profile, ProfileListModel *parent)
  : QObject(parent),
-   m_profile(profile)
+   m_profile(profile),
+   m_icon(0)
 {
     //FIXME: Dictionary should not be needed anymore when distros ship profiles
     m_localizedName = Dictionary::instance()->string(profile->name());
     if(m_localizedName.isEmpty()) {
         m_localizedName = profile->name();
     }
+
+    generateIcon();
 }
 
 ProfileItem::~ProfileItem()
 {
     kDebug();
 
-    // TODO: Implement me...
+    delete m_icon;
 }
 
 QString ProfileItem::serviceName() const
@@ -78,6 +82,21 @@ QString ProfileItem::protocolName() const
 Tp::ProfilePtr ProfileItem::profile() const
 {
     return m_profile;
+}
+
+const KIcon& ProfileItem::icon() const
+{
+    Q_ASSERT(m_icon != 0);
+
+    return *m_icon;
+}
+
+void ProfileItem::generateIcon()
+{
+    QString iconPath = profile()->iconName();
+
+    delete m_icon;
+    m_icon = new KIcon(iconPath);
 }
 
 #include "profile-item.moc"

@@ -29,6 +29,7 @@
 #include <TelepathyQt4/Profile>
 
 class ProfileListModel;
+class KIcon;
 
 class KDE_EXPORT ProfileItem : public QObject
 {
@@ -46,10 +47,14 @@ public:
     QString cmName() const;
     QString protocolName() const;
     Tp::ProfilePtr profile() const;
+    const KIcon& icon() const;
 
 private:
+    void generateIcon();
+
     Tp::ProfilePtr m_profile;
     QString m_localizedName;
+    KIcon* m_icon;
 };
 
 
