@@ -25,7 +25,6 @@
 #include "KCMTelepathyAccounts/abstract-account-parameters-widget.h"
 #include "KCMTelepathyAccounts/abstract-account-ui.h"
 #include "KCMTelepathyAccounts/account-edit-widget.h"
-#include "KCMTelepathyAccounts/connection-manager-item.h"
 #include "KCMTelepathyAccounts/plugin-manager.h"
 #include "KCMTelepathyAccounts/profile-item.h"
 #include "KCMTelepathyAccounts/profile-select-widget.h"
