@@ -12,6 +12,7 @@ set (telepathy_accounts_kcm_SRCS
      account-item.cpp
      add-account-assistant.cpp
      edit-account-dialog.cpp
+     accounts-list-delegate.cpp
 )
 
 kde4_add_ui_files (telepathy_accounts_kcm_SRCS

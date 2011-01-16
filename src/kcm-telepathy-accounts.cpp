@@ -25,6 +25,7 @@
 #include "accounts-list-model.h"
 #include "add-account-assistant.h"
 #include "edit-account-dialog.h"
+#include "accounts-list-delegate.h"
 
 #include <KGenericFactory>
 #include <KIcon>
@@ -74,8 +75,14 @@ KCMTelepathyAccounts::KCMTelepathyAccounts(QWidget *parent, const QVariantList& 
     m_ui->addAccountButton->setIcon(KIcon("list-add"));
     m_ui->editAccountButton->setIcon(KIcon("configure"));
     m_ui->removeAccountButton->setIcon(KIcon("edit-delete"));
+  
+    AccountsListDelegate* delegate = new AccountsListDelegate(m_ui->accountsListView, this);
+    m_ui->accountsListView->setItemDelegate(delegate);
 
-    // Connect to useful signals from the UI elements.
+
+    connect(delegate,
+            SIGNAL(itemChecked(QModelIndex, bool)),
+            SLOT(onAccountEnabledChanged(QModelIndex, bool)));
     connect(m_ui->addAccountButton,
             SIGNAL(clicked()),
             SLOT(onAddAccountClicked()));
@@ -106,6 +113,18 @@ void KCMTelepathyAccounts::load()
     // all changes that are made in this KCM are, at the moment, saved
     // immediately and cannot be reverted programatically.
     return;
+}
+
+void KCMTelepathyAccounts::onAccountEnabledChanged(const QModelIndex &index, bool enabled)
+{
+    QVariant value;
+    if (enabled) {
+        value = QVariant(Qt::Checked);
+    }
+    else {
+        value = QVariant(Qt::Unchecked);
+    }
+    m_accountsListModel->setData(index, value, Qt::CheckStateRole);
 }
 
 void KCMTelepathyAccounts::onAccountManagerReady(Tp::PendingOperation *op)

@@ -76,6 +76,17 @@ QVariant AccountsListModel::data(const QModelIndex &index, int role) const
         }
         break;
 
+    case AccountsListModel::ConnectionStateDisplayRole:
+        data = QVariant(m_accounts.at(index.row())->connectionStateString());
+        break;
+
+    case AccountsListModel::ConnectionStateIconRole:
+        data = QVariant(m_accounts.at(index.row())->connectionStateIcon());
+        break;
+
+    case AccountsListModel::ConnectionErrorMessageDisplayRole:
+        data = QVariant(m_accounts.at(index.row())->connectionStatusReason());
+        break;
     default:
         break;
     }
