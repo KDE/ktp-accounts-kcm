@@ -53,8 +53,10 @@ GabbleAccountUiPlugin::~GabbleAccountUiPlugin()
     kDebug();
 }
 
-AbstractAccountUi* GabbleAccountUiPlugin::accountUi(const QString &connectionManager, const QString &protocol)
+AbstractAccountUi* GabbleAccountUiPlugin::accountUi(const QString &connectionManager, const QString &protocol, const QString &serviceName)
 {
+    Q_UNUSED(serviceName);
+
     kDebug();
 
     // We only support gabble/jabber combination.

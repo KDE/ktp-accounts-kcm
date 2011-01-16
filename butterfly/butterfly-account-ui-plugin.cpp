@@ -55,8 +55,10 @@ ButterflyAccountUiPlugin::~ButterflyAccountUiPlugin()
     kDebug();
 }
 
-AbstractAccountUi* ButterflyAccountUiPlugin::accountUi(const QString &connectionManager, const QString &protocol)
+AbstractAccountUi* ButterflyAccountUiPlugin::accountUi(const QString &connectionManager, const QString &protocol, const QString &serviceName)
 {
+    Q_UNUSED(serviceName);
+
     kDebug();
     
     // We only support butterfly/xmpp combination.
