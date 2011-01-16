@@ -35,15 +35,11 @@ ParameterEditDelegate::ParameterEditDelegate(QAbstractItemView *itemView, QObjec
  : KWidgetItemDelegate(itemView, parent)
 {
     kDebug();
-
-    // TODO: Implement me!
 }
 
 ParameterEditDelegate::~ParameterEditDelegate()
 {
     kDebug();
-
-    // TODO: Implement me!
 }
 
 

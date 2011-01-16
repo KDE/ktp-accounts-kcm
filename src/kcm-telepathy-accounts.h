@@ -64,7 +64,6 @@ private:
 
     Tp::AccountManagerPtr m_accountManager;
     AccountsListModel *m_accountsListModel;
-    AddAccountAssistant *m_addAccountAssistant;
 };
 
 

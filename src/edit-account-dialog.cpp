@@ -80,6 +80,8 @@ EditAccountDialog::EditAccountDialog(AccountItem *item, QWidget *parent)
 EditAccountDialog::~EditAccountDialog()
 {
     kDebug();
+
+    delete d;
 }
 
 void EditAccountDialog::accept()

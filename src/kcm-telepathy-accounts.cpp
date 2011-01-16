@@ -44,8 +44,7 @@ K_EXPORT_PLUGIN(KCMTelepathyAccountsFactory("telepathy_accounts", "kcm_telepathy
 
 KCMTelepathyAccounts::KCMTelepathyAccounts(QWidget *parent, const QVariantList& args)
  : KCModule(KCMTelepathyAccountsFactory::componentData(), parent, args),
-   m_accountsListModel(0),
-   m_addAccountAssistant(0)
+   m_accountsListModel(0)
 {
     kDebug();
 
@@ -96,7 +95,6 @@ KCMTelepathyAccounts::~KCMTelepathyAccounts()
     kDebug();
 
     delete m_ui;
-    // TODO: Implement me!
 }
 
 void KCMTelepathyAccounts::load()

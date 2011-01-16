@@ -38,15 +38,11 @@ ParameterEditModel::ParameterEditModel(QObject *parent)
  : QAbstractListModel(parent)
 {
     kDebug();
-
-    // TODO: Implement me!
 }
 
 ParameterEditModel::~ParameterEditModel()
 {
     kDebug();
-
-    // TODO: Implement me!
 }
 
 int ParameterEditModel::rowCount(const QModelIndex &index) const
@@ -180,7 +176,12 @@ Tp::ProtocolParameter ParameterEditModel::parameter(const QString &parameterName
 
 void ParameterEditModel::addItem(const Tp::ProtocolParameter &parameter, const QVariant &originalValue)
 {
-    // FIXME: Check we are not creating duplicate items.
+    // Check we are not creating duplicate items.
+    foreach (const ParameterItem *item, m_items) {
+        if(item->parameter() == parameter) {
+            return;
+        }
+    }
 
     // Create a new ParameterItem and add it to the list.
     beginInsertRows(QModelIndex(), m_items.size(), m_items.size());

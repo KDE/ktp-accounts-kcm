@@ -36,7 +36,7 @@ public:
     {
         kDebug();
     }
-    KTabWidget tabWidget;
+    KTabWidget *tabWidget;
     QList<AbstractAccountParametersWidget*> widgets;
 };
 
@@ -45,10 +45,11 @@ GenericAdvancedOptionsWidget::GenericAdvancedOptionsWidget(ParameterEditModel *p
  : AbstractAccountParametersWidget(parameterModel, parent),
    d(new Private)
 {
+    d->tabWidget = new KTabWidget();
     QHBoxLayout *layout = new QHBoxLayout(this);
-    layout->addWidget(&(d->tabWidget));
+    layout->addWidget(d->tabWidget);
 
-    d->tabWidget.setTabBarHidden(true);
+    d->tabWidget->setTabBarHidden(true);
 }
 
 GenericAdvancedOptionsWidget::~GenericAdvancedOptionsWidget()
@@ -93,17 +94,17 @@ bool GenericAdvancedOptionsWidget::validateParameterValues()
 
 void GenericAdvancedOptionsWidget::setTabBarHidden(bool hidden)
 {
-    d->tabWidget.setTabBarHidden(hidden);
+    d->tabWidget->setTabBarHidden(hidden);
 }
 
 void GenericAdvancedOptionsWidget::addTab(AbstractAccountParametersWidget* tab, const QString& label)
 {
-    if(d->tabWidget.count() == 1)
+    if(d->tabWidget->count() == 1)
     {
-        d->tabWidget.setTabBarHidden(false);
+        d->tabWidget->setTabBarHidden(false);
     }
 
-    d->tabWidget.addTab(tab, label);
+    d->tabWidget->addTab(tab, label);
     d->widgets.append(tab);
 }
 
