@@ -33,7 +33,7 @@ public:
     ButterflyAccountUiPlugin(QObject *parent, const QVariantList &);
     virtual ~ButterflyAccountUiPlugin();
 
-    virtual AbstractAccountUi* accountUi(const QString &connectionManager, const QString &protocol);
+    virtual AbstractAccountUi* accountUi(const QString &connectionManager, const QString &protocol, const QString &serviceName);
 
 private:
     Q_DISABLE_COPY(ButterflyAccountUiPlugin);

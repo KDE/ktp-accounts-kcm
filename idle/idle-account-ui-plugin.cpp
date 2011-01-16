@@ -55,8 +55,10 @@ IdleAccountUiPlugin::~IdleAccountUiPlugin()
     kDebug();
 }
 
-AbstractAccountUi* IdleAccountUiPlugin::accountUi(const QString &connectionManager, const QString &protocol)
+AbstractAccountUi* IdleAccountUiPlugin::accountUi(const QString &connectionManager, const QString &protocol, const QString &serviceName)
 {
+    Q_UNUSED(serviceName);
+
     kDebug();
 
     if ((connectionManager == "idle") && (protocol == "irc")) {

@@ -33,8 +33,7 @@ public:
     IdleAccountUiPlugin(QObject *parent, const QVariantList &);
     virtual ~IdleAccountUiPlugin();
 
-    virtual AbstractAccountUi* accountUi(const QString &connectionManager,
-                                         const QString &protocol);
+    virtual AbstractAccountUi* accountUi(const QString &connectionManager, const QString &protocol, const QString &serviceName);
 
 private:
     Q_DISABLE_COPY(IdleAccountUiPlugin);

@@ -53,8 +53,10 @@ HazeAccountUiPlugin::~HazeAccountUiPlugin()
     kDebug();
 }
 
-AbstractAccountUi* HazeAccountUiPlugin::accountUi(const QString &connectionManager, const QString &protocol)
+AbstractAccountUi* HazeAccountUiPlugin::accountUi(const QString &connectionManager, const QString &protocol, const QString &serviceName)
 {
+    Q_UNUSED(serviceName);
+
     kDebug();
 
     // We only support haze/icq combination.so far
