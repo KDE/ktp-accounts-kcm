@@ -45,6 +45,8 @@ public:
     void setProfileManager(Tp::ProfileManagerPtr profileManager);
 
 private:
+    bool hasNonFakeProfile(const Tp::ProfilePtr &profile, const QList<Tp::ProfilePtr> &profiles) const;
+
     QList<ProfileItem*> m_profileItems;
 };
 

@@ -83,16 +83,42 @@ void ProfileListModel::setProfileManager(Tp::ProfileManagerPtr profileManager)
         item = 0;
     }
 
-    beginInsertRows(QModelIndex(), 0, profileManager->profiles().size());
-    foreach(Tp::ProfilePtr ptr, profileManager->profiles()) {
-        m_profileItems.append(new ProfileItem(ptr, this));
+    QList<Tp::ProfilePtr> profiles = profileManager->profiles();
+
+    QList<ProfileItem*> insertItems;
+    foreach(const Tp::ProfilePtr &profile, profiles) {
+        if(profile->isFake()) {
+            if(hasNonFakeProfile(profile, profiles)) {
+                continue;
+            }
+        }
+        insertItems.append(new ProfileItem(profile, this));
     }
+
+    beginInsertRows(QModelIndex(), 0, insertItems.size()-1);
+    m_profileItems.append(insertItems);
     endInsertRows();
 }
 
 ProfileItem *ProfileListModel::itemForIndex(const QModelIndex &index) const
 {
     return m_profileItems.at(index.row());
+}
+
+bool ProfileListModel::hasNonFakeProfile(const Tp::ProfilePtr& profile, const QList<Tp::ProfilePtr> &profiles) const
+{
+    foreach(const Tp::ProfilePtr &otherProfile, profiles) {
+        if(profile->protocolName() == otherProfile->protocolName() && !otherProfile->isFake())
+        {
+            // check if this profile is for a special service or for this protocol in general
+            if(otherProfile->serviceName() == otherProfile->cmName().append("-").append(otherProfile->protocolName())
+            || otherProfile->serviceName() == otherProfile->protocolName()) {
+                return true;
+            }
+        }
+    }
+
+    return false;
 }
 
 
