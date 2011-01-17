@@ -32,20 +32,25 @@
 #include <TelepathyQt4/ProfileManager>
 #include <TelepathyQt4/Feature>
 
+#include <QSortFilterProxyModel>
+#include <qitemselectionmodel.h>
+
 class ProfileSelectWidget::Private
 {
 public:
     Private()
      : profileManager(0),
        ui(0),
-       model(0)
+       sourceModel(0),
+       sortModel(0)
     {
         kDebug();
     }
 
     Tp::ProfileManagerPtr profileManager;
     Ui::ProfileSelectWidget *ui;
-    ProfileListModel *model;
+    QSortFilterProxyModel *sortModel;
+    ProfileListModel *sourceModel;
 };
 
 ProfileSelectWidget::ProfileSelectWidget(QWidget *parent)
@@ -54,12 +59,19 @@ ProfileSelectWidget::ProfileSelectWidget(QWidget *parent)
 {
     kDebug();
 
-    // Set up the widget
-    d->model = new ProfileListModel(this);
+    // Set up the models
+    d->sourceModel = new ProfileListModel(this);
+    d->sortModel = new QSortFilterProxyModel(this);
+    d->sortModel->setSourceModel(d->sourceModel);
+    d->sortModel->sort(0, Qt::AscendingOrder);
+    d->sortModel->setDynamicSortFilter(true);
+    d->sortModel->setSortCaseSensitivity(Qt::CaseInsensitive);
 
+    // Set up the widget
     d->ui = new Ui::ProfileSelectWidget;
     d->ui->setupUi(this);
-    d->ui->profileListView->setModel(d->model);
+    d->ui->profileListView->setModel(d->sortModel);
+
 
     connect(d->ui->profileListView->selectionModel(),
             SIGNAL(selectionChanged(const QItemSelection &, const QItemSelection &)),
@@ -94,7 +106,7 @@ void ProfileSelectWidget::onProfileManagerReady(Tp::PendingOperation *op)
         return;
     }
 
-    d->model->setProfileManager(d->profileManager);
+    d->sourceModel->setProfileManager(d->profileManager);
 }
 
 // Return the selected ProfileItem or 0 if nothing is selected.
@@ -117,7 +129,9 @@ ProfileItem *ProfileSelectWidget::selectedProfile()
     }
 
     // 1 index is selected. Return the Pr for that.
-    return d->model->itemForIndex(selectedIndexes.at(0));
+    QItemSelection sourceSelection = d->sortModel->mapSelectionToSource(d->ui->profileListView->selectionModel()->selection());
+
+    return d->sourceModel->itemForIndex(sourceSelection.indexes().first());
 }
 
 void ProfileSelectWidget::onSelectionChanged(const QItemSelection &selected)
