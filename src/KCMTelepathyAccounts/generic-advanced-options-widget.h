@@ -34,10 +34,11 @@ public:
                                           QWidget *parent = 0);
     virtual ~GenericAdvancedOptionsWidget();
 
-    virtual QList<ProtocolParameterValue> parameterValues() const;
     virtual bool validateParameterValues();
 
     void setTabBarHidden(bool hidden);
+
+    void updateParameterModel();
 
     void addTab(AbstractAccountParametersWidget *tab, const QString &label);
 

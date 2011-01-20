@@ -102,13 +102,6 @@ bool AccountEditWidget::validateParameterValues() const
     return d->parameterModel->validateParameterValues();
 }
 
-QList<ProtocolParameterValue> AccountEditWidget::parameterValues() const
-{
-    QList<ProtocolParameterValue> values;
-    values = d->parameterModel->parameterValues();
-
-    return values;
-}
 
 void AccountEditWidget::loadWidgets()
 {
@@ -173,6 +166,16 @@ void AccountEditWidget::loadWidgets()
         d->ui->verticalLayout->insertWidget(1, d->mainOptionsWidget);
         d->ui->verticalLayout->setStretch(1, 1);
     }
+}
+
+QVariantMap AccountEditWidget::setParameters() const
+{
+    return d->parameterModel->setParameters();
+}
+
+QStringList AccountEditWidget::unsetParameters() const
+{
+    return d->parameterModel->unsetParameters();
 }
 
 void AccountEditWidget::onAdvancedClicked()

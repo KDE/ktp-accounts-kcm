@@ -46,6 +46,7 @@ public:
     virtual AbstractAccountParametersWidget
               *mainOptionsWidget(ParameterEditModel *parameterModel,
                                  QWidget *parent = 0) const = 0;
+
     virtual bool hasAdvancedOptionsWidget() const;
     virtual AbstractAccountParametersWidget
               *advancedOptionsWidget(ParameterEditModel *parameterModel,

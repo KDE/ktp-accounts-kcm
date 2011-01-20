@@ -68,18 +68,7 @@ AbstractAccountParametersWidget::~AbstractAccountParametersWidget()
     delete d;
 }
 
-QList<ProtocolParameterValue> AbstractAccountParametersWidget::parameterValues() const
 
-{
-    kDebug();
-
-    return d->parameterModel->parameterValues();
-}
-
-Tp::ProtocolParameterList AbstractAccountParametersWidget::parameters() const
-{
-    return d->parameters;
-}
 
 bool AbstractAccountParametersWidget::validateParameterValues()
 {
@@ -133,10 +122,17 @@ void AbstractAccountParametersWidget::handleParameter(const QString &parameterNa
     }
 }
 
+void AbstractAccountParametersWidget::updateParameterModel()
+{
+
+}
+
 ParameterEditModel* AbstractAccountParametersWidget::parameterModel() const
 {
     return d->parameterModel;
 }
+
+
 
 #include "abstract-account-parameters-widget.moc"
 

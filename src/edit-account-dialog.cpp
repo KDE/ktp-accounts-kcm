@@ -94,25 +94,11 @@ void EditAccountDialog::accept()
         return;
     }
 
-    // Get the mandatory parameters.
-    QList<ProtocolParameterValue> parameterValues;
-    parameterValues = d->widget->parameterValues();
+    QVariantMap setParameters = d->widget->setParameters();
+    QStringList unsetParameters = d->widget->unsetParameters();
 
-    QVariantMap setParameters;
-    QStringList unsetParameters;
-
-    foreach(const ProtocolParameterValue &ppv, parameterValues)
-    {
-        if (ppv.shouldSave()) {
-            setParameters.insert(ppv.name(), ppv.value());
-        }
-        else {
-            unsetParameters.append(ppv.name());
-        }
-    }
-
-    // kDebug() << "Set parameters:" << parameters;
-    // kDebug() << "Unset parameters:" << unsetParameters;
+    kDebug() << "Set parameters:" << setParameters;
+    kDebug() << "Unset parameters:" << unsetParameters;
 
     Tp::PendingStringList *psl = d->item->account()->updateParameters(setParameters, unsetParameters);
 

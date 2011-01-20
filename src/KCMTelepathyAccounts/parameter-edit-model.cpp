@@ -196,18 +196,6 @@ void ParameterEditModel::addItems(const Tp::ProtocolParameterList& parameters, c
     }
 }
 
-
-QList<ProtocolParameterValue> ParameterEditModel::parameterValues() const
-{
-    QList<ProtocolParameterValue> values;
-
-    foreach (ParameterItem *item, m_items) {
-        values.append(ProtocolParameterValue(item->parameter(), item->value()));
-    }
-
-    return values;
-}
-
 Tp::ProtocolParameterList ParameterEditModel::parameters() const
 {
     Tp::ProtocolParameterList parameters;
@@ -217,6 +205,67 @@ Tp::ProtocolParameterList ParameterEditModel::parameters() const
     }
 
     return parameters;
+}
+
+QVariantMap ParameterEditModel::setParameters() const
+{
+    QVariantMap setParameters;
+    foreach (ParameterItem *item, m_items) {
+        Tp::ProtocolParameter parameter = item->parameter();
+        QVariant value = item->value();
+
+        //return the parameter value in the type Tp is expecting
+        value.convert(parameter.type());
+
+        if (parameterNeedsSaving(parameter, value)) {
+            setParameters.insert(parameter.name(), value);
+        }
+    }
+    return setParameters;
+}
+
+QStringList ParameterEditModel::unsetParameters() const
+{
+    QStringList unsetParameters;
+    foreach (ParameterItem *item, m_items) {
+        Tp::ProtocolParameter parameter = item->parameter();
+        QVariant value = item->value();
+
+        if (! parameterNeedsSaving(parameter, value)) {
+            unsetParameters.append(parameter.name());
+        }
+    }
+
+    return unsetParameters;
+}
+
+bool ParameterEditModel::parameterNeedsSaving(const Tp::ProtocolParameter &parameter, const QVariant &value) const
+{
+    if (! parameter.isValid()) {
+        return false;
+    }
+
+    if (! value.isValid()) {
+        return false;
+    }
+
+    if (value.isNull()) {
+        return false;
+    }
+
+    // Don't any parameters where the default value is equal to the current value.
+    if (parameter.defaultValue() == value) {
+        return false;
+    }
+
+    // Don't save any strings where the default is empty, and the value is an empty string
+    if (parameter.type() == QVariant::String) {
+        if ((parameter.defaultValue().isNull()) && value.toString().isEmpty()) {
+            return false;
+        }
+    }
+
+    return true;
 }
 
 

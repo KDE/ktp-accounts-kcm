@@ -19,7 +19,6 @@ set (libkcmtelepathyaccounts_SRCS
      parameter-item.cpp
      dictionary.cpp
      plugin-manager.cpp
-     protocol-parameter-value.cpp
 )
 
 set (libkcmtelepathyaccounts_HDRS
@@ -34,7 +33,6 @@ set (libkcmtelepathyaccounts_HDRS
      profile-item.h
      parameter-edit-widget.h
      parameter-edit-model.h
-     protocol-parameter-value.h
 )
 
 set (libkcmtelepathyaccounts_PRETTY_HDRS
@@ -50,7 +48,6 @@ set (libkcmtelepathyaccounts_PRETTY_HDRS
      include/ProtocolItem
      include/ParameterEditWidget
      include/ParameterEditModel
-     include/ProtocolParameterValue
 )
 
 kde4_add_ui_files (libkcmtelepathyaccounts_SRCS

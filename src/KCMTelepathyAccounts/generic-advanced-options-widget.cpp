@@ -59,32 +59,13 @@ GenericAdvancedOptionsWidget::~GenericAdvancedOptionsWidget()
     delete d;
 }
 
-QList<ProtocolParameterValue> GenericAdvancedOptionsWidget::parameterValues() const
-{
-    kDebug();
-
-    // the server parameter values
-    QList<ProtocolParameterValue> parameters;
-    foreach(AbstractAccountParametersWidget *widget, d->widgets)
-    {
-        kDebug() << "Got these values for storing...";
-        foreach(ProtocolParameterValue value, widget->parameterValues())
-        {
-            kDebug() << value.name() << value.value();
-        }
-        parameters.append(widget->parameterValues());
-    }
-
-    return parameters;
-}
 
 bool GenericAdvancedOptionsWidget::validateParameterValues()
 {
     kDebug();
 
     // validate one tab at a time so that the user is not flooded with dialogs
-    foreach(AbstractAccountParametersWidget *widget, d->widgets)
-    {
+    foreach(AbstractAccountParametersWidget *widget, d->widgets) {
         if (!widget->validateParameterValues())
         return false;
     }
@@ -97,10 +78,17 @@ void GenericAdvancedOptionsWidget::setTabBarHidden(bool hidden)
     d->tabWidget->setTabBarHidden(hidden);
 }
 
+void GenericAdvancedOptionsWidget::updateParameterModel()
+{
+    foreach(AbstractAccountParametersWidget *widget, d->widgets) {
+        widget->updateParameterModel();
+    }
+
+}
+
 void GenericAdvancedOptionsWidget::addTab(AbstractAccountParametersWidget* tab, const QString& label)
 {
-    if(d->tabWidget->count() == 1)
-    {
+    if(d->tabWidget->count() == 1) {
         d->tabWidget->setTabBarHidden(false);
     }
 

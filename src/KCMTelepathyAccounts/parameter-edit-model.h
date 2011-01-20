@@ -67,13 +67,23 @@ public:
 
     void addItem(const Tp::ProtocolParameter &parameter, const QVariant &originalValue);
     void addItems(const Tp::ProtocolParameterList &parameters, const QVariantMap &parameterValues = QVariantMap());
-    QList<ProtocolParameterValue> parameterValues() const;
+
     Tp::ProtocolParameterList parameters() const;
+
+    /** Returns a map of the parameters values, keyed by parameter name in a format suitable for sending to Telepathy*/
+    QVariantMap setParameters() const;
+
+    /** Returns a list of the names of parameters which are handled by the model, but should not be saved in the user's settings*/
+    QStringList unsetParameters() const;
+
 
     bool validateParameterValues();
 
 private:
     QList<ParameterItem*> m_items;
+
+    /** Returns true if this parameter/value pair should be saved. False if it should be unset*/
+    bool parameterNeedsSaving(const Tp::ProtocolParameter &parameter, const QVariant &value) const;
 };
 
 
