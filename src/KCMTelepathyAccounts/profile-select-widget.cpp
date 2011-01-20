@@ -41,8 +41,8 @@ public:
     Private()
      : profileManager(0),
        ui(0),
-       sourceModel(0),
-       sortModel(0)
+       sortModel(0),
+       sourceModel(0)
     {
         kDebug();
     }
