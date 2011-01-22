@@ -207,7 +207,7 @@ Tp::ProtocolParameterList ParameterEditModel::parameters() const
     return parameters;
 }
 
-QVariantMap ParameterEditModel::setParameters() const
+QVariantMap ParameterEditModel::parametersSet() const
 {
     QVariantMap setParameters;
     foreach (ParameterItem *item, m_items) {
@@ -224,7 +224,7 @@ QVariantMap ParameterEditModel::setParameters() const
     return setParameters;
 }
 
-QStringList ParameterEditModel::unsetParameters() const
+QStringList ParameterEditModel::parametersUnset() const
 {
     QStringList unsetParameters;
     foreach (ParameterItem *item, m_items) {

@@ -71,10 +71,10 @@ public:
     Tp::ProtocolParameterList parameters() const;
 
     /** Returns a map of the parameters values, keyed by parameter name in a format suitable for sending to Telepathy*/
-    QVariantMap setParameters() const;
+    QVariantMap parametersSet() const;
 
     /** Returns a list of the names of parameters which are handled by the model, but should not be saved in the user's settings*/
-    QStringList unsetParameters() const;
+    QStringList parametersUnset() const;
 
 
     bool validateParameterValues();

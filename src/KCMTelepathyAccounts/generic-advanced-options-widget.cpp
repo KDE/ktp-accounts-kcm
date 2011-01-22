@@ -78,10 +78,10 @@ void GenericAdvancedOptionsWidget::setTabBarHidden(bool hidden)
     d->tabWidget->setTabBarHidden(hidden);
 }
 
-void GenericAdvancedOptionsWidget::updateParameterModel()
+void GenericAdvancedOptionsWidget::submit()
 {
     foreach(AbstractAccountParametersWidget *widget, d->widgets) {
-        widget->updateParameterModel();
+        widget->submit();
     }
 
 }

@@ -122,16 +122,15 @@ void AbstractAccountParametersWidget::handleParameter(const QString &parameterNa
     }
 }
 
-void AbstractAccountParametersWidget::updateParameterModel()
+void AbstractAccountParametersWidget::submit()
 {
-
+    d->mapper->submit();
 }
 
 ParameterEditModel* AbstractAccountParametersWidget::parameterModel() const
 {
     return d->parameterModel;
 }
-
 
 
 #include "abstract-account-parameters-widget.moc"

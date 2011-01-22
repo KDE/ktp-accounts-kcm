@@ -151,7 +151,7 @@ void AddAccountAssistant::accept()
     }
 
     // Get the parameter values.
-    QVariantMap values  = d->accountEditWidget->setParameters();
+    QVariantMap values  = d->accountEditWidget->parametersSet();
 
     // FIXME: In some next version of tp-qt4 there should be a convenience class for this
     // https://bugs.freedesktop.org/show_bug.cgi?id=33153

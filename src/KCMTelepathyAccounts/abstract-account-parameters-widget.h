@@ -49,7 +49,7 @@ public:
     /** Makes sure the model is up to date.
         Subclasses which do not only use the 'handleParameter' interface should implement this.
     */
-    virtual void updateParameterModel();
+    virtual void submit();
 
     virtual bool validateParameterValues();
 

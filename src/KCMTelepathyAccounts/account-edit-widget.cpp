@@ -168,14 +168,16 @@ void AccountEditWidget::loadWidgets()
     }
 }
 
-QVariantMap AccountEditWidget::setParameters() const
+QVariantMap AccountEditWidget::parametersSet() const
 {
-    return d->parameterModel->setParameters();
+    d->mainOptionsWidget->submit();
+    return d->parameterModel->parametersSet();
 }
 
-QStringList AccountEditWidget::unsetParameters() const
+QStringList AccountEditWidget::parametersUnset() const
 {
-    return d->parameterModel->unsetParameters();
+    d->mainOptionsWidget->submit();
+    return d->parameterModel->parametersUnset();
 }
 
 void AccountEditWidget::onAdvancedClicked()
@@ -196,6 +198,7 @@ void AccountEditWidget::onAdvancedClicked()
 
     while(true) {
         if (dialog.exec() == KDialog::Accepted) {
+            advancedWidget->submit();
             // validate the parameter values
             if (!advancedWidget->validateParameterValues()) {
                 continue;

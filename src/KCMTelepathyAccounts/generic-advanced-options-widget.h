@@ -38,7 +38,7 @@ public:
 
     void setTabBarHidden(bool hidden);
 
-    void updateParameterModel();
+    void submit();
 
     void addTab(AbstractAccountParametersWidget *tab, const QString &label);
 

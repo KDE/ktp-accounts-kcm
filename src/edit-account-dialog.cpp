@@ -94,8 +94,8 @@ void EditAccountDialog::accept()
         return;
     }
 
-    QVariantMap setParameters = d->widget->setParameters();
-    QStringList unsetParameters = d->widget->unsetParameters();
+    QVariantMap setParameters = d->widget->parametersSet();
+    QStringList unsetParameters = d->widget->parametersUnset();
 
     kDebug() << "Set parameters:" << setParameters;
     kDebug() << "Unset parameters:" << unsetParameters;

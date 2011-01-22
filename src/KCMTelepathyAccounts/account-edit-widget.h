@@ -44,8 +44,8 @@ public:
 
     virtual bool validateParameterValues() const;
 
-    virtual QVariantMap setParameters() const;
-    virtual QStringList unsetParameters() const;
+    virtual QVariantMap parametersSet() const;
+    virtual QStringList parametersUnset() const;
 
 protected:
     ParameterEditModel *parameterModel() const;
