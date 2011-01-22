@@ -57,7 +57,7 @@ AbstractAccountParametersWidget::AbstractAccountParametersWidget(ParameterEditMo
 
     d->mapper = new QDataWidgetMapper(this);
     d->mapper->setModel(d->parameterModel);
-
+    d->mapper->setSubmitPolicy(QDataWidgetMapper::ManualSubmit);
     d->mapper->setOrientation(Qt::Vertical);
 }
 
@@ -68,18 +68,7 @@ AbstractAccountParametersWidget::~AbstractAccountParametersWidget()
     delete d;
 }
 
-QList<ProtocolParameterValue> AbstractAccountParametersWidget::parameterValues() const
 
-{
-    kDebug();
-
-    return d->parameterModel->parameterValues();
-}
-
-Tp::ProtocolParameterList AbstractAccountParametersWidget::parameters() const
-{
-    return d->parameters;
-}
 
 bool AbstractAccountParametersWidget::validateParameterValues()
 {
@@ -133,10 +122,16 @@ void AbstractAccountParametersWidget::handleParameter(const QString &parameterNa
     }
 }
 
+void AbstractAccountParametersWidget::submit()
+{
+    d->mapper->submit();
+}
+
 ParameterEditModel* AbstractAccountParametersWidget::parameterModel() const
 {
     return d->parameterModel;
 }
+
 
 #include "abstract-account-parameters-widget.moc"
 

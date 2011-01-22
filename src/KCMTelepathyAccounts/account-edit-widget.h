@@ -43,7 +43,9 @@ public:
     virtual ~AccountEditWidget();
 
     virtual bool validateParameterValues() const;
-    virtual QList<ProtocolParameterValue> parameterValues() const;
+
+    virtual QVariantMap parametersSet() const;
+    virtual QStringList parametersUnset() const;
 
 protected:
     ParameterEditModel *parameterModel() const;

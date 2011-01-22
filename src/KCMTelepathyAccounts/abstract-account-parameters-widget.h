@@ -46,20 +46,35 @@ public:
                                              QWidget *parent = 0);
     virtual ~AbstractAccountParametersWidget();
 
-    virtual QList<ProtocolParameterValue> parameterValues() const;
-    virtual Tp::ProtocolParameterList parameters() const;
+    /** Makes sure the model is up to date.
+        Subclasses which do not only use the 'handleParameter' interface should implement this.
+    */
+    virtual void submit();
+
     virtual bool validateParameterValues();
 
+
 protected:
+    /** Map an input widget to a protocol parameter.
+        The model will be kept up to date when the model changes.
+        If the parameter is not in the model, then the input widget and associated labels will be hidden.
+
+        \param parameterName The name of the parameter to map to.
+        \param parameterType The expected type for the parameter. If this does not match, the input will be hidden.
+        \param dataWidget The user interface widget (QLineEdit/QSpinBox etc) that should be mapped to the parameter.
+        \param labelWidgets Any additional labels that should be hidden if the parameter does not exist.
+    */
     void handleParameter(const QString &parameterName,
                          QVariant::Type parameterType,
                          QWidget *dataWidget,
                          const QList<QWidget*> &labelWidgets);
+
     void handleParameter(const QString &parameterName,
                          QVariant::Type parameterType,
                          QWidget *dataWidget,
                          QWidget *labelWidget);
 
+    /** Returns the model containing all the protocol parameters*/
     ParameterEditModel *parameterModel() const;
 
 private:

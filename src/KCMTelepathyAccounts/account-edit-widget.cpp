@@ -102,13 +102,6 @@ bool AccountEditWidget::validateParameterValues() const
     return d->parameterModel->validateParameterValues();
 }
 
-QList<ProtocolParameterValue> AccountEditWidget::parameterValues() const
-{
-    QList<ProtocolParameterValue> values;
-    values = d->parameterModel->parameterValues();
-
-    return values;
-}
 
 void AccountEditWidget::loadWidgets()
 {
@@ -175,6 +168,18 @@ void AccountEditWidget::loadWidgets()
     }
 }
 
+QVariantMap AccountEditWidget::parametersSet() const
+{
+    d->mainOptionsWidget->submit();
+    return d->parameterModel->parametersSet();
+}
+
+QStringList AccountEditWidget::parametersUnset() const
+{
+    d->mainOptionsWidget->submit();
+    return d->parameterModel->parametersUnset();
+}
+
 void AccountEditWidget::onAdvancedClicked()
 {
     if(!d->parameterModel->validateParameterValues()) {
@@ -193,6 +198,7 @@ void AccountEditWidget::onAdvancedClicked()
 
     while(true) {
         if (dialog.exec() == KDialog::Accepted) {
+            advancedWidget->submit();
             // validate the parameter values
             if (!advancedWidget->validateParameterValues()) {
                 continue;
