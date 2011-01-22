@@ -57,7 +57,7 @@ AbstractAccountParametersWidget::AbstractAccountParametersWidget(ParameterEditMo
 
     d->mapper = new QDataWidgetMapper(this);
     d->mapper->setModel(d->parameterModel);
-
+    d->mapper->setSubmitPolicy(QDataWidgetMapper::ManualSubmit);
     d->mapper->setOrientation(Qt::Vertical);
 }
 
