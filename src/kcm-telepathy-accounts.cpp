@@ -31,6 +31,7 @@
 #include <KIcon>
 #include <KLocale>
 #include <KMessageBox>
+#include <KAboutData>
 
 #include <TelepathyQt4/Account>
 #include <TelepathyQt4/AccountFactory>
@@ -48,6 +49,17 @@ KCMTelepathyAccounts::KCMTelepathyAccounts(QWidget *parent, const QVariantList& 
    m_accountsListModel(0)
 {
     kDebug();
+
+
+    //set up component data.
+    KAboutData *aboutData = new KAboutData(I18N_NOOP("telepathy_accounts"), 0, ki18n("Instant Messaging and VOIP Accounts"), 0, KLocalizedString(), KAboutData::License_GPL);
+
+    aboutData->addAuthor(ki18n("George Goldberg"), ki18n("Developer"),"grundleborg@googlemail.com");
+    aboutData->addAuthor(ki18n("David Edmundson"), ki18n("Developer"), "david@davidedmundson.co.uk");
+    aboutData->addAuthor(ki18n("Dominik Schmidt"), ki18n("Developer"), "kde@dominik-schmidt.de");
+    aboutData->addAuthor(ki18n("Thomas Richard"), ki18n("Developer"), "thomas.richard@proan.be");
+
+    setAboutData(aboutData);
 
     // The first thing we must do is register Telepathy DBus Types.
     Tp::registerTypes();
