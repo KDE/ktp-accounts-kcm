@@ -22,8 +22,6 @@
 
 #include "ui_icq-server-settings-widget.h"
 
-#include <KCMTelepathyAccounts/ProtocolParameterValue>
-
 #include <KDebug>
 #include <KMessageBox>
 

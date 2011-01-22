@@ -22,8 +22,6 @@
 
 #include "ui_proxy-settings-widget.h"
 
-#include <KCMTelepathyAccounts/ProtocolParameterValue>
-
 #include <KDebug>
 #include <KMessageBox>
 

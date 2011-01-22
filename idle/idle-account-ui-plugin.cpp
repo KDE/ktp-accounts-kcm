@@ -29,8 +29,6 @@
 
 #include <QtCore/QVariantList>
 
-#include <KCMTelepathyAccounts/ProtocolParameterValue>
-
 class IdleAccountUiPlugin::Private
 {
 public:

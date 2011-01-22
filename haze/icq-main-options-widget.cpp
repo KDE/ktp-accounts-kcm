@@ -22,15 +22,11 @@
 
 #include "ui_icq-main-options-widget.h"
 
-#include <KCMTelepathyAccounts/ProtocolParameterValue>
-
 #include <KDebug>
 #include <KMessageBox>
 #include <QVariant>
 #include <QCheckBox>
 #include <QComboBox>
-
-typedef QMap<Tp::ProtocolParameter, QWidget*> ParametersWidgetsMap;
 
 class IcqMainOptionsWidget::Private
 {

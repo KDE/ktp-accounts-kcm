@@ -22,8 +22,6 @@
 
 #include "ui_main-options-widget.h"
 
-#include <KCMTelepathyAccounts/ProtocolParameterValue>
-
 #include <KDebug>
 #include <KMessageBox>
 

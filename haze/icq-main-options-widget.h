@@ -41,7 +41,5 @@ private:
     Private * const d;
 };
 
-uint qHash(const Tp::ProtocolParameter&);
-
 #endif // header guard
 

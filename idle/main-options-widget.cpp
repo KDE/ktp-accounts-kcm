@@ -24,7 +24,6 @@
 
 #include <KDebug>
 #include <KMessageBox>
-#include <KCMTelepathyAccounts/ProtocolParameterValue>
 
 class MainOptionsWidget::Private
 {
