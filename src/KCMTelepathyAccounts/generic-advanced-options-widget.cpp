@@ -23,11 +23,7 @@
 #include <KLocale>
 #include <QHBoxLayout>
 
-
-#include "protocol-parameter-value.h"
-
 #include "generic-advanced-options-widget.h"
-
 
 class GenericAdvancedOptionsWidget::Private
 {

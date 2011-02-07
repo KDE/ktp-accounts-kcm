@@ -23,15 +23,16 @@
 #ifndef LIB_KCM_TELEPATHY_ACCOUNTS_PARAMETER_EDIT_MODEL_H
 #define LIB_KCM_TELEPATHY_ACCOUNTS_PARAMETER_EDIT_MODEL_H
 
-#include "protocol-parameter-value.h"
+#include "kdemacros.h"
 
 #include <QtCore/QAbstractListModel>
+
 #include <TelepathyQt4/Profile>
+#include <TelepathyQt4/ProtocolParameter>
 
 class ParameterItem;
 
 namespace Tp {
-    class ProtocolParameter;
     class Profile;
     class Parameter;
 }

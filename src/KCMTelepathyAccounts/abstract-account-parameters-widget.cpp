@@ -21,7 +21,6 @@
  */
 
 #include "abstract-account-parameters-widget.h"
-#include "protocol-parameter-value.h"
 #include "parameter-edit-model.h"
 
 #include <KDebug>

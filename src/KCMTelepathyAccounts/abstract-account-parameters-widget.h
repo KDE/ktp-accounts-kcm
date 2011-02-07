@@ -32,7 +32,6 @@
 #include <TelepathyQt4/ConnectionManager>
 
 class ParameterEditModel;
-class ProtocolParameterValue;
 class ParameterEditModel;
 
 typedef QMap<Tp::ProtocolParameter, QWidget*> ParametersWidgetsMap;
