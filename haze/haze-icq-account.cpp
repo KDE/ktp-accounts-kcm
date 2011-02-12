@@ -27,7 +27,7 @@
 #include "icq-main-options-widget.h"
 #include "icq-server-settings-widget.h"
 
-#include "haze-icq-account-ui.h"
+#include "haze-icq-account.h"
 
 
 
@@ -93,5 +93,5 @@ AbstractAccountParametersWidget *HazeIcqAccountUi::advancedOptionsWidget(
 }
 
 
-#include "haze-icq-account-ui.moc"
+#include "haze-icq-account.moc"
 

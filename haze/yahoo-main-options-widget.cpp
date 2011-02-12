@@ -28,14 +28,9 @@ public:
   Ui::YahooMainOptionsWidget* ui;
   
     Private()
-      : ui(NULL)
+      : ui(0)
     {
         kDebug();
-    }
-    
-    ~Private()
-    {
-      delete ui;
     }
 };
 
@@ -57,5 +52,6 @@ YahooMainOptionsWidget::~YahooMainOptionsWidget()
 {
   kDebug();
   
+  delete d->ui;
   delete d;
 }
