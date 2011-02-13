@@ -41,8 +41,7 @@ public:
 };
 
 HazeIcqAccountUi::HazeIcqAccountUi(QObject *parent)
- : AbstractAccountUi(parent),
-   d(new Private)
+ : AbstractAccountUi(parent), d(new Private)
 {
     kDebug();
 

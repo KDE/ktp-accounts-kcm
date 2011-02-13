@@ -25,18 +25,17 @@
 #include <KCMTelepathyAccounts/AbstractAccountParametersWidget>
 
 class YahooMainOptionsWidget
-  : public AbstractAccountParametersWidget
+            : public AbstractAccountParametersWidget
 {
-  Q_OBJECT
-  
-  public:
+    Q_OBJECT
+
+public:
     YahooMainOptionsWidget(ParameterEditModel* model, QWidget* parent = 0);
     virtual ~YahooMainOptionsWidget();
-    
 private:
-  Q_DISABLE_COPY(YahooMainOptionsWidget);
-  
-  class Private;
+    Q_DISABLE_COPY(YahooMainOptionsWidget);
+
+    class Private;
     Private * const d;
 };
 

@@ -28,12 +28,10 @@
 class IcqMainOptionsWidget : public AbstractAccountParametersWidget
 {
     Q_OBJECT
-
 public:
     explicit IcqMainOptionsWidget(ParameterEditModel *model,
-                               QWidget *parent = 0);
+                                  QWidget *parent = 0);
     virtual ~IcqMainOptionsWidget();
-
 private:
     Q_DISABLE_COPY(IcqMainOptionsWidget);
 

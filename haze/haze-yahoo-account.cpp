@@ -30,7 +30,7 @@ public:
 };
 
 HazeYahooAccount::HazeYahooAccount(QObject* parent)
-  : AbstractAccountUi(parent), d(new Private)
+        : AbstractAccountUi(parent), d(new Private)
 {
     kDebug();
 
@@ -42,9 +42,8 @@ HazeYahooAccount::HazeYahooAccount(QObject* parent)
 
 HazeYahooAccount::~HazeYahooAccount()
 {
-  kDebug();
-  
-  delete d;
+    kDebug();
+    delete d;
 }
 
 bool HazeYahooAccount::hasAdvancedOptionsWidget() const
@@ -52,15 +51,16 @@ bool HazeYahooAccount::hasAdvancedOptionsWidget() const
     return false;
 }
 
-AbstractAccountParametersWidget* HazeYahooAccount::mainOptionsWidget(ParameterEditModel* model, QWidget* parent) const
+AbstractAccountParametersWidget* HazeYahooAccount::mainOptionsWidget(
+	ParameterEditModel* model,
+	QWidget* parent) const
 {
-  return new YahooMainOptionsWidget(model,parent);
+    return new YahooMainOptionsWidget(model,parent);
 }
 
-AbstractAccountParametersWidget* HazeYahooAccount::advancedOptionsWidget(ParameterEditModel* model, QWidget* parent) const
+AbstractAccountParametersWidget* HazeYahooAccount::advancedOptionsWidget(
+	ParameterEditModel* model, 
+	QWidget* parent) const
 {
-//     return AbstractAccountUi::advancedOptionsWidget(model, parent);
-  return NULL;
-//   return new YahooMainOptionsWidget(model,parent);
-
+    return NULL;
 }
