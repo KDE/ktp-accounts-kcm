@@ -1,8 +1,18 @@
 [Desktop Entry]
 Encoding=UTF-8
 Comment=Custom account configuration user interface for accounts using the Gabble connection manager.
+Comment[nl]=Gebruikersinterface voor aangepaste accountconfiguratie voor accounts die de Gabble verbindingenbeheerder gebruiken.
+Comment[pt]=Interface de utilizador de configuração de contas personalizadas com o gestor de ligações Gabble.
+Comment[sv]=Användargränssnitt för anpassad kontoinställning av konton som använder anslutningshanteraren Gabble.
+Comment[uk]=Інтерфейс користувача для нетипового налаштування облікового запису за допомогою керування з’єднаннями Gabble.
+Comment[x-test]=xxCustom account configuration user interface for accounts using the Gabble connection manager.xx
 Icon=blockdevice
 Name=Gabble Account Configuration User Interface
+Name[nl]=Gebruikersinterface voor Gabble accountconfiguratie
+Name[pt]=Interface de Configuração de Contas do Gabble
+Name[sv]=Användargränssnitt för inställning av Gabble-konton
+Name[uk]=Інтерфейс користувача Gabble для налаштування
+Name[x-test]=xxGabble Account Configuration User Interfacexx
 Type=Service
 ServiceTypes=KCMTelepathyAccounts/AccountUiPlugin
 
