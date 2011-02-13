@@ -29,7 +29,7 @@ public:
     Ui::YahooMainOptionsWidget* ui;
 
     Private()
-	: ui(0)
+        : ui(0)
     {
         kDebug();
     }
