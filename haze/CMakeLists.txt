@@ -6,14 +6,17 @@ include_directories (${CMAKE_CURRENT_BINARY_DIR}
 
 set (kcmtelepathyaccounts_plugin_haze_SRCS
      haze-account-ui-plugin.cpp
-     haze-icq-account-ui.cpp
+     haze-icq-account.cpp
      icq-main-options-widget.cpp
      icq-server-settings-widget.cpp
+     haze-yahoo-account.cpp
+     yahoo-main-options-widget.cpp
 )
 
 kde4_add_ui_files (kcmtelepathyaccounts_plugin_haze_SRCS
                    icq-main-options-widget.ui
                    icq-server-settings-widget.ui
+                   yahoo-main-options-widget.ui
 )
 
 kde4_add_plugin (kcmtelepathyaccounts_plugin_haze
@@ -35,4 +38,3 @@ install (TARGETS kcmtelepathyaccounts_plugin_haze
 install (FILES kcmtelepathyaccounts_plugin_haze.desktop
          DESTINATION ${SERVICES_INSTALL_DIR}
 )
-

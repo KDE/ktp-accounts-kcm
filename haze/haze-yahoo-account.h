@@ -1,7 +1,7 @@
 /*
  * This file is part of telepathy-accounts-kcm
  *
- * Copyright (C) 2011 Dominik Schmidt <kde@dominik-schmidt.de>
+ * Copyright (C) 2011 Lasath Fernando <kde@lasath.org>
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -18,32 +18,35 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
-#ifndef KCMTELEPATHYACCOUNTS_PLUGIN_HAZE_ICQ_ACCOUNT_UI_H
-#define KCMTELEPATHYACCOUNTS_PLUGIN_HAZE_ICQ_ACCOUNT_UI_H
+#ifndef KCMTELEPATHYACCOUNTS_PLUGIN_HAZE_YAHOO_ACCOUNT_H
+#define KCMTELEPATHYACCOUNTS_PLUGIN_HAZE_YAHOO_ACCOUNT_H
 
 #include <KCMTelepathyAccounts/AbstractAccountUi>
 
-class HazeIcqAccountUi : public AbstractAccountUi
+#include "yahoo-main-options-widget.h"
+
+class HazeYahooAccount : public AbstractAccountUi
 {
     Q_OBJECT
 
 public:
-    explicit HazeIcqAccountUi(QObject *parent = 0);
-    virtual ~HazeIcqAccountUi();
+    explicit HazeYahooAccount(QObject *parent = 0);
+    virtual ~HazeYahooAccount();
 
     virtual AbstractAccountParametersWidget
-              *mainOptionsWidget(ParameterEditModel *model,
-                                 QWidget *parent = 0) const;
+    *mainOptionsWidget(ParameterEditModel *model,
+                       QWidget *parent = 0) const;
     virtual bool hasAdvancedOptionsWidget() const;
     virtual AbstractAccountParametersWidget
-              *advancedOptionsWidget(ParameterEditModel *model,
-                                     QWidget *parent = 0) const;
+    *advancedOptionsWidget(ParameterEditModel *model,
+                           QWidget *parent = 0) const;
 
 private:
-    Q_DISABLE_COPY(HazeIcqAccountUi);
+    Q_DISABLE_COPY(HazeYahooAccount);
 
     class Private;
     Private * const d;
+
 };
 
 #endif // header guard

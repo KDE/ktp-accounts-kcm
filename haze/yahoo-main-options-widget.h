@@ -1,7 +1,7 @@
 /*
  * This file is part of telepathy-accounts-kcm
  *
- * Copyright (C) 2011 Dominik Schmidt <kde@dominik-schmidt.de>
+ * Copyright (C) 2011 Lasath Fernando <kde@lasath.org>
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -18,26 +18,27 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
-#ifndef KCMTELEPATHYACCOUNTS_PLUGIN_HAZE_ICQ_ACCOUNT_PARAMETERS_WIDGET_H
-#define KCMTELEPATHYACCOUNTS_PLUGIN_HAZE_ICQ_ACCOUNT_PARAMETERS_WIDGET_H
+
+#ifndef HAZE_YAHOO_ACCOUNT_H
+#define HAZE_YAHOO_ACCOUNT_H
+
+#include "ui_yahoo-main-options-widget.h"
 
 #include <KCMTelepathyAccounts/AbstractAccountParametersWidget>
 
-#include <QString>
-
-class IcqMainOptionsWidget : public AbstractAccountParametersWidget
+class YahooMainOptionsWidget
+            : public AbstractAccountParametersWidget
 {
     Q_OBJECT
+
 public:
-    explicit IcqMainOptionsWidget(ParameterEditModel *model,
-                                  QWidget *parent = 0);
-    virtual ~IcqMainOptionsWidget();
+    YahooMainOptionsWidget(ParameterEditModel* model, QWidget* parent = 0);
+    virtual ~YahooMainOptionsWidget();
 private:
-    Q_DISABLE_COPY(IcqMainOptionsWidget);
+    Q_DISABLE_COPY(YahooMainOptionsWidget);
 
     class Private;
     Private * const d;
 };
 
-#endif // header guard
-
+#endif // HAZE_YAHOO_ACCOUNT_H

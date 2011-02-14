@@ -27,7 +27,7 @@
 #include "icq-main-options-widget.h"
 #include "icq-server-settings-widget.h"
 
-#include "haze-icq-account-ui.h"
+#include "haze-icq-account.h"
 
 
 
@@ -41,8 +41,7 @@ public:
 };
 
 HazeIcqAccountUi::HazeIcqAccountUi(QObject *parent)
- : AbstractAccountUi(parent),
-   d(new Private)
+ : AbstractAccountUi(parent), d(new Private)
 {
     kDebug();
 
@@ -93,5 +92,5 @@ AbstractAccountParametersWidget *HazeIcqAccountUi::advancedOptionsWidget(
 }
 
 
-#include "haze-icq-account-ui.moc"
+#include "haze-icq-account.moc"
 

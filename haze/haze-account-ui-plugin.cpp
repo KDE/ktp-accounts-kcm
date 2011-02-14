@@ -20,7 +20,8 @@
 
 #include "haze-account-ui-plugin.h"
 
-#include "haze-icq-account-ui.h"
+#include "haze-icq-account.h"
+#include "haze-yahoo-account.h"
 
 #include <KCMTelepathyAccounts/PluginMacros>
 
@@ -46,6 +47,7 @@ HazeAccountUiPlugin::HazeAccountUiPlugin(QObject *parent, const QVariantList &)
 
     // Register supported cm/protocol combinations
     registerProvidedProtocol("haze", "icq");
+    registerProvidedProtocol("haze", "yahoo");
 }
 
 HazeAccountUiPlugin::~HazeAccountUiPlugin()
@@ -59,9 +61,12 @@ AbstractAccountUi* HazeAccountUiPlugin::accountUi(const QString &connectionManag
 
     kDebug();
 
-    // We only support haze/icq combination.so far
+    // We only support haze/icq and yahoo combination so far
     if ((connectionManager == "haze") && (protocol == "icq")) {
         return new HazeIcqAccountUi;
+    }
+    if ((connectionManager == "haze") && (protocol == "yahoo")){
+      return new HazeYahooAccount;
     }
 
     return 0;

@@ -18,22 +18,29 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
-#ifndef KCMTELEPATHYACCOUNTS_PLUGIN_HAZE_ICQ_ACCOUNT_PARAMETERS_WIDGET_H
-#define KCMTELEPATHYACCOUNTS_PLUGIN_HAZE_ICQ_ACCOUNT_PARAMETERS_WIDGET_H
+#ifndef KCMTELEPATHYACCOUNTS_PLUGIN_HAZE_ICQ_ACCOUNT_H
+#define KCMTELEPATHYACCOUNTS_PLUGIN_HAZE_ICQ_ACCOUNT_H
 
-#include <KCMTelepathyAccounts/AbstractAccountParametersWidget>
+#include <KCMTelepathyAccounts/AbstractAccountUi>
 
-#include <QString>
-
-class IcqMainOptionsWidget : public AbstractAccountParametersWidget
+class HazeIcqAccountUi : public AbstractAccountUi
 {
     Q_OBJECT
+
 public:
-    explicit IcqMainOptionsWidget(ParameterEditModel *model,
-                                  QWidget *parent = 0);
-    virtual ~IcqMainOptionsWidget();
+    explicit HazeIcqAccountUi(QObject *parent = 0);
+    virtual ~HazeIcqAccountUi();
+
+    virtual AbstractAccountParametersWidget
+              *mainOptionsWidget(ParameterEditModel *model,
+                                 QWidget *parent = 0) const;
+    virtual bool hasAdvancedOptionsWidget() const;
+    virtual AbstractAccountParametersWidget
+              *advancedOptionsWidget(ParameterEditModel *model,
+                                     QWidget *parent = 0) const;
+
 private:
-    Q_DISABLE_COPY(IcqMainOptionsWidget);
+    Q_DISABLE_COPY(HazeIcqAccountUi);
 
     class Private;
     Private * const d;
