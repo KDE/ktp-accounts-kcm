@@ -1,0 +1,16 @@
+[Desktop Entry]
+Encoding=UTF-8
+Comment=Custom account configuration user interface for accounts using the Rakia/SofiaSIP connection manager.
+Icon=blockdevice
+Name=Rakia/SofiaSIP Account Configuration User Interface
+Type=Service
+ServiceTypes=KCMTelepathyAccounts/AccountUiPlugin
+
+X-KDE-Library=kcmtelepathyaccounts_plugin_rakia
+X-KDE-PluginInfo-Author=Florian Reinhard
+X-KDE-PluginInfo-Email=florian.reinhard@googlemail.com
+X-KDE-PluginInfo-Name=rakia
+X-KDE-PluginInfo-Version=0.1
+X-KDE-PluginInfo-Website=http://techbase.kde.org/Projects/Telepathy
+X-KDE-PluginInfo-License=LGPL
+X-KDE-PluginInfo-EnabledByDefault=true

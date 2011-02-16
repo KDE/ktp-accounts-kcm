@@ -24,4 +24,5 @@ add_subdirectory (gabble)
 add_subdirectory (butterfly)
 add_subdirectory (idle)
 add_subdirectory (haze)
+add_subdirectory (rakia)
 
