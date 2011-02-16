@@ -23,6 +23,8 @@
 
 #include <KCMTelepathyAccounts/AbstractAccountParametersWidget>
 
+#include "ui_main-options-widget.h"
+
 class MainOptionsWidget : public AbstractAccountParametersWidget
 {
     Q_OBJECT
@@ -34,9 +36,7 @@ public:
 
 private:
     Q_DISABLE_COPY(MainOptionsWidget);
-
-    class Private;
-    Private * const d;
+    Ui::MainOptionsWidget *m_ui;
 };
 
 

@@ -21,6 +21,8 @@
 #ifndef KCMTELEPATHYACCOUNTS_PLUGIN_GABBLE_SERVER_SETTINGS_WIDGET_H
 #define KCMTELEPATHYACCOUNTS_PLUGIN_GABBLE_SERVER_SETTINGS_WIDGET_H
 
+#include "ui_server-settings-widget.h"
+
 #include <KCMTelepathyAccounts/AbstractAccountParametersWidget>
 
 class ServerSettingsWidget : public AbstractAccountParametersWidget
@@ -34,9 +36,7 @@ public:
 
 private:
     Q_DISABLE_COPY(ServerSettingsWidget);
-
-    class Private;
-    Private * const d;
+    Ui::ServerSettingsWidget *m_ui;
 };
 
 

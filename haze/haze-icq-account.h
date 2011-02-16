@@ -41,9 +41,6 @@ public:
 
 private:
     Q_DISABLE_COPY(HazeIcqAccountUi);
-
-    class Private;
-    Private * const d;
 };
 
 #endif // header guard

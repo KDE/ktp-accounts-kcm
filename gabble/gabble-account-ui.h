@@ -41,9 +41,6 @@ public:
 
 private:
     Q_DISABLE_COPY(GabbleAccountUi);
-
-    class Private;
-    Private * const d;
 };
 
 #endif // header guard

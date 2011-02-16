@@ -21,6 +21,8 @@
 #ifndef KCMTELEPATHYACCOUNTS_PLUGIN_GABBLE_PROXY_SETTINGS_WIDGET_H
 #define KCMTELEPATHYACCOUNTS_PLUGIN_GABBLE_PROXY_SETTINGS_WIDGET_H
 
+#include "ui_proxy-settings-widget.h"
+
 #include <KCMTelepathyAccounts/AbstractAccountParametersWidget>
 
 class ProxySettingsWidget : public AbstractAccountParametersWidget
@@ -34,9 +36,7 @@ public:
 
 private:
     Q_DISABLE_COPY(ProxySettingsWidget);
-
-    class Private;
-    Private * const d;
+    Ui::ProxySettingsWidget *m_ui;
 };
 
 

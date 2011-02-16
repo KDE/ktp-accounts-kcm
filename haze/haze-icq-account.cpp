@@ -18,30 +18,18 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
-#include <KDebug>
-
-
-#include <KCMTelepathyAccounts/AbstractAccountParametersWidget>
-#include <KCMTelepathyAccounts/GenericAdvancedOptionsWidget>
+#include "haze-icq-account.h"
 
 #include "icq-main-options-widget.h"
 #include "icq-server-settings-widget.h"
 
-#include "haze-icq-account.h"
+#include <KCMTelepathyAccounts/AbstractAccountParametersWidget>
+#include <KCMTelepathyAccounts/GenericAdvancedOptionsWidget>
 
-
-
-class HazeIcqAccountUi::Private
-{
-public:
-    Private()
-    {
-        kDebug();
-    }
-};
+#include <KDebug>
 
 HazeIcqAccountUi::HazeIcqAccountUi(QObject *parent)
- : AbstractAccountUi(parent), d(new Private)
+ : AbstractAccountUi(parent)
 {
     kDebug();
 
@@ -61,8 +49,6 @@ HazeIcqAccountUi::HazeIcqAccountUi(QObject *parent)
 HazeIcqAccountUi::~HazeIcqAccountUi()
 {
     kDebug();
-
-    delete d;
 }
 
 AbstractAccountParametersWidget *HazeIcqAccountUi::mainOptionsWidget(

@@ -19,7 +19,6 @@
  */
 
 #include "rakia-account-ui.h"
-
 #include "rakia-main-options-widget.h"
 #include "rakia-advanced-options-widget.h"
 

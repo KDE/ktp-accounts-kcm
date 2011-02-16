@@ -37,9 +37,6 @@ public:
 
 private:
     Q_DISABLE_COPY(ButterflyAccountUiPlugin);
-
-    class Private;
-    Private * const d;
 };
 
 

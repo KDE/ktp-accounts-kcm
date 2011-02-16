@@ -20,8 +20,9 @@
 
 #include "rakia-advanced-options-widget.h"
 
-#include <KDebug>
 #include <KCMTelepathyAccounts/ParameterEditModel>
+
+#include <KDebug>
 
 RakiaAdvancedOptionsWidget::RakiaAdvancedOptionsWidget(ParameterEditModel* model, QWidget* parent)
     : AbstractAccountParametersWidget(model, parent)

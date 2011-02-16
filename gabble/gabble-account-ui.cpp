@@ -29,18 +29,8 @@
 
 #include <KDebug>
 
-class GabbleAccountUi::Private
-{
-public:
-    Private()
-    {
-        kDebug();
-    }
-};
-
 GabbleAccountUi::GabbleAccountUi(QObject *parent)
- : AbstractAccountUi(parent),
-   d(new Private)
+ : AbstractAccountUi(parent)
 {
     kDebug();
 
@@ -69,8 +59,6 @@ GabbleAccountUi::GabbleAccountUi(QObject *parent)
 GabbleAccountUi::~GabbleAccountUi()
 {
     kDebug();
-
-    delete d;
 }
 
 AbstractAccountParametersWidget *GabbleAccountUi::mainOptionsWidget(

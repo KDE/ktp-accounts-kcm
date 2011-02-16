@@ -43,10 +43,6 @@ public:
 
 private:
     Q_DISABLE_COPY(HazeYahooAccount);
-
-    class Private;
-    Private * const d;
-
 };
 
 #endif // header guard

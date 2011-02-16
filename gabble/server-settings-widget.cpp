@@ -20,49 +20,32 @@
 
 #include "server-settings-widget.h"
 
-#include "ui_server-settings-widget.h"
-
 #include <KDebug>
-#include <KMessageBox>
-
-
-class ServerSettingsWidget::Private
-{
-public:
-    Private()
-            : ui(0)
-    {
-        kDebug();
-    }
-
-    Ui::ServerSettingsWidget *ui;
-};
 
 ServerSettingsWidget::ServerSettingsWidget(ParameterEditModel *model,
                                                      QWidget *parent)
- : AbstractAccountParametersWidget(model, parent),
-   d(new Private)
+ : AbstractAccountParametersWidget(model, parent)
 {
     kDebug();
 
     // Set up the UI.
-    d->ui = new Ui::ServerSettingsWidget;
-    d->ui->setupUi(this);
+    m_ui = new Ui::ServerSettingsWidget;
+    m_ui->setupUi(this);
 
-    handleParameter("server", QVariant::String, d->ui->serverLineEdit, d->ui->serverLabel);
-    handleParameter("port", QVariant::UInt, d->ui->portSpinBox, d->ui->portLabel);
-    handleParameter("keepalive-interval", QVariant::UInt, d->ui->keepaliveIntervalSpinBox, 0);
-    handleParameter("low-bandwidth", QVariant::Bool, d->ui->lowBandwidthCheckBox, 0);
-    handleParameter("require-encryption", QVariant::Bool, d->ui->requireEncryptionCheckBox, 0);
-    handleParameter("ignore-ssl-errors", QVariant::Bool, d->ui->ignoreSslErrorsCheckBox, 0);
-    handleParameter("old-ssl", QVariant::Bool, d->ui->oldSslCheckBox, 0);
+    handleParameter("server", QVariant::String, m_ui->serverLineEdit, m_ui->serverLabel);
+    handleParameter("port", QVariant::UInt, m_ui->portSpinBox, m_ui->portLabel);
+    handleParameter("keepalive-interval", QVariant::UInt, m_ui->keepaliveIntervalSpinBox, 0);
+    handleParameter("low-bandwidth", QVariant::Bool, m_ui->lowBandwidthCheckBox, 0);
+    handleParameter("require-encryption", QVariant::Bool, m_ui->requireEncryptionCheckBox, 0);
+    handleParameter("ignore-ssl-errors", QVariant::Bool, m_ui->ignoreSslErrorsCheckBox, 0);
+    handleParameter("old-ssl", QVariant::Bool, m_ui->oldSslCheckBox, 0);
 }
 
 ServerSettingsWidget::~ServerSettingsWidget()
 {
     kDebug();
 
-    delete d;
+    delete m_ui;
 }
 
 

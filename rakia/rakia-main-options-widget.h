@@ -21,8 +21,9 @@
 #ifndef KCMTELEPATHYACCOUNTS_PLUGIN_RAKIA_ACCOUNT_PARAMETERS_WIDGET_H
 #define KCMTELEPATHYACCOUNTS_PLUGIN_RAKIA_ACCOUNT_PARAMETERS_WIDGET_H
 
-#include <KCMTelepathyAccounts/AbstractAccountParametersWidget>
 #include "ui_rakia-main-options-widget.h"
+
+#include <KCMTelepathyAccounts/AbstractAccountParametersWidget>
 
 class RakiaMainOptionsWidget : public AbstractAccountParametersWidget
 {

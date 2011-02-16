@@ -29,18 +29,8 @@
 
 #include <QtCore/QVariantList>
 
-class ButterflyAccountUiPlugin::Private
-{
-public:
-    Private()
-    {
-        kDebug();
-    }
-};
-
 ButterflyAccountUiPlugin::ButterflyAccountUiPlugin(QObject *parent, const QVariantList &)
- : AbstractAccountUiPlugin(parent),
-   d(new Private)
+ : AbstractAccountUiPlugin(parent)
 {
     kDebug();
 

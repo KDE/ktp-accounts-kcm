@@ -19,19 +19,11 @@
  */
 
 #include "haze-yahoo-account.h"
+
 #include <KDebug>
 
-class HazeYahooAccount::Private
-{
-public:
-    Private()
-    {
-        kDebug();
-    }
-};
-
 HazeYahooAccount::HazeYahooAccount(QObject* parent)
-        : AbstractAccountUi(parent), d(new Private)
+        : AbstractAccountUi(parent)
 {
     kDebug();
 
@@ -44,7 +36,6 @@ HazeYahooAccount::HazeYahooAccount(QObject* parent)
 HazeYahooAccount::~HazeYahooAccount()
 {
     kDebug();
-    delete d;
 }
 
 bool HazeYahooAccount::hasAdvancedOptionsWidget() const

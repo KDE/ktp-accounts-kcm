@@ -21,6 +21,8 @@
 #ifndef KCMTELEPATHYACCOUNTS_PLUGIN_HAZE_ICQ_ACCOUNT_PARAMETERS_WIDGET_H
 #define KCMTELEPATHYACCOUNTS_PLUGIN_HAZE_ICQ_ACCOUNT_PARAMETERS_WIDGET_H
 
+#include "ui_icq-main-options-widget.h"
+
 #include <KCMTelepathyAccounts/AbstractAccountParametersWidget>
 
 #include <QString>
@@ -34,9 +36,7 @@ public:
     virtual ~IcqMainOptionsWidget();
 private:
     Q_DISABLE_COPY(IcqMainOptionsWidget);
-
-    class Private;
-    Private * const d;
+    Ui::IcqMainOptionsWidget *m_ui;
 };
 
 #endif // header guard

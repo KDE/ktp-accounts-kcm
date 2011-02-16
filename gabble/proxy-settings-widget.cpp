@@ -20,50 +20,33 @@
 
 #include "proxy-settings-widget.h"
 
-#include "ui_proxy-settings-widget.h"
-
 #include <KDebug>
-#include <KMessageBox>
-
-
-class ProxySettingsWidget::Private
-{
-public:
-    Private()
-            : ui(0)
-    {
-        kDebug();
-    }
-
-    Ui::ProxySettingsWidget *ui;
-};
 
 ProxySettingsWidget::ProxySettingsWidget(ParameterEditModel *model,
                                          QWidget *parent)
- : AbstractAccountParametersWidget(model, parent),
-   d(new Private)
+ : AbstractAccountParametersWidget(model, parent)
 {
     kDebug();
 
     // Set up the UI.
-    d->ui = new Ui::ProxySettingsWidget;
-    d->ui->setupUi(this);
+    m_ui = new Ui::ProxySettingsWidget;
+    m_ui->setupUi(this);
 
-    handleParameter("stun-server", QVariant::String, d->ui->stunServerLineEdit, d->ui->stunServerLabel);
-    handleParameter("stun-port", QVariant::UInt, d->ui->stunPortSpinBox, d->ui->stunPortLabel);
-    handleParameter("fallback-stun-server", QVariant::String, d->ui->fallbackStunServerLineEdit, d->ui->fallbackStunServerLabel);
-    handleParameter("fallback-stun-port", QVariant::UInt, d->ui->fallbackStunPortSpinBox, d->ui->fallbackStunPortLabel);
-    handleParameter("https-proxy-server", QVariant::String, d->ui->httpsProxyServerLineEdit, d->ui->httpsProxyServerLabel);
-    handleParameter("https-proxy-port", QVariant::UInt, d->ui->httpsProxyPortSpinBox, d->ui->httpsProxyPortLabel);
-    handleParameter("fallback-socks5-proxies", QVariant::StringList, d->ui->fallbackSocks5ProxiesTextEdit, d->ui->fallbackSocks5ProxiesLabel);
-    handleParameter("fallback-conference-server", QVariant::String, d->ui->fallbackConferenceServerLineEdit, d->ui->fallbackConferenceServerLabel);
+    handleParameter("stun-server", QVariant::String, m_ui->stunServerLineEdit, m_ui->stunServerLabel);
+    handleParameter("stun-port", QVariant::UInt, m_ui->stunPortSpinBox, m_ui->stunPortLabel);
+    handleParameter("fallback-stun-server", QVariant::String, m_ui->fallbackStunServerLineEdit, m_ui->fallbackStunServerLabel);
+    handleParameter("fallback-stun-port", QVariant::UInt, m_ui->fallbackStunPortSpinBox, m_ui->fallbackStunPortLabel);
+    handleParameter("https-proxy-server", QVariant::String, m_ui->httpsProxyServerLineEdit, m_ui->httpsProxyServerLabel);
+    handleParameter("https-proxy-port", QVariant::UInt, m_ui->httpsProxyPortSpinBox, m_ui->httpsProxyPortLabel);
+    handleParameter("fallback-socks5-proxies", QVariant::StringList, m_ui->fallbackSocks5ProxiesTextEdit, m_ui->fallbackSocks5ProxiesLabel);
+    handleParameter("fallback-conference-server", QVariant::String, m_ui->fallbackConferenceServerLineEdit, m_ui->fallbackConferenceServerLabel);
 }
 
 ProxySettingsWidget::~ProxySettingsWidget()
 {
     kDebug();
 
-    delete d;
+    delete m_ui;
 }
 
 

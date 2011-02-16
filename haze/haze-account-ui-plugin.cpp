@@ -30,18 +30,8 @@
 
 #include <QtCore/QVariantList>
 
-class HazeAccountUiPlugin::Private
-{
-public:
-    Private()
-    {
-        kDebug();
-    }
-};
-
 HazeAccountUiPlugin::HazeAccountUiPlugin(QObject *parent, const QVariantList &)
- : AbstractAccountUiPlugin(parent),
-   d(new Private)
+ : AbstractAccountUiPlugin(parent)
 {
     kDebug();
 

@@ -18,13 +18,12 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
-#include <KCMTelepathyAccounts/AbstractAccountParametersWidget>
-
 #ifndef KCMTELEPATHYACCOUNTS_PLUGIN_RAKIA_AO_WIDGET_H
 #define KCMTELEPATHYACCOUNTS_PLUGIN_RAKIA_AO_WIDGET_H
 
-#include <KCMTelepathyAccounts/AbstractAccountParametersWidget>
 #include "ui_rakia-advanced-options-widget.h"
+
+#include <KCMTelepathyAccounts/AbstractAccountParametersWidget>
 
 class RakiaAdvancedOptionsWidget : public AbstractAccountParametersWidget
 {

@@ -18,41 +18,27 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
-
 #include "yahoo-main-options-widget.h"
 
 #include <KDebug>
 
-class YahooMainOptionsWidget::Private
-{
-public:
-    Ui::YahooMainOptionsWidget* ui;
-
-    Private()
-        : ui(0)
-    {
-        kDebug();
-    }
-};
-
 YahooMainOptionsWidget::YahooMainOptionsWidget(ParameterEditModel* model, QWidget* parent)
-        : AbstractAccountParametersWidget(model, parent), d(new Private)
+        : AbstractAccountParametersWidget(model, parent)
 {
     kDebug();
 
     //setup the Ui
-    d->ui = new Ui::YahooMainOptionsWidget;
-    d->ui->setupUi(this);
+    m_ui = new Ui::YahooMainOptionsWidget;
+    m_ui->setupUi(this);
 
     //map the widgets to their data
-    handleParameter("account", QVariant::String, d->ui->accountLineEdit, d->ui->accountLabel);
-    handleParameter("password", QVariant::String, d->ui->passwordLineEdit, d->ui->passwordLabel);
+    handleParameter("account", QVariant::String, m_ui->accountLineEdit, m_ui->accountLabel);
+    handleParameter("password", QVariant::String, m_ui->passwordLineEdit, m_ui->passwordLabel);
 }
 
 YahooMainOptionsWidget::~YahooMainOptionsWidget()
 {
     kDebug();
 
-    delete d->ui;
-    delete d;
+    delete m_ui;
 }

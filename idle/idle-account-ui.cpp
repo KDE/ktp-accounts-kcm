@@ -27,18 +27,8 @@
 
 #include <KDebug>
 
-class IdleAccountUi::Private
-{
-public:
-    Private()
-    {
-        kDebug();
-    }
-};
-
 IdleAccountUi::IdleAccountUi(QObject *parent)
- : AbstractAccountUi(parent),
-   d(new Private)
+ : AbstractAccountUi(parent)
 {
     kDebug();
 
@@ -57,8 +47,6 @@ IdleAccountUi::IdleAccountUi(QObject *parent)
 IdleAccountUi::~IdleAccountUi()
 {
     kDebug();
-
-    delete d;
 }
 
 AbstractAccountParametersWidget *IdleAccountUi::mainOptionsWidget(

@@ -26,18 +26,8 @@
 
 #include <KDebug>
 
-class ButterflyAccountUi::Private
-{
-public:
-    Private()
-    {
-        kDebug();
-    }
-};
-
 ButterflyAccountUi::ButterflyAccountUi(QObject *parent)
- : AbstractAccountUi(parent),
-   d(new Private)
+ : AbstractAccountUi(parent)
 {
     kDebug();
 
@@ -49,8 +39,6 @@ ButterflyAccountUi::ButterflyAccountUi(QObject *parent)
 ButterflyAccountUi::~ButterflyAccountUi()
 {
     kDebug();
-
-    delete d;
 }
 
 AbstractAccountParametersWidget *ButterflyAccountUi::mainOptionsWidget(

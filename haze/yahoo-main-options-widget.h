@@ -36,9 +36,7 @@ public:
     virtual ~YahooMainOptionsWidget();
 private:
     Q_DISABLE_COPY(YahooMainOptionsWidget);
-
-    class Private;
-    Private * const d;
+    Ui::YahooMainOptionsWidget* m_ui;
 };
 
 #endif // HAZE_YAHOO_ACCOUNT_H

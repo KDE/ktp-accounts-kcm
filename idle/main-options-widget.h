@@ -21,6 +21,8 @@
 #ifndef KCMTELEPATHYACCOUNTS_PLUGIN_IDLE_ACCOUNT_MAIN_PARAMETERS_WIDGET_H
 #define KCMTELEPATHYACCOUNTS_PLUGIN_IDLE_ACCOUNT_MAIN_PARAMETERS_WIDGET_H
 
+#include "ui_main-options-widget.h"
+
 #include <KCMTelepathyAccounts/AbstractAccountParametersWidget>
 
 class MainOptionsWidget : public AbstractAccountParametersWidget
@@ -34,9 +36,7 @@ public:
 
 private:
     Q_DISABLE_COPY(MainOptionsWidget);
-
-    class Private;
-    Private * const d;
+    Ui::MainOptionsWidget *m_ui;
 };
 
 

@@ -19,7 +19,6 @@
  */
 
 #include "rakia-account-ui-plugin.h"
-
 #include "rakia-account-ui.h"
 
 #include <KCMTelepathyAccounts/PluginMacros>

@@ -37,9 +37,6 @@ public:
 
 private:
     Q_DISABLE_COPY(HazeAccountUiPlugin);
-
-    class Private;
-    Private * const d;
 };
 
 

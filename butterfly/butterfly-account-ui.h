@@ -36,9 +36,6 @@ public:
                                  QWidget *parent = 0) const;
 private:
     Q_DISABLE_COPY(ButterflyAccountUi);
-
-    class Private;
-    Private * const d;
 };
 
 

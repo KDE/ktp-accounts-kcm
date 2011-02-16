@@ -29,18 +29,8 @@
 
 #include <QtCore/QVariantList>
 
-class IdleAccountUiPlugin::Private
-{
-public:
-    Private()
-    {
-        kDebug();
-    }
-};
-
 IdleAccountUiPlugin::IdleAccountUiPlugin(QObject *parent, const QVariantList &)
- : AbstractAccountUiPlugin(parent),
-   d(new Private)
+ : AbstractAccountUiPlugin(parent)
 {
     kDebug();
 

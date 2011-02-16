@@ -21,6 +21,8 @@
 #ifndef KCMTELEPATHYACCOUNTS_PLUGIN_IDLE_ACCOUNT_ADVANCED_PARAMETERS_WIDGET_H
 #define KCMTELEPATHYACCOUNTS_PLUGIN_IDLE_ACCOUNT_ADVANCED_PARAMETERS_WIDGET_H
 
+#include "ui_advanced-options-widget.h"
+
 #include <KCMTelepathyAccounts/AbstractAccountParametersWidget>
 
 class AdvancedOptionsWidget : public AbstractAccountParametersWidget
@@ -34,9 +36,7 @@ public:
 
 private:
     Q_DISABLE_COPY(AdvancedOptionsWidget);
-
-    class Private;
-    Private * const d;
+    Ui::AdvancedOptionsWidget *m_ui;
 };
 
 

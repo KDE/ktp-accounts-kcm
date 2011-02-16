@@ -20,43 +20,27 @@
 
 #include "main-options-widget.h"
 
-#include "ui_main-options-widget.h"
-
 #include <KDebug>
-#include <KMessageBox>
-
-class MainOptionsWidget::Private
-{
-public:
-    Private()
-            : ui(0)
-    {
-        kDebug();
-    }
-
-    Ui::MainOptionsWidget *ui;
-};
 
 MainOptionsWidget::MainOptionsWidget(ParameterEditModel *model,
                                      QWidget *parent)
- : AbstractAccountParametersWidget(model, parent),
-   d(new Private)
+ : AbstractAccountParametersWidget(model, parent)
 {
     kDebug();
 
     // Set up the UI.
-    d->ui = new Ui::MainOptionsWidget;
-    d->ui->setupUi(this);
+    m_ui = new Ui::MainOptionsWidget;
+    m_ui->setupUi(this);
 
-    handleParameter("account", QVariant::String, d->ui->accountLineEdit, d->ui->accountLabel);
-    handleParameter("password", QVariant::String, d->ui->passwordLineEdit, d->ui->passwordLabel);
+    handleParameter("account", QVariant::String, m_ui->accountLineEdit, m_ui->accountLabel);
+    handleParameter("password", QVariant::String, m_ui->passwordLineEdit, m_ui->passwordLabel);
 }
 
 MainOptionsWidget::~MainOptionsWidget()
 {
     kDebug();
 
-    delete d;
+    delete m_ui;
 }
 
 #include "main-options-widget.moc"

@@ -29,18 +29,8 @@
 
 #include <QtCore/QVariantList>
 
-class GabbleAccountUiPlugin::Private
-{
-public:
-    Private()
-    {
-        kDebug();
-    }
-};
-
 GabbleAccountUiPlugin::GabbleAccountUiPlugin(QObject *parent, const QVariantList &)
- : AbstractAccountUiPlugin(parent),
-   d(new Private)
+ : AbstractAccountUiPlugin(parent)
 {
     kDebug();
 

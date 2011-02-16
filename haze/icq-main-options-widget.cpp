@@ -20,47 +20,31 @@
 
 #include "icq-main-options-widget.h"
 
-#include "ui_icq-main-options-widget.h"
-
 #include <KDebug>
-#include <KMessageBox>
+
 #include <QVariant>
 #include <QCheckBox>
 #include <QComboBox>
 
-class IcqMainOptionsWidget::Private
-{
-
-public:
-    Private()
-            : ui(0)
-    {
-        kDebug();
-    }
-
-    Ui::IcqMainOptionsWidget *ui;
-};
-
 IcqMainOptionsWidget::IcqMainOptionsWidget(ParameterEditModel *model,
                                      QWidget *parent)
- : AbstractAccountParametersWidget(model, parent),
-   d(new Private)
+ : AbstractAccountParametersWidget(model, parent)
 {
     kDebug();
 
     // Set up the UI.
-    d->ui = new Ui::IcqMainOptionsWidget;
-    d->ui->setupUi(this);
+    m_ui = new Ui::IcqMainOptionsWidget;
+    m_ui->setupUi(this);
 
-    handleParameter("account", QVariant::String, d->ui->accountLineEdit, d->ui->accountLabel);
-    handleParameter("password", QVariant::String, d->ui->passwordLineEdit, d->ui->passwordLabel);
+    handleParameter("account", QVariant::String, m_ui->accountLineEdit, m_ui->accountLabel);
+    handleParameter("password", QVariant::String, m_ui->passwordLineEdit, m_ui->passwordLabel);
 }
 
 IcqMainOptionsWidget::~IcqMainOptionsWidget()
 {
     kDebug();
 
-    delete d;
+    delete m_ui;
 }
 
 #include "icq-main-options-widget.moc"

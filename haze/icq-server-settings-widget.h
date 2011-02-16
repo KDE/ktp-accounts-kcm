@@ -21,6 +21,8 @@
 #ifndef KCMTELEPATHYACCOUNTS_PLUGIN_HAZE_ICQ_SERVER_SETTINGS_WIDGET_H
 #define KCMTELEPATHYACCOUNTS_PLUGIN_HAZE_ICQ_SERVER_SETTINGS_WIDGET_H
 
+#include "ui_icq-server-settings-widget.h"
+
 #include <KCMTelepathyAccounts/AbstractAccountParametersWidget>
 
 class IcqServerSettingsWidget : public AbstractAccountParametersWidget
@@ -34,9 +36,7 @@ public:
 
 private:
     Q_DISABLE_COPY(IcqServerSettingsWidget);
-
-    class Private;
-    Private * const d;
+    Ui::IcqServerSettingsWidget *m_ui;
 };
 
 

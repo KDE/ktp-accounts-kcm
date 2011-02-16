@@ -20,42 +20,22 @@
 
 #include "main-options-widget.h"
 
-#include "ui_main-options-widget.h"
-
 #include <KDebug>
-#include <KMessageBox>
-
-class MainOptionsWidget::Private
-{
-public:
-    Private()
-            : ui(0)
-    {
-        kDebug();
-    }
-
-    Tp::ProtocolParameter accountParameter;
-    Tp::ProtocolParameter fullnameParameter;
-    Tp::ProtocolParameter serverParameter;
-
-    Ui::MainOptionsWidget *ui;
-};
 
 MainOptionsWidget::MainOptionsWidget(
         ParameterEditModel *model,
         QWidget *parent)
-         : AbstractAccountParametersWidget(model, parent),
-           d(new Private)
+         : AbstractAccountParametersWidget(model, parent)
 {
     kDebug();
 
     // Set up the UI.
-    d->ui = new Ui::MainOptionsWidget;
-    d->ui->setupUi(this);
+    m_ui = new Ui::MainOptionsWidget;
+    m_ui->setupUi(this);
 
-    handleParameter("account", QVariant::String, d->ui->accountLineEdit, d->ui->accountLabel);
-    handleParameter("server", QVariant::String, d->ui->serverLineEdit, d->ui->serverLabel);
-    handleParameter("fullname", QVariant::String, d->ui->fullnameLineEdit, d->ui->fullnameLabel);
+    handleParameter("account", QVariant::String, m_ui->accountLineEdit, m_ui->accountLabel);
+    handleParameter("server", QVariant::String, m_ui->serverLineEdit, m_ui->serverLabel);
+    handleParameter("fullname", QVariant::String, m_ui->fullnameLineEdit, m_ui->fullnameLabel);
 
 
 }
@@ -64,7 +44,7 @@ MainOptionsWidget::~MainOptionsWidget()
 {
     kDebug();
 
-    delete d;
+    delete m_ui;
 }
 
 #include "main-options-widget.moc"
