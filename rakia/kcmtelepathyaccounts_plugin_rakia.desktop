@@ -1,8 +1,10 @@
 [Desktop Entry]
 Encoding=UTF-8
 Comment=Custom account configuration user interface for accounts using the Rakia/SofiaSIP connection manager.
+Comment[uk]=Інтерфейс користувача для нетипового налаштування облікового запису за допомогою керування з’єднаннями Rakia/SofiaSIP.
 Icon=blockdevice
 Name=Rakia/SofiaSIP Account Configuration User Interface
+Name[uk]=Інтерфейс користувача Rakia/SofiaSIP для налаштування
 Type=Service
 ServiceTypes=KCMTelepathyAccounts/AccountUiPlugin
 
