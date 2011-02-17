@@ -59,7 +59,7 @@
      <item row="3" column="1">
       <widget class="KLineEdit" name="aliasLineEdit">
        <property name="toolTip">
-        <string>This Alias is being used for SIMPLE, a instant messaging extension for SIP. If left blank, your SIP URI will be shown to the reciever instead of your Alias.</string>
+        <string>This Alias is being used for SIMPLE, a instant messaging extension for SIP. If left blank, your SIP URI will be shown to the receiver instead of your Alias.</string>
        </property>
       </widget>
      </item>
