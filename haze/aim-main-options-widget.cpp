@@ -18,19 +18,22 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
-#include "yahoo-main-options-widget.h"
-
-#include <KCMTelepathyAccounts/ParameterEditModel>
+#include "aim-main-options-widget.h"
 
 #include <KDebug>
+#include <KCMTelepathyAccounts/parameter-edit-model.h>
 
-YahooMainOptionsWidget::YahooMainOptionsWidget(ParameterEditModel* model, QWidget* parent)
+AimMainOptionsWidget::AimMainOptionsWidget(ParameterEditModel* model, QWidget* parent)
         : AbstractAccountParametersWidget(model, parent)
-{
-    kDebug() << "Creating Yahoo Account";
+{    
+    kDebug() << "Creating AIM Account";
     
+    foreach (Tp::ProtocolParameter param, model->parameters()) {
+        kDebug() << "Found parameter: " << param.name() << param.type() << param.defaultValue();
+    }
+
     //setup the Ui
-    m_ui = new Ui::YahooMainOptionsWidget;
+    m_ui = new Ui::AimMainOptionsWidget;
     m_ui->setupUi(this);
 
     //map the widgets to their data
@@ -38,7 +41,7 @@ YahooMainOptionsWidget::YahooMainOptionsWidget(ParameterEditModel* model, QWidge
     handleParameter("password", QVariant::String, m_ui->passwordLineEdit, m_ui->passwordLabel);
 }
 
-YahooMainOptionsWidget::~YahooMainOptionsWidget()
+AimMainOptionsWidget::~AimMainOptionsWidget()
 {
     kDebug();
 

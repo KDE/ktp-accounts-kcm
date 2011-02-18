@@ -18,29 +18,30 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
-#include "yahoo-main-options-widget.h"
+#ifndef KCMTELEPATHYACCOUNTS_PLUGIN_AIM_ACCOUNT_H
+#define KCMTELEPATHYACCOUNTS_PLUGIN_AIM_ACCOUNT_H
 
-#include <KCMTelepathyAccounts/ParameterEditModel>
+#include <KCMTelepathyAccounts/AbstractAccountUi>
 
-#include <KDebug>
-
-YahooMainOptionsWidget::YahooMainOptionsWidget(ParameterEditModel* model, QWidget* parent)
-        : AbstractAccountParametersWidget(model, parent)
+class HazeAimAccount : public AbstractAccountUi
 {
-    kDebug() << "Creating Yahoo Account";
-    
-    //setup the Ui
-    m_ui = new Ui::YahooMainOptionsWidget;
-    m_ui->setupUi(this);
+    Q_OBJECT
 
-    //map the widgets to their data
-    handleParameter("account", QVariant::String, m_ui->accountLineEdit, m_ui->accountLabel);
-    handleParameter("password", QVariant::String, m_ui->passwordLineEdit, m_ui->passwordLabel);
-}
+public:
+    explicit HazeAimAccount(QObject *parent = 0);
+    virtual ~HazeAimAccount();
 
-YahooMainOptionsWidget::~YahooMainOptionsWidget()
-{
-    kDebug();
+    virtual AbstractAccountParametersWidget
+              *mainOptionsWidget(ParameterEditModel *model,
+                                 QWidget *parent = 0) const;
+    virtual bool hasAdvancedOptionsWidget() const;
+    virtual AbstractAccountParametersWidget
+              *advancedOptionsWidget(ParameterEditModel *model,
+                                     QWidget *parent = 0) const;
 
-    delete m_ui;
-}
+private:
+    Q_DISABLE_COPY(HazeAimAccount);
+};
+
+#endif // header guard
+
