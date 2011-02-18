@@ -19,18 +19,28 @@
  */
 
 #include "haze-yahoo-account.h"
+#include "yahoo-server-settings-widget.h"
 
 #include <KDebug>
+#include <KCMTelepathyAccounts/GenericAdvancedOptionsWidget>
 
 HazeYahooAccount::HazeYahooAccount(QObject* parent)
         : AbstractAccountUi(parent)
 {
     kDebug();
 
-    // only these two parameters are supported at the moment,
-    // I'll add more once I determine which are important
+    //register that all options are supported
     registerSupportedParameter("account", QVariant::String);
     registerSupportedParameter("password", QVariant::String);
+    
+    registerSupportedParameter("port", QVariant::UInt);
+    registerSupportedParameter("xfer-host", QVariant::String);
+    registerSupportedParameter("xfer-port", QVariant::UInt);
+    
+    registerSupportedParameter("room-list-locale", QVariant::String);
+    registerSupportedParameter("charset", QVariant::String);
+    registerSupportedParameter("proxy-ssl", QVariant::Bool);
+    registerSupportedParameter("ignore-invites", QVariant::Bool);
 }
 
 HazeYahooAccount::~HazeYahooAccount()
@@ -40,7 +50,7 @@ HazeYahooAccount::~HazeYahooAccount()
 
 bool HazeYahooAccount::hasAdvancedOptionsWidget() const
 {
-    return false;
+    return true;
 }
 
 AbstractAccountParametersWidget* HazeYahooAccount::mainOptionsWidget(
@@ -54,5 +64,8 @@ AbstractAccountParametersWidget* HazeYahooAccount::advancedOptionsWidget(
         ParameterEditModel* model,
         QWidget* parent) const
 {
-    return NULL;
+    GenericAdvancedOptionsWidget *advancedOptionsWidget = new GenericAdvancedOptionsWidget(model, parent);
+    AbstractAccountParametersWidget* yahooserversettings = new YahooServerSettingsWidget(model, parent);
+    advancedOptionsWidget->addTab(yahooserversettings, "Advanced");
+    return advancedOptionsWidget;
 }

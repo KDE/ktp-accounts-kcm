@@ -21,11 +21,18 @@
 #include "yahoo-main-options-widget.h"
 
 #include <KDebug>
+#include <KCMTelepathyAccounts/parameter-edit-model.h>
 
 YahooMainOptionsWidget::YahooMainOptionsWidget(ParameterEditModel* model, QWidget* parent)
         : AbstractAccountParametersWidget(model, parent)
 {
     kDebug();
+    
+    kDebug() << "Creating Yahoo Account";
+    
+    foreach (Tp::ProtocolParameter param, model->parameters()) {
+        kDebug() << "Found parameter: " << param.name() << param.type() << param.defaultValue();
+    }
 
     //setup the Ui
     m_ui = new Ui::YahooMainOptionsWidget;

@@ -11,12 +11,14 @@ set (kcmtelepathyaccounts_plugin_haze_SRCS
      icq-server-settings-widget.cpp
      haze-yahoo-account.cpp
      yahoo-main-options-widget.cpp
+     yahoo-server-settings-widget.cpp
 )
 
 kde4_add_ui_files (kcmtelepathyaccounts_plugin_haze_SRCS
                    icq-main-options-widget.ui
                    icq-server-settings-widget.ui
                    yahoo-main-options-widget.ui
+                   yahoo-server-settings-widget.ui
 )
 
 kde4_add_plugin (kcmtelepathyaccounts_plugin_haze
