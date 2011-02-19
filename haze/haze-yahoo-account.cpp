@@ -23,6 +23,7 @@
 
 #include <KDebug>
 #include <KCMTelepathyAccounts/GenericAdvancedOptionsWidget>
+#include <KLocalizedString>
 
 HazeYahooAccount::HazeYahooAccount(QObject* parent)
         : AbstractAccountUi(parent)
@@ -32,11 +33,9 @@ HazeYahooAccount::HazeYahooAccount(QObject* parent)
     //register that all options are supported
     registerSupportedParameter("account", QVariant::String);
     registerSupportedParameter("password", QVariant::String);
-    
     registerSupportedParameter("port", QVariant::UInt);
     registerSupportedParameter("xfer-host", QVariant::String);
     registerSupportedParameter("xfer-port", QVariant::UInt);
-    
     registerSupportedParameter("room-list-locale", QVariant::String);
     registerSupportedParameter("charset", QVariant::String);
     registerSupportedParameter("proxy-ssl", QVariant::Bool);
@@ -66,6 +65,6 @@ AbstractAccountParametersWidget* HazeYahooAccount::advancedOptionsWidget(
 {
     GenericAdvancedOptionsWidget *advancedOptionsWidget = new GenericAdvancedOptionsWidget(model, parent);
     AbstractAccountParametersWidget* yahooserversettings = new YahooServerSettingsWidget(model, parent);
-    advancedOptionsWidget->addTab(yahooserversettings, "Advanced");
+    advancedOptionsWidget->addTab(yahooserversettings, i18n("Advanced"));
     return advancedOptionsWidget;
 }

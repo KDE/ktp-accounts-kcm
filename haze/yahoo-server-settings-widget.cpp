@@ -31,7 +31,6 @@ YahooServerSettingsWidget::YahooServerSettingsWidget(ParameterEditModel *model,
     // Set up the UI.
     m_ui = new Ui::YahooServerSettingsWidget;
     m_ui->setupUi(this);
-    
     //server
     handleParameter("port", QVariant::UInt, m_ui->serverPort, m_ui->serverPortLabel);
     //file transfer
