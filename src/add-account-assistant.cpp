@@ -161,9 +161,18 @@ void AddAccountAssistant::accept()
     properties.insert("org.freedesktop.Telepathy.Account.Enabled", true);
 
     // FIXME: Ask the user to submit a Display Name
+
+    QString displayName;
+    if (values.contains("account")) {
+        displayName = values["account"].toString();
+    }
+    else {
+        displayName = d->currentProfileItem->protocolName();
+    }
+
     Tp::PendingAccount *pa = d->accountManager->createAccount(d->currentProfileItem->cmName(),
                                                               d->currentProfileItem->protocolName(),
-                                                              values["account"].toString(),
+                                                              displayName,
                                                               values,
                                                               properties);
 
