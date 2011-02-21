@@ -4,6 +4,8 @@ include_directories (${CMAKE_CURRENT_BINARY_DIR}
                      ${CMAKE_CURRENT_SOURCE_DIR}
 )
 
+add_definitions (-DMAKE_KCM_TELEPATHY_ACCOUNTS_LIB)
+
 set (libkcmtelepathyaccounts_SRCS
      abstract-account-ui-plugin.cpp
      abstract-account-ui.cpp
@@ -86,6 +88,7 @@ install (TARGETS kcmtelepathyaccounts
 install (FILES
          ${libkcmtelepathyaccounts_HDRS}
          ${libkcmtelepathyaccounts_PRETTY_HDRS}
+         kcm_telepathy_accounts_export.h
          DESTINATION ${INCLUDE_INSTALL_DIR}/KCMTelepathyAccounts COMPONENT Devel
 )
 

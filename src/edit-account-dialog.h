@@ -23,11 +23,9 @@
 
 #include "account-item.h"
 
-#include <kdemacros.h>
-
 #include <KDialog>
 
-class KDE_EXPORT EditAccountDialog : public KDialog
+class EditAccountDialog : public KDialog
 {
     Q_OBJECT
 

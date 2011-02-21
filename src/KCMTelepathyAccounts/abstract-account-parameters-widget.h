@@ -23,7 +23,7 @@
 #ifndef LIB_KCM_TELEPATHY_ACCOUNTS_ABSTRACT_ACCOUNT_PARAMETERS_WIDGET_H
 #define LIB_KCM_TELEPATHY_ACCOUNTS_ABSTRACT_ACCOUNT_PARAMETERS_WIDGET_H
 
-#include <kdemacros.h>
+#include "kcm_telepathy_accounts_export.h"
 
 #include <QtCore/QMap>
 #include <QtCore/QVariant>
@@ -36,7 +36,7 @@ class ParameterEditModel;
 
 typedef QMap<Tp::ProtocolParameter, QWidget*> ParametersWidgetsMap;
 
-class KDE_EXPORT AbstractAccountParametersWidget : public QWidget
+class KCM_TELEPATHY_ACCOUNTS_EXPORT AbstractAccountParametersWidget : public QWidget
 {
     Q_OBJECT
 

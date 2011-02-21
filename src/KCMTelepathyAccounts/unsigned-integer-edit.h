@@ -21,13 +21,13 @@
 #ifndef LIB_KCM_TELEPATHY_ACCOUNTS_UNSIGNED_INTEGER_EDIT_H
 #define LIB_KCM_TELEPATHY_ACCOUNTS_UNSIGNED_INTEGER_EDIT_H
 
-#include <kdemacros.h>
+#include "kcm_telepathy_accounts_export.h"
 
 #include <QtCore/QPair>
 #include <QtGui/QLineEdit>
 #include <QtGui/QValidator>
 
-class KDE_EXPORT UnsignedIntegerEdit : public QLineEdit
+class KCM_TELEPATHY_ACCOUNTS_EXPORT UnsignedIntegerEdit : public QLineEdit
 {
     Q_OBJECT
 

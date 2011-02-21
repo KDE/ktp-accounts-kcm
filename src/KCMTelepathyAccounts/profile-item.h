@@ -22,7 +22,7 @@
 #ifndef TELEPATHY_ACCOUNTS_KCM_PROTOCOL_ITEM_H
 #define TELEPATHY_ACCOUNTS_KCM_PROTOCOL_ITEM_H
 
-#include <kdemacros.h>
+#include "kcm_telepathy_accounts_export.h"
 
 #include <QtCore/QObject>
 
@@ -31,7 +31,7 @@
 class ProfileListModel;
 class KIcon;
 
-class KDE_EXPORT ProfileItem : public QObject
+class KCM_TELEPATHY_ACCOUNTS_EXPORT ProfileItem : public QObject
 {
     Q_OBJECT
     Q_DISABLE_COPY(ProfileItem);

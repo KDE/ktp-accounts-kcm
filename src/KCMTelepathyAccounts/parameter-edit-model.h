@@ -23,7 +23,7 @@
 #ifndef LIB_KCM_TELEPATHY_ACCOUNTS_PARAMETER_EDIT_MODEL_H
 #define LIB_KCM_TELEPATHY_ACCOUNTS_PARAMETER_EDIT_MODEL_H
 
-#include "kdemacros.h"
+#include "kcm_telepathy_accounts_export.h"
 
 #include <QtCore/QAbstractListModel>
 
@@ -37,7 +37,7 @@ namespace Tp {
     class Parameter;
 }
 
-class KDE_EXPORT ParameterEditModel : public QAbstractListModel
+class KCM_TELEPATHY_ACCOUNTS_EXPORT ParameterEditModel : public QAbstractListModel
 {
     Q_OBJECT
     Q_DISABLE_COPY(ParameterEditModel);

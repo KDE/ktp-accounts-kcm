@@ -22,7 +22,7 @@
 #ifndef TELEPATHY_ACCOUNTS_KCM_PROFILE_SELECT_WIDGET_H
 #define TELEPATHY_ACCOUNTS_KCM_PROFILE_SELECT_WIDGET_H
 
-#include <kdemacros.h>
+#include "kcm_telepathy_accounts_export.h"
 
 #include <QtGui/QWidget>
 
@@ -35,7 +35,7 @@ class QItemSelection;
 
 class QModelIndex;
 
-class KDE_EXPORT ProfileSelectWidget : public QWidget
+class KCM_TELEPATHY_ACCOUNTS_EXPORT ProfileSelectWidget : public QWidget
 {
     Q_OBJECT
 

@@ -21,7 +21,7 @@
 #ifndef TELEPATHY_ACCOUNTS_KCM_PLUGIN_MANAGER_H
 #define TELEPATHY_ACCOUNTS_KCM_PLUGIN_MANAGER_H
 
-#include <kdemacros.h>
+#include "kcm_telepathy_accounts_export.h"
 
 #include <QtCore/QList>
 #include <QtCore/QObject>
@@ -29,7 +29,7 @@
 class AbstractAccountUi;
 class AbstractAccountUiPlugin;
 
-class KDE_EXPORT PluginManager : public QObject
+class KCM_TELEPATHY_ACCOUNTS_EXPORT PluginManager : public QObject
 {
     Q_OBJECT
     Q_DISABLE_COPY(PluginManager)

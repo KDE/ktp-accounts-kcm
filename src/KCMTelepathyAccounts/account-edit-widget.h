@@ -22,7 +22,7 @@
 #ifndef KCM_TELEPATHY_ACCOUNTS_ACCOUNT_EDIT_WIDGET_H
 #define KCM_TELEPATHY_ACCOUNTS_ACCOUNT_EDIT_WIDGET_H
 
-#include <kdemacros.h>
+#include "kcm_telepathy_accounts_export.h"
 
 #include <QWidget>
 
@@ -30,7 +30,7 @@
 #include "parameter-edit-model.h"
 
 
-class KDE_EXPORT AccountEditWidget : public QWidget
+class KCM_TELEPATHY_ACCOUNTS_EXPORT AccountEditWidget : public QWidget
 {
     Q_OBJECT
 

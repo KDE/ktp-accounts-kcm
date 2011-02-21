@@ -24,11 +24,11 @@
 
 #include <KCMTelepathyAccounts/abstract-account-parameters-widget.h>
 
-#include <kdemacros.h>
+#include "kcm_telepathy_accounts_export.h"
 
 #include <TelepathyQt4/ConnectionManager>
 
-class KDE_EXPORT ParameterEditWidget : public AbstractAccountParametersWidget
+class KCM_TELEPATHY_ACCOUNTS_EXPORT ParameterEditWidget : public AbstractAccountParametersWidget
 {
     Q_OBJECT
 

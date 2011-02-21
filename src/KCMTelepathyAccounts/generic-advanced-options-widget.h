@@ -21,11 +21,11 @@
 #ifndef KCMTELEPATHYACCOUNTS_GENERIC_ADVANCED_OPTIONS_WIDGET_H
 #define KCMTELEPATHYACCOUNTS_GENERIC_ADVANCED_OPTIONS_WIDGET_H
 
-#include <kdemacros.h>
+#include "kcm_telepathy_accounts_export.h"
 
 #include "abstract-account-parameters-widget.h"
 
-class KDE_EXPORT GenericAdvancedOptionsWidget : public AbstractAccountParametersWidget
+class KCM_TELEPATHY_ACCOUNTS_EXPORT GenericAdvancedOptionsWidget : public AbstractAccountParametersWidget
 {
     Q_OBJECT
 

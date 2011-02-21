@@ -21,7 +21,7 @@
 #ifndef LIB_KCM_TELEPATHY_ACCOUNTS_ABSTRACT_ACCOUNT_UI_H
 #define LIB_KCM_TELEPATHY_ACCOUNTS_ABSTRACT_ACCOUNT_UI_H
 
-#include <kdemacros.h>
+#include "kcm_telepathy_accounts_export.h"
 
 #include <QtCore/QList>
 #include <QtCore/QMap>
@@ -33,7 +33,7 @@
 class AbstractAccountParametersWidget;
 class ParameterEditModel;
 
-class KDE_EXPORT AbstractAccountUi : public QObject
+class KCM_TELEPATHY_ACCOUNTS_EXPORT AbstractAccountUi : public QObject
 {
     Q_OBJECT
 
