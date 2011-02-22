@@ -25,4 +25,5 @@ add_subdirectory (butterfly)
 add_subdirectory (idle)
 add_subdirectory (haze)
 add_subdirectory (rakia)
+add_subdirectory (salut)
 
