@@ -23,8 +23,6 @@
 #include "haze-icq-account.h"
 #include "haze-yahoo-account.h"
 
-#include <KCMTelepathyAccounts/PluginMacros>
-
 #include <KDebug>
 #include <KGenericFactory>
 
@@ -63,10 +61,7 @@ AbstractAccountUi* HazeAccountUiPlugin::accountUi(const QString &connectionManag
 }
 
 
-//KCMTELEPATHYACCOUNTS_PLUGIN_EXPORT("haze", "HazeAccountUiPlugin")
-  K_PLUGIN_FACTORY(factory, registerPlugin<HazeAccountUiPlugin>();) \
-  K_EXPORT_PLUGIN(factory("kcmtelepathyaccounts_plugin_haze"))
-
+K_PLUGIN_FACTORY(factory, registerPlugin<HazeAccountUiPlugin>();) \
+K_EXPORT_PLUGIN(factory("kcmtelepathyaccounts_plugin_haze"))
 
 #include "haze-account-ui-plugin.moc"
-

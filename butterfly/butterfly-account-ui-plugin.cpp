@@ -22,8 +22,6 @@
 
 #include "butterfly-account-ui.h"
 
-#include <KCMTelepathyAccounts/PluginMacros>
-
 #include <KDebug>
 #include <KGenericFactory>
 
@@ -57,11 +55,7 @@ AbstractAccountUi* ButterflyAccountUiPlugin::accountUi(const QString &connection
     return 0;
 }
 
-
-//KCMTELEPATHYACCOUNTS_PLUGIN_EXPORT("butterfly", "ButterflyAccountUiPlugin")
-  K_PLUGIN_FACTORY(factory, registerPlugin<ButterflyAccountUiPlugin>();) \
-  K_EXPORT_PLUGIN(factory("kcmtelepathyaccounts_plugin_butterfly"))
-
+K_PLUGIN_FACTORY(factory, registerPlugin<ButterflyAccountUiPlugin>();)
+K_EXPORT_PLUGIN(factory("kcmtelepathyaccounts_plugin_butterfly"))
 
 #include "butterfly-account-ui-plugin.moc"
-

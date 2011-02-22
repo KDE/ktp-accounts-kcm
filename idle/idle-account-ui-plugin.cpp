@@ -22,8 +22,6 @@
 
 #include "idle-account-ui.h"
 
-#include <KCMTelepathyAccounts/PluginMacros>
-
 #include <KDebug>
 #include <KGenericFactory>
 
@@ -56,11 +54,7 @@ AbstractAccountUi* IdleAccountUiPlugin::accountUi(const QString &connectionManag
     return 0;
 }
 
-
-//KCMTELEPATHYACCOUNTS_PLUGIN_EXPORT("idle", "IdleAccountUiPlugin")
-  K_PLUGIN_FACTORY(factory, registerPlugin<IdleAccountUiPlugin>();) \
-  K_EXPORT_PLUGIN(factory("kcmtelepathyaccounts_plugin_idle"))
-
+K_PLUGIN_FACTORY(factory, registerPlugin<IdleAccountUiPlugin>();)
+K_EXPORT_PLUGIN(factory("kcmtelepathyaccounts_plugin_idle"))
 
 #include "idle-account-ui-plugin.moc"
-

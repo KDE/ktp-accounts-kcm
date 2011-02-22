@@ -21,8 +21,6 @@
 #include "rakia-account-ui-plugin.h"
 #include "rakia-account-ui.h"
 
-#include <KCMTelepathyAccounts/PluginMacros>
-
 #include <KDebug>
 #include <KGenericFactory>
 
@@ -63,8 +61,7 @@ AbstractAccountUi* RakiaAccountUiPlugin::accountUi(const QString &connectionMana
     return 0;
 }
 
-K_PLUGIN_FACTORY(factory, registerPlugin<RakiaAccountUiPlugin>();)\
+K_PLUGIN_FACTORY(factory, registerPlugin<RakiaAccountUiPlugin>();)
 K_EXPORT_PLUGIN(factory("kcmtelepathyaccounts_plugin_rakia"))
-
 
 #include "rakia-account-ui-plugin.moc"

@@ -57,11 +57,7 @@ AbstractAccountUi* GabbleAccountUiPlugin::accountUi(const QString &connectionMan
     return 0;
 }
 
-
-//KCMTELEPATHYACCOUNTS_PLUGIN_EXPORT("gabble", "GabbleAccountUiPlugin")
-  K_PLUGIN_FACTORY(factory, registerPlugin<GabbleAccountUiPlugin>();) \
-  K_EXPORT_PLUGIN(factory("kcmtelepathyaccounts_plugin_gabble"))
-
+K_PLUGIN_FACTORY(factory, registerPlugin<GabbleAccountUiPlugin>();)
+K_EXPORT_PLUGIN(factory("kcmtelepathyaccounts_plugin_gabble"))
 
 #include "gabble-account-ui-plugin.moc"
-
