@@ -52,8 +52,8 @@ AbstractAccountUi* RakiaAccountUiPlugin::accountUi(const QString &connectionMana
              ", servicename: " << serviceName;
 
     // We support rakia/sip and the renamed version rakia/sip combination.
-    if(((connectionManager == "rakia")    && (protocol == "sip")) ||
-            ((connectionManager == "sofiasip") && (protocol == "sip"))
+    if(((connectionManager == QLatin1String("rakia"))    && (protocol == QLatin1String("sip"))) ||
+       ((connectionManager == QLatin1String("sofiasip")) && (protocol == QLatin1String("sip")))
       ) {
         return new RakiaAccountUi;
     }

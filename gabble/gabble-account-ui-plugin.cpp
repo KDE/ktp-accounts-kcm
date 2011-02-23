@@ -50,7 +50,7 @@ AbstractAccountUi* GabbleAccountUiPlugin::accountUi(const QString &connectionMan
     kDebug();
 
     // We only support gabble/jabber combination.
-    if ((connectionManager == "gabble") && (protocol == "jabber")) {
+    if ((connectionManager == QLatin1String("gabble")) && (protocol == QLatin1String("jabber"))) {
         return new GabbleAccountUi;
     }
 

@@ -50,10 +50,10 @@ AbstractAccountUi* HazeAccountUiPlugin::accountUi(const QString &connectionManag
     kDebug();
 
     // We only support haze/icq and yahoo combination so far
-    if ((connectionManager == "haze") && (protocol == "icq")) {
+    if ((connectionManager == QLatin1String("haze")) && (protocol == QLatin1String("icq"))) {
         return new HazeIcqAccountUi;
     }
-    if ((connectionManager == "haze") && (protocol == "yahoo")){
+    if ((connectionManager == QLatin1String("haze")) && (protocol == QLatin1String("yahoo"))){
       return new HazeYahooAccount;
     }
 

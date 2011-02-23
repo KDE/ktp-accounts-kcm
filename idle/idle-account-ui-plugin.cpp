@@ -47,7 +47,7 @@ AbstractAccountUi* IdleAccountUiPlugin::accountUi(const QString &connectionManag
 
     kDebug();
 
-    if ((connectionManager == "idle") && (protocol == "irc")) {
+    if ((connectionManager == QLatin1String("idle")) && (protocol == QLatin1String("irc"))) {
         return new IdleAccountUi;
     }
 
