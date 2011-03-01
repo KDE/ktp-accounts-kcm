@@ -21,6 +21,7 @@
 #include "haze-account-ui-plugin.h"
 
 #include "haze-icq-account.h"
+#include "haze-myspaceim-account-ui.h"
 #include "haze-skype-account-ui.h"
 #include "haze-yahoo-account.h"
 
@@ -36,6 +37,7 @@ HazeAccountUiPlugin::HazeAccountUiPlugin(QObject *parent, const QVariantList &)
 
     // Register supported cm/protocol combinations
     registerProvidedProtocol("haze", "icq");
+    registerProvidedProtocol("haze", "myspace");
     registerProvidedProtocol("haze", "bigbrownchunx-skype-dbus");
     registerProvidedProtocol("haze", "yahoo");
 }
@@ -51,10 +53,12 @@ AbstractAccountUi* HazeAccountUiPlugin::accountUi(const QString &connectionManag
 
     kDebug();
 
-    // We support haze/icq, yahoo, bigbrownchunx-skype-dbus so far
+    // We support icq, yahoo, bigbrownchunx-skype-dbus and myspace so far
     if (connectionManager == QLatin1String("haze")) {
         if (protocol == QLatin1String("icq")) {
                 return new HazeIcqAccountUi;
+        } else if (protocol == QLatin1String("myspace")){
+                return new HazeMySpaceIMAccountUi;
         } else if (protocol == QLatin1String("bigbrownchunx-skype-dbus")){
                 return new HazeSkypeAccountUi;
         } else if (protocol == QLatin1String("yahoo")){

@@ -9,6 +9,9 @@ set (kcmtelepathyaccounts_plugin_haze_SRCS
      haze-icq-account.cpp
      icq-main-options-widget.cpp
      icq-server-settings-widget.cpp
+     haze-myspaceim-account-ui.cpp
+     myspaceim-main-options-widget.cpp
+     myspaceim-advanced-settings-widget.cpp
      haze-skype-account-ui.cpp
      skype-main-options-widget.cpp
      skype-advanced-settings-widget.cpp
@@ -20,6 +23,8 @@ set (kcmtelepathyaccounts_plugin_haze_SRCS
 kde4_add_ui_files (kcmtelepathyaccounts_plugin_haze_SRCS
                    icq-main-options-widget.ui
                    icq-server-settings-widget.ui
+                   myspaceim-main-options-widget.ui
+                   myspaceim-advanced-settings-widget.ui
                    skype-main-options-widget.ui
                    skype-advanced-settings-widget.ui
                    yahoo-main-options-widget.ui
