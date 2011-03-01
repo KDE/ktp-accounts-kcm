@@ -57,6 +57,7 @@ Dictionary::Dictionary()
 
     // Protocols
     m_strings.insert("aim", i18n("AOL Instant Messenger"));
+    m_strings.insert("bigbrownchunx-skype-dbus", i18n("Skype"));
     m_strings.insert("gadugadu", i18n("Gadu-Gadu"));
     m_strings.insert("groupwise", i18n("Novell Groupwise"));
     m_strings.insert("icq", i18n("ICQ"));
