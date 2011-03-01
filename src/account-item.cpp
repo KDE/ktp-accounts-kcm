@@ -52,6 +52,9 @@ AccountItem::AccountItem(const Tp::AccountPtr &account, AccountsListModel *paren
     connect(m_account.data(),
             SIGNAL(connectionStatusChanged(Tp::ConnectionStatus)),
             SIGNAL(updated()));
+    connect(m_account.data(),
+            SIGNAL(removed()),
+            SIGNAL(removed()));
 
     generateIcon();
 }
@@ -163,8 +166,6 @@ void AccountItem::onAccountRemoved(Tp::PendingOperation *op)
                  << op->errorMessage();
         return;
     }
-
-    Q_EMIT removed();
 }
 
 void AccountItem::onTitleForCustomPages(QString mandatoryPage, QList<QString> optionalPage)
