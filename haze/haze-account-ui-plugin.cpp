@@ -21,6 +21,7 @@
 #include "haze-account-ui-plugin.h"
 
 #include "haze-icq-account.h"
+#include "haze-skype-account-ui.h"
 #include "haze-yahoo-account.h"
 
 #include <KDebug>
@@ -35,6 +36,7 @@ HazeAccountUiPlugin::HazeAccountUiPlugin(QObject *parent, const QVariantList &)
 
     // Register supported cm/protocol combinations
     registerProvidedProtocol("haze", "icq");
+    registerProvidedProtocol("haze", "bigbrownchunx-skype-dbus");
     registerProvidedProtocol("haze", "yahoo");
 }
 
@@ -49,19 +51,22 @@ AbstractAccountUi* HazeAccountUiPlugin::accountUi(const QString &connectionManag
 
     kDebug();
 
-    // We only support haze/icq and yahoo combination so far
-    if ((connectionManager == QLatin1String("haze")) && (protocol == QLatin1String("icq"))) {
-        return new HazeIcqAccountUi;
-    }
-    if ((connectionManager == QLatin1String("haze")) && (protocol == QLatin1String("yahoo"))){
-      return new HazeYahooAccount;
+    // We support haze/icq, yahoo, bigbrownchunx-skype-dbus so far
+    if (connectionManager == QLatin1String("haze")) {
+        if (protocol == QLatin1String("icq")) {
+                return new HazeIcqAccountUi;
+        } else if (protocol == QLatin1String("bigbrownchunx-skype-dbus")){
+                return new HazeSkypeAccountUi;
+        } else if (protocol == QLatin1String("yahoo")){
+                return new HazeYahooAccount;
+        }
     }
 
     return 0;
 }
 
 
-K_PLUGIN_FACTORY(factory, registerPlugin<HazeAccountUiPlugin>();) \
+K_PLUGIN_FACTORY(factory, registerPlugin<HazeAccountUiPlugin>();)
 K_EXPORT_PLUGIN(factory("kcmtelepathyaccounts_plugin_haze"))
 
 #include "haze-account-ui-plugin.moc"
