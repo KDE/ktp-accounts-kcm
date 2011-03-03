@@ -23,6 +23,7 @@
 #include <KCMTelepathyAccounts/ParameterEditModel>
 
 #include <KDebug>
+#include <QDir>
 
 #include <QVariant>
 
@@ -36,6 +37,22 @@ SkypeMainOptionsWidget::SkypeMainOptionsWidget(ParameterEditModel *model, QWidge
     m_ui->setupUi(this);
 
     handleParameter("account", QVariant::String, m_ui->accountLineEdit, m_ui->accountLabel);
+
+#ifdef Q_WS_X11
+    // get autocomplete choices for the accountname
+    // Skype stores data for each account that has been used in $HOME/.Skype/<accountname>/
+    QDir skypeConfigDir(QDir::home().filePath(".Skype"));
+
+    skypeConfigDir.setFilter(QDir::Dirs | QDir::NoDotAndDotDot);
+    QFileInfoList folderList = skypeConfigDir.entryInfoList();
+
+    KCompletion *completion = new KCompletion;
+    foreach (const QFileInfo info, folderList){
+        completion->addItem(info.fileName());
+    }
+    m_ui->accountLineEdit->setCompletionObject(completion);
+    m_ui->accountLineEdit->setAutoDeleteCompletionObject(true);
+#endif
 }
 
 SkypeMainOptionsWidget::~SkypeMainOptionsWidget()
