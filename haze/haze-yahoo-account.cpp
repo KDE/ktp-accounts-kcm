@@ -22,8 +22,6 @@
 #include "yahoo-server-settings-widget.h"
 
 #include <KDebug>
-#include <KCMTelepathyAccounts/GenericAdvancedOptionsWidget>
-#include <KLocalizedString>
 
 HazeYahooAccount::HazeYahooAccount(QObject* parent)
         : AbstractAccountUi(parent)
@@ -63,8 +61,6 @@ AbstractAccountParametersWidget* HazeYahooAccount::advancedOptionsWidget(
         ParameterEditModel* model,
         QWidget* parent) const
 {
-    GenericAdvancedOptionsWidget *advancedOptionsWidget = new GenericAdvancedOptionsWidget(model, parent);
     AbstractAccountParametersWidget* yahooserversettings = new YahooServerSettingsWidget(model, parent);
-    advancedOptionsWidget->addTab(yahooserversettings, i18n("Advanced"));
-    return advancedOptionsWidget;
+    return yahooserversettings;
 }
