@@ -25,8 +25,6 @@
 
 #include <KCMTelepathyAccounts/AbstractAccountParametersWidget>
 
-#include <QString>
-
 class IcqMainOptionsWidget : public AbstractAccountParametersWidget
 {
     Q_OBJECT

@@ -19,7 +19,6 @@
  */
 
 #include "butterfly-account-ui.h"
-
 #include "main-options-widget.h"
 
 #include <KCMTelepathyAccounts/AbstractAccountParametersWidget>

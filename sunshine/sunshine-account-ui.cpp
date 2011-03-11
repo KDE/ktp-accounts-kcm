@@ -22,9 +22,7 @@
 #include "sunshine-main-options-widget.h"
 #include "sunshine-advanced-options-widget.h"
 
-#include <KCMTelepathyAccounts/ParameterEditModel>
 #include <KCMTelepathyAccounts/AbstractAccountParametersWidget>
-#include <KCMTelepathyAccounts/GenericAdvancedOptionsWidget>
 
 #include <KDebug>
 

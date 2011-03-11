@@ -22,10 +22,6 @@
 
 #include <KDebug>
 
-#include <QVariant>
-#include <QCheckBox>
-#include <QComboBox>
-
 IcqMainOptionsWidget::IcqMainOptionsWidget(ParameterEditModel *model,
                                      QWidget *parent)
  : AbstractAccountParametersWidget(model, parent)

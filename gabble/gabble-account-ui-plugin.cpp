@@ -19,10 +19,7 @@
  */
 
 #include "gabble-account-ui-plugin.h"
-
 #include "gabble-account-ui.h"
-
-#include <KCMTelepathyAccounts/PluginMacros>
 
 #include <KDebug>
 #include <KGenericFactory>

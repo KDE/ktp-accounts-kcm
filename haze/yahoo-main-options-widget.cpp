@@ -20,8 +20,9 @@
 
 #include "yahoo-main-options-widget.h"
 
-#include <KDebug>
 #include <KCMTelepathyAccounts/ParameterEditModel>
+
+#include <KDebug>
 
 YahooMainOptionsWidget::YahooMainOptionsWidget(ParameterEditModel* model, QWidget* parent)
         : AbstractAccountParametersWidget(model, parent)

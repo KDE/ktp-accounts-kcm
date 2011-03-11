@@ -19,7 +19,6 @@
  */
 
 #include "idle-account-ui.h"
-
 #include "main-options-widget.h"
 #include "advanced-options-widget.h"
 

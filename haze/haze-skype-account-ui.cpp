@@ -23,9 +23,6 @@
 #include "skype-main-options-widget.h"
 #include "skype-advanced-settings-widget.h"
 
-#include <KCMTelepathyAccounts/AbstractAccountParametersWidget>
-#include <KCMTelepathyAccounts/GenericAdvancedOptionsWidget>
-
 #include <KDebug>
 
 HazeSkypeAccountUi::HazeSkypeAccountUi(QObject *parent)

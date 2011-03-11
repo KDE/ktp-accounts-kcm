@@ -24,8 +24,6 @@
 
 #include <KDebug>
 
-#include <QVariant>
-
 MySpaceIMMainOptionsWidget::MySpaceIMMainOptionsWidget(ParameterEditModel *model, QWidget *parent)
  : AbstractAccountParametersWidget(model, parent)
 {
