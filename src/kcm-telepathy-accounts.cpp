@@ -58,6 +58,7 @@ KCMTelepathyAccounts::KCMTelepathyAccounts(QWidget *parent, const QVariantList& 
     aboutData->addAuthor(ki18n("David Edmundson"), ki18n("Developer"), "david@davidedmundson.co.uk");
     aboutData->addAuthor(ki18n("Dominik Schmidt"), ki18n("Developer"), "kde@dominik-schmidt.de");
     aboutData->addAuthor(ki18n("Thomas Richard"), ki18n("Developer"), "thomas.richard@proan.be");
+    aboutData->addAuthor(ki18n("Florian Reinhard"), ki18n("Developer"), "florian.reinhard@googlemail.com");
 
     setAboutData(aboutData);
 
