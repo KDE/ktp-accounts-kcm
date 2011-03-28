@@ -156,9 +156,13 @@ void AddAccountAssistant::accept()
     // FIXME: In some next version of tp-qt4 there should be a convenience class for this
     // https://bugs.freedesktop.org/show_bug.cgi?id=33153
     QVariantMap properties;
-
-    properties.insert("org.freedesktop.Telepathy.Account.Service", d->currentProfileItem->serviceName());
-    properties.insert("org.freedesktop.Telepathy.Account.Enabled", true);
+    
+    if (d->accountManager->supportedAccountProperties().contains(QLatin1String("org.freedesktop.Telepathy.Account.Service"))) {
+      properties.insert("org.freedesktop.Telepathy.Account.Service", d->currentProfileItem->serviceName());
+    }
+    if (d->accountManager->supportedAccountProperties().contains(QLatin1String("org.freedesktop.Telepathy.Account.Enabled"))) {
+      properties.insert("org.freedesktop.Telepathy.Account.Enabled", true);
+    }
 
     // FIXME: Ask the user to submit a Display Name
 
