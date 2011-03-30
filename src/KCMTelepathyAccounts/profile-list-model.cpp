@@ -94,10 +94,16 @@ void ProfileListModel::setProfileManager(Tp::ProfileManagerPtr profileManager)
         }
         insertItems.append(new ProfileItem(profile, this));
     }
-
-    beginInsertRows(QModelIndex(), 0, insertItems.size()-1);
-    m_profileItems.append(insertItems);
-    endInsertRows();
+    
+    if( insertItems.size() > 0 )
+    {
+      beginInsertRows(QModelIndex(), 0, insertItems.size()-1);
+      m_profileItems.append(insertItems);
+      endInsertRows();
+    }
+    else
+      return;
+    
 }
 
 ProfileItem *ProfileListModel::itemForIndex(const QModelIndex &index) const
