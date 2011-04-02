@@ -118,6 +118,7 @@ void EditAccountDialog::onParametersUpdated(Tp::PendingOperation *op)
     }
 
     emit finished();
+    d->item->account()->reconnect();
 
     // set the dialog as accepted and exit
     done(KDialog::Accepted);
