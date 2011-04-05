@@ -29,6 +29,10 @@
 #include <TelepathyQt4/ConnectionManager>
 #include "parameter-edit-model.h"
 
+enum ConnectOnLoadType{
+    doConnectOnAdd,
+    doNotConnectOnAdd
+};
 
 class KCM_TELEPATHY_ACCOUNTS_EXPORT AccountEditWidget : public QWidget
 {
@@ -37,10 +41,12 @@ class KCM_TELEPATHY_ACCOUNTS_EXPORT AccountEditWidget : public QWidget
 public:
     explicit AccountEditWidget(const Tp::ProfilePtr &info,
                                ParameterEditModel *parameterModel,
+                               ConnectOnLoadType connectOnAddFlag = doNotConnectOnAdd,
                                QWidget *parent = 0);
     virtual ~AccountEditWidget();
 
     virtual bool validateParameterValues() const;
+    bool connectOnAdd();
 
     virtual QVariantMap parametersSet() const;
     virtual QStringList parametersUnset() const;

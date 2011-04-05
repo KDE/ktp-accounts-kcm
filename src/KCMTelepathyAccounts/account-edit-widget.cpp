@@ -33,6 +33,8 @@
 
 #include <TelepathyQt4/Profile>
 #include <QtCore/QList>
+#include <QtGui/QCheckBox>
+
 
 class AccountEditWidget::Private
 {
@@ -47,6 +49,8 @@ public:
     QString protocol;
     QString serviceName;
 
+    QCheckBox *connectOnAdd;
+
     ParameterEditModel *parameterModel;
 
     AbstractAccountUi *accountUi;
@@ -56,6 +60,7 @@ public:
 
 AccountEditWidget::AccountEditWidget(const Tp::ProfilePtr &profile,
                                      ParameterEditModel *parameterModel,
+                                     ConnectOnLoadType connectOnAddFlag,
                                      QWidget *parent)
         : QWidget(parent),
           d(new Private)
@@ -83,6 +88,15 @@ AccountEditWidget::AccountEditWidget(const Tp::ProfilePtr &profile,
     d->ui->titleLabel->setText(localizedName);
     d->ui->iconLabel->setText("");
     d->ui->iconLabel->setPixmap(KIcon(profile->iconName()).pixmap(32));
+
+    if(connectOnAddFlag == doConnectOnAdd){
+    d->connectOnAdd = new QCheckBox(i18n("Connect when wizard is finished"), this);
+    d->connectOnAdd->setChecked(true);
+    d->ui->verticalLayout->addWidget(d->connectOnAdd);
+    }
+    else{
+        d->connectOnAdd = 0;
+    }
 
     loadWidgets();
 }
@@ -211,6 +225,16 @@ void AccountEditWidget::onAdvancedClicked()
 ParameterEditModel* AccountEditWidget::parameterModel() const
 {
     return d->parameterModel;
+}
+
+bool AccountEditWidget::connectOnAdd()
+{
+    if(d->connectOnAdd == 0){
+        return false;
+    }
+    else{
+        return d->connectOnAdd->isChecked();
+    }
 }
 
 #include "account-edit-widget.moc"

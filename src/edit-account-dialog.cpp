@@ -72,6 +72,7 @@ EditAccountDialog::EditAccountDialog(AccountItem *item, QWidget *parent)
     // Set up the interface
     d->widget = new AccountEditWidget(d->item->account()->profile(),
                                       parameterModel,
+                                      doNotConnectOnAdd,
                                       this);
     setMainWidget(d->widget);
     setMinimumWidth(400);

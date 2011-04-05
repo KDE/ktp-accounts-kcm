@@ -36,6 +36,7 @@
 
 #include <QtCore/QList>
 #include <QtGui/QHBoxLayout>
+#include <QtGui/QCheckBox>
 
 #include <TelepathyQt4/PendingReady>
 #include <TelepathyQt4/PendingAccount>
@@ -214,6 +215,10 @@ void AddAccountAssistant::onAccountCreated(Tp::PendingOperation *op)
         return;
     }
 
+    if(d->accountEditWidget->connectOnAdd()){
+        pendingAccount->account()->setRequestedPresence(Tp::Presence::available(QString("Online")));
+    }
+
     KAssistantDialog::accept();
 }
 
@@ -262,6 +267,7 @@ void AddAccountAssistant::pageTwo()
     // Set up the account edit widget.
     d->accountEditWidget = new AccountEditWidget(d->currentProfileItem->profile(),
                                                  parameterModel,
+                                                 doConnectOnAdd,
                                                  d->pageTwoWidget);
     d->pageTwoWidget->layout()->addWidget(d->accountEditWidget);
 
