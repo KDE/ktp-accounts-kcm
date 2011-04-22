@@ -256,11 +256,7 @@ void AddAccountAssistant::pageTwo()
 
     // Add the parameters to the model.
     ParameterEditModel *parameterModel = new ParameterEditModel(this);
-    parameterModel->addItems(parameters);
-
-    foreach(const Tp::Profile::Parameter &parameter, d->currentProfileItem->profile()->parameters()) {
-        parameterModel->setData(parameterModel->indexForParameter(parameter), parameter.value(), Qt::EditRole);
-    }
+    parameterModel->addItems(parameters, d->currentProfileItem->profile()->parameters());
 
     // Delete account previous widget if it already existed.
     if (d->accountEditWidget) {

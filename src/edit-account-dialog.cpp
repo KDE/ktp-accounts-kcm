@@ -67,7 +67,7 @@ EditAccountDialog::EditAccountDialog(AccountItem *item, QWidget *parent)
 
     // Add the parameters to the model.
     ParameterEditModel *parameterModel = new ParameterEditModel(this);
-    parameterModel->addItems(parameters, parameterValues);
+    parameterModel->addItems(parameters, d->item->account()->profile()->parameters(), parameterValues);
 
     // Set up the interface
     d->widget = new AccountEditWidget(d->item->account()->profile(),

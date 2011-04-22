@@ -25,14 +25,21 @@
 #include <KDebug>
 
 ParameterItem::ParameterItem(const Tp::ProtocolParameter &parameter,
+                             const Tp::Profile::Parameter &profileParameter,
                              const QVariant &originalValue,
                              QObject *parent)
  : QObject(parent),
    m_parameter(parameter),
+   m_profileParameter(profileParameter),
    m_originalValue(originalValue)
 {
     // To begin with, the current value is the original value.
     m_currentValue = m_originalValue;
+
+    //if no default value is set, use the value from the profile (if it exists)
+    if (m_currentValue.isNull()) {
+        m_currentValue = profileParameter.value();
+    }
 
     // Set the localized name with the value from the dictionary if possible.
     m_localizedName = Dictionary::instance()->string(parameter.name());
@@ -84,9 +91,19 @@ bool ParameterItem::isRequiredForRegistration() const
     return m_parameter.isRequiredForRegistration();
 }
 
+bool ParameterItem::isMandatory() const
+{
+    return m_profileParameter.isMandatory();
+}
+
 const Tp::ProtocolParameter ParameterItem::parameter() const
 {
     return m_parameter;
+}
+
+const Tp::Profile::Parameter ParameterItem::profileParameter() const
+{
+    return m_profileParameter;
 }
 
 QValidator::State ParameterItem::validity() const

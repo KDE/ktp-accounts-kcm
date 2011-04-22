@@ -26,6 +26,8 @@
 #include <QtGui/QValidator>
 
 #include <TelepathyQt4/ConnectionManager>
+#include <TelepathyQt4/Profile>
+
 
 class ParameterItem : public QObject
 {
@@ -34,6 +36,7 @@ class ParameterItem : public QObject
 
 public:
     ParameterItem(const Tp::ProtocolParameter &parameter,
+                  const Tp::Profile::Parameter &profileParameter,
                   const QVariant &originalValue,
                   QObject *parent = 0);
     virtual ~ParameterItem();
@@ -45,7 +48,10 @@ public:
     bool isSecret() const;
     bool isRequired() const;
     bool isRequiredForRegistration() const;
+    /** Returns true if the item is from a profile and should _not_ be changed*/
+    bool isMandatory() const;
     const Tp::ProtocolParameter parameter() const;
+    const Tp::Profile::Parameter profileParameter() const;
     QValidator::State validity() const;
 
     void setValue(const QVariant &value);
@@ -53,6 +59,7 @@ public:
 
 private:
     Tp::ProtocolParameter m_parameter;
+    Tp::Profile::Parameter m_profileParameter;
     const QVariant m_originalValue;
     QVariant m_currentValue;
     QString m_localizedName;

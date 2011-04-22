@@ -173,7 +173,7 @@ Tp::ProtocolParameter ParameterEditModel::parameter(const QString &parameterName
 }
 
 
-void ParameterEditModel::addItem(const Tp::ProtocolParameter &parameter, const QVariant &originalValue)
+void ParameterEditModel::addItem(const Tp::ProtocolParameter &parameter, const Tp::Profile::Parameter &profileParameter, const QVariant &originalValue)
 {
     // Check we are not creating duplicate items.
     foreach (const ParameterItem *item, m_items) {
@@ -184,14 +184,25 @@ void ParameterEditModel::addItem(const Tp::ProtocolParameter &parameter, const Q
 
     // Create a new ParameterItem and add it to the list.
     beginInsertRows(QModelIndex(), m_items.size(), m_items.size());
-    m_items.append(new ParameterItem(parameter, originalValue, this));
+    m_items.append(new ParameterItem(parameter, profileParameter, originalValue, this));
     endInsertRows();
 }
 
-void ParameterEditModel::addItems(const Tp::ProtocolParameterList& parameters, const QVariantMap& parameterValues)
+void ParameterEditModel::addItems(const Tp::ProtocolParameterList &parameters, const Tp::Profile::ParameterList &profileParameters, const QVariantMap &parameterValues)
 {
     foreach (const Tp::ProtocolParameter &parameter, parameters) {
-        addItem(parameter, parameterValues[parameter.name()]);
+
+        Tp::Profile::Parameter relevantProfileParameter;
+
+        //try and find the correct profile parameter, if it can't be found leave it as empty.
+        foreach(Tp::Profile::Parameter profileParameter, profileParameters) {
+            if (profileParameter.name() == parameter.name()) {
+                relevantProfileParameter = profileParameter;
+                break;
+            }
+        }
+
+        addItem(parameter, relevantProfileParameter, parameterValues[parameter.name()]);
     }
 }
 

@@ -68,8 +68,8 @@ public:
     QModelIndex indexForParameter(const Tp::Profile::Parameter &parameter) const;
     Tp::ProtocolParameter parameter(const QString &parameterName) const;
 
-    void addItem(const Tp::ProtocolParameter &parameter, const QVariant &originalValue);
-    void addItems(const Tp::ProtocolParameterList &parameters, const QVariantMap &parameterValues = QVariantMap());
+    void addItem(const Tp::ProtocolParameter &parameter, const Tp::Profile::Parameter &profileParameter, const QVariant &originalValue);
+    void addItems(const Tp::ProtocolParameterList &parameters, const Tp::Profile::ParameterList &profileParameters, const QVariantMap &parameterValues = QVariantMap());
 
     Tp::ProtocolParameterList parameters() const;
 
