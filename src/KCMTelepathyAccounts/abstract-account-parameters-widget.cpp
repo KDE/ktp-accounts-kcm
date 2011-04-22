@@ -100,14 +100,11 @@ void AbstractAccountParametersWidget::handleParameter(const QString &parameterNa
 
     Tp::ProtocolParameter foundParameter = d->parameterModel->parameter(parameterName);
 
-    if(!foundParameter.isValid() || foundParameter.type() != parameterType)
-    {
+    if(!foundParameter.isValid() || foundParameter.type() != parameterType) {
         // hide widgets because they are not needed
         kDebug() << "Field" << parameterName << "hidden";
         dataWidget->hide();
-        foreach(QWidget *label, labelWidgets)
-        {
-
+        foreach(QWidget *label, labelWidgets) {
             if(label) {
                 label->hide();
             }
@@ -126,6 +123,10 @@ void AbstractAccountParametersWidget::handleParameter(const QString &parameterNa
         ValidatedLineEdit *validated = qobject_cast<ValidatedLineEdit*>(dataWidget);
         if(validated) {
             d->validatedWidgets.insert(index, validated);
+	}
+	
+	if (! (index.flags() & Qt::ItemIsEnabled)) {
+            dataWidget->setEnabled(false);
         }
     }
 }

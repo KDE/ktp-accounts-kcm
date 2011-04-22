@@ -109,6 +109,21 @@ QVariant ParameterEditModel::data(const QModelIndex &index, int role) const
     return data;
 }
 
+Qt::ItemFlags ParameterEditModel::flags(const QModelIndex &index) const
+{
+    Qt::ItemFlags flags = 0;
+    if (!index.isValid()) {
+        return flags;
+    }
+
+    flags |= Qt::ItemIsSelectable;
+
+    if (! m_items.at(index.row())->isMandatory()) {
+        flags |= Qt::ItemIsEnabled;
+    }
+    return flags;
+}
+
 bool ParameterEditModel::setData(const QModelIndex &index, const QVariant &value, int role)
 {
     if (!index.isValid()) {
@@ -117,6 +132,10 @@ bool ParameterEditModel::setData(const QModelIndex &index, const QVariant &value
     }
 
     if (role == ParameterEditModel::ValueRole || role == Qt::EditRole) {
+        //never edit items fixed in the profile.
+        if(m_items.at(index.row())->isMandatory()) {
+            return false;
+        }
 
         m_items.at(index.row())->setValue(value);
         Q_EMIT dataChanged(index, index);
