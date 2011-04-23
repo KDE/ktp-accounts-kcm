@@ -98,17 +98,16 @@ void AccountsListDelegate::paint(QPainter *painter, const QStyleOptionViewItem &
     QFont accountNameFont = option.font;
     QFont statusTextFont = option.font;
 
-    if(index.data(Qt::CheckStateRole).toBool()) {
+    if (index.data(Qt::CheckStateRole).toBool()) {
         accountNameFont.setBold(true);
         painter->setPen(option.palette.color(QPalette::Active, QPalette::Text));
-    }
-    else {
+    } else {
         accountNameFont.setItalic(true);
         statusTextFont.setItalic(true);
         painter->setPen(option.palette.color(QPalette::Disabled, QPalette::Text));
     }
 
-    if(this->itemView()->selectionModel()->isSelected(index) && this->itemView()->hasFocus()) {
+    if (itemView()->selectionModel()->isSelected(index) && itemView()->hasFocus()) {
         painter->setPen(option.palette.color(QPalette::Active, QPalette::HighlightedText));
     }
 

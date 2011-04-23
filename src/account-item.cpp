@@ -118,9 +118,10 @@ const KIcon AccountItem::connectionStateIcon() const
 
 const QString AccountItem::connectionStatusReason() const
 {
-    if(!m_account->isEnabled())
+    if (!m_account->isEnabled()) {
         return i18n("Account disabled - Click checkbox to enable");
-
+    }
+    
     switch (m_account->connectionStatusReason())
     {
     case Tp::ConnectionStatusReasonAuthenticationFailed:
