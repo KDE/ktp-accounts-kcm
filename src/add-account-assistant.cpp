@@ -222,6 +222,7 @@ void AddAccountAssistant::onAccountCreated(Tp::PendingOperation *op)
     if(d->accountEditWidget->connectOnAdd()){
         pendingAccount->account()->setRequestedPresence(Tp::Presence::available(QString("Online")));
     }
+    pendingAccount->account()->setServiceName(d->currentProfileItem->serviceName());
 
     KAssistantDialog::accept();
 }
