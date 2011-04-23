@@ -5,8 +5,10 @@
 #include <QApplication>
 #include <QPainter>
 #include <QCheckBox>
+#include <QAbstractItemView>
 
 #include <KDebug>
+#include <KLocale>
 
 AccountsListDelegate::AccountsListDelegate(QAbstractItemView *itemView, QObject *parent)
     : KWidgetItemDelegate(itemView, parent)
@@ -26,7 +28,8 @@ QSize AccountsListDelegate::sizeHint(const QStyleOptionViewItem &option, const Q
 QList<QWidget*> AccountsListDelegate::createItemWidgets() const
 {
     QCheckBox *checkbox = new QCheckBox();
-    connect(checkbox, SIGNAL(clicked(bool)), SLOT(onCheckBoxToggled(bool)));
+    checkbox->setToolTip(i18n("Enable account"));
+    connect(checkbox, SIGNAL(toggled(bool)), SLOT(onCheckBoxToggled(bool)));
     return QList<QWidget*>() << checkbox;
 }
 
@@ -38,6 +41,13 @@ void AccountsListDelegate::updateItemWidgets(const QList<QWidget *> widgets, con
         int topMargin = (option.rect.height() - checkbox->height()) / 2;
         checkbox->move(m_paddingSize, topMargin);
         checkbox->setChecked(index.data(Qt::CheckStateRole).toBool());
+
+        if(checkbox->isChecked()) {
+            checkbox->setToolTip(i18n("Disable account"));
+        }
+        else {
+            checkbox->setToolTip(i18n("Enable account"));
+        }
     }
     else {
         kDebug() << "checkbox widget pointer is null..";
@@ -66,7 +76,6 @@ void AccountsListDelegate::paint(QPainter *painter, const QStyleOptionViewItem &
     QString connectionErrorString = index.data(AccountsListModel::ConnectionErrorMessageDisplayRole).toString();
     QIcon connectionStatusIcon = index.data(AccountsListModel::ConnectionStateIconRole).value<QIcon>();
 
-
     QRect innerRect = option.rect.adjusted(m_paddingSize,m_paddingSize,-m_paddingSize,-m_paddingSize); //add some padding
 
     QSize checkBoxSize(32,20);
@@ -86,15 +95,31 @@ void AccountsListDelegate::paint(QPainter *painter, const QStyleOptionViewItem &
 
     painter->drawPixmap(style->itemPixmapRect(decorationRect, Qt::AlignCenter, iconPixmap), iconPixmap);
 
-    QFont boldFont = option.font;
-    boldFont.setBold(true);
-    painter->setFont(boldFont);
-    painter->drawText(mainTextRect, Qt::AlignTop, accountName);
-    painter->setFont(option.font);
-    painter->drawText(mainTextRect, Qt::AlignBottom, connectionErrorString);
+    QFont accountNameFont = option.font;
+    QFont statusTextFont = option.font;
 
+    if(index.data(Qt::CheckStateRole).toBool()) {
+        accountNameFont.setBold(true);
+        painter->setPen(option.palette.color(QPalette::Active, QPalette::Text));
+    }
+    else {
+        accountNameFont.setItalic(true);
+        statusTextFont.setItalic(true);
+        painter->setPen(option.palette.color(QPalette::Disabled, QPalette::Text));
+    }
+
+    if(this->itemView()->selectionModel()->isSelected(index) && this->itemView()->hasFocus()) {
+        painter->setPen(option.palette.color(QPalette::Active, QPalette::HighlightedText));
+    }
+
+    // This text gets painted with the mainTextFont when the account is disabled, otherwise the default font is used
+    painter->setFont(statusTextFont);
+    painter->drawText(mainTextRect, Qt::AlignBottom, connectionErrorString);
     painter->drawPixmap(style->itemPixmapRect(statusIconRect, Qt::AlignCenter, statusPixmap), statusPixmap);
     painter->drawText(statusTextRect, Qt::AlignCenter, connectionStatusString);
+
+    painter->setFont(accountNameFont);
+    painter->drawText(mainTextRect, Qt::AlignTop, accountName);
 }
 
 
