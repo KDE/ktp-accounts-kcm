@@ -16,10 +16,9 @@
   </parameters>
 
   <presences allow-others="1">
-    <presence id="available" label="Online"  icon="online"/>
-    <presence id="offline"   label="Offline"/>
-    <presence id="away"      label="Gone"/>
-    <presence id="hidden"    disabled="1"/>
+    <presence id="available" label="Online"  icon="user-online"/>
+    <presence id="busy"   label="Busy" icon="user-busy"/>
+    <presence id="hidden" label="Invisible" icon="user-invisible"/>
   </presences>
 
   <unsupported-channel-classes>

@@ -12,11 +12,10 @@
     <parameter name="port"    type="u" mandatory="1">5222</parameter>
   </parameters>
 
-  <presences allow-others="1">
-    <presence id="available" label="Online"  icon="online"/>
-    <presence id="offline"   label="Offline"/>
-    <presence id="away"      label="Inactive"/>
-    <presence id="hidden"    disabled="1"/>
+  <presences allow-others="0">
+    <presence id="available" label="Online"  icon="user-online" message="0"/>
+    <presence id="offline"   label="Offline" icon="user-offline" message="0"/>
+    <presence id="away"      label="Idle" icon="user-away" message="0"/>
   </presences>
 
   <unsupported-channel-classes>
