@@ -21,6 +21,7 @@
 #include "gabble-account-ui.h"
 
 #include "main-options-widget.h"
+#include "main-options-widget-googletalk.h"
 #include "server-settings-widget.h"
 #include "proxy-settings-widget.h"
 
@@ -29,8 +30,9 @@
 
 #include <KDebug>
 
-GabbleAccountUi::GabbleAccountUi(QObject *parent)
- : AbstractAccountUi(parent)
+GabbleAccountUi::GabbleAccountUi(const QString &serviceName, QObject *parent)
+ : AbstractAccountUi(parent),
+   m_serviceName(serviceName)
 {
     kDebug();
 
@@ -65,8 +67,12 @@ AbstractAccountParametersWidget *GabbleAccountUi::mainOptionsWidget(
         ParameterEditModel *model,
         QWidget *parent) const
 {
-
-    return new MainOptionsWidget(model, parent);
+    if(m_serviceName == QLatin1String("google-talk")) {
+	return new MainOptionsWidgetGoogleTalk(model, parent);
+    }
+    else {
+      return new MainOptionsWidget(model, parent);
+    }
 }
 
 bool GabbleAccountUi::hasAdvancedOptionsWidget() const

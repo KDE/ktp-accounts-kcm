@@ -8,12 +8,14 @@ set (kcmtelepathyaccounts_plugin_gabble_SRCS
      gabble-account-ui-plugin.cpp
      gabble-account-ui.cpp
      main-options-widget.cpp
+     main-options-widget-googletalk.cpp
      server-settings-widget.cpp
      proxy-settings-widget.cpp
 )
 
 kde4_add_ui_files (kcmtelepathyaccounts_plugin_gabble_SRCS
                    main-options-widget.ui
+                   main-options-widget-googletalk.ui
                    server-settings-widget.ui
                    proxy-settings-widget.ui
 )

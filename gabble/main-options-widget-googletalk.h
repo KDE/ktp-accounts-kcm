@@ -1,7 +1,7 @@
 /*
  * This file is part of telepathy-accounts-kcm
  *
- * Copyright (C) 2009 Collabora Ltd. <http://www.collabora.co.uk/>
+ * Copyright (C) 2011 David Edmundson. <kde@davidedmundson.co.uk>
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -18,30 +18,25 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
-#ifndef KCMTELEPATHYACCOUNTS_PLUGIN_GABBLE_ACCOUNT_UI_H
-#define KCMTELEPATHYACCOUNTS_PLUGIN_GABBLE_ACCOUNT_UI_H
+#ifndef KCMTELEPATHYACCOUNTS_PLUGIN_GABBLE_ACCOUNT_PARAMETERS_WIDGET_GOOGLETALK_H
+#define KCMTELEPATHYACCOUNTS_PLUGIN_GABBLE_ACCOUNT_PARAMETERS_WIDGET_GOOGLETALK_H
 
-#include <KCMTelepathyAccounts/AbstractAccountUi>
+#include "ui_main-options-widget-googletalk.h"
 
-class GabbleAccountUi : public AbstractAccountUi
+#include <KCMTelepathyAccounts/AbstractAccountParametersWidget>
+
+class MainOptionsWidgetGoogleTalk : public AbstractAccountParametersWidget
 {
     Q_OBJECT
 
 public:
-    explicit GabbleAccountUi(const QString &serviceName, QObject *parent = 0);
-    virtual ~GabbleAccountUi();
-
-    virtual AbstractAccountParametersWidget
-              *mainOptionsWidget(ParameterEditModel *model,
-                                 QWidget *parent = 0) const;
-    virtual bool hasAdvancedOptionsWidget() const;
-    virtual AbstractAccountParametersWidget
-              *advancedOptionsWidget(ParameterEditModel *model,
-                                     QWidget *parent = 0) const;
+    explicit MainOptionsWidgetGoogleTalk(ParameterEditModel *model,
+                               QWidget *parent = 0);
+    virtual ~MainOptionsWidgetGoogleTalk();
 
 private:
-    Q_DISABLE_COPY(GabbleAccountUi);
-    QString m_serviceName;
+    Q_DISABLE_COPY(MainOptionsWidgetGoogleTalk);
+    Ui::MainOptionsWidgetGoogleTalk *m_ui;
 };
 
 #endif // header guard
