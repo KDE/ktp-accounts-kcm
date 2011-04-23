@@ -53,6 +53,9 @@ AccountItem::AccountItem(const Tp::AccountPtr &account, AccountsListModel *paren
             SIGNAL(connectionStatusChanged(Tp::ConnectionStatus)),
             SIGNAL(updated()));
     connect(m_account.data(),
+            SIGNAL(iconNameChanged(QString)),
+            SLOT(generateIcon()));
+    connect(m_account.data(),
             SIGNAL(removed()),
             SIGNAL(removed()));
 
