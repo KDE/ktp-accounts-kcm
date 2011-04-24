@@ -27,7 +27,7 @@
 #include <KApplication>
 #include <KDebug>
 #include <KLocale>
-#include <KMessageBox>
+#include <KTitleWidget>
 
 #include <QtGui/QValidator>
 
@@ -123,7 +123,6 @@ bool ParameterEditModel::setData(const QModelIndex &index, const QVariant &value
         return true;
 
     } else if (ParameterEditModel::ValidityRole) {
-
         if (value.toInt() == QValidator::Acceptable) {
             m_items.at(index.row())->setValidity(QValidator::Acceptable);
         } else if (value.toInt() == QValidator::Intermediate) {
@@ -273,11 +272,10 @@ bool ParameterEditModel::validateParameterValues()
 {
     foreach (ParameterItem *item, m_items) {
         if (item->validity() != QValidator::Acceptable) {
-           // Display a more helpful error here.
-           KMessageBox::error(QApplication::activeWindow (),
-                              i18n("\"<b>%1</b>\" is not an acceptable value for <b>%2</b>")
-                              .arg(item->value().toString())
-                              .arg(item->localizedName()));
+           emit feedbackMessage(i18n("Parameter \"<b>%1</b>\" is not valid!")
+                                .arg(item->localizedName()),
+                                QString(),
+                                KTitleWidget::ErrorMessage);
            return false;
        }
     }

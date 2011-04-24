@@ -27,9 +27,11 @@
 #include "parameter-edit-widget.h"
 #include "plugin-manager.h"
 #include "dictionary.h"
+#include "feedback-widget.h"
 
 #include <KDebug>
 #include <KLocale>
+#include <KTitleWidget>
 
 #include <TelepathyQt4/Profile>
 #include <QtCore/QList>
@@ -52,7 +54,6 @@ public:
     QCheckBox *connectOnAdd;
 
     ParameterEditModel *parameterModel;
-
     AbstractAccountUi *accountUi;
     Ui::AccountEditWidget *ui;
     AbstractAccountParametersWidget *mainOptionsWidget;
@@ -78,6 +79,18 @@ AccountEditWidget::AccountEditWidget(const Tp::ProfilePtr &profile,
 
     connect(d->ui->advancedButton, SIGNAL(clicked()),
             this, SLOT(onAdvancedClicked()));
+
+    FeedbackWidget *feedback = new FeedbackWidget();
+    feedback->setAutoHideTimeout(1000*15);
+    d->ui->verticalLayout->insertWidget(1, feedback);
+    connect(this,
+            SIGNAL(feedbackMessage(QString,QString,KTitleWidget::MessageType)),
+            feedback,
+            SLOT(setMessage(QString,QString,KTitleWidget::MessageType)));
+    connect(d->parameterModel,
+            SIGNAL(feedbackMessage(QString,QString,KTitleWidget::MessageType)),
+            feedback,
+            SLOT(setMessage(QString,QString,KTitleWidget::MessageType)));
 
     d->ui->advancedButton->setIcon(KIcon("configure"));
     //FIXME: Dictionary should not be needed anymore when distros ship profiles
@@ -140,7 +153,7 @@ void AccountEditWidget::loadWidgets()
         //Widgets wrapped in a layout should not have double margins
         d->mainOptionsWidget->layout()->setContentsMargins(0, 0, 0, 0);
         d->ui->advancedButton->setVisible(d->accountUi->hasAdvancedOptionsWidget());
-        d->ui->verticalLayout->insertWidget(1, d->mainOptionsWidget);
+        d->ui->verticalLayout->insertWidget(2, d->mainOptionsWidget);
 
         // check if all the parameters the UI supports are available in the CM plugin
         // also verify if the UI handle all mandatory parameters
@@ -177,8 +190,8 @@ void AccountEditWidget::loadWidgets()
                 d->parameterModel,
                 this);
         d->ui->advancedButton->setVisible(false);
-        d->ui->verticalLayout->insertWidget(1, d->mainOptionsWidget);
-        d->ui->verticalLayout->setStretch(1, 1);
+        d->ui->verticalLayout->insertWidget(2, d->mainOptionsWidget);
+        d->ui->verticalLayout->setStretch(2, 1);
     }
 }
 
@@ -238,4 +251,3 @@ bool AccountEditWidget::connectOnAdd()
 }
 
 #include "account-edit-widget.moc"
-

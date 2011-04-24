@@ -89,14 +89,14 @@ void EditAccountDialog::accept()
 {
     kDebug();
 
+    QVariantMap setParameters = d->widget->parametersSet();
+    QStringList unsetParameters = d->widget->parametersUnset();
+
     // Check all pages of parameters pass validation.
     if (!d->widget->validateParameterValues()) {
         kDebug() << "A widget failed parameter validation. Not accepting wizard.";
         return;
     }
-
-    QVariantMap setParameters = d->widget->parametersSet();
-    QStringList unsetParameters = d->widget->parametersUnset();
 
     kDebug() << "Set parameters:" << setParameters;
     kDebug() << "Unset parameters:" << unsetParameters;

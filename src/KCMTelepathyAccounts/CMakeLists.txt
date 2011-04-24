@@ -21,6 +21,8 @@ set (libkcmtelepathyaccounts_SRCS
      parameter-item.cpp
      dictionary.cpp
      plugin-manager.cpp
+     feedback-widget.cpp
+     validated-line-edit.cpp
 )
 
 set (libkcmtelepathyaccounts_HDRS
@@ -35,6 +37,7 @@ set (libkcmtelepathyaccounts_HDRS
      profile-item.h
      parameter-edit-widget.h
      parameter-edit-model.h
+     validated-line-edit.h
 )
 
 set (libkcmtelepathyaccounts_PRETTY_HDRS
@@ -50,6 +53,7 @@ set (libkcmtelepathyaccounts_PRETTY_HDRS
      include/ProtocolItem
      include/ParameterEditWidget
      include/ParameterEditModel
+     include/ValidatedLineEdit
 )
 
 kde4_add_ui_files (libkcmtelepathyaccounts_SRCS

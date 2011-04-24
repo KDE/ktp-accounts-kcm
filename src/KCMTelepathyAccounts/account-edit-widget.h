@@ -25,6 +25,7 @@
 #include "kcm_telepathy_accounts_export.h"
 
 #include <QWidget>
+#include <KTitleWidget>
 
 #include <TelepathyQt4/ConnectionManager>
 #include "parameter-edit-model.h"
@@ -56,6 +57,9 @@ protected:
 
 private Q_SLOTS:
     void onAdvancedClicked();
+
+Q_SIGNALS:
+    void feedbackMessage(const QString &text, const QString &comment, KTitleWidget::MessageType);
 
 private:
     Q_DISABLE_COPY(AccountEditWidget);

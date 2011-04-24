@@ -30,6 +30,8 @@
 #include <TelepathyQt4/Profile>
 #include <TelepathyQt4/ProtocolParameter>
 
+#include <KTitleWidget>
+
 class ParameterItem;
 
 namespace Tp {
@@ -79,6 +81,9 @@ public:
 
 
     bool validateParameterValues();
+
+Q_SIGNALS:
+    void feedbackMessage(const QString &text, const QString &comment, KTitleWidget::MessageType);
 
 private:
     QList<ParameterItem*> m_items;

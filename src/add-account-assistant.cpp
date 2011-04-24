@@ -145,14 +145,14 @@ void AddAccountAssistant::accept()
         return;
     }
 
+    // Get the parameter values.
+    QVariantMap values  = d->accountEditWidget->parametersSet();
+
     // Check all pages of parameters pass validation.
     if (!d->accountEditWidget->validateParameterValues()) {
         kDebug() << "A widget failed parameter validation. Not accepting wizard.";
         return;
     }
-
-    // Get the parameter values.
-    QVariantMap values  = d->accountEditWidget->parametersSet();
 
     // FIXME: In some next version of tp-qt4 there should be a convenience class for this
     // https://bugs.freedesktop.org/show_bug.cgi?id=33153
@@ -202,7 +202,9 @@ void AddAccountAssistant::onAccountCreated(Tp::PendingOperation *op)
     kDebug();
 
     if (op->isError()) {
-        // TODO: User feedback in this case.
+        Q_EMIT feedbackMessage(i18n("Failed to create account!"),
+                               i18n("Possibly not all required fields are valid"),
+                               KTitleWidget::ErrorMessage);
         kWarning() << "Adding Account failed:" << op->errorName() << op->errorMessage();
         return;
     }
@@ -210,7 +212,9 @@ void AddAccountAssistant::onAccountCreated(Tp::PendingOperation *op)
     // Get the PendingAccount.
     Tp::PendingAccount *pendingAccount = qobject_cast<Tp::PendingAccount*>(op);
     if (!pendingAccount) {
-        // TODO: User visible feedback
+        Q_EMIT feedbackMessage(i18n("Something went wrong with Telepathy!"),
+                               QString(),
+                               KTitleWidget::ErrorMessage);
         kWarning() << "Method called with wrong type.";
         return;
     }
@@ -269,6 +273,10 @@ void AddAccountAssistant::pageTwo()
                                                  parameterModel,
                                                  doConnectOnAdd,
                                                  d->pageTwoWidget);
+    connect(this,
+            SIGNAL(feedbackMessage(QString,QString,KTitleWidget::MessageType)),
+            d->accountEditWidget,
+            SIGNAL(feedbackMessage(QString,QString,KTitleWidget::MessageType)));
     d->pageTwoWidget->layout()->addWidget(d->accountEditWidget);
 
     KAssistantDialog::next();

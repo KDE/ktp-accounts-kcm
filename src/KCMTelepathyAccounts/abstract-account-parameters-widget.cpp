@@ -22,6 +22,7 @@
 
 #include "abstract-account-parameters-widget.h"
 #include "parameter-edit-model.h"
+#include "validated-line-edit.h"
 
 #include <KDebug>
 #include <QLineEdit>
@@ -29,6 +30,7 @@
 #include <QComboBox>
 #include <QSpinBox>
 #include <QDataWidgetMapper>
+#include <QMap>
 
 
 class AbstractAccountParametersWidget::Private
@@ -43,6 +45,7 @@ public:
     ParameterEditModel *parameterModel;
     QDataWidgetMapper *mapper;
     Tp::ProtocolParameterList parameters;
+    QMap<QPersistentModelIndex,ValidatedLineEdit*> validatedWidgets;
 };
 
 AbstractAccountParametersWidget::AbstractAccountParametersWidget(ParameterEditModel *parameterModel,
@@ -118,12 +121,24 @@ void AbstractAccountParametersWidget::handleParameter(const QString &parameterNa
         // insert it to valid parameters list
         d->mapper->addMapping(dataWidget, index.row());
         d->mapper->toFirst();
+
+        // check if the passed parameter is a validated one.. If so we're going to set the model here
+        ValidatedLineEdit *validated = qobject_cast<ValidatedLineEdit*>(dataWidget);
+        if(validated) {
+            d->validatedWidgets.insert(index, validated);
+        }
     }
 }
 
 void AbstractAccountParametersWidget::submit()
 {
     d->mapper->submit();
+
+    QMap<QPersistentModelIndex, ValidatedLineEdit*>::const_iterator i = d->validatedWidgets.constBegin();
+    while (i != d->validatedWidgets.constEnd()) {
+        d->parameterModel->setData(i.key(), i.value()->validationState(), ParameterEditModel::ValidityRole);
+        ++i;
+    }
 }
 
 ParameterEditModel* AbstractAccountParametersWidget::parameterModel() const
