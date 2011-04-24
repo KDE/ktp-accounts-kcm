@@ -28,6 +28,8 @@
 class MainOptionsWidgetGoogleTalk : public AbstractAccountParametersWidget
 {
     Q_OBJECT
+    Q_DISABLE_COPY(MainOptionsWidgetGoogleTalk);
+
 
 public:
     explicit MainOptionsWidgetGoogleTalk(ParameterEditModel *model,
@@ -35,7 +37,6 @@ public:
     virtual ~MainOptionsWidgetGoogleTalk();
 
 private:
-    Q_DISABLE_COPY(MainOptionsWidgetGoogleTalk);
     Ui::MainOptionsWidgetGoogleTalk *m_ui;
 };
 
