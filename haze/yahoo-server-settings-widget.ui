@@ -223,6 +223,15 @@ p, li { white-space: pre-wrap; }
    <header>kcombobox.h</header>
   </customwidget>
  </customwidgets>
+ <tabstops>
+  <tabstop>serverPort</tabstop>
+  <tabstop>xferHost</tabstop>
+  <tabstop>xferPort</tabstop>
+  <tabstop>roomListLocale</tabstop>
+  <tabstop>charsetComboBox</tabstop>
+  <tabstop>SslProxy</tabstop>
+  <tabstop>ignoreInvites</tabstop>
+ </tabstops>
  <resources/>
  <connections/>
 </ui>
