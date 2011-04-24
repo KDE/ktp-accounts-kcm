@@ -22,6 +22,7 @@
 
 #include "main-options-widget.h"
 #include "main-options-widget-googletalk.h"
+#include "main-options-widget-facebook.h"
 #include "server-settings-widget.h"
 #include "proxy-settings-widget.h"
 
@@ -69,8 +70,9 @@ AbstractAccountParametersWidget *GabbleAccountUi::mainOptionsWidget(
 {
     if(m_serviceName == QLatin1String("google-talk")) {
 	return new MainOptionsWidgetGoogleTalk(model, parent);
-    }
-    else {
+    } else if (m_serviceName == QLatin1String("facebook")) {
+        return new MainOptionsWidgetFacebook(model, parent);
+    } else {
       return new MainOptionsWidget(model, parent);
     }
 }
