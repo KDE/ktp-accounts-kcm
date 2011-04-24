@@ -35,6 +35,7 @@ public:
 
 private Q_SLOTS:
     void onParametersUpdated(Tp::PendingOperation *op);
+    void onDisplayNameUpdated(Tp::PendingOperation *op);
 
 private:
     Q_DISABLE_COPY(EditAccountDialog);

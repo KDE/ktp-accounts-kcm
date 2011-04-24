@@ -118,6 +118,34 @@ void EditAccountDialog::onParametersUpdated(Tp::PendingOperation *op)
         return;
     }
 
+    QVariantMap values = d->widget->parametersSet();
+    // FIXME: Ask the user to submit a Display Name
+
+    QString displayName;
+    if (values.contains("account")) {
+        displayName = values["account"].toString();
+    }
+    else {
+        displayName = d->item->account()->profile()->protocolName();
+    }
+
+    Tp::PendingOperation *dnop = d->item->account()->setDisplayName(displayName);
+
+    connect(dnop,
+            SIGNAL(finished(Tp::PendingOperation*)),
+            SLOT(onDisplayNameUpdated(Tp::PendingOperation*)));
+}
+
+void EditAccountDialog::onDisplayNameUpdated(Tp::PendingOperation *op)
+{
+    kDebug();
+
+    if (op->isError()) {
+        // FIXME: Visual feedback in GUI to user.
+        kWarning() << "Could not update display name:" << op->errorName() << op->errorMessage();
+        return;
+    }
+
     emit finished();
     d->item->account()->reconnect();
 
