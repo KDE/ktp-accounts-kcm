@@ -214,7 +214,7 @@ void ParameterEditModel::addItems(const Tp::ProtocolParameterList &parameters, c
         Tp::Profile::Parameter relevantProfileParameter;
 
         //try and find the correct profile parameter, if it can't be found leave it as empty.
-        foreach(Tp::Profile::Parameter profileParameter, profileParameters) {
+        foreach (const Tp::Profile::Parameter &profileParameter, profileParameters) {
             if (profileParameter.name() == parameter.name()) {
                 relevantProfileParameter = profileParameter;
                 break;
