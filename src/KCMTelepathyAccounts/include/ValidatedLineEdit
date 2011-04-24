@@ -1,0 +1,7 @@
+#ifndef LIB_KCM_TELEPATHY_ACCOUNTS_VALIDATED_LINE_EDIT_PRETTY_H
+#define LIB_KCM_TELEPATHY_ACCOUNTS_VALIDATED_LINE_EDIT_PRETTY_H
+
+#include <KCMTelepathyAccounts/validated-line-edit.h>
+
+#endif
+
