@@ -126,6 +126,15 @@
    <header>klineedit.h</header>
   </customwidget>
  </customwidgets>
+ <tabstops>
+  <tabstop>serverLineEdit</tabstop>
+  <tabstop>portSpinBox</tabstop>
+  <tabstop>keepaliveIntervalSpinBox</tabstop>
+  <tabstop>lowBandwidthCheckBox</tabstop>
+  <tabstop>requireEncryptionCheckBox</tabstop>
+  <tabstop>ignoreSslErrorsCheckBox</tabstop>
+  <tabstop>oldSslCheckBox</tabstop>
+ </tabstops>
  <resources/>
  <connections/>
 </ui>

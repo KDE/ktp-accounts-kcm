@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>409</width>
-    <height>92</height>
+    <width>413</width>
+    <height>109</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -75,6 +75,10 @@ Use &lt;a href=&quot;http://www.facebook.com/username/&quot;&gt;this page&lt;/a&
    <header>klineedit.h</header>
   </customwidget>
  </customwidgets>
+ <tabstops>
+  <tabstop>accountLineEdit</tabstop>
+  <tabstop>passwordLineEdit</tabstop>
+ </tabstops>
  <resources/>
  <connections/>
 </ui>

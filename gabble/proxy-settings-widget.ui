@@ -163,6 +163,16 @@
    <header>ktextedit.h</header>
   </customwidget>
  </customwidgets>
+ <tabstops>
+  <tabstop>stunServerLineEdit</tabstop>
+  <tabstop>stunPortSpinBox</tabstop>
+  <tabstop>fallbackStunServerLineEdit</tabstop>
+  <tabstop>fallbackStunPortSpinBox</tabstop>
+  <tabstop>httpsProxyServerLineEdit</tabstop>
+  <tabstop>httpsProxyPortSpinBox</tabstop>
+  <tabstop>fallbackSocks5ProxiesTextEdit</tabstop>
+  <tabstop>fallbackConferenceServerLineEdit</tabstop>
+ </tabstops>
  <resources/>
  <connections/>
 </ui>
