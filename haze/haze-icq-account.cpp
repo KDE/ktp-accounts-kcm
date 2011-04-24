@@ -24,7 +24,6 @@
 #include "icq-server-settings-widget.h"
 
 #include <KCMTelepathyAccounts/AbstractAccountParametersWidget>
-#include <KCMTelepathyAccounts/GenericAdvancedOptionsWidget>
 
 #include <KDebug>
 
@@ -71,10 +70,8 @@ AbstractAccountParametersWidget *HazeIcqAccountUi::advancedOptionsWidget(
 {
     kDebug();
 
-    GenericAdvancedOptionsWidget *advancedOptionsWidget = new GenericAdvancedOptionsWidget(model, parent);
     AbstractAccountParametersWidget *icqServerSettingsWidget = new IcqServerSettingsWidget(model, parent);
-    advancedOptionsWidget->addTab(icqServerSettingsWidget, "Server");
-    return advancedOptionsWidget;
+    return icqServerSettingsWidget;
 }
 
 

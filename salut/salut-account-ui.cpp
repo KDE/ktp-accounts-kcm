@@ -24,7 +24,6 @@
 
 #include <KCMTelepathyAccounts/ParameterEditModel>
 #include <KCMTelepathyAccounts/AbstractAccountParametersWidget>
-#include <KCMTelepathyAccounts/GenericAdvancedOptionsWidget>
 
 #include <KDebug>
 
