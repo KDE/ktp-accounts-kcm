@@ -25,13 +25,8 @@
 
 AimMainOptionsWidget::AimMainOptionsWidget(ParameterEditModel* model, QWidget* parent)
         : AbstractAccountParametersWidget(model, parent)
-{    
+{
     kDebug() << "Creating AIM Account";
-
-    //I'll delete this later
-    foreach (Tp::ProtocolParameter param, model->parameters()) {
-        kDebug() << "Found parameter: handleParameter(" << param.name() << ',' << param.type() << ", ,);" /*<< param.defaultValue()*/;
-    }
 
     //setup the Ui
     m_ui = new Ui::AimMainOptionsWidget;

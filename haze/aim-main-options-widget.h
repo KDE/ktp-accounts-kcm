@@ -30,13 +30,13 @@ class AimMainOptionsWidget
             : public AbstractAccountParametersWidget
 {
     Q_OBJECT
+	Q_DISABLE_COPY(AimMainOptionsWidget);
 
 public:
     AimMainOptionsWidget(ParameterEditModel* model, QWidget* parent = 0);
     virtual ~AimMainOptionsWidget();
 private:
-    Q_DISABLE_COPY(AimMainOptionsWidget);
-    Ui::AimMainOptionsWidget* m_ui;
+    Ui::AimMainOptionsWidget *m_ui;
 };
 
 #endif // HAZE_YAHOO_ACCOUNT_H

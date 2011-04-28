@@ -55,7 +55,6 @@ AbstractAccountUi* HazeAccountUiPlugin::accountUi(const QString &connectionManag
 
     kDebug();
 
-    // We support icq, aim, yahoo, bigbrownchunx-skype-dbus and myspace so far
     if (connectionManager == QLatin1String("haze")) {
         if (protocol == QLatin1String("icq")) {
                 return new HazeIcqAccountUi;
@@ -67,7 +66,7 @@ AbstractAccountUi* HazeAccountUiPlugin::accountUi(const QString &connectionManag
                 return new HazeYahooAccount;
         } else if (protocol == QLatin1String("aim")){
 	        return new HazeAimAccount;
-	}
+		}
     }
 
     return 0;

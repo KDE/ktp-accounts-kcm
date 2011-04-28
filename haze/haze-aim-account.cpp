@@ -24,10 +24,8 @@
 #include "aim-server-settings-widget.h"
 
 #include <KCMTelepathyAccounts/AbstractAccountParametersWidget>
-#include <KCMTelepathyAccounts/GenericAdvancedOptionsWidget>
 
 #include <KDebug>
-#include <KLocalizedString>
 
 HazeAimAccount::HazeAimAccount(QObject *parent)
  : AbstractAccountUi(parent)
@@ -37,12 +35,12 @@ HazeAimAccount::HazeAimAccount(QObject *parent)
     // Register supported parameters
     registerSupportedParameter("account", QVariant::String);
     registerSupportedParameter("password", QVariant::String);
-    registerSupportedParameter( "server" , QVariant::String);
-    registerSupportedParameter( "port" , QVariant::UInt);
-    registerSupportedParameter( "encryption" , QVariant::String);
-    registerSupportedParameter( "always-use-rv-proxy" , QVariant::Bool );
-    registerSupportedParameter( "use-clientlogin" , QVariant::Bool );
-    registerSupportedParameter( "allow-multiple-logins" , QVariant::Bool );
+    registerSupportedParameter("server", QVariant::String);
+    registerSupportedParameter("port", QVariant::UInt);
+    registerSupportedParameter("encryption", QVariant::String);
+    registerSupportedParameter("always-use-rv-proxy", QVariant::Bool);
+    registerSupportedParameter("use-clientlogin", QVariant::Bool);
+    registerSupportedParameter("allow-multiple-logins", QVariant::Bool);
 }
 
 HazeAimAccount::~HazeAimAccount()
@@ -69,11 +67,8 @@ AbstractAccountParametersWidget *HazeAimAccount::advancedOptionsWidget(
         QWidget *parent) const
 {
     kDebug();
-
-    GenericAdvancedOptionsWidget *advancedOptionsWidget = new GenericAdvancedOptionsWidget(model, parent);
-    AbstractAccountParametersWidget *aimServerSettingsWidget = new AimServerSettingsWidget(model, parent);
-    advancedOptionsWidget->addTab(aimServerSettingsWidget, i18n("Advanced"));
-    return advancedOptionsWidget;
+	
+    return new AimServerSettingsWidget(model, parent);
 }
 
 

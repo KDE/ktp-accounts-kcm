@@ -19,11 +19,6 @@
   <property name="windowTitle">
    <string>Account Preferences</string>
   </property>
-  <layout class="QVBoxLayout" name="verticalLayout_2">
-   <property name="sizeConstraint">
-    <enum>QLayout::SetMinimumSize</enum>
-   </property>
-   <item>
     <layout class="QFormLayout" name="formLayout">
      <property name="sizeConstraint">
       <enum>QLayout::SetMinimumSize</enum>
@@ -60,8 +55,6 @@
       </widget>
      </item>
     </layout>
-   </item>
-  </layout>
  </widget>
  <customwidgets>
   <customwidget>
