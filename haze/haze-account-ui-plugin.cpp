@@ -65,8 +65,8 @@ AbstractAccountUi* HazeAccountUiPlugin::accountUi(const QString &connectionManag
         } else if (protocol == QLatin1String("yahoo")){
                 return new HazeYahooAccount;
         } else if (protocol == QLatin1String("aim")){
-	        return new HazeAimAccount;
-		}
+               return new HazeAimAccount;
+        }
     }
 
     return 0;
