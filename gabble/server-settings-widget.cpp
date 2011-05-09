@@ -39,6 +39,7 @@ ServerSettingsWidget::ServerSettingsWidget(ParameterEditModel *model,
     handleParameter("require-encryption", QVariant::Bool, m_ui->requireEncryptionCheckBox, 0);
     handleParameter("ignore-ssl-errors", QVariant::Bool, m_ui->ignoreSslErrorsCheckBox, 0);
     handleParameter("old-ssl", QVariant::Bool, m_ui->oldSslCheckBox, 0);
+    handleParameter("resource", QVariant::String, m_ui->resourceLineEdit, m_ui->resourceLabel);
 }
 
 ServerSettingsWidget::~ServerSettingsWidget()
