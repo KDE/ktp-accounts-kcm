@@ -40,9 +40,6 @@
        <property name="text">
         <string/>
        </property>
-       <property name="clickMessage">
-        <string>example@yahoo.com</string>
-       </property>
       </widget>
      </item>
      <item row="1" column="0">
