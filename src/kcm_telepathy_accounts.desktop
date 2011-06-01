@@ -41,4 +41,4 @@ X-KDE-SubstituteUID=false
 X-KDE-RootOnly=false
 Categories=Qt;KDE;X-KDE-settings-network;
 X-KDE-System-Settings-Parent-Category=network-and-connectivity
-Icon=telepathy
+Icon=kde-telepathy
