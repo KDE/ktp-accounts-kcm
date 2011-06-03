@@ -83,7 +83,7 @@ private:
     void reposition();
 
 private:
-    QWidget *mBaseWidget;
+    QWidget *m_BaseWidget;
 };
 
 #endif // header guard

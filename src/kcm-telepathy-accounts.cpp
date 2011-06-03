@@ -227,7 +227,7 @@ void KCMTelepathyAccounts::onRemoveAccountClicked()
 
 ErrorOverlay::ErrorOverlay(QWidget *baseWidget, const QString &details, QWidget *parent) :
     QWidget(parent ? parent : baseWidget->window()),
-    mBaseWidget(baseWidget)
+    m_BaseWidget(baseWidget)
 {
     // Build the UI
     QVBoxLayout *layout = new QVBoxLayout;
@@ -236,21 +236,16 @@ ErrorOverlay::ErrorOverlay(QWidget *baseWidget, const QString &details, QWidget 
     QLabel *pixmap = new QLabel();
     pixmap->setPixmap(KIcon("dialog-error").pixmap(64));
 
-    QLabel *message = new QLabel(i18n("Something went terribly wrong and the IM system could not be initialized"));
-
-    QLabel *detailsLabel = new QLabel(details);
-    QFont font = detailsLabel->font();
-    font.setItalic(true);
-    detailsLabel->setFont(font);
+    QLabel *message = new QLabel(i18n("Something went terribly wrong and the IM system could not be initialized.\n"
+                                      "It is likely your system is missing Telepathy Mission Control package.\n"
+                                      "Please install it and restart this module."));
 
     pixmap->setAlignment(Qt::AlignHCenter);
     message->setAlignment(Qt::AlignHCenter);
-    detailsLabel->setAlignment(Qt::AlignHCenter);
 
     layout->addStretch();
     layout->addWidget(pixmap);
     layout->addWidget(message);
-    layout->addWidget(detailsLabel);
     layout->addStretch();
 
     setLayout(layout);
@@ -262,7 +257,7 @@ ErrorOverlay::ErrorOverlay(QWidget *baseWidget, const QString &details, QWidget 
     setPalette(p);
     setAutoFillBackground(true);
 
-    mBaseWidget->installEventFilter(this);
+    m_BaseWidget->installEventFilter(this);
 
     reposition();
 }
@@ -273,19 +268,19 @@ ErrorOverlay::~ErrorOverlay()
 
 void ErrorOverlay::reposition()
 {
-    if (!mBaseWidget) {
+    if (!m_BaseWidget) {
         return;
     }
 
     // reparent to the current top level widget of the base widget if needed
     // needed eg. in dock widgets
-    if (parentWidget() != mBaseWidget->window()) {
-        setParent(mBaseWidget->window());
+    if (parentWidget() != m_BaseWidget->window()) {
+        setParent(m_BaseWidget->window());
     }
 
     // follow base widget visibility
     // needed eg. in tab widgets
-    if (!mBaseWidget->isVisible()) {
+    if (!m_BaseWidget->isVisible()) {
         hide();
         return;
     }
@@ -293,18 +288,18 @@ void ErrorOverlay::reposition()
     show();
 
     // follow position changes
-    const QPoint topLevelPos = mBaseWidget->mapTo(window(), QPoint(0, 0));
+    const QPoint topLevelPos = m_BaseWidget->mapTo(window(), QPoint(0, 0));
     const QPoint parentPos = parentWidget()->mapFrom(window(), topLevelPos);
     move(parentPos);
 
     // follow size changes
     // TODO: hide/scale icon if we don't have enough space
-    resize(mBaseWidget->size());
+    resize(m_BaseWidget->size());
 }
 
 bool ErrorOverlay::eventFilter(QObject * object, QEvent * event)
 {
-    if (object == mBaseWidget &&
+    if (object == m_BaseWidget &&
         (event->type() == QEvent::Move || event->type() == QEvent::Resize ||
         event->type() == QEvent::Show || event->type() == QEvent::Hide ||
         event->type() == QEvent::ParentChange)) {
