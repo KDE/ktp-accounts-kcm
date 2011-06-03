@@ -68,6 +68,22 @@ private:
     AccountsListModel *m_accountsListModel;
 };
 
+// Helper class for drawing error overlays
+class ErrorOverlay : public QWidget
+{
+    Q_OBJECT
+public:
+    explicit ErrorOverlay(QWidget *baseWidget, const QString &details, QWidget *parent = 0);
+    ~ErrorOverlay();
+
+protected:
+    bool eventFilter(QObject *object, QEvent *event);
+
+private:
+    void reposition();
+
+private:
+    QWidget *mBaseWidget;
+};
 
 #endif // header guard
-

@@ -27,6 +27,8 @@
 #include "edit-account-dialog.h"
 #include "accounts-list-delegate.h"
 
+#include <QLabel>
+
 #include <KGenericFactory>
 #include <KIcon>
 #include <KLocale>
@@ -88,7 +90,7 @@ KCMTelepathyAccounts::KCMTelepathyAccounts(QWidget *parent, const QVariantList& 
     m_ui->addAccountButton->setIcon(KIcon("list-add"));
     m_ui->editAccountButton->setIcon(KIcon("configure"));
     m_ui->removeAccountButton->setIcon(KIcon("edit-delete"));
-  
+
     AccountsListDelegate* delegate = new AccountsListDelegate(m_ui->accountsListView, this);
     m_ui->accountsListView->setItemDelegate(delegate);
 
@@ -147,6 +149,7 @@ void KCMTelepathyAccounts::onAccountManagerReady(Tp::PendingOperation *op)
     // Check the pending operation completed successfully.
     if (op->isError()) {
         kDebug() << "becomeReady() failed:" << op->errorName() << op->errorMessage();
+        new ErrorOverlay(this, op->errorMessage(), this);
         return;
     }
 
@@ -212,13 +215,102 @@ void KCMTelepathyAccounts::onRemoveAccountClicked()
     kDebug();
     QModelIndex index = m_ui->accountsListView->currentIndex();
 
-     if ( KMessageBox::warningContinueCancel( this, i18n( "Are you sure you want to remove the account \"%1\"?", m_accountsListModel->data(index, Qt::DisplayRole).toString()),
-                                        i18n( "Remove Account" ), KGuiItem(i18n( "Remove Account" ), "edit-delete"), KStandardGuiItem::cancel(),
-                                        QString(), KMessageBox::Notify | KMessageBox::Dangerous ) == KMessageBox::Continue )
+     if ( KMessageBox::warningContinueCancel(this, i18n("Are you sure you want to remove the account \"%1\"?", m_accountsListModel->data(index, Qt::DisplayRole).toString()),
+                                        i18n("Remove Account"), KGuiItem(i18n("Remove Account"), "edit-delete"), KStandardGuiItem::cancel(),
+                                        QString(), KMessageBox::Notify | KMessageBox::Dangerous) == KMessageBox::Continue)
     {
         m_accountsListModel->removeAccount(index);
     }
 }
 
-#include "kcm-telepathy-accounts.moc"
+/////
 
+ErrorOverlay::ErrorOverlay(QWidget *baseWidget, const QString &details, QWidget *parent) :
+    QWidget(parent ? parent : baseWidget->window()),
+    mBaseWidget(baseWidget)
+{
+    // Build the UI
+    QVBoxLayout *layout = new QVBoxLayout;
+    layout->setSpacing(10);
+
+    QLabel *pixmap = new QLabel();
+    pixmap->setPixmap(KIcon("dialog-error").pixmap(64));
+
+    QLabel *message = new QLabel(i18n("Something went terribly wrong and the IM system could not be initialized"));
+
+    QLabel *detailsLabel = new QLabel(details);
+    QFont font = detailsLabel->font();
+    font.setItalic(true);
+    detailsLabel->setFont(font);
+
+    pixmap->setAlignment(Qt::AlignHCenter);
+    message->setAlignment(Qt::AlignHCenter);
+    detailsLabel->setAlignment(Qt::AlignHCenter);
+
+    layout->addStretch();
+    layout->addWidget(pixmap);
+    layout->addWidget(message);
+    layout->addWidget(detailsLabel);
+    layout->addStretch();
+
+    setLayout(layout);
+
+    // Draw the transparent overlay background
+    QPalette p = palette();
+    p.setColor(backgroundRole(), QColor(0, 0, 0, 128));
+    p.setColor(foregroundRole(), Qt::white);
+    setPalette(p);
+    setAutoFillBackground(true);
+
+    mBaseWidget->installEventFilter(this);
+
+    reposition();
+}
+
+ErrorOverlay::~ErrorOverlay()
+{
+}
+
+void ErrorOverlay::reposition()
+{
+    if (!mBaseWidget) {
+        return;
+    }
+
+    // reparent to the current top level widget of the base widget if needed
+    // needed eg. in dock widgets
+    if (parentWidget() != mBaseWidget->window()) {
+        setParent(mBaseWidget->window());
+    }
+
+    // follow base widget visibility
+    // needed eg. in tab widgets
+    if (!mBaseWidget->isVisible()) {
+        hide();
+        return;
+    }
+
+    show();
+
+    // follow position changes
+    const QPoint topLevelPos = mBaseWidget->mapTo(window(), QPoint(0, 0));
+    const QPoint parentPos = parentWidget()->mapFrom(window(), topLevelPos);
+    move(parentPos);
+
+    // follow size changes
+    // TODO: hide/scale icon if we don't have enough space
+    resize(mBaseWidget->size());
+}
+
+bool ErrorOverlay::eventFilter(QObject * object, QEvent * event)
+{
+    if (object == mBaseWidget &&
+        (event->type() == QEvent::Move || event->type() == QEvent::Resize ||
+        event->type() == QEvent::Show || event->type() == QEvent::Hide ||
+        event->type() == QEvent::ParentChange)) {
+        reposition();
+    }
+    return QWidget::eventFilter(object, event);
+}
+
+#include "kcm-telepathy-accounts.moc"
