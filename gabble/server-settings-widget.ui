@@ -73,20 +73,39 @@
       <item row="0" column="1">
        <widget class="QSpinBox" name="keepaliveIntervalSpinBox"/>
       </item>
-      <item row="1" column="0">
-       <widget class="QLabel" name="resourceLabel">
+      <item row="4" column="0" colspan="2">
+       <widget class="QCheckBox" name="lowBandwidthCheckBox">
         <property name="text">
-         <string>Resource:</string>
+         <string>Use Low Bandwidth Mode.</string>
         </property>
        </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item>
+    <widget class="QGroupBox" name="groupBox">
+     <property name="title">
+      <string>Resource</string>
+     </property>
+     <layout class="QFormLayout" name="formLayout_3">
+      <item row="4" column="1">
+       <widget class="QSpinBox" name="prioritySpinBox"/>
       </item>
       <item row="1" column="1">
        <widget class="QLineEdit" name="resourceLineEdit"/>
       </item>
-      <item row="2" column="0" colspan="2">
-       <widget class="QCheckBox" name="lowBandwidthCheckBox">
+      <item row="1" column="0">
+       <widget class="QLabel" name="resourceLabel">
         <property name="text">
-         <string>Use Low Bandwidth Mode.</string>
+         <string>Resource Name:</string>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="0">
+       <widget class="QLabel" name="priorityLabel">
+        <property name="text">
+         <string>Priority:</string>
         </property>
        </widget>
       </item>
