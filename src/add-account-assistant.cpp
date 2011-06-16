@@ -202,7 +202,7 @@ void AddAccountAssistant::onAccountCreated(Tp::PendingOperation *op)
     kDebug();
 
     if (op->isError()) {
-        Q_EMIT feedbackMessage(i18n("Failed to create account!"),
+        Q_EMIT feedbackMessage(i18n("Failed to create account"),
                                i18n("Possibly not all required fields are valid"),
                                KTitleWidget::ErrorMessage);
         kWarning() << "Adding Account failed:" << op->errorName() << op->errorMessage();
@@ -212,7 +212,7 @@ void AddAccountAssistant::onAccountCreated(Tp::PendingOperation *op)
     // Get the PendingAccount.
     Tp::PendingAccount *pendingAccount = qobject_cast<Tp::PendingAccount*>(op);
     if (!pendingAccount) {
-        Q_EMIT feedbackMessage(i18n("Something went wrong with Telepathy!"),
+        Q_EMIT feedbackMessage(i18n("Something went wrong with Telepathy"),
                                QString(),
                                KTitleWidget::ErrorMessage);
         kWarning() << "Method called with wrong type.";

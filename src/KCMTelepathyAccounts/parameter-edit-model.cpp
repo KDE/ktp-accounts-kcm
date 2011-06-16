@@ -302,8 +302,8 @@ bool ParameterEditModel::validateParameterValues()
 {
     foreach (ParameterItem *item, m_items) {
         if (item->validity() != QValidator::Acceptable) {
-           emit feedbackMessage(i18n("Parameter \"<b>%1</b>\" is not valid!")
-                                .arg(item->localizedName()),
+           emit feedbackMessage(i18n("Parameter \"<b>%1</b>\" is not valid.",
+                                item->localizedName()),
                                 QString(),
                                 KTitleWidget::ErrorMessage);
            return false;
