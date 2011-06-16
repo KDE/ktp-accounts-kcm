@@ -23,7 +23,7 @@
       <item row="0" column="0">
        <widget class="QLabel" name="serverLabel">
         <property name="text">
-         <string>Server Address:</string>
+         <string>Server address:</string>
         </property>
        </widget>
       </item>
@@ -33,7 +33,7 @@
       <item row="1" column="0">
        <widget class="QLabel" name="portLabel">
         <property name="text">
-         <string>Server Port:</string>
+         <string>Server port:</string>
         </property>
        </widget>
       </item>
@@ -66,7 +66,7 @@
       <item row="0" column="0">
        <widget class="QLabel" name="keepaliveIntervalLabel">
         <property name="text">
-         <string>Keep Alive Interval:</string>
+         <string>Keep Alive interval:</string>
         </property>
        </widget>
       </item>
@@ -76,7 +76,7 @@
       <item row="4" column="0" colspan="2">
        <widget class="QCheckBox" name="lowBandwidthCheckBox">
         <property name="text">
-         <string>Use Low Bandwidth Mode.</string>
+         <string>Use low bandwidth mode</string>
         </property>
        </widget>
       </item>
@@ -121,21 +121,21 @@
       <item>
        <widget class="QCheckBox" name="requireEncryptionCheckBox">
         <property name="text">
-         <string>Require Encrypted Connection.</string>
+         <string>Require encrypted connection</string>
         </property>
        </widget>
       </item>
       <item>
        <widget class="QCheckBox" name="ignoreSslErrorsCheckBox">
         <property name="text">
-         <string>Ignore SSL Errors.</string>
+         <string>Ignore SSL errors</string>
         </property>
        </widget>
       </item>
       <item>
        <widget class="QCheckBox" name="oldSslCheckBox">
         <property name="text">
-         <string>Use Old-Style SSL.</string>
+         <string>Use old-style SSL</string>
         </property>
        </widget>
       </item>

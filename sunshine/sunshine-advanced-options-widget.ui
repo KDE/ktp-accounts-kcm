@@ -79,7 +79,7 @@
          <string>Enable loose routing as per RFC 3261</string>
         </property>
         <property name="text">
-         <string>Synchronise your contacts with the gadu-gadu server</string>
+         <string>Synchronise your contacts with the Gadu-Gadu server</string>
         </property>
        </widget>
       </item>

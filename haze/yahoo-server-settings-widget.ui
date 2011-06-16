@@ -85,14 +85,14 @@ p, li { white-space: pre-wrap; }
      <item row="3" column="0">
       <widget class="QLabel" name="xferHostLabel">
        <property name="text">
-        <string>Host</string>
+        <string>Host:</string>
        </property>
       </widget>
      </item>
      <item row="4" column="0">
       <widget class="QLabel" name="xferPortLabel">
        <property name="text">
-        <string>Port</string>
+        <string>Port:</string>
        </property>
       </widget>
      </item>
@@ -132,7 +132,7 @@ p, li { white-space: pre-wrap; }
      <item row="6" column="0">
       <widget class="QLabel" name="roomListLocaleLablel">
        <property name="text">
-        <string>Room List</string>
+        <string>Room List:</string>
        </property>
       </widget>
      </item>
@@ -172,14 +172,14 @@ p, li { white-space: pre-wrap; }
      <item row="9" column="1">
       <widget class="QCheckBox" name="SslProxy">
        <property name="text">
-        <string>Use SSL on Proxy</string>
+        <string>Use SSL on proxy</string>
        </property>
       </widget>
      </item>
      <item row="10" column="1">
       <widget class="QCheckBox" name="ignoreInvites">
        <property name="text">
-        <string>Ignore Invites</string>
+        <string>Ignore invites</string>
        </property>
       </widget>
      </item>

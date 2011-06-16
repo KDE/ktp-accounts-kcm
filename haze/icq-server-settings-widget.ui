@@ -95,7 +95,7 @@ p, li { white-space: pre-wrap; }
      <item row="5" column="1">
       <widget class="QCheckBox" name="allowMultipleLoginsCheckBox">
        <property name="text">
-        <string>Allow Multiple Logins</string>
+        <string>Allow multiple logins</string>
        </property>
       </widget>
      </item>

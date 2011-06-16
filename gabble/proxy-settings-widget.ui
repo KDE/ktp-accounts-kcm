@@ -25,7 +25,7 @@
         <item>
          <widget class="QLabel" name="stunServerLabel">
           <property name="text">
-           <string>STUN Server:</string>
+           <string>STUN server:</string>
           </property>
          </widget>
         </item>
@@ -53,7 +53,7 @@
         <item>
          <widget class="QLabel" name="fallbackStunServerLabel">
           <property name="text">
-           <string>Fallback STUN Server:</string>
+           <string>Fallback STUN server:</string>
           </property>
          </widget>
         </item>
@@ -90,7 +90,7 @@
         <item>
          <widget class="QLabel" name="httpsProxyServerLabel">
           <property name="text">
-           <string>HTTPS Proxy Server:</string>
+           <string>HTTPS proxy server:</string>
           </property>
          </widget>
         </item>
@@ -116,7 +116,7 @@
       <item>
        <widget class="QLabel" name="fallbackSocks5ProxiesLabel">
         <property name="text">
-         <string>Fallback SOCKS 5 Proxy Servers:</string>
+         <string>Fallback SOCKS 5 proxy servers:</string>
         </property>
        </widget>
       </item>
@@ -148,7 +148,7 @@ p, li { white-space: pre-wrap; }
         <item>
          <widget class="QLabel" name="fallbackConferenceServerLabel">
           <property name="text">
-           <string>Fallback Conference Server:</string>
+           <string>Fallback conference server:</string>
           </property>
          </widget>
         </item>
