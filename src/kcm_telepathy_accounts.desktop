@@ -16,6 +16,7 @@ Comment[x-test]=xxAdd, edit and remove your instant messaging and VoIP accounts.
 Exec=kcmshell4 kcm_telepathy_accounts
 Icon=blockdevice
 Name=Instant Messaging and VoIP Accounts
+Name[cs]=IM a VoIP účty
 Name[da]=Instant messaging- og VoIP-konti
 Name[es]=Cuentas de mensajería instantánea y de VoIP
 Name[et]=Kiirsuhtlus- ja VoIP kontod
