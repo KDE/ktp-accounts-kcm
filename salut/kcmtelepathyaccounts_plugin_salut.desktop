@@ -2,6 +2,7 @@
 Encoding=UTF-8
 Comment=Custom account configuration user interface for accounts using the Salut connection manager.
 Comment[et]=Saluti ühendusehaldurit kasutavate kontode kohandatud konto seadistamise kasutajaliides
+Comment[it]=Interfaccia utente personalizzata di configurazione account per account che usano il gestore di connessioni Salut.
 Comment[nl]=Gebruikersinterface voor aangepaste accountconfiguratie voor accounts die de Salut verbindingenbeheerder gebruiken.
 Comment[pt]=Interface de utilizador de configuração de contas personalizadas com o gestor de ligações Salut.
 Comment[pt_BR]=Interface de configuração de contas personalizadas usando o gerenciador de conexões Salut.
@@ -11,6 +12,7 @@ Comment[x-test]=xxCustom account configuration user interface for accounts using
 Icon=blockdevice
 Name=Salut Account Configuration User Interface
 Name[et]=Saluti konto seadistamise kasutajaliides
+Name[it]=Interfaccia utente di configurazione account Salut
 Name[nl]=Gebruikersinterface voor Salut accountconfiguratie
 Name[pt]=Interface de Configuração de Contas do Salut
 Name[pt_BR]=Interface de configuração de contas do Salut
