@@ -169,17 +169,14 @@ void AccountEditWidget::loadWidgets()
                     paramFound = true;
                 }
             }
-            if (!paramFound)
-                 break;
-
             ++paramIter;
         }
 
-        // if a parameter is missing or a mandatory parameter is not being handled,
+        // if a mandatory parameter is not being handled,
         // fall back to the generic interface.
         // FIXME: not sure this is the best way to handle the situation, but
         //        it is like this in a hope the case won't happen often
-        if (!paramFound || !mandatoryParameters.isEmpty()) {
+        if (!mandatoryParameters.isEmpty()) {
             delete d->mainOptionsWidget;
             d->mainOptionsWidget = 0;
         }
