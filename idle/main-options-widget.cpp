@@ -36,8 +36,7 @@ MainOptionsWidget::MainOptionsWidget(
     handleParameter("account", QVariant::String, m_ui->accountLineEdit, m_ui->accountLabel);
     handleParameter("server", QVariant::String, m_ui->serverLineEdit, m_ui->serverLabel);
     handleParameter("fullname", QVariant::String, m_ui->fullnameLineEdit, m_ui->fullnameLabel);
-
-
+    QTimer::singleShot(0, m_ui->accountLineEdit, SLOT(setFocus()));
 }
 
 MainOptionsWidget::~MainOptionsWidget()

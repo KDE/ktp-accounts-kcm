@@ -47,6 +47,7 @@ MainOptionsWidgetFacebook::MainOptionsWidgetFacebook(ParameterEditModel *model,
     }
 
     handleParameter("password", QVariant::String, m_ui->passwordLineEdit, m_ui->passwordLabel);
+    QTimer::singleShot(0, m_ui->accountLineEdit, SLOT(setFocus()));
 }
 
 MainOptionsWidgetFacebook::~MainOptionsWidgetFacebook()

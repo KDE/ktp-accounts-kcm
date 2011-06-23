@@ -42,6 +42,8 @@ SalutMainOptionsWidget::SalutMainOptionsWidget(ParameterEditModel *model, QWidge
         KUser user = KUser();
         m_ui->nicknameLineEdit->setText(user.property(KUser::FullName).toString());
     }
+
+    QTimer::singleShot(0, m_ui->firstnameLineEdit, SLOT(setFocus()));
 }
 
 SalutMainOptionsWidget::~SalutMainOptionsWidget()

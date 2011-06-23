@@ -36,6 +36,7 @@ YahooMainOptionsWidget::YahooMainOptionsWidget(ParameterEditModel* model, QWidge
     //map the widgets to their data
     handleParameter("account", QVariant::String, m_ui->accountLineEdit, m_ui->accountLabel);
     handleParameter("password", QVariant::String, m_ui->passwordLineEdit, m_ui->passwordLabel);
+    QTimer::singleShot(0, m_ui->accountLineEdit, SLOT(setFocus()));
 }
 
 YahooMainOptionsWidget::~YahooMainOptionsWidget()
