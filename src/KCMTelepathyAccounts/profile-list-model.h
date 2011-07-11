@@ -26,6 +26,10 @@
 
 #include <TelepathyQt4/ConnectionManager>
 
+namespace TelepathyQt4 {
+    class PendingOperation;
+}
+
 class ProfileItem;
 
 class ProfileListModel : public QAbstractListModel
@@ -44,10 +48,16 @@ public:
 
     void setProfileManager(Tp::ProfileManagerPtr profileManager);
 
+private slots:
+    void onConnectionManagerNamesFetched(Tp::PendingOperation*);
+
 private:
     bool hasNonFakeProfile(const Tp::ProfilePtr &profile, const QList<Tp::ProfilePtr> &profiles) const;
+    void populateList();
 
+    Tp::ProfileManagerPtr m_profileManager;
     QList<ProfileItem*> m_profileItems;
+    QStringList m_connectionManagerNames;
 };
 
 

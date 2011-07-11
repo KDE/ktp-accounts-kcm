@@ -24,6 +24,8 @@
 #include "profile-item.h"
 
 #include <TelepathyQt4/ProfileManager>
+#include <TelepathyQt4/PendingStringList>
+
 #include <KIcon>
 #include <KDebug>
 
@@ -75,35 +77,9 @@ QVariant ProfileListModel::data(const QModelIndex &index, int role) const
 
 void ProfileListModel::setProfileManager(Tp::ProfileManagerPtr profileManager)
 {
-    kDebug() << "Setting ProfileManager to:"
-             << profileManager.data();
-
-    foreach (ProfileItem *item, m_profileItems) {
-        delete item;
-        item = 0;
-    }
-
-    QList<Tp::ProfilePtr> profiles = profileManager->profiles();
-
-    QList<ProfileItem*> insertItems;
-    foreach(const Tp::ProfilePtr &profile, profiles) {
-        if(profile->isFake()) {
-            if(hasNonFakeProfile(profile, profiles)) {
-                continue;
-            }
-        }
-        insertItems.append(new ProfileItem(profile, this));
-    }
-    
-    if( insertItems.size() > 0 )
-    {
-      beginInsertRows(QModelIndex(), 0, insertItems.size()-1);
-      m_profileItems.append(insertItems);
-      endInsertRows();
-    }
-    else
-      return;
-    
+    m_profileManager = profileManager;
+    Tp::PendingStringList* pendingNames = Tp::ConnectionManager::listNames();
+    connect(pendingNames, SIGNAL(finished(Tp::PendingOperation*)), SLOT(onConnectionManagerNamesFetched(Tp::PendingOperation*)));
 }
 
 ProfileItem *ProfileListModel::itemForIndex(const QModelIndex &index) const
@@ -125,6 +101,54 @@ bool ProfileListModel::hasNonFakeProfile(const Tp::ProfilePtr& profile, const QL
     }
 
     return false;
+}
+
+void ProfileListModel::populateList()
+{
+    foreach (ProfileItem *item, m_profileItems) {
+        delete item;
+        item = 0;
+    }
+
+    m_profileItems.clear();
+
+    QList<Tp::ProfilePtr> profiles = m_profileManager->profiles();
+
+    QList<ProfileItem*> insertItems;
+    foreach(const Tp::ProfilePtr &profile, profiles) {
+        if(profile->isFake()) {
+            if(hasNonFakeProfile(profile, profiles)) {
+                continue;
+            }
+        }
+
+        //don't include profiles which we don't have a CM for
+        if (! m_connectionManagerNames.contains(profile->cmName())) {
+            continue;
+        }
+
+        insertItems.append(new ProfileItem(profile, this));
+    }
+
+    if( insertItems.size() > 0 )
+    {
+      beginInsertRows(QModelIndex(), 0, insertItems.size()-1);
+      m_profileItems.append(insertItems);
+      endInsertRows();
+    }
+    else {
+      return;
+    }
+}
+
+void ProfileListModel::onConnectionManagerNamesFetched(Tp::PendingOperation *operation)
+{
+    Tp::PendingStringList* connectionManagerNamesOperation = qobject_cast<Tp::PendingStringList*>(operation);
+
+    Q_ASSERT(connectionManagerNamesOperation);
+    m_connectionManagerNames = connectionManagerNamesOperation->result();
+
+    populateList();
 }
 
 
