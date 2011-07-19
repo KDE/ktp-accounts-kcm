@@ -1,6 +1,7 @@
 [Desktop Entry]
 Encoding=UTF-8
 Comment=Custom account configuration user interface for Gadu-Gadu accounts using the Sunshine connection manager.
+Comment[da]=Brugerflade til brugertilpasset kontokonfiguration til Gadu-Gadu-konti der bruger forbindelseshåndteringen Sunshine.
 Comment[et]=Sunshine'i ühendusehaldurit kasutavate Gadu-Gadu kontode kohandatud konto seadistamise kasutajaliides
 Comment[fr]=Personnalisez l'interface utilisateur de configuration de comptes pour les comptes Gadu-Gadu utilisant le gestionnaire de connexions Sunshine.
 Comment[it]=Interfaccia utente personalizzata di configurazione account per account che usano il gestore di connessioni Sunshine.
@@ -12,6 +13,7 @@ Comment[uk]=Інтерфейс користувача для нетиповог�
 Comment[x-test]=xxCustom account configuration user interface for Gadu-Gadu accounts using the Sunshine connection manager.xx
 Icon=blockdevice
 Name=Gadu-Gadu Account Configuration User Interface
+Name[da]=Brugerflade til Gadu-Gadu kontokonfiguration
 Name[et]=Gadu-Gadu konto seadistamise kasutajaliides
 Name[fr]=Interface utilisateur de configuration de comptes Gadu-Gadu
 Name[it]=Interfaccia utente di configurazione account Gadu-Gadu

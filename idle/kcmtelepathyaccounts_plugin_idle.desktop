@@ -1,6 +1,7 @@
 [Desktop Entry]
 Encoding=UTF-8
 Comment=Custom account configuration user interface for accounts using the Idle connection manager.
+Comment[da]=Brugerflade til brugertilpasset kontokonfiguration til konti der bruger forbindelseshåndteringen Idle.
 Comment[et]=Idle ühendusehaldurit kasutavate kontode kohandatud konto seadistamise kasutajaliides
 Comment[fr]=Personnalisez l'interface utilisateur de configuration de comptes pour les comptes utilisant le gestionnaire de connexions Idle.
 Comment[it]=Interfaccia utente personalizzata di configurazione account per account che usano il gestore di connessioni Idle.

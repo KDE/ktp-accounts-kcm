@@ -1,6 +1,7 @@
 [Desktop Entry]
 Encoding=UTF-8
 Comment=Custom account configuration user interface for accounts using the Gabble connection manager.
+Comment[da]=Brugerflade til brugertilpasset kontokonfiguration til konti der bruger forbindelseshåndteringen Gabble.
 Comment[et]=Gabble'i ühendusehaldurit kasutavate kontode kohandatud konto seadistamise kasutajaliides
 Comment[fr]=Personnalisez l'interface utilisateur de configuration de comptes pour les comptes utilisant le gestionnaire de connexions Gabble.
 Comment[it]=Interfaccia utente personalizzata di configurazione account per account che usano il gestore di connessioni Gabble.
@@ -12,6 +13,7 @@ Comment[uk]=Інтерфейс користувача для нетиповог�
 Comment[x-test]=xxCustom account configuration user interface for accounts using the Gabble connection manager.xx
 Icon=blockdevice
 Name=Gabble Account Configuration User Interface
+Name[da]=Brugerflade til Gabble kontokonfiguration
 Name[et]=Gabble'i konto seadistamise kasutajaliides
 Name[fr]=Interface utilisateur de configuration de comptes Gabble
 Name[it]=Interfaccia utente di configurazione account Gabble
