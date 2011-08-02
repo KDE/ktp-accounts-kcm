@@ -116,7 +116,12 @@ void AbstractAccountParametersWidget::handleParameter(const QString &parameterNa
     if(index.isValid()) {
         kDebug() << index << parameterName;
         // insert it to valid parameters list
-        d->mapper->addMapping(dataWidget, index.row());
+        //for text edit boxes we force it to use the plainText property so that we don't get HTML all over our options
+        if (dataWidget->inherits("QTextEdit")) {
+            d->mapper->addMapping(dataWidget, index.row(), "plainText");
+        } else {
+            d->mapper->addMapping(dataWidget, index.row());
+        }
         d->mapper->toFirst();
 
         // check if the passed parameter is a validated one.. If so we're going to set the model here
