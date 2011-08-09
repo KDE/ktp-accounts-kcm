@@ -1,9 +1,11 @@
 [Desktop Entry]
 Comment=Add, edit and remove your instant messaging and VoIP accounts.
+Comment[cs]=Přidávejte, editujte a odstraňujte vaše účty pro VoIP a IM.
 Comment[da]=Tilføj, redigér og fjern dine instant messaging- og VoIP-konti.
 Comment[es]=Añadir, editar y eliminar sus cuentas de mensajería instantánea y de VoIP.
 Comment[et]=Kiirsuhtlus- ja VoIP kontode lisamine, muutmine ja eemaldamine.
 Comment[fr]=Ajoutez, modifiez et supprimez vos comptes de messagerie instantanée et VoIP.
+Comment[hu]=Azonnali üzenetküldő- és VoIP-fiókok hozzáadása, szerkesztése és eltávolítása.
 Comment[it]=Aggiungi, modifica e rimuovi i tuoi account di messaggistica istantanea e VoIP.
 Comment[km]=បន្ថែម កែ​សម្រួល និង​យក​​​ការ​ផ្ញើ​សារ​ជា​បន្ទាន់ និង​គណនី​ VoIP ចេញ ។
 Comment[nds]=Kortnarichten- un VoIP-Kontos tofögen, bewerken oder wegmaken
@@ -22,6 +24,7 @@ Name[da]=Instant messaging- og VoIP-konti
 Name[es]=Cuentas de mensajería instantánea y de VoIP
 Name[et]=Kiirsuhtlus- ja VoIP kontod
 Name[fr]=Comptes de messagerie instantanée et VoIP
+Name[hu]=Azonnali üzenetküldő és VoIP-fiókok
 Name[it]=Account di messaggistica istantanea e VoIP
 Name[km]=ការ​ផ្ញើ​សារ​ជា​បន្ទាន់ និង​គណនី​ VoIP
 Name[nds]=Kortnarichten- un VoIP-Kontos
