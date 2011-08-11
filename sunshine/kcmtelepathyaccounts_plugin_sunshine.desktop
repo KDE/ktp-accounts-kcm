@@ -15,6 +15,7 @@ Comment[x-test]=xxCustom account configuration user interface for Gadu-Gadu acco
 Icon=blockdevice
 Name=Gadu-Gadu Account Configuration User Interface
 Name[da]=Brugerflade til Gadu-Gadu kontokonfiguration
+Name[de]=Benutzeroberfläche für die Einrichtung des Gadu-Gadu-Zugangs
 Name[et]=Gadu-Gadu konto seadistamise kasutajaliides
 Name[fr]=Interface utilisateur de configuration de comptes Gadu-Gadu
 Name[hu]=Gadu-Gadu azonosítóbeállító felület

@@ -15,6 +15,7 @@ Comment[x-test]=xxCustom account configuration user interface for accounts using
 Icon=blockdevice
 Name=Haze Account Configuration User Interface
 Name[da]=Brugerflade til Haze kontokonfiguration
+Name[de]=Benutzeroberfläche für die Einrichtung des Haze-Zugangs
 Name[et]=Haze'i konto seadistamise kasutajaliides
 Name[fr]=Interface utilisateur de configuration de comptes Haze
 Name[hu]=Haze azonosítóbeállító felület

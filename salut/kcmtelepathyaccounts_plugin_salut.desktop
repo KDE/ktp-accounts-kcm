@@ -15,6 +15,7 @@ Comment[x-test]=xxCustom account configuration user interface for accounts using
 Icon=blockdevice
 Name=Salut Account Configuration User Interface
 Name[da]=Brugerflade til Salut kontokonfiguration
+Name[de]=Benutzeroberfläche für die Einrichtung des Salut-Zugangs
 Name[et]=Saluti konto seadistamise kasutajaliides
 Name[fr]=Interface utilisateur de configuration de comptes Salut
 Name[hu]=Salut azonosítóbeállító felület
