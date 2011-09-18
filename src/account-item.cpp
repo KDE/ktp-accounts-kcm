@@ -136,6 +136,11 @@ const QString AccountItem::connectionStatusReason() const
     }
 }
 
+const QString AccountItem::connectionProtocolName() const
+{
+    return m_account->protocolName();
+}
+
 void AccountItem::generateIcon()
 {
     kDebug();
