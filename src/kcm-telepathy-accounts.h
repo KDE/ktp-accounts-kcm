@@ -63,6 +63,7 @@ private Q_SLOTS:
     void onAddAccountClicked();
     void onEditAccountClicked();
     void onRemoveAccountClicked();
+    void onModelDataChanged();
 
 private:
     Ui::MainWidget *m_ui;

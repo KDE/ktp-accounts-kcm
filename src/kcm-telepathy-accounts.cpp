@@ -86,6 +86,7 @@ KCMTelepathyAccounts::KCMTelepathyAccounts(QWidget *parent, const QVariantList& 
     // Set up the UI stuff.
     m_ui = new Ui::MainWidget;
     m_ui->setupUi(this);
+    m_ui->salutListView->setHidden(true);
 
     m_accountsListModel = new AccountsListModel(this);
 
@@ -142,6 +143,12 @@ KCMTelepathyAccounts::KCMTelepathyAccounts(QWidget *parent, const QVariantList& 
     connect(m_ui->salutListView->selectionModel(),
             SIGNAL(currentChanged(QModelIndex, QModelIndex)),
             SLOT(onSelectedItemChanged(QModelIndex, QModelIndex)));
+    connect(m_accountsListModel,
+            SIGNAL(rowsInserted(QModelIndex, int, int)),
+            SLOT(onModelDataChanged()));
+    connect(m_accountsListModel,
+            SIGNAL(rowsRemoved(QModelIndex, int, int)),
+            SLOT(onModelDataChanged()));
 }
 
 KCMTelepathyAccounts::~KCMTelepathyAccounts()
@@ -198,6 +205,8 @@ void KCMTelepathyAccounts::onAccountManagerReady(Tp::PendingOperation *op)
     foreach (Tp::AccountPtr account, accounts) {
         m_accountsListModel->addAccount(account);
     }
+
+    onModelDataChanged();
 
     connect(m_accountManager.data(),
             SIGNAL(newAccount (Tp::AccountPtr)),
@@ -281,6 +290,12 @@ void KCMTelepathyAccounts::onRemoveAccountClicked()
     {
         m_accountsListModel->removeAccount(m_currentModel->mapToSource(index));
     }
+}
+
+void KCMTelepathyAccounts::onModelDataChanged()
+{
+    bool salutEnabled = m_salutFilterModel->rowCount() == 0;
+    m_ui->salutListView->setHidden(salutEnabled);
 }
 
 /////
