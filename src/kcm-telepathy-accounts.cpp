@@ -237,6 +237,8 @@ ErrorOverlay::ErrorOverlay(QWidget *baseWidget, const QString &details, QWidget 
     QWidget(parent ? parent : baseWidget->window()),
     m_BaseWidget(baseWidget)
 {
+    Q_UNUSED(details)
+
     // Build the UI
     QVBoxLayout *layout = new QVBoxLayout;
     layout->setSpacing(10);
