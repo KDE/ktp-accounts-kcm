@@ -2,6 +2,7 @@
  * This file is part of telepathy-accounts-kcm
  *
  * Copyright (C) 2009 Collabora Ltd. <http://www.collabora.co.uk/>
+ * Copyright (C) 2011 Daniele E. Domenichelli <daniele.domenichelli@gmail.com>
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -28,6 +29,7 @@
 #include "accounts-list-delegate.h"
 
 #include <QLabel>
+#include <QSortFilterProxyModel>
 
 #include <KGenericFactory>
 #include <KIcon>
@@ -61,6 +63,7 @@ KCMTelepathyAccounts::KCMTelepathyAccounts(QWidget *parent, const QVariantList& 
     aboutData->addAuthor(ki18n("Dominik Schmidt"), ki18n("Developer"), "kde@dominik-schmidt.de");
     aboutData->addAuthor(ki18n("Thomas Richard"), ki18n("Developer"), "thomas.richard@proan.be");
     aboutData->addAuthor(ki18n("Florian Reinhard"), ki18n("Developer"), "florian.reinhard@googlemail.com");
+    aboutData->addAuthor(ki18n("Daniele E. Domenichelli"), ki18n("Developer"), "daniele.domenichelli@gmail.com");
 
     setAboutData(aboutData);
 
@@ -85,17 +88,37 @@ KCMTelepathyAccounts::KCMTelepathyAccounts(QWidget *parent, const QVariantList& 
     m_ui->setupUi(this);
 
     m_accountsListModel = new AccountsListModel(this);
-    m_ui->accountsListView->setModel(m_accountsListModel);
+
+    m_salutFilterModel = new QSortFilterProxyModel(this);
+    m_salutFilterModel->setSourceModel(m_accountsListModel);
+    m_salutFilterModel->setFilterRole(AccountsListModel::ConnectionProtocolNameRole);
+    m_salutFilterModel->setFilterFixedString(QLatin1String("local-xmpp"));
+    m_ui->salutListView->setModel(m_salutFilterModel);
+
+    m_accountsFilterModel = new QSortFilterProxyModel(this);
+    m_accountsFilterModel->setSourceModel(m_accountsListModel);
+    m_accountsFilterModel->setFilterRole(AccountsListModel::ConnectionProtocolNameRole);
+    m_accountsFilterModel->setFilterRegExp(QLatin1String("^((?!local-xmpp).)*$"));
+    m_ui->accountsListView->setModel(m_accountsFilterModel);
 
     m_ui->addAccountButton->setIcon(KIcon("list-add"));
     m_ui->editAccountButton->setIcon(KIcon("configure"));
     m_ui->removeAccountButton->setIcon(KIcon("edit-delete"));
 
-    AccountsListDelegate* delegate = new AccountsListDelegate(m_ui->accountsListView, this);
-    m_ui->accountsListView->setItemDelegate(delegate);
+    AccountsListDelegate* accountsDelegate = new AccountsListDelegate(m_ui->accountsListView, this);
+    m_ui->accountsListView->setItemDelegate(accountsDelegate);
 
+    AccountsListDelegate* salutDelegate = new AccountsListDelegate(m_ui->salutListView, this);
+    m_ui->salutListView->setItemDelegate(salutDelegate);
 
-    connect(delegate,
+    int height = salutDelegate->sizeHint(QStyleOptionViewItem(), m_salutFilterModel->index(0,0)).height() + 4*2;
+    m_ui->salutListView->setMinimumHeight(height);
+    m_ui->salutListView->setMaximumHeight(height);
+
+    connect(accountsDelegate,
+            SIGNAL(itemChecked(QModelIndex, bool)),
+            SLOT(onAccountEnabledChanged(QModelIndex, bool)));
+    connect(salutDelegate,
             SIGNAL(itemChecked(QModelIndex, bool)),
             SLOT(onAccountEnabledChanged(QModelIndex, bool)));
     connect(m_ui->addAccountButton,
@@ -107,12 +130,18 @@ KCMTelepathyAccounts::KCMTelepathyAccounts(QWidget *parent, const QVariantList& 
     connect(m_ui->accountsListView,
             SIGNAL(doubleClicked(QModelIndex)),
             SLOT(onEditAccountClicked()));
+    connect(m_ui->salutListView,
+            SIGNAL(doubleClicked(QModelIndex)),
+            SLOT(onEditAccountClicked()));
     connect(m_ui->removeAccountButton,
             SIGNAL(clicked()),
             SLOT(onRemoveAccountClicked()));
     connect(m_ui->accountsListView->selectionModel(),
             SIGNAL(currentChanged(QModelIndex, QModelIndex)),
-            SLOT(onSelectedItemChanged()));
+            SLOT(onSelectedItemChanged(QModelIndex, QModelIndex)));
+    connect(m_ui->salutListView->selectionModel(),
+            SIGNAL(currentChanged(QModelIndex, QModelIndex)),
+            SLOT(onSelectedItemChanged(QModelIndex, QModelIndex)));
 }
 
 KCMTelepathyAccounts::~KCMTelepathyAccounts()
@@ -180,9 +209,29 @@ void KCMTelepathyAccounts::onAccountCreated(const Tp::AccountPtr &account)
     m_accountsListModel->addAccount(account);
 }
 
-void KCMTelepathyAccounts::onSelectedItemChanged()
+void KCMTelepathyAccounts::onSelectedItemChanged(const QModelIndex &current, const QModelIndex &previous)
 {
-    bool isAccount = m_ui->accountsListView->currentIndex().isValid();
+    Q_UNUSED(previous);
+
+    if (!current.isValid()) {
+        m_ui->removeAccountButton->setEnabled(false);
+        m_ui->editAccountButton->setEnabled(false);
+        return;
+    }
+
+    m_currentModel = qobject_cast<const QSortFilterProxyModel*>(current.model());
+
+    if (m_currentModel == m_salutFilterModel) {
+        m_currentListView = m_ui->salutListView;
+        m_ui->accountsListView->clearSelection();
+        m_ui->accountsListView->setCurrentIndex(QModelIndex());
+    } else {
+        m_currentListView = m_ui->accountsListView;
+        m_ui->salutListView->clearSelection();
+        m_ui->salutListView->setCurrentIndex(QModelIndex());
+    }
+
+    bool isAccount = (m_currentListView->currentIndex().isValid());
     m_ui->removeAccountButton->setEnabled(isAccount);
     m_ui->editAccountButton->setEnabled(isAccount);
 }
@@ -210,8 +259,8 @@ void KCMTelepathyAccounts::onEditAccountClicked()
         return;
     }
 
-    QModelIndex index = m_ui->accountsListView->currentIndex();
-    AccountItem *item = m_accountsListModel->itemForIndex(index);
+    QModelIndex index = m_currentListView->currentIndex();
+    AccountItem *item = m_accountsListModel->itemForIndex(m_currentModel->mapToSource(index));
 
     if (!item)
         return;
@@ -224,13 +273,13 @@ void KCMTelepathyAccounts::onEditAccountClicked()
 void KCMTelepathyAccounts::onRemoveAccountClicked()
 {
     kDebug();
-    QModelIndex index = m_ui->accountsListView->currentIndex();
+    QModelIndex index = m_currentListView->currentIndex();
 
-     if ( KMessageBox::warningContinueCancel(this, i18n("Are you sure you want to remove the account \"%1\"?", m_accountsListModel->data(index, Qt::DisplayRole).toString()),
+     if ( KMessageBox::warningContinueCancel(this, i18n("Are you sure you want to remove the account \"%1\"?", m_currentModel->data(index, Qt::DisplayRole).toString()),
                                         i18n("Remove Account"), KGuiItem(i18n("Remove Account"), "edit-delete"), KStandardGuiItem::cancel(),
                                         QString(), KMessageBox::Notify | KMessageBox::Dangerous) == KMessageBox::Continue)
     {
-        m_accountsListModel->removeAccount(index);
+        m_accountsListModel->removeAccount(m_currentModel->mapToSource(index));
     }
 }
 

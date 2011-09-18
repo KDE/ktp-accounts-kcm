@@ -2,6 +2,7 @@
  * This file is part of telepathy-accounts-kcm
  *
  * Copyright (C) 2009 Collabora Ltd. <http://www.collabora.co.uk/>
+ * Copyright (C) 2011 Daniele E. Domenichelli <daniele.domenichelli@gmail.com>
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -27,6 +28,8 @@
 
 class AccountsListModel;
 class AddAccountAssistant;
+class QSortFilterProxyModel;
+class QListView;
 
 namespace Tp {
     class PendingOperation;
@@ -56,7 +59,7 @@ private Q_SLOTS:
 
     void onAccountEnabledChanged(const QModelIndex &index, bool enabled);
 
-    void onSelectedItemChanged();
+    void onSelectedItemChanged(const QModelIndex &current, const QModelIndex &previous);
     void onAddAccountClicked();
     void onEditAccountClicked();
     void onRemoveAccountClicked();
@@ -66,6 +69,10 @@ private:
 
     Tp::AccountManagerPtr m_accountManager;
     AccountsListModel *m_accountsListModel;
+    QSortFilterProxyModel *m_salutFilterModel;
+    QSortFilterProxyModel *m_accountsFilterModel;
+    const QSortFilterProxyModel *m_currentModel;
+    const QListView *m_currentListView;
 };
 
 // Helper class for drawing error overlays
