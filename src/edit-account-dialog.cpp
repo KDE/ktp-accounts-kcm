@@ -43,13 +43,14 @@ class EditAccountDialog::Private
 {
 public:
     Private()
-            : item(0), widget(0)
+            : item(0), widget(0), reconnectRequired(false)
     {
         kDebug();
     }
 
     AccountItem *item;
     AccountEditWidget *widget;
+    bool reconnectRequired;
 };
 
 EditAccountDialog::EditAccountDialog(AccountItem *item, QWidget *parent)
@@ -118,6 +119,19 @@ void EditAccountDialog::onParametersUpdated(Tp::PendingOperation *op)
         return;
     }
 
+    Tp::PendingStringList *psl = dynamic_cast<Tp::PendingStringList*>(op);
+
+    Q_ASSERT(psl);
+    if (!psl)
+    {
+        kWarning() << "Something  weird happened";
+    }
+
+    if (psl->result().size() > 0) {
+        kDebug() << "The following parameters won't be updated until reconnection: " << psl->result();
+        d->reconnectRequired = true;
+    }
+
     QVariantMap values = d->widget->parametersSet();
     // FIXME: Ask the user to submit a Display Name
 
@@ -147,7 +161,10 @@ void EditAccountDialog::onDisplayNameUpdated(Tp::PendingOperation *op)
     }
 
     emit finished();
-    d->item->account()->reconnect();
+
+    if (d->reconnectRequired) {
+        d->item->account()->reconnect();
+    }
 
     // set the dialog as accepted and exit
     done(KDialog::Accepted);
