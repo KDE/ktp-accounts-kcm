@@ -104,6 +104,9 @@ KCMTelepathyAccounts::KCMTelepathyAccounts(QWidget *parent, const QVariantList& 
     connect(m_ui->editAccountButton,
             SIGNAL(clicked()),
             SLOT(onEditAccountClicked()));
+    connect(m_ui->accountsListView,
+            SIGNAL(doubleClicked(QModelIndex)),
+            SLOT(onEditAccountClicked()));
     connect(m_ui->removeAccountButton,
             SIGNAL(clicked()),
             SLOT(onRemoveAccountClicked()));
