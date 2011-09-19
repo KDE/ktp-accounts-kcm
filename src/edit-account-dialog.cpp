@@ -99,10 +99,15 @@ void EditAccountDialog::accept()
         return;
     }
 
+    Tp::PendingStringList *psl = d->item->account()->updateParameters(setParameters, unsetParameters);
+
+    // We don't want to print on the screen our passwords therefore we hide it before printing
+    if (setParameters.contains(QLatin1String("password")))
+    {
+        setParameters[QLatin1String("password")] = QLatin1String("**********");
+    }
     kDebug() << "Set parameters:" << setParameters;
     kDebug() << "Unset parameters:" << unsetParameters;
-
-    Tp::PendingStringList *psl = d->item->account()->updateParameters(setParameters, unsetParameters);
 
     connect(psl,
             SIGNAL(finished(Tp::PendingOperation*)),
@@ -119,7 +124,7 @@ void EditAccountDialog::onParametersUpdated(Tp::PendingOperation *op)
         return;
     }
 
-    Tp::PendingStringList *psl = dynamic_cast<Tp::PendingStringList*>(op);
+    Tp::PendingStringList *psl = qobject_cast<Tp::PendingStringList*>(op);
 
     Q_ASSERT(psl);
     if (!psl)
