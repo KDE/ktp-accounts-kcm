@@ -159,14 +159,11 @@ void AccountEditWidget::loadWidgets()
         // also verify if the UI handle all mandatory parameters
         QMap<QString, QVariant::Type> params = d->accountUi->supportedParameters();
         QMap<QString, QVariant::Type>::const_iterator paramIter = params.constBegin();
-        bool paramFound = false;
         while(paramIter != params.constEnd()) {
-            paramFound = false;
             foreach (const Tp::ProtocolParameter &parameter, d->parameterModel->parameters()) {
                 if ((parameter.name() == paramIter.key()) &&
                     (parameter.type() == paramIter.value())) {
                     mandatoryParameters.removeAll(parameter);
-                    paramFound = true;
                 }
             }
             ++paramIter;
