@@ -26,6 +26,7 @@
 #include "accounts-list-model.h"
 #include "add-account-assistant.h"
 #include "edit-account-dialog.h"
+#include "salut-enable-dialog.h"
 #include "accounts-list-delegate.h"
 
 #include <QLabel>
@@ -309,7 +310,15 @@ void KCMTelepathyAccounts::onModelDataChanged()
 
 void KCMTelepathyAccounts::onSalutEnableButtonToggled(bool checked)
 {
-    kDebug();
+    if (checked) {
+        SalutEnableDialog dialog(m_accountManager, this);
+        dialog.exec();
+        m_ui->salutEnableCheckbox->setChecked(false);
+        m_ui->accountsListView->clearSelection();
+        m_ui->accountsListView->setCurrentIndex(QModelIndex());
+        m_ui->salutListView->clearSelection();
+        m_ui->salutListView->setCurrentIndex(QModelIndex());
+    }
 }
 
 /////
