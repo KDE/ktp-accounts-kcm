@@ -87,7 +87,9 @@ KCMTelepathyAccounts::KCMTelepathyAccounts(QWidget *parent, const QVariantList& 
     m_ui = new Ui::MainWidget;
     m_ui->setupUi(this);
     m_ui->salutListView->setHidden(true);
-
+    m_ui->salutEnableFrame->setHidden(true);
+    m_ui->salutEnableCheckbox->setIcon(KIcon("im-local-xmpp"));
+    m_ui->salutEnableCheckbox->setIconSize(QSize(32, 32));
     m_accountsListModel = new AccountsListModel(this);
 
     m_salutFilterModel = new QSortFilterProxyModel(this);
@@ -115,6 +117,9 @@ KCMTelepathyAccounts::KCMTelepathyAccounts(QWidget *parent, const QVariantList& 
     int height = salutDelegate->sizeHint(QStyleOptionViewItem(), m_salutFilterModel->index(0,0)).height() + 4*2;
     m_ui->salutListView->setMinimumHeight(height);
     m_ui->salutListView->setMaximumHeight(height);
+    m_ui->salutEnableFrame->setMinimumHeight(height);
+    m_ui->salutEnableFrame->setMaximumHeight(height);
+
 
     connect(accountsDelegate,
             SIGNAL(itemChecked(QModelIndex, bool)),
@@ -149,6 +154,9 @@ KCMTelepathyAccounts::KCMTelepathyAccounts(QWidget *parent, const QVariantList& 
     connect(m_accountsListModel,
             SIGNAL(rowsRemoved(QModelIndex, int, int)),
             SLOT(onModelDataChanged()));
+    connect(m_ui->salutEnableCheckbox,
+            SIGNAL(toggled(bool)),
+            SLOT(onSalutEnableButtonToggled(bool)));
 }
 
 KCMTelepathyAccounts::~KCMTelepathyAccounts()
@@ -296,6 +304,12 @@ void KCMTelepathyAccounts::onModelDataChanged()
 {
     bool salutEnabled = m_salutFilterModel->rowCount() == 0;
     m_ui->salutListView->setHidden(salutEnabled);
+    m_ui->salutEnableFrame->setHidden(!salutEnabled);
+}
+
+void KCMTelepathyAccounts::onSalutEnableButtonToggled(bool checked)
+{
+    kDebug();
 }
 
 /////

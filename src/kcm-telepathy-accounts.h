@@ -64,6 +64,7 @@ private Q_SLOTS:
     void onEditAccountClicked();
     void onRemoveAccountClicked();
     void onModelDataChanged();
+    void onSalutEnableButtonToggled(bool checked);
 
 private:
     Ui::MainWidget *m_ui;
