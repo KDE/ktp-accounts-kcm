@@ -38,6 +38,11 @@ class ProfileListModel : public QAbstractListModel
     Q_DISABLE_COPY(ProfileListModel);
 
 public:
+    enum Roles {
+        ProfileProtocolNameRole = Qt::UserRole+1,
+        ProfileCmNameRole = Qt::UserRole+2
+    };
+
     explicit ProfileListModel(QObject *parent = 0);
     virtual ~ProfileListModel();
 

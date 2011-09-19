@@ -68,6 +68,12 @@ QVariant ProfileListModel::data(const QModelIndex &index, int role) const
     case Qt::DecorationRole:
         data = QVariant(m_profileItems.at(index.row())->icon());
         break;
+    case ProfileListModel::ProfileProtocolNameRole:
+        data = QVariant(m_profileItems.at(index.row())->protocolName());
+        break;
+    case ProfileListModel::ProfileCmNameRole:
+        data = QVariant(m_profileItems.at(index.row())->cmName());
+        break;
     default:
         break;
     }

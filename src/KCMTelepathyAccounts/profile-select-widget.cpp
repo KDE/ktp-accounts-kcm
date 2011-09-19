@@ -33,7 +33,7 @@
 #include <TelepathyQt4/Feature>
 
 #include <QSortFilterProxyModel>
-#include <qitemselectionmodel.h>
+#include <QItemSelectionModel>
 
 class ProfileSelectWidget::Private
 {
@@ -53,7 +53,7 @@ public:
     ProfileListModel *sourceModel;
 };
 
-ProfileSelectWidget::ProfileSelectWidget(QWidget *parent)
+ProfileSelectWidget::ProfileSelectWidget(QWidget *parent, bool enableSalut)
  : QWidget(parent),
    d(new Private)
 {
@@ -66,6 +66,13 @@ ProfileSelectWidget::ProfileSelectWidget(QWidget *parent)
     d->sortModel->sort(0, Qt::AscendingOrder);
     d->sortModel->setDynamicSortFilter(true);
     d->sortModel->setSortCaseSensitivity(Qt::CaseInsensitive);
+
+    // Here we filter out salut and not local-xmpp because it might want to be
+    // able to see local-xmpp using haze later.
+    if(!enableSalut) {
+        d->sortModel->setFilterRole(ProfileListModel::ProfileCmNameRole);
+        d->sortModel->setFilterRegExp(QLatin1String("^((?!salut).)*$"));
+    }
 
     // Set up the widget
     d->ui = new Ui::ProfileSelectWidget;

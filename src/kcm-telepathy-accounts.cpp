@@ -94,6 +94,9 @@ KCMTelepathyAccounts::KCMTelepathyAccounts(QWidget *parent, const QVariantList& 
     m_ui->salutEnableCheckbox->setIconSize(QSize(32, 32));
     m_accountsListModel = new AccountsListModel(this);
 
+    // On the kcm_telepathy_account we filter using "local-xmpp" and not using
+    // "salut" because in this way we can see on top also local-xmpp accounts
+    // configured using haze
     m_salutFilterModel = new QSortFilterProxyModel(this);
     m_salutFilterModel->setSourceModel(m_accountsListModel);
     m_salutFilterModel->setFilterRole(AccountsListModel::ConnectionProtocolNameRole);
