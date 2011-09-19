@@ -43,6 +43,7 @@
 #include <TelepathyQt4/PendingOperation>
 #include <TelepathyQt4/PendingReady>
 #include <TelepathyQt4/Types>
+#include <TelepathyQt4/ConnectionManager>
 
 
 K_PLUGIN_FACTORY(KCMTelepathyAccountsFactory, registerPlugin<KCMTelepathyAccounts>();)
@@ -158,6 +159,13 @@ KCMTelepathyAccounts::KCMTelepathyAccounts(QWidget *parent, const QVariantList& 
     connect(m_ui->salutEnableCheckbox,
             SIGNAL(toggled(bool)),
             SLOT(onSalutEnableButtonToggled(bool)));
+
+    // Check if salut is enabled
+    Tp::ConnectionManagerPtr cm = Tp::ConnectionManager::create(QLatin1String("salut"));
+    Tp::PendingReady *op = cm->becomeReady(Tp::Features() << Tp::ConnectionManager::FeatureCore);
+    connect(op,
+            SIGNAL(finished(Tp::PendingOperation*)),
+            SLOT(onSalutConnectionManagerReady(Tp::PendingOperation*)));
 }
 
 KCMTelepathyAccounts::~KCMTelepathyAccounts()
@@ -318,6 +326,31 @@ void KCMTelepathyAccounts::onSalutEnableButtonToggled(bool checked)
         m_ui->accountsListView->setCurrentIndex(QModelIndex());
         m_ui->salutListView->clearSelection();
         m_ui->salutListView->setCurrentIndex(QModelIndex());
+    }
+}
+
+void KCMTelepathyAccounts::onSalutConnectionManagerReady(Tp::PendingOperation* op)
+{
+    bool error = false;
+    if(op->isError()) {
+        kWarning() << "Creating salut ConnectionManager failed:" << op->errorName() << op->errorMessage();
+        error = true;
+    } else {
+        Tp::ConnectionManagerPtr cm = Tp::ConnectionManagerPtr::qObjectCast(qobject_cast<Tp::PendingReady*>(op)->proxy());
+
+        if(!cm->isValid()) {
+            kWarning() << "Invalid salut ConnectionManager";
+            error = true;
+        } else if(!cm->supportedProtocols().contains(QLatin1String("local-xmpp"))) {
+            kWarning() << "salut ConnectionManager doesn't support local-xmpp... this is weird";
+            error = true;
+        }
+    }
+
+    // Salut is not installed or has some problem
+    if(error) {
+        m_ui->salutEnableFrame->setDisabled(true);
+        m_ui->salutEnableStatusLabel->setText("Install telepathy-salut to enable");
     }
 }
 

@@ -65,6 +65,7 @@ private Q_SLOTS:
     void onRemoveAccountClicked();
     void onModelDataChanged();
     void onSalutEnableButtonToggled(bool checked);
+    void onSalutConnectionManagerReady(Tp::PendingOperation*);
 
 private:
     Ui::MainWidget *m_ui;
