@@ -39,3 +39,7 @@ install (TARGETS kcm_telepathy_accounts
 install (FILES kcm_telepathy_accounts.desktop
          DESTINATION ${SERVICES_INSTALL_DIR}
 )
+
+install (FILES settings-im-and-voip.desktop
+         DESTINATION ${SERVICES_INSTALL_DIR}
+)

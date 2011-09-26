@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Service
+X-KDE-ServiceTypes=SystemSettingsCategory
+X-KDE-System-Settings-Category=im-and-voip
+X-KDE-System-Settings-Parent-Category=network-and-connectivity
+X-KDE-Weight=200
+Icon=telepathy-kde
+
+Name=Instant Messaging and VoIP
+Name[cs]=Instantní Komunikace a VoIP
