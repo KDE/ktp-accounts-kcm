@@ -7,3 +7,7 @@ X-KDE-Weight=200
 Icon=telepathy-kde
 
 Name=Instant Messaging and VoIP
+Name[it]=Messaggistica istantanea e VoIP
+Name[pt]=Mensagens Instantâneas e VoIP
+Name[uk]=Облікові записи на службах миттєвого обміну повідомленнями та VoIP
+Name[x-test]=xxInstant Messaging and VoIPxx

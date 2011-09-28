@@ -15,6 +15,10 @@ X-KDE-System-Settings-Parent-Category=im-and-voip
 Icon=telepathy-kde
 
 Name=Accounts
+Name[it]=Account
+Name[pt]=Contas
+Name[uk]=Облікові записи
+Name[x-test]=xxAccountsxx
 Comment=Add, edit and remove your instant messaging and VoIP accounts.
 Comment[cs]=Přidávejte, editujte a odstraňujte vaše účty pro VoIP a IM.
 Comment[da]=Tilføj, redigér og fjern dine instant messaging- og VoIP-konti.
