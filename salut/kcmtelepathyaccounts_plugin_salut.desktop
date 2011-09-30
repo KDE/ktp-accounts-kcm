@@ -15,6 +15,7 @@ Comment[uk]=Інтерфейс користувача для нетиповог�
 Comment[x-test]=xxCustom account configuration user interface for accounts using the Salut connection manager.xx
 Icon=blockdevice
 Name=Salut Account Configuration User Interface
+Name[cs]=Uživatelské rozhraní nastavení účtu Salut
 Name[da]=Brugerflade til Salut kontokonfiguration
 Name[de]=Benutzeroberfläche für die Einrichtung des Salut-Zugangs
 Name[et]=Saluti konto seadistamise kasutajaliides

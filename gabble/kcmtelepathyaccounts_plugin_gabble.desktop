@@ -15,6 +15,7 @@ Comment[uk]=Інтерфейс користувача для нетиповог�
 Comment[x-test]=xxCustom account configuration user interface for accounts using the Gabble connection manager.xx
 Icon=blockdevice
 Name=Gabble Account Configuration User Interface
+Name[cs]=Uživatelské rozhraní nastavení účtu Gabble
 Name[da]=Brugerflade til Gabble kontokonfiguration
 Name[de]=Benutzeroberfläche für die Einrichtung des Gabble-Zugangs
 Name[et]=Gabble'i konto seadistamise kasutajaliides

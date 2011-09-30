@@ -15,6 +15,7 @@ Comment[uk]=Інтерфейс користувача для нетиповог�
 Comment[x-test]=xxCustom account configuration user interface for accounts using the Haze connection manager.xx
 Icon=blockdevice
 Name=Haze Account Configuration User Interface
+Name[cs]=Uživatelské rozhraní nastavení účtu Haze
 Name[da]=Brugerflade til Haze kontokonfiguration
 Name[de]=Benutzeroberfläche für die Einrichtung des Haze-Zugangs
 Name[et]=Haze'i konto seadistamise kasutajaliides

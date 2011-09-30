@@ -15,6 +15,7 @@ Comment[uk]=Інтерфейс користувача для нетиповог�
 Comment[x-test]=xxCustom account configuration user interface for accounts using the Rakia/SofiaSIP connection manager.xx
 Icon=blockdevice
 Name=Rakia/SofiaSIP Account Configuration User Interface
+Name[cs]=Uživatelské rozhraní nastavení účtu Rakia/SofiaSIP
 Name[da]=Brugerflade til Rakia/SofiaSIP kontokonfiguration
 Name[de]=Benutzeroberfläche für die Einrichtung des Rakia/SofiaSIP-Zugangs
 Name[et]=Rakia/SofiaSIP-i konto seadistamise kasutajaliides

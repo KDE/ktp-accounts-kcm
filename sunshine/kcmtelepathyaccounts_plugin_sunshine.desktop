@@ -15,6 +15,7 @@ Comment[uk]=Інтерфейс користувача для нетиповог�
 Comment[x-test]=xxCustom account configuration user interface for Gadu-Gadu accounts using the Sunshine connection manager.xx
 Icon=blockdevice
 Name=Gadu-Gadu Account Configuration User Interface
+Name[cs]=Uživatelské rozhraní nastavení účtu Gadu-Gadu
 Name[da]=Brugerflade til Gadu-Gadu kontokonfiguration
 Name[de]=Benutzeroberfläche für die Einrichtung des Gadu-Gadu-Zugangs
 Name[et]=Gadu-Gadu konto seadistamise kasutajaliides
