@@ -22,6 +22,8 @@
 
 #include "add-account-assistant.h"
 
+#include "wallet-interface.h"
+
 #include "KCMTelepathyAccounts/abstract-account-parameters-widget.h"
 #include "KCMTelepathyAccounts/abstract-account-ui.h"
 #include "KCMTelepathyAccounts/account-edit-widget.h"
@@ -33,6 +35,7 @@
 #include <KLocale>
 #include <KMessageBox>
 #include <KPageWidgetItem>
+#include <KWallet/Wallet>
 
 #include <QtCore/QList>
 #include <QtGui/QHBoxLayout>
@@ -175,6 +178,11 @@ void AddAccountAssistant::accept()
         displayName = d->currentProfileItem->protocolName();
     }
 
+    //remove password values from being sent. These are stored by MC instead
+
+    //FIXME: This breaks jabber registration - see Telepathy ML thread "Storing passwords in MC and regsitering new accounts"
+    values.remove("password");
+
     Tp::PendingAccount *pa = d->accountManager->createAccount(d->currentProfileItem->cmName(),
                                                               d->currentProfileItem->protocolName(),
                                                               displayName,
@@ -219,10 +227,19 @@ void AddAccountAssistant::onAccountCreated(Tp::PendingOperation *op)
         return;
     }
 
+    Tp::AccountPtr account = pendingAccount->account();
+
     if(d->accountEditWidget->connectOnAdd()){
-        pendingAccount->account()->setRequestedPresence(Tp::Presence::available(QString("Online")));
+        account->setRequestedPresence(Tp::Presence::available(QString("Online")));
     }
-    pendingAccount->account()->setServiceName(d->currentProfileItem->serviceName());
+    account->setServiceName(d->currentProfileItem->serviceName());
+
+    //save password to KWallet if needed
+    QVariantMap values  = d->accountEditWidget->parametersSet();
+    if (values.contains(QLatin1String("password"))) {
+        WalletInterface wallet(this->effectiveWinId());
+        wallet.setPassword(account, values["password"].toString());
+    }
 
     KAssistantDialog::accept();
 }

@@ -14,6 +14,7 @@ set (telepathy_accounts_kcm_SRCS
      edit-account-dialog.cpp
      salut-enable-dialog.cpp
      accounts-list-delegate.cpp
+     wallet-interface.cpp
 )
 
 kde4_add_ui_files (telepathy_accounts_kcm_SRCS

@@ -21,6 +21,7 @@
 
 #include "edit-account-dialog.h"
 
+#include "wallet-interface.h"
 
 #include "KCMTelepathyAccounts/dictionary.h"
 #include "KCMTelepathyAccounts/abstract-account-parameters-widget.h"
@@ -70,6 +71,17 @@ EditAccountDialog::EditAccountDialog(AccountItem *item, QWidget *parent)
     ParameterEditModel *parameterModel = new ParameterEditModel(this);
     parameterModel->addItems(parameters, d->item->account()->profile()->parameters(), parameterValues);
 
+    //update the parameter model with the password from kwallet (if applicable)
+    Tp::ProtocolParameter passwordParameter = parameterModel->parameter(QLatin1String("password"));
+
+    WalletInterface wallet(this->effectiveWinId());
+    if (passwordParameter.isValid() && wallet.hasPassword(d->item->account())) {
+        QModelIndex index = parameterModel->indexForParameter(passwordParameter);
+        QString password = wallet.password(d->item->account());
+        parameterModel->setData(index, password, Qt::EditRole);
+    }
+
+
     // Set up the interface
     d->widget = new AccountEditWidget(d->item->account()->profile(),
                                       parameterModel,
@@ -99,13 +111,11 @@ void EditAccountDialog::accept()
         return;
     }
 
+    //remove password from setParameters as this is now stored by kwallet instead
+    setParameters.remove(QLatin1String("password"));
+
     Tp::PendingStringList *psl = d->item->account()->updateParameters(setParameters, unsetParameters);
 
-    // We don't want to print on the screen our passwords therefore we hide it before printing
-    if (setParameters.contains(QLatin1String("password")))
-    {
-        setParameters[QLatin1String("password")] = QLatin1String("**********");
-    }
     kDebug() << "Set parameters:" << setParameters;
     kDebug() << "Unset parameters:" << unsetParameters;
 
@@ -127,8 +137,7 @@ void EditAccountDialog::onParametersUpdated(Tp::PendingOperation *op)
     Tp::PendingStringList *psl = qobject_cast<Tp::PendingStringList*>(op);
 
     Q_ASSERT(psl);
-    if (!psl)
-    {
+    if (!psl) {
         kWarning() << "Something  weird happened";
     }
 
@@ -138,8 +147,14 @@ void EditAccountDialog::onParametersUpdated(Tp::PendingOperation *op)
     }
 
     QVariantMap values = d->widget->parametersSet();
-    // FIXME: Ask the user to submit a Display Name
 
+    if (values.contains(QLatin1String("password"))) {
+        WalletInterface wallet(this->effectiveWinId());
+        wallet.setPassword(d->item->account(), values["password"].toString());
+    }
+
+
+    // FIXME: Ask the user to submit a Display Name
     QString displayName;
     if (values.contains("account")) {
         displayName = values["account"].toString();
