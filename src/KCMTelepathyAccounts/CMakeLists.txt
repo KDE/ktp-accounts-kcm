@@ -41,19 +41,19 @@ set (libkcmtelepathyaccounts_HDRS
 )
 
 set (libkcmtelepathyaccounts_PRETTY_HDRS
-     include/AbstractAccountUiPlugin
-     include/AbstractAccountUi
-     include/AbstractAccountParametersWidget
-     include/GenericAdvancedOptionsWidget
-     include/AccountEditWidget
-     include/PluginMacros
-     include/ConnectionManagerItem
-     include/PluginManager
-     include/ProtocolSelectWidget
-     include/ProtocolItem
-     include/ParameterEditWidget
-     include/ParameterEditModel
-     include/ValidatedLineEdit
+     AbstractAccountUiPlugin
+     AbstractAccountUi
+     AbstractAccountParametersWidget
+     GenericAdvancedOptionsWidget
+     AccountEditWidget
+     PluginMacros
+     ConnectionManagerItem
+     PluginManager
+     ProtocolSelectWidget
+     ProtocolItem
+     ParameterEditWidget
+     ParameterEditModel
+     ValidatedLineEdit
 )
 
 kde4_add_ui_files (libkcmtelepathyaccounts_SRCS

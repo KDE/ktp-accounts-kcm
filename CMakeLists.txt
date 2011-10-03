@@ -16,6 +16,7 @@ add_definitions (${KDE4_DEFINITIONS})
 
 include_directories (${KDE4_INCLUDES}
                      ${TELEPATHY_QT4_INCLUDE_DIR}
+                     ${CMAKE_CURRENT_SOURCE_DIR}/src
 )
 
 add_subdirectory (src)
