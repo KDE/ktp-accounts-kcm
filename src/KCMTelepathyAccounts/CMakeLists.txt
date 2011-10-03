@@ -89,12 +89,12 @@ install (TARGETS kcmtelepathyaccounts
          ${INSTALL_TARGETS_DEFAULT_ARGS}
 )
 
-install (FILES
-         ${libkcmtelepathyaccounts_HDRS}
-         ${libkcmtelepathyaccounts_PRETTY_HDRS}
-         kcm_telepathy_accounts_export.h
-         DESTINATION ${INCLUDE_INSTALL_DIR}/KCMTelepathyAccounts COMPONENT Devel
-)
+#install (FILES
+#         ${libkcmtelepathyaccounts_HDRS}
+#         ${libkcmtelepathyaccounts_PRETTY_HDRS}
+#         kcm_telepathy_accounts_export.h
+#         DESTINATION ${INCLUDE_INSTALL_DIR}/KCMTelepathyAccounts COMPONENT Devel
+#)
 
 install (FILES
          kcmtelepathyaccounts-accountuiplugin.desktop
