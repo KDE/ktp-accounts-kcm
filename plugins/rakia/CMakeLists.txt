@@ -21,7 +21,7 @@ kde4_add_plugin (kcmtelepathyaccounts_plugin_rakia
 )
 
 target_link_libraries (kcmtelepathyaccounts_plugin_rakia
-                       ${KCMTELEPATHYACCOUNTS_LIBRARIES}
+                       kcmtelepathyaccounts
                        ${QT_LIBRARIES}
                        ${KDE4_KDEUI_LIBS}
                        ${TELEPATHY_QT4_LIBRARIES}

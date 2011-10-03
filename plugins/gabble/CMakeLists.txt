@@ -27,7 +27,7 @@ kde4_add_plugin (kcmtelepathyaccounts_plugin_gabble
 )
 
 target_link_libraries (kcmtelepathyaccounts_plugin_gabble
-                       ${KCMTELEPATHYACCOUNTS_LIBRARIES}
+                       kcmtelepathyaccounts
                        ${QT_LIBRARIES}
                        ${KDE4_KDEUI_LIBS}
                        ${TELEPATHY_QT4_LIBRARIES}

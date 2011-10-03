@@ -21,7 +21,7 @@ kde4_add_plugin (kcmtelepathyaccounts_plugin_sunshine
 )
 
 target_link_libraries (kcmtelepathyaccounts_plugin_sunshine
-                       ${KCMTELEPATHYACCOUNTS_LIBRARIES}
+                       kcmtelepathyaccounts
                        ${QT_LIBRARIES}
                        ${KDE4_KDEUI_LIBS}
                        ${TELEPATHY_QT4_LIBRARIES}
