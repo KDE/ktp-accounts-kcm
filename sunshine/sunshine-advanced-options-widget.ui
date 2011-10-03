@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>SunshineAdvancedOptionsWidget</class>
+ <widget class="QWidget" name="SunshineAdvancedOptionsWidget">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>435</width>
+    <height>206</height>
+   </rect>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout">
+   <item>
+    <widget class="QGroupBox" name="serverGroupBox">
+     <property name="title">
+      <string>Custom Server Settings</string>
+     </property>
+     <property name="checkable">
+      <bool>true</bool>
+     </property>
+     <property name="checked">
+      <bool>true</bool>
+     </property>
+     <layout class="QFormLayout" name="formLayout_3">
+      <property name="fieldGrowthPolicy">
+       <enum>QFormLayout::ExpandingFieldsGrow</enum>
+      </property>
+      <item row="0" column="0">
+       <widget class="QLabel" name="serverLabel">
+        <property name="text">
+         <string>Server:</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="1">
+       <widget class="KLineEdit" name="serverLineEdit">
+        <property name="toolTip">
+         <string>STUN server address (FQDN or IP address)</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="0">
+       <widget class="QLabel" name="portLabel">
+        <property name="text">
+         <string>Port:</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="1">
+       <widget class="KIntSpinBox" name="portSpinBox">
+        <property name="maximum">
+         <number>65535</number>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item>
+    <widget class="QGroupBox" name="miscGroupBox">
+     <property name="title">
+      <string>Miscellaneous Settings</string>
+     </property>
+     <layout class="QFormLayout" name="formLayout_4">
+      <property name="fieldGrowthPolicy">
+       <enum>QFormLayout::ExpandingFieldsGrow</enum>
+      </property>
+      <item row="6" column="0">
+       <widget class="QLabel" name="exportContactsLabel">
+        <property name="text">
+         <string>Contacts:</string>
+        </property>
+       </widget>
+      </item>
+      <item row="6" column="1">
+       <widget class="QCheckBox" name="exportContactsCheckBox">
+        <property name="text">
+         <string>Synchronise your contacts with the Gadu-Gadu server</string>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="0">
+       <widget class="QLabel" name="sslLabel">
+        <property name="text">
+         <string>Security:</string>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="1">
+       <widget class="QCheckBox" name="sslCheckBox">
+        <property name="text">
+         <string>Use Transport Layer Security (TLS/SSL)</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <customwidgets>
+  <customwidget>
+   <class>KIntSpinBox</class>
+   <extends>QSpinBox</extends>
+   <header>knuminput.h</header>
+  </customwidget>
+  <customwidget>
+   <class>KLineEdit</class>
+   <extends>QLineEdit</extends>
+   <header>klineedit.h</header>
+  </customwidget>
+ </customwidgets>
+ <tabstops>
+  <tabstop>serverGroupBox</tabstop>
+  <tabstop>serverLineEdit</tabstop>
+  <tabstop>portSpinBox</tabstop>
+  <tabstop>sslCheckBox</tabstop>
+  <tabstop>exportContactsCheckBox</tabstop>
+ </tabstops>
+ <resources/>
+ <connections/>
+</ui>

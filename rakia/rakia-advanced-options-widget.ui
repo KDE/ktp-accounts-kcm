@@ -1,0 +1,307 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>RakiaAdvancedOptionsWidget</class>
+ <widget class="QWidget" name="RakiaAdvancedOptionsWidget">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>421</width>
+    <height>498</height>
+   </rect>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout">
+   <item>
+    <widget class="QGroupBox" name="authGroupBox">
+     <property name="title">
+      <string>Authentication</string>
+     </property>
+     <layout class="QFormLayout" name="formLayout_6">
+      <property name="fieldGrowthPolicy">
+       <enum>QFormLayout::ExpandingFieldsGrow</enum>
+      </property>
+      <item row="0" column="0">
+       <widget class="QLabel" name="authUserLabel">
+        <property name="text">
+         <string>User:</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="1">
+       <widget class="QLineEdit" name="authUserLineEdit">
+        <property name="toolTip">
+         <string>Username for your SIP account. If your username is different from the user part your SIP URI, provide it here.</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0">
+       <widget class="QLabel" name="registrarLabel">
+        <property name="text">
+         <string>Registrar:</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="1">
+       <widget class="QLineEdit" name="registrarLineEdit">
+        <property name="toolTip">
+         <string>Registrar for your SIP account. If your registrar is different from the server part your SIP URI, provide it here.</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item>
+    <widget class="QGroupBox" name="proxyGroupBox">
+     <property name="title">
+      <string>Proxy</string>
+     </property>
+     <layout class="QFormLayout" name="formLayout_5">
+      <property name="fieldGrowthPolicy">
+       <enum>QFormLayout::ExpandingFieldsGrow</enum>
+      </property>
+      <item row="0" column="0">
+       <widget class="QLabel" name="proxyLabel">
+        <property name="text">
+         <string>Proxy host:</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="1">
+       <widget class="QLineEdit" name="proxyLineEdit"/>
+      </item>
+      <item row="1" column="0">
+       <widget class="QLabel" name="portLabel">
+        <property name="text">
+         <string>Proxy port:</string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="0">
+       <widget class="QLabel" name="transportLabel">
+        <property name="text">
+         <string>Transport:</string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="1">
+       <widget class="KComboBox" name="transportComboBox">
+        <item>
+         <property name="text">
+          <string>auto</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>udp</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>tcp</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>tls</string>
+         </property>
+        </item>
+       </widget>
+      </item>
+      <item row="1" column="1">
+       <widget class="KIntSpinBox" name="portSpinBox">
+        <property name="maximum">
+         <number>65535</number>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item>
+    <widget class="QGroupBox" name="stunGroupBox">
+     <property name="title">
+      <string>Custom STUN settings</string>
+     </property>
+     <property name="checkable">
+      <bool>true</bool>
+     </property>
+     <property name="checked">
+      <bool>true</bool>
+     </property>
+     <layout class="QFormLayout" name="formLayout_3">
+      <item row="0" column="0">
+       <widget class="QLabel" name="stunServerLabel">
+        <property name="text">
+         <string>STUN server:</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="0">
+       <widget class="QLabel" name="stunPortLabel">
+        <property name="text">
+         <string>STUN port:</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="1">
+       <widget class="KIntSpinBox" name="stunPortSpinBox">
+        <property name="maximum">
+         <number>65535</number>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="1">
+       <widget class="KLineEdit" name="stunServerLineEdit">
+        <property name="toolTip">
+         <string>STUN server address (FQDN or IP address)</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item>
+    <widget class="QGroupBox" name="networkingGroupBox">
+     <property name="title">
+      <string>Network and Routing</string>
+     </property>
+     <layout class="QFormLayout" name="formLayout_4">
+      <item row="5" column="1">
+       <widget class="QCheckBox" name="discoverBindingCheckBox">
+        <property name="toolTip">
+         <string>Enable discovery of public IP address beyond NAT</string>
+        </property>
+        <property name="text">
+         <string>Discover Public Contact</string>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="1">
+       <widget class="QCheckBox" name="looseRoutingCheckBox">
+        <property name="toolTip">
+         <string>Enable loose routing as per RFC 3261</string>
+        </property>
+        <property name="text">
+         <string>Use Loose Routing</string>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="0">
+       <widget class="QLabel" name="looseRoutingLabel">
+        <property name="text">
+         <string>Routing:</string>
+        </property>
+       </widget>
+      </item>
+      <item row="5" column="0">
+       <widget class="QLabel" name="discoverBindingLabel">
+        <property name="text">
+         <string>NAT</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item>
+    <widget class="QGroupBox" name="keepaliveGroupBox">
+     <property name="title">
+      <string>KeepAlive</string>
+     </property>
+     <layout class="QFormLayout" name="formLayout_2">
+      <item row="2" column="0">
+       <widget class="QLabel" name="keepaliveIntervalLabel">
+        <property name="text">
+         <string>Interval:</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="1">
+       <widget class="KIntNumInput" name="keepaliveIntervalNumInput">
+        <property name="toolTip">
+         <string>Interval between keepalive probes in seconds (0 = disabled, unset = use a default interval)</string>
+        </property>
+        <property name="minimum">
+         <number>0</number>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="1">
+       <widget class="KComboBox" name="keepaliveMechanismComboBox">
+        <property name="toolTip">
+         <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Ubuntu'; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Keepalive mechanism for SIP registration&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;auto&lt;/span&gt;: Keepalive management is up to the implementation&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;options&lt;/span&gt;: Maintain registration with OPTIONS requests&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;register&lt;/span&gt;: Maintain registration with REGISTER requests&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;stun&lt;/span&gt;: Maintain registration with STUN as described in IETF draft-sip-outbound&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;off&lt;/span&gt;: Disable keepalive management&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
+        <item>
+         <property name="text">
+          <string>auto</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>register</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>options</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>stun</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>off</string>
+         </property>
+        </item>
+       </widget>
+      </item>
+      <item row="1" column="0">
+       <widget class="QLabel" name="keepaliveMechanismLabel">
+        <property name="text">
+         <string>Mechanism:</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <customwidgets>
+  <customwidget>
+   <class>KIntSpinBox</class>
+   <extends>QSpinBox</extends>
+   <header>knuminput.h</header>
+  </customwidget>
+  <customwidget>
+   <class>KLineEdit</class>
+   <extends>QLineEdit</extends>
+   <header>klineedit.h</header>
+  </customwidget>
+  <customwidget>
+   <class>KComboBox</class>
+   <extends>QComboBox</extends>
+   <header>kcombobox.h</header>
+  </customwidget>
+  <customwidget>
+   <class>KIntNumInput</class>
+   <extends>QWidget</extends>
+   <header>knuminput.h</header>
+  </customwidget>
+ </customwidgets>
+ <resources/>
+ <connections/>
+</ui>

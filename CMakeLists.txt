@@ -1,8 +1,9 @@
+project (telepathy-accounts-kcm)
+
 # Add the modules we ship to the module path
 SET(CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake/modules" ${CMAKE_MODULE_PATH})
 
 find_package (KDE4 REQUIRED)
-
 find_package (TelepathyQt4 REQUIRED)
 
 # set some default settings
@@ -19,4 +20,10 @@ include_directories (${KDE4_INCLUDES}
 
 add_subdirectory (src)
 add_subdirectory (data)
-
+add_subdirectory (gabble)
+add_subdirectory (butterfly)
+add_subdirectory (idle)
+add_subdirectory (haze)
+add_subdirectory (rakia)
+add_subdirectory (salut)
+add_subdirectory (sunshine)
