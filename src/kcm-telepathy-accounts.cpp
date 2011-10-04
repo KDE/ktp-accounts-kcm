@@ -28,6 +28,7 @@
 #include "edit-account-dialog.h"
 #include "salut-enable-dialog.h"
 #include "accounts-list-delegate.h"
+#include "wallet-interface.h"
 
 #include <QLabel>
 #include <QSortFilterProxyModel>
@@ -309,6 +310,10 @@ void KCMTelepathyAccounts::onRemoveAccountClicked()
                                         QString(), KMessageBox::Notify | KMessageBox::Dangerous) == KMessageBox::Continue)
     {
         m_accountsListModel->removeAccount(m_currentModel->mapToSource(index));
+
+        AccountItem *item = m_accountsListModel->itemForIndex(m_currentModel->mapToSource(index));
+        WalletInterface wallet(this->effectiveWinId());
+        wallet.removePassword(item->account());
     }
 }
 

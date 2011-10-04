@@ -35,7 +35,6 @@
 #include <KLocale>
 #include <KMessageBox>
 #include <KPageWidgetItem>
-#include <KWallet/Wallet>
 
 #include <QtCore/QList>
 #include <QtGui/QHBoxLayout>
@@ -178,10 +177,13 @@ void AddAccountAssistant::accept()
         displayName = d->currentProfileItem->protocolName();
     }
 
-    //remove password values from being sent. These are stored by MC instead
+    //remove password values from being sent. These are stored by KWallet instead
 
-    //FIXME: This breaks jabber registration - see Telepathy ML thread "Storing passwords in MC and regsitering new accounts"
-    values.remove("password");
+    //FIXME: This is a hack for jabber registration, we don't remove passwords - see Telepathy ML thread "Storing passwords in MC and regsitering new accounts"
+    //http://lists.freedesktop.org/archives/telepathy/2011-September/005747.html
+    if (!values.contains(QLatin1String("register"))) {
+        values.remove(QLatin1String("password"));
+    }
 
     Tp::PendingAccount *pa = d->accountManager->createAccount(d->currentProfileItem->cmName(),
                                                               d->currentProfileItem->protocolName(),
@@ -229,17 +231,17 @@ void AddAccountAssistant::onAccountCreated(Tp::PendingOperation *op)
 
     Tp::AccountPtr account = pendingAccount->account();
 
-    if(d->accountEditWidget->connectOnAdd()){
-        account->setRequestedPresence(Tp::Presence::available(QString("Online")));
-    }
-    account->setServiceName(d->currentProfileItem->serviceName());
-
     //save password to KWallet if needed
     QVariantMap values  = d->accountEditWidget->parametersSet();
     if (values.contains(QLatin1String("password"))) {
         WalletInterface wallet(this->effectiveWinId());
         wallet.setPassword(account, values["password"].toString());
     }
+
+    if(d->accountEditWidget->connectOnAdd()){
+        account->setRequestedPresence(Tp::Presence::available(QString("Online")));
+    }
+    account->setServiceName(d->currentProfileItem->serviceName());
 
     KAssistantDialog::accept();
 }
