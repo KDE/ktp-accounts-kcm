@@ -1,18 +1,6 @@
 [Desktop Entry]
 Encoding=UTF-8
 Comment=Custom account configuration user interface for accounts using the Idle connection manager.
-Comment[da]=Brugerflade til brugertilpasset kontokonfiguration til konti der bruger forbindelseshåndteringen Idle.
-Comment[et]=Idle ühendusehaldurit kasutavate kontode kohandatud konto seadistamise kasutajaliides
-Comment[fr]=Personnalisez l'interface utilisateur de configuration de comptes pour les comptes utilisant le gestionnaire de connexions Idle.
-Comment[hu]=Egyedi beállítófelület az Idle kapcsolatkezelőt használó azonosítókhoz.
-Comment[it]=Interfaccia utente personalizzata di configurazione account per account che usano il gestore di connessioni Idle.
-Comment[nl]=Gebruikersinterface voor aangepaste accountconfiguratie voor accounts die de Idle verbindingenbeheerder gebruiken.
-Comment[pl]=Własny interfejs użytkownika konfiguracji konta dla kont wykorzystujących menadżera połączeń Idle.
-Comment[pt]=Interface de utilizador de configuração de contas personalizadas com o gestor de ligações Idle.
-Comment[pt_BR]=Interface de configuração de contas personalizadas usando o gerenciador de conexões Idle.
-Comment[sv]=Användargränssnitt för anpassad kontoinställning av konton som använder anslutningshanteraren Idle.
-Comment[uk]=Інтерфейс користувача для нетипового налаштування облікового запису за допомогою керування з’єднаннями Idle.
-Comment[x-test]=xxCustom account configuration user interface for accounts using the Idle connection manager.xx
 Type=Service
 ServiceTypes=KCMTelepathyAccounts/AccountUiPlugin
 

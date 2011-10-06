@@ -1,34 +1,8 @@
 [Desktop Entry]
 Encoding=UTF-8
 Comment=Custom account configuration user interface for accounts using the Gabble connection manager.
-Comment[da]=Brugerflade til brugertilpasset kontokonfiguration til konti der bruger forbindelseshåndteringen Gabble.
-Comment[et]=Gabble'i ühendusehaldurit kasutavate kontode kohandatud konto seadistamise kasutajaliides
-Comment[fr]=Personnalisez l'interface utilisateur de configuration de comptes pour les comptes utilisant le gestionnaire de connexions Gabble.
-Comment[hu]=Egyedi beállítófelület a Gabble kapcsolatkezelőt használó azonosítókhoz.
-Comment[it]=Interfaccia utente personalizzata di configurazione account per account che usano il gestore di connessioni Gabble.
-Comment[nl]=Gebruikersinterface voor aangepaste accountconfiguratie voor accounts die de Gabble verbindingenbeheerder gebruiken.
-Comment[pl]=Własny interfejs użytkownika konfiguracji konta dla kont wykorzystujących menadżera połączeń Gabble.
-Comment[pt]=Interface de utilizador de configuração de contas personalizadas com o gestor de ligações Gabble.
-Comment[pt_BR]=Interface de configuração de contas personalizadas usando o gerenciador de conexões Gabble.
-Comment[sv]=Användargränssnitt för anpassad kontoinställning av konton som använder anslutningshanteraren Gabble.
-Comment[uk]=Інтерфейс користувача для нетипового налаштування облікового запису за допомогою керування з’єднаннями Gabble.
-Comment[x-test]=xxCustom account configuration user interface for accounts using the Gabble connection manager.xx
 Icon=blockdevice
 Name=Gabble Account Configuration User Interface
-Name[cs]=Uživatelské rozhraní nastavení účtu Gabble
-Name[da]=Brugerflade til Gabble kontokonfiguration
-Name[de]=Benutzeroberfläche für die Einrichtung des Gabble-Zugangs
-Name[et]=Gabble'i konto seadistamise kasutajaliides
-Name[fr]=Interface utilisateur de configuration de comptes Gabble
-Name[hu]=Gabble azonosítóbeállító felület
-Name[it]=Interfaccia utente di configurazione account Gabble
-Name[nl]=Gebruikersinterface voor Gabble accountconfiguratie
-Name[pl]=Interfejs użytkownika konfiguracji konta Gabble
-Name[pt]=Interface de Configuração de Contas do Gabble
-Name[pt_BR]=Interface de configuração de contas do Gabble
-Name[sv]=Användargränssnitt för inställning av Gabble-konton
-Name[uk]=Інтерфейс користувача для налаштування Gabble
-Name[x-test]=xxGabble Account Configuration User Interfacexx
 Type=Service
 ServiceTypes=KCMTelepathyAccounts/AccountUiPlugin
 
