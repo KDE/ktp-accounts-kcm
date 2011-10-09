@@ -21,6 +21,8 @@ set (kcmtelepathyaccounts_plugin_haze_SRCS
      aim-main-options-widget.cpp
      haze-aim-account.cpp
      aim-server-settings-widget.cpp
+     msn-main-options-widget.cpp
+     haze-msn-account.cpp
 )
 
 kde4_add_ui_files (kcmtelepathyaccounts_plugin_haze_SRCS
@@ -34,6 +36,7 @@ kde4_add_ui_files (kcmtelepathyaccounts_plugin_haze_SRCS
                    yahoo-server-settings-widget.ui
                    aim-main-options-widget.ui
                    aim-server-settings-widget.ui
+                   msn-main-options-widget.ui
 )
 
 kde4_add_plugin (kcmtelepathyaccounts_plugin_haze

@@ -25,6 +25,7 @@
 #include "haze-skype-account-ui.h"
 #include "haze-yahoo-account.h"
 #include "haze-aim-account.h"
+#include "haze-msn-account.h"
 
 #include <KDebug>
 #include <KGenericFactory>
@@ -42,6 +43,7 @@ HazeAccountUiPlugin::HazeAccountUiPlugin(QObject *parent, const QVariantList &)
     registerProvidedProtocol("haze", "bigbrownchunx-skype-dbus");
     registerProvidedProtocol("haze", "yahoo");
     registerProvidedProtocol("haze", "aim");
+    registerProvidedProtocol("haze", "msn");
 }
 
 HazeAccountUiPlugin::~HazeAccountUiPlugin()
@@ -57,15 +59,17 @@ AbstractAccountUi* HazeAccountUiPlugin::accountUi(const QString &connectionManag
 
     if (connectionManager == QLatin1String("haze")) {
         if (protocol == QLatin1String("icq")) {
-                return new HazeIcqAccountUi;
-        } else if (protocol == QLatin1String("myspace")){
-                return new HazeMySpaceIMAccountUi;
-        } else if (protocol == QLatin1String("bigbrownchunx-skype-dbus")){
-                return new HazeSkypeAccountUi;
-        } else if (protocol == QLatin1String("yahoo")){
-                return new HazeYahooAccount;
-        } else if (protocol == QLatin1String("aim")){
-               return new HazeAimAccount;
+            return new HazeIcqAccountUi;
+        } else if (protocol == QLatin1String("myspace")) {
+            return new HazeMySpaceIMAccountUi;
+        } else if (protocol == QLatin1String("bigbrownchunx-skype-dbus")) {
+            return new HazeSkypeAccountUi;
+        } else if (protocol == QLatin1String("yahoo")) {
+            return new HazeYahooAccount;
+        } else if (protocol == QLatin1String("aim")) {
+            return new HazeAimAccount;
+        } else if (protocol == QLatin1String("msn")) {
+            return new HazeMsnAccountUi;
         }
     }
 
