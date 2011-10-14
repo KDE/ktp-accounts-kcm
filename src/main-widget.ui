@@ -72,7 +72,7 @@
                   </font>
                  </property>
                  <property name="text">
-                  <string>Enable local-xmpp</string>
+                  <string>Enable local network discovery</string>
                  </property>
                 </widget>
                </item>
@@ -92,7 +92,7 @@
                   </font>
                  </property>
                  <property name="text">
-                  <string>This is a place holder for a serious description</string>
+                  <string>Connect to people near you</string>
                  </property>
                 </widget>
                </item>
