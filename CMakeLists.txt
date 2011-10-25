@@ -19,6 +19,17 @@ include_directories (${KDE4_INCLUDES}
                      ${CMAKE_CURRENT_SOURCE_DIR}/src
 )
 
+if(EXISTS ${CMAKE_CURRENT_SOURCE_DIR}/.gitmodules)
+execute_process(COMMAND git submodule init
+                WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
+)
+
+execute_process(COMMAND git submodule update
+                WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
+)
+endif(EXISTS ${CMAKE_CURRENT_SOURCE_DIR}/.gitmodules)
+
+
 add_subdirectory (src)
 add_subdirectory (data)
 add_subdirectory (plugins)
