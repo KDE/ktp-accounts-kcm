@@ -68,8 +68,8 @@ public:
 };
 
 AddAccountAssistant::AddAccountAssistant(Tp::AccountManagerPtr accountManager, QWidget *parent)
- : KAssistantDialog(parent),
-   d(new Private)
+    : KAssistantDialog(parent),
+    d(new Private)
 {
     kDebug();
 
@@ -154,6 +154,15 @@ void AddAccountAssistant::accept()
     if (!d->accountEditWidget->validateParameterValues()) {
         kDebug() << "A widget failed parameter validation. Not accepting wizard.";
         return;
+    }
+
+    // Check account we're trying to create doesn't already exist
+    foreach (Tp::AccountPtr account, d->accountManager->allAccounts()) {
+        if (values.value("account") == account->displayName()
+            && d->currentProfileItem->protocolName() == account->protocolName()) {
+            KMessageBox::information(this, i18n("Account already exists. Old one will be used instead"));
+            return;
+        }
     }
 
     // FIXME: In some next version of tp-qt4 there should be a convenience class for this
