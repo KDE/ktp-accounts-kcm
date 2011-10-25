@@ -126,7 +126,7 @@ bool AccountEditWidget::validateParameterValues() const
 {
     // the parameters handle by the advanced dialog are validated when the
     // dialog exits, so no need to validate them here
-    return d->parameterModel->validateParameterValues();
+    return d->mainOptionsWidget->validateParameterValues();
 }
 
 
