@@ -160,7 +160,9 @@ void AddAccountAssistant::accept()
     foreach (Tp::AccountPtr account, d->accountManager->allAccounts()) {
         if (values.value("account") == account->displayName()
             && d->currentProfileItem->protocolName() == account->protocolName()) {
-            KMessageBox::information(this, i18n("Account already exists. Old one will be used instead"));
+            Q_EMIT feedbackMessage(i18n("Failed to create account"),
+                                   i18n("Account already exists. Old one will be used instead"),
+                                   KTitleWidget::InfoMessage);
             return;
         }
     }
