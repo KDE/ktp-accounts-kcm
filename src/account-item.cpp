@@ -23,6 +23,7 @@
 #include "accounts-list-model.h"
 #include "edit-account-dialog.h"
 
+#include "common/error-dictionary.h"
 
 #include <KApplication>
 #include <KDebug>
@@ -120,19 +121,15 @@ const KIcon AccountItem::connectionStateIcon() const
 }
 
 const QString AccountItem::connectionStatusReason() const
-{
+{ 
     if (!m_account->isEnabled()) {
         return i18n("Account disabled - Click checkbox to enable");
     }
-
-    switch (m_account->connectionStatusReason())
-    {
-    case Tp::ConnectionStatusReasonAuthenticationFailed:
-        return i18n("Authentication Failed");
-    case Tp::ConnectionStatusReasonNetworkError:
-        return i18n("Network Error");
-    default:
+    else if (m_account->connectionStatusReason() == Tp::ConnectionStatusReasonRequested) {
         return QString();
+    }
+    else {
+        return ErrorDictionary::instance()->displayShortErrorMessage(m_account->connectionError());
     }
 }
 
