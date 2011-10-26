@@ -36,6 +36,7 @@ public:
     virtual ~MainOptionsWidgetFacebook();
 
     virtual void submit();
+    bool validateParameterValues();
 
 private:
     Ui::MainOptionsWidgetFacebook *m_ui;

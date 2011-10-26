@@ -75,5 +75,15 @@ void MainOptionsWidgetFacebook::submit()
     AbstractAccountParametersWidget::submit();
 }
 
+bool MainOptionsWidgetFacebook::validateParameterValues()
+{
+    if (m_ui->accountLineEdit->text().isEmpty() || m_ui->passwordLineEdit->text().isEmpty()) {
+        return false;
+    }
+
+    return true;
+}
+
+
 #include "main-options-widget-facebook.moc"
 
