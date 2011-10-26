@@ -112,10 +112,10 @@ void SalutEnableDialog::onProfileManagerReady(Tp::PendingOperation* op)
     ParameterEditModel *parameterModel = new ParameterEditModel(this);
     d->profile = d->profileManager->profilesForCM("salut").first();
 
-    Q_ASSERT(d->profile.isNull());
+    Q_ASSERT(!d->profile.isNull());
     Q_ASSERT(d->profile->isValid());
     Q_ASSERT(d->profile->protocolName() == QLatin1String("local-xmpp"));
-    if(!d->profile.isNull() || !d->profile->isValid() || d->profile->protocolName() == QLatin1String("local-xmpp"))
+    if(d->profile.isNull() || !d->profile->isValid() || d->profile->protocolName() != QLatin1String("local-xmpp"))
     {
         kWarning() << "Something went wrong with telepathy salut";
     }
