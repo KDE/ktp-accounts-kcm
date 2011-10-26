@@ -7,6 +7,7 @@ add_subdirectory (KCMTelepathyAccounts)
 project (telepathy-accounts-kcm)
 
 set (telepathy_accounts_kcm_SRCS
+     common/error-dictionary.cpp
      kcm-telepathy-accounts.cpp
      accounts-list-model.cpp
      account-item.cpp
