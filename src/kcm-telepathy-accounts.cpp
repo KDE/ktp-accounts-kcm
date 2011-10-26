@@ -309,11 +309,11 @@ void KCMTelepathyAccounts::onRemoveAccountClicked()
                                         i18n("Remove Account"), KGuiItem(i18n("Remove Account"), "edit-delete"), KStandardGuiItem::cancel(),
                                         QString(), KMessageBox::Notify | KMessageBox::Dangerous) == KMessageBox::Continue)
     {
-        m_accountsListModel->removeAccount(m_currentModel->mapToSource(index));
-
         AccountItem *item = m_accountsListModel->itemForIndex(m_currentModel->mapToSource(index));
         WalletInterface wallet(this->effectiveWinId());
         wallet.removePassword(item->account());
+
+        m_accountsListModel->removeAccount(m_currentModel->mapToSource(index));
     }
 }
 
