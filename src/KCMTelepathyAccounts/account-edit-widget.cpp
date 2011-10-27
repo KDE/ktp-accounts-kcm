@@ -122,6 +122,11 @@ AccountEditWidget::~AccountEditWidget()
     delete d;
 }
 
+QString AccountEditWidget::errorMessage() const
+{
+    return d->mainOptionsWidget->errorMessage();
+}
+
 bool AccountEditWidget::validateParameterValues() const
 {
     // the parameters handle by the advanced dialog are validated when the

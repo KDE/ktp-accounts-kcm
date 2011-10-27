@@ -28,6 +28,7 @@
 #include <QLineEdit>
 #include <QCheckBox>
 #include <QComboBox>
+#include <KLocalizedString>
 #include <QSpinBox>
 #include <QDataWidgetMapper>
 #include <QMap>
@@ -46,6 +47,7 @@ public:
     QDataWidgetMapper *mapper;
     Tp::ProtocolParameterList parameters;
     QMap<QPersistentModelIndex,ValidatedLineEdit*> validatedWidgets;
+    QString errorMessage;
 };
 
 AbstractAccountParametersWidget::AbstractAccountParametersWidget(ParameterEditModel *parameterModel,
@@ -56,6 +58,7 @@ AbstractAccountParametersWidget::AbstractAccountParametersWidget(ParameterEditMo
     kDebug();
 
     d->parameterModel = parameterModel;
+    d->errorMessage = i18n("All mandatory fields must be filled");
 
     d->mapper = new QDataWidgetMapper(this);
     d->mapper->setModel(d->parameterModel);
@@ -70,7 +73,15 @@ AbstractAccountParametersWidget::~AbstractAccountParametersWidget()
     delete d;
 }
 
+QString AbstractAccountParametersWidget::errorMessage() const
+{
+    return d->errorMessage;
+}
 
+void AbstractAccountParametersWidget::setErrorMessage(const QString &errorMsg)
+{
+    d->errorMessage = errorMsg;
+}
 
 bool AbstractAccountParametersWidget::validateParameterValues()
 {
@@ -129,7 +140,7 @@ void AbstractAccountParametersWidget::handleParameter(const QString &parameterNa
         if(validated) {
             d->validatedWidgets.insert(index, validated);
 	}
-	
+
 	if (! (index.flags() & Qt::ItemIsEnabled)) {
             dataWidget->setEnabled(false);
         }

@@ -154,7 +154,7 @@ void AddAccountAssistant::accept()
     if (!d->accountEditWidget->validateParameterValues()) {
         kDebug() << "A widget failed parameter validation. Not accepting wizard.";
         Q_EMIT feedbackMessage(i18n("Failed to create account"),
-                               i18n("All mandatory fields must be filled"),
+                               d->accountEditWidget->errorMessage(),
                                KTitleWidget::InfoMessage);
         return;
     }

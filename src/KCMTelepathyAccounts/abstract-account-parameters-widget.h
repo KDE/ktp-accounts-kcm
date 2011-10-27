@@ -45,6 +45,9 @@ public:
                                              QWidget *parent = 0);
     virtual ~AbstractAccountParametersWidget();
 
+    virtual QString errorMessage() const;
+    void setErrorMessage(const QString &errorMsg);
+
     /** Makes sure the model is up to date.
         Subclasses which do not only use the 'handleParameter' interface should implement this.
     */

@@ -46,6 +46,7 @@ public:
                                QWidget *parent = 0);
     virtual ~AccountEditWidget();
 
+    QString errorMessage() const;
     virtual bool validateParameterValues() const;
     bool connectOnAdd();
 
