@@ -192,17 +192,19 @@ void SalutEnableDialog::accept()
 
     // FIXME: Ask the user to submit a Display Name
 
-    QString displayName = values["first-name"].toString();
-    displayName += QLatin1Char(' ');
-    displayName += values["last-name"].toString();
-    displayName += QLatin1Char(' ');
+    QString displayName;
     if (values.contains("nickname")) {
-        displayName += QLatin1Char('(');
-        displayName += values["nickname"].toString();
-        displayName += QLatin1Char(')');
-        displayName += QLatin1Char(' ');
+        displayName(i18nc("%1 is the name, %2 the surname, %3 the nickname",
+                          "%1 %2 (%3) on local network",
+                          values["first-name"].toString(),
+                          values["last-name"].toString(),
+                          values["nickname"].toString()));
+    } else {
+        displayName(i18nc("%1 is the name, %2 the surname",
+                          "%1 %2 on local network",
+                          values["first-name"].toString(),
+                          values["last-name"].toString()));
     }
-    displayName += i18n("on local network");
 
     Tp::PendingAccount *pa = d->accountManager->createAccount(d->profile->cmName(),
                                                               d->profile->protocolName(),
