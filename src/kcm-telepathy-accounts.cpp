@@ -311,7 +311,7 @@ void KCMTelepathyAccounts::onRemoveAccountClicked()
     {
         AccountItem *item = m_accountsListModel->itemForIndex(m_currentModel->mapToSource(index));
         KTelepathy::WalletInterface wallet(this->effectiveWinId());
-        wallet.removePassword(item->account());
+        wallet.removeAccount(item->account());
 
         m_accountsListModel->removeAccount(m_currentModel->mapToSource(index));
     }
