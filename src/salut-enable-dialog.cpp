@@ -194,16 +194,16 @@ void SalutEnableDialog::accept()
 
     QString displayName;
     if (values.contains("nickname")) {
-        displayName(i18nc("%1 is the name, %2 the surname, %3 the nickname",
-                          "%1 %2 (%3) on local network",
-                          values["first-name"].toString(),
-                          values["last-name"].toString(),
-                          values["nickname"].toString()));
+        displayName = i18nc("%1 is the name, %2 the surname, %3 the nickname",
+                            "%1 %2 (%3) on local network",
+                            values["first-name"].toString(),
+                            values["last-name"].toString(),
+                            values["nickname"].toString());
     } else {
-        displayName(i18nc("%1 is the name, %2 the surname",
-                          "%1 %2 on local network",
-                          values["first-name"].toString(),
-                          values["last-name"].toString()));
+        displayName = i18nc("%1 is the name, %2 the surname",
+                            "%1 %2 on local network",
+                            values["first-name"].toString(),
+                            values["last-name"].toString());
     }
 
     Tp::PendingAccount *pa = d->accountManager->createAccount(d->profile->cmName(),
