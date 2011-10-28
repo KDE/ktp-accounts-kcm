@@ -140,5 +140,3 @@ void AccountsListDelegate::paint(QPainter *painter, const QStyleOptionViewItem &
     painter->setFont(accountNameFont);
     painter->drawText(mainTextRect, Qt::AlignTop, accountName);
 }
-
-

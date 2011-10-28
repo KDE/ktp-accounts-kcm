@@ -39,13 +39,11 @@ public:
 signals:
     void itemChecked(const QModelIndex &index, bool checked);
 
-public slots:
+private slots:
+    void onCheckBoxToggled(bool checked);
 
 private:
     static const int m_paddingSize = 7;
-
-private slots:
-    void onCheckBoxToggled(bool checked);
 };
 
 #endif // ACCOUNTLISTDELEGATE_H

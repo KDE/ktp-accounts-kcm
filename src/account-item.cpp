@@ -35,6 +35,7 @@
 
 #include <TelepathyQt4/PendingOperation>
 #include <TelepathyQt4/PendingReady>
+#include <KPixmapSequence>
 
 AccountItem::AccountItem(const Tp::AccountPtr &account, AccountsListModel *parent)
  : QObject(parent),
@@ -112,7 +113,8 @@ const KIcon AccountItem::connectionStateIcon() const
     case Tp::ConnectionStatusConnected:
         return KIcon("user-online");
     case Tp::ConnectionStatusConnecting:
-        return KIcon("user-away"); //FIXME this is bit misleading
+        //imho this is not really worth animating, but feel free to play around..
+        return KIcon(KPixmapSequence("process-working", 22).frameAt(0));
     case Tp::ConnectionStatusDisconnected:
         return KIcon("user-offline");
     default:
@@ -121,7 +123,7 @@ const KIcon AccountItem::connectionStateIcon() const
 }
 
 const QString AccountItem::connectionStatusReason() const
-{ 
+{
     if (!m_account->isEnabled()) {
         return i18n("Account disabled - Click checkbox to enable");
     }
@@ -144,7 +146,7 @@ void AccountItem::generateIcon()
 
     QString iconPath = account()->iconName();
 
-    //if the icon has not been setted, we use the protocol icon    
+    //if the icon has not been setted, we use the protocol icon
     if(iconPath.isEmpty()) {
         iconPath = QString("im-%1").arg(account()->protocolName());
     }
@@ -179,9 +181,8 @@ void AccountItem::onAccountRemoved(Tp::PendingOperation *op)
 
 void AccountItem::onTitleForCustomPages(QString mandatoryPage, QList<QString> optionalPage)
 {
-	kDebug();
-	emit setTitleForCustomPages(mandatoryPage, optionalPage);
+    kDebug();
+    emit setTitleForCustomPages(mandatoryPage, optionalPage);
 }
 
 #include "account-item.moc"
-
