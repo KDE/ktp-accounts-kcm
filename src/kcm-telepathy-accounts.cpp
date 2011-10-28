@@ -108,6 +108,10 @@ KCMTelepathyAccounts::KCMTelepathyAccounts(QWidget *parent, const QVariantList& 
     m_accountsFilterModel->setSourceModel(m_accountsListModel);
     m_accountsFilterModel->setFilterRole(AccountsListModel::ConnectionProtocolNameRole);
     m_accountsFilterModel->setFilterRegExp(QLatin1String("^((?!local-xmpp).)*$"));
+    m_accountsFilterModel->setSortRole(Qt::DisplayRole);
+    m_accountsFilterModel->setSortCaseSensitivity(Qt::CaseInsensitive);
+    m_accountsFilterModel->setDynamicSortFilter(true);
+    m_accountsFilterModel->sort(0);
     m_ui->accountsListView->setModel(m_accountsFilterModel);
 
     m_ui->addAccountButton->setIcon(KIcon("list-add"));
