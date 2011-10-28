@@ -60,6 +60,9 @@ AccountItem::AccountItem(const Tp::AccountPtr &account, AccountsListModel *paren
     connect(m_account.data(),
             SIGNAL(removed()),
             SIGNAL(removed()));
+    connect(m_account.data(),
+            SIGNAL(stateChanged(bool)),
+            SLOT(generateIcon()));
 
     generateIcon();
 }
@@ -152,7 +155,11 @@ void AccountItem::generateIcon()
     }
 
     delete m_icon;
-    m_icon = new KIcon(iconPath);
+    if (m_account->isEnabled()) {
+        m_icon = new KIcon(iconPath);
+    } else {
+        m_icon = new KIcon(KIconLoader::global()->loadIcon(iconPath, KIconLoader::Desktop, 32, KIconLoader::DisabledState));
+    }
 
     if(!account()->isValid()) {
         //we paint a warning symbol in the right-bottom corner
