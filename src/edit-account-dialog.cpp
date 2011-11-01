@@ -148,9 +148,11 @@ void EditAccountDialog::onParametersUpdated(Tp::PendingOperation *op)
 
     QVariantMap values = d->widget->parametersSet();
 
+    KTelepathy::WalletInterface wallet(this->effectiveWinId());
     if (values.contains(QLatin1String("password"))) {
-        KTelepathy::WalletInterface wallet(this->effectiveWinId());
         wallet.setPassword(d->item->account(), values["password"].toString());
+    } else {
+        wallet.removePassword(d->item->account());
     }
 
 
