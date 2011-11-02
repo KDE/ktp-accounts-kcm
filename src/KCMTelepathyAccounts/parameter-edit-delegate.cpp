@@ -77,6 +77,7 @@ void ParameterEditDelegate::updateItemWidgets(const QList<QWidget*> widgets,
     QLabel *nameLabel = qobject_cast<QLabel*>(widgets.at(0));
 
     nameLabel->setText(index.model()->data(index, ParameterEditModel::LocalizedNameRole).toString());
+    nameLabel->setWordWrap(true);
     nameLabel->move(margin, 0);
     nameLabel->resize(QSize(((right - (4 * margin)) / 2), option.rect.height()));
 
