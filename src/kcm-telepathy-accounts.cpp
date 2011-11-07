@@ -362,7 +362,7 @@ void KCMTelepathyAccounts::onSalutConnectionManagerReady(Tp::PendingOperation* o
     // Salut is not installed or has some problem
     if(error) {
         m_ui->salutEnableFrame->setDisabled(true);
-        m_ui->salutEnableStatusLabel->setText("Install telepathy-salut to enable");
+        m_ui->salutEnableStatusLabel->setText(i18n("Install telepathy-salut to enable"));
     }
 }
 
