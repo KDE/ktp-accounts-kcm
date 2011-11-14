@@ -26,7 +26,6 @@
 #include "accounts-list-model.h"
 #include "add-account-assistant.h"
 #include "edit-account-dialog.h"
-#include "salut-enable-dialog.h"
 #include "accounts-list-delegate.h"
 #include "common/wallet-interface.h"
 
@@ -38,6 +37,8 @@
 #include <KLocale>
 #include <KMessageBox>
 #include <KAboutData>
+#include <KMessageWidget>
+#include <KPixmapSequenceOverlayPainter>
 
 #include <TelepathyQt4/Account>
 #include <TelepathyQt4/AccountFactory>
@@ -46,6 +47,8 @@
 #include <TelepathyQt4/Types>
 #include <TelepathyQt4/ConnectionManager>
 
+#include "salut-enabler.h"
+#include <KPixmapSequence>
 
 K_PLUGIN_FACTORY(KCMTelepathyAccountsFactory, registerPlugin<KCMTelepathyAccounts>();)
 K_EXPORT_PLUGIN(KCMTelepathyAccountsFactory("telepathy_accounts", "telepathy-accounts-kcm"))
@@ -57,7 +60,6 @@ KCMTelepathyAccounts::KCMTelepathyAccounts(QWidget *parent, const QVariantList& 
 {
     kDebug();
 
-
     //set up component data.
     KAboutData *aboutData = new KAboutData(I18N_NOOP("telepathy_accounts"), 0, ki18n("Instant Messaging and VOIP Accounts"), 0, KLocalizedString(), KAboutData::License_GPL);
 
@@ -67,6 +69,7 @@ KCMTelepathyAccounts::KCMTelepathyAccounts(QWidget *parent, const QVariantList& 
     aboutData->addAuthor(ki18n("Thomas Richard"), ki18n("Developer"), "thomas.richard@proan.be");
     aboutData->addAuthor(ki18n("Florian Reinhard"), ki18n("Developer"), "florian.reinhard@googlemail.com");
     aboutData->addAuthor(ki18n("Daniele E. Domenichelli"), ki18n("Developer"), "daniele.domenichelli@gmail.com");
+    aboutData->addAuthor(ki18n("Martin Klapetek"), ki18n("Developer"), "martin.klapetek@gmail.com");
 
     setAboutData(aboutData);
 
@@ -118,6 +121,11 @@ KCMTelepathyAccounts::KCMTelepathyAccounts(QWidget *parent, const QVariantList& 
     m_ui->editAccountButton->setIcon(KIcon("configure"));
     m_ui->removeAccountButton->setIcon(KIcon("edit-delete"));
 
+    m_salutBusyWheel = new KPixmapSequenceOverlayPainter(this);
+    m_salutBusyWheel->setSequence(KPixmapSequence("process-working", 22));
+    m_salutBusyWheel->setWidget(m_ui->salutWidget);
+    m_salutBusyWheel->setAlignment(Qt::AlignRight | Qt::AlignVCenter);
+
     AccountsListDelegate* accountsDelegate = new AccountsListDelegate(m_ui->accountsListView, this);
     m_ui->accountsListView->setItemDelegate(accountsDelegate);
 
@@ -126,10 +134,7 @@ KCMTelepathyAccounts::KCMTelepathyAccounts(QWidget *parent, const QVariantList& 
 
     int height = salutDelegate->sizeHint(QStyleOptionViewItem(), m_salutFilterModel->index(0,0)).height() + 4*2;
     m_ui->salutListView->setMinimumHeight(height);
-    m_ui->salutListView->setMaximumHeight(height);
     m_ui->salutEnableFrame->setMinimumHeight(height);
-    m_ui->salutEnableFrame->setMaximumHeight(height);
-
 
     connect(accountsDelegate,
             SIGNAL(itemChecked(QModelIndex, bool)),
@@ -331,9 +336,23 @@ void KCMTelepathyAccounts::onModelDataChanged()
 void KCMTelepathyAccounts::onSalutEnableButtonToggled(bool checked)
 {
     if (checked) {
-        SalutEnableDialog dialog(m_accountManager, this);
-        dialog.exec();
-        m_ui->salutEnableCheckbox->setChecked(false);
+        if (m_salutEnabler.isNull()) {
+            m_salutEnabler = new SalutEnabler(m_accountManager, this);
+        }
+
+        connect(m_salutEnabler.data(), SIGNAL(userInfoReady()),
+                this, SLOT(onSalutInfoReady()));
+
+        connect(m_salutEnabler.data(), SIGNAL(cancelled()),
+                this, SLOT(onSalutSetupDone()));
+
+        connect(m_salutEnabler.data(), SIGNAL(done()),
+                this, SLOT(onSalutSetupDone()));
+
+        //FIXME there is no slot to connect feedbackMessage to
+//         connect(m_salutEnabler, SIGNAL(feedbackMessage(QString,QString,KTitleWidget::MessageType)),
+//                 this, SLOT());
+
         m_ui->accountsListView->clearSelection();
         m_ui->accountsListView->setCurrentIndex(QModelIndex());
         m_ui->salutListView->clearSelection();
@@ -364,6 +383,22 @@ void KCMTelepathyAccounts::onSalutConnectionManagerReady(Tp::PendingOperation* o
         m_ui->salutEnableFrame->setDisabled(true);
         m_ui->salutEnableStatusLabel->setText(i18n("Install telepathy-salut to enable"));
     }
+}
+
+void KCMTelepathyAccounts::onSalutInfoReady()
+{
+    qobject_cast<QVBoxLayout*>(m_ui->salutEnableFrame->layout())->insertWidget(0, m_salutEnabler.data()->frameWidget(m_ui->salutEnableFrame));
+    m_salutBusyWheel->start();
+    m_ui->salutWidget->setDisabled(true);
+}
+
+void KCMTelepathyAccounts::onSalutSetupDone()
+{
+    m_salutEnabler.data()->deleteLater();
+
+    m_salutBusyWheel->stop();
+    m_ui->salutEnableCheckbox->setChecked(false);
+    m_ui->salutWidget->setEnabled(true);
 }
 
 /////

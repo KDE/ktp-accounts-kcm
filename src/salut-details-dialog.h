@@ -29,30 +29,21 @@
 
 #include <TelepathyQt4/Types>
 
-namespace Tp {
-    class PendingOperation;
-}
-
-class SalutEnableDialog : public KDialog
+class SalutDetailsDialog : public KDialog
 {
     Q_OBJECT
-    Q_DISABLE_COPY(SalutEnableDialog);
+    Q_DISABLE_COPY(SalutDetailsDialog);
 
 public:
-    explicit SalutEnableDialog(Tp::AccountManagerPtr accountManager, QWidget *parent = 0);
-    virtual ~SalutEnableDialog();
+    explicit SalutDetailsDialog(const Tp::ProfileManagerPtr profileManager, const Tp::ConnectionManagerPtr connectionManager, const QVariantMap &values, QWidget *parent = 0);
+    virtual ~SalutDetailsDialog();
 
 Q_SIGNALS:
     void feedbackMessage(const QString &text, const QString &comment, KTitleWidget::MessageType);
-
-private Q_SLOTS:
-    void onAccountCreated(Tp::PendingOperation *op);
-    void onConnectionManagerReady(Tp::PendingOperation *op);
-    void onProfileManagerReady(Tp::PendingOperation *op);
+    void dialogAccepted(const QVariantMap &values);
 
 private:
     void accept();
-//     void reject() {}
 
     class Private;
     Private * const d;

@@ -3,6 +3,7 @@ project (telepathy-accounts-kcm)
 # Add the modules we ship to the module path
 SET(CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake/modules" ${CMAKE_MODULE_PATH})
 
+set(KDE_MIN_VERSION "4.7.0")
 find_package (KDE4 REQUIRED)
 find_package (TelepathyQt4 REQUIRED)
 

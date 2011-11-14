@@ -7,6 +7,9 @@ add_subdirectory (KCMTelepathyAccounts)
 project (telepathy-accounts-kcm)
 
 set (telepathy_accounts_kcm_SRCS
+     salut-enabler.cpp
+     salut-message-widget.cpp
+     common/circular-countdown.cpp
      common/error-dictionary.cpp
      common/wallet-interface.cpp
      kcm-telepathy-accounts.cpp
@@ -14,7 +17,7 @@ set (telepathy_accounts_kcm_SRCS
      account-item.cpp
      add-account-assistant.cpp
      edit-account-dialog.cpp
-     salut-enable-dialog.cpp
+     salut-details-dialog.cpp
      accounts-list-delegate.cpp
 )
 

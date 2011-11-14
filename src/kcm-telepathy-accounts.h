@@ -26,6 +26,9 @@
 
 #include <TelepathyQt4/AccountManager>
 
+class QFrame;
+class KPixmapSequenceOverlayPainter;
+class SalutEnabler;
 class AccountsListModel;
 class AddAccountAssistant;
 class QSortFilterProxyModel;
@@ -66,6 +69,9 @@ private Q_SLOTS:
     void onModelDataChanged();
     void onSalutEnableButtonToggled(bool checked);
     void onSalutConnectionManagerReady(Tp::PendingOperation*);
+    void onSalutInfoReady();
+
+    void onSalutSetupDone();
 
 private:
     Ui::MainWidget *m_ui;
@@ -76,6 +82,9 @@ private:
     QSortFilterProxyModel *m_accountsFilterModel;
     const QSortFilterProxyModel *m_currentModel;
     const QListView *m_currentListView;
+
+    QWeakPointer<SalutEnabler> m_salutEnabler;
+    KPixmapSequenceOverlayPainter *m_salutBusyWheel;
 };
 
 // Helper class for drawing error overlays
