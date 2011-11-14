@@ -159,7 +159,7 @@ void SalutEnableDialog::onAccountCreated(Tp::PendingOperation* op)
         return;
     }
 
-    pendingAccount->account()->setRequestedPresence(Tp::Presence::available(QString("Online")));
+    pendingAccount->account()->setRequestedPresence(Tp::Presence::available());
     pendingAccount->account()->setServiceName(d->profile->serviceName());
 
     // set the dialog as accepted and exit
