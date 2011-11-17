@@ -271,6 +271,9 @@ void SalutEnabler::onUserWantingChanges()
             this, SLOT(onDialogAccepted(const QVariantMap&)));
 
     connect(d->detailsDialog, SIGNAL(rejected()),
+            this, SLOT(onUserCancelled()));
+
+    connect(d->detailsDialog, SIGNAL(rejected()),
             this, SIGNAL(cancelled()));
 
     connect(d->detailsDialog, SIGNAL(feedbackMessage(QString,QString,KTitleWidget::MessageType)),
