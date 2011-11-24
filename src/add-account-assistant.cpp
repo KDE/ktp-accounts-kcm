@@ -22,7 +22,7 @@
 
 #include "add-account-assistant.h"
 
-#include "common/wallet-interface.h"
+#include <KTelepathy/wallet-interface.h>
 
 #include "KCMTelepathyAccounts/abstract-account-parameters-widget.h"
 #include "KCMTelepathyAccounts/abstract-account-ui.h"
@@ -248,7 +248,7 @@ void AddAccountAssistant::onAccountCreated(Tp::PendingOperation *op)
     //save password to KWallet if needed
     QVariantMap values  = d->accountEditWidget->parametersSet();
     if (values.contains(QLatin1String("password"))) {
-        KTelepathy::WalletInterface wallet(this->effectiveWinId());
+        KTp::WalletInterface wallet(this->effectiveWinId());
         wallet.setPassword(account, values["password"].toString());
     }
 

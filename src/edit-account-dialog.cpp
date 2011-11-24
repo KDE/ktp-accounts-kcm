@@ -21,7 +21,7 @@
 
 #include "edit-account-dialog.h"
 
-#include "common/wallet-interface.h"
+#include <KTelepathy/wallet-interface.h>
 
 #include "KCMTelepathyAccounts/dictionary.h"
 #include "KCMTelepathyAccounts/abstract-account-parameters-widget.h"
@@ -74,7 +74,7 @@ EditAccountDialog::EditAccountDialog(AccountItem *item, QWidget *parent)
     //update the parameter model with the password from kwallet (if applicable)
     Tp::ProtocolParameter passwordParameter = parameterModel->parameter(QLatin1String("password"));
 
-    KTelepathy::WalletInterface wallet(this->effectiveWinId());
+    KTp::WalletInterface wallet(this->effectiveWinId());
     if (passwordParameter.isValid() && wallet.hasPassword(d->item->account())) {
         QModelIndex index = parameterModel->indexForParameter(passwordParameter);
         QString password = wallet.password(d->item->account());
@@ -148,7 +148,7 @@ void EditAccountDialog::onParametersUpdated(Tp::PendingOperation *op)
 
     QVariantMap values = d->widget->parametersSet();
 
-    KTelepathy::WalletInterface wallet(this->effectiveWinId());
+    KTp::WalletInterface wallet(this->effectiveWinId());
     if (values.contains(QLatin1String("password"))) {
         wallet.setPassword(d->item->account(), values["password"].toString());
     } else {

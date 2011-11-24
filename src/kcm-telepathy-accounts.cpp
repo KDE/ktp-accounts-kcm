@@ -27,7 +27,8 @@
 #include "add-account-assistant.h"
 #include "edit-account-dialog.h"
 #include "accounts-list-delegate.h"
-#include "common/wallet-interface.h"
+
+#include <KTelepathy/wallet-interface.h>
 
 #include <QLabel>
 #include <QSortFilterProxyModel>
@@ -319,7 +320,7 @@ void KCMTelepathyAccounts::onRemoveAccountClicked()
                                         QString(), KMessageBox::Notify | KMessageBox::Dangerous) == KMessageBox::Continue)
     {
         AccountItem *item = m_accountsListModel->itemForIndex(m_currentModel->mapToSource(index));
-        KTelepathy::WalletInterface wallet(this->effectiveWinId());
+        KTp::WalletInterface wallet(this->effectiveWinId());
         wallet.removeAccount(item->account());
 
         m_accountsListModel->removeAccount(m_currentModel->mapToSource(index));

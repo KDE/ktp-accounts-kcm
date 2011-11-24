@@ -9,9 +9,6 @@ project (telepathy-accounts-kcm)
 set (telepathy_accounts_kcm_SRCS
      salut-enabler.cpp
      salut-message-widget.cpp
-     common/circular-countdown.cpp
-     common/error-dictionary.cpp
-     common/wallet-interface.cpp
      kcm-telepathy-accounts.cpp
      accounts-list-model.cpp
      account-item.cpp
@@ -34,6 +31,7 @@ target_link_libraries (kcm_telepathy_accounts
                        ${QT_LIBRARIES}
                        ${KDE4_KDEUI_LIBS}
                        ${TELEPATHY_QT4_LIBRARIES}
+                       ${KTELEPATHY_LIBRARIES}
 )
 
 # Install:

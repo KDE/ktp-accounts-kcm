@@ -3,9 +3,11 @@ project (telepathy-accounts-kcm)
 # Add the modules we ship to the module path
 SET(CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake/modules" ${CMAKE_MODULE_PATH})
 
+set(IS_TELEPATHY_KDE_INTERNAL_MODULE TRUE)
 set(KDE_MIN_VERSION "4.7.0")
 find_package (KDE4 REQUIRED)
 find_package (TelepathyQt4 REQUIRED)
+find_package (KTelepathy REQUIRED)
 
 # set some default settings
 include (KDE4Defaults)
@@ -17,19 +19,9 @@ add_definitions (${KDE4_DEFINITIONS})
 
 include_directories (${KDE4_INCLUDES}
                      ${TELEPATHY_QT4_INCLUDE_DIR}
+                     ${KTELEPATHY_INCLUDE_DIR}
                      ${CMAKE_CURRENT_SOURCE_DIR}/src
 )
-
-if(EXISTS ${CMAKE_CURRENT_SOURCE_DIR}/.gitmodules)
-execute_process(COMMAND git submodule init
-                WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
-)
-
-execute_process(COMMAND git submodule update
-                WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
-)
-endif(EXISTS ${CMAKE_CURRENT_SOURCE_DIR}/.gitmodules)
-
 
 add_subdirectory (src)
 add_subdirectory (data)

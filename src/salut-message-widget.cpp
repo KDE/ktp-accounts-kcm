@@ -20,7 +20,7 @@
 
 #include "salut-message-widget.h"
 
-#include "common/circular-countdown.h"
+#include <KTelepathy/circular-countdown.h>
 
 #include <KLocalizedString>
 #include <KIcon>
@@ -41,7 +41,7 @@ SalutMessageWidget::SalutMessageWidget(QWidget *parent)
 
     setCloseButtonVisible(false);
 
-    CircularCountdown *circCountdown = new CircularCountdown(8000, this);
+    KTp::CircularCountdown *circCountdown = new KTp::CircularCountdown(8000, this);
 
     connect(circCountdown, SIGNAL(timeout()), this, SIGNAL(timeout()));
 

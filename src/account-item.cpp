@@ -23,7 +23,7 @@
 #include "accounts-list-model.h"
 #include "edit-account-dialog.h"
 
-#include "common/error-dictionary.h"
+#include <KTelepathy/error-dictionary.h>
 
 #include <KApplication>
 #include <KDebug>
@@ -134,7 +134,7 @@ const QString AccountItem::connectionStatusReason() const
         return QString();
     }
     else {
-        return ErrorDictionary::instance()->displayShortErrorMessage(m_account->connectionError());
+        return KTp::ErrorDictionary::displayShortErrorMessage(m_account->connectionError());
     }
 }
 
