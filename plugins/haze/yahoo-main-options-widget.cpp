@@ -45,3 +45,21 @@ YahooMainOptionsWidget::~YahooMainOptionsWidget()
 
     delete m_ui;
 }
+
+void YahooMainOptionsWidget::submit()
+{
+    Tp::ProtocolParameter parameter = parameterModel()->parameter("account");
+    QModelIndex index = parameterModel()->indexForParameter(parameter);
+    if (index.isValid()) {
+        QString account = m_ui->accountLineEdit->text();
+
+        if (account.contains(QLatin1Char('@'))) {
+            int atIndex = account.indexOf(QLatin1Char('@'));
+
+            //update the model with the account value from the text box.
+            parameterModel()->setData(index, account.left(atIndex), Qt::EditRole);
+        }
+    }
+
+    AbstractAccountParametersWidget::submit();
+}

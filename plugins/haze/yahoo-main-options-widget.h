@@ -34,6 +34,9 @@ class YahooMainOptionsWidget
 public:
     YahooMainOptionsWidget(ParameterEditModel* model, QWidget* parent = 0);
     virtual ~YahooMainOptionsWidget();
+
+    void submit();
+
 private:
     Q_DISABLE_COPY(YahooMainOptionsWidget);
     Ui::YahooMainOptionsWidget* m_ui;
