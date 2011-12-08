@@ -215,7 +215,7 @@ void KCMTelepathyAccounts::onAccountEnabledChanged(const QModelIndex &index, boo
         // connect the account
         AccountItem *item = m_accountsListModel->itemForIndex(index);
         if (item) {
-            item->account()->setRequestedPresence(Tp::Presence::available(QString("Online")));
+            item->account()->setRequestedPresence(Tp::Presence::available());
         }
     }
 }
