@@ -46,6 +46,7 @@ AbstractAccountUi* SunshineAccountUiPlugin::accountUi(const QString &connectionM
         const QString &protocol,
         const QString &serviceName)
 {
+    Q_UNUSED(serviceName)
     kDebug();
 
     // We support sunshine/gadugadu.
