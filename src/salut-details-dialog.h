@@ -35,7 +35,7 @@ class SalutDetailsDialog : public KDialog
     Q_DISABLE_COPY(SalutDetailsDialog);
 
 public:
-    explicit SalutDetailsDialog(const Tp::ProfileManagerPtr profileManager, const Tp::ConnectionManagerPtr connectionManager, const QVariantMap &values, QWidget *parent = 0);
+    explicit SalutDetailsDialog(const Tp::ProfileManagerPtr profileManager, const Tp::ConnectionManagerPtr connectionManager, QWidget *parent = 0);
     virtual ~SalutDetailsDialog();
 
 Q_SIGNALS:

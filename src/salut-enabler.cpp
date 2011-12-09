@@ -265,7 +265,7 @@ void SalutEnabler::onAccountCreated(Tp::PendingOperation* op)
 
 void SalutEnabler::onUserWantingChanges()
 {
-    d->detailsDialog = new SalutDetailsDialog(d->profileManager, d->connectionManager, d->values, 0);
+    d->detailsDialog = new SalutDetailsDialog(d->profileManager, d->connectionManager, 0);
 
     connect(d->detailsDialog, SIGNAL(dialogAccepted(const QVariantMap&)),
             this, SLOT(onDialogAccepted(const QVariantMap&)));

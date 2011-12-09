@@ -53,7 +53,7 @@ public:
     Tp::ProfilePtr profile;
 };
 
-SalutDetailsDialog::SalutDetailsDialog(const Tp::ProfileManagerPtr profileManager, const Tp::ConnectionManagerPtr connectionManager, const QVariantMap &values, QWidget *parent)
+SalutDetailsDialog::SalutDetailsDialog(const Tp::ProfileManagerPtr profileManager, const Tp::ConnectionManagerPtr connectionManager, QWidget *parent)
     : KDialog(parent),
       d(new Private(this))
 {
