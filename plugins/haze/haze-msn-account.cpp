@@ -24,6 +24,7 @@
 #include <KCMTelepathyAccounts/AbstractAccountParametersWidget>
 
 HazeMsnAccountUi::HazeMsnAccountUi(QObject* parent)
+ : AbstractAccountUi(parent)
 {
     // Register supported parameters
     registerSupportedParameter("account", QVariant::String);
