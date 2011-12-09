@@ -191,7 +191,7 @@ void SalutEnabler::onUserAccepted()
     QString nick = d->values["nickname"].toString();
 
     //either one of the names is filled and nick is filled
-    if ((lastname.isEmpty() && !firstname.isEmpty()) || (!lastname.isEmpty() && firstname.isEmpty())
+    if (((lastname.isEmpty() && !firstname.isEmpty()) || (!lastname.isEmpty() && firstname.isEmpty()))
             && !nick.isEmpty()) {
 
         displayName = QString("%1 (%2)").arg(d->values["first-name"].toString().isEmpty() ?
@@ -199,7 +199,7 @@ void SalutEnabler::onUserAccepted()
                                              d->values["nickname"].toString());
 
     //either one of the names is filled and nick is empty
-    } else if ((lastname.isEmpty() && !firstname.isEmpty()) || (!lastname.isEmpty() && firstname.isEmpty())
+    } else if (((lastname.isEmpty() && !firstname.isEmpty()) || (!lastname.isEmpty() && firstname.isEmpty()))
             && nick.isEmpty()) {
 
         displayName = d->values["first-name"].toString().isEmpty() ?

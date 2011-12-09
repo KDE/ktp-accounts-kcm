@@ -76,13 +76,13 @@ void SalutMessageWidget::setParams(const QString& firstname, const QString& last
     QString displayName;
 
     //either one of the names is filled and nick is filled
-    if ((lastname.isEmpty() && !firstname.isEmpty()) || (!lastname.isEmpty() && firstname.isEmpty())
+    if (((lastname.isEmpty() && !firstname.isEmpty()) || (!lastname.isEmpty() && firstname.isEmpty()))
             && !nick.isEmpty()) {
 
         displayName = QString("%1 (%2)").arg(lastname.isEmpty() ? firstname : lastname, nick);
 
     //either one of the names is filled and nick is empty
-    } else if ((lastname.isEmpty() && !firstname.isEmpty()) || (!lastname.isEmpty() && firstname.isEmpty())
+    } else if (((lastname.isEmpty() && !firstname.isEmpty()) || (!lastname.isEmpty() && firstname.isEmpty()))
             && nick.isEmpty()) {
 
         displayName = QString("%1").arg(lastname.isEmpty() ? firstname : lastname);
