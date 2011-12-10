@@ -23,7 +23,7 @@
 
 #include <QtCore/QObject>
 
-#include <TelepathyQt4/Account>
+#include <TelepathyQt/Account>
 
 class KIcon;
 

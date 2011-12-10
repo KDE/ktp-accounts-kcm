@@ -26,7 +26,7 @@
 
 #include "kcm_telepathy_accounts_export.h"
 
-#include <TelepathyQt4/ConnectionManager>
+#include <TelepathyQt/ConnectionManager>
 
 class KCM_TELEPATHY_ACCOUNTS_EXPORT ParameterEditWidget : public AbstractAccountParametersWidget
 {

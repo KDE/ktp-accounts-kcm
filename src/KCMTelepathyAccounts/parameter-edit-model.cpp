@@ -31,8 +31,8 @@
 
 #include <QtGui/QValidator>
 
-#include <TelepathyQt4/Profile>
-#include <TelepathyQt4/ConnectionManager>
+#include <TelepathyQt/Profile>
+#include <TelepathyQt/ConnectionManager>
 
 ParameterEditModel::ParameterEditModel(QObject *parent)
  : QAbstractListModel(parent)

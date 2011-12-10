@@ -23,8 +23,8 @@
 
 #include "profile-item.h"
 
-#include <TelepathyQt4/ProfileManager>
-#include <TelepathyQt4/PendingStringList>
+#include <TelepathyQt/ProfileManager>
+#include <TelepathyQt/PendingStringList>
 
 #include <KIcon>
 #include <KDebug>

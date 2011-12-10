@@ -37,8 +37,8 @@
 
 #include <QtCore/QList>
 
-#include <TelepathyQt4/ConnectionManager>
-#include <TelepathyQt4/PendingStringList>
+#include <TelepathyQt/ConnectionManager>
+#include <TelepathyQt/PendingStringList>
 
 class EditAccountDialog::Private
 {

@@ -24,7 +24,7 @@
 #include "profile-list-model.h"
 #include "dictionary.h"
 
-#include <TelepathyQt4/Profile>
+#include <TelepathyQt/Profile>
 #include <KDebug>
 #include <KIcon>
 

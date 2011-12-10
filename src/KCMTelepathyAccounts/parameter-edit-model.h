@@ -27,8 +27,8 @@
 
 #include <QtCore/QAbstractListModel>
 
-#include <TelepathyQt4/Profile>
-#include <TelepathyQt4/ProtocolParameter>
+#include <TelepathyQt/Profile>
+#include <TelepathyQt/ProtocolParameter>
 
 #include <KTitleWidget>
 

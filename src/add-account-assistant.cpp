@@ -40,9 +40,9 @@
 #include <QtGui/QHBoxLayout>
 #include <QtGui/QCheckBox>
 
-#include <TelepathyQt4/PendingReady>
-#include <TelepathyQt4/PendingAccount>
-#include <TelepathyQt4/PendingOperation>
+#include <TelepathyQt/PendingReady>
+#include <TelepathyQt/PendingAccount>
+#include <TelepathyQt/PendingOperation>
 
 class AddAccountAssistant::Private
 {

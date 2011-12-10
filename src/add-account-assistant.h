@@ -25,7 +25,7 @@
 #include <KAssistantDialog>
 #include <KTitleWidget>
 
-#include <TelepathyQt4/AccountManager>
+#include <TelepathyQt/AccountManager>
 
 namespace Tp {
     class PendingOperation;

@@ -25,8 +25,8 @@
 #include <QtCore/QVariant>
 #include <QtGui/QValidator>
 
-#include <TelepathyQt4/ConnectionManager>
-#include <TelepathyQt4/Profile>
+#include <TelepathyQt/ConnectionManager>
+#include <TelepathyQt/Profile>
 
 
 class ParameterItem : public QObject

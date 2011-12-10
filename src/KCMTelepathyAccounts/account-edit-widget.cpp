@@ -33,7 +33,7 @@
 #include <KLocale>
 #include <KTitleWidget>
 
-#include <TelepathyQt4/Profile>
+#include <TelepathyQt/Profile>
 #include <QtCore/QList>
 #include <QtGui/QCheckBox>
 

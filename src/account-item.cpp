@@ -33,8 +33,8 @@
 #include <QtCore/QTimer>
 #include <QtGui/QPainter>
 
-#include <TelepathyQt4/PendingOperation>
-#include <TelepathyQt4/PendingReady>
+#include <TelepathyQt/PendingOperation>
+#include <TelepathyQt/PendingReady>
 #include <KPixmapSequence>
 
 AccountItem::AccountItem(const Tp::AccountPtr &account, AccountsListModel *parent)
