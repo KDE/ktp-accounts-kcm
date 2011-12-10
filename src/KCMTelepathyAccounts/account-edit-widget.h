@@ -27,7 +27,7 @@
 #include <QWidget>
 #include <KTitleWidget>
 
-#include <TelepathyQt4/ConnectionManager>
+#include <TelepathyQt/ConnectionManager>
 #include "parameter-edit-model.h"
 
 enum ConnectOnLoadType{

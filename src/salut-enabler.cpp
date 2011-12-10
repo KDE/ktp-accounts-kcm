@@ -20,12 +20,12 @@
 
 #include "salut-enabler.h"
 
-#include <TelepathyQt4/ConnectionManager>
-#include <TelepathyQt4/ProfileManager>
-#include <TelepathyQt4/AccountManager>
-#include <TelepathyQt4/PendingOperation>
-#include <TelepathyQt4/PendingReady>
-#include <TelepathyQt4/PendingAccount>
+#include <TelepathyQt/ConnectionManager>
+#include <TelepathyQt/ProfileManager>
+#include <TelepathyQt/AccountManager>
+#include <TelepathyQt/PendingOperation>
+#include <TelepathyQt/PendingReady>
+#include <TelepathyQt/PendingAccount>
 
 #include <KDebug>
 #include <KUser>

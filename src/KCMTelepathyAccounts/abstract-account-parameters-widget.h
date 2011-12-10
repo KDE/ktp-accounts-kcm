@@ -29,7 +29,7 @@
 #include <QtCore/QVariant>
 #include <QtGui/QWidget>
 
-#include <TelepathyQt4/ConnectionManager>
+#include <TelepathyQt/ConnectionManager>
 
 class ParameterEditModel;
 class ParameterEditModel;

@@ -26,7 +26,7 @@
 
 #include <QtCore/QObject>
 
-#include <TelepathyQt4/Profile>
+#include <TelepathyQt/Profile>
 
 class ProfileListModel;
 class KIcon;

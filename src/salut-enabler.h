@@ -23,7 +23,7 @@
 
 #include <QObject>
 
-#include <TelepathyQt4/Types>
+#include <TelepathyQt/Types>
 #include <KTitleWidget>
 
 class QFrame;

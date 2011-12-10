@@ -28,7 +28,7 @@
 #include <QtCore/QObject>
 #include <QtCore/QVariant>
 
-#include <TelepathyQt4/ConnectionManager>
+#include <TelepathyQt/ConnectionManager>
 
 class AbstractAccountParametersWidget;
 class ParameterEditModel;

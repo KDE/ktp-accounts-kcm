@@ -28,9 +28,9 @@
 
 #include <KDebug>
 
-#include <TelepathyQt4/PendingReady>
-#include <TelepathyQt4/ProfileManager>
-#include <TelepathyQt4/Feature>
+#include <TelepathyQt/PendingReady>
+#include <TelepathyQt/ProfileManager>
+#include <TelepathyQt/Feature>
 
 #include <QSortFilterProxyModel>
 #include <QItemSelectionModel>

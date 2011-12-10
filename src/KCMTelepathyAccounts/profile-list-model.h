@@ -24,9 +24,9 @@
 
 #include <QtCore/QAbstractListModel>
 
-#include <TelepathyQt4/ConnectionManager>
+#include <TelepathyQt/ConnectionManager>
 
-namespace TelepathyQt4 {
+namespace TelepathyQt {
     class PendingOperation;
 }
 

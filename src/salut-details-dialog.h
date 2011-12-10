@@ -27,7 +27,7 @@
 #include <KDialog>
 #include <KTitleWidget>
 
-#include <TelepathyQt4/Types>
+#include <TelepathyQt/Types>
 
 class SalutDetailsDialog : public KDialog
 {

@@ -24,7 +24,7 @@
 
 #include <KCModule>
 
-#include <TelepathyQt4/AccountManager>
+#include <TelepathyQt/AccountManager>
 
 class QFrame;
 class KPixmapSequenceOverlayPainter;

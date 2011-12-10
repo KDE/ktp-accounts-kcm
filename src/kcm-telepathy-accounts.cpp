@@ -41,12 +41,12 @@
 #include <KMessageWidget>
 #include <KPixmapSequenceOverlayPainter>
 
-#include <TelepathyQt4/Account>
-#include <TelepathyQt4/AccountFactory>
-#include <TelepathyQt4/PendingOperation>
-#include <TelepathyQt4/PendingReady>
-#include <TelepathyQt4/Types>
-#include <TelepathyQt4/ConnectionManager>
+#include <TelepathyQt/Account>
+#include <TelepathyQt/AccountFactory>
+#include <TelepathyQt/PendingOperation>
+#include <TelepathyQt/PendingReady>
+#include <TelepathyQt/Types>
+#include <TelepathyQt/ConnectionManager>
 
 #include "salut-enabler.h"
 #include <KPixmapSequence>
