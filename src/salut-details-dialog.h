@@ -25,7 +25,7 @@
 #define KCM_TELEPATHY_SALUT_ENABLE_ACCOUNT_DIALOG_H
 
 #include <KDialog>
-#include <KTitleWidget>
+#include <KMessageWidget>
 
 #include <TelepathyQt/Types>
 
@@ -39,7 +39,7 @@ public:
     virtual ~SalutDetailsDialog();
 
 Q_SIGNALS:
-    void feedbackMessage(const QString &text, const QString &comment, KTitleWidget::MessageType);
+    void feedbackMessage(const QString &text, const QString &comment, KMessageWidget::MessageType);
     void dialogAccepted(const QVariantMap &values);
 
 private:

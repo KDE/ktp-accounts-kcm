@@ -23,7 +23,6 @@
 
 #include "feedback-widget.h"
 
-#include <KTitleWidget>
 #include <KDebug>
 #include <KLocale>
 #include <KIcon>
@@ -39,68 +38,28 @@
 #include <QtCore/QTimer>
 
 FeedbackWidget::FeedbackWidget(QWidget *parent)
-    : KTitleWidget(parent)
+    : KMessageWidget(parent)
 {
     // Hide by default because we only want to show ourselfs when an error came up
     this->hide();
 
-    m_type = KTitleWidget::PlainMessage;
+    this->setMessageType(KMessageWidget::Information);
 }
 
 FeedbackWidget::~FeedbackWidget()
 {
 }
 
-void FeedbackWidget::setMessage(const QString &text, const QString &comment, KTitleWidget::MessageType type)
+void FeedbackWidget::setMessage(const QString &text, const QString &comment, KMessageWidget::MessageType type)
 {
-    setText(text, type);
-    setComment(comment, type);
+    setText(QString("<b>%1</b><br />%2").arg(text).arg(comment), type);
 }
 
-void FeedbackWidget::setText(const QString &text, KTitleWidget::MessageType type)
+void FeedbackWidget::setText(const QString &text, KMessageWidget::MessageType type)
 {
-    m_type = type;
-    KTitleWidget::setText(text, type);
-}
-
-void FeedbackWidget::setComment(const QString &comment, KTitleWidget::MessageType type)
-{
-    m_type = type;
-    KTitleWidget::setComment(comment, type);
-}
-
-void FeedbackWidget::paintEvent(QPaintEvent *event)
-{
-    const QRect r = rect();
-
-    const KColorScheme colorScheme(QPalette::Active, KColorScheme::Window);
-
-    QPainter p(this);
-    p.setRenderHint(QPainter::Antialiasing);
-
-    QPainterPath path;
-    path.addRoundedRect(0, 0, r.width(), r.height(), 10, 10);
-
-    QBrush brush;
-
-    switch(m_type) {
-        case KTitleWidget::PlainMessage:
-            brush = colorScheme.background(KColorScheme::NormalBackground);
-            break;
-        case KTitleWidget::ErrorMessage:
-            brush = colorScheme.background(KColorScheme::NegativeBackground);
-            break;
-        case KTitleWidget::WarningMessage:
-            brush = colorScheme.background(KColorScheme::NeutralBackground);
-            break;
-        case KTitleWidget::InfoMessage:
-            brush = QBrush(QColor(156,213,219));
-            break;
-    }
-
-    p.fillPath(path, brush);
-
-    KTitleWidget::paintEvent(event);
+    this->setMessageType(type);
+    KMessageWidget::setText(text);
+    this->animatedShow();
 }
 
 #include "feedback-widget.moc"

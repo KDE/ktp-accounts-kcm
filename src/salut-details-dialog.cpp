@@ -85,9 +85,9 @@ SalutDetailsDialog::SalutDetailsDialog(const Tp::ProfileManagerPtr profileManage
                                       doNotConnectOnAdd,
                                       this);
     connect(this,
-            SIGNAL(feedbackMessage(QString,QString,KTitleWidget::MessageType)),
+            SIGNAL(feedbackMessage(QString,QString,KMessageWidget::MessageType)),
             d->widget,
-            SIGNAL(feedbackMessage(QString,QString,KTitleWidget::MessageType)));
+            SIGNAL(feedbackMessage(QString,QString,KMessageWidget::MessageType)));
     setMainWidget(d->widget);
 }
 

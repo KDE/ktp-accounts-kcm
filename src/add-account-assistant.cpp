@@ -155,7 +155,7 @@ void AddAccountAssistant::accept()
         kDebug() << "A widget failed parameter validation. Not accepting wizard.";
         Q_EMIT feedbackMessage(i18n("Failed to create account"),
                                d->accountEditWidget->errorMessage(),
-                               KTitleWidget::InfoMessage);
+                               KMessageWidget::Error);
         return;
     }
 
@@ -165,7 +165,7 @@ void AddAccountAssistant::accept()
             && d->currentProfileItem->protocolName() == account->protocolName()) {
             Q_EMIT feedbackMessage(i18n("Failed to create account"),
                                    i18n("Account already exists. Old one will be used instead"),
-                                   KTitleWidget::InfoMessage);
+                                   KMessageWidget::Error);
             return;
         }
     }
@@ -228,7 +228,7 @@ void AddAccountAssistant::onAccountCreated(Tp::PendingOperation *op)
     if (op->isError()) {
         Q_EMIT feedbackMessage(i18n("Failed to create account"),
                                i18n("Possibly not all required fields are valid"),
-                               KTitleWidget::ErrorMessage);
+                               KMessageWidget::Error);
         kWarning() << "Adding Account failed:" << op->errorName() << op->errorMessage();
         return;
     }
@@ -238,7 +238,7 @@ void AddAccountAssistant::onAccountCreated(Tp::PendingOperation *op)
     if (!pendingAccount) {
         Q_EMIT feedbackMessage(i18n("Something went wrong with Telepathy"),
                                QString(),
-                               KTitleWidget::ErrorMessage);
+                               KMessageWidget::Error);
         kWarning() << "Method called with wrong type.";
         return;
     }
@@ -304,9 +304,9 @@ void AddAccountAssistant::pageTwo()
                                                  doConnectOnAdd,
                                                  d->pageTwoWidget);
     connect(this,
-            SIGNAL(feedbackMessage(QString,QString,KTitleWidget::MessageType)),
+            SIGNAL(feedbackMessage(QString,QString,KMessageWidget::MessageType)),
             d->accountEditWidget,
-            SIGNAL(feedbackMessage(QString,QString,KTitleWidget::MessageType)));
+            SIGNAL(feedbackMessage(QString,QString,KMessageWidget::MessageType)));
     d->pageTwoWidget->layout()->addWidget(d->accountEditWidget);
 
     KAssistantDialog::next();

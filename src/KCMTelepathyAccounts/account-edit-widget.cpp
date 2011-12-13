@@ -31,7 +31,7 @@
 
 #include <KDebug>
 #include <KLocale>
-#include <KTitleWidget>
+#include <KMessageWidget>
 
 #include <TelepathyQt/Profile>
 #include <QtCore/QList>
@@ -81,16 +81,15 @@ AccountEditWidget::AccountEditWidget(const Tp::ProfilePtr &profile,
             this, SLOT(onAdvancedClicked()));
 
     FeedbackWidget *feedback = new FeedbackWidget();
-    feedback->setAutoHideTimeout(1000*15);
     d->ui->verticalLayout->insertWidget(1, feedback);
     connect(this,
-            SIGNAL(feedbackMessage(QString,QString,KTitleWidget::MessageType)),
+            SIGNAL(feedbackMessage(QString,QString,KMessageWidget::MessageType)),
             feedback,
-            SLOT(setMessage(QString,QString,KTitleWidget::MessageType)));
+            SLOT(setMessage(QString,QString,KMessageWidget::MessageType)));
     connect(d->parameterModel,
-            SIGNAL(feedbackMessage(QString,QString,KTitleWidget::MessageType)),
+            SIGNAL(feedbackMessage(QString,QString,KMessageWidget::MessageType)),
             feedback,
-            SLOT(setMessage(QString,QString,KTitleWidget::MessageType)));
+            SLOT(setMessage(QString,QString,KMessageWidget::MessageType)));
 
     d->ui->advancedButton->setIcon(KIcon("configure"));
     //FIXME: Dictionary should not be needed anymore when distros ship profiles

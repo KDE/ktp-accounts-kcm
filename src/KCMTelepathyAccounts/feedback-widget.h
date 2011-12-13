@@ -24,13 +24,13 @@
 #ifndef TELEPATHY_ACCOUNTS_KCM_FEEDBACK_WIDGET_H
 #define TELEPATHY_ACCOUNTS_KCM_FEEDBACK_WIDGET_H
 
-#include <KTitleWidget>
+#include <KMessageWidget>
 
 class QLabel;
 class QHBoxLayout;
 class QTimer;
 
-class FeedbackWidget : public KTitleWidget
+class FeedbackWidget : public KMessageWidget
 {
 Q_OBJECT
 public:
@@ -38,15 +38,11 @@ public:
     virtual ~FeedbackWidget();
 
 public slots:
-    void setMessage(const QString &text, const QString &comment, KTitleWidget::MessageType type);
-    void setText(const QString &text, KTitleWidget::MessageType type);
-    void setComment(const QString &comment, KTitleWidget::MessageType type=KTitleWidget::PlainMessage);
-
-protected:
-    virtual void paintEvent(QPaintEvent *event);
+    void setMessage(const QString &text, const QString &comment, KMessageWidget::MessageType type);
+    void setText(const QString &text, KMessageWidget::MessageType type);
 
 private:
-    KTitleWidget::MessageType m_type;
+    KMessageWidget::MessageType m_type;
 };
 
 #endif

@@ -240,7 +240,7 @@ void SalutEnabler::onAccountCreated(Tp::PendingOperation* op)
     if (op->isError()) {
         Q_EMIT feedbackMessage(i18n("Failed to create account"),
                                i18n("Possibly not all required fields are valid"),
-                               KTitleWidget::ErrorMessage);
+                               KMessageWidget::Error);
         kWarning() << "Adding Account failed:" << op->errorName() << op->errorMessage();
         return;
     }
@@ -250,7 +250,7 @@ void SalutEnabler::onAccountCreated(Tp::PendingOperation* op)
     if (!pendingAccount) {
                 Q_EMIT feedbackMessage(i18n("Something went wrong with Telepathy"),
                                        QString(),
-                                       KTitleWidget::ErrorMessage);
+                                       KMessageWidget::Error);
         kWarning() << "Method called with wrong type.";
         return;
     }
@@ -276,8 +276,8 @@ void SalutEnabler::onUserWantingChanges()
     connect(d->detailsDialog, SIGNAL(rejected()),
             this, SIGNAL(cancelled()));
 
-    connect(d->detailsDialog, SIGNAL(feedbackMessage(QString,QString,KTitleWidget::MessageType)),
-            this, SIGNAL(feedbackMessage(QString,QString,KTitleWidget::MessageType)));
+    connect(d->detailsDialog, SIGNAL(feedbackMessage(QString,QString,KMessageWidget::MessageType)),
+            this, SIGNAL(feedbackMessage(QString,QString,KMessageWidget::MessageType)));
 
     d->detailsDialog->exec();
 }

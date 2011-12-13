@@ -27,7 +27,7 @@
 #include <KApplication>
 #include <KDebug>
 #include <KLocale>
-#include <KTitleWidget>
+#include <KMessageWidget>
 
 #include <QtGui/QValidator>
 
@@ -305,7 +305,7 @@ bool ParameterEditModel::validateParameterValues()
            emit feedbackMessage(i18n("Parameter \"<b>%1</b>\" is not valid.",
                                 item->localizedName()),
                                 QString(),
-                                KTitleWidget::ErrorMessage);
+                                KMessageWidget::Error);
            return false;
        }
     }

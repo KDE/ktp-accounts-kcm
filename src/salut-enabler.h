@@ -24,7 +24,7 @@
 #include <QObject>
 
 #include <TelepathyQt/Types>
-#include <KTitleWidget>
+#include <KMessageWidget>
 
 class QFrame;
 class QWidget;
@@ -46,7 +46,7 @@ Q_SIGNALS:
     void userInfoReady();
     void done();
     void cancelled();
-    void feedbackMessage(const QString &text, const QString &comment, KTitleWidget::MessageType);
+    void feedbackMessage(const QString &text, const QString &comment, KMessageWidget::MessageType);
 
 public Q_SLOTS:
     void onUserAccepted();

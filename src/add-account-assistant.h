@@ -23,7 +23,7 @@
 #define TELEPATHY_ACCOUNTS_KCM_ADD_ACCOUNT_ASSISTANT_H
 
 #include <KAssistantDialog>
-#include <KTitleWidget>
+#include <KMessageWidget>
 
 #include <TelepathyQt/AccountManager>
 
@@ -46,7 +46,7 @@ protected Q_SLOTS:
 
 Q_SIGNALS:
     void cancelled();
-    void feedbackMessage(const QString &text, const QString &comment, KTitleWidget::MessageType);
+    void feedbackMessage(const QString &text, const QString &comment, KMessageWidget::MessageType);
 
 private Q_SLOTS:
     void onAccountCreated(Tp::PendingOperation *op);
