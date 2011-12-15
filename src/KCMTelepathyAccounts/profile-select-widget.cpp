@@ -81,8 +81,8 @@ ProfileSelectWidget::ProfileSelectWidget(QWidget *parent, bool enableSalut)
 
 
     connect(d->ui->profileListView->selectionModel(),
-            SIGNAL(selectionChanged(const QItemSelection &, const QItemSelection &)),
-            SLOT(onSelectionChanged(const QItemSelection &)));
+            SIGNAL(selectionChanged(QItemSelection,QItemSelection)),
+            SLOT(onSelectionChanged(QItemSelection)));
     connect(d->ui->profileListView,
             SIGNAL(doubleClicked(QModelIndex)),
             SIGNAL(profileDoubleClicked()));

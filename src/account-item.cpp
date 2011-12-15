@@ -49,7 +49,7 @@ AccountItem::AccountItem(const Tp::AccountPtr &account, AccountsListModel *paren
             SIGNAL(stateChanged(bool)),
             SIGNAL(updated()));
     connect(m_account.data(),
-            SIGNAL(displayNameChanged(const QString&)),
+            SIGNAL(displayNameChanged(QString)),
             SIGNAL(updated()));
     connect(m_account.data(),
             SIGNAL(connectionStatusChanged(Tp::ConnectionStatus)),

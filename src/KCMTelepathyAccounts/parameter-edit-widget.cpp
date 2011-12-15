@@ -57,8 +57,8 @@ ParameterEditWidget::ParameterEditWidget(ParameterEditModel *parameterModel,
     d->ui->parameterListView->setItemDelegate(d->delegate);
 
     connect(d->delegate,
-            SIGNAL(dataChanged(QModelIndex, QVariant, int)),
-            SLOT(onDelegateDataChanged(QModelIndex, QVariant, int)));
+            SIGNAL(dataChanged(QModelIndex,QVariant,int)),
+            SLOT(onDelegateDataChanged(QModelIndex,QVariant,int)));
 }
 
 ParameterEditWidget::~ParameterEditWidget()
