@@ -32,7 +32,7 @@ class YahooMainOptionsWidget
     Q_OBJECT
 
 public:
-    YahooMainOptionsWidget(ParameterEditModel* model, QWidget* parent = 0);
+    explicit YahooMainOptionsWidget(ParameterEditModel* model, QWidget* parent = 0);
     virtual ~YahooMainOptionsWidget();
 
     void submit();
