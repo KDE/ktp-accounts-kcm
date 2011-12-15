@@ -1,7 +1,7 @@
 /*
  * This file is part of telepathy-accounts-kcm
  *
- * Copyright (C) 2009 Collabora Ltd. <http://www.collabora.co.uk/>
+ * Copyright (C) 2009 Collabora Ltd. <info@collabora.com>
  * Copyright (C) 2011 Thomas Richard <thomas.richard@proan.be>
  *
  * This library is free software; you can redistribute it and/or
@@ -81,8 +81,8 @@ ProfileSelectWidget::ProfileSelectWidget(QWidget *parent, bool enableSalut)
 
 
     connect(d->ui->profileListView->selectionModel(),
-            SIGNAL(selectionChanged(const QItemSelection &, const QItemSelection &)),
-            SLOT(onSelectionChanged(const QItemSelection &)));
+            SIGNAL(selectionChanged(QItemSelection,QItemSelection)),
+            SLOT(onSelectionChanged(QItemSelection)));
     connect(d->ui->profileListView,
             SIGNAL(doubleClicked(QModelIndex)),
             SIGNAL(profileDoubleClicked()));

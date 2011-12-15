@@ -44,7 +44,7 @@ SunshineAccountUi::SunshineAccountUi(QObject *parent)
     // People using telepathy-sunshine from master (past 0.1.8 versions) will need this line insead
     // of export-contacts. See the commit for further details:
     // http://git.collabora.co.uk/?p=telepathy-sunshine.git;a=commit;h=83963893c34c6069f7202cf7d55add2d334581b5
-    // registerSupportedParameter("synchronise-contacts-with-server", QVariant::Bool);
+    // registerSupportedParameter("synchronize-contacts-with-server", QVariant::Bool);
 }
 
 SunshineAccountUi::~SunshineAccountUi()

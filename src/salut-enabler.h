@@ -37,7 +37,7 @@ class SalutEnabler : public QObject
 {
     Q_OBJECT
 public:
-    SalutEnabler(const Tp::AccountManagerPtr accountManager, QObject *parent = 0);
+    explicit SalutEnabler(const Tp::AccountManagerPtr accountManager, QObject *parent = 0);
     virtual ~SalutEnabler();
 
     QFrame *frameWidget(QWidget *parent);

@@ -70,7 +70,7 @@ SalutMessageWidget::~SalutMessageWidget()
 {
 }
 
-///these params always comes from KUser with first & last name splitted manualy by the last space
+///these params always comes from KUser with first & last name split manually by the last space
 void SalutMessageWidget::setParams(const QString& firstname, const QString& lastname, const QString& nick)
 {
     QString displayName;

@@ -1,7 +1,7 @@
 /*
  * This file is part of telepathy-accounts-kcm
  *
- * Copyright (C) 2009 Collabora Ltd. <http://www.collabora.co.uk/>
+ * Copyright (C) 2009 Collabora Ltd. <info@collabora.com>
  * Copyright (C) 2011 Daniele E. Domenichelli <daniele.domenichelli@gmail.com>
  *
  * This library is free software; you can redistribute it and/or
@@ -138,11 +138,11 @@ KCMTelepathyAccounts::KCMTelepathyAccounts(QWidget *parent, const QVariantList& 
     m_ui->salutEnableFrame->setMinimumHeight(height);
 
     connect(accountsDelegate,
-            SIGNAL(itemChecked(QModelIndex, bool)),
-            SLOT(onAccountEnabledChanged(QModelIndex, bool)));
+            SIGNAL(itemChecked(QModelIndex,bool)),
+            SLOT(onAccountEnabledChanged(QModelIndex,bool)));
     connect(salutDelegate,
-            SIGNAL(itemChecked(QModelIndex, bool)),
-            SLOT(onAccountEnabledChanged(QModelIndex, bool)));
+            SIGNAL(itemChecked(QModelIndex,bool)),
+            SLOT(onAccountEnabledChanged(QModelIndex,bool)));
     connect(m_ui->addAccountButton,
             SIGNAL(clicked()),
             SLOT(onAddAccountClicked()));
@@ -159,16 +159,16 @@ KCMTelepathyAccounts::KCMTelepathyAccounts(QWidget *parent, const QVariantList& 
             SIGNAL(clicked()),
             SLOT(onRemoveAccountClicked()));
     connect(m_ui->accountsListView->selectionModel(),
-            SIGNAL(currentChanged(QModelIndex, QModelIndex)),
-            SLOT(onSelectedItemChanged(QModelIndex, QModelIndex)));
+            SIGNAL(currentChanged(QModelIndex,QModelIndex)),
+            SLOT(onSelectedItemChanged(QModelIndex,QModelIndex)));
     connect(m_ui->salutListView->selectionModel(),
-            SIGNAL(currentChanged(QModelIndex, QModelIndex)),
-            SLOT(onSelectedItemChanged(QModelIndex, QModelIndex)));
+            SIGNAL(currentChanged(QModelIndex,QModelIndex)),
+            SLOT(onSelectedItemChanged(QModelIndex,QModelIndex)));
     connect(m_accountsListModel,
-            SIGNAL(rowsInserted(QModelIndex, int, int)),
+            SIGNAL(rowsInserted(QModelIndex,int,int)),
             SLOT(onModelDataChanged()));
     connect(m_accountsListModel,
-            SIGNAL(rowsRemoved(QModelIndex, int, int)),
+            SIGNAL(rowsRemoved(QModelIndex,int,int)),
             SLOT(onModelDataChanged()));
     connect(m_ui->salutEnableCheckbox,
             SIGNAL(toggled(bool)),
@@ -240,7 +240,7 @@ void KCMTelepathyAccounts::onAccountManagerReady(Tp::PendingOperation *op)
     onModelDataChanged();
 
     connect(m_accountManager.data(),
-            SIGNAL(newAccount (Tp::AccountPtr)),
+            SIGNAL(newAccount(Tp::AccountPtr)),
             SLOT(onAccountCreated(Tp::AccountPtr)));
 }
 

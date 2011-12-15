@@ -267,8 +267,8 @@ void SalutEnabler::onUserWantingChanges()
 {
     d->detailsDialog = new SalutDetailsDialog(d->profileManager, d->connectionManager, 0);
 
-    connect(d->detailsDialog, SIGNAL(dialogAccepted(const QVariantMap&)),
-            this, SLOT(onDialogAccepted(const QVariantMap&)));
+    connect(d->detailsDialog, SIGNAL(dialogAccepted(QVariantMap)),
+            this, SLOT(onDialogAccepted(QVariantMap)));
 
     connect(d->detailsDialog, SIGNAL(rejected()),
             this, SLOT(onUserCancelled()));

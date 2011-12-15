@@ -28,7 +28,7 @@
        </widget>
       </item>
       <item row="0" column="1">
-       <widget class="QLineEdit" name="authUserLineEdit">
+       <widget class="KLineEdit" name="authUserLineEdit">
         <property name="toolTip">
          <string>Username for your SIP account. If your username is different from the user part your SIP URI, provide it here.</string>
         </property>
@@ -42,7 +42,7 @@
        </widget>
       </item>
       <item row="1" column="1">
-       <widget class="QLineEdit" name="registrarLineEdit">
+       <widget class="KLineEdit" name="registrarLineEdit">
         <property name="toolTip">
          <string>Registrar for your SIP account. If your registrar is different from the server part your SIP URI, provide it here.</string>
         </property>
@@ -68,7 +68,7 @@
        </widget>
       </item>
       <item row="0" column="1">
-       <widget class="QLineEdit" name="proxyLineEdit"/>
+       <widget class="KLineEdit" name="proxyLineEdit"/>
       </item>
       <item row="1" column="0">
        <widget class="QLabel" name="portLabel">

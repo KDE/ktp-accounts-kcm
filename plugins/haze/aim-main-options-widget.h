@@ -33,7 +33,7 @@ class AimMainOptionsWidget
 	Q_DISABLE_COPY(AimMainOptionsWidget);
 
 public:
-    AimMainOptionsWidget(ParameterEditModel* model, QWidget* parent = 0);
+    explicit AimMainOptionsWidget(ParameterEditModel* model, QWidget* parent = 0);
     virtual ~AimMainOptionsWidget();
 private:
     Ui::AimMainOptionsWidget *m_ui;

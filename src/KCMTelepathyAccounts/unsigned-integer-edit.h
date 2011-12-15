@@ -1,7 +1,7 @@
 /*
  * This file is part of telepathy-accounts-kcm
  *
- * Copyright (C) 2009 Collabora Ltd. <http://www.collabora.co.uk/>
+ * Copyright (C) 2009 Collabora Ltd. <info@collabora.com>
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -24,10 +24,11 @@
 #include "kcm_telepathy_accounts_export.h"
 
 #include <QtCore/QPair>
-#include <QtGui/QLineEdit>
 #include <QtGui/QValidator>
 
-class KCM_TELEPATHY_ACCOUNTS_EXPORT UnsignedIntegerEdit : public QLineEdit
+#include <KLineEdit>
+
+class KCM_TELEPATHY_ACCOUNTS_EXPORT UnsignedIntegerEdit : public KLineEdit
 {
     Q_OBJECT
 

@@ -1,7 +1,7 @@
 /*
  * This file is part of telepathy-accounts-kcm
  *
- * Copyright (C) 2009 Collabora Ltd. <http://www.collabora.co.uk/>
+ * Copyright (C) 2009 Collabora Ltd. <info@collabora.com>
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -49,7 +49,7 @@ AccountItem::AccountItem(const Tp::AccountPtr &account, AccountsListModel *paren
             SIGNAL(stateChanged(bool)),
             SIGNAL(updated()));
     connect(m_account.data(),
-            SIGNAL(displayNameChanged(const QString&)),
+            SIGNAL(displayNameChanged(QString)),
             SIGNAL(updated()));
     connect(m_account.data(),
             SIGNAL(connectionStatusChanged(Tp::ConnectionStatus)),
@@ -102,9 +102,9 @@ const QString AccountItem::connectionStateString() const
     case Tp::ConnectionStatusConnected:
         return i18n("Online");
     case Tp::ConnectionStatusConnecting:
-        return i18n("Connecting");
+        return i18nc("This is a connection state", "Connecting");
     case Tp::ConnectionStatusDisconnected:
-        return i18n("Disconnected");
+        return i18nc("This is a connection state", "Disconnected");
     default:
         return "Unknown";
     }
@@ -149,7 +149,7 @@ void AccountItem::generateIcon()
 
     QString iconPath = account()->iconName();
 
-    //if the icon has not been setted, we use the protocol icon
+    //if the icon has not been set, we use the protocol icon
     if(iconPath.isEmpty()) {
         iconPath = QString("im-%1").arg(account()->protocolName());
     }

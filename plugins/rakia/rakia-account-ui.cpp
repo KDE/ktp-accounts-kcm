@@ -70,7 +70,7 @@ RakiaAccountUi::RakiaAccountUi(QObject *parent)
     /**< keepalive interval in seconds */
     registerSupportedParameter("keepalive-interval", QVariant::UInt);
 
-//  Parameters, we know about their existance but don't expose them to the user
+//  Parameters, we know about their existence but don't expose them to the user
 //  for eventual later usage, we keep them documented here:
 
 //  immuteable-streams: if set to True, you can't add video to an already running voice call.
