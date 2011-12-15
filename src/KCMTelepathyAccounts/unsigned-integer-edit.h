@@ -24,10 +24,11 @@
 #include "kcm_telepathy_accounts_export.h"
 
 #include <QtCore/QPair>
-#include <QtGui/QLineEdit>
 #include <QtGui/QValidator>
 
-class KCM_TELEPATHY_ACCOUNTS_EXPORT UnsignedIntegerEdit : public QLineEdit
+#include <KLineEdit>
+
+class KCM_TELEPATHY_ACCOUNTS_EXPORT UnsignedIntegerEdit : public KLineEdit
 {
     Q_OBJECT
 

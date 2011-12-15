@@ -23,11 +23,11 @@
 #include "parameter-edit-model.h"
 
 #include <KDebug>
+#include <KLineEdit>
 
 #include <QtGui/QApplication>
 #include <QtGui/QCheckBox>
 #include <QtGui/QLabel>
-#include <QtGui/QLineEdit>
 #include <QtGui/QSpinBox>
 #include <QtGui/QPainter>
 
@@ -49,7 +49,7 @@ QList<QWidget*> ParameterEditDelegate::createItemWidgets() const
 
     // Create all the possible widgets for displaying the parameter.
     QLabel *nameLabel = new QLabel();
-    QLineEdit *lineEdit = new QLineEdit();
+    KLineEdit *lineEdit = new KLineEdit();
     QCheckBox *checkBox = new QCheckBox();
     QSpinBox *spinBox = new QSpinBox();
 
@@ -82,7 +82,7 @@ void ParameterEditDelegate::updateItemWidgets(const QList<QWidget*> widgets,
     nameLabel->resize(QSize(((right - (4 * margin)) / 2), option.rect.height()));
 
     // Get all the optional input widgets.
-    QLineEdit *lineEdit = qobject_cast<QLineEdit*>(widgets.at(1));
+    KLineEdit *lineEdit = qobject_cast<KLineEdit*>(widgets.at(1));
     QCheckBox *checkBox = qobject_cast<QCheckBox*>(widgets.at(2));
     QSpinBox  *spinBox  = qobject_cast<QSpinBox*>(widgets.at(3));
 
