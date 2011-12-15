@@ -149,7 +149,7 @@ void AccountItem::generateIcon()
 
     QString iconPath = account()->iconName();
 
-    //if the icon has not been setted, we use the protocol icon
+    //if the icon has not been set, we use the protocol icon
     if(iconPath.isEmpty()) {
         iconPath = QString("im-%1").arg(account()->protocolName());
     }
