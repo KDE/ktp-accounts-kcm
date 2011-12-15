@@ -102,9 +102,9 @@ const QString AccountItem::connectionStateString() const
     case Tp::ConnectionStatusConnected:
         return i18n("Online");
     case Tp::ConnectionStatusConnecting:
-        return i18n("Connecting");
+        return i18nc("This is a connection state", "Connecting");
     case Tp::ConnectionStatusDisconnected:
-        return i18n("Disconnected");
+        return i18nc("This is a connection state", "Disconnected");
     default:
         return "Unknown";
     }
