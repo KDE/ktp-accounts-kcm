@@ -211,18 +211,18 @@ void AccountEditWidget::onAdvancedClicked()
         return;
     }
 
-    KDialog dialog(this);
-    dialog.setWindowTitle(i18n("Advanced Options"));
+    QWeakPointer<KDialog> dialog = new KDialog(this);
+    dialog.data()->setWindowTitle(i18n("Advanced Options"));
 
     AbstractAccountParametersWidget *advancedWidget;
     advancedWidget = d->accountUi->advancedOptionsWidget(d->parameterModel,
-                                                         &dialog);
-    dialog.setMainWidget(advancedWidget);
+                                                         dialog.data());
+    dialog.data()->setMainWidget(advancedWidget);
 
     // loop until the entered values are ok or the user cancels the dialog
 
-    while(true) {
-        if (dialog.exec() == KDialog::Accepted) {
+    while (true) {
+        if (dialog.data()->exec() == KDialog::Accepted) {
             advancedWidget->submit();
             // validate the parameter values
             if (!advancedWidget->validateParameterValues()) {
@@ -230,6 +230,10 @@ void AccountEditWidget::onAdvancedClicked()
             }
         }
         break;
+    }
+
+    if (!dialog.isNull()) {
+        dialog.data()->deleteLater();
     }
 }
 
