@@ -23,7 +23,7 @@
 #include "accounts-list-model.h"
 #include "edit-account-dialog.h"
 
-#include <KTelepathy/error-dictionary.h>
+#include <KTp/error-dictionary.h>
 
 #include <KApplication>
 #include <KDebug>

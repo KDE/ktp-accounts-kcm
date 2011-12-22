@@ -1,6 +1,6 @@
 [Desktop Entry]
 Type=ServiceType
-X-KDE-ServiceType=KCMTelepathyAccounts/AccountUiPlugin
+X-KDE-ServiceType=KTpAccountsKCM/AccountUiPlugin
 
 Comment=Telepathy Accounts KCM Module Account User Interface Plugins
 Comment[da]=Plugins til KCM-modul til kontobrugerflade til Telepathy-konti

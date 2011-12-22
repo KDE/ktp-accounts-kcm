@@ -1,4 +1,4 @@
-project (libkcmtelepathyaccounts)
+project (libktpaccountskcminternal)
 
 include_directories (${CMAKE_CURRENT_BINARY_DIR}
                      ${CMAKE_CURRENT_SOURCE_DIR}
@@ -6,7 +6,7 @@ include_directories (${CMAKE_CURRENT_BINARY_DIR}
 
 add_definitions (-DMAKE_KCM_TELEPATHY_ACCOUNTS_LIB)
 
-set (libkcmtelepathyaccounts_SRCS
+set (libktpaccountskcminternal_SRCS
      abstract-account-ui-plugin.cpp
      abstract-account-ui.cpp
      abstract-account-parameters-widget.cpp
@@ -25,7 +25,7 @@ set (libkcmtelepathyaccounts_SRCS
      validated-line-edit.cpp
 )
 
-set (libkcmtelepathyaccounts_HDRS
+set (libktpaccountskcminternal_HDRS
      abstract-account-ui-plugin.h
      abstract-account-ui.h
      abstract-account-parameters-widget.h
@@ -40,7 +40,7 @@ set (libkcmtelepathyaccounts_HDRS
      validated-line-edit.h
 )
 
-set (libkcmtelepathyaccounts_PRETTY_HDRS
+set (libktpaccountskcminternal_PRETTY_HDRS
      AbstractAccountUiPlugin
      AbstractAccountUi
      AbstractAccountParametersWidget
@@ -56,48 +56,48 @@ set (libkcmtelepathyaccounts_PRETTY_HDRS
      ValidatedLineEdit
 )
 
-kde4_add_ui_files (libkcmtelepathyaccounts_SRCS
+kde4_add_ui_files (libktpaccountskcminternal_SRCS
                    account-edit-widget.ui
                    parameter-edit-widget.ui
                    profile-select-widget.ui
 )
 
-kde4_add_library (kcmtelepathyaccounts
+kde4_add_library (ktpaccountskcminternal
                   SHARED
-                  ${libkcmtelepathyaccounts_SRCS}
+                  ${libktpaccountskcminternal_SRCS}
 )
 
-target_link_libraries (kcmtelepathyaccounts
+target_link_libraries (ktpaccountskcminternal
                        ${QT_LIBRARIES}
                        ${KDE4_KDEUI_LIBS}
                        ${TELEPATHY_QT4_LIBRARIES}
 )
 
-set_target_properties (kcmtelepathyaccounts PROPERTIES
+set_target_properties (ktpaccountskcminternal PROPERTIES
                        VERSION ${GENERIC_LIB_VERSION}
                        SOVERSION ${GENERIC_LIB_SOVERSION}
 )
 
 if (MSVC)
-    set_target_properties (kcmtelepathyaccounts PROPERTIES
-                           OUTPUT_NAME libkcmtelepathyaccounts
+    set_target_properties (ktpaccountskcminternal PROPERTIES
+                           OUTPUT_NAME libktpaccountskcminternal
     )
 endif (MSVC)
 
 # Install:
-install (TARGETS kcmtelepathyaccounts
+install (TARGETS ktpaccountskcminternal
          ${INSTALL_TARGETS_DEFAULT_ARGS}
 )
 
 #install (FILES
-#         ${libkcmtelepathyaccounts_HDRS}
-#         ${libkcmtelepathyaccounts_PRETTY_HDRS}
+#         ${libktpaccountskcminternal_HDRS}
+#         ${libktpaccountskcminternal_PRETTY_HDRS}
 #         kcm_telepathy_accounts_export.h
 #         DESTINATION ${INCLUDE_INSTALL_DIR}/KCMTelepathyAccounts COMPONENT Devel
 #)
 
 install (FILES
-         kcmtelepathyaccounts-accountuiplugin.desktop
+         ktpaccountskcminternal-accountuiplugin.desktop
          DESTINATION ${SERVICETYPES_INSTALL_DIR}
 )
 

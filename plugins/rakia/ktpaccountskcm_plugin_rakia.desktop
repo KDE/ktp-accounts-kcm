@@ -26,9 +26,9 @@ Name[sv]=Användargränssnitt för inställning av Rakia/SofiaSIP-konton
 Name[uk]=Інтерфейс користувача для налаштування Rakia/SofiaSIP
 Name[x-test]=xxRakia/SofiaSIP Account Configuration User Interfacexx
 Type=Service
-ServiceTypes=KCMTelepathyAccounts/AccountUiPlugin
+ServiceTypes=KTpAccountsKCM/AccountUiPlugin
 
-X-KDE-Library=kcmtelepathyaccounts_plugin_rakia
+X-KDE-Library=ktpaccountskcm_plugin_rakia
 X-KDE-PluginInfo-Author=Florian Reinhard
 X-KDE-PluginInfo-Email=florian.reinhard@googlemail.com
 X-KDE-PluginInfo-Name=rakia

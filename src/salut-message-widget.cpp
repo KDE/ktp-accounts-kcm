@@ -20,7 +20,7 @@
 
 #include "salut-message-widget.h"
 
-#include <KTelepathy/circular-countdown.h>
+#include <KTp/circular-countdown.h>
 
 #include <KLocalizedString>
 #include <KIcon>

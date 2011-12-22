@@ -1,12 +1,12 @@
 [Desktop Entry]
 Type=Service
-Exec=kcmshell4 kcm_telepathy_accounts
+Exec=kcmshell4 kcm_ktp_accounts
 StartupNotify=true
 Terminal=false
 X-KDE-ServiceTypes=KCModule
 X-DBUS-StartupType=
 X-KDE-HasReadOnlyMode=false
-X-KDE-Library=kcm_telepathy_accounts
+X-KDE-Library=kcm_ktp_accounts
 X-KDE-ParentApp=kcontrol
 X-KDE-SubstituteUID=false
 X-KDE-RootOnly=false

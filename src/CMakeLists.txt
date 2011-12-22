@@ -4,9 +4,9 @@ include_directories (${CMAKE_CURRENT_BINARY_DIR}
 
 add_subdirectory (KCMTelepathyAccounts)
 
-project (telepathy-accounts-kcm)
+project (ktp-accounts-kcm)
 
-set (telepathy_accounts_kcm_SRCS
+set (kcm_ktp_accounts_SRCS
      salut-enabler.cpp
      salut-message-widget.cpp
      kcm-telepathy-accounts.cpp
@@ -18,28 +18,28 @@ set (telepathy_accounts_kcm_SRCS
      accounts-list-delegate.cpp
 )
 
-kde4_add_ui_files (telepathy_accounts_kcm_SRCS
+kde4_add_ui_files (kcm_ktp_accounts_SRCS
                    main-widget.ui
 )
 
-kde4_add_plugin (kcm_telepathy_accounts
-                 ${telepathy_accounts_kcm_SRCS}
+kde4_add_plugin (kcm_ktp_accounts
+                 ${kcm_ktp_accounts_SRCS}
 )
 
-target_link_libraries (kcm_telepathy_accounts
-                       kcmtelepathyaccounts
+target_link_libraries (kcm_ktp_accounts
+                       ktpaccountskcminternal
                        ${QT_LIBRARIES}
                        ${KDE4_KDEUI_LIBS}
                        ${TELEPATHY_QT4_LIBRARIES}
-                       ${KTELEPATHY_LIBRARIES}
+                       ${KTP_LIBRARIES}
 )
 
 # Install:
-install (TARGETS kcm_telepathy_accounts
+install (TARGETS kcm_ktp_accounts
          DESTINATION ${PLUGIN_INSTALL_DIR}
 )
 
-install (FILES kcm_telepathy_accounts.desktop
+install (FILES kcm_ktp_accounts.desktop
          DESTINATION ${SERVICES_INSTALL_DIR}
 )
 

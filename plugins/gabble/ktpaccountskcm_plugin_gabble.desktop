@@ -26,9 +26,9 @@ Name[sv]=Användargränssnitt för inställning av Gabble-konton
 Name[uk]=Інтерфейс користувача для налаштування Gabble
 Name[x-test]=xxGabble Account Configuration User Interfacexx
 Type=Service
-ServiceTypes=KCMTelepathyAccounts/AccountUiPlugin
+ServiceTypes=KTpAccountsKCM/AccountUiPlugin
 
-X-KDE-Library=kcmtelepathyaccounts_plugin_gabble
+X-KDE-Library=ktpaccountskcm_plugin_gabble
 X-KDE-PluginInfo-Author=George Goldberg
 X-KDE-PluginInfo-Email=george.goldberg@collabora.co.uk
 X-KDE-PluginInfo-Name=gabble

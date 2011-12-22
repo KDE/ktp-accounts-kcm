@@ -28,7 +28,7 @@
 #include "edit-account-dialog.h"
 #include "accounts-list-delegate.h"
 
-#include <KTelepathy/wallet-interface.h>
+#include <KTp/wallet-interface.h>
 
 #include <QLabel>
 #include <QSortFilterProxyModel>

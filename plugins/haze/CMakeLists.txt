@@ -1,10 +1,10 @@
-project (kcmtelepathyaccounts-plugin-haze)
+project (ktpaccountskcm-plugin-haze)
 
 include_directories (${CMAKE_CURRENT_BINARY_DIR}
                      ${CMAKE_CURRENT_SOURCE_DIR}
 )
 
-set (kcmtelepathyaccounts_plugin_haze_SRCS
+set (ktpaccountskcm_plugin_haze_SRCS
      haze-account-ui-plugin.cpp
      haze-icq-account.cpp
      icq-main-options-widget.cpp
@@ -25,7 +25,7 @@ set (kcmtelepathyaccounts_plugin_haze_SRCS
      haze-msn-account.cpp
 )
 
-kde4_add_ui_files (kcmtelepathyaccounts_plugin_haze_SRCS
+kde4_add_ui_files (ktpaccountskcm_plugin_haze_SRCS
                    icq-main-options-widget.ui
                    icq-server-settings-widget.ui
                    myspaceim-main-options-widget.ui
@@ -39,22 +39,22 @@ kde4_add_ui_files (kcmtelepathyaccounts_plugin_haze_SRCS
                    msn-main-options-widget.ui
 )
 
-kde4_add_plugin (kcmtelepathyaccounts_plugin_haze
-                 ${kcmtelepathyaccounts_plugin_haze_SRCS}
+kde4_add_plugin (ktpaccountskcm_plugin_haze
+                 ${ktpaccountskcm_plugin_haze_SRCS}
 )
 
-target_link_libraries (kcmtelepathyaccounts_plugin_haze
-                       kcmtelepathyaccounts
+target_link_libraries (ktpaccountskcm_plugin_haze
+                       ktpaccountskcminternal
                        ${QT_LIBRARIES}
                        ${KDE4_KDEUI_LIBS}
                        ${TELEPATHY_QT4_LIBRARIES}
 )
 
 # Install:
-install (TARGETS kcmtelepathyaccounts_plugin_haze
+install (TARGETS ktpaccountskcm_plugin_haze
          DESTINATION ${PLUGIN_INSTALL_DIR}
 )
 
-install (FILES kcmtelepathyaccounts_plugin_haze.desktop
+install (FILES ktpaccountskcm_plugin_haze.desktop
          DESTINATION ${SERVICES_INSTALL_DIR}
 )

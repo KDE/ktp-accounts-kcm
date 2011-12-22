@@ -22,7 +22,7 @@
 
 #include "add-account-assistant.h"
 
-#include <KTelepathy/wallet-interface.h>
+#include <KTp/wallet-interface.h>
 
 #include "KCMTelepathyAccounts/abstract-account-parameters-widget.h"
 #include "KCMTelepathyAccounts/abstract-account-ui.h"

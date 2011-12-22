@@ -21,7 +21,7 @@
 
 #include "edit-account-dialog.h"
 
-#include <KTelepathy/wallet-interface.h>
+#include <KTp/wallet-interface.h>
 
 #include "KCMTelepathyAccounts/dictionary.h"
 #include "KCMTelepathyAccounts/abstract-account-parameters-widget.h"

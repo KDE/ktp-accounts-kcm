@@ -26,9 +26,9 @@ Name[sv]=Användargränssnitt för inställning av Haze-konton
 Name[uk]=Інтерфейс користувача для налаштування Haze
 Name[x-test]=xxHaze Account Configuration User Interfacexx
 Type=Service
-ServiceTypes=KCMTelepathyAccounts/AccountUiPlugin
+ServiceTypes=KTpAccountsKCM/AccountUiPlugin
 
-X-KDE-Library=kcmtelepathyaccounts_plugin_haze
+X-KDE-Library=ktpaccountskcm_plugin_haze
 X-KDE-PluginInfo-Author=Dominik Schmidt
 X-KDE-PluginInfo-Email=kde@dominik-schmidt.de
 X-KDE-PluginInfo-Name=haze

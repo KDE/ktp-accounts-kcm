@@ -13,9 +13,9 @@ Comment[sv]=Användargränssnitt för anpassad kontoinställning av konton som a
 Comment[uk]=Інтерфейс користувача для нетипового налаштування облікового запису за допомогою керування з’єднаннями Idle.
 Comment[x-test]=xxCustom account configuration user interface for accounts using the Idle connection manager.xx
 Type=Service
-ServiceTypes=KCMTelepathyAccounts/AccountUiPlugin
+ServiceTypes=KTpAccountsKCM/AccountUiPlugin
 
-X-KDE-Library=kcmtelepathyaccounts_plugin_idle
+X-KDE-Library=ktpaccountskcm_plugin_idle
 X-KDE-PluginInfo-Author=Lasse Liehu
 X-KDE-PluginInfo-Email=lliehu@kolumbus.fi
 X-KDE-PluginInfo-Name=idle
