@@ -44,6 +44,7 @@ public:
     Tp::AccountPtr account() const;
     void remove();
     const KIcon& icon() const;
+    Tp::ConnectionStatus connectionStatus() const;
     const QString connectionStateString() const;
     const KIcon connectionStateIcon() const;
     const QString connectionStatusReason() const;

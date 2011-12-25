@@ -65,6 +65,7 @@ private Q_SLOTS:
     void onSelectedItemChanged(const QModelIndex &current, const QModelIndex &previous);
     void onAddAccountClicked();
     void onEditAccountClicked();
+    void onEditIdentityClicked();
     void onRemoveAccountClicked();
     void onModelDataChanged();
     void onSalutEnableButtonToggled(bool checked);

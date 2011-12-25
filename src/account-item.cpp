@@ -192,4 +192,9 @@ void AccountItem::onTitleForCustomPages(QString mandatoryPage, QList<QString> op
     emit setTitleForCustomPages(mandatoryPage, optionalPage);
 }
 
+Tp::ConnectionStatus AccountItem::connectionStatus() const
+{
+    return m_account->connectionStatus();
+}
+
 #include "account-item.moc"

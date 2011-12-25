@@ -7,6 +7,8 @@ add_subdirectory (KCMTelepathyAccounts)
 project (ktp-accounts-kcm)
 
 set (kcm_ktp_accounts_SRCS
+     avatar-button.cpp
+     fetch-avatar-job.cpp
      salut-enabler.cpp
      salut-message-widget.cpp
      kcm-telepathy-accounts.cpp
@@ -14,12 +16,15 @@ set (kcm_ktp_accounts_SRCS
      account-item.cpp
      add-account-assistant.cpp
      edit-account-dialog.cpp
+     account-identity-dialog.cpp
      salut-details-dialog.cpp
      accounts-list-delegate.cpp
 )
 
+
 kde4_add_ui_files (kcm_ktp_accounts_SRCS
                    main-widget.ui
+                   account-identity-dialog.ui
 )
 
 kde4_add_plugin (kcm_ktp_accounts
@@ -32,6 +37,8 @@ target_link_libraries (kcm_ktp_accounts
                        ${KDE4_KDEUI_LIBS}
                        ${TELEPATHY_QT4_LIBRARIES}
                        ${KTP_LIBRARIES}
+                       ${KDE4_KIO_LIBS}
+
 )
 
 # Install:

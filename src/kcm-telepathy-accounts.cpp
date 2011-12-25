@@ -27,6 +27,7 @@
 #include "add-account-assistant.h"
 #include "edit-account-dialog.h"
 #include "accounts-list-delegate.h"
+#include "account-identity-dialog.h"
 
 #include <KTp/wallet-interface.h>
 
@@ -121,6 +122,7 @@ KCMTelepathyAccounts::KCMTelepathyAccounts(QWidget *parent, const QVariantList& 
     m_ui->addAccountButton->setIcon(KIcon("list-add"));
     m_ui->editAccountButton->setIcon(KIcon("configure"));
     m_ui->removeAccountButton->setIcon(KIcon("edit-delete"));
+    m_ui->editAccountIdentityButton->setIcon(KIcon("user-identity"));
 
     m_salutBusyWheel = new KPixmapSequenceOverlayPainter(this);
     m_salutBusyWheel->setSequence(KPixmapSequence("process-working", 22));
@@ -149,6 +151,9 @@ KCMTelepathyAccounts::KCMTelepathyAccounts(QWidget *parent, const QVariantList& 
     connect(m_ui->editAccountButton,
             SIGNAL(clicked()),
             SLOT(onEditAccountClicked()));
+    connect(m_ui->editAccountIdentityButton,
+            SIGNAL(clicked()),
+            SLOT(onEditIdentityClicked()));
     connect(m_ui->accountsListView,
             SIGNAL(doubleClicked(QModelIndex)),
             SLOT(onEditAccountClicked()));
@@ -253,10 +258,13 @@ void KCMTelepathyAccounts::onSelectedItemChanged(const QModelIndex &current, con
 {
     Q_UNUSED(previous);
 
-    if (!current.isValid()) {
-        m_ui->removeAccountButton->setEnabled(false);
-        m_ui->editAccountButton->setEnabled(false);
-        return;
+    m_ui->removeAccountButton->setEnabled(current.isValid());
+    m_ui->editAccountButton->setEnabled(current.isValid());
+
+    if (current.isValid() && current.data(AccountsListModel::ConnectionStateRole).toInt() == Tp::ConnectionStatusConnected) {
+        m_ui->editAccountIdentityButton->setEnabled(true);
+    } else {
+        m_ui->editAccountIdentityButton->setEnabled(false);
     }
 
     m_currentModel = qobject_cast<const QSortFilterProxyModel*>(current.model());
@@ -309,6 +317,24 @@ void KCMTelepathyAccounts::onEditAccountClicked()
     EditAccountDialog dialog(item, this);
     dialog.exec();
 }
+
+void KCMTelepathyAccounts::onEditIdentityClicked()
+{
+    QModelIndex index = m_currentListView->currentIndex();
+    if (!index.isValid()) {
+        return;
+    }
+
+    AccountItem *item = m_accountsListModel->itemForIndex(m_currentModel->mapToSource(index));
+
+    if (!item) {
+        return;
+    }
+
+    AccountIdentityDialog dialog(item->account(),this);
+    dialog.exec();
+}
+
 
 void KCMTelepathyAccounts::onRemoveAccountClicked()
 {
