@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainOptionsWidgetMSN</class>
+ <widget class="QWidget" name="MainOptionsWidgetMSN">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>400</width>
+    <height>0</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Account Preferences</string>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout">
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
