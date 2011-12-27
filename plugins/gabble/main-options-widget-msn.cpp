@@ -27,6 +27,10 @@ MainOptionsWidgetMSN::MainOptionsWidgetMSN(ParameterEditModel *model,
                                      QWidget *parent)
  : AbstractAccountParametersWidget(model, parent)
 {
+    // MSN uses OAUTH2 authentication and the only parameters that require
+    // to be configured are mandatory and set using the profile
+    // Therefore this UI is just empty
+
     // Set up the UI.
     m_ui = new Ui::MainOptionsWidgetMSN;
     m_ui->setupUi(this);
