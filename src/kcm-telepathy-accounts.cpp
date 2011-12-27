@@ -213,7 +213,7 @@ void KCMTelepathyAccounts::onAccountEnabledChanged(const QModelIndex &index, boo
 
     if (enabled) {
         // connect the account
-        AccountItem *item = m_accountsListModel->itemForIndex(index);
+        AccountItem *item = index.data(AccountsListModel::AccountItemRole).value<AccountItem*>();
         if (item) {
             item->account()->setRequestedPresence(Tp::Presence::available());
         }
@@ -300,7 +300,7 @@ void KCMTelepathyAccounts::onEditAccountClicked()
     }
 
     QModelIndex index = m_currentListView->currentIndex();
-    AccountItem *item = m_accountsListModel->itemForIndex(m_currentModel->mapToSource(index));
+    AccountItem *item = index.data(AccountsListModel::AccountItemRole).value<AccountItem*>();
 
     if (!item)
         return;
@@ -319,7 +319,7 @@ void KCMTelepathyAccounts::onRemoveAccountClicked()
                                         i18n("Remove Account"), KGuiItem(i18n("Remove Account"), "edit-delete"), KStandardGuiItem::cancel(),
                                         QString(), KMessageBox::Notify | KMessageBox::Dangerous) == KMessageBox::Continue)
     {
-        AccountItem *item = m_accountsListModel->itemForIndex(m_currentModel->mapToSource(index));
+        AccountItem *item = index.data(AccountsListModel::AccountItemRole).value<AccountItem*>();
         KTp::WalletInterface wallet(this->effectiveWinId());
         wallet.removeAccount(item->account());
 

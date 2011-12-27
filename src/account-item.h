@@ -68,6 +68,7 @@ private:
     KIcon* m_icon;
 };
 
+Q_DECLARE_METATYPE(AccountItem*);
 
 #endif // header guard
 

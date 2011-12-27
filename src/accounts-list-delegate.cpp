@@ -29,6 +29,9 @@
 
 #include <KDebug>
 #include <KLocale>
+#include <QSortFilterProxyModel>
+
+#include "account-item.h"
 
 AccountsListDelegate::AccountsListDelegate(QAbstractItemView *itemView, QObject *parent)
     : KWidgetItemDelegate(itemView, parent)
@@ -49,13 +52,17 @@ QList<QWidget*> AccountsListDelegate::createItemWidgets() const
 {
     QCheckBox *checkbox = new QCheckBox();
     checkbox->setToolTip(i18n("Enable account"));
-    connect(checkbox, SIGNAL(toggled(bool)), SLOT(onCheckBoxToggled(bool)));
+    connect(checkbox, SIGNAL(clicked(bool)), SLOT(onCheckBoxToggled(bool)));
     return QList<QWidget*>() << checkbox;
 }
 
 
 void AccountsListDelegate::updateItemWidgets(const QList<QWidget *> widgets, const QStyleOptionViewItem &option, const QPersistentModelIndex &index) const
 {
+    if (!index.isValid()) {
+        return;
+    }
+
     QCheckBox* checkbox = qobject_cast<QCheckBox*>(widgets.at(0));
     if (checkbox) {
         int topMargin = (option.rect.height() - checkbox->height()) / 2;
@@ -85,6 +92,10 @@ void AccountsListDelegate::paint(QPainter *painter, const QStyleOptionViewItem &
 {
     //draws Checkbox | Icon | AccountName  | ConnectionIcon | ConnectionState
     //               |      | errorMessage |                |
+
+    if (!index.isValid()) {
+        return;
+    }
 
     QStyle *style = QApplication::style();
 
