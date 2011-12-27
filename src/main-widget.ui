@@ -163,6 +163,9 @@
            <property name="enabled">
             <bool>false</bool>
            </property>
+           <property name="toolTip">
+            <string>Edit how you appear to others. Requires the account to be online.</string>
+           </property>
            <property name="text">
             <string>Edit Identity</string>
            </property>

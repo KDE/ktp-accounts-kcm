@@ -308,6 +308,9 @@ void KCMTelepathyAccounts::onEditAccountClicked()
     }
 
     QModelIndex index = m_currentListView->currentIndex();
+    if (!index.isValid()) {
+        return;
+    }
     AccountItem *item = index.data(AccountsListModel::AccountItemRole).value<AccountItem*>();
 
     if (!item)
@@ -320,12 +323,16 @@ void KCMTelepathyAccounts::onEditAccountClicked()
 
 void KCMTelepathyAccounts::onEditIdentityClicked()
 {
+    if (!m_accountManager->isReady()) {
+        return;
+    }
+    
     QModelIndex index = m_currentListView->currentIndex();
     if (!index.isValid()) {
         return;
     }
 
-    AccountItem *item = m_accountsListModel->itemForIndex(m_currentModel->mapToSource(index));
+    AccountItem *item = index.data(AccountsListModel::AccountItemRole).value<AccountItem*>();
 
     if (!item) {
         return;
