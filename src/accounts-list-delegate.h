@@ -39,7 +39,7 @@ public:
 Q_SIGNALS:
     void itemChecked(const QModelIndex &index, bool checked);
 
-private slots:
+private Q_SLOTS:
     void onCheckBoxToggled(bool checked);
 
 private:

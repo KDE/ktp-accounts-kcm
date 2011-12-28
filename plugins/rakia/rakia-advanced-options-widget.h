@@ -35,7 +35,7 @@ public:
     virtual ~RakiaAdvancedOptionsWidget();
     virtual void submit();
 
-public slots:
+public Q_SLOTS:
     void updateKeepalive(int index);
 
 private:

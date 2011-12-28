@@ -22,11 +22,11 @@ public:
     /** Returns if the user has changed settings*/
     bool hasChanged() const;
 
-public slots:
+public Q_SLOTS:
     /** Updates the account to user selection*/
     void apply();
 
-private slots:
+private Q_SLOTS:
     void onNicknameChanged(const QString &nickname);
     void onAvatarChanged(const Tp::Avatar &avatar);
     void onEdited();

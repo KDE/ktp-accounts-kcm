@@ -39,7 +39,7 @@ public:
     FeedbackWidget(QWidget *parent = 0);
     virtual ~FeedbackWidget();
 
-public slots:
+public Q_SLOTS:
     void setMessage(const QString &text, const QString &comment, KMessageWidget::MessageType type);
     void setText(const QString &text, KMessageWidget::MessageType type);
 };
