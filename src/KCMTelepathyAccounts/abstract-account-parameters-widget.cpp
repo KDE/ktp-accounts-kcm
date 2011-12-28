@@ -4,6 +4,7 @@
  * Copyright (C) 2009 Collabora Ltd. <info@collabora.com>
  * Copyright (C) 2011 Dominik Schmidt <kde@dominik-schmidt.de>
  * Copyright (C) 2011 Thomas Richard <thomas.richard@proan.be>
+ * Copyright (C) 2012 Daniele E. Domenichelli <daniele.domenichelli@gmail.com>
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -48,6 +49,7 @@ public:
     QList<QWidget*> mappedWidgets;
     QMap<QPersistentModelIndex,ValidatedLineEdit*> validatedWidgets;
     QString errorMessage;
+    QString defaultDisplayName;
 };
 
 AbstractAccountParametersWidget::AbstractAccountParametersWidget(ParameterEditModel *parameterModel,
@@ -87,19 +89,21 @@ bool AbstractAccountParametersWidget::validateParameterValues()
 void AbstractAccountParametersWidget::handleParameter(const QString &parameterName,
                                            QVariant::Type parameterType,
                                            QWidget* dataWidget,
-                                           QWidget* labelWidget = 0)
+                                           QWidget* labelWidget,
+                                           bool updatesDefaultDisplayName)
 {
     QList<QWidget*> labelWidgets;
     if (labelWidget) {
         labelWidgets << labelWidget;
     }
-    handleParameter(parameterName, parameterType, dataWidget, labelWidgets);
+    handleParameter(parameterName, parameterType, dataWidget, labelWidgets, updatesDefaultDisplayName);
 }
 
 void AbstractAccountParametersWidget::handleParameter(const QString &parameterName,
                                            QVariant::Type parameterType,
                                            QWidget* dataWidget,
-                                           const QList<QWidget*> &labelWidgets)
+                                           const QList<QWidget*> &labelWidgets,
+                                           bool updatesDefaultDisplayName)
 {
     kDebug() << parameterType << parameterName;
 
@@ -130,6 +134,13 @@ void AbstractAccountParametersWidget::handleParameter(const QString &parameterNa
             d->mapper->addMapping(dataWidget, index.row());
         }
         d->mapper->toFirst();
+
+        QLineEdit *lineEdit = qobject_cast<QLineEdit*>(dataWidget);
+        if (lineEdit && updatesDefaultDisplayName) {
+            connect (lineEdit,
+                     SIGNAL(textChanged(QString)),
+                     SLOT(updateDefaultDisplayName()));
+        }
 
         // check if the passed parameter is a validated one.. If so we're going to set the model here
         ValidatedLineEdit *validated = qobject_cast<ValidatedLineEdit*>(dataWidget);
@@ -168,6 +179,25 @@ void AbstractAccountParametersWidget::submit()
 ParameterEditModel* AbstractAccountParametersWidget::parameterModel() const
 {
     return d->parameterModel;
+}
+
+void AbstractAccountParametersWidget::updateDefaultDisplayName()
+{
+    kWarning() << "This method should be implemented by derived classed";
+}
+
+void AbstractAccountParametersWidget::setDefaultDisplayName(const QString& defaultDisplayName)
+{
+    if (d->defaultDisplayName != defaultDisplayName) {
+        QString oldDefaultDisplayName = d->defaultDisplayName;
+        d->defaultDisplayName = defaultDisplayName;
+        Q_EMIT defaultDisplayNameChanged(oldDefaultDisplayName, defaultDisplayName);
+    }
+}
+
+QString AbstractAccountParametersWidget::defaultDisplayName() const
+{
+    return d->defaultDisplayName;
 }
 
 
