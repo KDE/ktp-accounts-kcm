@@ -201,7 +201,7 @@ void AddAccountAssistant::accept()
     }
 
     // Check account we're trying to create doesn't already exist
-    foreach (Tp::AccountPtr account, d->accountManager->allAccounts()) {
+    Q_FOREACH (const Tp::AccountPtr &account, d->accountManager->allAccounts()) {
         if (values.value("account") == account->displayName()
             && d->currentProfileItem->protocolName() == account->protocolName()) {
             Q_EMIT feedbackMessage(i18n("Failed to create account"),

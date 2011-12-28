@@ -88,7 +88,7 @@ AbstractAccountUi *PluginManager::accountUiForProtocol(const QString &connection
     // Loop through all the plugins seeing if they provide an AccountUi for the connection manager
     // and protocol combination we were provided with.
 
-    foreach (AbstractAccountUiPlugin *plugin, m_plugins) {
+    Q_FOREACH (AbstractAccountUiPlugin *plugin, m_plugins) {
         AbstractAccountUi *ui = plugin->accountUi(connectionManager, protocol, serviceName);
 
         // FIXME: Bug https://bugs.kde.org/201797 - we should check here to see which plugin

@@ -230,7 +230,7 @@ void KCMTelepathyAccounts::onAccountManagerReady(Tp::PendingOperation *op)
 
     // Add all the accounts to the Accounts Model.
     QList<Tp::AccountPtr> accounts = m_accountManager->allAccounts();
-    foreach (Tp::AccountPtr account, accounts) {
+    Q_FOREACH (const Tp::AccountPtr &account, accounts) {
         m_accountsListModel->addAccount(account);
     }
 

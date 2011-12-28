@@ -65,7 +65,7 @@ const QMap<QString, QVariant::Type> &AbstractAccountUi::supportedParameters() co
 void AbstractAccountUi::registerSupportedParameter(const QString &name, QVariant::Type type)
 {
     // Check that the parameter is not already in the list
-    foreach (QVariant::Type t, d->supportedParameters.values(name)) {
+    Q_FOREACH (QVariant::Type t, d->supportedParameters.values(name)) {
         if (t == type) {
             kWarning() << "Parameter:" << name << "of type:" << type << "is already added.";
             return;

@@ -108,7 +108,7 @@ void AbstractAccountParametersWidget::handleParameter(const QString &parameterNa
         // hide widgets because they are not needed
         kDebug() << "Field" << parameterName << "hidden";
         dataWidget->hide();
-        foreach(QWidget *label, labelWidgets) {
+        Q_FOREACH (QWidget *label, labelWidgets) {
             if(label) {
                 label->hide();
             }

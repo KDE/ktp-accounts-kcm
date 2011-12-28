@@ -42,7 +42,7 @@ SkypeMainOptionsWidget::SkypeMainOptionsWidget(ParameterEditModel *model, QWidge
     QFileInfoList folderList = skypeConfigDir.entryInfoList();
 
     KCompletion *completion = new KCompletion;
-    foreach (const QFileInfo info, folderList){
+    Q_FOREACH (const QFileInfo &info, folderList) {
         completion->addItem(info.fileName());
     }
     m_ui->accountLineEdit->setCompletionObject(completion);

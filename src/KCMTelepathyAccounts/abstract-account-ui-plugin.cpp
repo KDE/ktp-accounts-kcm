@@ -53,7 +53,7 @@ void AbstractAccountUiPlugin::registerProvidedProtocol(const QString &connection
                                                        const QString &protocol)
 {
     // Check the protocol is not already entered
-    foreach (const QString &value, d->providedProtocols.values(connectionManager)) {
+    Q_FOREACH (const QString &value, d->providedProtocols.values(connectionManager)) {
         if (value == protocol) {
             kWarning() << "Tried to add connection manager:" << connectionManager
                        << "and protocol:" << protocol << "combination twice.";

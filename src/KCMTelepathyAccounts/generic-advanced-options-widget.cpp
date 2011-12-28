@@ -55,7 +55,7 @@ GenericAdvancedOptionsWidget::~GenericAdvancedOptionsWidget()
 bool GenericAdvancedOptionsWidget::validateParameterValues()
 {
     // validate one tab at a time so that the user is not flooded with dialogs
-    foreach(AbstractAccountParametersWidget *widget, d->widgets) {
+    Q_FOREACH (AbstractAccountParametersWidget *widget, d->widgets) {
         if (!widget->validateParameterValues())
         return false;
     }
@@ -70,7 +70,7 @@ void GenericAdvancedOptionsWidget::setTabBarHidden(bool hidden)
 
 void GenericAdvancedOptionsWidget::submit()
 {
-    foreach(AbstractAccountParametersWidget *widget, d->widgets) {
+    Q_FOREACH (AbstractAccountParametersWidget *widget, d->widgets) {
         widget->submit();
     }
 

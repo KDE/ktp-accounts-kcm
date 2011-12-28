@@ -179,7 +179,7 @@ QModelIndex ParameterEditModel::indexForParameter(const Tp::Profile::Parameter &
 
 Tp::ProtocolParameter ParameterEditModel::parameter(const QString &parameterName) const
 {
-    foreach(ParameterItem* item, m_items) {
+    Q_FOREACH (ParameterItem* item, m_items) {
         if(item->parameter().name() == parameterName) {
             return item->parameter();
         }
@@ -192,7 +192,7 @@ Tp::ProtocolParameter ParameterEditModel::parameter(const QString &parameterName
 void ParameterEditModel::addItem(const Tp::ProtocolParameter &parameter, const Tp::Profile::Parameter &profileParameter, const QVariant &originalValue)
 {
     // Check we are not creating duplicate items.
-    foreach (const ParameterItem *item, m_items) {
+    Q_FOREACH (const ParameterItem *item, m_items) {
         if(item->parameter() == parameter) {
             return;
         }
@@ -206,12 +206,12 @@ void ParameterEditModel::addItem(const Tp::ProtocolParameter &parameter, const T
 
 void ParameterEditModel::addItems(const Tp::ProtocolParameterList &parameters, const Tp::Profile::ParameterList &profileParameters, const QVariantMap &parameterValues)
 {
-    foreach (const Tp::ProtocolParameter &parameter, parameters) {
+    Q_FOREACH (const Tp::ProtocolParameter &parameter, parameters) {
 
         Tp::Profile::Parameter relevantProfileParameter;
 
         //try and find the correct profile parameter, if it can't be found leave it as empty.
-        foreach (const Tp::Profile::Parameter &profileParameter, profileParameters) {
+        Q_FOREACH (const Tp::Profile::Parameter &profileParameter, profileParameters) {
             if (profileParameter.name() == parameter.name()) {
                 relevantProfileParameter = profileParameter;
                 break;
@@ -226,7 +226,7 @@ Tp::ProtocolParameterList ParameterEditModel::parameters() const
 {
     Tp::ProtocolParameterList parameters;
 
-    foreach (ParameterItem *item, m_items) {
+    Q_FOREACH (ParameterItem *item, m_items) {
         parameters.append(item->parameter());
     }
 
@@ -236,7 +236,7 @@ Tp::ProtocolParameterList ParameterEditModel::parameters() const
 QVariantMap ParameterEditModel::parametersSet() const
 {
     QVariantMap setParameters;
-    foreach (ParameterItem *item, m_items) {
+    Q_FOREACH (ParameterItem *item, m_items) {
         Tp::ProtocolParameter parameter = item->parameter();
         QVariant value = item->value();
 
@@ -253,7 +253,7 @@ QVariantMap ParameterEditModel::parametersSet() const
 QStringList ParameterEditModel::parametersUnset() const
 {
     QStringList unsetParameters;
-    foreach (ParameterItem *item, m_items) {
+    Q_FOREACH (ParameterItem *item, m_items) {
         Tp::ProtocolParameter parameter = item->parameter();
         QVariant value = item->value();
 
@@ -297,7 +297,7 @@ bool ParameterEditModel::parameterNeedsSaving(const Tp::ProtocolParameter &param
 
 bool ParameterEditModel::validateParameterValues()
 {
-    foreach (ParameterItem *item, m_items) {
+    Q_FOREACH (ParameterItem *item, m_items) {
         if (item->validity() != QValidator::Acceptable) {
            emit feedbackMessage(i18n("Parameter \"<b>%1</b>\" is not valid.",
                                 item->localizedName()),

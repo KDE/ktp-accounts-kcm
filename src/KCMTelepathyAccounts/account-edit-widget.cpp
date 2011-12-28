@@ -132,7 +132,7 @@ void AccountEditWidget::loadWidgets()
 {
     Tp::ProtocolParameterList mandatoryParameters;
 
-    foreach (const Tp::ProtocolParameter &parameter, d->parameterModel->parameters()) {
+    Q_FOREACH (const Tp::ProtocolParameter &parameter, d->parameterModel->parameters()) {
         if (parameter.isRequired()) {
             mandatoryParameters.append(parameter);
         }
@@ -158,7 +158,7 @@ void AccountEditWidget::loadWidgets()
         QMap<QString, QVariant::Type> params = d->accountUi->supportedParameters();
         QMap<QString, QVariant::Type>::const_iterator paramIter = params.constBegin();
         while(paramIter != params.constEnd()) {
-            foreach (const Tp::ProtocolParameter &parameter, d->parameterModel->parameters()) {
+            Q_FOREACH (const Tp::ProtocolParameter &parameter, d->parameterModel->parameters()) {
                 if ((parameter.name() == paramIter.key()) &&
                     (parameter.type() == paramIter.value())) {
                     mandatoryParameters.removeAll(parameter);
