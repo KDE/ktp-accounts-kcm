@@ -180,7 +180,7 @@ void AccountItem::onAccountRemoved(Tp::PendingOperation *op)
 
 void AccountItem::onTitleForCustomPages(QString mandatoryPage, QList<QString> optionalPage)
 {
-    emit setTitleForCustomPages(mandatoryPage, optionalPage);
+    Q_EMIT setTitleForCustomPages(mandatoryPage, optionalPage);
 }
 
 Tp::ConnectionStatus AccountItem::connectionStatus() const

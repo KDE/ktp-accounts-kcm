@@ -84,7 +84,7 @@ void AccountsListDelegate::updateItemWidgets(const QList<QWidget *> widgets, con
 void AccountsListDelegate::onCheckBoxToggled(bool checked)
 {
     QModelIndex index = focusedIndex();
-    emit itemChecked(index, checked);
+    Q_EMIT itemChecked(index, checked);
 }
 
 

@@ -171,7 +171,7 @@ void EditAccountDialog::onDisplayNameUpdated(Tp::PendingOperation *op)
         return;
     }
 
-    emit finished();
+    Q_EMIT finished();
 
     if (d->reconnectRequired) {
         d->item->account()->reconnect();

@@ -299,7 +299,7 @@ bool ParameterEditModel::validateParameterValues()
 {
     Q_FOREACH (ParameterItem *item, m_items) {
         if (item->validity() != QValidator::Acceptable) {
-           emit feedbackMessage(i18n("Parameter \"<b>%1</b>\" is not valid.",
+           Q_EMIT feedbackMessage(i18n("Parameter \"<b>%1</b>\" is not valid.",
                                 item->localizedName()),
                                 QString(),
                                 KMessageWidget::Error);
