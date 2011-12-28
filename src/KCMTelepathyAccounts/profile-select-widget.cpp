@@ -85,7 +85,7 @@ ProfileSelectWidget::ProfileSelectWidget(QWidget *parent, bool enableSalut)
             SLOT(onSelectionChanged(QItemSelection)));
     connect(d->ui->profileListView,
             SIGNAL(doubleClicked(QModelIndex)),
-            SIGNAL(profileDoubleClicked()));
+            SIGNAL(profileChosen()));
 
     d->profileManager = Tp::ProfileManager::create(QDBusConnection::sessionBus());
 
@@ -145,7 +145,7 @@ void ProfileSelectWidget::onSelectionChanged(const QItemSelection &selected)
 {
     kDebug();
 
-    Q_EMIT profileGotSelected(!selected.isEmpty());
+    Q_EMIT profileSelected(!selected.isEmpty());
 }
 
 

@@ -37,7 +37,7 @@ class KCM_TELEPATHY_ACCOUNTS_EXPORT ProfileItem : public QObject
     Q_DISABLE_COPY(ProfileItem);
 
 public:
-    explicit ProfileItem(const Tp::ProfilePtr &profile, ProfileListModel *parent);
+    explicit ProfileItem(const Tp::ProfilePtr &profile, QObject *parent);
     virtual ~ProfileItem();
 
     QString serviceName() const;

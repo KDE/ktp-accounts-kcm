@@ -1,8 +1,7 @@
 /*
  * This file is part of telepathy-accounts-kcm
  *
- * Copyright (C) 2009 Collabora Ltd. <info@collabora.com>
- * Copyright (C) 2011 Thomas Richard <thomas.richard@proan.be>
+ * Copyright (C) 2011 Florian Reinhard <florian.reinhard@googlemail.com>
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -19,8 +18,8 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
-#ifndef TELEPATHY_ACCOUNTS_KCM_PROFILE_SELECT_WIDGET_H
-#define TELEPATHY_ACCOUNTS_KCM_PROFILE_SELECT_WIDGET_H
+#ifndef TELEPATHY_ACCOUNTS_KCM_SIMPLE_PROFILE_SELECT_WIDGET_H
+#define TELEPATHY_ACCOUNTS_KCM_SIMPLE_PROFILE_SELECT_WIDGET_H
 
 #include "kcm_telepathy_accounts_export.h"
 
@@ -35,23 +34,23 @@ class QItemSelection;
 
 class QModelIndex;
 
-class KCM_TELEPATHY_ACCOUNTS_EXPORT ProfileSelectWidget : public QWidget
+class KCM_TELEPATHY_ACCOUNTS_EXPORT SimpleProfileSelectWidget : public QWidget
 {
     Q_OBJECT
 
 public:
-    explicit ProfileSelectWidget(QWidget *parent = 0, bool enableSalut = false);
-    ~ProfileSelectWidget();
+    explicit SimpleProfileSelectWidget(QWidget *parent = 0);
+    ~SimpleProfileSelectWidget();
 
     ProfileItem *selectedProfile();
 
 private Q_SLOTS:
     void onProfileManagerReady(Tp::PendingOperation *op);
-    void onSelectionChanged(const QItemSelection &selected);
+    void onProfileClicked(QString profileName);
 
 Q_SIGNALS:
-    void profileSelected(bool selected);
     void profileChosen();
+    void othersChosen();
 
 private:
     class Private;

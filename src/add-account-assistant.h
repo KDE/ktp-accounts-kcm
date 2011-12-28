@@ -40,9 +40,12 @@ public:
     ~AddAccountAssistant();
 
 protected Q_SLOTS:
+    virtual void back();
     virtual void next();
     virtual void accept();
     virtual void reject();
+    void goToPageTwo();
+    void goToPageThree();
 
 Q_SIGNALS:
     void cancelled();
@@ -54,7 +57,7 @@ private Q_SLOTS:
     void onProfileSelected(bool value);
 
 private:
-    void pageTwo();
+    void pageThree();
 
     class Private;
     Private * const d;

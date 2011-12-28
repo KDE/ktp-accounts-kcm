@@ -13,6 +13,7 @@ set (libktpaccountskcminternal_SRCS
      generic-advanced-options-widget.cpp
      account-edit-widget.cpp
      profile-select-widget.cpp
+     simple-profile-select-widget.cpp
      profile-list-model.cpp
      profile-item.cpp
      parameter-edit-widget.cpp
@@ -34,6 +35,7 @@ set (libktpaccountskcminternal_HDRS
      plugin-macros.h
      plugin-manager.h
      profile-select-widget.h
+     simple-profile-select-widget.h
      profile-item.h
      parameter-edit-widget.h
      parameter-edit-model.h
@@ -60,6 +62,7 @@ kde4_add_ui_files (libktpaccountskcminternal_SRCS
                    account-edit-widget.ui
                    parameter-edit-widget.ui
                    profile-select-widget.ui
+                   simple-profile-select-widget.ui
 )
 
 kde4_add_library (ktpaccountskcminternal
@@ -70,8 +73,10 @@ kde4_add_library (ktpaccountskcminternal
 target_link_libraries (ktpaccountskcminternal
                        ${QT_LIBRARIES}
                        ${KDE4_KDEUI_LIBS}
+                       ${KDE4_KIO_LIBS}
                        ${TELEPATHY_QT4_LIBRARIES}
 )
+
 
 set_target_properties (ktpaccountskcminternal PROPERTIES
                        VERSION ${GENERIC_LIB_VERSION}

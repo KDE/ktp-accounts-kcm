@@ -30,6 +30,7 @@
 #include "KCMTelepathyAccounts/plugin-manager.h"
 #include "KCMTelepathyAccounts/profile-item.h"
 #include "KCMTelepathyAccounts/profile-select-widget.h"
+#include "KCMTelepathyAccounts/simple-profile-select-widget.h"
 
 #include <KDebug>
 #include <KLocale>
@@ -52,7 +53,8 @@ public:
        profileSelectWidget(0),
        accountEditWidget(0),
        pageOne(0),
-       pageTwo(0)
+       pageTwo(0),
+       pageThree(0)
     {
         kDebug();
     }
@@ -61,10 +63,12 @@ public:
     Tp::ConnectionManagerPtr connectionManager;
     ProfileItem *currentProfileItem;
     ProfileSelectWidget *profileSelectWidget;
+    SimpleProfileSelectWidget *simpleProfileSelectWidget;
     AccountEditWidget *accountEditWidget;
-    QWidget *pageTwoWidget;
+    QWidget *pageThreeWidget;
     KPageWidgetItem *pageOne;
     KPageWidgetItem *pageTwo;
+    KPageWidgetItem *pageThree;
 };
 
 AddAccountAssistant::AddAccountAssistant(Tp::AccountManagerPtr accountManager, QWidget *parent)
@@ -76,26 +80,43 @@ AddAccountAssistant::AddAccountAssistant(Tp::AccountManagerPtr accountManager, Q
     d->accountManager = accountManager;
 
     // Set up the pages of the Assistant.
-    d->profileSelectWidget = new ProfileSelectWidget(this);
-    d->pageOne = new KPageWidgetItem(d->profileSelectWidget);
+    d->profileSelectWidget       = new ProfileSelectWidget(this);
+    d->simpleProfileSelectWidget = new SimpleProfileSelectWidget(this);
+    d->pageOne = new KPageWidgetItem(d->simpleProfileSelectWidget);
+    d->pageTwo = new KPageWidgetItem(d->profileSelectWidget);
+
     d->pageOne->setHeader(i18n("Step 1: Select an Instant Messaging Network."));
+    d->pageTwo->setHeader(i18n("Step 1: Select an Instant Messaging Network."));
+
     setValid(d->pageOne, false);
+    setValid(d->pageTwo, false);
+
     connect(d->profileSelectWidget,
-            SIGNAL(profileGotSelected(bool)),
+            SIGNAL(profileSelected(bool)),
             SLOT(onProfileSelected(bool)));
     connect(d->profileSelectWidget,
-            SIGNAL(profileDoubleClicked()),
-            SLOT(next()));
+            SIGNAL(profileChosen()),
+            SLOT(goToPageThree()));
+
+    connect(d->simpleProfileSelectWidget,
+            SIGNAL(profileChosen()),
+            SLOT(goToPageThree()));
+    connect(d->simpleProfileSelectWidget,
+            SIGNAL(othersChosen()),
+            SLOT(goToPageTwo()));
 
     // we will build the page widget later, but the constructor of
     // KPageWidgetItem requires the widget at this point, so...
-    d->pageTwoWidget = new QWidget(this);
-    new QHBoxLayout(d->pageTwoWidget);
-    d->pageTwo = new KPageWidgetItem(d->pageTwoWidget);
-    d->pageTwo->setHeader(i18n("Step 2: Fill in the required Parameters."));
+    d->pageThreeWidget = new QWidget(this);
+    new QHBoxLayout(d->pageThreeWidget);
+    d->pageThree = new KPageWidgetItem(d->pageThreeWidget);
+    d->pageThree->setHeader(i18n("Step 2: Fill in the required Parameters."));
 
     addPage(d->pageOne);
     addPage(d->pageTwo);
+    addPage(d->pageThree);
+
+    KAssistantDialog::setAppropriate(d->pageTwo, false);
 
     resize(QSize(400, 480));
 }
@@ -107,21 +128,30 @@ AddAccountAssistant::~AddAccountAssistant()
     delete d;
 }
 
-// FIXME: This method *works*, but is really not very elegant. I don't want to waste time tidying it
-// up at the moment, but I'm sure it could have a *lot* less code in it if it were tidied up at some
-// point in the future.
-void AddAccountAssistant::next()
+void AddAccountAssistant::goToPageTwo()
 {
     kDebug();
 
-    // Check which page we are on.
-    if (currentPage() == d->pageOne) {
-        kDebug() << "Current page: Page 1.";
+    KAssistantDialog::setAppropriate(d->pageTwo, true);
+    KAssistantDialog::next();
+}
 
-        Q_ASSERT(d->profileSelectWidget->selectedProfile());
+void AddAccountAssistant::goToPageThree()
+{
+    kDebug();
+    ProfileItem *selectedItem;
 
-        ProfileItem *selectedItem = d->profileSelectWidget->selectedProfile();
+    if (currentPage() == d->pageTwo) {
+        kDebug() << "Current Page seems to be page two";
+        selectedItem = d->profileSelectWidget->selectedProfile();
+    }
+    else {
+        kDebug() << "Current Page seems to be page one";
+        selectedItem = d->simpleProfileSelectWidget->selectedProfile();
+    }
 
+    // FIXME: untill packages for missing profiles aren't installed this needs to stay here
+    if (selectedItem != 0) {
         // Set up the next page.
         if(d->currentProfileItem != selectedItem) {
             d->currentProfileItem = selectedItem;
@@ -132,17 +162,41 @@ void AddAccountAssistant::next()
                     SLOT(onConnectionManagerReady(Tp::PendingOperation*)));
         }
         else {
-            pageTwo();
+            pageThree();
         }
     }
+    else {
+        KMessageBox::error(this, i18n("To connect to this IM network, you need to install additional plugins. Please install the telepathy-haze and telepathy-gabble packages using your package manager."),i18n("Missing Telepathy Connection Manager"));
+    }
+}
+
+void AddAccountAssistant::next()
+{
+    kDebug();
+    // the next button is disabled on the first page
+    // so ::next is called from the second page
+    // so we go to page three now
+    goToPageThree();
+}
+
+void AddAccountAssistant::back()
+{
+    kDebug();
+
+    // Disable pageTwo once we're going back to pageOne
+    if (currentPage() == d->pageTwo) {
+        KAssistantDialog::setAppropriate(d->pageTwo, false);
+    }
+
+    KAssistantDialog::back();
 }
 
 void AddAccountAssistant::accept()
 {
     kDebug();
 
-    // Check we are being called from page 2.
-    if (currentPage() != d->pageTwo) {
+    // Check we are being called from page 3.
+    if (currentPage() != d->pageThree) {
         kWarning() << "Called accept() from a non-final page :(.";
         return;
     }
@@ -256,7 +310,6 @@ void AddAccountAssistant::onAccountCreated(Tp::PendingOperation *op)
         account->setRequestedPresence(Tp::Presence::available(QString("Online")));
     }
     account->setServiceName(d->currentProfileItem->serviceName());
-
     KAssistantDialog::accept();
 }
 
@@ -272,18 +325,19 @@ void AddAccountAssistant::onConnectionManagerReady(Tp::PendingOperation *op)
         kWarning() << "Invalid ConnectionManager";
     }
 
-    pageTwo();
+    pageThree();
 }
 
 void AddAccountAssistant::onProfileSelected(bool value)
 {
     kDebug();
     //if a protocol is selected, enable the next button on the first page
-    setValid(d->pageOne, value);
+    setValid(d->pageTwo, value);
 }
 
-void AddAccountAssistant::pageTwo()
+void AddAccountAssistant::pageThree()
 {
+    kDebug();
     // Get the protocol's parameters and values.
     Tp::ProtocolInfo protocolInfo = d->connectionManager->protocol(d->currentProfileItem->protocolName());
     Tp::ProtocolParameterList parameters = protocolInfo.parameters();
@@ -302,12 +356,12 @@ void AddAccountAssistant::pageTwo()
     d->accountEditWidget = new AccountEditWidget(d->currentProfileItem->profile(),
                                                  parameterModel,
                                                  doConnectOnAdd,
-                                                 d->pageTwoWidget);
+                                                 d->pageThreeWidget);
     connect(this,
             SIGNAL(feedbackMessage(QString,QString,KMessageWidget::MessageType)),
             d->accountEditWidget,
             SIGNAL(feedbackMessage(QString,QString,KMessageWidget::MessageType)));
-    d->pageTwoWidget->layout()->addWidget(d->accountEditWidget);
+    d->pageThreeWidget->layout()->addWidget(d->accountEditWidget);
 
     KAssistantDialog::next();
 }

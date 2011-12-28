@@ -28,7 +28,7 @@
 #include <KDebug>
 #include <KIcon>
 
-ProfileItem::ProfileItem(const Tp::ProfilePtr &profile, ProfileListModel *parent)
+ProfileItem::ProfileItem(const Tp::ProfilePtr &profile, QObject *parent)
  : QObject(parent),
    m_profile(profile),
    m_icon(0)
