@@ -33,6 +33,8 @@ class QTimer;
 class FeedbackWidget : public KMessageWidget
 {
     Q_OBJECT
+    Q_DISABLE_COPY(FeedbackWidget);
+
 public:
     FeedbackWidget(QWidget *parent = 0);
     virtual ~FeedbackWidget();
