@@ -34,6 +34,7 @@ public:
                                     QWidget *parent = 0);
     virtual ~SalutMainOptionsWidget();
 
+    virtual void updateDefaultDisplayName();
 private:
     Q_DISABLE_COPY(SalutMainOptionsWidget);
     Ui::SalutMainOptionsWidget *m_ui;
