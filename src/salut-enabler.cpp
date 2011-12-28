@@ -39,6 +39,12 @@
 #define TP_PROP_ACCOUNT_ENABLED (QLatin1String("org.freedesktop.Telepathy.Account.Enabled"))
 #define TP_PROP_ACCOUNT_SERVICE (QLatin1String("org.freedesktop.Telepathy.Account.Service"))
 
+const QLatin1String salutConnManager("salut");
+const QLatin1String localXmppProtocol("local-xmpp");
+const QLatin1String firstNamePar("first-name");
+const QLatin1String lastNamePar("last-name");
+const QLatin1String nickNamePar("nickname");
+
 class SalutEnabler::Private
 {
 public:
@@ -67,7 +73,7 @@ SalutEnabler::SalutEnabler(const Tp::AccountManagerPtr accountManager, QObject *
 {
     d->accountManager = accountManager;
 
-    d->connectionManager = Tp::ConnectionManager::create("salut");
+    d->connectionManager = Tp::ConnectionManager::create(salutConnManager);
     connect(d->connectionManager->becomeReady(),
             SIGNAL(finished(Tp::PendingOperation*)),
             SLOT(onConnectionManagerReady(Tp::PendingOperation*)));
@@ -103,15 +109,15 @@ void SalutEnabler::onProfileManagerReady(Tp::PendingOperation* op)
     }
 
     // Get the protocol's parameters and values.
-    Tp::ProtocolInfo protocolInfo = d->connectionManager->protocol(QLatin1String("local-xmpp"));
+    Tp::ProtocolInfo protocolInfo = d->connectionManager->protocol(localXmppProtocol);
     Tp::ProtocolParameterList parameters = protocolInfo.parameters();
 
-    d->profile = d->profileManager->profilesForCM("salut").first();
+    d->profile = d->profileManager->profilesForCM(salutConnManager).first();
 
     Q_ASSERT(!d->profile.isNull());
     Q_ASSERT(d->profile->isValid());
-    Q_ASSERT(d->profile->protocolName() == QLatin1String("local-xmpp"));
-    if (d->profile.isNull() || !d->profile->isValid() || d->profile->protocolName() != QLatin1String("local-xmpp")) {
+    Q_ASSERT(d->profile->protocolName() == localXmppProtocol);
+    if (d->profile.isNull() || !d->profile->isValid() || d->profile->protocolName() != localXmppProtocol) {
         kWarning() << "Something went wrong with telepathy salut";
     }
 
@@ -122,9 +128,9 @@ void SalutEnabler::onProfileManagerReady(Tp::PendingOperation* op)
     QString lastname = name.mid(lastSpacePosition + 1);
     QString firstName = name.left(lastSpacePosition);
 
-    d->values.insert("first-name", firstName);
-    d->values.insert("last-name", lastname);
-    d->values.insert("nickname", nick);
+    d->values.insert(firstNamePar, firstName);
+    d->values.insert(lastNamePar, lastname);
+    d->values.insert(nickNamePar, nick);
 
     Q_EMIT userInfoReady();
 }
@@ -138,7 +144,9 @@ QFrame* SalutEnabler::frameWidget(QWidget* parent)
     d->salutMessageFrame.data()->setFrameShape(QFrame::StyledPanel);
 
     d->messageWidget = new SalutMessageWidget(d->salutMessageFrame.data());
-    d->messageWidget->setParams(d->values["first-name"].toString(), d->values["last-name"].toString(), d->values["nickname"].toString());
+    d->messageWidget->setParams(d->values[firstNamePar].toString(),
+                                d->values[lastNamePar].toString(),
+                                d->values[nickNamePar].toString());
     d->messageWidget->hide();
 
     QPropertyAnimation *animation = new QPropertyAnimation(d->salutMessageFrame.data(), "minimumHeight", d->messageWidget);
@@ -179,37 +187,37 @@ void SalutEnabler::onUserAccepted()
 
     QString displayName;
 
-    QString lastname = d->values["last-name"].toString();
-    QString firstname = d->values["first-name"].toString();
-    QString nick = d->values["nickname"].toString();
+    QString lastname = d->values[lastNamePar].toString();
+    QString firstname = d->values[firstNamePar].toString();
+    QString nick = d->values[nickNamePar].toString();
 
     //either one of the names is filled and nick is filled
     if (((lastname.isEmpty() && !firstname.isEmpty()) || (!lastname.isEmpty() && firstname.isEmpty()))
             && !nick.isEmpty()) {
 
-        displayName = QString("%1 (%2)").arg(d->values["first-name"].toString().isEmpty() ?
-                                                 d->values["last-name"].toString() : d->values["first-name"].toString(),
-                                             d->values["nickname"].toString());
+        displayName = QString(QLatin1String("%1 (%2)")).arg(d->values[firstNamePar].toString().isEmpty() ?
+                d->values[lastNamePar].toString() : d->values[firstNamePar].toString(),
+                                                            d->values[nickNamePar].toString());
 
     //either one of the names is filled and nick is empty
     } else if (((lastname.isEmpty() && !firstname.isEmpty()) || (!lastname.isEmpty() && firstname.isEmpty()))
             && nick.isEmpty()) {
 
-        displayName = d->values["first-name"].toString().isEmpty() ?
-                          d->values["last-name"].toString() : d->values["first-name"].toString();
+        displayName = d->values[firstNamePar].toString().isEmpty() ?
+                d->values[lastNamePar].toString() : d->values[firstNamePar].toString();
 
     //both first & last names are empty but nick is not
     } else if (lastname.isEmpty() && firstname.isEmpty() && !nick.isEmpty()) {
 
-        displayName = d->values["nickname"].toString();
+        displayName = d->values[nickNamePar].toString();
 
     } else if (lastname.isEmpty() && firstname.isEmpty() && nick.isEmpty()) {
         //FIXME: let the user know that he reached a very strange situation
 
     } else {
-        displayName = QString("%1 %2 (%3)").arg(d->values["first-name"].toString(),
-                                                d->values["last-name"].toString(),
-                                                d->values["nickname"].toString());
+        displayName = QString(QLatin1String("%1 %2 (%3)")).arg(d->values[firstNamePar].toString(),
+                                                               d->values[lastNamePar].toString(),
+                                                               d->values[nickNamePar].toString());
     }
 
     Tp::PendingAccount *pa = d->accountManager->createAccount(d->profile->cmName(),
@@ -278,9 +286,9 @@ void SalutEnabler::onUserWantingChanges()
 void SalutEnabler::onDialogAccepted(const QVariantMap &values)
 {
     kDebug() << values;
-    d->values.insert("first-name", values["first-name"].toString());
-    d->values.insert("last-name", values["last-name"].toString());
-    d->values.insert("nickname", values["nickname"].toString());
+    d->values.insert(firstNamePar, values[firstNamePar].toString());
+    d->values.insert(lastNamePar, values[lastNamePar].toString());
+    d->values.insert(nickNamePar, values[nickNamePar].toString());
 
     onUserAccepted();
 }
