@@ -31,7 +31,7 @@ SunshineAccountUiPlugin::SunshineAccountUiPlugin(QObject *parent, const QVariant
     : AbstractAccountUiPlugin(parent)
 {
     // Register supported cm/protocol combinations
-    registerProvidedProtocol("sunshine", "gadugadu");
+    registerProvidedProtocol(QLatin1String("sunshine"), QLatin1String("gadugadu"));
 }
 
 SunshineAccountUiPlugin::~SunshineAccountUiPlugin()

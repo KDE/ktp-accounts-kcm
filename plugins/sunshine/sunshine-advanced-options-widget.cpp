@@ -29,19 +29,19 @@ SunshineAdvancedOptionsWidget::SunshineAdvancedOptionsWidget(ParameterEditModel*
     m_ui = new Ui::SunshineAdvancedOptionsWidget;
     m_ui->setupUi(this);
 
-    handleParameter("use-specified-server", QVariant::Bool,
+    handleParameter(QLatin1String("use-specified-server"), QVariant::Bool,
                     m_ui->serverGroupBox,
                     0);
-    handleParameter("server", QVariant::String,
+    handleParameter(QLatin1String("server"), QVariant::String,
                     m_ui->serverLineEdit,
                     m_ui->serverLabel);
-    handleParameter("port", QVariant::UInt,
+    handleParameter(QLatin1String("port"), QVariant::UInt,
                     m_ui->portSpinBox,
                     m_ui->portLabel);
-    handleParameter("use-ssl", QVariant::Bool,
+    handleParameter(QLatin1String("use-ssl"), QVariant::Bool,
                     m_ui->sslCheckBox,
                     m_ui->sslLabel);
-    handleParameter("export-contacts", QVariant::Bool,
+    handleParameter(QLatin1String("export-contacts"), QVariant::Bool,
                     m_ui->exportContactsCheckBox,
                     m_ui->exportContactsLabel);
 }
