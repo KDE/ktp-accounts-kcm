@@ -23,7 +23,7 @@
 
 #include <KCMTelepathyAccounts/AbstractAccountUiPlugin>
 
-#include <QVariantList>
+#include <QtCore/QVariantList>
 
 class SalutAccountUiPlugin : public AbstractAccountUiPlugin
 {

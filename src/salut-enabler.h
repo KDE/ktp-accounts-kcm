@@ -21,7 +21,7 @@
 #ifndef SALUT_ENABLER_H
 #define SALUT_ENABLER_H
 
-#include <QObject>
+#include <QtCore/QObject>
 
 #include <TelepathyQt/Types>
 #include <KMessageWidget>

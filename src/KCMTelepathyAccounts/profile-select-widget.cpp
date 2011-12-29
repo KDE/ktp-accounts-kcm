@@ -32,8 +32,8 @@
 #include <TelepathyQt/ProfileManager>
 #include <TelepathyQt/Feature>
 
-#include <QSortFilterProxyModel>
-#include <QItemSelectionModel>
+#include <QtGui/QSortFilterProxyModel>
+#include <QtGui/QItemSelectionModel>
 
 class ProfileSelectWidget::Private
 {

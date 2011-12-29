@@ -22,14 +22,14 @@
 
 #include "accounts-list-model.h"
 
-#include <QApplication>
-#include <QPainter>
-#include <QCheckBox>
-#include <QAbstractItemView>
+#include <QtGui/QApplication>
+#include <QtGui/QPainter>
+#include <QtGui/QCheckBox>
+#include <QtGui/QAbstractItemView>
+#include <QtGui/QSortFilterProxyModel>
 
-#include <KDebug>
 #include <KLocale>
-#include <QSortFilterProxyModel>
+#include <KDebug>
 
 #include "account-item.h"
 

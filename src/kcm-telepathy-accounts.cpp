@@ -31,8 +31,8 @@
 
 #include <KTp/wallet-interface.h>
 
-#include <QLabel>
-#include <QSortFilterProxyModel>
+#include <QtGui/QLabel>
+#include <QtGui/QSortFilterProxyModel>
 
 #include <KGenericFactory>
 #include <KIcon>

@@ -20,7 +20,7 @@
 
 #include <KTabWidget>
 #include <KLocale>
-#include <QHBoxLayout>
+#include <QtGui/QHBoxLayout>
 
 #include "generic-advanced-options-widget.h"
 

@@ -31,7 +31,7 @@
 #include <KUser>
 #include <KLocalizedString>
 
-#include <QFrame>
+#include <QtGui/QFrame>
 
 #include "salut-details-dialog.h"
 #include "salut-message-widget.h"

@@ -22,7 +22,7 @@
 
 #include <KCMTelepathyAccounts/ParameterEditModel>
 
-#include <QDir>
+#include <QtCore/QDir>
 
 SkypeMainOptionsWidget::SkypeMainOptionsWidget(ParameterEditModel *model, QWidget *parent)
  : AbstractAccountParametersWidget(model, parent)

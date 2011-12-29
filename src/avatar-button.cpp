@@ -20,7 +20,7 @@
 
 #include "avatar-button.h"
 
-#include <QWidgetAction>
+#include <QtGui/QWidgetAction>
 
 #include <KFileDialog>
 #include <KMenu>

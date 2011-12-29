@@ -26,9 +26,9 @@
 #include <KIcon>
 #include <KAction>
 
-#include <QLayout>
-#include <QWidgetAction>
-#include <QVBoxLayout>
+#include <QtGui/QLayout>
+#include <QtGui/QWidgetAction>
+#include <QtGui/QVBoxLayout>
 
 SalutMessageWidget::SalutMessageWidget(QWidget *parent)
     : KMessageWidget(parent)

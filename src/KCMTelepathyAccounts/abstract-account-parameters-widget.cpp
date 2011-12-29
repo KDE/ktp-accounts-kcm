@@ -24,14 +24,15 @@
 #include "parameter-edit-model.h"
 #include "validated-line-edit.h"
 
-#include <KDebug>
-#include <QLineEdit>
-#include <QCheckBox>
-#include <QComboBox>
 #include <KLocalizedString>
-#include <QSpinBox>
-#include <QDataWidgetMapper>
-#include <QMap>
+#include <KDebug>
+
+#include <QtCore/QMap>
+#include <QtGui/QLineEdit>
+#include <QtGui/QCheckBox>
+#include <QtGui/QComboBox>
+#include <QtGui/QSpinBox>
+#include <QtGui/QDataWidgetMapper>
 
 
 class AbstractAccountParametersWidget::Private
