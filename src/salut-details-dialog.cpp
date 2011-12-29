@@ -69,8 +69,7 @@ SalutDetailsDialog::SalutDetailsDialog(const Tp::ProfileManagerPtr profileManage
     Q_ASSERT(!d->profile.isNull());
     Q_ASSERT(d->profile->isValid());
     Q_ASSERT(d->profile->protocolName() == QLatin1String("local-xmpp"));
-    if (d->profile.isNull() || !d->profile->isValid() || d->profile->protocolName() != QLatin1String("local-xmpp"))
-    {
+    if (d->profile.isNull() || !d->profile->isValid() || d->profile->protocolName() != QLatin1String("local-xmpp")) {
         kWarning() << "Something went wrong with telepathy salut";
     }
 

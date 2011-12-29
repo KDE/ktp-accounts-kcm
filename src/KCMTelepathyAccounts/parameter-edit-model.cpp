@@ -65,8 +65,7 @@ QVariant ParameterEditModel::data(const QModelIndex &index, int role) const
     // on while developing this code further. Needs expanding.
     QVariant data;
 
-    switch(role)
-    {
+    switch(role) {
     case Qt::DisplayRole:
     case Qt::EditRole:
     case ParameterEditModel::ValueRole:
