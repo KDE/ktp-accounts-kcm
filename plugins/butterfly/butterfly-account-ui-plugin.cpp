@@ -30,7 +30,7 @@ ButterflyAccountUiPlugin::ButterflyAccountUiPlugin(QObject *parent, const QVaria
  : AbstractAccountUiPlugin(parent)
 {
     // Register supported cm/protocol combinations
-    registerProvidedProtocol("butterfly", "msn");
+    registerProvidedProtocol(QLatin1String("butterfly"), QLatin1String("msn"));
 }
 
 ButterflyAccountUiPlugin::~ButterflyAccountUiPlugin()
