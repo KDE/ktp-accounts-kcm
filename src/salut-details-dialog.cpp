@@ -64,7 +64,7 @@ SalutDetailsDialog::SalutDetailsDialog(const Tp::ProfileManagerPtr profileManage
 
     // Add the parameters to the model.
     ParameterEditModel *parameterModel = new ParameterEditModel(this);
-    d->profile = profileManager->profilesForCM("salut").first();
+    d->profile = profileManager->profilesForCM(QLatin1String("salut")).first();
 
     Q_ASSERT(!d->profile.isNull());
     Q_ASSERT(d->profile->isValid());

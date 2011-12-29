@@ -202,7 +202,7 @@ void AddAccountAssistant::accept()
 
     // Check account we're trying to create doesn't already exist
     Q_FOREACH (const Tp::AccountPtr &account, d->accountManager->allAccounts()) {
-        if (values.value("account") == account->displayName()
+        if (values.value(QLatin1String("account")) == account->displayName()
             && d->currentProfileItem->protocolName() == account->protocolName()) {
             Q_EMIT feedbackMessage(i18n("Failed to create account"),
                                    i18n("Account already exists. Old one will be used instead"),
@@ -216,17 +216,17 @@ void AddAccountAssistant::accept()
     QVariantMap properties;
 
     if (d->accountManager->supportedAccountProperties().contains(QLatin1String("org.freedesktop.Telepathy.Account.Service"))) {
-      properties.insert("org.freedesktop.Telepathy.Account.Service", d->currentProfileItem->serviceName());
+      properties.insert(QLatin1String("org.freedesktop.Telepathy.Account.Service"), d->currentProfileItem->serviceName());
     }
     if (d->accountManager->supportedAccountProperties().contains(QLatin1String("org.freedesktop.Telepathy.Account.Enabled"))) {
-      properties.insert("org.freedesktop.Telepathy.Account.Enabled", true);
+      properties.insert(QLatin1String("org.freedesktop.Telepathy.Account.Enabled"), true);
     }
 
     // FIXME: Ask the user to submit a Display Name
 
     QString displayName;
-    if (values.contains("account")) {
-        displayName = values["account"].toString();
+    if (values.contains(QLatin1String("account"))) {
+        displayName = values[QLatin1String("account")].toString();
     }
     else {
         displayName = d->currentProfileItem->protocolName();
@@ -286,11 +286,11 @@ void AddAccountAssistant::onAccountCreated(Tp::PendingOperation *op)
     QVariantMap values  = d->accountEditWidget->parametersSet();
     if (values.contains(QLatin1String("password"))) {
         KTp::WalletInterface wallet(this->effectiveWinId());
-        wallet.setPassword(account, values["password"].toString());
+        wallet.setPassword(account, values[QLatin1String("password")].toString());
     }
 
     if(d->accountEditWidget->connectOnAdd()){
-        account->setRequestedPresence(Tp::Presence::available(QString("Online")));
+        account->setRequestedPresence(Tp::Presence::available(QLatin1String("Online")));
     }
     account->setServiceName(d->currentProfileItem->serviceName());
     KAssistantDialog::accept();

@@ -102,7 +102,7 @@ const QString AccountItem::connectionStateString() const
     case Tp::ConnectionStatusDisconnected:
         return i18nc("This is a connection state", "Disconnected");
     default:
-        return "Unknown";
+        return i18nc("This is an unknown connection state", "Unknown");
     }
 }
 
@@ -110,14 +110,14 @@ const KIcon AccountItem::connectionStateIcon() const
 {
     switch (m_account->connectionStatus()) {
     case Tp::ConnectionStatusConnected:
-        return KIcon("user-online");
+        return KIcon(QLatin1String("user-online"));
     case Tp::ConnectionStatusConnecting:
         //imho this is not really worth animating, but feel free to play around..
-        return KIcon(KPixmapSequence("process-working", 22).frameAt(0));
+        return KIcon(KPixmapSequence(QLatin1String("process-working"), 22).frameAt(0));
     case Tp::ConnectionStatusDisconnected:
-        return KIcon("user-offline");
+        return KIcon(QLatin1String("user-offline"));
     default:
-        return KIcon("user-offline");
+        return KIcon(QLatin1String("user-offline"));
     }
 }
 
@@ -145,7 +145,7 @@ void AccountItem::generateIcon()
 
     //if the icon has not been set, we use the protocol icon
     if(iconPath.isEmpty()) {
-        iconPath = QString("im-%1").arg(account()->protocolName());
+        iconPath = QString(QLatin1String("im-%1")).arg(account()->protocolName());
     }
 
     delete m_icon;
@@ -159,7 +159,7 @@ void AccountItem::generateIcon()
         //we paint a warning symbol in the right-bottom corner
         QPixmap pixmap = m_icon->pixmap(32, 32);
         QPainter painter(&pixmap);
-        KIcon("dialog-error").paint(&painter, 15, 15, 16, 16);
+        KIcon(QLatin1String("dialog-error")).paint(&painter, 15, 15, 16, 16);
 
         delete m_icon;
         m_icon = new KIcon(pixmap);

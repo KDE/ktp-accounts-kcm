@@ -141,7 +141,7 @@ void EditAccountDialog::onParametersUpdated(Tp::PendingOperation *op)
 
     KTp::WalletInterface wallet(this->effectiveWinId());
     if (values.contains(QLatin1String("password"))) {
-        wallet.setPassword(d->item->account(), values["password"].toString());
+        wallet.setPassword(d->item->account(), values[QLatin1String("password")].toString());
     } else {
         wallet.removePassword(d->item->account());
     }
@@ -149,8 +149,8 @@ void EditAccountDialog::onParametersUpdated(Tp::PendingOperation *op)
 
     // FIXME: Ask the user to submit a Display Name
     QString displayName;
-    if (values.contains("account")) {
-        displayName = values["account"].toString();
+    if (values.contains(QLatin1String("account"))) {
+        displayName = values[QLatin1String("account")].toString();
     }
     else {
         displayName = d->item->account()->profile()->protocolName();
