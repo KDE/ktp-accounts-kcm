@@ -42,9 +42,6 @@ public:
 public slots:
     void setMessage(const QString &text, const QString &comment, KMessageWidget::MessageType type);
     void setText(const QString &text, KMessageWidget::MessageType type);
-
-private:
-    KMessageWidget::MessageType m_type;
 };
 
 #endif
