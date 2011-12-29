@@ -73,4 +73,3 @@ void AbstractAccountUiPlugin::registerProvidedProtocol(const QString &connection
 
 
 #include "abstract-account-ui-plugin.moc"
-

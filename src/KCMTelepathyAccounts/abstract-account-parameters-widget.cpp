@@ -39,7 +39,7 @@ class AbstractAccountParametersWidget::Private
 public:
     Private()
         : parameterModel(0),
-        mapper(0)
+          mapper(0)
     {
         kDebug();
     }
@@ -139,9 +139,9 @@ void AbstractAccountParametersWidget::handleParameter(const QString &parameterNa
         ValidatedLineEdit *validated = qobject_cast<ValidatedLineEdit*>(dataWidget);
         if(validated) {
             d->validatedWidgets.insert(index, validated);
-	}
+        }
 
-	if (! (index.flags() & Qt::ItemIsEnabled)) {
+        if (! (index.flags() & Qt::ItemIsEnabled)) {
             dataWidget->setEnabled(false);
         }
     }
@@ -165,4 +165,3 @@ ParameterEditModel* AbstractAccountParametersWidget::parameterModel() const
 
 
 #include "abstract-account-parameters-widget.moc"
-

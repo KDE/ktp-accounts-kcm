@@ -46,7 +46,7 @@ AbstractAccountUi* ButterflyAccountUiPlugin::accountUi(const QString &connection
     Q_UNUSED(serviceName);
 
     kDebug();
-    
+
     // We only support butterfly/xmpp combination.
     if ((connectionManager == QLatin1String("butterfly")) && (protocol == QLatin1String("msn"))) {
         return new ButterflyAccountUi;

@@ -73,4 +73,3 @@ AbstractAccountParametersWidget *HazeSkypeAccountUi::advancedOptionsWidget(
 
 
 #include "haze-skype-account-ui.moc"
-

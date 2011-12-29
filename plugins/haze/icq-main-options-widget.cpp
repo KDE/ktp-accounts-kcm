@@ -45,4 +45,3 @@ IcqMainOptionsWidget::~IcqMainOptionsWidget()
 }
 
 #include "icq-main-options-widget.moc"
-

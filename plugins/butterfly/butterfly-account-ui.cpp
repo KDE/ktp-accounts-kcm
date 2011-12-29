@@ -50,4 +50,3 @@ AbstractAccountParametersWidget *ButterflyAccountUi::mainOptionsWidget(
 }
 
 #include "butterfly-account-ui.moc"
-

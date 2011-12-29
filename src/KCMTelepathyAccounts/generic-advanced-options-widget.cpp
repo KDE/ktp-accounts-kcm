@@ -94,4 +94,3 @@ void GenericAdvancedOptionsWidget::addTab(AbstractAccountParametersWidget* tab, 
 
 
 #include "generic-advanced-options-widget.moc"
-

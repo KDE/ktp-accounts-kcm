@@ -164,4 +164,3 @@ void ProfileListModel::onConnectionManagerNamesFetched(Tp::PendingOperation *ope
 
 
 #include "profile-list-model.moc"
-

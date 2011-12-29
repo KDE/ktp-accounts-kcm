@@ -76,4 +76,3 @@ AbstractAccountParametersWidget *HazeIcqAccountUi::advancedOptionsWidget(
 
 
 #include "haze-icq-account.moc"
-

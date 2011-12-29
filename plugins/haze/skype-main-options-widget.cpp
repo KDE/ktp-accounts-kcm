@@ -62,4 +62,3 @@ SkypeMainOptionsWidget::~SkypeMainOptionsWidget()
 }
 
 #include "skype-main-options-widget.moc"
-

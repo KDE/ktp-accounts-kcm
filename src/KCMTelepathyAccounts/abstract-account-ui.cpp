@@ -81,6 +81,4 @@ void AbstractAccountUi::registerSupportedParameter(const QString &name, QVariant
 }
 
 
-
 #include "abstract-account-ui.moc"
-

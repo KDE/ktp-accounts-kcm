@@ -75,4 +75,3 @@ void ParameterEditWidget::onDelegateDataChanged(const QModelIndex &index, const 
 }
 
 #include "parameter-edit-widget.moc"
-

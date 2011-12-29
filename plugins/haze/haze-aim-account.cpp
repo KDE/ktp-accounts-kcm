@@ -70,5 +70,3 @@ AbstractAccountParametersWidget *HazeAimAccount::advancedOptionsWidget(
 	
     return new AimServerSettingsWidget(model, parent);
 }
-
-

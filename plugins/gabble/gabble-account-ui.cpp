@@ -103,4 +103,3 @@ AbstractAccountParametersWidget *GabbleAccountUi::advancedOptionsWidget(
 
 
 #include "gabble-account-ui.moc"
-

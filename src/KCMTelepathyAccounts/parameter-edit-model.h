@@ -34,11 +34,6 @@
 
 class ParameterItem;
 
-namespace Tp {
-    class Profile;
-    class Parameter;
-}
-
 class KCM_TELEPATHY_ACCOUNTS_EXPORT ParameterEditModel : public QAbstractListModel
 {
     Q_OBJECT

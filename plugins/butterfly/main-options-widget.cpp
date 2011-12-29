@@ -46,4 +46,3 @@ MainOptionsWidget::~MainOptionsWidget()
 }
 
 #include "main-options-widget.moc"
-

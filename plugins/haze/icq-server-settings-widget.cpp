@@ -48,4 +48,3 @@ IcqServerSettingsWidget::~IcqServerSettingsWidget()
 }
 
 #include "icq-server-settings-widget.moc"
-

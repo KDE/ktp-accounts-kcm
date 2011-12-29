@@ -51,4 +51,3 @@ ProxySettingsWidget::~ProxySettingsWidget()
 
 
 #include "proxy-settings-widget.moc"
-

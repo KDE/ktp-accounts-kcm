@@ -101,10 +101,10 @@ AccountEditWidget::AccountEditWidget(const Tp::ProfilePtr &profile,
     d->ui->iconLabel->setText("");
     d->ui->iconLabel->setPixmap(KIcon(profile->iconName()).pixmap(32));
 
-    if(connectOnAddFlag == doConnectOnAdd){
-    d->connectOnAdd = new QCheckBox(i18n("Connect when wizard is finished"), this);
-    d->connectOnAdd->setChecked(true);
-    d->ui->verticalLayout->addWidget(d->connectOnAdd);
+    if(connectOnAddFlag == doConnectOnAdd) {
+        d->connectOnAdd = new QCheckBox(i18n("Connect when wizard is finished"), this);
+        d->connectOnAdd->setChecked(true);
+        d->ui->verticalLayout->addWidget(d->connectOnAdd);
     }
     else{
         d->connectOnAdd = 0;

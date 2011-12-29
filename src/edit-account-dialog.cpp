@@ -193,4 +193,3 @@ void EditAccountDialog::onDisplayNameUpdated(Tp::PendingOperation *op)
 }
 
 #include "edit-account-dialog.moc"
-

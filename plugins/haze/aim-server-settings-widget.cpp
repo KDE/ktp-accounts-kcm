@@ -49,5 +49,3 @@ AimServerSettingsWidget::~AimServerSettingsWidget()
 
     delete m_ui;
 }
-
-

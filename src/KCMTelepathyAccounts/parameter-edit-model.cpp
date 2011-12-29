@@ -73,8 +73,7 @@ QVariant ParameterEditModel::data(const QModelIndex &index, int role) const
     case Qt::EditRole:
     case ParameterEditModel::ValueRole:
         data = QVariant(m_items.at(index.row())->value());
-        if(!data.isValid())
-        {
+        if(!data.isValid()) {
             data = this->data(index, ParameterEditModel::DefaultValueRole);
         }
         break;

@@ -52,4 +52,3 @@ ServerSettingsWidget::~ServerSettingsWidget()
 
 
 #include "server-settings-widget.moc"
-

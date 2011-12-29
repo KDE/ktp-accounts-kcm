@@ -45,4 +45,3 @@ MainOptionsWidgetGoogleTalk::~MainOptionsWidgetGoogleTalk()
 }
 
 #include "main-options-widget-googletalk.moc"
-

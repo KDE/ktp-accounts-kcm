@@ -32,7 +32,7 @@ class QTimer;
 
 class FeedbackWidget : public KMessageWidget
 {
-Q_OBJECT
+    Q_OBJECT
 public:
     FeedbackWidget(QWidget *parent = 0);
     virtual ~FeedbackWidget();

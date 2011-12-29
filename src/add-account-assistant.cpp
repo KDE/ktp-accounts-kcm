@@ -367,4 +367,3 @@ void AddAccountAssistant::pageThree()
 }
 
 #include "add-account-assistant.moc"
-

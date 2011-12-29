@@ -45,4 +45,3 @@ MySpaceIMMainOptionsWidget::~MySpaceIMMainOptionsWidget()
 }
 
 #include "myspaceim-main-options-widget.moc"
-

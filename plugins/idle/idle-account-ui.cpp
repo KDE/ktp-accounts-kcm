@@ -72,4 +72,3 @@ AbstractAccountParametersWidget *IdleAccountUi::advancedOptionsWidget(
 }
 
 #include "idle-account-ui.moc"
-

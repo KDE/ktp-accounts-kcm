@@ -48,4 +48,3 @@ AdvancedOptionsWidget::~AdvancedOptionsWidget()
 }
 
 #include "advanced-options-widget.moc"
-

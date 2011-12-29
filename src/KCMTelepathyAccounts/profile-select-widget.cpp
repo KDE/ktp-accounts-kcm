@@ -150,4 +150,3 @@ void ProfileSelectWidget::onSelectionChanged(const QItemSelection &selected)
 
 
 #include "profile-select-widget.moc"
-

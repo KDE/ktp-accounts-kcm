@@ -86,4 +86,3 @@ bool MainOptionsWidgetFacebook::validateParameterValues()
 
 
 #include "main-options-widget-facebook.moc"
-

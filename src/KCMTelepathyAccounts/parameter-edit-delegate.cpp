@@ -226,4 +226,3 @@ void ParameterEditDelegate::onSpinBoxValueChanged(int value)
 
 
 #include "parameter-edit-delegate.moc"
-

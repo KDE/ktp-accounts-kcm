@@ -100,4 +100,3 @@ void ProfileItem::generateIcon()
 }
 
 #include "profile-item.moc"
-
