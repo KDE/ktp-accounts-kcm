@@ -33,16 +33,16 @@ MainOptionsWidgetFacebook::MainOptionsWidgetFacebook(ParameterEditModel *model,
     // We cannot use handleParameter directly as we need to append @chat.facebook.com onto the end of the JID.
     // Profiles have no method to do this, so pseudo-hardcoding is the only available option.
 
-    Tp::ProtocolParameter parameter = parameterModel()->parameter("account");
+    Tp::ProtocolParameter parameter = parameterModel()->parameter(QLatin1String("account"));
     QModelIndex index = parameterModel()->indexForParameter(parameter);
     if (index.isValid()) {
         QString account = index.data().toString();
         //strip off any "@chat.facebook.com" from the parameter when displaying it in the text edit.
-        account = account.left(account.indexOf('@'));
+        account = account.left(account.indexOf(QLatin1Char('@')));
         m_ui->accountLineEdit->setText(account);
     }
 
-    handleParameter("password", QVariant::String, m_ui->passwordLineEdit, m_ui->passwordLabel);
+    handleParameter(QLatin1String("password"), QVariant::String, m_ui->passwordLineEdit, m_ui->passwordLabel);
     QTimer::singleShot(0, m_ui->accountLineEdit, SLOT(setFocus()));
 }
 
@@ -53,14 +53,14 @@ MainOptionsWidgetFacebook::~MainOptionsWidgetFacebook()
 
 void MainOptionsWidgetFacebook::submit()
 {
-    Tp::ProtocolParameter parameter = parameterModel()->parameter("account");
+    Tp::ProtocolParameter parameter = parameterModel()->parameter(QLatin1String("account"));
     QModelIndex index = parameterModel()->indexForParameter(parameter);
     if (index.isValid()) {
         QString account = m_ui->accountLineEdit->text();
 
         //append "@chat.facebook.com" (fetching the address from the default params for as much future compatiability as possible)
-        account.append('@');
-        QString serverAddress = parameterModel()->indexForParameter(parameterModel()->parameter("server")).data().toString();
+        account.append(QLatin1Char('@'));
+        QString serverAddress = parameterModel()->indexForParameter(parameterModel()->parameter(QLatin1String("server"))).data().toString();
         account.append(serverAddress);
 
         //update the model with the account value from the text box.

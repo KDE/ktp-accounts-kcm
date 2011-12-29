@@ -28,14 +28,14 @@ ProxySettingsWidget::ProxySettingsWidget(ParameterEditModel *model,
     m_ui = new Ui::ProxySettingsWidget;
     m_ui->setupUi(this);
 
-    handleParameter("stun-server", QVariant::String, m_ui->stunServerLineEdit, m_ui->stunServerLabel);
-    handleParameter("stun-port", QVariant::UInt, m_ui->stunPortSpinBox, m_ui->stunPortLabel);
-    handleParameter("fallback-stun-server", QVariant::String, m_ui->fallbackStunServerLineEdit, m_ui->fallbackStunServerLabel);
-    handleParameter("fallback-stun-port", QVariant::UInt, m_ui->fallbackStunPortSpinBox, m_ui->fallbackStunPortLabel);
-    handleParameter("https-proxy-server", QVariant::String, m_ui->httpsProxyServerLineEdit, m_ui->httpsProxyServerLabel);
-    handleParameter("https-proxy-port", QVariant::UInt, m_ui->httpsProxyPortSpinBox, m_ui->httpsProxyPortLabel);
-    handleParameter("fallback-socks5-proxies", QVariant::StringList, m_ui->fallbackSocks5ProxiesTextEdit, m_ui->fallbackSocks5ProxiesLabel);
-    handleParameter("fallback-conference-server", QVariant::String, m_ui->fallbackConferenceServerLineEdit, m_ui->fallbackConferenceServerLabel);
+    handleParameter(QLatin1String("stun-server"), QVariant::String, m_ui->stunServerLineEdit, m_ui->stunServerLabel);
+    handleParameter(QLatin1String("stun-port"), QVariant::UInt, m_ui->stunPortSpinBox, m_ui->stunPortLabel);
+    handleParameter(QLatin1String("fallback-stun-server"), QVariant::String, m_ui->fallbackStunServerLineEdit, m_ui->fallbackStunServerLabel);
+    handleParameter(QLatin1String("fallback-stun-port"), QVariant::UInt, m_ui->fallbackStunPortSpinBox, m_ui->fallbackStunPortLabel);
+    handleParameter(QLatin1String("https-proxy-server"), QVariant::String, m_ui->httpsProxyServerLineEdit, m_ui->httpsProxyServerLabel);
+    handleParameter(QLatin1String("https-proxy-port"), QVariant::UInt, m_ui->httpsProxyPortSpinBox, m_ui->httpsProxyPortLabel);
+    handleParameter(QLatin1String("fallback-socks5-proxies"), QVariant::StringList, m_ui->fallbackSocks5ProxiesTextEdit, m_ui->fallbackSocks5ProxiesLabel);
+    handleParameter(QLatin1String("fallback-conference-server"), QVariant::String, m_ui->fallbackConferenceServerLineEdit, m_ui->fallbackConferenceServerLabel);
 }
 
 ProxySettingsWidget::~ProxySettingsWidget()

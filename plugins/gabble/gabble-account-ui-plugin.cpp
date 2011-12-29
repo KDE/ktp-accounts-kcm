@@ -29,7 +29,7 @@ GabbleAccountUiPlugin::GabbleAccountUiPlugin(QObject *parent, const QVariantList
  : AbstractAccountUiPlugin(parent)
 {
     // Register supported cm/protocol combinations
-    registerProvidedProtocol("gabble", "jabber");
+    registerProvidedProtocol(QLatin1String("gabble"), QLatin1String("jabber"));
 }
 
 GabbleAccountUiPlugin::~GabbleAccountUiPlugin()

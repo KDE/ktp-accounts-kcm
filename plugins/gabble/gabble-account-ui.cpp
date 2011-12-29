@@ -36,25 +36,25 @@ GabbleAccountUi::GabbleAccountUi(const QString &serviceName, QObject *parent)
    m_serviceName(serviceName)
 {
     // Register supported parameters
-    registerSupportedParameter("account", QVariant::String);
-    registerSupportedParameter("password", QVariant::String);
+    registerSupportedParameter(QLatin1String("account"), QVariant::String);
+    registerSupportedParameter(QLatin1String("password"), QVariant::String);
 
-    registerSupportedParameter("port", QVariant::UInt);
-    registerSupportedParameter("server", QVariant::String);
-    registerSupportedParameter("require-encryption", QVariant::Bool);
-    registerSupportedParameter("old-ssl", QVariant::Bool);
-    registerSupportedParameter("low-bandwidth", QVariant::Bool);
-    registerSupportedParameter("ignore-ssl-errors", QVariant::Bool);
-    registerSupportedParameter("keepalive-interval", QVariant::UInt);
+    registerSupportedParameter(QLatin1String("port"), QVariant::UInt);
+    registerSupportedParameter(QLatin1String("server"), QVariant::String);
+    registerSupportedParameter(QLatin1String("require-encryption"), QVariant::Bool);
+    registerSupportedParameter(QLatin1String("old-ssl"), QVariant::Bool);
+    registerSupportedParameter(QLatin1String("low-bandwidth"), QVariant::Bool);
+    registerSupportedParameter(QLatin1String("ignore-ssl-errors"), QVariant::Bool);
+    registerSupportedParameter(QLatin1String("keepalive-interval"), QVariant::UInt);
 
-    registerSupportedParameter("stun-server", QVariant::String);
-    registerSupportedParameter("stun-port", QVariant::UInt);
-    registerSupportedParameter("fallback-stun-server", QVariant::String);
-    registerSupportedParameter("fallback-stun-port", QVariant::UInt);
-    registerSupportedParameter("https-proxy-server", QVariant::String);
-    registerSupportedParameter("https-proxy-port", QVariant::UInt);
-    registerSupportedParameter("fallback-socks5-proxies", QVariant::StringList);
-    registerSupportedParameter("fallback-conference-server", QVariant::String);
+    registerSupportedParameter(QLatin1String("stun-server"), QVariant::String);
+    registerSupportedParameter(QLatin1String("stun-port"), QVariant::UInt);
+    registerSupportedParameter(QLatin1String("fallback-stun-server"), QVariant::String);
+    registerSupportedParameter(QLatin1String("fallback-stun-port"), QVariant::UInt);
+    registerSupportedParameter(QLatin1String("https-proxy-server"), QVariant::String);
+    registerSupportedParameter(QLatin1String("https-proxy-port"), QVariant::UInt);
+    registerSupportedParameter(QLatin1String("fallback-socks5-proxies"), QVariant::StringList);
+    registerSupportedParameter(QLatin1String("fallback-conference-server"), QVariant::String);
 }
 
 GabbleAccountUi::~GabbleAccountUi()
@@ -88,9 +88,9 @@ AbstractAccountParametersWidget *GabbleAccountUi::advancedOptionsWidget(
     GenericAdvancedOptionsWidget *widget = new GenericAdvancedOptionsWidget(model, parent);
 
     AbstractAccountParametersWidget* serverSettingsWidget = new ServerSettingsWidget(model, widget);
-    widget->addTab(serverSettingsWidget, "Server");
+    widget->addTab(serverSettingsWidget, i18n("Server"));
     AbstractAccountParametersWidget* proxySettingsWidget = new ProxySettingsWidget(model, widget);
-    widget->addTab(proxySettingsWidget, "Proxy");
+    widget->addTab(proxySettingsWidget, i18n("Proxy"));
 
     return widget;
 }
