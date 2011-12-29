@@ -32,7 +32,7 @@ SalutAccountUiPlugin::SalutAccountUiPlugin(QObject *parent, const QVariantList &
     : AbstractAccountUiPlugin(parent)
 {
     // Register supported cm/protocol combinations
-    registerProvidedProtocol("salut", "local-xmpp");
+    registerProvidedProtocol(QLatin1String("salut"), QLatin1String("local-xmpp"));
 }
 
 SalutAccountUiPlugin::~SalutAccountUiPlugin()

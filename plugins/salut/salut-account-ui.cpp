@@ -30,14 +30,14 @@ SalutAccountUi::SalutAccountUi(QObject *parent)
 {
     // Register supported parameters
     // Main Options
-    registerSupportedParameter("first-name", QVariant::String);
-    registerSupportedParameter("last-name",  QVariant::String);
-    registerSupportedParameter("nickname",   QVariant::String);
+    registerSupportedParameter(QLatin1String("first-name"), QVariant::String);
+    registerSupportedParameter(QLatin1String("last-name"),  QVariant::String);
+    registerSupportedParameter(QLatin1String("nickname"),   QVariant::String);
 
     // Advanced Options
-    registerSupportedParameter("published-name", QVariant::String);
-    registerSupportedParameter("email",          QVariant::String);
-    registerSupportedParameter("jid",            QVariant::String);
+    registerSupportedParameter(QLatin1String("published-name"), QVariant::String);
+    registerSupportedParameter(QLatin1String("email"),          QVariant::String);
+    registerSupportedParameter(QLatin1String("jid"),            QVariant::String);
 }
 
 SalutAccountUi::~SalutAccountUi()

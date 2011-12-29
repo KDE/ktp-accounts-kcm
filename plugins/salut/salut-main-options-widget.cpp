@@ -31,9 +31,9 @@ SalutMainOptionsWidget::SalutMainOptionsWidget(ParameterEditModel *model, QWidge
     m_ui = new Ui::SalutMainOptionsWidget;
     m_ui->setupUi(this);
 
-    handleParameter("first-name", QVariant::String, m_ui->firstnameLineEdit, m_ui->firstnameLabel);
-    handleParameter("last-name",  QVariant::String, m_ui->lastnameLineEdit,  m_ui->lastnameLabel);
-    handleParameter("nickname",   QVariant::String, m_ui->nicknameLineEdit,  m_ui->nicknameLabel);
+    handleParameter(QLatin1String("first-name"), QVariant::String, m_ui->firstnameLineEdit, m_ui->firstnameLabel);
+    handleParameter(QLatin1String("last-name"),  QVariant::String, m_ui->lastnameLineEdit,  m_ui->lastnameLabel);
+    handleParameter(QLatin1String("nickname"),   QVariant::String, m_ui->nicknameLineEdit,  m_ui->nicknameLabel);
 
     // if the first- and last-name are empty on startup we add them based on
     // the current users full name
