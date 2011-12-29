@@ -56,7 +56,7 @@ PluginManager *PluginManager::instance()
 
 void PluginManager::loadPlugins()
 {
-    KService::List offers = KServiceTypeTrader::self()->query("KTpAccountsKCM/AccountUiPlugin");
+    KService::List offers = KServiceTypeTrader::self()->query(QLatin1String("KTpAccountsKCM/AccountUiPlugin"));
 
     KService::List::const_iterator iter;
     for (iter = offers.constBegin(); iter < offers.constEnd(); ++iter) {

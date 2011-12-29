@@ -87,14 +87,14 @@ AccountEditWidget::AccountEditWidget(const Tp::ProfilePtr &profile,
             feedback,
             SLOT(setMessage(QString,QString,KMessageWidget::MessageType)));
 
-    d->ui->advancedButton->setIcon(KIcon("configure"));
+    d->ui->advancedButton->setIcon(KIcon(QLatin1String("configure")));
     //FIXME: Dictionary should not be needed anymore when distros ship profiles
     QString localizedName = Dictionary::instance()->string(profile->name());
     if(localizedName.isEmpty()) {
         localizedName = profile->name();
     }
     d->ui->titleLabel->setText(localizedName);
-    d->ui->iconLabel->setText("");
+    d->ui->iconLabel->setText(QLatin1String(""));
     d->ui->iconLabel->setPixmap(KIcon(profile->iconName()).pixmap(32));
 
     if(connectOnAddFlag == doConnectOnAdd) {

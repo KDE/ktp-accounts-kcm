@@ -96,7 +96,7 @@ bool ProfileListModel::hasNonFakeProfile(const Tp::ProfilePtr& profile, const QL
         if(profile->protocolName() == otherProfile->protocolName() && !otherProfile->isFake())
         {
             // check if this profile is for a special service or for this protocol in general
-            if(otherProfile->serviceName() == otherProfile->cmName().append("-").append(otherProfile->protocolName())
+            if(otherProfile->serviceName() == otherProfile->cmName().append(QLatin1String("-")).append(otherProfile->protocolName())
             || otherProfile->serviceName() == otherProfile->protocolName()) {
                 
                 //check we have a valid CM for the non-fake profile
