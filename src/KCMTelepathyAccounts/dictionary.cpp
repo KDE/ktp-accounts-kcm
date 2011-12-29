@@ -58,11 +58,13 @@ Dictionary::Dictionary()
     // Protocols
     m_strings.insert("aim", i18n("AOL Instant Messenger"));
     m_strings.insert("bigbrownchunx-skype-dbus", i18n("Skype"));
+    m_strings.insert("facebook", i18n("Facebook Chat"));
     m_strings.insert("gadugadu", i18n("Gadu-Gadu"));
+    m_strings.insert("google-talk", i18n("Google Talk"));
     m_strings.insert("groupwise", i18n("Novell Groupwise"));
     m_strings.insert("icq", i18n("ICQ"));
     m_strings.insert("irc", i18n("Internet Relay Chat"));
-    m_strings.insert("jabber", i18n("Jabber/XMPP/Google Talk"));
+    m_strings.insert("jabber", i18n("Jabber/XMPP"));
     m_strings.insert("local-xmpp", i18n("Bonjour/Salut"));
     m_strings.insert("mxit", i18n("MXit"));
     m_strings.insert("msn", i18n("Windows Live Messenger"));

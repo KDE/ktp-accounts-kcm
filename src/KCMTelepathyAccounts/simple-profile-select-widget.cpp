@@ -22,6 +22,7 @@
 
 #include "profile-item.h"
 #include "profile-list-model.h"
+#include "dictionary.h"
 
 #include "ui_simple-profile-select-widget.h"
 
@@ -69,36 +70,36 @@ SimpleProfileSelectWidget::SimpleProfileSelectWidget(QWidget *parent)
     d->ui->setupUi(this);
 
     // Create the buttons for the Major Profiles
-    QCommandLinkButton *buttonJabber = new QCommandLinkButton("Jabber / XMPP");
-    buttonJabber->setIcon(KIcon("im-jabber"));
+    QCommandLinkButton *buttonJabber = new QCommandLinkButton(Dictionary::instance()->string(QLatin1String("jabber")));
+    buttonJabber->setIcon(KIcon(QLatin1String("im-jabber")));
     buttonJabber->setIconSize(QSize(32,32));
 
-    QCommandLinkButton *buttonGTalk = new QCommandLinkButton("Google Talk");
-    buttonGTalk->setIcon(KIcon("im-google-talk"));
+    QCommandLinkButton *buttonGTalk = new QCommandLinkButton(Dictionary::instance()->string(QLatin1String("google-talk")));
+    buttonGTalk->setIcon(KIcon(QLatin1String("im-google-talk")));
     buttonGTalk->setIconSize(QSize(32,32));
 
-    QCommandLinkButton *buttonFacebook = new QCommandLinkButton("Facebook Chat");
-    buttonFacebook->setIcon(KIcon("im-facebook"));
+    QCommandLinkButton *buttonFacebook = new QCommandLinkButton(Dictionary::instance()->string(QLatin1String("facebook")));
+    buttonFacebook->setIcon(KIcon(QLatin1String("im-facebook")));
     buttonFacebook->setIconSize(QSize(32,32));
 
-    QCommandLinkButton *buttonIcq = new QCommandLinkButton("ICQ");
-    buttonIcq->setIcon(KIcon("im-icq"));
+    QCommandLinkButton *buttonIcq = new QCommandLinkButton(Dictionary::instance()->string(QLatin1String("icq")));
+    buttonIcq->setIcon(KIcon(QLatin1String("im-icq")));
     buttonIcq->setIconSize(QSize(32,32));
 
-    QCommandLinkButton *buttonMsn = new QCommandLinkButton("Windows Live Messenger");
-    buttonMsn->setIcon(KIcon("im-msn"));
+    QCommandLinkButton *buttonMsn = new QCommandLinkButton(Dictionary::instance()->string(QLatin1String("msn")));
+    buttonMsn->setIcon(KIcon(QLatin1String("im-msn")));
     buttonMsn->setIconSize(QSize(32,32));
 
-    QCommandLinkButton *buttonOthers = new QCommandLinkButton("Others", "AOL, Gadu-Gadu, IRC, Yahoo and more...");
-    buttonOthers->setIcon(KIcon("go-next"));
+    QCommandLinkButton *buttonOthers = new QCommandLinkButton(i18n("Others"), i18n("AOL, Gadu-Gadu, IRC, Yahoo and more..."));
+    buttonOthers->setIcon(KIcon(QLatin1String("go-next")));
     buttonOthers->setIconSize(QSize(32,32));
 
     // Add them to the SignalMapper
-    d->signalMapper->setMapping(buttonJabber,   "jabber");
-    d->signalMapper->setMapping(buttonGTalk,    "google-talk");
-    d->signalMapper->setMapping(buttonFacebook, "facebook");
-    d->signalMapper->setMapping(buttonIcq,      "haze-icq");
-    d->signalMapper->setMapping(buttonMsn,      "haze-msn");
+    d->signalMapper->setMapping(buttonJabber,   QLatin1String("jabber"));
+    d->signalMapper->setMapping(buttonGTalk,    QLatin1String("google-talk"));
+    d->signalMapper->setMapping(buttonFacebook, QLatin1String("facebook"));
+    d->signalMapper->setMapping(buttonIcq,      QLatin1String("haze-icq"));
+    d->signalMapper->setMapping(buttonMsn,      QLatin1String("haze-msn"));
 
     // Connect them to the SignalMapper
     connect(buttonJabber,   SIGNAL(clicked()), d->signalMapper, SLOT(map()));
