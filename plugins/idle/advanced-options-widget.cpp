@@ -29,11 +29,11 @@ AdvancedOptionsWidget::AdvancedOptionsWidget(
     m_ui = new Ui::AdvancedOptionsWidget;
     m_ui->setupUi(this);
 
-    handleParameter("port", QVariant::UInt, m_ui->portSpinBox, m_ui->portLabel);
-    handleParameter("username", QVariant::String, m_ui->usernameLineEdit, m_ui->usernameLabel);
-    handleParameter("password", QVariant::String, m_ui->passwordLineEdit, m_ui->passwordLabel);
-    handleParameter("use-ssl", QVariant::Bool, m_ui->useSslCheckBox, m_ui->useSslLabel);
-    handleParameter("charset", QVariant::String, m_ui->charsetLineEdit, m_ui->charsetLabel);
+    handleParameter(QLatin1String("port"), QVariant::UInt, m_ui->portSpinBox, m_ui->portLabel);
+    handleParameter(QLatin1String("username"), QVariant::String, m_ui->usernameLineEdit, m_ui->usernameLabel);
+    handleParameter(QLatin1String("password"), QVariant::String, m_ui->passwordLineEdit, m_ui->passwordLabel);
+    handleParameter(QLatin1String("use-ssl"), QVariant::Bool, m_ui->useSslCheckBox, m_ui->useSslLabel);
+    handleParameter(QLatin1String("charset"), QVariant::String, m_ui->charsetLineEdit, m_ui->charsetLabel);
 }
 
 AdvancedOptionsWidget::~AdvancedOptionsWidget()

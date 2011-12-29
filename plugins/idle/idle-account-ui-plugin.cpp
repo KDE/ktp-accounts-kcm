@@ -30,7 +30,7 @@ IdleAccountUiPlugin::IdleAccountUiPlugin(QObject *parent, const QVariantList &)
  : AbstractAccountUiPlugin(parent)
 {
     // Register supported cm/protocol combinations
-    registerProvidedProtocol("idle", "irc");
+    registerProvidedProtocol(QLatin1String("idle"), QLatin1String("irc"));
 }
 
 IdleAccountUiPlugin::~IdleAccountUiPlugin()
