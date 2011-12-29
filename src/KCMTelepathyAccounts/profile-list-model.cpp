@@ -135,7 +135,7 @@ void ProfileListModel::populateList()
         insertItems.append(new ProfileItem(profile, this));
     }
 
-    if ( insertItems.size() > 0 ) {
+    if (insertItems.size() > 0) {
       beginInsertRows(QModelIndex(), 0, insertItems.size()-1);
       m_profileItems.append(insertItems);
       endInsertRows();

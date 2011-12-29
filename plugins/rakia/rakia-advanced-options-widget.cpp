@@ -93,7 +93,7 @@ RakiaAdvancedOptionsWidget::RakiaAdvancedOptionsWidget(ParameterEditModel* model
 void RakiaAdvancedOptionsWidget::updateKeepalive(int index)
 {
     kDebug() << index;
-    switch(index) {
+    switch (index) {
     case 0:
     case 3:
     case 4:

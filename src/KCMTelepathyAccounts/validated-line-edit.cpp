@@ -115,7 +115,7 @@ ValidatedLineEdit::~ValidatedLineEdit()
 
 void ValidatedLineEdit::setValidator(PredefinedValidator validator)
 {
-    switch(validator) {
+    switch (validator) {
     case NotEmptyValidator:
         setValidator(QLatin1String(".+"),
                      i18n("This field should not be empty"));
