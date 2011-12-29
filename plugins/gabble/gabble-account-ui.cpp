@@ -65,7 +65,7 @@ AbstractAccountParametersWidget *GabbleAccountUi::mainOptionsWidget(
         ParameterEditModel *model,
         QWidget *parent) const
 {
-    if(m_serviceName == QLatin1String("google-talk")) {
+    if (m_serviceName == QLatin1String("google-talk")) {
 	return new MainOptionsWidgetGoogleTalk(model, parent);
     } else if (m_serviceName == QLatin1String("facebook")) {
         return new MainOptionsWidgetFacebook(model, parent);

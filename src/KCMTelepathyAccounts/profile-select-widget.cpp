@@ -66,7 +66,7 @@ ProfileSelectWidget::ProfileSelectWidget(QWidget *parent, bool enableSalut)
 
     // Here we filter out salut and not local-xmpp because it might want to be
     // able to see local-xmpp using haze later.
-    if(!enableSalut) {
+    if (!enableSalut) {
         d->sortModel->setFilterRole(ProfileListModel::ProfileCmNameRole);
         d->sortModel->setFilterRegExp(QLatin1String("^((?!salut).)*$"));
     }

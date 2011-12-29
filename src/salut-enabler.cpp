@@ -86,11 +86,11 @@ SalutEnabler::~SalutEnabler()
 
 void SalutEnabler::onConnectionManagerReady(Tp::PendingOperation* op)
 {
-    if(op->isError()) {
+    if (op->isError()) {
         kWarning() << "Creating ConnectionManager failed:" << op->errorName() << op->errorMessage();
     }
 
-    if(!d->connectionManager->isValid()) {
+    if (!d->connectionManager->isValid()) {
         kWarning() << "Invalid ConnectionManager";
     }
 
@@ -104,7 +104,7 @@ void SalutEnabler::onConnectionManagerReady(Tp::PendingOperation* op)
 
 void SalutEnabler::onProfileManagerReady(Tp::PendingOperation* op)
 {
-    if(op->isError()) {
+    if (op->isError()) {
         kWarning() << "Creating ProfileManager failed:" << op->errorName() << op->errorMessage();
     }
 
@@ -195,7 +195,7 @@ void SalutEnabler::onUserAccepted()
     if (((lastname.isEmpty() && !firstname.isEmpty()) || (!lastname.isEmpty() && firstname.isEmpty()))
             && !nick.isEmpty()) {
 
-        displayName = QString(QLatin1String("%1 (%2)")).arg(d->values[firstNamePar].toString().isEmpty() ?
+        displayName = QString::fromLatin1("%1 (%2)").arg(d->values[firstNamePar].toString().isEmpty() ?
                 d->values[lastNamePar].toString() : d->values[firstNamePar].toString(),
                                                             d->values[nickNamePar].toString());
 
@@ -215,7 +215,7 @@ void SalutEnabler::onUserAccepted()
         //FIXME: let the user know that he reached a very strange situation
 
     } else {
-        displayName = QString(QLatin1String("%1 %2 (%3)")).arg(d->values[firstNamePar].toString(),
+        displayName = QString::fromLatin1("%1 %2 (%3)").arg(d->values[firstNamePar].toString(),
                                                                d->values[lastNamePar].toString(),
                                                                d->values[nickNamePar].toString());
     }
@@ -234,7 +234,7 @@ void SalutEnabler::onUserAccepted()
 void SalutEnabler::onAccountCreated(Tp::PendingOperation* op)
 {
     kWarning() << "Account created";
-    if(op->isError()) {
+    if (op->isError()) {
         kWarning() << "Creating Account failed:" << op->errorName() << op->errorMessage();
     }
 

@@ -144,8 +144,8 @@ void AccountItem::generateIcon()
     QString iconPath = account()->iconName();
 
     //if the icon has not been set, we use the protocol icon
-    if(iconPath.isEmpty()) {
-        iconPath = QString(QLatin1String("im-%1")).arg(account()->protocolName());
+    if (iconPath.isEmpty()) {
+        iconPath = QString::fromLatin1("im-%1").arg(account()->protocolName());
     }
 
     delete m_icon;
@@ -155,7 +155,7 @@ void AccountItem::generateIcon()
         m_icon = new KIcon(KIconLoader::global()->loadIcon(iconPath, KIconLoader::Desktop, 32, KIconLoader::DisabledState));
     }
 
-    if(!account()->isValid()) {
+    if (!account()->isValid()) {
         //we paint a warning symbol in the right-bottom corner
         QPixmap pixmap = m_icon->pixmap(32, 32);
         QPainter painter(&pixmap);

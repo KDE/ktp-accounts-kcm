@@ -78,7 +78,7 @@ void GenericAdvancedOptionsWidget::submit()
 
 void GenericAdvancedOptionsWidget::addTab(AbstractAccountParametersWidget* tab, const QString& label)
 {
-    if(d->tabWidget->count() == 1) {
+    if (d->tabWidget->count() == 1) {
         d->tabWidget->setTabBarHidden(false);
     }
 

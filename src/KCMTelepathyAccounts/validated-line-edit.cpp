@@ -173,15 +173,15 @@ void ValidatedLineEdit::validate()
     int pos;
     QString validatedText(text());
 
-    if(d->validator.validate(validatedText, pos) == QValidator::Acceptable) {
-        if(d->currentIcon != ValidationIconWidget::ValidIcon) {
+    if (d->validator.validate(validatedText, pos) == QValidator::Acceptable) {
+        if (d->currentIcon != ValidationIconWidget::ValidIcon) {
             d->validationIcon->setPixmap(SmallIcon(QLatin1String("dialog-ok-apply"), 0));
             setToolTip(i18n("This field is valid"));
             d->currentIcon = ValidationIconWidget::ValidIcon;
             d->currentState = QValidator::Acceptable;
         }
     }
-    else if(d->currentIcon != ValidationIconWidget::InvalidIcon) {
+    else if (d->currentIcon != ValidationIconWidget::InvalidIcon) {
         d->validationIcon->setPixmap(SmallIcon(QLatin1String("dialog-error"), 0));
         this->setToolTip(d->errorMessage);
         d->currentIcon = ValidationIconWidget::InvalidIcon;

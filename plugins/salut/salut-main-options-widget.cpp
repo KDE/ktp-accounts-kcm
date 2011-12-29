@@ -37,7 +37,7 @@ SalutMainOptionsWidget::SalutMainOptionsWidget(ParameterEditModel *model, QWidge
 
     // if the first- and last-name are empty on startup we add them based on
     // the current users full name
-    if(m_ui->firstnameLineEdit->text().isEmpty()) {
+    if (m_ui->firstnameLineEdit->text().isEmpty()) {
         KUser user = KUser();
         m_ui->firstnameLineEdit->setText(user.property(KUser::FullName).toString());
         m_ui->nicknameLineEdit->setText(user.loginName());

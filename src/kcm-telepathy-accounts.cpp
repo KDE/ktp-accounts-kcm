@@ -384,23 +384,23 @@ void KCMTelepathyAccounts::onSalutEnableButtonToggled(bool checked)
 void KCMTelepathyAccounts::onSalutConnectionManagerReady(Tp::PendingOperation* op)
 {
     bool error = false;
-    if(op->isError()) {
+    if (op->isError()) {
         kWarning() << "Creating salut ConnectionManager failed:" << op->errorName() << op->errorMessage();
         error = true;
     } else {
         Tp::ConnectionManagerPtr cm = Tp::ConnectionManagerPtr::qObjectCast(qobject_cast<Tp::PendingReady*>(op)->proxy());
 
-        if(!cm->isValid()) {
+        if (!cm->isValid()) {
             kWarning() << "Invalid salut ConnectionManager";
             error = true;
-        } else if(!cm->supportedProtocols().contains(QLatin1String("local-xmpp"))) {
+        } else if (!cm->supportedProtocols().contains(QLatin1String("local-xmpp"))) {
             kWarning() << "salut ConnectionManager doesn't support local-xmpp... this is weird";
             error = true;
         }
     }
 
     // Salut is not installed or has some problem
-    if(error) {
+    if (error) {
         m_ui->salutEnableFrame->setDisabled(true);
         m_ui->salutEnableStatusLabel->setText(i18n("Install telepathy-salut to enable"));
     }

@@ -145,7 +145,7 @@ void AddAccountAssistant::goToPageThree()
     // FIXME: untill packages for missing profiles aren't installed this needs to stay here
     if (selectedItem != 0) {
         // Set up the next page.
-        if(d->currentProfileItem != selectedItem) {
+        if (d->currentProfileItem != selectedItem) {
             d->currentProfileItem = selectedItem;
 
             d->connectionManager = Tp::ConnectionManager::create(selectedItem->cmName());
@@ -289,7 +289,7 @@ void AddAccountAssistant::onAccountCreated(Tp::PendingOperation *op)
         wallet.setPassword(account, values[QLatin1String("password")].toString());
     }
 
-    if(d->accountEditWidget->connectOnAdd()){
+    if (d->accountEditWidget->connectOnAdd()) {
         account->setRequestedPresence(Tp::Presence::available(QLatin1String("Online")));
     }
     account->setServiceName(d->currentProfileItem->serviceName());
@@ -298,11 +298,11 @@ void AddAccountAssistant::onAccountCreated(Tp::PendingOperation *op)
 
 void AddAccountAssistant::onConnectionManagerReady(Tp::PendingOperation *op)
 {
-    if(op->isError()) {
+    if (op->isError()) {
         kWarning() << "Creating ConnectionManager failed:" << op->errorName() << op->errorMessage();
     }
 
-    if(!d->connectionManager->isValid()) {
+    if (!d->connectionManager->isValid()) {
         kWarning() << "Invalid ConnectionManager";
     }
 

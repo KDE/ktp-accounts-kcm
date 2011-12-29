@@ -90,19 +90,18 @@ AccountEditWidget::AccountEditWidget(const Tp::ProfilePtr &profile,
     d->ui->advancedButton->setIcon(KIcon(QLatin1String("configure")));
     //FIXME: Dictionary should not be needed anymore when distros ship profiles
     QString localizedName = Dictionary::instance()->string(profile->name());
-    if(localizedName.isEmpty()) {
+    if (localizedName.isEmpty()) {
         localizedName = profile->name();
     }
     d->ui->titleLabel->setText(localizedName);
-    d->ui->iconLabel->setText(QLatin1String(""));
+    d->ui->iconLabel->setText(QString());
     d->ui->iconLabel->setPixmap(KIcon(profile->iconName()).pixmap(32));
 
-    if(connectOnAddFlag == doConnectOnAdd) {
+    if (connectOnAddFlag == doConnectOnAdd) {
         d->connectOnAdd = new QCheckBox(i18n("Connect when wizard is finished"), this);
         d->connectOnAdd->setChecked(true);
         d->ui->verticalLayout->addWidget(d->connectOnAdd);
-    }
-    else{
+    } else {
         d->connectOnAdd = 0;
     }
 
@@ -157,7 +156,7 @@ void AccountEditWidget::loadWidgets()
         // also verify if the UI handle all mandatory parameters
         QMap<QString, QVariant::Type> params = d->accountUi->supportedParameters();
         QMap<QString, QVariant::Type>::const_iterator paramIter = params.constBegin();
-        while(paramIter != params.constEnd()) {
+        while (paramIter != params.constEnd()) {
             Q_FOREACH (const Tp::ProtocolParameter &parameter, d->parameterModel->parameters()) {
                 if ((parameter.name() == paramIter.key()) &&
                     (parameter.type() == paramIter.value())) {
@@ -201,7 +200,7 @@ QStringList AccountEditWidget::parametersUnset() const
 
 void AccountEditWidget::onAdvancedClicked()
 {
-    if(!d->parameterModel->validateParameterValues()) {
+    if (!d->parameterModel->validateParameterValues()) {
         return;
     }
 
@@ -238,7 +237,7 @@ ParameterEditModel* AccountEditWidget::parameterModel() const
 
 bool AccountEditWidget::connectOnAdd()
 {
-    if(d->connectOnAdd == 0){
+    if (d->connectOnAdd == 0) {
         return false;
     }
     else{

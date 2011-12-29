@@ -79,24 +79,24 @@ void SalutMessageWidget::setParams(const QString& firstname, const QString& last
     if (((lastname.isEmpty() && !firstname.isEmpty()) || (!lastname.isEmpty() && firstname.isEmpty()))
             && !nick.isEmpty()) {
 
-        displayName = QString(QLatin1String("%1 (%2)")).arg(lastname.isEmpty() ? firstname : lastname, nick);
+        displayName = QString::fromLatin1("%1 (%2)").arg(lastname.isEmpty() ? firstname : lastname, nick);
 
     //either one of the names is filled and nick is empty
     } else if (((lastname.isEmpty() && !firstname.isEmpty()) || (!lastname.isEmpty() && firstname.isEmpty()))
             && nick.isEmpty()) {
 
-        displayName = QString(QLatin1String("%1")).arg(lastname.isEmpty() ? firstname : lastname);
+        displayName = QString::fromLatin1("%1").arg(lastname.isEmpty() ? firstname : lastname);
 
     //both first & last names are empty but nick is not
     } else if (lastname.isEmpty() && firstname.isEmpty() && !nick.isEmpty()) {
 
-        displayName = QString(QLatin1String("%1")).arg(nick);
+        displayName = QString::fromLatin1("%1").arg(nick);
 
     } else if (lastname.isEmpty() && firstname.isEmpty() && nick.isEmpty()) {
         //FIXME: let the user know that he reached a very strange situation
 
     } else {
-        displayName = QString(QLatin1String("%1 %2 (%3)")).arg(firstname, lastname, nick);
+        displayName = QString::fromLatin1("%1 %2 (%3)").arg(firstname, lastname, nick);
     }
 
     setText(i18n("You will appear as \"%1\" on your local network.",

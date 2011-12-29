@@ -89,7 +89,7 @@ void AbstractAccountParametersWidget::handleParameter(const QString &parameterNa
                                            QWidget* labelWidget = 0)
 {
     QList<QWidget*> labelWidgets;
-    if(labelWidget) {
+    if (labelWidget) {
         labelWidgets << labelWidget;
     }
     handleParameter(parameterName, parameterType, dataWidget, labelWidgets);
@@ -104,12 +104,12 @@ void AbstractAccountParametersWidget::handleParameter(const QString &parameterNa
 
     Tp::ProtocolParameter foundParameter = d->parameterModel->parameter(parameterName);
 
-    if(!foundParameter.isValid() || foundParameter.type() != parameterType) {
+    if (!foundParameter.isValid() || foundParameter.type() != parameterType) {
         // hide widgets because they are not needed
         kDebug() << "Field" << parameterName << "hidden";
         dataWidget->hide();
         Q_FOREACH (QWidget *label, labelWidgets) {
-            if(label) {
+            if (label) {
                 label->hide();
             }
         }
@@ -117,7 +117,7 @@ void AbstractAccountParametersWidget::handleParameter(const QString &parameterNa
     }
 
     QModelIndex index = d->parameterModel->indexForParameter(foundParameter);
-    if(index.isValid()) {
+    if (index.isValid()) {
         kDebug() << index << parameterName;
         // insert it to valid parameters list
         //for text edit boxes we force it to use the plainText property so that we don't get HTML all over our options
@@ -130,11 +130,11 @@ void AbstractAccountParametersWidget::handleParameter(const QString &parameterNa
 
         // check if the passed parameter is a validated one.. If so we're going to set the model here
         ValidatedLineEdit *validated = qobject_cast<ValidatedLineEdit*>(dataWidget);
-        if(validated) {
+        if (validated) {
             d->validatedWidgets.insert(index, validated);
         }
 
-        if (! (index.flags() & Qt::ItemIsEnabled)) {
+        if (!(index.flags() & Qt::ItemIsEnabled)) {
             dataWidget->setEnabled(false);
         }
     }

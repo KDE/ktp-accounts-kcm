@@ -37,7 +37,7 @@ RakiaMainOptionsWidget::RakiaMainOptionsWidget(ParameterEditModel *model, QWidge
 
     // if the account is empty on startup we add a new account, therefore
     // set the alias to the current users full name
-    if(m_ui->accountLineEdit->text().isEmpty()) {
+    if (m_ui->accountLineEdit->text().isEmpty()) {
         KUser user = KUser();
         m_ui->aliasLineEdit->setText(user.property(KUser::FullName).toString());
     }
