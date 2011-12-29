@@ -23,7 +23,6 @@
 
 #include <KCMTelepathyAccounts/PluginMacros>
 
-#include <KDebug>
 #include <KGenericFactory>
 
 #include <QtCore/QVariantList>
@@ -31,15 +30,12 @@
 SunshineAccountUiPlugin::SunshineAccountUiPlugin(QObject *parent, const QVariantList &)
     : AbstractAccountUiPlugin(parent)
 {
-    kDebug();
-
     // Register supported cm/protocol combinations
     registerProvidedProtocol("sunshine", "gadugadu");
 }
 
 SunshineAccountUiPlugin::~SunshineAccountUiPlugin()
 {
-    kDebug();
 }
 
 AbstractAccountUi* SunshineAccountUiPlugin::accountUi(const QString &connectionManager,
@@ -47,7 +43,6 @@ AbstractAccountUi* SunshineAccountUiPlugin::accountUi(const QString &connectionM
         const QString &serviceName)
 {
     Q_UNUSED(serviceName)
-    kDebug();
 
     // We support sunshine/gadugadu.
     if ((connectionManager == QLatin1String("sunshine")) &&

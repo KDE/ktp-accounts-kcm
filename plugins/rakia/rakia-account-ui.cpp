@@ -25,12 +25,9 @@
 #include <KCMTelepathyAccounts/ParameterEditModel>
 #include <KCMTelepathyAccounts/AbstractAccountParametersWidget>
 
-#include <KDebug>
-
 RakiaAccountUi::RakiaAccountUi(QObject *parent)
     : AbstractAccountUi(parent)
 {
-    kDebug();
     // Register supported parameters
     // Main Options
     /**< public SIP address (SIP URI) */
@@ -96,22 +93,17 @@ RakiaAccountUi::RakiaAccountUi(QObject *parent)
 
 RakiaAccountUi::~RakiaAccountUi()
 {
-    kDebug();
 }
 
 AbstractAccountParametersWidget *RakiaAccountUi::mainOptionsWidget(
     ParameterEditModel *model,
     QWidget *parent) const
 {
-    kDebug();
-
     return new RakiaMainOptionsWidget(model, parent);
 }
 
 bool RakiaAccountUi::hasAdvancedOptionsWidget() const
 {
-    kDebug();
-
     return true;
 }
 
@@ -119,8 +111,6 @@ AbstractAccountParametersWidget *RakiaAccountUi::advancedOptionsWidget(
     ParameterEditModel *model,
     QWidget *parent) const
 {
-    kDebug();
-
     AbstractAccountParametersWidget* aowidget = new RakiaAdvancedOptionsWidget(model, parent);
 
     return aowidget;

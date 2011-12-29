@@ -21,7 +21,6 @@
 #include "gabble-account-ui-plugin.h"
 #include "gabble-account-ui.h"
 
-#include <KDebug>
 #include <KGenericFactory>
 
 #include <QtCore/QVariantList>
@@ -29,21 +28,16 @@
 GabbleAccountUiPlugin::GabbleAccountUiPlugin(QObject *parent, const QVariantList &)
  : AbstractAccountUiPlugin(parent)
 {
-    kDebug();
-
     // Register supported cm/protocol combinations
     registerProvidedProtocol("gabble", "jabber");
 }
 
 GabbleAccountUiPlugin::~GabbleAccountUiPlugin()
 {
-    kDebug();
 }
 
 AbstractAccountUi* GabbleAccountUiPlugin::accountUi(const QString &connectionManager, const QString &protocol, const QString &serviceName)
 {
-    kDebug();
-
     // We only support gabble/jabber combination.
     if ((connectionManager == QLatin1String("gabble")) && (protocol == QLatin1String("jabber"))) {
         return new GabbleAccountUi(serviceName, this);

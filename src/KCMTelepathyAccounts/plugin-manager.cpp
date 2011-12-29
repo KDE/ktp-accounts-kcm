@@ -23,16 +23,14 @@
 #include "abstract-account-ui-plugin.h"
 #include "abstract-account-ui.h"
 
-#include <KDebug>
 #include <KServiceTypeTrader>
+#include <KDebug>
 
 PluginManager* PluginManager::s_self = 0;
 
 PluginManager::PluginManager(QObject *parent)
  : QObject(parent)
 {
-    kDebug();
-
     // Set up the singleton instance
     s_self = this;
 
@@ -41,16 +39,12 @@ PluginManager::PluginManager(QObject *parent)
 
 PluginManager::~PluginManager()
 {
-    kDebug();
-
     // Delete the singleton instance of this class
     s_self = 0;
 }
 
 PluginManager *PluginManager::instance()
 {
-    kDebug();
-
     // Construct the singleton if hasn't been already
     if (!s_self) {
         s_self = new PluginManager(0);
@@ -62,7 +56,6 @@ PluginManager *PluginManager::instance()
 
 void PluginManager::loadPlugins()
 {
-    kDebug();
     KService::List offers = KServiceTypeTrader::self()->query("KTpAccountsKCM/AccountUiPlugin");
 
     KService::List::const_iterator iter;
@@ -92,8 +85,6 @@ AbstractAccountUi *PluginManager::accountUiForProtocol(const QString &connection
                                                        const QString &protocol,
                                                        const QString &serviceName)
 {
-    kDebug();
-
     // Loop through all the plugins seeing if they provide an AccountUi for the connection manager
     // and protocol combination we were provided with.
 

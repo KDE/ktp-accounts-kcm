@@ -46,7 +46,6 @@ public:
        signalMapper(0),
        profileItem(0)
     {
-        kDebug();
     }
 
     Tp::ProfileManagerPtr profileManager;
@@ -60,8 +59,6 @@ SimpleProfileSelectWidget::SimpleProfileSelectWidget(QWidget *parent)
  : QWidget(parent),
    d(new Private)
 {
-    kDebug();
-
     // Set up the models
     d->signalMapper = new QSignalMapper(this);
 
@@ -134,16 +131,12 @@ SimpleProfileSelectWidget::SimpleProfileSelectWidget(QWidget *parent)
 
 SimpleProfileSelectWidget::~SimpleProfileSelectWidget()
 {
-    kDebug();
-
     delete d->ui;
     delete d;
 }
 
 void SimpleProfileSelectWidget::onProfileManagerReady(Tp::PendingOperation *op)
 {
-    kDebug();
-
     // Check the pending operation completed successfully.
     if (op->isError()) {
         kDebug() << "becomeReady() failed:" << op->errorName() << op->errorMessage();
@@ -158,8 +151,6 @@ void SimpleProfileSelectWidget::onProfileManagerReady(Tp::PendingOperation *op)
 // Return the selected ProfileItem or 0 if nothing is selected.
 ProfileItem *SimpleProfileSelectWidget::selectedProfile()
 {
-    kDebug();
-
     if (d->profileItem != NULL) {
         delete d->profileItem;
     }
@@ -180,8 +171,6 @@ ProfileItem *SimpleProfileSelectWidget::selectedProfile()
 // FIXME: before we proceed here, we should check if there's everything installed we need.
 void SimpleProfileSelectWidget::onProfileClicked(QString profileName)
 {
-    kDebug();
-
     d->profileName = profileName;
 
     kDebug() << "Selected profile: " << d->profileName;

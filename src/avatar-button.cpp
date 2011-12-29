@@ -22,7 +22,6 @@
 
 #include <QWidgetAction>
 
-#include <KDebug>
 #include <KFileDialog>
 #include <KMenu>
 #include <KLocalizedString>

@@ -56,7 +56,6 @@ public:
        pageTwo(0),
        pageThree(0)
     {
-        kDebug();
     }
 
     Tp::AccountManagerPtr accountManager;
@@ -75,8 +74,6 @@ AddAccountAssistant::AddAccountAssistant(Tp::AccountManagerPtr accountManager, Q
     : KAssistantDialog(parent),
     d(new Private)
 {
-    kDebug();
-
     d->accountManager = accountManager;
 
     // Set up the pages of the Assistant.
@@ -123,22 +120,17 @@ AddAccountAssistant::AddAccountAssistant(Tp::AccountManagerPtr accountManager, Q
 
 AddAccountAssistant::~AddAccountAssistant()
 {
-    kDebug();
-
     delete d;
 }
 
 void AddAccountAssistant::goToPageTwo()
 {
-    kDebug();
-
     KAssistantDialog::setAppropriate(d->pageTwo, true);
     KAssistantDialog::next();
 }
 
 void AddAccountAssistant::goToPageThree()
 {
-    kDebug();
     ProfileItem *selectedItem;
 
     if (currentPage() == d->pageTwo) {
@@ -172,7 +164,6 @@ void AddAccountAssistant::goToPageThree()
 
 void AddAccountAssistant::next()
 {
-    kDebug();
     // the next button is disabled on the first page
     // so ::next is called from the second page
     // so we go to page three now
@@ -181,8 +172,6 @@ void AddAccountAssistant::next()
 
 void AddAccountAssistant::back()
 {
-    kDebug();
-
     // Disable pageTwo once we're going back to pageOne
     if (currentPage() == d->pageTwo) {
         KAssistantDialog::setAppropriate(d->pageTwo, false);
@@ -193,8 +182,6 @@ void AddAccountAssistant::back()
 
 void AddAccountAssistant::accept()
 {
-    kDebug();
-
     // Check we are being called from page 3.
     if (currentPage() != d->pageThree) {
         kWarning() << "Called accept() from a non-final page :(.";
@@ -266,8 +253,6 @@ void AddAccountAssistant::accept()
 
 void AddAccountAssistant::reject()
 {
-    kDebug();
-
     // Emit a signal to tell the assistant launcher that it was cancelled.
     Q_EMIT cancelled();
 
@@ -277,8 +262,6 @@ void AddAccountAssistant::reject()
 
 void AddAccountAssistant::onAccountCreated(Tp::PendingOperation *op)
 {
-    kDebug();
-
     if (op->isError()) {
         Q_EMIT feedbackMessage(i18n("Failed to create account"),
                                i18n("Possibly not all required fields are valid"),
@@ -315,8 +298,6 @@ void AddAccountAssistant::onAccountCreated(Tp::PendingOperation *op)
 
 void AddAccountAssistant::onConnectionManagerReady(Tp::PendingOperation *op)
 {
-    kDebug();
-
     if(op->isError()) {
         kWarning() << "Creating ConnectionManager failed:" << op->errorName() << op->errorMessage();
     }
@@ -330,14 +311,12 @@ void AddAccountAssistant::onConnectionManagerReady(Tp::PendingOperation *op)
 
 void AddAccountAssistant::onProfileSelected(bool value)
 {
-    kDebug();
     //if a protocol is selected, enable the next button on the first page
     setValid(d->pageTwo, value);
 }
 
 void AddAccountAssistant::pageThree()
 {
-    kDebug();
     // Get the protocol's parameters and values.
     Tp::ProtocolInfo protocolInfo = d->connectionManager->protocol(d->currentProfileItem->protocolName());
     Tp::ProtocolParameterList parameters = protocolInfo.parameters();

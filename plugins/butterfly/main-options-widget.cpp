@@ -20,14 +20,10 @@
 
 #include "main-options-widget.h"
 
-#include <KDebug>
-
 MainOptionsWidget::MainOptionsWidget(ParameterEditModel *model,
                                      QWidget *parent)
  : AbstractAccountParametersWidget(model, parent)
 {
-    kDebug();
-
     // Set up the UI.
     m_ui = new Ui::MainOptionsWidget;
     m_ui->setupUi(this);
@@ -40,8 +36,6 @@ MainOptionsWidget::MainOptionsWidget(ParameterEditModel *model,
 
 MainOptionsWidget::~MainOptionsWidget()
 {
-    kDebug();
-
     delete m_ui;
 }
 

@@ -22,13 +22,9 @@
 
 #include <KCMTelepathyAccounts/ParameterEditModel>
 
-#include <KDebug>
-
 MySpaceIMMainOptionsWidget::MySpaceIMMainOptionsWidget(ParameterEditModel *model, QWidget *parent)
  : AbstractAccountParametersWidget(model, parent)
 {
-    kDebug();
-
     // Set up the UI.
     m_ui = new Ui::MySpaceIMMainOptionsWidget;
     m_ui->setupUi(this);
@@ -39,8 +35,6 @@ MySpaceIMMainOptionsWidget::MySpaceIMMainOptionsWidget(ParameterEditModel *model
 
 MySpaceIMMainOptionsWidget::~MySpaceIMMainOptionsWidget()
 {
-    kDebug();
-
     delete m_ui;
 }
 

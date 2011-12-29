@@ -22,8 +22,6 @@
 
 #include "dictionary.h"
 
-#include <KDebug>
-
 ParameterItem::ParameterItem(const Tp::ProtocolParameter &parameter,
                              const Tp::Profile::Parameter &profileParameter,
                              const QVariant &originalValue,

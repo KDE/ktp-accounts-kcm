@@ -20,16 +20,12 @@
 
 #include "main-options-widget-facebook.h"
 
-
 #include <KCMTelepathyAccounts/ParameterEditModel>
-#include <KDebug>
 
 MainOptionsWidgetFacebook::MainOptionsWidgetFacebook(ParameterEditModel *model,
                                      QWidget *parent)
  : AbstractAccountParametersWidget(model, parent)
 {
-    kDebug();
-
     // Set up the UI.
     m_ui = new Ui::MainOptionsWidgetFacebook;
     m_ui->setupUi(this);
@@ -52,8 +48,6 @@ MainOptionsWidgetFacebook::MainOptionsWidgetFacebook(ParameterEditModel *model,
 
 MainOptionsWidgetFacebook::~MainOptionsWidgetFacebook()
 {
-    kDebug();
-
     delete m_ui;
 }
 

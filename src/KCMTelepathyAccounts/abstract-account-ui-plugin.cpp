@@ -27,7 +27,6 @@ class AbstractAccountUiPlugin::Private
 public:
     Private()
     {
-        kDebug();
     }
 
     QMap<QString, QString> providedProtocols;
@@ -38,13 +37,10 @@ AbstractAccountUiPlugin::AbstractAccountUiPlugin(QObject *parent)
  : QObject(parent),
    d(new Private)
 {
-    kDebug();
 }
 
 AbstractAccountUiPlugin::~AbstractAccountUiPlugin()
 {
-    kDebug();
-
     delete d;
 }
 
@@ -56,8 +52,6 @@ const QMap<QString, QString> &AbstractAccountUiPlugin::providedProtocols() const
 void AbstractAccountUiPlugin::registerProvidedProtocol(const QString &connectionManager,
                                                        const QString &protocol)
 {
-    kDebug();
-
     // Check the protocol is not already entered
     foreach (const QString &value, d->providedProtocols.values(connectionManager)) {
         if (value == protocol) {

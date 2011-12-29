@@ -20,15 +20,11 @@
 
 #include "advanced-options-widget.h"
 
-#include <KDebug>
-
 AdvancedOptionsWidget::AdvancedOptionsWidget(
         ParameterEditModel *model,
         QWidget *parent)
          : AbstractAccountParametersWidget(model, parent)
 {
-    kDebug();
-
     // Set up the UI.
     m_ui = new Ui::AdvancedOptionsWidget;
     m_ui->setupUi(this);
@@ -42,8 +38,6 @@ AdvancedOptionsWidget::AdvancedOptionsWidget(
 
 AdvancedOptionsWidget::~AdvancedOptionsWidget()
 {
-    kDebug();
-
     delete m_ui;
 }
 

@@ -20,13 +20,9 @@
 
 #include "skype-advanced-settings-widget.h"
 
-#include <KDebug>
-
 SkypeAdvancedSettingsWidget::SkypeAdvancedSettingsWidget(ParameterEditModel *model, QWidget *parent)
  : AbstractAccountParametersWidget(model, parent)
 {
-    kDebug();
-
     // Set up the UI.
     m_ui = new Ui::SkypeAdvancedSettingsWidget;
     m_ui->setupUi(this);
@@ -41,7 +37,5 @@ SkypeAdvancedSettingsWidget::SkypeAdvancedSettingsWidget(ParameterEditModel *mod
 
 SkypeAdvancedSettingsWidget::~SkypeAdvancedSettingsWidget()
 {
-    kDebug();
-
     delete m_ui;
 }

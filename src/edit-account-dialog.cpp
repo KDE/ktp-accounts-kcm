@@ -46,7 +46,6 @@ public:
     Private()
             : item(0), widget(0), reconnectRequired(false)
     {
-        kDebug();
     }
 
     AccountItem *item;
@@ -58,8 +57,6 @@ EditAccountDialog::EditAccountDialog(AccountItem *item, QWidget *parent)
         : KDialog(parent),
           d(new Private)
 {
-    kDebug();
-
     d->item = item;
 
     // Get the protocol's parameters and values.
@@ -93,15 +90,11 @@ EditAccountDialog::EditAccountDialog(AccountItem *item, QWidget *parent)
 
 EditAccountDialog::~EditAccountDialog()
 {
-    kDebug();
-
     delete d;
 }
 
 void EditAccountDialog::accept()
 {
-    kDebug();
-
     QVariantMap setParameters = d->widget->parametersSet();
     QStringList unsetParameters = d->widget->parametersUnset();
 
@@ -126,8 +119,6 @@ void EditAccountDialog::accept()
 
 void EditAccountDialog::onParametersUpdated(Tp::PendingOperation *op)
 {
-    kDebug();
-
     if (op->isError()) {
         // FIXME: Visual feedback in GUI to user.
         kWarning() << "Could not update parameters:" << op->errorName() << op->errorMessage();
@@ -174,8 +165,6 @@ void EditAccountDialog::onParametersUpdated(Tp::PendingOperation *op)
 
 void EditAccountDialog::onDisplayNameUpdated(Tp::PendingOperation *op)
 {
-    kDebug();
-
     if (op->isError()) {
         // FIXME: Visual feedback in GUI to user.
         kWarning() << "Could not update display name:" << op->errorName() << op->errorMessage();

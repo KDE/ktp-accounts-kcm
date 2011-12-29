@@ -20,14 +20,10 @@
 
 #include "main-options-widget-googletalk.h"
 
-#include <KDebug>
-
 MainOptionsWidgetGoogleTalk::MainOptionsWidgetGoogleTalk(ParameterEditModel *model,
                                      QWidget *parent)
  : AbstractAccountParametersWidget(model, parent)
 {
-    kDebug();
-
     // Set up the UI.
     m_ui = new Ui::MainOptionsWidgetGoogleTalk;
     m_ui->setupUi(this);
@@ -39,8 +35,6 @@ MainOptionsWidgetGoogleTalk::MainOptionsWidgetGoogleTalk(ParameterEditModel *mod
 
 MainOptionsWidgetGoogleTalk::~MainOptionsWidgetGoogleTalk()
 {
-    kDebug();
-
     delete m_ui;
 }
 

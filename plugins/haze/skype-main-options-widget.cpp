@@ -22,15 +22,11 @@
 
 #include <KCMTelepathyAccounts/ParameterEditModel>
 
-#include <KDebug>
-
 #include <QDir>
 
 SkypeMainOptionsWidget::SkypeMainOptionsWidget(ParameterEditModel *model, QWidget *parent)
  : AbstractAccountParametersWidget(model, parent)
 {
-    kDebug();
-
     // Set up the UI.
     m_ui = new Ui::SkypeMainOptionsWidget;
     m_ui->setupUi(this);
@@ -56,8 +52,6 @@ SkypeMainOptionsWidget::SkypeMainOptionsWidget(ParameterEditModel *model, QWidge
 
 SkypeMainOptionsWidget::~SkypeMainOptionsWidget()
 {
-    kDebug();
-
     delete m_ui;
 }
 

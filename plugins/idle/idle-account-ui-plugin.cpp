@@ -22,7 +22,6 @@
 
 #include "idle-account-ui.h"
 
-#include <KDebug>
 #include <KGenericFactory>
 
 #include <QtCore/QVariantList>
@@ -30,22 +29,17 @@
 IdleAccountUiPlugin::IdleAccountUiPlugin(QObject *parent, const QVariantList &)
  : AbstractAccountUiPlugin(parent)
 {
-    kDebug();
-
     // Register supported cm/protocol combinations
     registerProvidedProtocol("idle", "irc");
 }
 
 IdleAccountUiPlugin::~IdleAccountUiPlugin()
 {
-    kDebug();
 }
 
 AbstractAccountUi* IdleAccountUiPlugin::accountUi(const QString &connectionManager, const QString &protocol, const QString &serviceName)
 {
     Q_UNUSED(serviceName);
-
-    kDebug();
 
     if ((connectionManager == QLatin1String("idle")) && (protocol == QLatin1String("irc"))) {
         return new IdleAccountUi;

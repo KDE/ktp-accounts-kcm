@@ -20,14 +20,10 @@
 
 #include "aim-server-settings-widget.h"
 
-#include <KDebug>
-
 AimServerSettingsWidget::AimServerSettingsWidget(ParameterEditModel *model,
                                                      QWidget *parent)
  : AbstractAccountParametersWidget(model, parent)
 {
-    kDebug();
-
     // Set up the UI.
     m_ui = new Ui::AimServerSettingsWidget;
     m_ui->setupUi(this);
@@ -45,7 +41,5 @@ AimServerSettingsWidget::AimServerSettingsWidget(ParameterEditModel *model,
 
 AimServerSettingsWidget::~AimServerSettingsWidget()
 {
-    kDebug();
-
     delete m_ui;
 }

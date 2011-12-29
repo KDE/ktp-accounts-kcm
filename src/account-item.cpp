@@ -42,8 +42,6 @@ AccountItem::AccountItem(const Tp::AccountPtr &account, AccountsListModel *paren
    m_account(account),
    m_icon(new KIcon())
 {
-    kDebug();
-
     //connect AccountPtr signals to AccountItem signals
     connect(m_account.data(),
             SIGNAL(stateChanged(bool)),
@@ -69,8 +67,6 @@ AccountItem::AccountItem(const Tp::AccountPtr &account, AccountsListModel *paren
 
 AccountItem::~AccountItem()
 {
-    kDebug();
-
     delete m_icon;
 }
 
@@ -145,8 +141,6 @@ const QString AccountItem::connectionProtocolName() const
 
 void AccountItem::generateIcon()
 {
-    kDebug();
-
     QString iconPath = account()->iconName();
 
     //if the icon has not been set, we use the protocol icon
@@ -176,8 +170,6 @@ void AccountItem::generateIcon()
 
 void AccountItem::onAccountRemoved(Tp::PendingOperation *op)
 {
-    kDebug();
-
     if (op->isError()) {
         kDebug() << "An error occurred removing the Account."
                  << op->errorName()
@@ -188,7 +180,6 @@ void AccountItem::onAccountRemoved(Tp::PendingOperation *op)
 
 void AccountItem::onTitleForCustomPages(QString mandatoryPage, QList<QString> optionalPage)
 {
-    kDebug();
     emit setTitleForCustomPages(mandatoryPage, optionalPage);
 }
 

@@ -22,13 +22,9 @@
 
 #include <KCMTelepathyAccounts/ParameterEditModel>
 
-#include <KDebug>
-
 YahooMainOptionsWidget::YahooMainOptionsWidget(ParameterEditModel* model, QWidget* parent)
         : AbstractAccountParametersWidget(model, parent)
 {
-    kDebug() << "Creating Yahoo Account";
-
     //setup the Ui
     m_ui = new Ui::YahooMainOptionsWidget;
     m_ui->setupUi(this);
@@ -41,8 +37,6 @@ YahooMainOptionsWidget::YahooMainOptionsWidget(ParameterEditModel* model, QWidge
 
 YahooMainOptionsWidget::~YahooMainOptionsWidget()
 {
-    kDebug();
-
     delete m_ui;
 }
 

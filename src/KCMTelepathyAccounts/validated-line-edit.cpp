@@ -24,7 +24,6 @@
 
 #include <KIcon>
 #include <KLineEdit>
-#include <KDebug>
 #include <KLocale>
 #include <KIconLoader>
 

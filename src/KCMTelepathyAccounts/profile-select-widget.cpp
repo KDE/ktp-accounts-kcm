@@ -44,7 +44,6 @@ public:
        sortModel(0),
        sourceModel(0)
     {
-        kDebug();
     }
 
     Tp::ProfileManagerPtr profileManager;
@@ -57,8 +56,6 @@ ProfileSelectWidget::ProfileSelectWidget(QWidget *parent, bool enableSalut)
  : QWidget(parent),
    d(new Private)
 {
-    kDebug();
-
     // Set up the models
     d->sourceModel = new ProfileListModel(this);
     d->sortModel = new QSortFilterProxyModel(this);
@@ -97,16 +94,12 @@ ProfileSelectWidget::ProfileSelectWidget(QWidget *parent, bool enableSalut)
 
 ProfileSelectWidget::~ProfileSelectWidget()
 {
-    kDebug();
-
     delete d->ui;
     delete d;
 }
 
 void ProfileSelectWidget::onProfileManagerReady(Tp::PendingOperation *op)
 {
-    kDebug();
-
     // Check the pending operation completed successfully.
     if (op->isError()) {
         kDebug() << "becomeReady() failed:" << op->errorName() << op->errorMessage();
@@ -119,8 +112,6 @@ void ProfileSelectWidget::onProfileManagerReady(Tp::PendingOperation *op)
 // Return the selected ProfileItem or 0 if nothing is selected.
 ProfileItem *ProfileSelectWidget::selectedProfile()
 {
-    kDebug();
-
     // Get the indexes of the selected items from the view
     QModelIndexList selectedIndexes = d->ui->profileListView->selectionModel()->selectedIndexes();
 
@@ -143,8 +134,6 @@ ProfileItem *ProfileSelectWidget::selectedProfile()
 
 void ProfileSelectWidget::onSelectionChanged(const QItemSelection &selected)
 {
-    kDebug();
-
     Q_EMIT profileSelected(!selected.isEmpty());
 }
 

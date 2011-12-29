@@ -24,12 +24,9 @@
 
 #include <KCMTelepathyAccounts/AbstractAccountParametersWidget>
 
-#include <KDebug>
-
 SunshineAccountUi::SunshineAccountUi(QObject *parent)
     : AbstractAccountUi(parent)
 {
-    kDebug();
     // Register supported parameters
     // Main Options
     registerSupportedParameter("account", QVariant::String);
@@ -49,22 +46,17 @@ SunshineAccountUi::SunshineAccountUi(QObject *parent)
 
 SunshineAccountUi::~SunshineAccountUi()
 {
-    kDebug();
 }
 
 AbstractAccountParametersWidget *SunshineAccountUi::mainOptionsWidget(
     ParameterEditModel *model,
     QWidget *parent) const
 {
-    kDebug();
-
     return new SunshineMainOptionsWidget(model, parent);
 }
 
 bool SunshineAccountUi::hasAdvancedOptionsWidget() const
 {
-    kDebug();
-
     return true;
 }
 
@@ -72,8 +64,6 @@ AbstractAccountParametersWidget *SunshineAccountUi::advancedOptionsWidget(
     ParameterEditModel *model,
     QWidget *parent) const
 {
-    kDebug();
-
     AbstractAccountParametersWidget* aowidget = new SunshineAdvancedOptionsWidget(model, parent);
 
     return aowidget;

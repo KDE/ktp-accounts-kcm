@@ -20,14 +20,10 @@
 
 #include "proxy-settings-widget.h"
 
-#include <KDebug>
-
 ProxySettingsWidget::ProxySettingsWidget(ParameterEditModel *model,
                                          QWidget *parent)
  : AbstractAccountParametersWidget(model, parent)
 {
-    kDebug();
-
     // Set up the UI.
     m_ui = new Ui::ProxySettingsWidget;
     m_ui->setupUi(this);
@@ -44,8 +40,6 @@ ProxySettingsWidget::ProxySettingsWidget(ParameterEditModel *model,
 
 ProxySettingsWidget::~ProxySettingsWidget()
 {
-    kDebug();
-
     delete m_ui;
 }
 

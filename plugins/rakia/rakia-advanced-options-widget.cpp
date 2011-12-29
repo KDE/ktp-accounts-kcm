@@ -27,8 +27,6 @@
 RakiaAdvancedOptionsWidget::RakiaAdvancedOptionsWidget(ParameterEditModel* model, QWidget* parent)
     : AbstractAccountParametersWidget(model, parent)
 {
-    kDebug();
-
     // Set up the UI.
     m_ui = new Ui::RakiaAdvancedOptionsWidget;
     m_ui->setupUi(this);

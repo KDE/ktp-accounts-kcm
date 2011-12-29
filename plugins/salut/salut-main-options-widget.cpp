@@ -22,7 +22,6 @@
 
 #include <KCMTelepathyAccounts/ParameterEditModel>
 
-#include <KDebug>
 #include <KUser>
 
 SalutMainOptionsWidget::SalutMainOptionsWidget(ParameterEditModel *model, QWidget *parent)
@@ -49,7 +48,5 @@ SalutMainOptionsWidget::SalutMainOptionsWidget(ParameterEditModel *model, QWidge
 
 SalutMainOptionsWidget::~SalutMainOptionsWidget()
 {
-    kDebug();
-
     delete m_ui;
 }

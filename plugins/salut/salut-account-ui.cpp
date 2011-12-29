@@ -25,12 +25,9 @@
 #include <KCMTelepathyAccounts/ParameterEditModel>
 #include <KCMTelepathyAccounts/AbstractAccountParametersWidget>
 
-#include <KDebug>
-
 SalutAccountUi::SalutAccountUi(QObject *parent)
     : AbstractAccountUi(parent)
 {
-    kDebug();
     // Register supported parameters
     // Main Options
     registerSupportedParameter("first-name", QVariant::String);
@@ -45,22 +42,17 @@ SalutAccountUi::SalutAccountUi(QObject *parent)
 
 SalutAccountUi::~SalutAccountUi()
 {
-    kDebug();
 }
 
 AbstractAccountParametersWidget *SalutAccountUi::mainOptionsWidget(
     ParameterEditModel *model,
     QWidget *parent) const
 {
-    kDebug();
-
     return new SalutMainOptionsWidget(model, parent);
 }
 
 bool SalutAccountUi::hasAdvancedOptionsWidget() const
 {
-    kDebug();
-
     return true;
 }
 
@@ -68,8 +60,6 @@ AbstractAccountParametersWidget *SalutAccountUi::advancedOptionsWidget(
     ParameterEditModel *model,
     QWidget *parent) const
 {
-    kDebug();
-
     AbstractAccountParametersWidget* aowidget = new SalutAdvancedOptionsWidget(model, parent);
 
     return aowidget;

@@ -44,7 +44,6 @@ public:
         : q(parent),
           widget(0)
     {
-        kDebug();
     }
 
     SalutDetailsDialog *q;
@@ -57,8 +56,6 @@ SalutDetailsDialog::SalutDetailsDialog(const Tp::ProfileManagerPtr profileManage
     : KDialog(parent),
       d(new Private(this))
 {
-    kDebug();
-
     setMinimumWidth(450);
 
     // Get the protocol's parameters and values.

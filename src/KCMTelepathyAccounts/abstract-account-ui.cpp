@@ -29,7 +29,6 @@ class AbstractAccountUi::Private
 public:
     Private()
     {
-        kDebug();
     }
     QMap<QString, QVariant::Type> supportedParameters;
 };
@@ -38,13 +37,10 @@ AbstractAccountUi::AbstractAccountUi(QObject *parent)
  : QObject(parent),
    d(new Private)
 {
-    kDebug();
 }
 
 AbstractAccountUi::~AbstractAccountUi()
 {
-    kDebug();
-
     delete d;
 }
 

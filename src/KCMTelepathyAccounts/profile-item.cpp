@@ -25,7 +25,6 @@
 #include "dictionary.h"
 
 #include <TelepathyQt/Profile>
-#include <KDebug>
 #include <KIcon>
 
 ProfileItem::ProfileItem(const Tp::ProfilePtr &profile, QObject *parent)
@@ -44,8 +43,6 @@ ProfileItem::ProfileItem(const Tp::ProfilePtr &profile, QObject *parent)
 
 ProfileItem::~ProfileItem()
 {
-    kDebug();
-
     delete m_icon;
 }
 

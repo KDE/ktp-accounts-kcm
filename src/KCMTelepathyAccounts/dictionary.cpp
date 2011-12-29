@@ -20,15 +20,12 @@
 
 #include "dictionary.h"
 
-#include <KDebug>
 #include <KLocale>
 
 Dictionary* Dictionary::s_self = 0;
 
 Dictionary::Dictionary()
 {
-    kDebug();
-
     // Set up the singleton instance
     s_self = this;
 
@@ -82,16 +79,12 @@ Dictionary::Dictionary()
 
 Dictionary::~Dictionary()
 {
-    kDebug();
-
     // Delete the singleton instance of this class
     s_self = 0;
 }
 
 Dictionary *Dictionary::instance()
 {
-    kDebug();
-
     // Construct the singleton if hasn't been already
     if (!s_self) {
         s_self = new Dictionary;

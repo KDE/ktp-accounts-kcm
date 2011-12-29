@@ -22,8 +22,6 @@
 
 #include <KCMTelepathyAccounts/ParameterEditModel>
 
-#include <KDebug>
-
 SunshineMainOptionsWidget::SunshineMainOptionsWidget(ParameterEditModel *model, QWidget *parent)
     : AbstractAccountParametersWidget(model, parent)
 {
@@ -39,7 +37,5 @@ SunshineMainOptionsWidget::SunshineMainOptionsWidget(ParameterEditModel *model, 
 
 SunshineMainOptionsWidget::~SunshineMainOptionsWidget()
 {
-    kDebug();
-
     delete m_ui;
 }

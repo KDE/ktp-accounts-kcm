@@ -20,14 +20,10 @@
 
 #include "icq-server-settings-widget.h"
 
-#include <KDebug>
-
 IcqServerSettingsWidget::IcqServerSettingsWidget(ParameterEditModel *model,
                                                      QWidget *parent)
  : AbstractAccountParametersWidget(model, parent)
 {
-    kDebug();
-
     // Set up the UI.
     m_ui = new Ui::IcqServerSettingsWidget;
     m_ui->setupUi(this);
@@ -42,8 +38,6 @@ IcqServerSettingsWidget::IcqServerSettingsWidget(ParameterEditModel *model,
 
 IcqServerSettingsWidget::~IcqServerSettingsWidget()
 {
-    kDebug();
-
     delete m_ui;
 }
 

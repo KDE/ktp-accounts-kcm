@@ -20,14 +20,10 @@
 
 #include "yahoo-server-settings-widget.h"
 
-#include <KDebug>
-
 YahooServerSettingsWidget::YahooServerSettingsWidget(ParameterEditModel *model,
                                                      QWidget *parent)
  : AbstractAccountParametersWidget(model, parent)
 {
-    kDebug();
-
     // Set up the UI.
     m_ui = new Ui::YahooServerSettingsWidget;
     m_ui->setupUi(this);
@@ -46,8 +42,6 @@ YahooServerSettingsWidget::YahooServerSettingsWidget(ParameterEditModel *model,
 
 YahooServerSettingsWidget::~YahooServerSettingsWidget()
 {
-    kDebug();
-
     delete m_ui;
 }
 

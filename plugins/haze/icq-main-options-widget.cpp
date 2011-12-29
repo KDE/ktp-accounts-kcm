@@ -20,14 +20,10 @@
 
 #include "icq-main-options-widget.h"
 
-#include <KDebug>
-
 IcqMainOptionsWidget::IcqMainOptionsWidget(ParameterEditModel *model,
                                      QWidget *parent)
  : AbstractAccountParametersWidget(model, parent)
 {
-    kDebug();
-
     // Set up the UI.
     m_ui = new Ui::IcqMainOptionsWidget;
     m_ui->setupUi(this);
@@ -39,8 +35,6 @@ IcqMainOptionsWidget::IcqMainOptionsWidget(ParameterEditModel *model,
 
 IcqMainOptionsWidget::~IcqMainOptionsWidget()
 {
-    kDebug();
-
     delete m_ui;
 }
 

@@ -47,7 +47,6 @@ public:
           detailsDialog(0),
           messageWidget(0)
     {
-        kDebug();
     }
 
     SalutEnabler *q;
@@ -81,8 +80,6 @@ SalutEnabler::~SalutEnabler()
 
 void SalutEnabler::onConnectionManagerReady(Tp::PendingOperation* op)
 {
-    kDebug();
-
     if(op->isError()) {
         kWarning() << "Creating ConnectionManager failed:" << op->errorName() << op->errorMessage();
     }
@@ -101,7 +98,6 @@ void SalutEnabler::onConnectionManagerReady(Tp::PendingOperation* op)
 
 void SalutEnabler::onProfileManagerReady(Tp::PendingOperation* op)
 {
-    kDebug();
     if(op->isError()) {
         kWarning() << "Creating ProfileManager failed:" << op->errorName() << op->errorMessage();
     }
@@ -168,9 +164,6 @@ QFrame* SalutEnabler::frameWidget(QWidget* parent)
 
 void SalutEnabler::onUserAccepted()
 {
-    kDebug();
-
-
     // FIXME: In some next version of tp-qt4 there should be a convenience class for this
     // https://bugs.freedesktop.org/show_bug.cgi?id=33153
     QVariantMap properties;

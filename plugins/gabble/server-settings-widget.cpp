@@ -20,14 +20,10 @@
 
 #include "server-settings-widget.h"
 
-#include <KDebug>
-
 ServerSettingsWidget::ServerSettingsWidget(ParameterEditModel *model,
                                                      QWidget *parent)
  : AbstractAccountParametersWidget(model, parent)
 {
-    kDebug();
-
     // Set up the UI.
     m_ui = new Ui::ServerSettingsWidget;
     m_ui->setupUi(this);
@@ -45,8 +41,6 @@ ServerSettingsWidget::ServerSettingsWidget(ParameterEditModel *model,
 
 ServerSettingsWidget::~ServerSettingsWidget()
 {
-    kDebug();
-
     delete m_ui;
 }
 

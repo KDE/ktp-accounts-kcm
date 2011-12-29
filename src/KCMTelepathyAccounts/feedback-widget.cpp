@@ -23,7 +23,6 @@
 
 #include "feedback-widget.h"
 
-#include <KDebug>
 #include <KLocale>
 #include <KIcon>
 #include <KPushButton>

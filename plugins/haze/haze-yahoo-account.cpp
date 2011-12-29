@@ -21,13 +21,9 @@
 #include "haze-yahoo-account.h"
 #include "yahoo-server-settings-widget.h"
 
-#include <KDebug>
-
 HazeYahooAccount::HazeYahooAccount(QObject* parent)
         : AbstractAccountUi(parent)
 {
-    kDebug();
-
     //register that all options are supported
     registerSupportedParameter("account", QVariant::String);
     registerSupportedParameter("password", QVariant::String);
@@ -42,7 +38,6 @@ HazeYahooAccount::HazeYahooAccount(QObject* parent)
 
 HazeYahooAccount::~HazeYahooAccount()
 {
-    kDebug();
 }
 
 bool HazeYahooAccount::hasAdvancedOptionsWidget() const

@@ -23,13 +23,9 @@
 #include "skype-main-options-widget.h"
 #include "skype-advanced-settings-widget.h"
 
-#include <KDebug>
-
 HazeSkypeAccountUi::HazeSkypeAccountUi(QObject *parent)
  : AbstractAccountUi(parent)
 {
-    kDebug();
-
     // Register supported parameters
     // Main Options
     registerSupportedParameter("account", QVariant::String);
@@ -44,15 +40,12 @@ HazeSkypeAccountUi::HazeSkypeAccountUi(QObject *parent)
 
 HazeSkypeAccountUi::~HazeSkypeAccountUi()
 {
-    kDebug();
 }
 
 AbstractAccountParametersWidget *HazeSkypeAccountUi::mainOptionsWidget(
     ParameterEditModel *model,
     QWidget *parent) const
 {
-    kDebug();
-
     return new SkypeMainOptionsWidget(model, parent);
 }
 
@@ -65,8 +58,6 @@ AbstractAccountParametersWidget *HazeSkypeAccountUi::advancedOptionsWidget(
     ParameterEditModel *model,
     QWidget *parent) const
 {
-    kDebug();
-
     AbstractAccountParametersWidget *skypeAdvancedSettingsWidget = new SkypeAdvancedSettingsWidget(model, parent);
     return skypeAdvancedSettingsWidget;
 }

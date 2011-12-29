@@ -21,16 +21,14 @@
 #include "rakia-account-ui-plugin.h"
 #include "rakia-account-ui.h"
 
-#include <KDebug>
 #include <KGenericFactory>
+#include <KDebug>
 
 #include <QtCore/QVariantList>
 
 RakiaAccountUiPlugin::RakiaAccountUiPlugin(QObject *parent, const QVariantList &)
     : AbstractAccountUiPlugin(parent)
 {
-    kDebug();
-
     // Register supported cm/protocol combinations
     // We support rakia/sip and the renamed version rakia/sip combination.
     registerProvidedProtocol("rakia",    "sip");
@@ -39,14 +37,12 @@ RakiaAccountUiPlugin::RakiaAccountUiPlugin(QObject *parent, const QVariantList &
 
 RakiaAccountUiPlugin::~RakiaAccountUiPlugin()
 {
-    kDebug();
 }
 
 AbstractAccountUi* RakiaAccountUiPlugin::accountUi(const QString &connectionManager,
         const QString &protocol,
         const QString &serviceName)
 {
-    kDebug();
     kDebug() << "connectionManager: " << connectionManager <<
              ", protocol: " << protocol <<
              ", servicename: " << serviceName;

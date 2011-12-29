@@ -24,13 +24,9 @@
 
 #include <KCMTelepathyAccounts/AbstractAccountParametersWidget>
 
-#include <KDebug>
-
 IdleAccountUi::IdleAccountUi(QObject *parent)
  : AbstractAccountUi(parent)
 {
-    kDebug();
-
     // Register supported parameters
     registerSupportedParameter("account", QVariant::String);
     registerSupportedParameter("server", QVariant::String);
@@ -45,15 +41,12 @@ IdleAccountUi::IdleAccountUi(QObject *parent)
 
 IdleAccountUi::~IdleAccountUi()
 {
-    kDebug();
 }
 
 AbstractAccountParametersWidget *IdleAccountUi::mainOptionsWidget(
         ParameterEditModel *model,
         QWidget *parent) const
 {
-    kDebug();
-
     return new MainOptionsWidget(model, parent);
 }
 
@@ -66,8 +59,6 @@ AbstractAccountParametersWidget *IdleAccountUi::advancedOptionsWidget(
         ParameterEditModel *model,
         QWidget *parent) const
 {
-    kDebug();
-
     return new AdvancedOptionsWidget(model, parent);
 }
 

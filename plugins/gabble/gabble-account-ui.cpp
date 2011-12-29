@@ -30,14 +30,11 @@
 #include <KCMTelepathyAccounts/AbstractAccountParametersWidget>
 #include <KCMTelepathyAccounts/GenericAdvancedOptionsWidget>
 
-#include <KDebug>
 
 GabbleAccountUi::GabbleAccountUi(const QString &serviceName, QObject *parent)
  : AbstractAccountUi(parent),
    m_serviceName(serviceName)
 {
-    kDebug();
-
     // Register supported parameters
     registerSupportedParameter("account", QVariant::String);
     registerSupportedParameter("password", QVariant::String);
@@ -62,7 +59,6 @@ GabbleAccountUi::GabbleAccountUi(const QString &serviceName, QObject *parent)
 
 GabbleAccountUi::~GabbleAccountUi()
 {
-    kDebug();
 }
 
 AbstractAccountParametersWidget *GabbleAccountUi::mainOptionsWidget(
@@ -89,8 +85,6 @@ AbstractAccountParametersWidget *GabbleAccountUi::advancedOptionsWidget(
         ParameterEditModel *model,
         QWidget *parent) const
 {
-    kDebug();
-
     GenericAdvancedOptionsWidget *widget = new GenericAdvancedOptionsWidget(model, parent);
 
     AbstractAccountParametersWidget* serverSettingsWidget = new ServerSettingsWidget(model, widget);

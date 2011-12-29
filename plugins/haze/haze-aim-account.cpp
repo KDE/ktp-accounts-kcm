@@ -25,13 +25,9 @@
 
 #include <KCMTelepathyAccounts/AbstractAccountParametersWidget>
 
-#include <KDebug>
-
 HazeAimAccount::HazeAimAccount(QObject *parent)
  : AbstractAccountUi(parent)
 {
-    kDebug();
-
     // Register supported parameters
     registerSupportedParameter("account", QVariant::String);
     registerSupportedParameter("password", QVariant::String);
@@ -45,15 +41,12 @@ HazeAimAccount::HazeAimAccount(QObject *parent)
 
 HazeAimAccount::~HazeAimAccount()
 {
-    kDebug();
 }
 
 AbstractAccountParametersWidget *HazeAimAccount::mainOptionsWidget(
         ParameterEditModel *model,
         QWidget *parent) const
 {
-    kDebug();
-
     return new AimMainOptionsWidget(model, parent);
 }
 
@@ -66,7 +59,5 @@ AbstractAccountParametersWidget *HazeAimAccount::advancedOptionsWidget(
         ParameterEditModel *model,
         QWidget *parent) const
 {
-    kDebug();
-	
     return new AimServerSettingsWidget(model, parent);
 }

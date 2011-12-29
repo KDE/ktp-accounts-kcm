@@ -20,14 +20,10 @@
 
 #include "myspaceim-advanced-settings-widget.h"
 
-#include <KDebug>
-
 MySpaceIMAdvancedSettingsWidget::MySpaceIMAdvancedSettingsWidget(ParameterEditModel *model,
                                                                  QWidget *parent)
  : AbstractAccountParametersWidget(model, parent)
 {
-    kDebug();
-
     // Set up the UI.
     m_ui = new Ui::MySpaceIMAdvancedSettingsWidget;
     m_ui->setupUi(this);
@@ -39,7 +35,5 @@ MySpaceIMAdvancedSettingsWidget::MySpaceIMAdvancedSettingsWidget(ParameterEditMo
 
 MySpaceIMAdvancedSettingsWidget::~MySpaceIMAdvancedSettingsWidget()
 {
-    kDebug();
-
     delete m_ui;
 }

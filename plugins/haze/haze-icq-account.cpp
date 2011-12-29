@@ -25,13 +25,9 @@
 
 #include <KCMTelepathyAccounts/AbstractAccountParametersWidget>
 
-#include <KDebug>
-
 HazeIcqAccountUi::HazeIcqAccountUi(QObject *parent)
  : AbstractAccountUi(parent)
 {
-    kDebug();
-
     // Register supported parameters
     registerSupportedParameter("account", QVariant::String);
     registerSupportedParameter("password", QVariant::String);
@@ -47,15 +43,12 @@ HazeIcqAccountUi::HazeIcqAccountUi(QObject *parent)
 
 HazeIcqAccountUi::~HazeIcqAccountUi()
 {
-    kDebug();
 }
 
 AbstractAccountParametersWidget *HazeIcqAccountUi::mainOptionsWidget(
         ParameterEditModel *model,
         QWidget *parent) const
 {
-    kDebug();
-
     return new IcqMainOptionsWidget(model, parent);
 }
 
@@ -68,8 +61,6 @@ AbstractAccountParametersWidget *HazeIcqAccountUi::advancedOptionsWidget(
         ParameterEditModel *model,
         QWidget *parent) const
 {
-    kDebug();
-
     AbstractAccountParametersWidget *icqServerSettingsWidget = new IcqServerSettingsWidget(model, parent);
     return icqServerSettingsWidget;
 }

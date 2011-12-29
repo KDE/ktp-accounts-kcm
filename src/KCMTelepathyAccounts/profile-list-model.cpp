@@ -27,19 +27,15 @@
 #include <TelepathyQt/PendingStringList>
 
 #include <KIcon>
-#include <KDebug>
 
 ProfileListModel::ProfileListModel(QObject *parent)
  : QAbstractListModel(parent)
 {
-    kDebug();
-
     m_profileItems.clear();
 }
 
 ProfileListModel::~ProfileListModel()
 {
-    kDebug();
 }
 
 int ProfileListModel::rowCount(const QModelIndex &index) const

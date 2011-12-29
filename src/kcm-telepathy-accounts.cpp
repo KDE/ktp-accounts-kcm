@@ -60,8 +60,6 @@ KCMTelepathyAccounts::KCMTelepathyAccounts(QWidget *parent, const QVariantList& 
  : KCModule(KCMTelepathyAccountsFactory::componentData(), parent, args),
    m_accountsListModel(0)
 {
-    kDebug();
-
     //set up component data.
     KAboutData *aboutData = new KAboutData(I18N_NOOP("telepathy_accounts"), 0, ki18n("Instant Messaging and VOIP Accounts"), "0.2.60", KLocalizedString(), KAboutData::License_GPL);
 
@@ -189,15 +187,11 @@ KCMTelepathyAccounts::KCMTelepathyAccounts(QWidget *parent, const QVariantList& 
 
 KCMTelepathyAccounts::~KCMTelepathyAccounts()
 {
-    kDebug();
-
     delete m_ui;
 }
 
 void KCMTelepathyAccounts::load()
 {
-    kDebug();
-
     // This slot is called whenever the configuration data in this KCM should
     // be reloaded from the store. We will not actually do anything here since
     // all changes that are made in this KCM are, at the moment, saved
@@ -227,8 +221,6 @@ void KCMTelepathyAccounts::onAccountEnabledChanged(const QModelIndex &index, boo
 
 void KCMTelepathyAccounts::onAccountManagerReady(Tp::PendingOperation *op)
 {
-    kDebug();
-
     // Check the pending operation completed successfully.
     if (op->isError()) {
         kDebug() << "becomeReady() failed:" << op->errorName() << op->errorMessage();
@@ -286,8 +278,6 @@ void KCMTelepathyAccounts::onSelectedItemChanged(const QModelIndex &current, con
 
 void KCMTelepathyAccounts::onAddAccountClicked()
 {
-    kDebug();
-
     // Wizard only works if the AccountManager is ready.
     if (!m_accountManager->isReady()) {
         return;
@@ -300,8 +290,6 @@ void KCMTelepathyAccounts::onAddAccountClicked()
 
 void KCMTelepathyAccounts::onEditAccountClicked()
 {
-    kDebug();
-
     // Editing accounts is only possible if the Account Manager is ready.
     if (!m_accountManager->isReady()) {
         return;
@@ -345,7 +333,6 @@ void KCMTelepathyAccounts::onEditIdentityClicked()
 
 void KCMTelepathyAccounts::onRemoveAccountClicked()
 {
-    kDebug();
     QModelIndex index = m_currentListView->currentIndex();
 
      if ( KMessageBox::warningContinueCancel(this, i18n("Are you sure you want to remove the account \"%1\"?", m_currentModel->data(index, Qt::DisplayRole).toString()),

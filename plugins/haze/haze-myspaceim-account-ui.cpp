@@ -23,13 +23,9 @@
 #include "myspaceim-main-options-widget.h"
 #include "myspaceim-advanced-settings-widget.h"
 
-#include <KDebug>
-
 HazeMySpaceIMAccountUi::HazeMySpaceIMAccountUi(QObject *parent)
  : AbstractAccountUi(parent)
 {
-    kDebug();
-
     // Register supported parameters
     // Main Options
     registerSupportedParameter("account",  QVariant::String);
@@ -42,15 +38,12 @@ HazeMySpaceIMAccountUi::HazeMySpaceIMAccountUi(QObject *parent)
 
 HazeMySpaceIMAccountUi::~HazeMySpaceIMAccountUi()
 {
-    kDebug();
 }
 
 AbstractAccountParametersWidget *HazeMySpaceIMAccountUi::mainOptionsWidget(
     ParameterEditModel *model,
     QWidget *parent) const
 {
-    kDebug();
-
     return new MySpaceIMMainOptionsWidget(model, parent);
 }
 
@@ -63,8 +56,6 @@ AbstractAccountParametersWidget *HazeMySpaceIMAccountUi::advancedOptionsWidget(
     ParameterEditModel *model,
     QWidget *parent) const
 {
-    kDebug();
-
     AbstractAccountParametersWidget *myspaceimAdvancedSettingsWidget = new MySpaceIMAdvancedSettingsWidget(model, parent);
     return myspaceimAdvancedSettingsWidget;
 }

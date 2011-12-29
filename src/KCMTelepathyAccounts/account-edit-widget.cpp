@@ -29,7 +29,6 @@
 #include "dictionary.h"
 #include "feedback-widget.h"
 
-#include <KDebug>
 #include <KLocale>
 #include <KMessageWidget>
 
@@ -44,7 +43,6 @@ public:
     Private()
             : accountUi(0), mainOptionsWidget(0)
     {
-        kDebug();
     }
 
     QString connectionManager;
@@ -66,8 +64,6 @@ AccountEditWidget::AccountEditWidget(const Tp::ProfilePtr &profile,
         : QWidget(parent),
           d(new Private)
 {
-    kDebug();
-
     // Set up the interface
     d->ui = new Ui::AccountEditWidget;
     d->ui->setupUi(this);
@@ -115,8 +111,6 @@ AccountEditWidget::AccountEditWidget(const Tp::ProfilePtr &profile,
 
 AccountEditWidget::~AccountEditWidget()
 {
-    kDebug();
-
     delete d->ui;
     delete d;
 }

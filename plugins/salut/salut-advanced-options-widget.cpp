@@ -22,13 +22,9 @@
 
 #include <KCMTelepathyAccounts/ParameterEditModel>
 
-#include <KDebug>
-
 SalutAdvancedOptionsWidget::SalutAdvancedOptionsWidget(ParameterEditModel* model, QWidget* parent)
     : AbstractAccountParametersWidget(model, parent)
 {
-    kDebug();
-
     // Set up the UI.
     m_ui = new Ui::SalutAdvancedOptionsWidget;
     m_ui->setupUi(this);

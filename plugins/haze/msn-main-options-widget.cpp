@@ -20,8 +20,6 @@
 
 #include "msn-main-options-widget.h"
 
-#include <KDebug>
-
 MsnMainOptionsWidget::MsnMainOptionsWidget(ParameterEditModel *model, QWidget *parent)
     : AbstractAccountParametersWidget(model, parent)
 {

@@ -20,14 +20,11 @@
 
 #include "aim-main-options-widget.h"
 
-#include <KDebug>
 #include <KCMTelepathyAccounts/parameter-edit-model.h>
 
 AimMainOptionsWidget::AimMainOptionsWidget(ParameterEditModel* model, QWidget* parent)
         : AbstractAccountParametersWidget(model, parent)
 {
-    kDebug() << "Creating AIM Account";
-
     //setup the Ui
     m_ui = new Ui::AimMainOptionsWidget;
     m_ui->setupUi(this);
@@ -40,7 +37,5 @@ AimMainOptionsWidget::AimMainOptionsWidget(ParameterEditModel* model, QWidget* p
 
 AimMainOptionsWidget::~AimMainOptionsWidget()
 {
-    kDebug();
-
     delete m_ui;
 }

@@ -41,7 +41,6 @@ public:
         : parameterModel(0),
           mapper(0)
     {
-        kDebug();
     }
     ParameterEditModel *parameterModel;
     QDataWidgetMapper *mapper;
@@ -55,8 +54,6 @@ AbstractAccountParametersWidget::AbstractAccountParametersWidget(ParameterEditMo
         : QWidget(parent),
           d(new Private)
 {
-    kDebug();
-
     d->parameterModel = parameterModel;
     d->errorMessage = i18n("All mandatory fields must be filled");
 
@@ -68,8 +65,6 @@ AbstractAccountParametersWidget::AbstractAccountParametersWidget(ParameterEditMo
 
 AbstractAccountParametersWidget::~AbstractAccountParametersWidget()
 {
-    kDebug();
-
     delete d;
 }
 
@@ -93,8 +88,6 @@ void AbstractAccountParametersWidget::handleParameter(const QString &parameterNa
                                            QWidget* dataWidget,
                                            QWidget* labelWidget = 0)
 {
-    kDebug();
-
     QList<QWidget*> labelWidgets;
     if(labelWidget) {
         labelWidgets << labelWidget;

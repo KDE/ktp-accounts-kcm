@@ -37,12 +37,10 @@
 ParameterEditModel::ParameterEditModel(QObject *parent)
  : QAbstractListModel(parent)
 {
-    kDebug();
 }
 
 ParameterEditModel::~ParameterEditModel()
 {
-    kDebug();
 }
 
 int ParameterEditModel::rowCount(const QModelIndex &index) const

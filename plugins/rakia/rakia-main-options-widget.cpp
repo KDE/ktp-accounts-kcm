@@ -22,7 +22,6 @@
 
 #include <KCMTelepathyAccounts/ParameterEditModel>
 
-#include <KDebug>
 #include <KUser>
 
 RakiaMainOptionsWidget::RakiaMainOptionsWidget(ParameterEditModel *model, QWidget *parent)
@@ -46,7 +45,5 @@ RakiaMainOptionsWidget::RakiaMainOptionsWidget(ParameterEditModel *model, QWidge
 
 RakiaMainOptionsWidget::~RakiaMainOptionsWidget()
 {
-    kDebug();
-
     delete m_ui;
 }
