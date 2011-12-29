@@ -64,12 +64,14 @@ Dictionary::Dictionary()
     m_strings.insert("irc", i18n("Internet Relay Chat"));
     m_strings.insert("jabber", i18n("Jabber/XMPP/Google Talk"));
     m_strings.insert("local-xmpp", i18n("Bonjour/Salut"));
+    m_strings.insert("mxit", i18n("MXit"));
     m_strings.insert("msn", i18n("Windows Live Messenger"));
     m_strings.insert("myspace", i18n("MySpaceIM"));
     m_strings.insert("qq", i18n("Tencent QQ"));
     m_strings.insert("sametime", i18n("IBM Lotus Sametime"));
     m_strings.insert("silc", i18n("SILC"));
     m_strings.insert("sip", i18n("Session Initiation Protocol (SIP)"));
+    m_strings.insert("tel", i18n("GSM Telephony"));
     m_strings.insert("trepia", i18n("Trepia"));
     m_strings.insert("yahoo", i18n("Yahoo! Messenger"));
     m_strings.insert("yahoojp", i18n("Yahoo! Messenger Japan"));
