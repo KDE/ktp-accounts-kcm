@@ -31,52 +31,52 @@ RakiaAdvancedOptionsWidget::RakiaAdvancedOptionsWidget(ParameterEditModel* model
     m_ui = new Ui::RakiaAdvancedOptionsWidget;
     m_ui->setupUi(this);
 
-    handleParameter("auth-user",  QVariant::String,
+    handleParameter(QLatin1String("auth-user"),  QVariant::String,
                     m_ui->authUserLineEdit,
                     m_ui->authUserLabel);
-    handleParameter("registrar",  QVariant::String,
+    handleParameter(QLatin1String("registrar"),  QVariant::String,
                     m_ui->registrarLineEdit,
                     m_ui->registrarLabel);
 
-    handleParameter("proxy-host", QVariant::String,
+    handleParameter(QLatin1String("proxy-host"), QVariant::String,
                     m_ui->proxyLineEdit,
                     m_ui->proxyLabel);
-    handleParameter("port",       QVariant::UInt,
+    handleParameter(QLatin1String("port"),       QVariant::UInt,
                     m_ui->portSpinBox,
                     m_ui->portLabel);
-    handleParameter("transport",  QVariant::String,
+    handleParameter(QLatin1String("transport"),  QVariant::String,
                     m_ui->transportComboBox,
                     m_ui->transportLabel);
 
-    handleParameter("stun-server",        QVariant::String,
+    handleParameter(QLatin1String("stun-server"),        QVariant::String,
                     m_ui->stunServerLineEdit,
                     m_ui->stunServerLabel);
-    handleParameter("stun-port",          QVariant::UInt,
+    handleParameter(QLatin1String("stun-port"),          QVariant::UInt,
                     m_ui->stunPortSpinBox,
                     m_ui->stunPortLabel);
 
-    handleParameter("loose-routing",      QVariant::Bool,
+    handleParameter(QLatin1String("loose-routing"),      QVariant::Bool,
                     m_ui->looseRoutingCheckBox,
                     m_ui->looseRoutingLabel);
-    handleParameter("discover-binding",   QVariant::Bool,
+    handleParameter(QLatin1String("discover-binding"),   QVariant::Bool,
                     m_ui->discoverBindingCheckBox,
                     m_ui->discoverBindingLabel);
 
-    handleParameter("keepalive-mechanism", QVariant::String,
+    handleParameter(QLatin1String("keepalive-mechanism"), QVariant::String,
                     m_ui->keepaliveMechanismComboBox,
                     m_ui->keepaliveMechanismLabel);
-    handleParameter("keepalive-interval", QVariant::UInt,
+    handleParameter(QLatin1String("keepalive-interval"), QVariant::UInt,
                     m_ui->keepaliveIntervalNumInput,
                     m_ui->keepaliveIntervalLabel);
 
     kDebug() << parameterModel()->data(
-                 parameterModel()->indexForParameter(parameterModel()->parameter("discover-stun")),
+                 parameterModel()->indexForParameter(parameterModel()->parameter(QLatin1String("discover-stun"))),
                  ParameterEditModel::ValueRole);
 
     // enable/disable the stunGroupBox if discover-stun is false/true
     m_ui->stunGroupBox->setChecked(
         !parameterModel()->data(
-            parameterModel()->indexForParameter(parameterModel()->parameter("discover-stun")),
+            parameterModel()->indexForParameter(parameterModel()->parameter(QLatin1String("discover-stun"))),
             ParameterEditModel::ValueRole).toBool()
     );
 
@@ -113,7 +113,7 @@ void RakiaAdvancedOptionsWidget::submit()
     // https://bugs.freedesktop.org/show_bug.cgi?id=34227 for details
     kDebug() << "ok, we're saving now, we need to do some magic!";
     parameterModel()->setData(
-        parameterModel()->indexForParameter(parameterModel()->parameter("discover-stun")),
+        parameterModel()->indexForParameter(parameterModel()->parameter(QLatin1String("discover-stun"))),
         !m_ui->stunGroupBox->isChecked(),
         ParameterEditModel::ValueRole);
 

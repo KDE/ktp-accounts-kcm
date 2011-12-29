@@ -31,9 +31,9 @@ RakiaMainOptionsWidget::RakiaMainOptionsWidget(ParameterEditModel *model, QWidge
     m_ui = new Ui::RakiaMainOptionsWidget;
     m_ui->setupUi(this);
 
-    handleParameter("account",  QVariant::String, m_ui->accountLineEdit,  m_ui->accountLabel);
-    handleParameter("password", QVariant::String, m_ui->passwordLineEdit, m_ui->passwordLabel);
-    handleParameter("alias",    QVariant::String, m_ui->aliasLineEdit,    m_ui->aliasLabel);
+    handleParameter(QLatin1String("account"),  QVariant::String, m_ui->accountLineEdit,  m_ui->accountLabel);
+    handleParameter(QLatin1String("password"), QVariant::String, m_ui->passwordLineEdit, m_ui->passwordLabel);
+    handleParameter(QLatin1String("alias"),    QVariant::String, m_ui->aliasLineEdit,    m_ui->aliasLabel);
 
     // if the account is empty on startup we add a new account, therefore
     // set the alias to the current users full name

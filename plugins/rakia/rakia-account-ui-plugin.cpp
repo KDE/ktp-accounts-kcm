@@ -31,8 +31,8 @@ RakiaAccountUiPlugin::RakiaAccountUiPlugin(QObject *parent, const QVariantList &
 {
     // Register supported cm/protocol combinations
     // We support rakia/sip and the renamed version rakia/sip combination.
-    registerProvidedProtocol("rakia",    "sip");
-    registerProvidedProtocol("sofiasip", "sip");
+    registerProvidedProtocol(QLatin1String("rakia"),    QLatin1String("sip"));
+    registerProvidedProtocol(QLatin1String("sofiasip"), QLatin1String("sip"));
 }
 
 RakiaAccountUiPlugin::~RakiaAccountUiPlugin()
