@@ -26,15 +26,12 @@
 
 #include "ui_parameter-edit-widget.h"
 
-#include <KDebug>
-
 class ParameterEditWidget::Private
 {
 public:
     Private()
      : ui(0), delegate(0)
     {
-        kDebug();
     }
 
     Ui::ParameterEditWidget *ui;
@@ -46,8 +43,6 @@ ParameterEditWidget::ParameterEditWidget(ParameterEditModel *parameterModel,
  : AbstractAccountParametersWidget(parameterModel, parent),
    d(new Private)
 {
-    kDebug();
-
     // Set up the UI.
     d->ui = new Ui::ParameterEditWidget;
     d->ui->setupUi(this);
@@ -63,8 +58,6 @@ ParameterEditWidget::ParameterEditWidget(ParameterEditModel *parameterModel,
 
 ParameterEditWidget::~ParameterEditWidget()
 {
-    kDebug();
-
     delete d->ui;
     delete d;
 }
@@ -75,4 +68,3 @@ void ParameterEditWidget::onDelegateDataChanged(const QModelIndex &index, const 
 }
 
 #include "parameter-edit-widget.moc"
-

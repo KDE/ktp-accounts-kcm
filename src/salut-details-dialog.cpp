@@ -44,7 +44,6 @@ public:
         : q(parent),
           widget(0)
     {
-        kDebug();
     }
 
     SalutDetailsDialog *q;
@@ -57,8 +56,6 @@ SalutDetailsDialog::SalutDetailsDialog(const Tp::ProfileManagerPtr profileManage
     : KDialog(parent),
       d(new Private(this))
 {
-    kDebug();
-
     setMinimumWidth(450);
 
     // Get the protocol's parameters and values.
@@ -67,13 +64,12 @@ SalutDetailsDialog::SalutDetailsDialog(const Tp::ProfileManagerPtr profileManage
 
     // Add the parameters to the model.
     ParameterEditModel *parameterModel = new ParameterEditModel(this);
-    d->profile = profileManager->profilesForCM("salut").first();
+    d->profile = profileManager->profilesForCM(QLatin1String("salut")).first();
 
     Q_ASSERT(!d->profile.isNull());
     Q_ASSERT(d->profile->isValid());
     Q_ASSERT(d->profile->protocolName() == QLatin1String("local-xmpp"));
-    if(d->profile.isNull() || !d->profile->isValid() || d->profile->protocolName() != QLatin1String("local-xmpp"))
-    {
+    if (d->profile.isNull() || !d->profile->isValid() || d->profile->protocolName() != QLatin1String("local-xmpp")) {
         kWarning() << "Something went wrong with telepathy salut";
     }
 

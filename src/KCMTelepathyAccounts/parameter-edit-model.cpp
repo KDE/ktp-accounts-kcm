@@ -37,12 +37,10 @@
 ParameterEditModel::ParameterEditModel(QObject *parent)
  : QAbstractListModel(parent)
 {
-    kDebug();
 }
 
 ParameterEditModel::~ParameterEditModel()
 {
-    kDebug();
 }
 
 int ParameterEditModel::rowCount(const QModelIndex &index) const
@@ -59,7 +57,7 @@ int ParameterEditModel::rowCount(const QModelIndex &index) const
 
 QVariant ParameterEditModel::data(const QModelIndex &index, int role) const
 {
-    if(!index.isValid()) {
+    if (!index.isValid()) {
         return QVariant();
     }
 
@@ -67,14 +65,12 @@ QVariant ParameterEditModel::data(const QModelIndex &index, int role) const
     // on while developing this code further. Needs expanding.
     QVariant data;
 
-    switch(role)
-    {
+    switch (role) {
     case Qt::DisplayRole:
     case Qt::EditRole:
     case ParameterEditModel::ValueRole:
         data = QVariant(m_items.at(index.row())->value());
-        if(!data.isValid())
-        {
+        if (!data.isValid()) {
             data = this->data(index, ParameterEditModel::DefaultValueRole);
         }
         break;
@@ -133,7 +129,7 @@ bool ParameterEditModel::setData(const QModelIndex &index, const QVariant &value
 
     if (role == ParameterEditModel::ValueRole || role == Qt::EditRole) {
         //never edit items fixed in the profile.
-        if(m_items.at(index.row())->isMandatory()) {
+        if (m_items.at(index.row())->isMandatory()) {
             return false;
         }
 
@@ -161,8 +157,8 @@ bool ParameterEditModel::setData(const QModelIndex &index, const QVariant &value
 
 QModelIndex ParameterEditModel::indexForParameter(const Tp::ProtocolParameter &parameter) const
 {
-    for(int i=0; i<m_items.size(); ++i) {
-        if(m_items.at(i)->parameter() == parameter) {
+    for (int i=0; i<m_items.size(); ++i) {
+        if (m_items.at(i)->parameter() == parameter) {
             return createIndex(i,0);
         }
     }
@@ -171,9 +167,9 @@ QModelIndex ParameterEditModel::indexForParameter(const Tp::ProtocolParameter &p
 
 QModelIndex ParameterEditModel::indexForParameter(const Tp::Profile::Parameter &parameter) const
 {
-    for(int i=0; i<m_items.size(); ++i) {
+    for (int i=0; i<m_items.size(); ++i) {
         ParameterItem *item = m_items.at(i);
-        if(item->parameter().name() == parameter.name() && item->parameter().type() == parameter.type()) {
+        if (item->parameter().name() == parameter.name() && item->parameter().type() == parameter.type()) {
             return createIndex(i,0);
         }
     }
@@ -182,8 +178,8 @@ QModelIndex ParameterEditModel::indexForParameter(const Tp::Profile::Parameter &
 
 Tp::ProtocolParameter ParameterEditModel::parameter(const QString &parameterName) const
 {
-    foreach(ParameterItem* item, m_items) {
-        if(item->parameter().name() == parameterName) {
+    Q_FOREACH (ParameterItem* item, m_items) {
+        if (item->parameter().name() == parameterName) {
             return item->parameter();
         }
     }
@@ -195,8 +191,8 @@ Tp::ProtocolParameter ParameterEditModel::parameter(const QString &parameterName
 void ParameterEditModel::addItem(const Tp::ProtocolParameter &parameter, const Tp::Profile::Parameter &profileParameter, const QVariant &originalValue)
 {
     // Check we are not creating duplicate items.
-    foreach (const ParameterItem *item, m_items) {
-        if(item->parameter() == parameter) {
+    Q_FOREACH (const ParameterItem *item, m_items) {
+        if (item->parameter() == parameter) {
             return;
         }
     }
@@ -209,12 +205,12 @@ void ParameterEditModel::addItem(const Tp::ProtocolParameter &parameter, const T
 
 void ParameterEditModel::addItems(const Tp::ProtocolParameterList &parameters, const Tp::Profile::ParameterList &profileParameters, const QVariantMap &parameterValues)
 {
-    foreach (const Tp::ProtocolParameter &parameter, parameters) {
+    Q_FOREACH (const Tp::ProtocolParameter &parameter, parameters) {
 
         Tp::Profile::Parameter relevantProfileParameter;
 
         //try and find the correct profile parameter, if it can't be found leave it as empty.
-        foreach (const Tp::Profile::Parameter &profileParameter, profileParameters) {
+        Q_FOREACH (const Tp::Profile::Parameter &profileParameter, profileParameters) {
             if (profileParameter.name() == parameter.name()) {
                 relevantProfileParameter = profileParameter;
                 break;
@@ -229,7 +225,7 @@ Tp::ProtocolParameterList ParameterEditModel::parameters() const
 {
     Tp::ProtocolParameterList parameters;
 
-    foreach (ParameterItem *item, m_items) {
+    Q_FOREACH (ParameterItem *item, m_items) {
         parameters.append(item->parameter());
     }
 
@@ -239,7 +235,7 @@ Tp::ProtocolParameterList ParameterEditModel::parameters() const
 QVariantMap ParameterEditModel::parametersSet() const
 {
     QVariantMap setParameters;
-    foreach (ParameterItem *item, m_items) {
+    Q_FOREACH (ParameterItem *item, m_items) {
         Tp::ProtocolParameter parameter = item->parameter();
         QVariant value = item->value();
 
@@ -256,7 +252,7 @@ QVariantMap ParameterEditModel::parametersSet() const
 QStringList ParameterEditModel::parametersUnset() const
 {
     QStringList unsetParameters;
-    foreach (ParameterItem *item, m_items) {
+    Q_FOREACH (ParameterItem *item, m_items) {
         Tp::ProtocolParameter parameter = item->parameter();
         QVariant value = item->value();
 
@@ -300,9 +296,9 @@ bool ParameterEditModel::parameterNeedsSaving(const Tp::ProtocolParameter &param
 
 bool ParameterEditModel::validateParameterValues()
 {
-    foreach (ParameterItem *item, m_items) {
+    Q_FOREACH (ParameterItem *item, m_items) {
         if (item->validity() != QValidator::Acceptable) {
-           emit feedbackMessage(i18n("Parameter \"<b>%1</b>\" is not valid.",
+           Q_EMIT feedbackMessage(i18n("Parameter \"<b>%1</b>\" is not valid.",
                                 item->localizedName()),
                                 QString(),
                                 KMessageWidget::Error);

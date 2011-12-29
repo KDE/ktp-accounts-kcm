@@ -22,31 +22,27 @@
 
 #include <KCMTelepathyAccounts/ParameterEditModel>
 
-#include <KDebug>
-
 #include <QDir>
 
 SkypeMainOptionsWidget::SkypeMainOptionsWidget(ParameterEditModel *model, QWidget *parent)
  : AbstractAccountParametersWidget(model, parent)
 {
-    kDebug();
-
     // Set up the UI.
     m_ui = new Ui::SkypeMainOptionsWidget;
     m_ui->setupUi(this);
 
-    handleParameter("account", QVariant::String, m_ui->accountLineEdit, m_ui->accountLabel);
+    handleParameter(QLatin1String("account"), QVariant::String, m_ui->accountLineEdit, m_ui->accountLabel);
 
 #ifdef Q_WS_X11
     // get autocomplete choices for the accountname
     // Skype stores data for each account that has been used in $HOME/.Skype/<accountname>/
-    QDir skypeConfigDir(QDir::home().filePath(".Skype"));
+    QDir skypeConfigDir(QDir::home().filePath(QLatin1String(".Skype")));
 
     skypeConfigDir.setFilter(QDir::Dirs | QDir::NoDotAndDotDot);
     QFileInfoList folderList = skypeConfigDir.entryInfoList();
 
     KCompletion *completion = new KCompletion;
-    foreach (const QFileInfo info, folderList){
+    Q_FOREACH (const QFileInfo &info, folderList) {
         completion->addItem(info.fileName());
     }
     m_ui->accountLineEdit->setCompletionObject(completion);
@@ -56,10 +52,7 @@ SkypeMainOptionsWidget::SkypeMainOptionsWidget(ParameterEditModel *model, QWidge
 
 SkypeMainOptionsWidget::~SkypeMainOptionsWidget()
 {
-    kDebug();
-
     delete m_ui;
 }
 
 #include "skype-main-options-widget.moc"
-

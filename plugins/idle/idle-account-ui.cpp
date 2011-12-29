@@ -24,36 +24,29 @@
 
 #include <KCMTelepathyAccounts/AbstractAccountParametersWidget>
 
-#include <KDebug>
-
 IdleAccountUi::IdleAccountUi(QObject *parent)
  : AbstractAccountUi(parent)
 {
-    kDebug();
-
     // Register supported parameters
-    registerSupportedParameter("account", QVariant::String);
-    registerSupportedParameter("server", QVariant::String);
-    registerSupportedParameter("port", QVariant::UInt);
-    registerSupportedParameter("username", QVariant::String);
-    registerSupportedParameter("password", QVariant::String);
-    registerSupportedParameter("fullname", QVariant::String);
-    registerSupportedParameter("use-ssl", QVariant::Bool);
-    registerSupportedParameter("charset", QVariant::String);
-//     registerSupportedParameter("quit-message", QVariant::String);
+    registerSupportedParameter(QLatin1String("account"), QVariant::String);
+    registerSupportedParameter(QLatin1String("server"), QVariant::String);
+    registerSupportedParameter(QLatin1String("port"), QVariant::UInt);
+    registerSupportedParameter(QLatin1String("username"), QVariant::String);
+    registerSupportedParameter(QLatin1String("password"), QVariant::String);
+    registerSupportedParameter(QLatin1String("fullname"), QVariant::String);
+    registerSupportedParameter(QLatin1String("use-ssl"), QVariant::Bool);
+    registerSupportedParameter(QLatin1String("charset"), QVariant::String);
+//     registerSupportedParameter(QLatin1String("quit-message"), QVariant::String);
 }
 
 IdleAccountUi::~IdleAccountUi()
 {
-    kDebug();
 }
 
 AbstractAccountParametersWidget *IdleAccountUi::mainOptionsWidget(
         ParameterEditModel *model,
         QWidget *parent) const
 {
-    kDebug();
-
     return new MainOptionsWidget(model, parent);
 }
 
@@ -66,10 +59,7 @@ AbstractAccountParametersWidget *IdleAccountUi::advancedOptionsWidget(
         ParameterEditModel *model,
         QWidget *parent) const
 {
-    kDebug();
-
     return new AdvancedOptionsWidget(model, parent);
 }
 
 #include "idle-account-ui.moc"
-

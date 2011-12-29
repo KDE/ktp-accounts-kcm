@@ -20,29 +20,22 @@
 
 #include "main-options-widget-googletalk.h"
 
-#include <KDebug>
-
 MainOptionsWidgetGoogleTalk::MainOptionsWidgetGoogleTalk(ParameterEditModel *model,
                                      QWidget *parent)
  : AbstractAccountParametersWidget(model, parent)
 {
-    kDebug();
-
     // Set up the UI.
     m_ui = new Ui::MainOptionsWidgetGoogleTalk;
     m_ui->setupUi(this);
 
-    handleParameter("account", QVariant::String, m_ui->accountLineEdit, m_ui->accountLabel);
-    handleParameter("password", QVariant::String, m_ui->passwordLineEdit, m_ui->passwordLabel);
+    handleParameter(QLatin1String("account"), QVariant::String, m_ui->accountLineEdit, m_ui->accountLabel);
+    handleParameter(QLatin1String("password"), QVariant::String, m_ui->passwordLineEdit, m_ui->passwordLabel);
     QTimer::singleShot(0, m_ui->accountLineEdit, SLOT(setFocus()));
 }
 
 MainOptionsWidgetGoogleTalk::~MainOptionsWidgetGoogleTalk()
 {
-    kDebug();
-
     delete m_ui;
 }
 
 #include "main-options-widget-googletalk.moc"
-

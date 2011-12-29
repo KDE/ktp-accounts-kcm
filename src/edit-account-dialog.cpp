@@ -46,7 +46,6 @@ public:
     Private()
             : item(0), widget(0), reconnectRequired(false)
     {
-        kDebug();
     }
 
     AccountItem *item;
@@ -58,8 +57,6 @@ EditAccountDialog::EditAccountDialog(AccountItem *item, QWidget *parent)
         : KDialog(parent),
           d(new Private)
 {
-    kDebug();
-
     d->item = item;
 
     // Get the protocol's parameters and values.
@@ -93,15 +90,11 @@ EditAccountDialog::EditAccountDialog(AccountItem *item, QWidget *parent)
 
 EditAccountDialog::~EditAccountDialog()
 {
-    kDebug();
-
     delete d;
 }
 
 void EditAccountDialog::accept()
 {
-    kDebug();
-
     QVariantMap setParameters = d->widget->parametersSet();
     QStringList unsetParameters = d->widget->parametersUnset();
 
@@ -126,8 +119,6 @@ void EditAccountDialog::accept()
 
 void EditAccountDialog::onParametersUpdated(Tp::PendingOperation *op)
 {
-    kDebug();
-
     if (op->isError()) {
         // FIXME: Visual feedback in GUI to user.
         kWarning() << "Could not update parameters:" << op->errorName() << op->errorMessage();
@@ -150,7 +141,7 @@ void EditAccountDialog::onParametersUpdated(Tp::PendingOperation *op)
 
     KTp::WalletInterface wallet(this->effectiveWinId());
     if (values.contains(QLatin1String("password"))) {
-        wallet.setPassword(d->item->account(), values["password"].toString());
+        wallet.setPassword(d->item->account(), values[QLatin1String("password")].toString());
     } else {
         wallet.removePassword(d->item->account());
     }
@@ -158,8 +149,8 @@ void EditAccountDialog::onParametersUpdated(Tp::PendingOperation *op)
 
     // FIXME: Ask the user to submit a Display Name
     QString displayName;
-    if (values.contains("account")) {
-        displayName = values["account"].toString();
+    if (values.contains(QLatin1String("account"))) {
+        displayName = values[QLatin1String("account")].toString();
     }
     else {
         displayName = d->item->account()->profile()->protocolName();
@@ -174,15 +165,13 @@ void EditAccountDialog::onParametersUpdated(Tp::PendingOperation *op)
 
 void EditAccountDialog::onDisplayNameUpdated(Tp::PendingOperation *op)
 {
-    kDebug();
-
     if (op->isError()) {
         // FIXME: Visual feedback in GUI to user.
         kWarning() << "Could not update display name:" << op->errorName() << op->errorMessage();
         return;
     }
 
-    emit finished();
+    Q_EMIT finished();
 
     if (d->reconnectRequired) {
         d->item->account()->reconnect();
@@ -193,4 +182,3 @@ void EditAccountDialog::onDisplayNameUpdated(Tp::PendingOperation *op)
 }
 
 #include "edit-account-dialog.moc"
-

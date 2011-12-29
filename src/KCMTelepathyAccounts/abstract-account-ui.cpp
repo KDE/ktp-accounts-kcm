@@ -29,7 +29,6 @@ class AbstractAccountUi::Private
 public:
     Private()
     {
-        kDebug();
     }
     QMap<QString, QVariant::Type> supportedParameters;
 };
@@ -38,13 +37,10 @@ AbstractAccountUi::AbstractAccountUi(QObject *parent)
  : QObject(parent),
    d(new Private)
 {
-    kDebug();
 }
 
 AbstractAccountUi::~AbstractAccountUi()
 {
-    kDebug();
-
     delete d;
 }
 
@@ -69,7 +65,7 @@ const QMap<QString, QVariant::Type> &AbstractAccountUi::supportedParameters() co
 void AbstractAccountUi::registerSupportedParameter(const QString &name, QVariant::Type type)
 {
     // Check that the parameter is not already in the list
-    foreach (QVariant::Type t, d->supportedParameters.values(name)) {
+    Q_FOREACH (QVariant::Type t, d->supportedParameters.values(name)) {
         if (t == type) {
             kWarning() << "Parameter:" << name << "of type:" << type << "is already added.";
             return;
@@ -81,6 +77,4 @@ void AbstractAccountUi::registerSupportedParameter(const QString &name, QVariant
 }
 
 
-
 #include "abstract-account-ui.moc"
-

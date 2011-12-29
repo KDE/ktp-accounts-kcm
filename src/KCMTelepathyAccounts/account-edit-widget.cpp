@@ -29,7 +29,6 @@
 #include "dictionary.h"
 #include "feedback-widget.h"
 
-#include <KDebug>
 #include <KLocale>
 #include <KMessageWidget>
 
@@ -44,7 +43,6 @@ public:
     Private()
             : accountUi(0), mainOptionsWidget(0)
     {
-        kDebug();
     }
 
     QString connectionManager;
@@ -66,8 +64,6 @@ AccountEditWidget::AccountEditWidget(const Tp::ProfilePtr &profile,
         : QWidget(parent),
           d(new Private)
 {
-    kDebug();
-
     // Set up the interface
     d->ui = new Ui::AccountEditWidget;
     d->ui->setupUi(this);
@@ -91,22 +87,21 @@ AccountEditWidget::AccountEditWidget(const Tp::ProfilePtr &profile,
             feedback,
             SLOT(setMessage(QString,QString,KMessageWidget::MessageType)));
 
-    d->ui->advancedButton->setIcon(KIcon("configure"));
+    d->ui->advancedButton->setIcon(KIcon(QLatin1String("configure")));
     //FIXME: Dictionary should not be needed anymore when distros ship profiles
     QString localizedName = Dictionary::instance()->string(profile->name());
-    if(localizedName.isEmpty()) {
+    if (localizedName.isEmpty()) {
         localizedName = profile->name();
     }
     d->ui->titleLabel->setText(localizedName);
-    d->ui->iconLabel->setText("");
+    d->ui->iconLabel->setText(QString());
     d->ui->iconLabel->setPixmap(KIcon(profile->iconName()).pixmap(32));
 
-    if(connectOnAddFlag == doConnectOnAdd){
-    d->connectOnAdd = new QCheckBox(i18n("Connect when wizard is finished"), this);
-    d->connectOnAdd->setChecked(true);
-    d->ui->verticalLayout->addWidget(d->connectOnAdd);
-    }
-    else{
+    if (connectOnAddFlag == doConnectOnAdd) {
+        d->connectOnAdd = new QCheckBox(i18n("Connect when wizard is finished"), this);
+        d->connectOnAdd->setChecked(true);
+        d->ui->verticalLayout->addWidget(d->connectOnAdd);
+    } else {
         d->connectOnAdd = 0;
     }
 
@@ -115,8 +110,6 @@ AccountEditWidget::AccountEditWidget(const Tp::ProfilePtr &profile,
 
 AccountEditWidget::~AccountEditWidget()
 {
-    kDebug();
-
     delete d->ui;
     delete d;
 }
@@ -138,7 +131,7 @@ void AccountEditWidget::loadWidgets()
 {
     Tp::ProtocolParameterList mandatoryParameters;
 
-    foreach (const Tp::ProtocolParameter &parameter, d->parameterModel->parameters()) {
+    Q_FOREACH (const Tp::ProtocolParameter &parameter, d->parameterModel->parameters()) {
         if (parameter.isRequired()) {
             mandatoryParameters.append(parameter);
         }
@@ -163,8 +156,8 @@ void AccountEditWidget::loadWidgets()
         // also verify if the UI handle all mandatory parameters
         QMap<QString, QVariant::Type> params = d->accountUi->supportedParameters();
         QMap<QString, QVariant::Type>::const_iterator paramIter = params.constBegin();
-        while(paramIter != params.constEnd()) {
-            foreach (const Tp::ProtocolParameter &parameter, d->parameterModel->parameters()) {
+        while (paramIter != params.constEnd()) {
+            Q_FOREACH (const Tp::ProtocolParameter &parameter, d->parameterModel->parameters()) {
                 if ((parameter.name() == paramIter.key()) &&
                     (parameter.type() == paramIter.value())) {
                     mandatoryParameters.removeAll(parameter);
@@ -207,7 +200,7 @@ QStringList AccountEditWidget::parametersUnset() const
 
 void AccountEditWidget::onAdvancedClicked()
 {
-    if(!d->parameterModel->validateParameterValues()) {
+    if (!d->parameterModel->validateParameterValues()) {
         return;
     }
 
@@ -244,7 +237,7 @@ ParameterEditModel* AccountEditWidget::parameterModel() const
 
 bool AccountEditWidget::connectOnAdd()
 {
-    if(d->connectOnAdd == 0){
+    if (d->connectOnAdd == 0) {
         return false;
     }
     else{

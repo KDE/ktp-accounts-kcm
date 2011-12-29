@@ -4,8 +4,6 @@
 #include <TelepathyQt/Account>
 #include <TelepathyQt/AvatarData>
 
-#include <KDebug>
-
 //FIXME possibly need to monitor account connection status and disable if appropriate?
 
 AccountIdentityDialog::AccountIdentityDialog(const Tp::AccountPtr &account, QWidget *parent) :
@@ -70,7 +68,6 @@ void AccountIdentityDialog::onAvatarChanged(const Tp::Avatar &avatar)
 
 void AccountIdentityDialog::apply()
 {
-    kDebug();
     if (m_account.isNull()) {
         return;
     }

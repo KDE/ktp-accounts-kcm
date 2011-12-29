@@ -20,30 +20,23 @@
 
 #include "main-options-widget.h"
 
-#include <KDebug>
-
 MainOptionsWidget::MainOptionsWidget(ParameterEditModel *model,
                                      QWidget *parent)
  : AbstractAccountParametersWidget(model, parent)
 {
-    kDebug();
-
     // Set up the UI.
     m_ui = new Ui::MainOptionsWidget;
     m_ui->setupUi(this);
 
-    handleParameter("account", QVariant::String, m_ui->accountLineEdit, m_ui->accountLabel);
-    handleParameter("password", QVariant::String, m_ui->passwordLineEdit, m_ui->passwordLabel);
+    handleParameter(QLatin1String("account"), QVariant::String, m_ui->accountLineEdit, m_ui->accountLabel);
+    handleParameter(QLatin1String("password"), QVariant::String, m_ui->passwordLineEdit, m_ui->passwordLabel);
 
     QTimer::singleShot(0, m_ui->accountLineEdit, SLOT(setFocus()));
 }
 
 MainOptionsWidget::~MainOptionsWidget()
 {
-    kDebug();
-
     delete m_ui;
 }
 
 #include "main-options-widget.moc"
-

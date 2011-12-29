@@ -21,39 +21,35 @@
 #include "rakia-account-ui-plugin.h"
 #include "rakia-account-ui.h"
 
-#include <KDebug>
 #include <KGenericFactory>
+#include <KDebug>
 
 #include <QtCore/QVariantList>
 
 RakiaAccountUiPlugin::RakiaAccountUiPlugin(QObject *parent, const QVariantList &)
     : AbstractAccountUiPlugin(parent)
 {
-    kDebug();
-
     // Register supported cm/protocol combinations
     // We support rakia/sip and the renamed version rakia/sip combination.
-    registerProvidedProtocol("rakia",    "sip");
-    registerProvidedProtocol("sofiasip", "sip");
+    registerProvidedProtocol(QLatin1String("rakia"),    QLatin1String("sip"));
+    registerProvidedProtocol(QLatin1String("sofiasip"), QLatin1String("sip"));
 }
 
 RakiaAccountUiPlugin::~RakiaAccountUiPlugin()
 {
-    kDebug();
 }
 
 AbstractAccountUi* RakiaAccountUiPlugin::accountUi(const QString &connectionManager,
         const QString &protocol,
         const QString &serviceName)
 {
-    kDebug();
     kDebug() << "connectionManager: " << connectionManager <<
              ", protocol: " << protocol <<
              ", servicename: " << serviceName;
 
     // We support rakia/sip and the renamed version rakia/sip combination.
-    if(((connectionManager == QLatin1String("rakia"))    && (protocol == QLatin1String("sip"))) ||
-       ((connectionManager == QLatin1String("sofiasip")) && (protocol == QLatin1String("sip")))
+    if (((connectionManager == QLatin1String("rakia"))    && (protocol == QLatin1String("sip"))) ||
+        ((connectionManager == QLatin1String("sofiasip")) && (protocol == QLatin1String("sip")))
       ) {
         return new RakiaAccountUi;
     }

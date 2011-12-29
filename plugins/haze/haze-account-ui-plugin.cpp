@@ -27,7 +27,6 @@
 #include "haze-aim-account.h"
 #include "haze-msn-account.h"
 
-#include <KDebug>
 #include <KGenericFactory>
 
 #include <QtCore/QVariantList>
@@ -35,27 +34,22 @@
 HazeAccountUiPlugin::HazeAccountUiPlugin(QObject *parent, const QVariantList &)
  : AbstractAccountUiPlugin(parent)
 {
-    kDebug();
-
     // Register supported cm/protocol combinations
-    registerProvidedProtocol("haze", "icq");
-    registerProvidedProtocol("haze", "myspace");
-    registerProvidedProtocol("haze", "bigbrownchunx-skype-dbus");
-    registerProvidedProtocol("haze", "yahoo");
-    registerProvidedProtocol("haze", "aim");
-    registerProvidedProtocol("haze", "msn");
+    registerProvidedProtocol(QLatin1String("haze"), QLatin1String("icq"));
+    registerProvidedProtocol(QLatin1String("haze"), QLatin1String("myspace"));
+    registerProvidedProtocol(QLatin1String("haze"), QLatin1String("bigbrownchunx-skype-dbus"));
+    registerProvidedProtocol(QLatin1String("haze"), QLatin1String("yahoo"));
+    registerProvidedProtocol(QLatin1String("haze"), QLatin1String("aim"));
+    registerProvidedProtocol(QLatin1String("haze"), QLatin1String("msn"));
 }
 
 HazeAccountUiPlugin::~HazeAccountUiPlugin()
 {
-    kDebug();
 }
 
 AbstractAccountUi* HazeAccountUiPlugin::accountUi(const QString &connectionManager, const QString &protocol, const QString &serviceName)
 {
     Q_UNUSED(serviceName);
-
-    kDebug();
 
     if (connectionManager == QLatin1String("haze")) {
         if (protocol == QLatin1String("icq")) {

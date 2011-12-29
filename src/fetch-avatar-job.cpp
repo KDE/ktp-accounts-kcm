@@ -79,7 +79,7 @@ void FetchAvatarJob::start()
 
 void FetchAvatarJob::Private::_k_onMimeTypeDetected(KIO::Job *job, const QString &mimetype)
 {
-    if (!mimetype.contains("image/")) {
+    if (!mimetype.contains(QLatin1String("image/"))) {
         q->setErrorText(i18n("The file you have selected does not seem to be an image.\n"
                              "Please select an image file."));
         q->setError(1);

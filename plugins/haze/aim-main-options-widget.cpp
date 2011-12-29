@@ -20,27 +20,22 @@
 
 #include "aim-main-options-widget.h"
 
-#include <KDebug>
 #include <KCMTelepathyAccounts/parameter-edit-model.h>
 
 AimMainOptionsWidget::AimMainOptionsWidget(ParameterEditModel* model, QWidget* parent)
         : AbstractAccountParametersWidget(model, parent)
 {
-    kDebug() << "Creating AIM Account";
-
     //setup the Ui
     m_ui = new Ui::AimMainOptionsWidget;
     m_ui->setupUi(this);
 
     //map the widgets to their data
-    handleParameter("account", QVariant::String, m_ui->accountLineEdit, m_ui->accountLabel);
-    handleParameter("password", QVariant::String, m_ui->passwordLineEdit, m_ui->passwordLabel);
+    handleParameter(QLatin1String("account"), QVariant::String, m_ui->accountLineEdit, m_ui->accountLabel);
+    handleParameter(QLatin1String("password"), QVariant::String, m_ui->passwordLineEdit, m_ui->passwordLabel);
     QTimer::singleShot(0, m_ui->accountLineEdit, SLOT(setFocus()));
 }
 
 AimMainOptionsWidget::~AimMainOptionsWidget()
 {
-    kDebug();
-
     delete m_ui;
 }

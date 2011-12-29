@@ -20,29 +20,22 @@
 
 #include "icq-main-options-widget.h"
 
-#include <KDebug>
-
 IcqMainOptionsWidget::IcqMainOptionsWidget(ParameterEditModel *model,
                                      QWidget *parent)
  : AbstractAccountParametersWidget(model, parent)
 {
-    kDebug();
-
     // Set up the UI.
     m_ui = new Ui::IcqMainOptionsWidget;
     m_ui->setupUi(this);
 
-    handleParameter("account", QVariant::String, m_ui->accountLineEdit, m_ui->accountLabel);
-    handleParameter("password", QVariant::String, m_ui->passwordLineEdit, m_ui->passwordLabel);
+    handleParameter(QLatin1String("account"), QVariant::String, m_ui->accountLineEdit, m_ui->accountLabel);
+    handleParameter(QLatin1String("password"), QVariant::String, m_ui->passwordLineEdit, m_ui->passwordLabel);
     QTimer::singleShot(0, m_ui->accountLineEdit, SLOT(setFocus()));
 }
 
 IcqMainOptionsWidget::~IcqMainOptionsWidget()
 {
-    kDebug();
-
     delete m_ui;
 }
 
 #include "icq-main-options-widget.moc"
-

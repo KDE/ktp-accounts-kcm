@@ -21,28 +21,23 @@
 #include "haze-yahoo-account.h"
 #include "yahoo-server-settings-widget.h"
 
-#include <KDebug>
-
 HazeYahooAccount::HazeYahooAccount(QObject* parent)
         : AbstractAccountUi(parent)
 {
-    kDebug();
-
     //register that all options are supported
-    registerSupportedParameter("account", QVariant::String);
-    registerSupportedParameter("password", QVariant::String);
-    registerSupportedParameter("port", QVariant::UInt);
-    registerSupportedParameter("xfer-host", QVariant::String);
-    registerSupportedParameter("xfer-port", QVariant::UInt);
-    registerSupportedParameter("room-list-locale", QVariant::String);
-    registerSupportedParameter("charset", QVariant::String);
-    registerSupportedParameter("proxy-ssl", QVariant::Bool);
-    registerSupportedParameter("ignore-invites", QVariant::Bool);
+    registerSupportedParameter(QLatin1String("account"), QVariant::String);
+    registerSupportedParameter(QLatin1String("password"), QVariant::String);
+    registerSupportedParameter(QLatin1String("port"), QVariant::UInt);
+    registerSupportedParameter(QLatin1String("xfer-host"), QVariant::String);
+    registerSupportedParameter(QLatin1String("xfer-port"), QVariant::UInt);
+    registerSupportedParameter(QLatin1String("room-list-locale"), QVariant::String);
+    registerSupportedParameter(QLatin1String("charset"), QVariant::String);
+    registerSupportedParameter(QLatin1String("proxy-ssl"), QVariant::Bool);
+    registerSupportedParameter(QLatin1String("ignore-invites"), QVariant::Bool);
 }
 
 HazeYahooAccount::~HazeYahooAccount()
 {
-    kDebug();
 }
 
 bool HazeYahooAccount::hasAdvancedOptionsWidget() const

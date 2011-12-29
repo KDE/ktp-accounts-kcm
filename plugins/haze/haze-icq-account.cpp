@@ -25,37 +25,30 @@
 
 #include <KCMTelepathyAccounts/AbstractAccountParametersWidget>
 
-#include <KDebug>
-
 HazeIcqAccountUi::HazeIcqAccountUi(QObject *parent)
  : AbstractAccountUi(parent)
 {
-    kDebug();
-
     // Register supported parameters
-    registerSupportedParameter("account", QVariant::String);
-    registerSupportedParameter("password", QVariant::String);
+    registerSupportedParameter(QLatin1String("account"), QVariant::String);
+    registerSupportedParameter(QLatin1String("password"), QVariant::String);
 
-    registerSupportedParameter("port", QVariant::Int);
-    registerSupportedParameter("server", QVariant::String);
+    registerSupportedParameter(QLatin1String("port"), QVariant::Int);
+    registerSupportedParameter(QLatin1String("server"), QVariant::String);
 
-    registerSupportedParameter("use-ssl", QVariant::Bool);
-    registerSupportedParameter("always-use-rv-proxy", QVariant::Bool);
-    registerSupportedParameter("allow-multiple-logins", QVariant::Bool);
-    registerSupportedParameter("charset", QVariant::String);
+    registerSupportedParameter(QLatin1String("use-ssl"), QVariant::Bool);
+    registerSupportedParameter(QLatin1String("always-use-rv-proxy"), QVariant::Bool);
+    registerSupportedParameter(QLatin1String("allow-multiple-logins"), QVariant::Bool);
+    registerSupportedParameter(QLatin1String("charset"), QVariant::String);
 }
 
 HazeIcqAccountUi::~HazeIcqAccountUi()
 {
-    kDebug();
 }
 
 AbstractAccountParametersWidget *HazeIcqAccountUi::mainOptionsWidget(
         ParameterEditModel *model,
         QWidget *parent) const
 {
-    kDebug();
-
     return new IcqMainOptionsWidget(model, parent);
 }
 
@@ -68,12 +61,9 @@ AbstractAccountParametersWidget *HazeIcqAccountUi::advancedOptionsWidget(
         ParameterEditModel *model,
         QWidget *parent) const
 {
-    kDebug();
-
     AbstractAccountParametersWidget *icqServerSettingsWidget = new IcqServerSettingsWidget(model, parent);
     return icqServerSettingsWidget;
 }
 
 
 #include "haze-icq-account.moc"
-

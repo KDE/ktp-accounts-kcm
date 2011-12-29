@@ -22,8 +22,8 @@
 
 #include "parameter-edit-model.h"
 
-#include <KDebug>
 #include <KLineEdit>
+#include <KDebug>
 
 #include <QtGui/QApplication>
 #include <QtGui/QCheckBox>
@@ -34,12 +34,10 @@
 ParameterEditDelegate::ParameterEditDelegate(QAbstractItemView *itemView, QObject *parent)
  : KWidgetItemDelegate(itemView, parent)
 {
-    kDebug();
 }
 
 ParameterEditDelegate::~ParameterEditDelegate()
 {
-    kDebug();
 }
 
 
@@ -194,8 +192,6 @@ QSize ParameterEditDelegate::sizeHint(const QStyleOptionViewItem &option,
 
 void ParameterEditDelegate::onLineEditTextChanged(QString text)
 {
-    kDebug();
-
     QModelIndex index = focusedIndex();
 
     Q_EMIT dataChanged(index, QVariant(text), ParameterEditModel::ValueRole);
@@ -203,8 +199,6 @@ void ParameterEditDelegate::onLineEditTextChanged(QString text)
 
 void ParameterEditDelegate::onCheckBoxToggled(bool checked)
 {
-    kDebug();
-
     QModelIndex index = focusedIndex();
 
     Q_EMIT dataChanged(index, QVariant(checked), ParameterEditModel::ValueRole);
@@ -226,4 +220,3 @@ void ParameterEditDelegate::onSpinBoxValueChanged(int value)
 
 
 #include "parameter-edit-delegate.moc"
-

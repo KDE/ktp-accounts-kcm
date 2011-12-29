@@ -32,17 +32,16 @@ class QTimer;
 
 class FeedbackWidget : public KMessageWidget
 {
-Q_OBJECT
+    Q_OBJECT
+    Q_DISABLE_COPY(FeedbackWidget);
+
 public:
     FeedbackWidget(QWidget *parent = 0);
     virtual ~FeedbackWidget();
 
-public slots:
+public Q_SLOTS:
     void setMessage(const QString &text, const QString &comment, KMessageWidget::MessageType type);
     void setText(const QString &text, KMessageWidget::MessageType type);
-
-private:
-    KMessageWidget::MessageType m_type;
 };
 
 #endif

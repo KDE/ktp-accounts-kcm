@@ -22,7 +22,6 @@
 
 #include <KCMTelepathyAccounts/ParameterEditModel>
 
-#include <KDebug>
 #include <KUser>
 
 SalutMainOptionsWidget::SalutMainOptionsWidget(ParameterEditModel *model, QWidget *parent)
@@ -32,13 +31,13 @@ SalutMainOptionsWidget::SalutMainOptionsWidget(ParameterEditModel *model, QWidge
     m_ui = new Ui::SalutMainOptionsWidget;
     m_ui->setupUi(this);
 
-    handleParameter("first-name", QVariant::String, m_ui->firstnameLineEdit, m_ui->firstnameLabel);
-    handleParameter("last-name",  QVariant::String, m_ui->lastnameLineEdit,  m_ui->lastnameLabel);
-    handleParameter("nickname",   QVariant::String, m_ui->nicknameLineEdit,  m_ui->nicknameLabel);
+    handleParameter(QLatin1String("first-name"), QVariant::String, m_ui->firstnameLineEdit, m_ui->firstnameLabel);
+    handleParameter(QLatin1String("last-name"),  QVariant::String, m_ui->lastnameLineEdit,  m_ui->lastnameLabel);
+    handleParameter(QLatin1String("nickname"),   QVariant::String, m_ui->nicknameLineEdit,  m_ui->nicknameLabel);
 
     // if the first- and last-name are empty on startup we add them based on
     // the current users full name
-    if(m_ui->firstnameLineEdit->text().isEmpty()) {
+    if (m_ui->firstnameLineEdit->text().isEmpty()) {
         KUser user = KUser();
         m_ui->firstnameLineEdit->setText(user.property(KUser::FullName).toString());
         m_ui->nicknameLineEdit->setText(user.loginName());
@@ -49,7 +48,5 @@ SalutMainOptionsWidget::SalutMainOptionsWidget(ParameterEditModel *model, QWidge
 
 SalutMainOptionsWidget::~SalutMainOptionsWidget()
 {
-    kDebug();
-
     delete m_ui;
 }

@@ -25,7 +25,6 @@
 #include "dictionary.h"
 
 #include <TelepathyQt/Profile>
-#include <KDebug>
 #include <KIcon>
 
 ProfileItem::ProfileItem(const Tp::ProfilePtr &profile, QObject *parent)
@@ -35,7 +34,7 @@ ProfileItem::ProfileItem(const Tp::ProfilePtr &profile, QObject *parent)
 {
     //FIXME: Dictionary should not be needed anymore when distros ship profiles
     m_localizedName = Dictionary::instance()->string(profile->name());
-    if(m_localizedName.isEmpty()) {
+    if (m_localizedName.isEmpty()) {
         m_localizedName = profile->name();
     }
 
@@ -44,8 +43,6 @@ ProfileItem::ProfileItem(const Tp::ProfilePtr &profile, QObject *parent)
 
 ProfileItem::~ProfileItem()
 {
-    kDebug();
-
     delete m_icon;
 }
 
@@ -100,4 +97,3 @@ void ProfileItem::generateIcon()
 }
 
 #include "profile-item.moc"
-

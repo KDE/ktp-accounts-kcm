@@ -25,42 +25,34 @@
 #include <KCMTelepathyAccounts/ParameterEditModel>
 #include <KCMTelepathyAccounts/AbstractAccountParametersWidget>
 
-#include <KDebug>
-
 SalutAccountUi::SalutAccountUi(QObject *parent)
     : AbstractAccountUi(parent)
 {
-    kDebug();
     // Register supported parameters
     // Main Options
-    registerSupportedParameter("first-name", QVariant::String);
-    registerSupportedParameter("last-name",  QVariant::String);
-    registerSupportedParameter("nickname",   QVariant::String);
+    registerSupportedParameter(QLatin1String("first-name"), QVariant::String);
+    registerSupportedParameter(QLatin1String("last-name"),  QVariant::String);
+    registerSupportedParameter(QLatin1String("nickname"),   QVariant::String);
 
     // Advanced Options
-    registerSupportedParameter("published-name", QVariant::String);
-    registerSupportedParameter("email",          QVariant::String);
-    registerSupportedParameter("jid",            QVariant::String);
+    registerSupportedParameter(QLatin1String("published-name"), QVariant::String);
+    registerSupportedParameter(QLatin1String("email"),          QVariant::String);
+    registerSupportedParameter(QLatin1String("jid"),            QVariant::String);
 }
 
 SalutAccountUi::~SalutAccountUi()
 {
-    kDebug();
 }
 
 AbstractAccountParametersWidget *SalutAccountUi::mainOptionsWidget(
     ParameterEditModel *model,
     QWidget *parent) const
 {
-    kDebug();
-
     return new SalutMainOptionsWidget(model, parent);
 }
 
 bool SalutAccountUi::hasAdvancedOptionsWidget() const
 {
-    kDebug();
-
     return true;
 }
 
@@ -68,8 +60,6 @@ AbstractAccountParametersWidget *SalutAccountUi::advancedOptionsWidget(
     ParameterEditModel *model,
     QWidget *parent) const
 {
-    kDebug();
-
     AbstractAccountParametersWidget* aowidget = new SalutAdvancedOptionsWidget(model, parent);
 
     return aowidget;

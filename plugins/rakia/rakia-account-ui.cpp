@@ -25,93 +25,85 @@
 #include <KCMTelepathyAccounts/ParameterEditModel>
 #include <KCMTelepathyAccounts/AbstractAccountParametersWidget>
 
-#include <KDebug>
-
 RakiaAccountUi::RakiaAccountUi(QObject *parent)
     : AbstractAccountUi(parent)
 {
-    kDebug();
     // Register supported parameters
     // Main Options
     /**< public SIP address (SIP URI) */
-    registerSupportedParameter("account", QVariant::String);
+    registerSupportedParameter(QLatin1String("account"), QVariant::String);
     /**< account password (for registration) */
-    registerSupportedParameter("password", QVariant::String);
+    registerSupportedParameter(QLatin1String("password"), QVariant::String);
     /**< Display name for self */
-    registerSupportedParameter("alias", QVariant::String);
+    registerSupportedParameter(QLatin1String("alias"), QVariant::String);
 
     // Advanced Options
     /**< account username (if different from public address userinfo part) */
-    registerSupportedParameter("auth-user", QVariant::String);
+    registerSupportedParameter(QLatin1String("auth-user"), QVariant::String);
     /**< SIP registrar (SIP URI) */
-    registerSupportedParameter("registrar", QVariant::String);
+    registerSupportedParameter(QLatin1String("registrar"), QVariant::String);
 
     // Parameters being used to compose the proxy uri
     /**< outbound SIP proxy (SIP URI) */
-    registerSupportedParameter("proxy-host", QVariant::String);
-    registerSupportedParameter("port", QVariant::UInt);
+    registerSupportedParameter(QLatin1String("proxy-host"), QVariant::String);
+    registerSupportedParameter(QLatin1String("port"), QVariant::UInt);
     /**< outbound transport */
-    registerSupportedParameter("transport", QVariant::String);
+    registerSupportedParameter(QLatin1String("transport"), QVariant::String);
 
     /**< Discover STUN server name using DNS SRV lookup */
-    registerSupportedParameter("discover-stun", QVariant::Bool);
+    registerSupportedParameter(QLatin1String("discover-stun"), QVariant::Bool);
     /**< STUN server address (if not set, derived from public SIP address) */
-    registerSupportedParameter("stun-server", QVariant::String);
+    registerSupportedParameter(QLatin1String("stun-server"), QVariant::String);
     /**< STUN port */
-    registerSupportedParameter("stun-port", QVariant::UInt);
+    registerSupportedParameter(QLatin1String("stun-port"), QVariant::UInt);
 
     /**< enable discovery of public binding */
-    registerSupportedParameter("discover-binding", QVariant::Bool);
+    registerSupportedParameter(QLatin1String("discover-binding"), QVariant::Bool);
     /**< enable loose routing behavior */
-    registerSupportedParameter("loose-routing", QVariant::Bool);
+    registerSupportedParameter(QLatin1String("loose-routing"), QVariant::Bool);
     /**< keepalive mechanism as defined by TpsipConnectionKeepaliveMechanism
      * "auto","register","options","stun","off" */
-    registerSupportedParameter("keepalive-mechanism", QVariant::String);
+    registerSupportedParameter(QLatin1String("keepalive-mechanism"), QVariant::String);
     /**< keepalive interval in seconds */
-    registerSupportedParameter("keepalive-interval", QVariant::UInt);
+    registerSupportedParameter(QLatin1String("keepalive-interval"), QVariant::UInt);
 
 //  Parameters, we know about their existence but don't expose them to the user
 //  for eventual later usage, we keep them documented here:
 
 //  immuteable-streams: if set to True, you can't add video to an already running voice call.
 //     /**< If the session content is immutable once set up */
-//     registerSupportedParameter("immutable-streams", QVariant::Bool);
+//     registerSupportedParameter(QLatin1String("immutable-streams"), QVariant::Bool);
 
 //  local-ip-addres, local-port:
 //  These affect the socket binding of the SIP UA. It's a way to ensure that Sofia-SIP uses a
 //  particular local IP binding on multi-homed hosts, something that it does not do in a
 //  satisfactory way automatically.
 //     /**< Local IP address (normally not needed, chosen by stack) */
-//     registerSupportedParameter("local-ip-address", QVariant::String);
+//     registerSupportedParameter(QLatin1String("local-ip-address"), QVariant::String);
 //     /**< Local port for SIP (normally not needed, chosen by stack) */
-//     registerSupportedParameter("local-port", QVariant::UInt);
+//     registerSupportedParameter(QLatin1String("local-port"), QVariant::UInt);
 
 //  extra-auth-user, extra-auth-password:
 //  ifdigest authentication on demand is implemented, these parameters are obsolete.
 //     /**< User name to use for extra authentication challenges */
-//     registerSupportedParameter("extra-auth-user", QVariant::String);
+//     registerSupportedParameter(QLatin1String("extra-auth-user"), QVariant::String);
 //     /**< Password to use for extra authentication challenges */
-//     registerSupportedParameter("extra-auth-password", QVariant::String);
+//     registerSupportedParameter(QLatin1String("extra-auth-password"), QVariant::String);
 }
 
 RakiaAccountUi::~RakiaAccountUi()
 {
-    kDebug();
 }
 
 AbstractAccountParametersWidget *RakiaAccountUi::mainOptionsWidget(
     ParameterEditModel *model,
     QWidget *parent) const
 {
-    kDebug();
-
     return new RakiaMainOptionsWidget(model, parent);
 }
 
 bool RakiaAccountUi::hasAdvancedOptionsWidget() const
 {
-    kDebug();
-
     return true;
 }
 
@@ -119,8 +111,6 @@ AbstractAccountParametersWidget *RakiaAccountUi::advancedOptionsWidget(
     ParameterEditModel *model,
     QWidget *parent) const
 {
-    kDebug();
-
     AbstractAccountParametersWidget* aowidget = new RakiaAdvancedOptionsWidget(model, parent);
 
     return aowidget;

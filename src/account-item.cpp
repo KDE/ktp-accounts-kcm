@@ -42,8 +42,6 @@ AccountItem::AccountItem(const Tp::AccountPtr &account, AccountsListModel *paren
    m_account(account),
    m_icon(new KIcon())
 {
-    kDebug();
-
     //connect AccountPtr signals to AccountItem signals
     connect(m_account.data(),
             SIGNAL(stateChanged(bool)),
@@ -69,8 +67,6 @@ AccountItem::AccountItem(const Tp::AccountPtr &account, AccountsListModel *paren
 
 AccountItem::~AccountItem()
 {
-    kDebug();
-
     delete m_icon;
 }
 
@@ -106,7 +102,7 @@ const QString AccountItem::connectionStateString() const
     case Tp::ConnectionStatusDisconnected:
         return i18nc("This is a connection state", "Disconnected");
     default:
-        return "Unknown";
+        return i18nc("This is an unknown connection state", "Unknown");
     }
 }
 
@@ -114,14 +110,14 @@ const KIcon AccountItem::connectionStateIcon() const
 {
     switch (m_account->connectionStatus()) {
     case Tp::ConnectionStatusConnected:
-        return KIcon("user-online");
+        return KIcon(QLatin1String("user-online"));
     case Tp::ConnectionStatusConnecting:
         //imho this is not really worth animating, but feel free to play around..
-        return KIcon(KPixmapSequence("process-working", 22).frameAt(0));
+        return KIcon(KPixmapSequence(QLatin1String("process-working"), 22).frameAt(0));
     case Tp::ConnectionStatusDisconnected:
-        return KIcon("user-offline");
+        return KIcon(QLatin1String("user-offline"));
     default:
-        return KIcon("user-offline");
+        return KIcon(QLatin1String("user-offline"));
     }
 }
 
@@ -145,13 +141,11 @@ const QString AccountItem::connectionProtocolName() const
 
 void AccountItem::generateIcon()
 {
-    kDebug();
-
     QString iconPath = account()->iconName();
 
     //if the icon has not been set, we use the protocol icon
-    if(iconPath.isEmpty()) {
-        iconPath = QString("im-%1").arg(account()->protocolName());
+    if (iconPath.isEmpty()) {
+        iconPath = QString::fromLatin1("im-%1").arg(account()->protocolName());
     }
 
     delete m_icon;
@@ -161,11 +155,11 @@ void AccountItem::generateIcon()
         m_icon = new KIcon(KIconLoader::global()->loadIcon(iconPath, KIconLoader::Desktop, 32, KIconLoader::DisabledState));
     }
 
-    if(!account()->isValid()) {
+    if (!account()->isValid()) {
         //we paint a warning symbol in the right-bottom corner
         QPixmap pixmap = m_icon->pixmap(32, 32);
         QPainter painter(&pixmap);
-        KIcon("dialog-error").paint(&painter, 15, 15, 16, 16);
+        KIcon(QLatin1String("dialog-error")).paint(&painter, 15, 15, 16, 16);
 
         delete m_icon;
         m_icon = new KIcon(pixmap);
@@ -176,8 +170,6 @@ void AccountItem::generateIcon()
 
 void AccountItem::onAccountRemoved(Tp::PendingOperation *op)
 {
-    kDebug();
-
     if (op->isError()) {
         kDebug() << "An error occurred removing the Account."
                  << op->errorName()
@@ -188,8 +180,7 @@ void AccountItem::onAccountRemoved(Tp::PendingOperation *op)
 
 void AccountItem::onTitleForCustomPages(QString mandatoryPage, QList<QString> optionalPage)
 {
-    kDebug();
-    emit setTitleForCustomPages(mandatoryPage, optionalPage);
+    Q_EMIT setTitleForCustomPages(mandatoryPage, optionalPage);
 }
 
 Tp::ConnectionStatus AccountItem::connectionStatus() const

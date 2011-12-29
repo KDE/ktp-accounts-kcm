@@ -36,10 +36,10 @@ public:
     QList<QWidget*> createItemWidgets() const;
     void updateItemWidgets(const QList<QWidget *> widgets, const QStyleOptionViewItem &option, const QPersistentModelIndex &index) const;
 
-signals:
+Q_SIGNALS:
     void itemChecked(const QModelIndex &index, bool checked);
 
-private slots:
+private Q_SLOTS:
     void onCheckBoxToggled(bool checked);
 
 private:

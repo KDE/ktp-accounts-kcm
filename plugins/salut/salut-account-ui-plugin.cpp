@@ -23,30 +23,26 @@
 
 #include <KCMTelepathyAccounts/PluginMacros>
 
-#include <KDebug>
 #include <KGenericFactory>
+#include <KDebug>
 
 #include <QtCore/QVariantList>
 
 SalutAccountUiPlugin::SalutAccountUiPlugin(QObject *parent, const QVariantList &)
     : AbstractAccountUiPlugin(parent)
 {
-    kDebug();
-
     // Register supported cm/protocol combinations
-    registerProvidedProtocol("salut", "local-xmpp");
+    registerProvidedProtocol(QLatin1String("salut"), QLatin1String("local-xmpp"));
 }
 
 SalutAccountUiPlugin::~SalutAccountUiPlugin()
 {
-    kDebug();
 }
 
 AbstractAccountUi* SalutAccountUiPlugin::accountUi(const QString &connectionManager,
         const QString &protocol,
         const QString &serviceName)
 {
-    kDebug();
     kDebug() << "connectionManager: " << connectionManager <<
              ", protocol: " << protocol <<
              ", servicename: " << serviceName;

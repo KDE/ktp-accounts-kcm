@@ -18,7 +18,6 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
-#include <KDebug>
 #include <KTabWidget>
 #include <KLocale>
 #include <QHBoxLayout>
@@ -30,7 +29,6 @@ class GenericAdvancedOptionsWidget::Private
 public:
     Private()
     {
-        kDebug();
     }
     KTabWidget *tabWidget;
     QList<AbstractAccountParametersWidget*> widgets;
@@ -50,18 +48,14 @@ GenericAdvancedOptionsWidget::GenericAdvancedOptionsWidget(ParameterEditModel *p
 
 GenericAdvancedOptionsWidget::~GenericAdvancedOptionsWidget()
 {
-    kDebug();
-
     delete d;
 }
 
 
 bool GenericAdvancedOptionsWidget::validateParameterValues()
 {
-    kDebug();
-
     // validate one tab at a time so that the user is not flooded with dialogs
-    foreach(AbstractAccountParametersWidget *widget, d->widgets) {
+    Q_FOREACH (AbstractAccountParametersWidget *widget, d->widgets) {
         if (!widget->validateParameterValues())
         return false;
     }
@@ -76,7 +70,7 @@ void GenericAdvancedOptionsWidget::setTabBarHidden(bool hidden)
 
 void GenericAdvancedOptionsWidget::submit()
 {
-    foreach(AbstractAccountParametersWidget *widget, d->widgets) {
+    Q_FOREACH (AbstractAccountParametersWidget *widget, d->widgets) {
         widget->submit();
     }
 
@@ -84,7 +78,7 @@ void GenericAdvancedOptionsWidget::submit()
 
 void GenericAdvancedOptionsWidget::addTab(AbstractAccountParametersWidget* tab, const QString& label)
 {
-    if(d->tabWidget->count() == 1) {
+    if (d->tabWidget->count() == 1) {
         d->tabWidget->setTabBarHidden(false);
     }
 
@@ -94,4 +88,3 @@ void GenericAdvancedOptionsWidget::addTab(AbstractAccountParametersWidget* tab, 
 
 
 #include "generic-advanced-options-widget.moc"
-

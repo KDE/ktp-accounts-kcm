@@ -23,16 +23,14 @@
 #include "abstract-account-ui-plugin.h"
 #include "abstract-account-ui.h"
 
-#include <KDebug>
 #include <KServiceTypeTrader>
+#include <KDebug>
 
 PluginManager* PluginManager::s_self = 0;
 
 PluginManager::PluginManager(QObject *parent)
  : QObject(parent)
 {
-    kDebug();
-
     // Set up the singleton instance
     s_self = this;
 
@@ -41,16 +39,12 @@ PluginManager::PluginManager(QObject *parent)
 
 PluginManager::~PluginManager()
 {
-    kDebug();
-
     // Delete the singleton instance of this class
     s_self = 0;
 }
 
 PluginManager *PluginManager::instance()
 {
-    kDebug();
-
     // Construct the singleton if hasn't been already
     if (!s_self) {
         s_self = new PluginManager(0);
@@ -62,8 +56,7 @@ PluginManager *PluginManager::instance()
 
 void PluginManager::loadPlugins()
 {
-    kDebug();
-    KService::List offers = KServiceTypeTrader::self()->query("KTpAccountsKCM/AccountUiPlugin");
+    KService::List offers = KServiceTypeTrader::self()->query(QLatin1String("KTpAccountsKCM/AccountUiPlugin"));
 
     KService::List::const_iterator iter;
     for (iter = offers.constBegin(); iter < offers.constEnd(); ++iter) {
@@ -92,12 +85,10 @@ AbstractAccountUi *PluginManager::accountUiForProtocol(const QString &connection
                                                        const QString &protocol,
                                                        const QString &serviceName)
 {
-    kDebug();
-
     // Loop through all the plugins seeing if they provide an AccountUi for the connection manager
     // and protocol combination we were provided with.
 
-    foreach (AbstractAccountUiPlugin *plugin, m_plugins) {
+    Q_FOREACH (AbstractAccountUiPlugin *plugin, m_plugins) {
         AbstractAccountUi *ui = plugin->accountUi(connectionManager, protocol, serviceName);
 
         // FIXME: Bug https://bugs.kde.org/201797 - we should check here to see which plugin
@@ -113,4 +104,3 @@ AbstractAccountUi *PluginManager::accountUiForProtocol(const QString &connection
 
 
 #include "plugin-manager.moc"
-

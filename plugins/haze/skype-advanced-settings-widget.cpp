@@ -20,28 +20,22 @@
 
 #include "skype-advanced-settings-widget.h"
 
-#include <KDebug>
-
 SkypeAdvancedSettingsWidget::SkypeAdvancedSettingsWidget(ParameterEditModel *model, QWidget *parent)
  : AbstractAccountParametersWidget(model, parent)
 {
-    kDebug();
-
     // Set up the UI.
     m_ui = new Ui::SkypeAdvancedSettingsWidget;
     m_ui->setupUi(this);
 
     //server
-    handleParameter("skypeout-online",  QVariant::Bool, m_ui->skypeOutCheckBox, 0);
-    handleParameter("skype-sync",       QVariant::Bool, m_ui->syncCheckBox, 0);
-    handleParameter("check-for-updates",QVariant::Bool, m_ui->updatesCheckBox, 0);
-    handleParameter("reject-all-auths", QVariant::Bool, m_ui->authRequestsCheckBox, 0);
-    handleParameter("skype-autostart",  QVariant::Bool, m_ui->autostartCheckBox, 0);
+    handleParameter(QLatin1String("skypeout-online"),  QVariant::Bool, m_ui->skypeOutCheckBox, 0);
+    handleParameter(QLatin1String("skype-sync"),       QVariant::Bool, m_ui->syncCheckBox, 0);
+    handleParameter(QLatin1String("check-for-updates"),QVariant::Bool, m_ui->updatesCheckBox, 0);
+    handleParameter(QLatin1String("reject-all-auths"), QVariant::Bool, m_ui->authRequestsCheckBox, 0);
+    handleParameter(QLatin1String("skype-autostart"),  QVariant::Bool, m_ui->autostartCheckBox, 0);
 }
 
 SkypeAdvancedSettingsWidget::~SkypeAdvancedSettingsWidget()
 {
-    kDebug();
-
     delete m_ui;
 }

@@ -22,7 +22,6 @@
 
 #include <KCMTelepathyAccounts/ParameterEditModel>
 
-#include <KDebug>
 #include <KUser>
 
 RakiaMainOptionsWidget::RakiaMainOptionsWidget(ParameterEditModel *model, QWidget *parent)
@@ -32,13 +31,13 @@ RakiaMainOptionsWidget::RakiaMainOptionsWidget(ParameterEditModel *model, QWidge
     m_ui = new Ui::RakiaMainOptionsWidget;
     m_ui->setupUi(this);
 
-    handleParameter("account",  QVariant::String, m_ui->accountLineEdit,  m_ui->accountLabel);
-    handleParameter("password", QVariant::String, m_ui->passwordLineEdit, m_ui->passwordLabel);
-    handleParameter("alias",    QVariant::String, m_ui->aliasLineEdit,    m_ui->aliasLabel);
+    handleParameter(QLatin1String("account"),  QVariant::String, m_ui->accountLineEdit,  m_ui->accountLabel);
+    handleParameter(QLatin1String("password"), QVariant::String, m_ui->passwordLineEdit, m_ui->passwordLabel);
+    handleParameter(QLatin1String("alias"),    QVariant::String, m_ui->aliasLineEdit,    m_ui->aliasLabel);
 
     // if the account is empty on startup we add a new account, therefore
     // set the alias to the current users full name
-    if(m_ui->accountLineEdit->text().isEmpty()) {
+    if (m_ui->accountLineEdit->text().isEmpty()) {
         KUser user = KUser();
         m_ui->aliasLineEdit->setText(user.property(KUser::FullName).toString());
     }
@@ -46,7 +45,5 @@ RakiaMainOptionsWidget::RakiaMainOptionsWidget(ParameterEditModel *model, QWidge
 
 RakiaMainOptionsWidget::~RakiaMainOptionsWidget()
 {
-    kDebug();
-
     delete m_ui;
 }

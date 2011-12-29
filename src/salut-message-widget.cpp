@@ -45,11 +45,11 @@ SalutMessageWidget::SalutMessageWidget(QWidget *parent)
 
     connect(circCountdown, SIGNAL(timeout()), this, SIGNAL(timeout()));
 
-    KAction *configAction = new KAction(KIcon("configure"), i18n("Configure manually..."), this);
+    KAction *configAction = new KAction(KIcon(QLatin1String("configure")), i18n("Configure manually..."), this);
     connect(configAction, SIGNAL(triggered(bool)), this, SIGNAL(configPressed()));
     addAction(configAction);
 
-    KAction *cancelAction = new KAction(KIcon("dialog-cancel"), i18n("Cancel"), this);
+    KAction *cancelAction = new KAction(KIcon(QLatin1String("dialog-cancel")), i18n("Cancel"), this);
     connect(cancelAction, SIGNAL(triggered(bool)), this, SIGNAL(cancelPressed()));
     addAction(cancelAction);
 
@@ -79,24 +79,24 @@ void SalutMessageWidget::setParams(const QString& firstname, const QString& last
     if (((lastname.isEmpty() && !firstname.isEmpty()) || (!lastname.isEmpty() && firstname.isEmpty()))
             && !nick.isEmpty()) {
 
-        displayName = QString("%1 (%2)").arg(lastname.isEmpty() ? firstname : lastname, nick);
+        displayName = QString::fromLatin1("%1 (%2)").arg(lastname.isEmpty() ? firstname : lastname, nick);
 
     //either one of the names is filled and nick is empty
     } else if (((lastname.isEmpty() && !firstname.isEmpty()) || (!lastname.isEmpty() && firstname.isEmpty()))
             && nick.isEmpty()) {
 
-        displayName = QString("%1").arg(lastname.isEmpty() ? firstname : lastname);
+        displayName = QString::fromLatin1("%1").arg(lastname.isEmpty() ? firstname : lastname);
 
     //both first & last names are empty but nick is not
     } else if (lastname.isEmpty() && firstname.isEmpty() && !nick.isEmpty()) {
 
-        displayName = QString("%1").arg(nick);
+        displayName = QString::fromLatin1("%1").arg(nick);
 
     } else if (lastname.isEmpty() && firstname.isEmpty() && nick.isEmpty()) {
         //FIXME: let the user know that he reached a very strange situation
 
     } else {
-        displayName = QString("%1 %2 (%3)").arg(firstname, lastname, nick);
+        displayName = QString::fromLatin1("%1 %2 (%3)").arg(firstname, lastname, nick);
     }
 
     setText(i18n("You will appear as \"%1\" on your local network.",

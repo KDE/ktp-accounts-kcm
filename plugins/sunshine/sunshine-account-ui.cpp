@@ -24,47 +24,39 @@
 
 #include <KCMTelepathyAccounts/AbstractAccountParametersWidget>
 
-#include <KDebug>
-
 SunshineAccountUi::SunshineAccountUi(QObject *parent)
     : AbstractAccountUi(parent)
 {
-    kDebug();
     // Register supported parameters
     // Main Options
-    registerSupportedParameter("account", QVariant::String);
-    registerSupportedParameter("password", QVariant::String);
+    registerSupportedParameter(QLatin1String("account"), QVariant::String);
+    registerSupportedParameter(QLatin1String("password"), QVariant::String);
 
     // Advanced Options
-    registerSupportedParameter("use-specified-server", QVariant::Bool);
-    registerSupportedParameter("server", QVariant::String);
-    registerSupportedParameter("port", QVariant::UInt);
-    registerSupportedParameter("use-ssl", QVariant::Bool);
-    registerSupportedParameter("export-contacts", QVariant::Bool);
+    registerSupportedParameter(QLatin1String("use-specified-server"), QVariant::Bool);
+    registerSupportedParameter(QLatin1String("server"), QVariant::String);
+    registerSupportedParameter(QLatin1String("port"), QVariant::UInt);
+    registerSupportedParameter(QLatin1String("use-ssl"), QVariant::Bool);
+    registerSupportedParameter(QLatin1String("export-contacts"), QVariant::Bool);
     // People using telepathy-sunshine from master (past 0.1.8 versions) will need this line insead
     // of export-contacts. See the commit for further details:
     // http://git.collabora.co.uk/?p=telepathy-sunshine.git;a=commit;h=83963893c34c6069f7202cf7d55add2d334581b5
-    // registerSupportedParameter("synchronize-contacts-with-server", QVariant::Bool);
+    // registerSupportedParameter(QLatin1String("synchronize-contacts-with-server"), QVariant::Bool);
 }
 
 SunshineAccountUi::~SunshineAccountUi()
 {
-    kDebug();
 }
 
 AbstractAccountParametersWidget *SunshineAccountUi::mainOptionsWidget(
     ParameterEditModel *model,
     QWidget *parent) const
 {
-    kDebug();
-
     return new SunshineMainOptionsWidget(model, parent);
 }
 
 bool SunshineAccountUi::hasAdvancedOptionsWidget() const
 {
-    kDebug();
-
     return true;
 }
 
@@ -72,8 +64,6 @@ AbstractAccountParametersWidget *SunshineAccountUi::advancedOptionsWidget(
     ParameterEditModel *model,
     QWidget *parent) const
 {
-    kDebug();
-
     AbstractAccountParametersWidget* aowidget = new SunshineAdvancedOptionsWidget(model, parent);
 
     return aowidget;

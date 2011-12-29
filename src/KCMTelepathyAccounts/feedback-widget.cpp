@@ -23,7 +23,6 @@
 
 #include "feedback-widget.h"
 
-#include <KDebug>
 #include <KLocale>
 #include <KIcon>
 #include <KPushButton>
@@ -52,7 +51,7 @@ FeedbackWidget::~FeedbackWidget()
 
 void FeedbackWidget::setMessage(const QString &text, const QString &comment, KMessageWidget::MessageType type)
 {
-    setText(QString("<b>%1</b><br />%2").arg(text).arg(comment), type);
+    setText(QString::fromLatin1("<b>%1</b><br />%2").arg(text).arg(comment), type);
 }
 
 void FeedbackWidget::setText(const QString &text, KMessageWidget::MessageType type)

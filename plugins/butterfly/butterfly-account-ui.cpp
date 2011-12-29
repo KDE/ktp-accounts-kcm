@@ -23,31 +23,23 @@
 
 #include <KCMTelepathyAccounts/AbstractAccountParametersWidget>
 
-#include <KDebug>
-
 ButterflyAccountUi::ButterflyAccountUi(QObject *parent)
  : AbstractAccountUi(parent)
 {
-    kDebug();
-
     // Register supported parameters
-    registerSupportedParameter("account", QVariant::String);
-    registerSupportedParameter("password", QVariant::String);
+    registerSupportedParameter(QLatin1String("account"), QVariant::String);
+    registerSupportedParameter(QLatin1String("password"), QVariant::String);
 }
 
 ButterflyAccountUi::~ButterflyAccountUi()
 {
-    kDebug();
 }
 
 AbstractAccountParametersWidget *ButterflyAccountUi::mainOptionsWidget(
         ParameterEditModel *model,
         QWidget *parent) const
 {
-    kDebug();
-
     return new MainOptionsWidget(model, parent);
 }
 
 #include "butterfly-account-ui.moc"
-

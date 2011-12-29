@@ -24,7 +24,6 @@
 
 #include <KIcon>
 #include <KLineEdit>
-#include <KDebug>
 #include <KLocale>
 #include <KIconLoader>
 
@@ -116,20 +115,23 @@ ValidatedLineEdit::~ValidatedLineEdit()
 
 void ValidatedLineEdit::setValidator(PredefinedValidator validator)
 {
-    switch(validator)
-    {
-        case NotEmptyValidator:
-            setValidator(".+", i18n("This field should not be empty"));
-            break;
-        case EmailValidator:
-            setValidator("[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,4}", i18n("This field should contain an email address"));
-            break;
-        case HostnameValidator:
-            setValidator(".+\\..+", i18n("This field should contain a hostname"));
-            break;
-        case IPAddressValidator:
-            setValidator("\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}", i18n("This field should contain an IP address"));
-            break;
+    switch (validator) {
+    case NotEmptyValidator:
+        setValidator(QLatin1String(".+"),
+                     i18n("This field should not be empty"));
+        break;
+    case EmailValidator:
+        setValidator(QLatin1String("[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,4}"),
+                     i18n("This field should contain an email address"));
+        break;
+    case HostnameValidator:
+        setValidator(QLatin1String(".+\\..+"),
+                     i18n("This field should contain a hostname"));
+        break;
+    case IPAddressValidator:
+        setValidator(QLatin1String("\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}"),
+                     i18n("This field should contain an IP address"));
+        break;
     }
 }
 
@@ -170,16 +172,15 @@ void ValidatedLineEdit::validate()
     int pos;
     QString validatedText(text());
 
-    if(d->validator.validate(validatedText, pos) == QValidator::Acceptable) {
-        if(d->currentIcon != ValidationIconWidget::ValidIcon) {
-            d->validationIcon->setPixmap(SmallIcon("dialog-ok-apply", 0));
+    if (d->validator.validate(validatedText, pos) == QValidator::Acceptable) {
+        if (d->currentIcon != ValidationIconWidget::ValidIcon) {
+            d->validationIcon->setPixmap(SmallIcon(QLatin1String("dialog-ok-apply"), 0));
             setToolTip(i18n("This field is valid"));
             d->currentIcon = ValidationIconWidget::ValidIcon;
             d->currentState = QValidator::Acceptable;
         }
-    }
-    else if(d->currentIcon != ValidationIconWidget::InvalidIcon) {
-        d->validationIcon->setPixmap(SmallIcon("dialog-error", 0));
+    } else if (d->currentIcon != ValidationIconWidget::InvalidIcon) {
+        d->validationIcon->setPixmap(SmallIcon(QLatin1String("dialog-error"), 0));
         this->setToolTip(d->errorMessage);
         d->currentIcon = ValidationIconWidget::InvalidIcon;
         d->currentState = QValidator::Invalid;

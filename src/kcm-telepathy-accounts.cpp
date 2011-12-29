@@ -60,8 +60,6 @@ KCMTelepathyAccounts::KCMTelepathyAccounts(QWidget *parent, const QVariantList& 
  : KCModule(KCMTelepathyAccountsFactory::componentData(), parent, args),
    m_accountsListModel(0)
 {
-    kDebug();
-
     //set up component data.
     KAboutData *aboutData = new KAboutData(I18N_NOOP("telepathy_accounts"), 0, ki18n("Instant Messaging and VOIP Accounts"), "0.2.60", KLocalizedString(), KAboutData::License_GPL);
 
@@ -96,7 +94,7 @@ KCMTelepathyAccounts::KCMTelepathyAccounts(QWidget *parent, const QVariantList& 
     m_ui->setupUi(this);
     m_ui->salutListView->setHidden(true);
     m_ui->salutEnableFrame->setHidden(true);
-    m_ui->salutEnableCheckbox->setIcon(KIcon("im-local-xmpp"));
+    m_ui->salutEnableCheckbox->setIcon(KIcon(QLatin1String("im-local-xmpp")));
     m_ui->salutEnableCheckbox->setIconSize(QSize(32, 32));
     m_accountsListModel = new AccountsListModel(this);
 
@@ -119,13 +117,13 @@ KCMTelepathyAccounts::KCMTelepathyAccounts(QWidget *parent, const QVariantList& 
     m_accountsFilterModel->sort(0);
     m_ui->accountsListView->setModel(m_accountsFilterModel);
 
-    m_ui->addAccountButton->setIcon(KIcon("list-add"));
-    m_ui->editAccountButton->setIcon(KIcon("configure"));
-    m_ui->removeAccountButton->setIcon(KIcon("edit-delete"));
-    m_ui->editAccountIdentityButton->setIcon(KIcon("user-identity"));
+    m_ui->addAccountButton->setIcon(KIcon(QLatin1String("list-add")));
+    m_ui->editAccountButton->setIcon(KIcon(QLatin1String("configure")));
+    m_ui->removeAccountButton->setIcon(KIcon(QLatin1String("edit-delete")));
+    m_ui->editAccountIdentityButton->setIcon(KIcon(QLatin1String("user-identity")));
 
     m_salutBusyWheel = new KPixmapSequenceOverlayPainter(this);
-    m_salutBusyWheel->setSequence(KPixmapSequence("process-working", 22));
+    m_salutBusyWheel->setSequence(KPixmapSequence(QLatin1String("process-working"), 22));
     m_salutBusyWheel->setWidget(m_ui->salutWidget);
     m_salutBusyWheel->setAlignment(Qt::AlignRight | Qt::AlignVCenter);
 
@@ -189,15 +187,11 @@ KCMTelepathyAccounts::KCMTelepathyAccounts(QWidget *parent, const QVariantList& 
 
 KCMTelepathyAccounts::~KCMTelepathyAccounts()
 {
-    kDebug();
-
     delete m_ui;
 }
 
 void KCMTelepathyAccounts::load()
 {
-    kDebug();
-
     // This slot is called whenever the configuration data in this KCM should
     // be reloaded from the store. We will not actually do anything here since
     // all changes that are made in this KCM are, at the moment, saved
@@ -227,8 +221,6 @@ void KCMTelepathyAccounts::onAccountEnabledChanged(const QModelIndex &index, boo
 
 void KCMTelepathyAccounts::onAccountManagerReady(Tp::PendingOperation *op)
 {
-    kDebug();
-
     // Check the pending operation completed successfully.
     if (op->isError()) {
         kDebug() << "becomeReady() failed:" << op->errorName() << op->errorMessage();
@@ -238,7 +230,7 @@ void KCMTelepathyAccounts::onAccountManagerReady(Tp::PendingOperation *op)
 
     // Add all the accounts to the Accounts Model.
     QList<Tp::AccountPtr> accounts = m_accountManager->allAccounts();
-    foreach (Tp::AccountPtr account, accounts) {
+    Q_FOREACH (const Tp::AccountPtr &account, accounts) {
         m_accountsListModel->addAccount(account);
     }
 
@@ -286,8 +278,6 @@ void KCMTelepathyAccounts::onSelectedItemChanged(const QModelIndex &current, con
 
 void KCMTelepathyAccounts::onAddAccountClicked()
 {
-    kDebug();
-
     // Wizard only works if the AccountManager is ready.
     if (!m_accountManager->isReady()) {
         return;
@@ -300,8 +290,6 @@ void KCMTelepathyAccounts::onAddAccountClicked()
 
 void KCMTelepathyAccounts::onEditAccountClicked()
 {
-    kDebug();
-
     // Editing accounts is only possible if the Account Manager is ready.
     if (!m_accountManager->isReady()) {
         return;
@@ -345,11 +333,10 @@ void KCMTelepathyAccounts::onEditIdentityClicked()
 
 void KCMTelepathyAccounts::onRemoveAccountClicked()
 {
-    kDebug();
     QModelIndex index = m_currentListView->currentIndex();
 
      if ( KMessageBox::warningContinueCancel(this, i18n("Are you sure you want to remove the account \"%1\"?", m_currentModel->data(index, Qt::DisplayRole).toString()),
-                                        i18n("Remove Account"), KGuiItem(i18n("Remove Account"), "edit-delete"), KStandardGuiItem::cancel(),
+                                        i18n("Remove Account"), KGuiItem(i18n("Remove Account"), QLatin1String("edit-delete")), KStandardGuiItem::cancel(),
                                         QString(), KMessageBox::Notify | KMessageBox::Dangerous) == KMessageBox::Continue)
     {
         AccountItem *item = index.data(AccountsListModel::AccountItemRole).value<AccountItem*>();
@@ -397,23 +384,23 @@ void KCMTelepathyAccounts::onSalutEnableButtonToggled(bool checked)
 void KCMTelepathyAccounts::onSalutConnectionManagerReady(Tp::PendingOperation* op)
 {
     bool error = false;
-    if(op->isError()) {
+    if (op->isError()) {
         kWarning() << "Creating salut ConnectionManager failed:" << op->errorName() << op->errorMessage();
         error = true;
     } else {
         Tp::ConnectionManagerPtr cm = Tp::ConnectionManagerPtr::qObjectCast(qobject_cast<Tp::PendingReady*>(op)->proxy());
 
-        if(!cm->isValid()) {
+        if (!cm->isValid()) {
             kWarning() << "Invalid salut ConnectionManager";
             error = true;
-        } else if(!cm->supportedProtocols().contains(QLatin1String("local-xmpp"))) {
+        } else if (!cm->supportedProtocols().contains(QLatin1String("local-xmpp"))) {
             kWarning() << "salut ConnectionManager doesn't support local-xmpp... this is weird";
             error = true;
         }
     }
 
     // Salut is not installed or has some problem
-    if(error) {
+    if (error) {
         m_ui->salutEnableFrame->setDisabled(true);
         m_ui->salutEnableStatusLabel->setText(i18n("Install telepathy-salut to enable"));
     }
@@ -448,7 +435,7 @@ ErrorOverlay::ErrorOverlay(QWidget *baseWidget, const QString &details, QWidget 
     layout->setSpacing(10);
 
     QLabel *pixmap = new QLabel();
-    pixmap->setPixmap(KIcon("dialog-error").pixmap(64));
+    pixmap->setPixmap(KIcon(QLatin1String("dialog-error")).pixmap(64));
 
     QLabel *message = new QLabel(i18n("Something went terribly wrong and the IM system could not be initialized.\n"
                                       "It is likely your system is missing Telepathy Mission Control package.\n"

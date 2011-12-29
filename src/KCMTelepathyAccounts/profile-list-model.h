@@ -53,7 +53,7 @@ public:
 
     void setProfileManager(Tp::ProfileManagerPtr profileManager);
 
-private slots:
+private Q_SLOTS:
     void onConnectionManagerNamesFetched(Tp::PendingOperation*);
 
 private:

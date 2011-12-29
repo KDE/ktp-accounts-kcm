@@ -39,9 +39,8 @@ class AbstractAccountParametersWidget::Private
 public:
     Private()
         : parameterModel(0),
-        mapper(0)
+          mapper(0)
     {
-        kDebug();
     }
     ParameterEditModel *parameterModel;
     QDataWidgetMapper *mapper;
@@ -55,8 +54,6 @@ AbstractAccountParametersWidget::AbstractAccountParametersWidget(ParameterEditMo
         : QWidget(parent),
           d(new Private)
 {
-    kDebug();
-
     d->parameterModel = parameterModel;
     d->errorMessage = i18n("All mandatory fields must be filled");
 
@@ -68,8 +65,6 @@ AbstractAccountParametersWidget::AbstractAccountParametersWidget(ParameterEditMo
 
 AbstractAccountParametersWidget::~AbstractAccountParametersWidget()
 {
-    kDebug();
-
     delete d;
 }
 
@@ -93,10 +88,8 @@ void AbstractAccountParametersWidget::handleParameter(const QString &parameterNa
                                            QWidget* dataWidget,
                                            QWidget* labelWidget = 0)
 {
-    kDebug();
-
     QList<QWidget*> labelWidgets;
-    if(labelWidget) {
+    if (labelWidget) {
         labelWidgets << labelWidget;
     }
     handleParameter(parameterName, parameterType, dataWidget, labelWidgets);
@@ -111,12 +104,12 @@ void AbstractAccountParametersWidget::handleParameter(const QString &parameterNa
 
     Tp::ProtocolParameter foundParameter = d->parameterModel->parameter(parameterName);
 
-    if(!foundParameter.isValid() || foundParameter.type() != parameterType) {
+    if (!foundParameter.isValid() || foundParameter.type() != parameterType) {
         // hide widgets because they are not needed
         kDebug() << "Field" << parameterName << "hidden";
         dataWidget->hide();
-        foreach(QWidget *label, labelWidgets) {
-            if(label) {
+        Q_FOREACH (QWidget *label, labelWidgets) {
+            if (label) {
                 label->hide();
             }
         }
@@ -124,7 +117,7 @@ void AbstractAccountParametersWidget::handleParameter(const QString &parameterNa
     }
 
     QModelIndex index = d->parameterModel->indexForParameter(foundParameter);
-    if(index.isValid()) {
+    if (index.isValid()) {
         kDebug() << index << parameterName;
         // insert it to valid parameters list
         //for text edit boxes we force it to use the plainText property so that we don't get HTML all over our options
@@ -137,11 +130,11 @@ void AbstractAccountParametersWidget::handleParameter(const QString &parameterNa
 
         // check if the passed parameter is a validated one.. If so we're going to set the model here
         ValidatedLineEdit *validated = qobject_cast<ValidatedLineEdit*>(dataWidget);
-        if(validated) {
+        if (validated) {
             d->validatedWidgets.insert(index, validated);
-	}
+        }
 
-	if (! (index.flags() & Qt::ItemIsEnabled)) {
+        if (!(index.flags() & Qt::ItemIsEnabled)) {
             dataWidget->setEnabled(false);
         }
     }
@@ -165,4 +158,3 @@ ParameterEditModel* AbstractAccountParametersWidget::parameterModel() const
 
 
 #include "abstract-account-parameters-widget.moc"
-

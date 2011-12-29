@@ -31,12 +31,10 @@
 AccountsListModel::AccountsListModel(QObject *parent)
  : QAbstractListModel(parent)
 {
-    kDebug();
 }
 
 AccountsListModel::~AccountsListModel()
 {
-    kDebug();
 }
 
 int AccountsListModel::rowCount(const QModelIndex & parent) const
@@ -62,15 +60,14 @@ int AccountsListModel::columnCount(const QModelIndex& parent) const
 
 QVariant AccountsListModel::data(const QModelIndex &index, int role) const
 {
-    if(!index.isValid()) {
+    if (!index.isValid()) {
         return QVariant();
     }
 
     QVariant data;
     Tp::AccountPtr account = m_accounts.at(index.row())->account();
 
-    switch(role)
-    {
+    switch (role) {
     case Qt::DisplayRole:
         data = QVariant(account->displayName());
         break;
@@ -80,10 +77,9 @@ QVariant AccountsListModel::data(const QModelIndex &index, int role) const
         break;
 
     case Qt::CheckStateRole:
-        if(account->isEnabled()) {
+        if (account->isEnabled()) {
             data = QVariant(Qt::Checked);
-        }
-        else {
+        } else {
             data = QVariant(Qt::Unchecked);
         }
         break;
@@ -121,11 +117,10 @@ QVariant AccountsListModel::data(const QModelIndex &index, int role) const
 
 bool AccountsListModel::setData(const QModelIndex &index, const QVariant &value, int role)
 {
-    if(!index.isValid()) {
+    if (!index.isValid()) {
         return false;
     }
-    kDebug();
-    if(role == Qt::CheckStateRole) {
+    if (role == Qt::CheckStateRole) {
         //this is index from QSortFilterProxyModel
         index.data(AccountItemRole).value<AccountItem*>()->account()->setEnabled(value.toInt() == Qt::Checked);
         return true;
@@ -136,11 +131,11 @@ bool AccountsListModel::setData(const QModelIndex &index, const QVariant &value,
 
 QModelIndex AccountsListModel::index(int row, int column, const QModelIndex& parent) const
 {
-    if(row < 0 || column < 0 || parent != QModelIndex()) {
+    if (row < 0 || column < 0 || parent != QModelIndex()) {
         return QModelIndex();
     }
 
-    if(row < rowCount() && column < columnCount()) {
+    if (row < rowCount() && column < columnCount()) {
         return createIndex(row, column);
     }
 
@@ -150,7 +145,7 @@ QModelIndex AccountsListModel::index(int row, int column, const QModelIndex& par
 
 Qt::ItemFlags AccountsListModel::flags(const QModelIndex &index) const
 {
-    if(!index.isValid()) {
+    if (!index.isValid()) {
         return QAbstractItemModel::flags(index);
     }
     return QAbstractItemModel::flags(index) | Qt::ItemIsUserCheckable;
@@ -164,7 +159,7 @@ void AccountsListModel::addAccount(const Tp::AccountPtr &account)
     bool found = false;
 
     if (!found) {
-        foreach (const AccountItem* ai, m_accounts) {
+        Q_FOREACH (const AccountItem *ai, m_accounts) {
             if (ai->account() == account) {
                 found = true;
                 break;
@@ -193,9 +188,7 @@ void AccountsListModel::addAccount(const Tp::AccountPtr &account)
 
 void AccountsListModel::removeAccount(const QModelIndex &index)
 {
-    kDebug();
-
-    if(!index.isValid()) {
+    if (!index.isValid()) {
         kDebug() << "Can't remove Account: Invalid index";
         return;
     }
@@ -208,9 +201,7 @@ void AccountsListModel::removeAccount(const QModelIndex &index)
 
 AccountItem* AccountsListModel::itemForIndex(const QModelIndex &index)
 {
-    kDebug();
-
-    if(!index.isValid()) {
+    if (!index.isValid()) {
         kWarning() << "Invalid index" << index;
         return 0;
     }
@@ -221,8 +212,6 @@ AccountItem* AccountsListModel::itemForIndex(const QModelIndex &index)
 
 void AccountsListModel::onAccountItemRemoved()
 {
-    kDebug();
-
     AccountItem *item = qobject_cast<AccountItem*>(sender());
 
     Q_ASSERT(item);
@@ -244,8 +233,6 @@ void AccountsListModel::onAccountItemRemoved()
 
 void AccountsListModel::onAccountItemUpdated()
 {
-    kDebug();
-
     AccountItem *item = qobject_cast<AccountItem*>(sender());
 
     Q_ASSERT(item);
@@ -255,14 +242,12 @@ void AccountsListModel::onAccountItemUpdated()
     }
 
     QModelIndex index = createIndex(m_accounts.lastIndexOf(item), 0);
-    emit dataChanged(index, index);
+    Q_EMIT dataChanged(index, index);
 }
 
 void AccountsListModel::onTitleForCustomPages(QString mandatoryPage, QList<QString> optionalPage)
 {
-    kDebug();
-
-    emit setTitleForCustomPages(mandatoryPage, optionalPage);
+    Q_EMIT setTitleForCustomPages(mandatoryPage, optionalPage);
 }
 
 

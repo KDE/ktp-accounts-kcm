@@ -20,26 +20,20 @@
 
 #include "myspaceim-advanced-settings-widget.h"
 
-#include <KDebug>
-
 MySpaceIMAdvancedSettingsWidget::MySpaceIMAdvancedSettingsWidget(ParameterEditModel *model,
                                                                  QWidget *parent)
  : AbstractAccountParametersWidget(model, parent)
 {
-    kDebug();
-
     // Set up the UI.
     m_ui = new Ui::MySpaceIMAdvancedSettingsWidget;
     m_ui->setupUi(this);
 
     //server
-    handleParameter("server", QVariant::String, m_ui->serverLineEdit, m_ui->serverLabel);
-    handleParameter("port",   QVariant::UInt,   m_ui->portSpinBox,    m_ui->portLabel);
+    handleParameter(QLatin1String("server"), QVariant::String, m_ui->serverLineEdit, m_ui->serverLabel);
+    handleParameter(QLatin1String("port"),   QVariant::UInt,   m_ui->portSpinBox,    m_ui->portLabel);
 }
 
 MySpaceIMAdvancedSettingsWidget::~MySpaceIMAdvancedSettingsWidget()
 {
-    kDebug();
-
     delete m_ui;
 }

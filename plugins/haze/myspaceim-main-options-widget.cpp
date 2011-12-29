@@ -22,27 +22,20 @@
 
 #include <KCMTelepathyAccounts/ParameterEditModel>
 
-#include <KDebug>
-
 MySpaceIMMainOptionsWidget::MySpaceIMMainOptionsWidget(ParameterEditModel *model, QWidget *parent)
  : AbstractAccountParametersWidget(model, parent)
 {
-    kDebug();
-
     // Set up the UI.
     m_ui = new Ui::MySpaceIMMainOptionsWidget;
     m_ui->setupUi(this);
 
-    handleParameter("account",  QVariant::String, m_ui->accountLineEdit,  m_ui->accountLabel);
-    handleParameter("password", QVariant::String, m_ui->passwordLineEdit, m_ui->passwordLabel);
+    handleParameter(QLatin1String("account"),  QVariant::String, m_ui->accountLineEdit,  m_ui->accountLabel);
+    handleParameter(QLatin1String("password"), QVariant::String, m_ui->passwordLineEdit, m_ui->passwordLabel);
 }
 
 MySpaceIMMainOptionsWidget::~MySpaceIMMainOptionsWidget()
 {
-    kDebug();
-
     delete m_ui;
 }
 
 #include "myspaceim-main-options-widget.moc"
-

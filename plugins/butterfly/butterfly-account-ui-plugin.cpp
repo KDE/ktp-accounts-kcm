@@ -22,7 +22,6 @@
 
 #include "butterfly-account-ui.h"
 
-#include <KDebug>
 #include <KGenericFactory>
 
 #include <QtCore/QVariantList>
@@ -30,23 +29,18 @@
 ButterflyAccountUiPlugin::ButterflyAccountUiPlugin(QObject *parent, const QVariantList &)
  : AbstractAccountUiPlugin(parent)
 {
-    kDebug();
-
     // Register supported cm/protocol combinations
-    registerProvidedProtocol("butterfly", "msn");
+    registerProvidedProtocol(QLatin1String("butterfly"), QLatin1String("msn"));
 }
 
 ButterflyAccountUiPlugin::~ButterflyAccountUiPlugin()
 {
-    kDebug();
 }
 
 AbstractAccountUi* ButterflyAccountUiPlugin::accountUi(const QString &connectionManager, const QString &protocol, const QString &serviceName)
 {
     Q_UNUSED(serviceName);
 
-    kDebug();
-    
     // We only support butterfly/xmpp combination.
     if ((connectionManager == QLatin1String("butterfly")) && (protocol == QLatin1String("msn"))) {
         return new ButterflyAccountUi;

@@ -41,6 +41,8 @@ private Q_SLOTS:
     void onDelegateDataChanged(const QModelIndex &index, const QVariant &value, int role);
 
 private:
+    Q_DISABLE_COPY(ParameterEditWidget);
+
     class Private;
     Private * const d;
 };

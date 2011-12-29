@@ -20,32 +20,25 @@
 
 #include "icq-server-settings-widget.h"
 
-#include <KDebug>
-
 IcqServerSettingsWidget::IcqServerSettingsWidget(ParameterEditModel *model,
                                                      QWidget *parent)
  : AbstractAccountParametersWidget(model, parent)
 {
-    kDebug();
-
     // Set up the UI.
     m_ui = new Ui::IcqServerSettingsWidget;
     m_ui->setupUi(this);
 
-    handleParameter("server", QVariant::String, m_ui->serverLineEdit, m_ui->serverLabel);
-    handleParameter("port", QVariant::Int, m_ui->portSpinBox, m_ui->portLabel);
-    handleParameter("use-ssl", QVariant::Bool, m_ui->useSslCheckBox, 0);
-    handleParameter("allow-multiple-logins", QVariant::Bool, m_ui->allowMultipleLoginsCheckBox, 0);
-    handleParameter("always-use-rv-proxy", QVariant::Bool, m_ui->alwaysUseRvProxyCheckBox, 0);
-    handleParameter("charset", QVariant::String, m_ui->charsetComboBox, m_ui->charsetLabel);
+    handleParameter(QLatin1String("server"), QVariant::String, m_ui->serverLineEdit, m_ui->serverLabel);
+    handleParameter(QLatin1String("port"), QVariant::Int, m_ui->portSpinBox, m_ui->portLabel);
+    handleParameter(QLatin1String("use-ssl"), QVariant::Bool, m_ui->useSslCheckBox, 0);
+    handleParameter(QLatin1String("allow-multiple-logins"), QVariant::Bool, m_ui->allowMultipleLoginsCheckBox, 0);
+    handleParameter(QLatin1String("always-use-rv-proxy"), QVariant::Bool, m_ui->alwaysUseRvProxyCheckBox, 0);
+    handleParameter(QLatin1String("charset"), QVariant::String, m_ui->charsetComboBox, m_ui->charsetLabel);
 }
 
 IcqServerSettingsWidget::~IcqServerSettingsWidget()
 {
-    kDebug();
-
     delete m_ui;
 }
 
 #include "icq-server-settings-widget.moc"
-

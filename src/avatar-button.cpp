@@ -22,7 +22,6 @@
 
 #include <QWidgetAction>
 
-#include <KDebug>
 #include <KFileDialog>
 #include <KMenu>
 #include <KLocalizedString>
@@ -39,9 +38,8 @@ AvatarButton::AvatarButton(QWidget *parent)
 
     setIconSize(QSize(64,64));
 
-    menu->addAction(KIcon("document-open-folder"), i18n("Load from file..."), this, SLOT(onLoadAvatarFromFile()));
-    menu->addAction(KIcon("edit-clear"),i18n("Clear Avatar"), this, SLOT(onClearAvatar()));
-
+    menu->addAction(KIcon(QLatin1String("document-open-folder")), i18n("Load from file..."), this, SLOT(onLoadAvatarFromFile()));
+    menu->addAction(KIcon(QLatin1String("edit-clear")), i18n("Clear Avatar"), this, SLOT(onClearAvatar()));
 
     setMenu(menu);
 }
@@ -61,7 +59,7 @@ void AvatarButton::setAvatar(const Tp::Avatar &avatar) {
         avatarIcon.addPixmap(avatarPixmap.scaled(iconSize().boundedTo(avatarPixmap.size()), Qt::KeepAspectRatio));
         setIcon(avatarIcon);
     } else {
-        setIcon(KIcon("im-user"));
+        setIcon(KIcon(QLatin1String("im-user")));
     }
 }
 

@@ -56,7 +56,6 @@ public:
        pageTwo(0),
        pageThree(0)
     {
-        kDebug();
     }
 
     Tp::AccountManagerPtr accountManager;
@@ -75,8 +74,6 @@ AddAccountAssistant::AddAccountAssistant(Tp::AccountManagerPtr accountManager, Q
     : KAssistantDialog(parent),
     d(new Private)
 {
-    kDebug();
-
     d->accountManager = accountManager;
 
     // Set up the pages of the Assistant.
@@ -123,22 +120,17 @@ AddAccountAssistant::AddAccountAssistant(Tp::AccountManagerPtr accountManager, Q
 
 AddAccountAssistant::~AddAccountAssistant()
 {
-    kDebug();
-
     delete d;
 }
 
 void AddAccountAssistant::goToPageTwo()
 {
-    kDebug();
-
     KAssistantDialog::setAppropriate(d->pageTwo, true);
     KAssistantDialog::next();
 }
 
 void AddAccountAssistant::goToPageThree()
 {
-    kDebug();
     ProfileItem *selectedItem;
 
     if (currentPage() == d->pageTwo) {
@@ -153,7 +145,7 @@ void AddAccountAssistant::goToPageThree()
     // FIXME: untill packages for missing profiles aren't installed this needs to stay here
     if (selectedItem != 0) {
         // Set up the next page.
-        if(d->currentProfileItem != selectedItem) {
+        if (d->currentProfileItem != selectedItem) {
             d->currentProfileItem = selectedItem;
 
             d->connectionManager = Tp::ConnectionManager::create(selectedItem->cmName());
@@ -172,7 +164,6 @@ void AddAccountAssistant::goToPageThree()
 
 void AddAccountAssistant::next()
 {
-    kDebug();
     // the next button is disabled on the first page
     // so ::next is called from the second page
     // so we go to page three now
@@ -181,8 +172,6 @@ void AddAccountAssistant::next()
 
 void AddAccountAssistant::back()
 {
-    kDebug();
-
     // Disable pageTwo once we're going back to pageOne
     if (currentPage() == d->pageTwo) {
         KAssistantDialog::setAppropriate(d->pageTwo, false);
@@ -193,8 +182,6 @@ void AddAccountAssistant::back()
 
 void AddAccountAssistant::accept()
 {
-    kDebug();
-
     // Check we are being called from page 3.
     if (currentPage() != d->pageThree) {
         kWarning() << "Called accept() from a non-final page :(.";
@@ -214,8 +201,8 @@ void AddAccountAssistant::accept()
     }
 
     // Check account we're trying to create doesn't already exist
-    foreach (Tp::AccountPtr account, d->accountManager->allAccounts()) {
-        if (values.value("account") == account->displayName()
+    Q_FOREACH (const Tp::AccountPtr &account, d->accountManager->allAccounts()) {
+        if (values.value(QLatin1String("account")) == account->displayName()
             && d->currentProfileItem->protocolName() == account->protocolName()) {
             Q_EMIT feedbackMessage(i18n("Failed to create account"),
                                    i18n("Account already exists. Old one will be used instead"),
@@ -229,17 +216,17 @@ void AddAccountAssistant::accept()
     QVariantMap properties;
 
     if (d->accountManager->supportedAccountProperties().contains(QLatin1String("org.freedesktop.Telepathy.Account.Service"))) {
-      properties.insert("org.freedesktop.Telepathy.Account.Service", d->currentProfileItem->serviceName());
+      properties.insert(QLatin1String("org.freedesktop.Telepathy.Account.Service"), d->currentProfileItem->serviceName());
     }
     if (d->accountManager->supportedAccountProperties().contains(QLatin1String("org.freedesktop.Telepathy.Account.Enabled"))) {
-      properties.insert("org.freedesktop.Telepathy.Account.Enabled", true);
+      properties.insert(QLatin1String("org.freedesktop.Telepathy.Account.Enabled"), true);
     }
 
     // FIXME: Ask the user to submit a Display Name
 
     QString displayName;
-    if (values.contains("account")) {
-        displayName = values["account"].toString();
+    if (values.contains(QLatin1String("account"))) {
+        displayName = values[QLatin1String("account")].toString();
     }
     else {
         displayName = d->currentProfileItem->protocolName();
@@ -266,8 +253,6 @@ void AddAccountAssistant::accept()
 
 void AddAccountAssistant::reject()
 {
-    kDebug();
-
     // Emit a signal to tell the assistant launcher that it was cancelled.
     Q_EMIT cancelled();
 
@@ -277,8 +262,6 @@ void AddAccountAssistant::reject()
 
 void AddAccountAssistant::onAccountCreated(Tp::PendingOperation *op)
 {
-    kDebug();
-
     if (op->isError()) {
         Q_EMIT feedbackMessage(i18n("Failed to create account"),
                                i18n("Possibly not all required fields are valid"),
@@ -303,11 +286,11 @@ void AddAccountAssistant::onAccountCreated(Tp::PendingOperation *op)
     QVariantMap values  = d->accountEditWidget->parametersSet();
     if (values.contains(QLatin1String("password"))) {
         KTp::WalletInterface wallet(this->effectiveWinId());
-        wallet.setPassword(account, values["password"].toString());
+        wallet.setPassword(account, values[QLatin1String("password")].toString());
     }
 
-    if(d->accountEditWidget->connectOnAdd()){
-        account->setRequestedPresence(Tp::Presence::available(QString("Online")));
+    if (d->accountEditWidget->connectOnAdd()) {
+        account->setRequestedPresence(Tp::Presence::available(QLatin1String("Online")));
     }
     account->setServiceName(d->currentProfileItem->serviceName());
     KAssistantDialog::accept();
@@ -315,13 +298,11 @@ void AddAccountAssistant::onAccountCreated(Tp::PendingOperation *op)
 
 void AddAccountAssistant::onConnectionManagerReady(Tp::PendingOperation *op)
 {
-    kDebug();
-
-    if(op->isError()) {
+    if (op->isError()) {
         kWarning() << "Creating ConnectionManager failed:" << op->errorName() << op->errorMessage();
     }
 
-    if(!d->connectionManager->isValid()) {
+    if (!d->connectionManager->isValid()) {
         kWarning() << "Invalid ConnectionManager";
     }
 
@@ -330,14 +311,12 @@ void AddAccountAssistant::onConnectionManagerReady(Tp::PendingOperation *op)
 
 void AddAccountAssistant::onProfileSelected(bool value)
 {
-    kDebug();
     //if a protocol is selected, enable the next button on the first page
     setValid(d->pageTwo, value);
 }
 
 void AddAccountAssistant::pageThree()
 {
-    kDebug();
     // Get the protocol's parameters and values.
     Tp::ProtocolInfo protocolInfo = d->connectionManager->protocol(d->currentProfileItem->protocolName());
     Tp::ProtocolParameterList parameters = protocolInfo.parameters();
@@ -367,4 +346,3 @@ void AddAccountAssistant::pageThree()
 }
 
 #include "add-account-assistant.moc"
-

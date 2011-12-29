@@ -22,20 +22,16 @@
 
 #include <KCMTelepathyAccounts/ParameterEditModel>
 
-#include <KDebug>
-
 SalutAdvancedOptionsWidget::SalutAdvancedOptionsWidget(ParameterEditModel* model, QWidget* parent)
     : AbstractAccountParametersWidget(model, parent)
 {
-    kDebug();
-
     // Set up the UI.
     m_ui = new Ui::SalutAdvancedOptionsWidget;
     m_ui->setupUi(this);
 
-    handleParameter("published-name",  QVariant::String, m_ui->pubnameLineEdit, m_ui->pubnameLabel);
-    handleParameter("email", QVariant::String, m_ui->emailLineEdit, m_ui->emailLabel);
-    handleParameter("jid",   QVariant::String, m_ui->jidLineEdit,   m_ui->jidLabel);
+    handleParameter(QLatin1String("published-name"),  QVariant::String, m_ui->pubnameLineEdit, m_ui->pubnameLabel);
+    handleParameter(QLatin1String("email"), QVariant::String, m_ui->emailLineEdit, m_ui->emailLabel);
+    handleParameter(QLatin1String("jid"),   QVariant::String, m_ui->jidLineEdit,   m_ui->jidLabel);
 }
 
 SalutAdvancedOptionsWidget::~SalutAdvancedOptionsWidget()

@@ -20,36 +20,29 @@
 
 #include "server-settings-widget.h"
 
-#include <KDebug>
-
 ServerSettingsWidget::ServerSettingsWidget(ParameterEditModel *model,
                                                      QWidget *parent)
  : AbstractAccountParametersWidget(model, parent)
 {
-    kDebug();
-
     // Set up the UI.
     m_ui = new Ui::ServerSettingsWidget;
     m_ui->setupUi(this);
 
-    handleParameter("server", QVariant::String, m_ui->serverLineEdit, m_ui->serverLabel);
-    handleParameter("port", QVariant::UInt, m_ui->portSpinBox, m_ui->portLabel);
-    handleParameter("keepalive-interval", QVariant::UInt, m_ui->keepaliveIntervalSpinBox, 0);
-    handleParameter("low-bandwidth", QVariant::Bool, m_ui->lowBandwidthCheckBox, 0);
-    handleParameter("require-encryption", QVariant::Bool, m_ui->requireEncryptionCheckBox, 0);
-    handleParameter("ignore-ssl-errors", QVariant::Bool, m_ui->ignoreSslErrorsCheckBox, 0);
-    handleParameter("old-ssl", QVariant::Bool, m_ui->oldSslCheckBox, 0);
-    handleParameter("resource", QVariant::String, m_ui->resourceLineEdit, m_ui->resourceLabel);
-    handleParameter("priority", QVariant::Int, m_ui->prioritySpinBox, m_ui->priorityLabel);
+    handleParameter(QLatin1String("server"), QVariant::String, m_ui->serverLineEdit, m_ui->serverLabel);
+    handleParameter(QLatin1String("port"), QVariant::UInt, m_ui->portSpinBox, m_ui->portLabel);
+    handleParameter(QLatin1String("keepalive-interval"), QVariant::UInt, m_ui->keepaliveIntervalSpinBox, 0);
+    handleParameter(QLatin1String("low-bandwidth"), QVariant::Bool, m_ui->lowBandwidthCheckBox, 0);
+    handleParameter(QLatin1String("require-encryption"), QVariant::Bool, m_ui->requireEncryptionCheckBox, 0);
+    handleParameter(QLatin1String("ignore-ssl-errors"), QVariant::Bool, m_ui->ignoreSslErrorsCheckBox, 0);
+    handleParameter(QLatin1String("old-ssl"), QVariant::Bool, m_ui->oldSslCheckBox, 0);
+    handleParameter(QLatin1String("resource"), QVariant::String, m_ui->resourceLineEdit, m_ui->resourceLabel);
+    handleParameter(QLatin1String("priority"), QVariant::Int, m_ui->prioritySpinBox, m_ui->priorityLabel);
 }
 
 ServerSettingsWidget::~ServerSettingsWidget()
 {
-    kDebug();
-
     delete m_ui;
 }
 
 
 #include "server-settings-widget.moc"
-

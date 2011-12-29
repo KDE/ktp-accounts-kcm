@@ -69,7 +69,7 @@ void AccountsListDelegate::updateItemWidgets(const QList<QWidget *> widgets, con
         checkbox->move(m_paddingSize, topMargin);
         checkbox->setChecked(index.data(Qt::CheckStateRole).toBool());
 
-        if(checkbox->isChecked()) {
+        if (checkbox->isChecked()) {
             checkbox->setToolTip(i18n("Disable account"));
         }
         else {
@@ -84,7 +84,7 @@ void AccountsListDelegate::updateItemWidgets(const QList<QWidget *> widgets, con
 void AccountsListDelegate::onCheckBoxToggled(bool checked)
 {
     QModelIndex index = focusedIndex();
-    emit itemChecked(index, checked);
+    Q_EMIT itemChecked(index, checked);
 }
 
 
