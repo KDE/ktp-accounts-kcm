@@ -29,14 +29,14 @@ HazeAimAccount::HazeAimAccount(QObject *parent)
  : AbstractAccountUi(parent)
 {
     // Register supported parameters
-    registerSupportedParameter("account", QVariant::String);
-    registerSupportedParameter("password", QVariant::String);
-    registerSupportedParameter("server", QVariant::String);
-    registerSupportedParameter("port", QVariant::UInt);
-    registerSupportedParameter("encryption", QVariant::String);
-    registerSupportedParameter("always-use-rv-proxy", QVariant::Bool);
-    registerSupportedParameter("use-clientlogin", QVariant::Bool);
-    registerSupportedParameter("allow-multiple-logins", QVariant::Bool);
+    registerSupportedParameter(QLatin1String("account"), QVariant::String);
+    registerSupportedParameter(QLatin1String("password"), QVariant::String);
+    registerSupportedParameter(QLatin1String("server"), QVariant::String);
+    registerSupportedParameter(QLatin1String("port"), QVariant::UInt);
+    registerSupportedParameter(QLatin1String("encryption"), QVariant::String);
+    registerSupportedParameter(QLatin1String("always-use-rv-proxy"), QVariant::Bool);
+    registerSupportedParameter(QLatin1String("use-clientlogin"), QVariant::Bool);
+    registerSupportedParameter(QLatin1String("allow-multiple-logins"), QVariant::Bool);
 }
 
 HazeAimAccount::~HazeAimAccount()

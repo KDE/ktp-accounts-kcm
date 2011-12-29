@@ -27,8 +27,8 @@ HazeMsnAccountUi::HazeMsnAccountUi(QObject* parent)
  : AbstractAccountUi(parent)
 {
     // Register supported parameters
-    registerSupportedParameter("account", QVariant::String);
-    registerSupportedParameter("password", QVariant::String);
+    registerSupportedParameter(QLatin1String("account"), QVariant::String);
+    registerSupportedParameter(QLatin1String("password"), QVariant::String);
 }
 
 HazeMsnAccountUi::~HazeMsnAccountUi()

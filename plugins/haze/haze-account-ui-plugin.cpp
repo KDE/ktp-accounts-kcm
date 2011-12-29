@@ -35,12 +35,12 @@ HazeAccountUiPlugin::HazeAccountUiPlugin(QObject *parent, const QVariantList &)
  : AbstractAccountUiPlugin(parent)
 {
     // Register supported cm/protocol combinations
-    registerProvidedProtocol("haze", "icq");
-    registerProvidedProtocol("haze", "myspace");
-    registerProvidedProtocol("haze", "bigbrownchunx-skype-dbus");
-    registerProvidedProtocol("haze", "yahoo");
-    registerProvidedProtocol("haze", "aim");
-    registerProvidedProtocol("haze", "msn");
+    registerProvidedProtocol(QLatin1String("haze"), QLatin1String("icq"));
+    registerProvidedProtocol(QLatin1String("haze"), QLatin1String("myspace"));
+    registerProvidedProtocol(QLatin1String("haze"), QLatin1String("bigbrownchunx-skype-dbus"));
+    registerProvidedProtocol(QLatin1String("haze"), QLatin1String("yahoo"));
+    registerProvidedProtocol(QLatin1String("haze"), QLatin1String("aim"));
+    registerProvidedProtocol(QLatin1String("haze"), QLatin1String("msn"));
 }
 
 HazeAccountUiPlugin::~HazeAccountUiPlugin()

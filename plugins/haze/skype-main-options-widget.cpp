@@ -31,12 +31,12 @@ SkypeMainOptionsWidget::SkypeMainOptionsWidget(ParameterEditModel *model, QWidge
     m_ui = new Ui::SkypeMainOptionsWidget;
     m_ui->setupUi(this);
 
-    handleParameter("account", QVariant::String, m_ui->accountLineEdit, m_ui->accountLabel);
+    handleParameter(QLatin1String("account"), QVariant::String, m_ui->accountLineEdit, m_ui->accountLabel);
 
 #ifdef Q_WS_X11
     // get autocomplete choices for the accountname
     // Skype stores data for each account that has been used in $HOME/.Skype/<accountname>/
-    QDir skypeConfigDir(QDir::home().filePath(".Skype"));
+    QDir skypeConfigDir(QDir::home().filePath(QLatin1String(".Skype")));
 
     skypeConfigDir.setFilter(QDir::Dirs | QDir::NoDotAndDotDot);
     QFileInfoList folderList = skypeConfigDir.entryInfoList();

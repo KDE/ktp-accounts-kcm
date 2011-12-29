@@ -29,8 +29,8 @@ MySpaceIMAdvancedSettingsWidget::MySpaceIMAdvancedSettingsWidget(ParameterEditMo
     m_ui->setupUi(this);
 
     //server
-    handleParameter("server", QVariant::String, m_ui->serverLineEdit, m_ui->serverLabel);
-    handleParameter("port",   QVariant::UInt,   m_ui->portSpinBox,    m_ui->portLabel);
+    handleParameter(QLatin1String("server"), QVariant::String, m_ui->serverLineEdit, m_ui->serverLabel);
+    handleParameter(QLatin1String("port"),   QVariant::UInt,   m_ui->portSpinBox,    m_ui->portLabel);
 }
 
 MySpaceIMAdvancedSettingsWidget::~MySpaceIMAdvancedSettingsWidget()

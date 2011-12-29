@@ -28,14 +28,14 @@ HazeSkypeAccountUi::HazeSkypeAccountUi(QObject *parent)
 {
     // Register supported parameters
     // Main Options
-    registerSupportedParameter("account", QVariant::String);
+    registerSupportedParameter(QLatin1String("account"), QVariant::String);
 
     // Advanced Options
-    registerSupportedParameter("skypeout-online", QVariant::Bool);
-    registerSupportedParameter("skype-sync", QVariant::Bool);
-    registerSupportedParameter("check-for-updates", QVariant::Bool);
-    registerSupportedParameter("reject-all-auths", QVariant::Bool);
-    registerSupportedParameter("skype-autostart", QVariant::Bool);
+    registerSupportedParameter(QLatin1String("skypeout-online"), QVariant::Bool);
+    registerSupportedParameter(QLatin1String("skype-sync"), QVariant::Bool);
+    registerSupportedParameter(QLatin1String("check-for-updates"), QVariant::Bool);
+    registerSupportedParameter(QLatin1String("reject-all-auths"), QVariant::Bool);
+    registerSupportedParameter(QLatin1String("skype-autostart"), QVariant::Bool);
 }
 
 HazeSkypeAccountUi::~HazeSkypeAccountUi()

@@ -29,14 +29,14 @@ AimServerSettingsWidget::AimServerSettingsWidget(ParameterEditModel *model,
     m_ui->setupUi(this);
 
     //server
-    handleParameter( "server" , QVariant::String ,m_ui->serverAddress ,m_ui->serverAddressLabel);
-    handleParameter( "port" , QVariant::UInt ,m_ui->serverPort ,m_ui->serverPortLabel);
+    handleParameter(QLatin1String("server"), QVariant::String, m_ui->serverAddress, m_ui->serverAddressLabel);
+    handleParameter(QLatin1String("port"), QVariant::UInt, m_ui->serverPort, m_ui->serverPortLabel);
     //security
-    handleParameter( "encryption" , QVariant::String ,m_ui->encryption ,m_ui->encryptionLabel);
-    handleParameter( "always-use-rv-proxy" , QVariant::Bool ,m_ui->rvProxy ,0);
+    handleParameter(QLatin1String("encryption"), QVariant::String, m_ui->encryption, m_ui->encryptionLabel);
+    handleParameter(QLatin1String("always-use-rv-proxy"), QVariant::Bool, m_ui->rvProxy, 0);
     //other
-    handleParameter( "use-clientlogin" , QVariant::Bool ,m_ui->clientLogin ,0);
-    handleParameter( "allow-multiple-logins" , QVariant::Bool ,m_ui->multipleLogins ,0);
+    handleParameter(QLatin1String("use-clientlogin"), QVariant::Bool, m_ui->clientLogin, 0);
+    handleParameter(QLatin1String("allow-multiple-logins"), QVariant::Bool, m_ui->multipleLogins, 0);
 }
 
 AimServerSettingsWidget::~AimServerSettingsWidget()

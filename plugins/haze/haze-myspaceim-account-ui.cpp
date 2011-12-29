@@ -28,12 +28,12 @@ HazeMySpaceIMAccountUi::HazeMySpaceIMAccountUi(QObject *parent)
 {
     // Register supported parameters
     // Main Options
-    registerSupportedParameter("account",  QVariant::String);
-    registerSupportedParameter("password", QVariant::String);
+    registerSupportedParameter(QLatin1String("account"),  QVariant::String);
+    registerSupportedParameter(QLatin1String("password"), QVariant::String);
 
     // Advanced Options
-    registerSupportedParameter("server", QVariant::String);
-    registerSupportedParameter("port",   QVariant::UInt);
+    registerSupportedParameter(QLatin1String("server"), QVariant::String);
+    registerSupportedParameter(QLatin1String("port"),   QVariant::UInt);
 }
 
 HazeMySpaceIMAccountUi::~HazeMySpaceIMAccountUi()

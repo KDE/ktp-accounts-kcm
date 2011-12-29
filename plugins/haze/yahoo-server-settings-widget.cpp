@@ -28,16 +28,16 @@ YahooServerSettingsWidget::YahooServerSettingsWidget(ParameterEditModel *model,
     m_ui = new Ui::YahooServerSettingsWidget;
     m_ui->setupUi(this);
     //server
-    handleParameter("port", QVariant::UInt, m_ui->serverPort, m_ui->serverPortLabel);
+    handleParameter(QLatin1String("port"), QVariant::UInt, m_ui->serverPort, m_ui->serverPortLabel);
     //file transfer
-    handleParameter("xfer-host", QVariant::String, m_ui->xferHost, m_ui->xferHostLabel);
-    handleParameter("xfer-port", QVariant::UInt, m_ui->xferPort, m_ui->xferPortLabel);
+    handleParameter(QLatin1String("xfer-host"), QVariant::String, m_ui->xferHost, m_ui->xferHostLabel);
+    handleParameter(QLatin1String("xfer-port"), QVariant::UInt, m_ui->xferPort, m_ui->xferPortLabel);
     //locale
-    handleParameter("room-list-locale", QVariant::String, m_ui->roomListLocale, m_ui->roomListLocaleLablel);
-    handleParameter("charset", QVariant::String, m_ui->charsetComboBox, m_ui->charsetLabel);
+    handleParameter(QLatin1String("room-list-locale"), QVariant::String, m_ui->roomListLocale, m_ui->roomListLocaleLablel);
+    handleParameter(QLatin1String("charset"), QVariant::String, m_ui->charsetComboBox, m_ui->charsetLabel);
     //other
-    handleParameter("proxy-ssl", QVariant::Bool, m_ui->SslProxy, 0);
-    handleParameter("ignore-invites", QVariant::Bool, m_ui->ignoreInvites, 0);
+    handleParameter(QLatin1String("proxy-ssl"), QVariant::Bool, m_ui->SslProxy, 0);
+    handleParameter(QLatin1String("ignore-invites"), QVariant::Bool, m_ui->ignoreInvites, 0);
 }
 
 YahooServerSettingsWidget::~YahooServerSettingsWidget()
