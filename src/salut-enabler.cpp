@@ -274,9 +274,6 @@ void SalutEnabler::onUserWantingChanges()
     connect(d->detailsDialog, SIGNAL(rejected()),
             this, SLOT(onUserCancelled()));
 
-    connect(d->detailsDialog, SIGNAL(rejected()),
-            this, SIGNAL(cancelled()));
-
     connect(d->detailsDialog, SIGNAL(feedbackMessage(QString,QString,KMessageWidget::MessageType)),
             this, SIGNAL(feedbackMessage(QString,QString,KMessageWidget::MessageType)));
 
