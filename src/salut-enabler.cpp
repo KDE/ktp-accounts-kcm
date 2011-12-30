@@ -233,7 +233,7 @@ void SalutEnabler::onUserAccepted()
 
 void SalutEnabler::onAccountCreated(Tp::PendingOperation* op)
 {
-    kWarning() << "Account created";
+    kDebug() << "Account created";
     if (op->isError()) {
         kWarning() << "Creating Account failed:" << op->errorName() << op->errorMessage();
     }
