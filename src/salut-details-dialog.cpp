@@ -94,7 +94,7 @@ SalutDetailsDialog::~SalutDetailsDialog()
 
 void SalutDetailsDialog::accept()
 {
-    Q_EMIT dialogAccepted(d->widget->parametersSet());
+    Q_EMIT dialogAccepted(d->widget->displayName(), d->widget->parametersSet());
     KDialog::accept();
 }
 

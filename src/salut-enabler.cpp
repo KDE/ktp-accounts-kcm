@@ -66,6 +66,7 @@ public:
     SalutDetailsDialog *detailsDialog;
     SalutMessageWidget *messageWidget;
     QWeakPointer<QFrame> salutMessageFrame;
+    QString displayName;
 };
 
 SalutEnabler::SalutEnabler(const Tp::AccountManagerPtr accountManager, QObject *parent)
@@ -184,42 +185,40 @@ void SalutEnabler::onUserAccepted()
         properties.insert(TP_PROP_ACCOUNT_ENABLED, true);
     }
 
-    // FIXME: Ask the user to submit a Display Name
+    if (d->displayName.isEmpty())
+    {
+        QString lastname = d->values[lastNamePar].toString();
+        QString firstname = d->values[firstNamePar].toString();
+        QString nickname = d->values[nickNamePar].toString();
 
-    QString displayName;
-
-    QString lastname = d->values[lastNamePar].toString();
-    QString firstname = d->values[firstNamePar].toString();
-    QString nickname = d->values[nickNamePar].toString();
-
-    if (!firstname.isEmpty()) {
-        displayName = firstname;
-    }
-
-    if (!lastname.isEmpty()) {
-        if (!displayName.isEmpty()) {
-            displayName.append(QString::fromLatin1(" %1").arg(lastname));
-        } else {
-            displayName = lastname;
+        if (!firstname.isEmpty()) {
+            d->displayName = firstname;
         }
-    }
 
-    if (!nickname.isEmpty()) {
-        if (!displayName.isEmpty()) {
-            displayName.append(QString::fromLatin1(" (%1)").arg(nickname));
-        } else {
-            displayName = nickname;
+        if (!lastname.isEmpty()) {
+            if (!d->displayName.isEmpty()) {
+                d->displayName.append(QString::fromLatin1(" %1").arg(lastname));
+            } else {
+                d->displayName = lastname;
+            }
         }
-    }
 
-    if (displayName.isEmpty()) {
-        //FIXME: let the user know that he reached a very strange situation
-        kWarning() << "All fields are empty";
+        if (!nickname.isEmpty()) {
+            if (!d->displayName.isEmpty()) {
+                d->displayName.append(QString::fromLatin1(" (%1)").arg(nickname));
+            } else {
+                d->displayName = nickname;
+            }
+        }
+        if (d->displayName.isEmpty()) {
+            //FIXME: let the user know that he reached a very strange situation
+            kWarning() << "All fields are empty";
+        }
     }
 
     Tp::PendingAccount *pa = d->accountManager->createAccount(d->profile->cmName(),
                                                               d->profile->protocolName(),
-                                                              displayName,
+                                                              d->displayName,
                                                               d->values,
                                                               properties);
 
@@ -265,8 +264,8 @@ void SalutEnabler::onUserWantingChanges()
 {
     d->detailsDialog = new SalutDetailsDialog(d->profileManager, d->connectionManager, 0);
 
-    connect(d->detailsDialog, SIGNAL(dialogAccepted(QVariantMap)),
-            this, SLOT(onDialogAccepted(QVariantMap)));
+    connect(d->detailsDialog, SIGNAL(dialogAccepted(QString,QVariantMap)),
+            this, SLOT(onDialogAccepted(QString,QVariantMap)));
 
     connect(d->detailsDialog, SIGNAL(rejected()),
             this, SLOT(onUserCancelled()));
@@ -277,13 +276,13 @@ void SalutEnabler::onUserWantingChanges()
     d->detailsDialog->exec();
 }
 
-void SalutEnabler::onDialogAccepted(const QVariantMap &values)
+void SalutEnabler::onDialogAccepted(const QString &displayName, const QVariantMap &values)
 {
     kDebug() << values;
+    d->displayName = displayName;
     d->values.insert(firstNamePar, values[firstNamePar].toString());
     d->values.insert(lastNamePar, values[lastNamePar].toString());
     d->values.insert(nickNamePar, values[nickNamePar].toString());
-
     onUserAccepted();
 }
 
