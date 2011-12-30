@@ -30,7 +30,7 @@ public:
     SalutMessageWidget(QWidget *parent = 0);
     virtual ~SalutMessageWidget();
 
-    void setParams(const QString &firstname, const QString &lastname, const QString &nick);
+    void setParams(const QString &firstname, const QString &lastname, const QString &nickname);
 
 Q_SIGNALS:
     void timeout();

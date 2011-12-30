@@ -1,6 +1,7 @@
 /*
     Extended KMessageWidget for link-local xmpp account autocreation
     Copyright (C) 2011  Martin Klapetek <martin.klapetek@gmail.com>
+    Copyright (C) 2012  Daniele E. Domenichelli <daniele.domenichelli@gmail.com>
 
     This library is free software; you can redistribute it and/or
     modify it under the terms of the GNU Lesser General Public
@@ -25,6 +26,7 @@
 #include <KLocalizedString>
 #include <KIcon>
 #include <KAction>
+#include <KDebug>
 
 #include <QtGui/QLayout>
 #include <QtGui/QWidgetAction>
@@ -71,32 +73,32 @@ SalutMessageWidget::~SalutMessageWidget()
 }
 
 ///these params always comes from KUser with first & last name split manually by the last space
-void SalutMessageWidget::setParams(const QString& firstname, const QString& lastname, const QString& nick)
+void SalutMessageWidget::setParams(const QString& firstname, const QString& lastname, const QString& nickname)
 {
     QString displayName;
 
-    //either one of the names is filled and nick is filled
-    if (((lastname.isEmpty() && !firstname.isEmpty()) || (!lastname.isEmpty() && firstname.isEmpty()))
-            && !nick.isEmpty()) {
+    if (!firstname.isEmpty()) {
+        displayName = firstname;
+    }
 
-        displayName = QString::fromLatin1("%1 (%2)").arg(lastname.isEmpty() ? firstname : lastname, nick);
+    if (!lastname.isEmpty()) {
+        if (!displayName.isEmpty()) {
+            displayName.append(QString::fromLatin1(" %1").arg(lastname));
+        } else {
+            displayName = lastname;
+        }
+    }
 
-    //either one of the names is filled and nick is empty
-    } else if (((lastname.isEmpty() && !firstname.isEmpty()) || (!lastname.isEmpty() && firstname.isEmpty()))
-            && nick.isEmpty()) {
-
-        displayName = QString::fromLatin1("%1").arg(lastname.isEmpty() ? firstname : lastname);
-
-    //both first & last names are empty but nick is not
-    } else if (lastname.isEmpty() && firstname.isEmpty() && !nick.isEmpty()) {
-
-        displayName = QString::fromLatin1("%1").arg(nick);
-
-    } else if (lastname.isEmpty() && firstname.isEmpty() && nick.isEmpty()) {
+    if (!nickname.isEmpty()) {
+        if (!displayName.isEmpty()) {
+            displayName.append(QString::fromLatin1(" (%1)").arg(nickname));
+        } else {
+            displayName = nickname;
+        }
+    }
+    if (displayName.isEmpty()) {
         //FIXME: let the user know that he reached a very strange situation
-
-    } else {
-        displayName = QString::fromLatin1("%1 %2 (%3)").arg(firstname, lastname, nick);
+        kWarning() << "All fields are empty";
     }
 
     setText(i18n("You will appear as \"%1\" on your local network.",
