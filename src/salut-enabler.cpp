@@ -1,6 +1,7 @@
 /*
     Class that auto configures link-local xmpp account
     Copyright (C) 2011  Martin Klapetek <martin.klapetek@gmail.com>
+    Copyright (C) 2012  Daniele E. Domenichelli <daniele.domenichelli@gmail.com>
 
     This library is free software; you can redistribute it and/or
     modify it under the terms of the GNU Lesser General Public
@@ -189,35 +190,31 @@ void SalutEnabler::onUserAccepted()
 
     QString lastname = d->values[lastNamePar].toString();
     QString firstname = d->values[firstNamePar].toString();
-    QString nick = d->values[nickNamePar].toString();
+    QString nickname = d->values[nickNamePar].toString();
 
-    //either one of the names is filled and nick is filled
-    if (((lastname.isEmpty() && !firstname.isEmpty()) || (!lastname.isEmpty() && firstname.isEmpty()))
-            && !nick.isEmpty()) {
+    if (!firstname.isEmpty()) {
+        displayName = firstname;
+    }
 
-        displayName = QString::fromLatin1("%1 (%2)").arg(d->values[firstNamePar].toString().isEmpty() ?
-                d->values[lastNamePar].toString() : d->values[firstNamePar].toString(),
-                                                            d->values[nickNamePar].toString());
+    if (!lastname.isEmpty()) {
+        if (!displayName.isEmpty()) {
+            displayName.append(QString::fromLatin1(" %1").arg(lastname));
+        } else {
+            displayName = lastname;
+        }
+    }
 
-    //either one of the names is filled and nick is empty
-    } else if (((lastname.isEmpty() && !firstname.isEmpty()) || (!lastname.isEmpty() && firstname.isEmpty()))
-            && nick.isEmpty()) {
+    if (!nickname.isEmpty()) {
+        if (!displayName.isEmpty()) {
+            displayName.append(QString::fromLatin1(" (%1)").arg(nickname));
+        } else {
+            displayName = nickname;
+        }
+    }
 
-        displayName = d->values[firstNamePar].toString().isEmpty() ?
-                d->values[lastNamePar].toString() : d->values[firstNamePar].toString();
-
-    //both first & last names are empty but nick is not
-    } else if (lastname.isEmpty() && firstname.isEmpty() && !nick.isEmpty()) {
-
-        displayName = d->values[nickNamePar].toString();
-
-    } else if (lastname.isEmpty() && firstname.isEmpty() && nick.isEmpty()) {
+    if (displayName.isEmpty()) {
         //FIXME: let the user know that he reached a very strange situation
-
-    } else {
-        displayName = QString::fromLatin1("%1 %2 (%3)").arg(d->values[firstNamePar].toString(),
-                                                               d->values[lastNamePar].toString(),
-                                                               d->values[nickNamePar].toString());
+        kWarning() << "All fields are empty";
     }
 
     Tp::PendingAccount *pa = d->accountManager->createAccount(d->profile->cmName(),
