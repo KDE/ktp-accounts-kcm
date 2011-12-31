@@ -34,6 +34,7 @@ public:
                                     QWidget *parent = 0);
     virtual ~SunshineMainOptionsWidget();
 
+    virtual void updateDefaultDisplayName();
 private:
     Q_DISABLE_COPY(SunshineMainOptionsWidget);
     Ui::SunshineMainOptionsWidget *m_ui;
