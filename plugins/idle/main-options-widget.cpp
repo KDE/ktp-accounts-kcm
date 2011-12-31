@@ -29,8 +29,8 @@ MainOptionsWidget::MainOptionsWidget(
     m_ui = new Ui::MainOptionsWidget;
     m_ui->setupUi(this);
 
-    handleParameter(QLatin1String("account"), QVariant::String, m_ui->accountLineEdit, m_ui->accountLabel);
-    handleParameter(QLatin1String("server"), QVariant::String, m_ui->serverLineEdit, m_ui->serverLabel);
+    handleParameter(QLatin1String("account"), QVariant::String, m_ui->accountLineEdit, m_ui->accountLabel, true);
+    handleParameter(QLatin1String("server"), QVariant::String, m_ui->serverLineEdit, m_ui->serverLabel, true);
     handleParameter(QLatin1String("fullname"), QVariant::String, m_ui->fullnameLineEdit, m_ui->fullnameLabel);
     QTimer::singleShot(0, m_ui->accountLineEdit, SLOT(setFocus()));
 }
@@ -38,6 +38,21 @@ MainOptionsWidget::MainOptionsWidget(
 MainOptionsWidget::~MainOptionsWidget()
 {
     delete m_ui;
+}
+
+void MainOptionsWidget::updateDefaultDisplayName()
+{
+    const QString &account = m_ui->accountLineEdit->text();
+    const QString &server = m_ui->serverLineEdit->text();
+    QString displayName;
+
+    if (!account.isEmpty()) {
+        displayName = account;
+        if (!server.isEmpty()) {
+            displayName.append(QString::fromLatin1(" on %1").arg(server));
+        }
+    }
+    setDefaultDisplayName(displayName);
 }
 
 #include "main-options-widget.moc"
