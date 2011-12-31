@@ -30,7 +30,7 @@ AimMainOptionsWidget::AimMainOptionsWidget(ParameterEditModel* model, QWidget* p
     m_ui->setupUi(this);
 
     //map the widgets to their data
-    handleParameter(QLatin1String("account"), QVariant::String, m_ui->accountLineEdit, m_ui->accountLabel);
+    handleParameter(QLatin1String("account"), QVariant::String, m_ui->accountLineEdit, m_ui->accountLabel, true);
     handleParameter(QLatin1String("password"), QVariant::String, m_ui->passwordLineEdit, m_ui->passwordLabel);
     QTimer::singleShot(0, m_ui->accountLineEdit, SLOT(setFocus()));
 }
@@ -38,6 +38,11 @@ AimMainOptionsWidget::AimMainOptionsWidget(ParameterEditModel* model, QWidget* p
 AimMainOptionsWidget::~AimMainOptionsWidget()
 {
     delete m_ui;
+}
+
+void AimMainOptionsWidget::updateDefaultDisplayName()
+{
+    setDefaultDisplayName(m_ui->accountLineEdit->text());
 }
 
 #include "aim-main-options-widget.moc"

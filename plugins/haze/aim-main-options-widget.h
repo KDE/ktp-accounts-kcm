@@ -35,6 +35,8 @@ class AimMainOptionsWidget
 public:
     explicit AimMainOptionsWidget(ParameterEditModel* model, QWidget* parent = 0);
     virtual ~AimMainOptionsWidget();
+
+    virtual void updateDefaultDisplayName();
 private:
     Ui::AimMainOptionsWidget *m_ui;
 };
