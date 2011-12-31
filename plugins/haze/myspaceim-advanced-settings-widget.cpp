@@ -37,3 +37,5 @@ MySpaceIMAdvancedSettingsWidget::~MySpaceIMAdvancedSettingsWidget()
 {
     delete m_ui;
 }
+
+#include "myspaceim-advanced-settings-widget.moc"

@@ -36,8 +36,7 @@ public:
     virtual ~MainOptionsWidgetMSN();
 
     virtual void submit();
-    bool validateParameterValues();
-
+    virtual bool validateParameterValues();
 private:
     Ui::MainOptionsWidgetMSN *m_ui;
 };

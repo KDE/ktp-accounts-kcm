@@ -59,3 +59,5 @@ AbstractAccountParametersWidget* HazeYahooAccount::advancedOptionsWidget(
     AbstractAccountParametersWidget* yahooserversettings = new YahooServerSettingsWidget(model, parent);
     return yahooserversettings;
 }
+
+#include "haze-yahoo-account.moc"

@@ -39,3 +39,5 @@ AimMainOptionsWidget::~AimMainOptionsWidget()
 {
     delete m_ui;
 }
+
+#include "aim-main-options-widget.moc"

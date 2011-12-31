@@ -50,3 +50,5 @@ AbstractAccountParametersWidget *HazeMsnAccountUi::mainOptionsWidget(ParameterEd
 {
     return new MsnMainOptionsWidget(model, parent);
 }
+
+#include "haze-msn-account.moc"

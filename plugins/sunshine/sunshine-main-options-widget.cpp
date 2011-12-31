@@ -39,3 +39,5 @@ SunshineMainOptionsWidget::~SunshineMainOptionsWidget()
 {
     delete m_ui;
 }
+
+#include "sunshine-main-options-widget.moc"

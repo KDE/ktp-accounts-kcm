@@ -50,3 +50,5 @@ SalutMainOptionsWidget::~SalutMainOptionsWidget()
 {
     delete m_ui;
 }
+
+#include "salut-main-options-widget.moc"

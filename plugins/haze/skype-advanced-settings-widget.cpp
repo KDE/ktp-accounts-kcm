@@ -39,3 +39,5 @@ SkypeAdvancedSettingsWidget::~SkypeAdvancedSettingsWidget()
 {
     delete m_ui;
 }
+
+#include "skype-advanced-settings-widget.moc"

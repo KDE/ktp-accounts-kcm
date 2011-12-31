@@ -57,3 +57,5 @@ void YahooMainOptionsWidget::submit()
 
     AbstractAccountParametersWidget::submit();
 }
+
+#include "yahoo-main-options-widget.moc"

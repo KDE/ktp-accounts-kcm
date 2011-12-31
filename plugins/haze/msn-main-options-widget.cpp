@@ -39,4 +39,3 @@ MsnMainOptionsWidget::~MsnMainOptionsWidget()
 }
 
 #include "msn-main-options-widget.moc"
-

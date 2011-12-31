@@ -44,4 +44,3 @@ private:
 };
 
 #endif // header guard
-

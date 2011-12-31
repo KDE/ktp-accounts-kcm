@@ -30,7 +30,7 @@ class AimMainOptionsWidget
             : public AbstractAccountParametersWidget
 {
     Q_OBJECT
-	Q_DISABLE_COPY(AimMainOptionsWidget);
+    Q_DISABLE_COPY(AimMainOptionsWidget);
 
 public:
     explicit AimMainOptionsWidget(ParameterEditModel* model, QWidget* parent = 0);
@@ -39,4 +39,4 @@ private:
     Ui::AimMainOptionsWidget *m_ui;
 };
 
-#endif // HAZE_YAHOO_ACCOUNT_H
+#endif // KCMTELEPATHYACCOUNTS_PLUGIN_HAZE_AIM_ACCOUNT_PARAMETERS_WIDGET_H

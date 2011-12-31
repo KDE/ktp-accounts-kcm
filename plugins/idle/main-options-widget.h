@@ -41,4 +41,3 @@ private:
 
 
 #endif // header guard
-
