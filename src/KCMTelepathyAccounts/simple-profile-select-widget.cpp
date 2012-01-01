@@ -151,9 +151,8 @@ void SimpleProfileSelectWidget::onProfileManagerReady(Tp::PendingOperation *op)
 // Return the selected ProfileItem or 0 if nothing is selected.
 ProfileItem *SimpleProfileSelectWidget::selectedProfile()
 {
-    if (d->profileItem != NULL) {
-        delete d->profileItem;
-    }
+    delete d->profileItem;
+    d->profileItem = NULL;
 
     Tp::ProfilePtr profilePtr = d->profileManager->profileForService(d->profileName);
 
