@@ -27,7 +27,7 @@ MsnMainOptionsWidget::MsnMainOptionsWidget(ParameterEditModel *model, QWidget *p
     m_ui = new Ui::MsnMainOptionsWidget;
     m_ui->setupUi(this);
 
-    handleParameter(QLatin1String("account"), QVariant::String, m_ui->accountLineEdit, m_ui->accountLabel);
+    handleParameter(QLatin1String("account"), QVariant::String, m_ui->accountLineEdit, m_ui->accountLabel, true);
     handleParameter(QLatin1String("password"), QVariant::String, m_ui->passwordLineEdit, m_ui->passwordLabel);
 
     QTimer::singleShot(0, m_ui->accountLineEdit, SLOT(setFocus()));
@@ -36,6 +36,11 @@ MsnMainOptionsWidget::MsnMainOptionsWidget(ParameterEditModel *model, QWidget *p
 MsnMainOptionsWidget::~MsnMainOptionsWidget()
 {
     delete m_ui;
+}
+
+void MsnMainOptionsWidget::updateDefaultDisplayName()
+{
+    setDefaultDisplayName(m_ui->accountLineEdit->text());
 }
 
 #include "msn-main-options-widget.moc"
