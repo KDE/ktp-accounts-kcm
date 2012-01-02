@@ -28,7 +28,7 @@ IcqMainOptionsWidget::IcqMainOptionsWidget(ParameterEditModel *model,
     m_ui = new Ui::IcqMainOptionsWidget;
     m_ui->setupUi(this);
 
-    handleParameter(QLatin1String("account"), QVariant::String, m_ui->accountLineEdit, m_ui->accountLabel);
+    handleParameter(QLatin1String("account"), QVariant::String, m_ui->accountLineEdit, m_ui->accountLabel, true);
     handleParameter(QLatin1String("password"), QVariant::String, m_ui->passwordLineEdit, m_ui->passwordLabel);
     QTimer::singleShot(0, m_ui->accountLineEdit, SLOT(setFocus()));
 }
@@ -36,6 +36,11 @@ IcqMainOptionsWidget::IcqMainOptionsWidget(ParameterEditModel *model,
 IcqMainOptionsWidget::~IcqMainOptionsWidget()
 {
     delete m_ui;
+}
+
+void IcqMainOptionsWidget::updateDefaultDisplayName()
+{
+    setDefaultDisplayName(m_ui->accountLineEdit->text());
 }
 
 #include "icq-main-options-widget.moc"

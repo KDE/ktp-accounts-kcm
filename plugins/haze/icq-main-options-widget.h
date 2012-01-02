@@ -32,6 +32,8 @@ public:
     explicit IcqMainOptionsWidget(ParameterEditModel *model,
                                   QWidget *parent = 0);
     virtual ~IcqMainOptionsWidget();
+
+    virtual void updateDefaultDisplayName();
 private:
     Q_DISABLE_COPY(IcqMainOptionsWidget);
     Ui::IcqMainOptionsWidget *m_ui;
