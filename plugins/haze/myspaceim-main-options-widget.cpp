@@ -29,13 +29,18 @@ MySpaceIMMainOptionsWidget::MySpaceIMMainOptionsWidget(ParameterEditModel *model
     m_ui = new Ui::MySpaceIMMainOptionsWidget;
     m_ui->setupUi(this);
 
-    handleParameter(QLatin1String("account"),  QVariant::String, m_ui->accountLineEdit,  m_ui->accountLabel);
+    handleParameter(QLatin1String("account"),  QVariant::String, m_ui->accountLineEdit,  m_ui->accountLabel, true);
     handleParameter(QLatin1String("password"), QVariant::String, m_ui->passwordLineEdit, m_ui->passwordLabel);
 }
 
 MySpaceIMMainOptionsWidget::~MySpaceIMMainOptionsWidget()
 {
     delete m_ui;
+}
+
+void MySpaceIMMainOptionsWidget::updateDefaultDisplayName()
+{
+    setDefaultDisplayName(m_ui->accountLineEdit->text());
 }
 
 #include "myspaceim-main-options-widget.moc"
