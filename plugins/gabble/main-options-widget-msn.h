@@ -37,6 +37,7 @@ public:
 
     virtual void submit();
     virtual bool validateParameterValues();
+    virtual void updateDefaultDisplayName();
 private:
     Ui::MainOptionsWidgetMSN *m_ui;
 };
