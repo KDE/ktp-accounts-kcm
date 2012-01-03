@@ -1,8 +1,22 @@
 [Desktop Entry]
 Encoding=UTF-8
 Comment=Custom account configuration user interface for accounts using the Salut connection manager.
+Comment[es]=Interfaz de usuario personalizada para la configuración de cuentas que usen el gestor de conexión Salut.
+Comment[hu]=Egyedi beállítófelület a Salut kapcsolatkezelőt használó azonosítókhoz.
+Comment[nl]=Gebruikersinterface voor aangepaste accountconfiguratie voor accounts die de Salut verbindingenbeheerder gebruiken.
+Comment[pt]=Interface de utilizador de configuração de contas personalizadas com o gestor de ligações Salut.
+Comment[sv]=Användargränssnitt för anpassad kontoinställning av konton som använder anslutningshanteraren Salut.
+Comment[x-test]=xxCustom account configuration user interface for accounts using the Salut connection manager.xx
+Comment[zh_TW]=對使用 Salut 連線管理員的帳號自訂帳號設定使用者介面。
 Icon=blockdevice
 Name=Salut Account Configuration User Interface
+Name[es]=Interfaz de usuario para la configuración de cuentas Salut
+Name[hu]=Salut azonosítóbeállító felület
+Name[nl]=Gebruikersinterface voor Salut accountconfiguratie
+Name[pt]=Interface de Configuração de Contas do Salut
+Name[sv]=Användargränssnitt för inställning av Salut-konton
+Name[x-test]=xxSalut Account Configuration User Interfacexx
+Name[zh_TW]=Salut 帳號設定使用者介面
 Type=Service
 ServiceTypes=KTpAccountsKCM/AccountUiPlugin
 

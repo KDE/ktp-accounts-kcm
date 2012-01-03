@@ -1,6 +1,13 @@
 [Desktop Entry]
 Encoding=UTF-8
 Comment=Custom account configuration user interface for accounts using the Idle connection manager.
+Comment[es]=Interfaz de usuario personalizada para la configuración de cuentas que usen el gestor de conexión Idle.
+Comment[hu]=Egyedi beállítófelület az Idle kapcsolatkezelőt használó azonosítókhoz.
+Comment[nl]=Gebruikersinterface voor aangepaste accountconfiguratie voor accounts die de Idle verbindingenbeheerder gebruiken.
+Comment[pt]=Interface de utilizador de configuração de contas personalizadas com o gestor de ligações Idle.
+Comment[sv]=Användargränssnitt för anpassad kontoinställning av konton som använder anslutningshanteraren Idle.
+Comment[x-test]=xxCustom account configuration user interface for accounts using the Idle connection manager.xx
+Comment[zh_TW]=對使用 Idle 連線管理員的帳號自訂帳號設定使用者介面。
 Type=Service
 ServiceTypes=KTpAccountsKCM/AccountUiPlugin
 

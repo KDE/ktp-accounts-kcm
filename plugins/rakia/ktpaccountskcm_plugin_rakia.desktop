@@ -1,8 +1,22 @@
 [Desktop Entry]
 Encoding=UTF-8
 Comment=Custom account configuration user interface for accounts using the Rakia/SofiaSIP connection manager.
+Comment[es]=Interfaz de usuario personalizada para la configuración de cuentas que usen el gestor de conexión Rakia/SofiaSIP.
+Comment[hu]=Egyedi beállítófelület a Rakia/SofiaSIP kapcsolatkezelőt használó azonosítókhoz.
+Comment[nl]=Gebruikersinterface voor aangepaste accountconfiguratie voor accounts die de Rakia/SofiaSIP verbindingenbeheerder gebruiken.
+Comment[pt]=Interface de utilizador de configuração de contas personalizadas com o gestor de ligações Rakia/SofiaSIP.
+Comment[sv]=Användargränssnitt för anpassad kontoinställning av konton som använder anslutningshanteraren Rakia/SofiaSIP.
+Comment[x-test]=xxCustom account configuration user interface for accounts using the Rakia/SofiaSIP connection manager.xx
+Comment[zh_TW]=對使用 Rakia/SofiaSIP 連線管理員的帳號自訂帳號設定使用者介面。
 Icon=blockdevice
 Name=Rakia/SofiaSIP Account Configuration User Interface
+Name[es]=Interfaz de usuario para la configuración de cuentas Rakia/SofiaSIP
+Name[hu]=Rakia/SofiaSIP azonosítóbeállító felület
+Name[nl]=Gebruikersinterface voor Rakia/SofiaSIP accountconfiguratie
+Name[pt]=Interface de Configuração de Contas do Rakia/SofiaSIP
+Name[sv]=Användargränssnitt för inställning av Rakia/SofiaSIP-konton
+Name[x-test]=xxRakia/SofiaSIP Account Configuration User Interfacexx
+Name[zh_TW]=Rakia/SofiaSIP 帳號設定使用者介面
 Type=Service
 ServiceTypes=KTpAccountsKCM/AccountUiPlugin
 

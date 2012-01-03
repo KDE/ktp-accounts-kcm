@@ -7,3 +7,10 @@ X-KDE-Weight=200
 Icon=telepathy-kde
 
 Name=Instant Messaging and VoIP
+Name[es]=Mensajería instantánea y VoIP.
+Name[hu]=Azonnali üzenetküldés és VoIP
+Name[nl]=Instant Messaging en VoIP
+Name[pt]=Mensagens Instantâneas e VoIP
+Name[sv]=Direktmeddelande och IP-telefon
+Name[x-test]=xxInstant Messaging and VoIPxx
+Name[zh_TW]=即時訊息與 VoIP

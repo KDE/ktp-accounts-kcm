@@ -1,8 +1,22 @@
 [Desktop Entry]
 Encoding=UTF-8
 Comment=Custom account configuration user interface for Gadu-Gadu accounts using the Sunshine connection manager.
+Comment[es]=Interfaz de usuario personalizada para la configuración de cuentas que usen el gestor de conexión Sunshine.
+Comment[hu]=Egyedi beállítófelület a Sunshine kapcsolatkezelőt használó Gadu-Gadu azonosítókhoz.
+Comment[nl]=Gebruikersinterface voor aangepaste accountconfiguratie voor Gadu-Gadu accounts die de Sunshine verbindingenbeheerder gebruiken.
+Comment[pt]=Interface de utilizador de configuração de contas personalizadas com o gestor de ligações Sunshine.
+Comment[sv]=Användargränssnitt för anpassad kontoinställning av Gadu-Gadukonton som använder anslutningshanteraren Sunshine.
+Comment[x-test]=xxCustom account configuration user interface for Gadu-Gadu accounts using the Sunshine connection manager.xx
+Comment[zh_TW]=對使用 Sunshine 連線管理員的 Gadu-Gadu 帳號自訂帳號設定使用者介面。
 Icon=blockdevice
 Name=Gadu-Gadu Account Configuration User Interface
+Name[es]=Interfaz de usuario para la configuración de cuentas Gadu-Gadu
+Name[hu]=Gadu-Gadu azonosítóbeállító felület
+Name[nl]=Gebruikersinterface voor Gadu-Gadu accountconfiguratie
+Name[pt]=Interface de Configuração de Contas do Gadu-Gadu
+Name[sv]=Användargränssnitt för inställning av Gadu-Gadukonton
+Name[x-test]=xxGadu-Gadu Account Configuration User Interfacexx
+Name[zh_TW]=Gadu-Gadu 帳號設定使用者介面
 Type=Service
 ServiceTypes=KTpAccountsKCM/AccountUiPlugin
 

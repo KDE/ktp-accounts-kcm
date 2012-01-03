@@ -3,3 +3,10 @@ Type=ServiceType
 X-KDE-ServiceType=KTpAccountsKCM/AccountUiPlugin
 
 Comment=Telepathy Accounts KCM Module Account User Interface Plugins
+Comment[es]=Complementos del interfaz de usuario para las cuentas de Telepathy y el módulo KCM.
+Comment[hu]=Telepathy azonosítóbeállító modul
+Comment[nl]=Gebruikersinterface voor Telepathy accounts en KCM-moduleaccount
+Comment[pt]='Plugins' de Interfaces de Contas do Módulo KCM para o Telepathy
+Comment[sv]=Insticksprogram med IM-användargränssnitt för Telepathy-konton
+Comment[x-test]=xxTelepathy Accounts KCM Module Account User Interface Pluginsxx
+Comment[zh_TW]=Telepathy 帳號 KCM 模組使用者介面外掛程式

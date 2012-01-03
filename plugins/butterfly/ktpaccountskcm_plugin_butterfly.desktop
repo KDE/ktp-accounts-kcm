@@ -1,6 +1,13 @@
 [Desktop Entry]
 Encoding=UTF-8
 Comment=Custom account configuration user interface for accounts using the Butterfly connection manager.
+Comment[es]=Interfaz de usuario personalizada para la configuración de cuentas usando el gestor de conexión Butterfly.
+Comment[hu]=Egyedi beállítófelület a Butterfly kapcsolatkezelőt használó azonosítókhoz.
+Comment[nl]=Gebruikersinterface voor aangepaste accountconfiguratie voor accounts die de Butterfly verbindingenbeheerder gebruiken.
+Comment[pt]=Interface de utilizador de configuração de contas personalizadas com o gestor de ligações Butterfly.
+Comment[sv]=Användargränssnitt för anpassad kontoinställning av konton som använder anslutningshanteraren Butterfly.
+Comment[x-test]=xxCustom account configuration user interface for accounts using the Butterfly connection manager.xx
+Comment[zh_TW]=對使用 Butterfly 連線管理員的帳號自訂帳號設定使用者介面。
 Type=Service
 ServiceTypes=KTpAccountsKCM/AccountUiPlugin
 
