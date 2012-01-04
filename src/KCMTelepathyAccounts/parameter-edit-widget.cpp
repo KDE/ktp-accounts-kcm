@@ -3,6 +3,7 @@
  *
  * Copyright (C) 2009 Collabora Ltd. <info@collabora.com>
  * Copyright (C) 2011 Dominik Schmidt <kde@dominik-schmidt.de>
+ * Copyright (C) 2012 Daniele E. Domenichelli <daniele.domenichelli@gmail.com>
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -54,6 +55,13 @@ ParameterEditWidget::ParameterEditWidget(ParameterEditModel *parameterModel,
     connect(d->delegate,
             SIGNAL(dataChanged(QModelIndex,QVariant,int)),
             SLOT(onDelegateDataChanged(QModelIndex,QVariant,int)));
+
+    Tp::ProtocolParameter foundParameter = parameterModel->parameter(QLatin1String("account"));
+    if (foundParameter.isValid()) {
+        connect(d->delegate,
+                SIGNAL(dataChanged(QModelIndex,QVariant,int)),
+                SLOT(updateDefaultDisplayName()));
+    }
 }
 
 ParameterEditWidget::~ParameterEditWidget()
@@ -65,6 +73,14 @@ ParameterEditWidget::~ParameterEditWidget()
 void ParameterEditWidget::onDelegateDataChanged(const QModelIndex &index, const QVariant &value, int role)
 {
     parameterModel()->setData(index, value, role);
+}
+
+void ParameterEditWidget::updateDefaultDisplayName()
+{
+    Tp::ProtocolParameter foundParameter = parameterModel()->parameter(QLatin1String("account"));
+    if (foundParameter.isValid()) {
+        setDefaultDisplayName(parameterModel()->data(parameterModel()->indexForParameter(foundParameter)).toString());
+    }
 }
 
 #include "parameter-edit-widget.moc"
