@@ -96,7 +96,7 @@ SimpleProfileSelectWidget::SimpleProfileSelectWidget(QWidget *parent)
     d->signalMapper->setMapping(buttonGTalk,    QLatin1String("google-talk"));
     d->signalMapper->setMapping(buttonFacebook, QLatin1String("facebook"));
     d->signalMapper->setMapping(buttonIcq,      QLatin1String("haze-icq"));
-    d->signalMapper->setMapping(buttonMsn,      QLatin1String("haze-msn"));
+    d->signalMapper->setMapping(buttonMsn,      QLatin1String("msn"));
 
     // Connect them to the SignalMapper
     connect(buttonJabber,   SIGNAL(clicked()), d->signalMapper, SLOT(map()));
