@@ -22,6 +22,7 @@
 #define TELEPATHY_ACCOUNTS_KCM_SIMPLE_PROFILE_SELECT_WIDGET_H
 
 #include "kcm_telepathy_accounts_export.h"
+#include "profile-list-model.h"
 
 #include <QtGui/QWidget>
 
@@ -39,13 +40,12 @@ class KCM_TELEPATHY_ACCOUNTS_EXPORT SimpleProfileSelectWidget : public QWidget
     Q_OBJECT
 
 public:
-    explicit SimpleProfileSelectWidget(QWidget *parent = 0);
+    explicit SimpleProfileSelectWidget(ProfileListModel *profileListModel, QWidget *parent = 0);
     ~SimpleProfileSelectWidget();
 
     ProfileItem *selectedProfile();
 
 private Q_SLOTS:
-    void onProfileManagerReady(Tp::PendingOperation *op);
     void onProfileClicked(QString profileName);
 
 Q_SIGNALS:

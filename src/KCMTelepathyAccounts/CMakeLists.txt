@@ -34,6 +34,7 @@ set (libktpaccountskcminternal_HDRS
      account-edit-widget.h
      plugin-macros.h
      plugin-manager.h
+     profile-list-model.h
      profile-select-widget.h
      simple-profile-select-widget.h
      profile-item.h

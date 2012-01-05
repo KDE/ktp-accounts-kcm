@@ -28,10 +28,6 @@
 
 #include <KDebug>
 
-#include <TelepathyQt/PendingReady>
-#include <TelepathyQt/ProfileManager>
-#include <TelepathyQt/Feature>
-
 #include <QtGui/QSortFilterProxyModel>
 #include <QtGui/QItemSelectionModel>
 
@@ -39,25 +35,24 @@ class ProfileSelectWidget::Private
 {
 public:
     Private()
-     : profileManager(0),
-       ui(0),
+     : ui(0),
        sortModel(0),
        sourceModel(0)
     {
     }
 
-    Tp::ProfileManagerPtr profileManager;
     Ui::ProfileSelectWidget *ui;
     QSortFilterProxyModel *sortModel;
     ProfileListModel *sourceModel;
 };
 
-ProfileSelectWidget::ProfileSelectWidget(QWidget *parent, bool enableSalut)
+ProfileSelectWidget::ProfileSelectWidget(ProfileListModel *profileListModel, QWidget *parent, bool enableSalut)
  : QWidget(parent),
    d(new Private)
 {
+    (void)profileListModel;
     // Set up the models
-    d->sourceModel = new ProfileListModel(this);
+    d->sourceModel = profileListModel;
     d->sortModel = new QSortFilterProxyModel(this);
     d->sortModel->setSourceModel(d->sourceModel);
     d->sortModel->sort(0, Qt::AscendingOrder);
@@ -83,30 +78,12 @@ ProfileSelectWidget::ProfileSelectWidget(QWidget *parent, bool enableSalut)
     connect(d->ui->profileListView,
             SIGNAL(doubleClicked(QModelIndex)),
             SIGNAL(profileChosen()));
-
-    d->profileManager = Tp::ProfileManager::create(QDBusConnection::sessionBus());
-
-    // FIXME: Until all distros ship correct profile files, we should fake them
-    connect(d->profileManager->becomeReady(Tp::Features() << Tp::ProfileManager::FeatureFakeProfiles),
-            SIGNAL(finished(Tp::PendingOperation*)),
-            SLOT(onProfileManagerReady(Tp::PendingOperation*)));
 }
 
 ProfileSelectWidget::~ProfileSelectWidget()
 {
     delete d->ui;
     delete d;
-}
-
-void ProfileSelectWidget::onProfileManagerReady(Tp::PendingOperation *op)
-{
-    // Check the pending operation completed successfully.
-    if (op->isError()) {
-        kDebug() << "becomeReady() failed:" << op->errorName() << op->errorMessage();
-        return;
-    }
-
-    d->sourceModel->setProfileManager(d->profileManager);
 }
 
 // Return the selected ProfileItem or 0 if nothing is selected.

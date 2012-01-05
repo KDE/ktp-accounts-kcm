@@ -23,19 +23,39 @@
 
 #include "profile-item.h"
 
+#include <TelepathyQt/Feature>
+#include <TelepathyQt/PendingReady>
 #include <TelepathyQt/ProfileManager>
 #include <TelepathyQt/PendingStringList>
 
+#include <KDebug>
 #include <KIcon>
 
 ProfileListModel::ProfileListModel(QObject *parent)
  : QAbstractListModel(parent)
 {
     m_profileItems.clear();
+    m_profileManager = Tp::ProfileManager::create(QDBusConnection::sessionBus());
+    // FIXME: Until all distros ship correct profile files, we should fake them
+    connect(m_profileManager->becomeReady(Tp::Features() << Tp::ProfileManager::FeatureFakeProfiles),
+            SIGNAL(finished(Tp::PendingOperation*)),
+            this,
+            SLOT(onProfileManagerReady(Tp::PendingOperation*)));
 }
 
 ProfileListModel::~ProfileListModel()
 {
+}
+
+void ProfileListModel::onProfileManagerReady(Tp::PendingOperation *op)
+{
+    // Check the pending operation completed successfully.
+    if (op->isError()) {
+        kDebug() << "becomeReady() failed:" << op->errorName() << op->errorMessage();
+        return;
+    }
+    Tp::PendingStringList* pendingNames = Tp::ConnectionManager::listNames();
+    connect(pendingNames, SIGNAL(finished(Tp::PendingOperation*)), SLOT(onConnectionManagerNamesFetched(Tp::PendingOperation*)));
 }
 
 int ProfileListModel::rowCount(const QModelIndex &index) const
@@ -76,16 +96,20 @@ QVariant ProfileListModel::data(const QModelIndex &index, int role) const
     return data;
 }
 
-void ProfileListModel::setProfileManager(Tp::ProfileManagerPtr profileManager)
-{
-    m_profileManager = profileManager;
-    Tp::PendingStringList* pendingNames = Tp::ConnectionManager::listNames();
-    connect(pendingNames, SIGNAL(finished(Tp::PendingOperation*)), SLOT(onConnectionManagerNamesFetched(Tp::PendingOperation*)));
-}
-
 ProfileItem *ProfileListModel::itemForIndex(const QModelIndex &index) const
 {
     return m_profileItems.at(index.row());
+}
+
+ProfileItem *ProfileListModel::itemForService(const QString &serviceName) const
+{
+    Q_FOREACH (ProfileItem *profileItem, m_profileItems) {
+        if (profileItem->serviceName() == serviceName) {
+            return profileItem;
+        }
+    }
+
+    return 0;
 }
 
 bool ProfileListModel::hasNonFakeProfile(const Tp::ProfilePtr& profile, const QList<Tp::ProfilePtr> &profiles) const

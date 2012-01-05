@@ -19,8 +19,10 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
-#ifndef TELEPATHY_ACCOUNTS_KCM_PROFILE_LIST_MODEL_H
-#define TELEPATHY_ACCOUNTS_KCM_PROFILE_LIST_MODEL_H
+#ifndef LIB_KCM_TELEPATHY_ACCOUNTS_PROFILE_LIST_MODEL_H
+#define LIB_KCM_TELEPATHY_ACCOUNTS_PROFILE_LIST_MODEL_H
+
+#include "kcm_telepathy_accounts_export.h"
 
 #include <QtCore/QAbstractListModel>
 
@@ -32,7 +34,7 @@ namespace TelepathyQt {
 
 class ProfileItem;
 
-class ProfileListModel : public QAbstractListModel
+class KCM_TELEPATHY_ACCOUNTS_EXPORT ProfileListModel : public QAbstractListModel
 {
     Q_OBJECT
     Q_DISABLE_COPY(ProfileListModel);
@@ -50,11 +52,11 @@ public:
     virtual QVariant data(const QModelIndex &index, int role = Qt::DisplayRole) const;
 
     ProfileItem *itemForIndex(const QModelIndex &index) const;
-
-    void setProfileManager(Tp::ProfileManagerPtr profileManager);
+    ProfileItem *itemForService(const QString &serviceName) const;
 
 private Q_SLOTS:
     void onConnectionManagerNamesFetched(Tp::PendingOperation*);
+    void onProfileManagerReady(Tp::PendingOperation *op);
 
 private:
     bool hasNonFakeProfile(const Tp::ProfilePtr &profile, const QList<Tp::ProfilePtr> &profiles) const;

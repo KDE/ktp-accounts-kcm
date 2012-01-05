@@ -29,6 +29,7 @@
 #include "KCMTelepathyAccounts/account-edit-widget.h"
 #include "KCMTelepathyAccounts/plugin-manager.h"
 #include "KCMTelepathyAccounts/profile-item.h"
+#include "KCMTelepathyAccounts/profile-list-model.h"
 #include "KCMTelepathyAccounts/profile-select-widget.h"
 #include "KCMTelepathyAccounts/simple-profile-select-widget.h"
 
@@ -50,7 +51,9 @@ class AddAccountAssistant::Private
 public:
     Private()
      : currentProfileItem(0),
+       profileListModel(0),
        profileSelectWidget(0),
+       simpleProfileSelectWidget(0),
        accountEditWidget(0),
        pageOne(0),
        pageTwo(0),
@@ -61,6 +64,7 @@ public:
     Tp::AccountManagerPtr accountManager;
     Tp::ConnectionManagerPtr connectionManager;
     ProfileItem *currentProfileItem;
+    ProfileListModel *profileListModel;
     ProfileSelectWidget *profileSelectWidget;
     SimpleProfileSelectWidget *simpleProfileSelectWidget;
     AccountEditWidget *accountEditWidget;
@@ -77,8 +81,9 @@ AddAccountAssistant::AddAccountAssistant(Tp::AccountManagerPtr accountManager, Q
     d->accountManager = accountManager;
 
     // Set up the pages of the Assistant.
-    d->profileSelectWidget       = new ProfileSelectWidget(this);
-    d->simpleProfileSelectWidget = new SimpleProfileSelectWidget(this);
+    d->profileListModel          = new ProfileListModel(this);
+    d->profileSelectWidget       = new ProfileSelectWidget(d->profileListModel, this, true);
+    d->simpleProfileSelectWidget = new SimpleProfileSelectWidget(d->profileListModel, this);
     d->pageOne = new KPageWidgetItem(d->simpleProfileSelectWidget);
     d->pageTwo = new KPageWidgetItem(d->profileSelectWidget);
 

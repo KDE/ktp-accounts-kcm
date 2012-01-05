@@ -41,25 +41,24 @@ class SimpleProfileSelectWidget::Private
 {
 public:
     Private()
-     : profileManager(0),
+     : profileListModel(0),
        ui(0),
-       signalMapper(0),
-       profileItem(0)
+       signalMapper(0)
     {
     }
 
-    Tp::ProfileManagerPtr profileManager;
+    ProfileListModel *profileListModel;
     Ui::SimpleProfileSelectWidget *ui;
     QSignalMapper *signalMapper;
-    ProfileItem *profileItem;
     QString profileName;
 };
 
-SimpleProfileSelectWidget::SimpleProfileSelectWidget(QWidget *parent)
+SimpleProfileSelectWidget::SimpleProfileSelectWidget(ProfileListModel *profileListModel, QWidget *parent)
  : QWidget(parent),
    d(new Private)
 {
     // Set up the models
+    d->profileListModel = profileListModel;
     d->signalMapper = new QSignalMapper(this);
 
     // Set up the widget
@@ -120,13 +119,6 @@ SimpleProfileSelectWidget::SimpleProfileSelectWidget(QWidget *parent)
 
     // Disable everything until Tp::ProfileManager is ready
     d->ui->verticalLayout->setEnabled(false);
-
-    d->profileManager = Tp::ProfileManager::create(QDBusConnection::sessionBus());
-
-    // FIXME: Until all distros ship correct profile files, we should fake them
-    connect(d->profileManager->becomeReady(Tp::Features() << Tp::ProfileManager::FeatureFakeProfiles),
-            SIGNAL(finished(Tp::PendingOperation*)),
-            SLOT(onProfileManagerReady(Tp::PendingOperation*)));
 }
 
 SimpleProfileSelectWidget::~SimpleProfileSelectWidget()
@@ -135,36 +127,10 @@ SimpleProfileSelectWidget::~SimpleProfileSelectWidget()
     delete d;
 }
 
-void SimpleProfileSelectWidget::onProfileManagerReady(Tp::PendingOperation *op)
-{
-    // Check the pending operation completed successfully.
-    if (op->isError()) {
-        kDebug() << "becomeReady() failed:" << op->errorName() << op->errorMessage();
-        return;
-    }
-    else {
-        // Enable the buttons
-        d->ui->verticalLayout->setEnabled(true);
-    }
-}
-
 // Return the selected ProfileItem or 0 if nothing is selected.
 ProfileItem *SimpleProfileSelectWidget::selectedProfile()
 {
-    delete d->profileItem;
-    d->profileItem = NULL;
-
-    Tp::ProfilePtr profilePtr = d->profileManager->profileForService(d->profileName);
-
-    if (profilePtr.isNull()) {
-        kDebug() << "Profile is missing, we need to install some packages here.";
-        return 0;
-    }
-    else {
-        d->profileItem = new ProfileItem(profilePtr, this);
-        return d->profileItem;
-    }
-
+   return d->profileListModel->itemForService(d->profileName);
 }
 
 // FIXME: before we proceed here, we should check if there's everything installed we need.
