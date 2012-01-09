@@ -47,11 +47,13 @@ void YahooMainOptionsWidget::submit()
     if (index.isValid()) {
         QString account = m_ui->accountLineEdit->text();
 
-        if (account.contains(QLatin1Char('@'))) {
+        if (account.contains(QLatin1String("@yahoo."))) {
             int atIndex = account.indexOf(QLatin1Char('@'));
 
             //update the model with the account value from the text box.
             parameterModel()->setData(index, account.left(atIndex), Qt::EditRole);
+        } else {
+            parameterModel()->setData(index, account, Qt::EditRole);
         }
     }
 
