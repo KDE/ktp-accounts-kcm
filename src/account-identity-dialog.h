@@ -5,6 +5,10 @@
 
 #include <TelepathyQt/Types>
 
+namespace Tp {
+class PendingOperation;
+}
+
 namespace Ui {
     class AccountIdentityDialog;
 }
@@ -19,9 +23,6 @@ public:
     explicit AccountIdentityDialog(const Tp::AccountPtr &account, QWidget *parent = 0);
     ~AccountIdentityDialog();
 
-    /** Returns if the user has changed settings*/
-    bool hasChanged() const;
-
 public Q_SLOTS:
     /** Updates the account to user selection*/
     void apply();
@@ -29,7 +30,6 @@ public Q_SLOTS:
 private Q_SLOTS:
     void onNicknameChanged(const QString &nickname);
     void onAvatarChanged(const Tp::Avatar &avatar);
-    void onEdited();
 
 private:
     Tp::AccountPtr m_account;
