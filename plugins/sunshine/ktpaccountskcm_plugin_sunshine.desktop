@@ -1,36 +1,8 @@
 [Desktop Entry]
 Encoding=UTF-8
 Comment=Custom account configuration user interface for Gadu-Gadu accounts using the Sunshine connection manager.
-Comment[da]=Brugerflade til brugertilpasset kontokonfiguration til Gadu-Gadu-konti der bruger forbindelseshåndteringen Sunshine.
-Comment[de]=Eigene Benutzeroberfläche zum Einrichten von Gadu-Gadu-Zugängen, die die Sunshine-Verbindungsverwaltung verwenden.
-Comment[es]=Interfaz de usuario personalizada para la configuración de cuentas que usen el gestor de conexión Sunshine.
-Comment[et]=Sunshine'i ühendusehaldurit kasutavate Gadu-Gadu kontode kohandatud konto seadistamise kasutajaliides
-Comment[hu]=Egyedi beállítófelület a Sunshine kapcsolatkezelőt használó Gadu-Gadu azonosítókhoz.
-Comment[it]=Interfaccia utente personalizzata di configurazione account per account che usano il gestore di connessioni Sunshine.
-Comment[nl]=Gebruikersinterface voor aangepaste accountconfiguratie voor Gadu-Gadu accounts die de Sunshine verbindingenbeheerder gebruiken.
-Comment[pl]=Własny interfejsu użytkownika konfiguracji kont dla kont wykorzystujących menadżera połączeń Gadu-Gadu.
-Comment[pt]=Interface de utilizador de configuração de contas personalizadas com o gestor de ligações Sunshine.
-Comment[pt_BR]=Interface de configuração de contas personalizadas usando o gerenciador de conexões Gadu-Gadu.
-Comment[sv]=Användargränssnitt för anpassad kontoinställning av Gadu-Gadukonton som använder anslutningshanteraren Sunshine.
-Comment[uk]=Інтерфейс користувача для нетипового налаштування облікового запису Gadu-Gadu за допомогою керування з’єднаннями Sunshine.
-Comment[x-test]=xxCustom account configuration user interface for Gadu-Gadu accounts using the Sunshine connection manager.xx
-Comment[zh_TW]=對使用 Sunshine 連線管理員的 Gadu-Gadu 帳號自訂帳號設定使用者介面。
 Icon=blockdevice
 Name=Gadu-Gadu Account Configuration User Interface
-Name[da]=Brugerflade til Gadu-Gadu kontokonfiguration
-Name[de]=Benutzeroberfläche zur Einrichtung von Gadu-Gadu-Zugängen
-Name[es]=Interfaz de usuario para la configuración de cuentas Gadu-Gadu
-Name[et]=Gadu-Gadu konto seadistamise kasutajaliides
-Name[hu]=Gadu-Gadu azonosítóbeállító felület
-Name[it]=Interfaccia utente di configurazione account Gadu-Gadu
-Name[nl]=Gebruikersinterface voor Gadu-Gadu accountconfiguratie
-Name[pl]=Interfejs użytkownika konfiguracji konta Gadu-Gadu
-Name[pt]=Interface de Configuração de Contas do Gadu-Gadu
-Name[pt_BR]=Interface de configuração de contas do Gadu-Gadu
-Name[sv]=Användargränssnitt för inställning av Gadu-Gadukonton
-Name[uk]=Інтерфейс користувача для налаштування Gadu-Gadu
-Name[x-test]=xxGadu-Gadu Account Configuration User Interfacexx
-Name[zh_TW]=Gadu-Gadu 帳號設定使用者介面
 Type=Service
 ServiceTypes=KTpAccountsKCM/AccountUiPlugin
 
