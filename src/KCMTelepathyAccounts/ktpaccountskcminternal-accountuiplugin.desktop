@@ -4,6 +4,7 @@ X-KDE-ServiceType=KTpAccountsKCM/AccountUiPlugin
 
 Comment=Telepathy Accounts KCM Module Account User Interface Plugins
 Comment[da]=Plugins til KCM-modul til kontobrugerflade til Telepathy-konti
+Comment[el]=Πρόσθετα περιβάλλοντος λογαριασμού σε άρθρωμα KCM για λογαριασμούς Telepathy
 Comment[es]=Complementos del interfaz de usuario para las cuentas de Telepathy y el módulo KCM.
 Comment[et]=Telepathy kontode seadistustemooduli konto kasutajaliidese pluginad
 Comment[fr]=Modules externes d'interface utilisateur de compte de module KCM pour les comptes Telepathy
