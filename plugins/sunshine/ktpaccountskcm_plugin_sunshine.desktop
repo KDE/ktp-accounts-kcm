@@ -20,6 +20,7 @@ Comment[x-test]=xxCustom account configuration user interface for Gadu-Gadu acco
 Comment[zh_TW]=對使用 Sunshine 連線管理員的 Gadu-Gadu 帳號自訂帳號設定使用者介面。
 Icon=blockdevice
 Name=Gadu-Gadu Account Configuration User Interface
+Name[cs]=Uživatelské rozhraní nastavení účtu Gadu-Gadu
 Name[da]=Brugerflade til Gadu-Gadu kontokonfiguration
 Name[de]=Benutzeroberfläche zur Einrichtung von Gadu-Gadu-Zugängen
 Name[el]=Περιβάλλον διαμόρφωσης λογαριασμού χρήστη με Gadu-Gadu
