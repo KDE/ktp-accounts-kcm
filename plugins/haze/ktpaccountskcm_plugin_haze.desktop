@@ -1,6 +1,7 @@
 [Desktop Entry]
 Encoding=UTF-8
 Comment=Custom account configuration user interface for accounts using the Haze connection manager.
+Comment[ca]=Interfície d'usuari de configuració de compte personalitzat per comptes que utilitzen el gestor de connexions Haze.
 Comment[da]=Brugerflade til brugertilpasset kontokonfiguration til konti der bruger forbindelseshåndteringen Haze.
 Comment[de]=Eigene Benutzeroberfläche zum Einrichten von Zugängen, die die Haze-Verbindungsverwaltung verwenden.
 Comment[el]=Περιβάλλον προσαρμοσμένης διαμόρφωσης λογαριασμού χρήστη για λογαριασμούς που χρησιμοποιούν το διαχειριστή συνδέσεων Haze.
@@ -20,6 +21,7 @@ Comment[x-test]=xxCustom account configuration user interface for accounts using
 Comment[zh_TW]=對使用 Haze 連線管理員的帳號自訂帳號設定使用者介面。
 Icon=blockdevice
 Name=Haze Account Configuration User Interface
+Name[ca]=Interfície d'usuari de configuració de compte de Haze
 Name[cs]=Uživatelské rozhraní nastavení účtu Haze
 Name[da]=Brugerflade til Haze kontokonfiguration
 Name[de]=Benutzeroberfläche zur Einrichtung von Haze-Zugängen
