@@ -22,7 +22,7 @@ add_definitions (${KDE4_DEFINITIONS}
 
 include_directories (${KDE4_INCLUDES}
                      ${TELEPATHY_QT4_INCLUDE_DIR}
-                     ${KTELEPATHY_INCLUDE_DIR}
+                     ${KTP_INCLUDE_DIR}
                      ${CMAKE_CURRENT_SOURCE_DIR}/src
 )
 
