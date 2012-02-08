@@ -5,7 +5,7 @@
          manager="gabble"
          protocol="jabber"
          icon="im-msn">
-  <name>MSN (using XMPP)</name>
+  <name>Windows Live Messenger (using XMPP)</name>
 
   <parameters>
     <parameter name="server"  type="s" mandatory="1">xmpp.messenger.live.com</parameter>
