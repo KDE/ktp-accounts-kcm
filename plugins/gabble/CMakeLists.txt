@@ -11,6 +11,7 @@ set (ktpaccountskcm_plugin_gabble_SRCS
      main-options-widget-googletalk.cpp
      main-options-widget-facebook.cpp
      main-options-widget-msn.cpp
+     main-options-widget-kde-talk.cpp
      server-settings-widget.cpp
      proxy-settings-widget.cpp
 )
@@ -20,6 +21,7 @@ kde4_add_ui_files (ktpaccountskcm_plugin_gabble_SRCS
                    main-options-widget-googletalk.ui
                    main-options-widget-facebook.ui
                    main-options-widget-msn.ui
+                   main-options-widget-kde-talk.ui
                    server-settings-widget.ui
                    proxy-settings-widget.ui
 )
