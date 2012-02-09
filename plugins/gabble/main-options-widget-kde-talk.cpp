@@ -24,7 +24,6 @@
 
 #include <KCMTelepathyAccounts/ParameterEditModel>
 #include <KDE/KDebug>
-#include <QValidator>
 
 MainOptionsWidgetKDETalk::MainOptionsWidgetKDETalk(ParameterEditModel *model,
                                                    QWidget *parent)
@@ -62,6 +61,7 @@ void MainOptionsWidgetKDETalk::submit()
         //append "@kdetalk.net" (fetching the address from the default params for as much future compatiability as possible)
         account.append(QLatin1Char('@'));
         QString serverAddress = parameterModel()->indexForParameter(parameterModel()->parameter(QLatin1String("server"))).data().toString();
+        kDebug() << "Server Address:" << serverAddress;
         account.append(serverAddress);
 
         //update the model with the account value from the text box.
