@@ -66,7 +66,7 @@ AbstractAccountParametersWidget *GabbleAccountUi::mainOptionsWidget(
         QWidget *parent) const
 {
     if (m_serviceName == QLatin1String("google-talk")) {
-	return new MainOptionsWidgetGoogleTalk(model, parent);
+        return new MainOptionsWidgetGoogleTalk(model, parent);
     } else if (m_serviceName == QLatin1String("facebook")) {
         return new MainOptionsWidgetFacebook(model, parent);
     } else if (m_serviceName == QLatin1String("msn-xmpp")) {
