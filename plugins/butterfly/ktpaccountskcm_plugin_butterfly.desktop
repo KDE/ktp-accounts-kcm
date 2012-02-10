@@ -15,6 +15,7 @@ Comment[nl]=Gebruikersinterface voor aangepaste accountconfiguratie voor account
 Comment[pl]=Własny interfejsu użytkownika konfiguracji kont dla kont wykorzystujących menadżera połączeń Butterfly.
 Comment[pt]=Interface de utilizador de configuração de contas personalizadas com o gestor de ligações Butterfly.
 Comment[pt_BR]=Interface de usuário de configuração de contas personalizadas usando o gerenciador de conexões Butterfly.
+Comment[sk]=Používateľské rozhranie konfigurácie vlastného účtu pre účty pomocou správcu pripojenia Butterfly.
 Comment[sv]=Användargränssnitt för anpassad kontoinställning av konton som använder anslutningshanteraren Butterfly.
 Comment[uk]=Інтерфейс користувача для нетипового налаштування облікового запису за допомогою керування з’єднаннями Butterfly.
 Comment[x-test]=xxCustom account configuration user interface for accounts using the Butterfly connection manager.xx

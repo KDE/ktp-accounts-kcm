@@ -205,17 +205,6 @@ void AddAccountAssistant::accept()
         return;
     }
 
-    // Check account we're trying to create doesn't already exist
-    Q_FOREACH (const Tp::AccountPtr &account, d->accountManager->allAccounts()) {
-        if (values.value(QLatin1String("account")) == account->displayName()
-            && d->currentProfileItem->protocolName() == account->protocolName()) {
-            Q_EMIT feedbackMessage(i18n("Failed to create account"),
-                                   i18n("Account already exists. Old one will be used instead"),
-                                   KMessageWidget::Error);
-            return;
-        }
-    }
-
     // FIXME: In some next version of tp-qt4 there should be a convenience class for this
     // https://bugs.freedesktop.org/show_bug.cgi?id=33153
     QVariantMap properties;
