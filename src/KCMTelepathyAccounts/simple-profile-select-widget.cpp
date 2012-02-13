@@ -66,30 +66,37 @@ SimpleProfileSelectWidget::SimpleProfileSelectWidget(ProfileListModel *profileLi
     d->ui->setupUi(this);
 
     // Create the buttons for the Major Profiles
-    QCommandLinkButton *buttonJabber = new QCommandLinkButton(Dictionary::instance()->string(QLatin1String("jabber")));
+    QCommandLinkButton *buttonJabber = new QCommandLinkButton(Dictionary::instance()->string(QLatin1String("jabber")), QString());
     buttonJabber->setIcon(KIcon(QLatin1String("im-jabber")));
     buttonJabber->setIconSize(QSize(32,32));
+    buttonJabber->setSizePolicy(QSizePolicy(QSizePolicy::Expanding, QSizePolicy::Fixed));
 
     QCommandLinkButton *buttonGTalk = new QCommandLinkButton(Dictionary::instance()->string(QLatin1String("google-talk")));
     buttonGTalk->setIcon(KIcon(QLatin1String("im-google-talk")));
     buttonGTalk->setIconSize(QSize(32,32));
+    buttonGTalk->setSizePolicy(QSizePolicy(QSizePolicy::Expanding, QSizePolicy::Fixed));
+
 
     QCommandLinkButton *buttonFacebook = new QCommandLinkButton(Dictionary::instance()->string(QLatin1String("facebook")));
     buttonFacebook->setIcon(KIcon(QLatin1String("im-facebook")));
     buttonFacebook->setIconSize(QSize(32,32));
-
+    buttonFacebook->setSizePolicy(QSizePolicy(QSizePolicy::Expanding, QSizePolicy::Fixed));
+    
     QCommandLinkButton *buttonIcq = new QCommandLinkButton(Dictionary::instance()->string(QLatin1String("icq")));
     buttonIcq->setIcon(KIcon(QLatin1String("im-icq")));
     buttonIcq->setIconSize(QSize(32,32));
+    buttonIcq->setSizePolicy(QSizePolicy(QSizePolicy::Expanding, QSizePolicy::Fixed));
 
     QCommandLinkButton *buttonMsn = new QCommandLinkButton(Dictionary::instance()->string(QLatin1String("msn")));
     buttonMsn->setIcon(KIcon(QLatin1String("im-msn")));
     buttonMsn->setIconSize(QSize(32,32));
-
+    buttonMsn->setSizePolicy(QSizePolicy(QSizePolicy::Expanding, QSizePolicy::Fixed));
+   
     QCommandLinkButton *buttonOthers = new QCommandLinkButton(i18n("Others"), i18n("AOL, Gadu-Gadu, IRC, Yahoo and more..."));
     buttonOthers->setIcon(KIcon(QLatin1String("go-next")));
     buttonOthers->setIconSize(QSize(32,32));
-
+    buttonOthers->setSizePolicy(QSizePolicy(QSizePolicy::Expanding, QSizePolicy::Fixed));
+    
     // Add them to the SignalMapper
     d->signalMapper->setMapping(buttonJabber,   QLatin1String("jabber"));
     d->signalMapper->setMapping(buttonGTalk,    QLatin1String("google-talk"));
