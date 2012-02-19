@@ -21,7 +21,7 @@
 #include "gabble-account-ui-plugin.h"
 #include "gabble-account-ui.h"
 
-#include <KGenericFactory>
+#include <KPluginFactory>
 
 #include <QtCore/QVariantList>
 

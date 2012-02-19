@@ -27,7 +27,7 @@
 #include "haze-aim-account.h"
 #include "haze-msn-account.h"
 
-#include <KGenericFactory>
+#include <KPluginFactory>
 
 #include <QtCore/QVariantList>
 

@@ -21,7 +21,7 @@
 #include "rakia-account-ui-plugin.h"
 #include "rakia-account-ui.h"
 
-#include <KGenericFactory>
+#include <KPluginFactory>
 #include <KDebug>
 
 #include <QtCore/QVariantList>

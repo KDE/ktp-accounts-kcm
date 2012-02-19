@@ -23,7 +23,7 @@
 
 #include <KCMTelepathyAccounts/PluginMacros>
 
-#include <KGenericFactory>
+#include <KPluginFactory>
 
 #include <QtCore/QVariantList>
 

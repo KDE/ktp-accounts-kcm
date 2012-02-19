@@ -22,7 +22,7 @@
 #define LIB_KCM_TELEPATHY_ACCOUNTS_PLUGIN_MACROS_H
 
 #include <kdemacros.h>
-#include <KGenericFactory>
+#include <KPluginFactory>
 
 #define KCMTELEPATHYACCOUNTS_PLUGIN_EXPORT(libname,classname) \
   K_PLUGIN_FACTORY(factory,registerPlugin<classname>();) \

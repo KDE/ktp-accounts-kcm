@@ -22,7 +22,7 @@
 
 #include "idle-account-ui.h"
 
-#include <KGenericFactory>
+#include <KPluginFactory>
 
 #include <QtCore/QVariantList>
 

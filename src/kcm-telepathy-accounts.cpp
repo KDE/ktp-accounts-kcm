@@ -34,13 +34,14 @@
 #include <QtGui/QLabel>
 #include <QtGui/QSortFilterProxyModel>
 
-#include <KGenericFactory>
+#include <KPluginFactory>
 #include <KIcon>
 #include <KLocale>
 #include <KMessageBox>
 #include <KAboutData>
 #include <KMessageWidget>
 #include <KPixmapSequenceOverlayPainter>
+#include <KDebug>
 
 #include <TelepathyQt/Account>
 #include <TelepathyQt/AccountFactory>
