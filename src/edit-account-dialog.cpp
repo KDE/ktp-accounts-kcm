@@ -98,12 +98,14 @@ void EditAccountDialog::onWalletOpened(Tp::PendingOperation *op)
         parameterModel->setData(index, password, Qt::EditRole);
     }
 
-
     // Set up the interface
     d->widget = new AccountEditWidget(d->account->profile(),
                                       parameterModel,
                                       doNotConnectOnAdd,
                                       this);
+
+    d->widget->setDisplayName(d->account->displayName());
+
     setMainWidget(d->widget);
 
     d->kwalletReady = true;
@@ -168,17 +170,7 @@ void EditAccountDialog::onParametersUpdated(Tp::PendingOperation *op)
         KTp::WalletUtils::setAccountPassword(d->account, QString());
     }
 
-
-    // FIXME: Ask the user to submit a Display Name
-    QString displayName;
-    if (values.contains(QLatin1String("account"))) {
-        displayName = values[QLatin1String("account")].toString();
-    }
-    else {
-        displayName = d->account->profile()->protocolName();
-    }
-
-    Tp::PendingOperation *dnop = d->account->setDisplayName(displayName);
+    Tp::PendingOperation *dnop = d->account->setDisplayName(d->widget->displayName());
 
     connect(dnop,
             SIGNAL(finished(Tp::PendingOperation*)),
