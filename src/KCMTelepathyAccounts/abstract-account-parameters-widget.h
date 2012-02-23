@@ -60,7 +60,7 @@ public:
 
 public Q_SLOTS:
     /** This method is called when the display name should be updated
-     *  Derivated classes should reimplement this method
+     *  Main options widgets should reimplement this method
      */
     virtual void updateDefaultDisplayName();
 
