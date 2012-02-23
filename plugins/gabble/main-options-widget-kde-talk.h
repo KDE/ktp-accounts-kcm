@@ -41,6 +41,7 @@ public:
 
     virtual void submit();
     virtual bool validateParameterValues();
+    virtual void updateDefaultDisplayName();
 
 private:
     Ui::MainOptionsWidgetKDETalk *m_ui;
