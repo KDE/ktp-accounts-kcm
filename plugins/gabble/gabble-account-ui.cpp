@@ -47,6 +47,8 @@ GabbleAccountUi::GabbleAccountUi(const QString &serviceName, QObject *parent)
     registerSupportedParameter(QLatin1String("low-bandwidth"), QVariant::Bool);
     registerSupportedParameter(QLatin1String("ignore-ssl-errors"), QVariant::Bool);
     registerSupportedParameter(QLatin1String("keepalive-interval"), QVariant::UInt);
+    registerSupportedParameter(QLatin1String("resource"), QVariant::String);
+    registerSupportedParameter(QLatin1String("priority"), QVariant::Int);
 
     registerSupportedParameter(QLatin1String("stun-server"), QVariant::String);
     registerSupportedParameter(QLatin1String("stun-port"), QVariant::UInt);
