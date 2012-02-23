@@ -30,6 +30,9 @@
 
 #include <KCMTelepathyAccounts/AbstractAccountParametersWidget>
 #include <KCMTelepathyAccounts/GenericAdvancedOptionsWidget>
+#include <KCMTelepathyAccounts/ParameterEditModel>
+
+#include <TelepathyQt/ProtocolParameter>
 
 
 GabbleAccountUi::GabbleAccountUi(const QString &serviceName, QObject *parent)
@@ -68,6 +71,11 @@ AbstractAccountParametersWidget *GabbleAccountUi::mainOptionsWidget(
         ParameterEditModel *model,
         QWidget *parent) const
 {
+    QModelIndex index = model->indexForParameter(model->parameter(QLatin1String("resource")));
+    if (index.isValid() && model->data(index, ParameterEditModel::ValueRole).toString().isEmpty()) {
+        model->setData(index, QString(QLatin1String("kde-telepathy")), ParameterEditModel::ValueRole);
+    }
+
     if (m_serviceName == QLatin1String("google-talk")) {
         return new MainOptionsWidgetGoogleTalk(model, parent);
     } else if (m_serviceName == QLatin1String("facebook")) {
