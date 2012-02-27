@@ -112,16 +112,20 @@ const QString AccountItem::connectionStateString() const
 
 const KIcon AccountItem::connectionStateIcon() const
 {
-    switch (m_account->connectionStatus()) {
-    case Tp::ConnectionStatusConnected:
-        return KIcon(QLatin1String("user-online"));
-    case Tp::ConnectionStatusConnecting:
-        //imho this is not really worth animating, but feel free to play around..
-        return KIcon(KPixmapSequence(QLatin1String("process-working"), 22).frameAt(0));
-    case Tp::ConnectionStatusDisconnected:
-        return KIcon(QLatin1String("user-offline"));
-    default:
-        return KIcon(QLatin1String("user-offline"));
+    if (m_account->isEnabled()) {
+        switch (m_account->connectionStatus()) {
+        case Tp::ConnectionStatusConnected:
+            return KIcon(QLatin1String("user-online"));
+        case Tp::ConnectionStatusConnecting:
+            //imho this is not really worth animating, but feel free to play around..
+            return KIcon(KPixmapSequence(QLatin1String("process-working"), 22).frameAt(0));
+        case Tp::ConnectionStatusDisconnected:
+            return KIcon(QLatin1String("user-offline"));
+        default:
+            return KIcon(QLatin1String("user-offline"));
+        }
+    } else {
+        return KIcon();
     }
 }
 
