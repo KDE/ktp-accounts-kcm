@@ -94,15 +94,19 @@ const KIcon& AccountItem::icon() const
 
 const QString AccountItem::connectionStateString() const
 {
-    switch (m_account->connectionStatus()) {
-    case Tp::ConnectionStatusConnected:
-        return i18n("Online");
-    case Tp::ConnectionStatusConnecting:
-        return i18nc("This is a connection state", "Connecting");
-    case Tp::ConnectionStatusDisconnected:
-        return i18nc("This is a connection state", "Disconnected");
-    default:
-        return i18nc("This is an unknown connection state", "Unknown");
+    if (m_account->isEnabled()) {
+        switch (m_account->connectionStatus()) {
+        case Tp::ConnectionStatusConnected:
+            return i18n("Online");
+        case Tp::ConnectionStatusConnecting:
+            return i18nc("This is a connection state", "Connecting");
+        case Tp::ConnectionStatusDisconnected:
+            return i18nc("This is a connection state", "Disconnected");
+        default:
+            return i18nc("This is an unknown connection state", "Unknown");
+        }
+    } else {
+        return i18nc("This is a disabled account", "Disabled");
     }
 }
 
