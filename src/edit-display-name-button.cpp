@@ -60,7 +60,7 @@ EditDisplayNameDialog::EditDisplayNameDialog(Tp::AccountPtr account,
     : KDialog(parent, flags),
       m_account(account)
 {
-    setCaption(i18n("Edit display name"));
+    setCaption(i18n("Edit Display Name"));
     setButtons( KDialog::Ok | KDialog::Cancel );
     setWindowIcon(KIcon(QLatin1String("telepathy-kde")));
     setFixedSize(400, 150);
