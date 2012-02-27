@@ -41,9 +41,6 @@ Q_SIGNALS:
 
 private Q_SLOTS:
     void onCheckBoxToggled(bool checked);
-
-private:
-    static const int m_paddingSize = 7;
 };
 
 #endif // ACCOUNTLISTDELEGATE_H

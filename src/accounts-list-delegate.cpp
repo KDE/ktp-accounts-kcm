@@ -2,6 +2,7 @@
  * This file is part of telepathy-accounts-kcm
  *
  * Copyright (C) 2011 David Edmundson <kde@davidedmundson.co.uk>
+ * Copyright (C) 2012 Daniele E. Domenichelli <daniele.domenichelli@gmail.com>
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -20,18 +21,28 @@
 
 #include "accounts-list-delegate.h"
 
+#include "account-item.h"
 #include "accounts-list-model.h"
+#include "edit-display-name-button.h"
+#include "change-icon-button.h"
+
+#include <KTp/presence.h>
+#include <KTp/Models/accounts-model.h>
+
+#include <KDE/KLocale>
+#include <KDE/KIconButton>
+#include <KDE/KMenu>
+#include <KDE/KAction>
+#include <KDE/KDebug>
 
 #include <QtGui/QApplication>
 #include <QtGui/QPainter>
 #include <QtGui/QCheckBox>
 #include <QtGui/QAbstractItemView>
 #include <QtGui/QSortFilterProxyModel>
+#include <QtGui/QLabel>
+#include <sys/stat.h>
 
-#include <KLocale>
-#include <KDebug>
-
-#include "account-item.h"
 
 AccountsListDelegate::AccountsListDelegate(QAbstractItemView *itemView, QObject *parent)
     : KWidgetItemDelegate(itemView, parent)
@@ -42,57 +53,203 @@ QSize AccountsListDelegate::sizeHint(const QStyleOptionViewItem &option, const Q
 {
     Q_UNUSED(index);
 
-    int iconHeight = option.decorationSize.height() + (m_paddingSize*2);  //icon height + padding either side
-    int textHeight = option.fontMetrics.height()*2 + (m_paddingSize*2);
+    int iconHeight = option.decorationSize.height() + (7*2);  //icon height + padding either side
+    int textHeight = option.fontMetrics.height()*2 + (7*2);
 
-    return QSize(1,qMax(iconHeight, textHeight)); //any width,the view should give us the whole thing.
+    return QSize(-1,qMax(iconHeight, textHeight)); //any width,the view should give us the whole thing.
 }
 
 QList<QWidget*> AccountsListDelegate::createItemWidgets() const
 {
     QCheckBox *checkbox = new QCheckBox();
-    checkbox->setToolTip(i18n("Enable account"));
     connect(checkbox, SIGNAL(clicked(bool)), SLOT(onCheckBoxToggled(bool)));
-    return QList<QWidget*>() << checkbox;
+
+    ChangeIconButton *changeIconButton = new ChangeIconButton();
+    changeIconButton->setFlat(true);
+    changeIconButton->setToolTip(i18n("Change account icon"));
+    changeIconButton->setWhatsThis(i18n("This button allows to change the icon for your account.<br />"
+                                  "This icon is just used locally on your computer, your contacts won't be able to see it."));
+
+    QLabel *statusTextLabel = new QLabel();
+    QLabel *statusIconLabel = new QLabel();
+
+    EditDisplayNameButton *displayNameButton = new EditDisplayNameButton();
+    displayNameButton->setFlat(true);
+    displayNameButton->setToolTip(i18n("Change account display name"));
+    displayNameButton->setWhatsThis(i18n("This button allows to change the display name for your account.<br />"
+                                         "The display name is an alias for your account and is just used locally"
+                                         "on your computer, your contacts won't be able to see it."));
+
+    QLabel *connectionErrorLabel = new QLabel();
+
+    return QList<QWidget*>() << checkbox
+                             << changeIconButton
+                             << statusTextLabel
+                             << statusIconLabel
+                             << displayNameButton
+                             << connectionErrorLabel;
 }
 
 
 void AccountsListDelegate::updateItemWidgets(const QList<QWidget *> widgets, const QStyleOptionViewItem &option, const QPersistentModelIndex &index) const
 {
+    // draws:
+    //                   AccountName
+    // Checkbox | Icon |              | ConnectionIcon | ConnectionState
+    //                   errorMessage
+
     if (!index.isValid()) {
         return;
     }
 
+    Q_ASSERT(widgets.size() == 6);
+
+    // Get the widgets
     QCheckBox* checkbox = qobject_cast<QCheckBox*>(widgets.at(0));
-    if (checkbox) {
-        int topMargin = (option.rect.height() - checkbox->height()) / 2;
-        checkbox->move(m_paddingSize, topMargin);
-        checkbox->setChecked(index.data(Qt::CheckStateRole).toBool());
+    ChangeIconButton* changeIconButton = qobject_cast<ChangeIconButton*>(widgets.at(1));
+    QLabel *statusTextLabel = qobject_cast<QLabel*>(widgets.at(2));
+    QLabel *statusIconLabel = qobject_cast<QLabel*>(widgets.at(3));
+    EditDisplayNameButton *displayNameButton = qobject_cast<EditDisplayNameButton*>(widgets.at(4));
+    QLabel *connectionErrorLabel = qobject_cast<QLabel*>(widgets.at(5));
 
-        if (checkbox->isChecked()) {
-            checkbox->setToolTip(i18n("Disable account"));
-        }
-        else {
-            checkbox->setToolTip(i18n("Enable account"));
-        }
+    Q_ASSERT(checkbox);
+    Q_ASSERT(changeIconButton);
+    Q_ASSERT(statusTextLabel);
+    Q_ASSERT(statusIconLabel);
+    Q_ASSERT(displayNameButton);
+    Q_ASSERT(connectionErrorLabel);
+
+
+    bool isSelected = itemView()->selectionModel()->isSelected(index) && itemView()->hasFocus();
+    bool isEnabled = index.data(Qt::CheckStateRole).toBool();
+    QIcon accountIcon = index.data(Qt::DecorationRole).value<QIcon>();
+    QIcon statusIcon = index.data(AccountsListModel::ConnectionStateIconRole).value<QIcon>();
+    QString statusText = index.data(AccountsListModel::ConnectionStateDisplayRole).toString();
+    QString displayName = index.data(Qt::DisplayRole).toString();
+    QString connectionError = index.data(AccountsListModel::ConnectionErrorMessageDisplayRole).toString();
+    Tp::AccountPtr account = index.data(AccountsListModel::AccountItemRole).value<AccountItem*>()->account();
+
+
+    QRect outerRect(0, 0, option.rect.width(), option.rect.height());
+    QRect contentRect = outerRect.adjusted(7,2,-7,-2); //add some padding
+
+
+    // checkbox
+    if (isEnabled) {
+        checkbox->setChecked(true);;
+        checkbox->setToolTip(i18n("Disable account"));
+    } else {
+        checkbox->setChecked(false);
+        checkbox->setToolTip(i18n("Enable account"));
     }
-    else {
-        kDebug() << "checkbox widget pointer is null..";
+
+    int checkboxLeftMargin = contentRect.left();
+    int checkboxTopMargin = (outerRect.height() - checkbox->height()) / 2;
+    checkbox->move(checkboxLeftMargin, checkboxTopMargin);
+
+
+    // changeIconButton
+    changeIconButton->setIcon(accountIcon);
+    changeIconButton->setAccount(account);
+
+    int changeIconButtonLeftMargin = checkboxLeftMargin + checkbox->width();
+    int changeIconButtonTopMargin = (outerRect.height() - changeIconButton->height()) / 2;
+    changeIconButton->move(changeIconButtonLeftMargin, changeIconButtonTopMargin);
+
+
+    // statusTextLabel
+    QFont statusTextFont = option.font;
+    QPalette statusTextLabelPalette = option.palette;
+    if (isEnabled) {
+        statusTextLabel->setEnabled(true);
+        statusTextFont.setItalic(false);
+    } else {
+        statusTextLabel->setDisabled(true);
+        statusTextFont.setItalic(true);
     }
-}
+    if (isSelected) {
+        statusTextLabelPalette.setColor(QPalette::Text, statusTextLabelPalette.color(QPalette::Active, QPalette::HighlightedText));
+    }
+    statusTextLabel->setPalette(statusTextLabelPalette);
+    statusTextLabel->setFont(statusTextFont);
+    statusTextLabel->setText(statusText);
+    statusTextLabel->setFixedSize(statusTextLabel->fontMetrics().boundingRect(statusText).width(), statusTextLabel->height());
+    int statusTextLabelLeftMargin = contentRect.right() - statusTextLabel->width();
+    int statusTextLabelTopMargin = (outerRect.height() - statusTextLabel->height()) / 2;
+    statusTextLabel->move(statusTextLabelLeftMargin, statusTextLabelTopMargin);
 
-void AccountsListDelegate::onCheckBoxToggled(bool checked)
-{
-    QModelIndex index = focusedIndex();
-    Q_EMIT itemChecked(index, checked);
-}
 
+    // statusIconLabel
+    statusIconLabel->setPixmap(statusIcon.pixmap(KIconLoader::SizeSmall));
+    statusIconLabel->setFixedSize(statusIconLabel->minimumSizeHint());
+    int statusIconLabelLeftMargin = contentRect.right() - statusTextLabel->width() - statusIconLabel->width() - 6;
+    int statusIconLabelTopMargin = (outerRect.height() - statusIconLabel->height()) / 2;
+    statusIconLabel->move(statusIconLabelLeftMargin, statusIconLabelTopMargin);
+
+
+    QRect innerRect = contentRect.adjusted(changeIconButton->geometry().right() - contentRect.left(),
+                                           0,
+                                           -statusTextLabel->width() - statusIconLabel->width() - 6,
+                                           0); // rect containing account name and error message
+
+
+    // displayNameButton
+    QFont displayNameButtonFont = option.font;
+    QPalette displayNameButtonPalette = option.palette;
+    if (isEnabled) {
+        displayNameButtonFont.setBold(true);
+    } else {
+        displayNameButtonFont.setItalic(true);
+        // NOTE: Flat QPushButton use WindowText instead of ButtonText for button text color
+        displayNameButtonPalette.setColor(QPalette::WindowText, displayNameButtonPalette.color(QPalette::Disabled, QPalette::Text));
+    }
+    if (isSelected) {
+        // Account is selected
+        displayNameButtonPalette.setColor(QPalette::WindowText, displayNameButtonPalette.color(QPalette::Active, QPalette::HighlightedText));
+    }
+    displayNameButton->setFont(displayNameButtonFont);
+    displayNameButton->setPalette(displayNameButtonPalette);
+
+    QString displayNameButtonText = displayNameButton->fontMetrics().elidedText(displayName,
+                                                                                Qt::ElideRight,
+                                                                                innerRect.width() - (7*2));
+    QRect displayNameButtonTextRect = displayNameButton->fontMetrics().boundingRect(displayNameButtonText);
+    displayNameButton->setText(displayNameButtonText);
+    displayNameButton->setFixedSize(displayNameButtonTextRect.width() + (7*2),
+                                    displayNameButton->minimumSizeHint().height());
+    displayNameButton->setAccount(account);
+
+    int displayNameButtonLeftMargin = innerRect.left();
+    int displayNameButtonTopMargin = innerRect.top();
+    displayNameButton->move(displayNameButtonLeftMargin, displayNameButtonTopMargin);
+
+
+    // connectionErrorLabel
+    QFont connectionErrorLabelFont = option.font;
+    QPalette connectionErrorLabelPalette = option.palette;
+    if (!isEnabled) {
+        connectionErrorLabelFont.setItalic(true);
+        connectionErrorLabelPalette.setColor(QPalette::Text, connectionErrorLabelPalette.color(QPalette::Disabled, QPalette::Text));
+    }
+    if (isSelected) {
+        // Account is selected
+        connectionErrorLabelPalette.setColor(QPalette::Text, connectionErrorLabelPalette.color(QPalette::Active, QPalette::HighlightedText));
+    }
+    connectionErrorLabel->setFont(connectionErrorLabelFont);
+    connectionErrorLabel->setPalette(connectionErrorLabelPalette);
+
+    connectionErrorLabel->setText(connectionErrorLabel->fontMetrics().elidedText(connectionError,
+                                                                                      Qt::ElideRight,
+                                                                                      innerRect.width() - (7*2)));
+    connectionErrorLabel->setFixedSize(connectionErrorLabel->minimumSizeHint().width(), displayNameButton->height());
+
+    int connectionErrorLabelLeftMargin = innerRect.left() + 7;
+    int connectionErrorLabelTopMargin = contentRect.bottom() - displayNameButton->height();
+    connectionErrorLabel->move(connectionErrorLabelLeftMargin, connectionErrorLabelTopMargin);
+}
 
 void AccountsListDelegate::paint(QPainter *painter, const QStyleOptionViewItem &option, const QModelIndex &index) const
 {
-    //draws Checkbox | Icon | AccountName  | ConnectionIcon | ConnectionState
-    //               |      | errorMessage |                |
-
     if (!index.isValid()) {
         return;
     }
@@ -100,54 +257,11 @@ void AccountsListDelegate::paint(QPainter *painter, const QStyleOptionViewItem &
     QStyle *style = QApplication::style();
 
     style->drawPrimitive(QStyle::PE_PanelItemViewItem, &option, painter, 0);
+}
 
-    QIcon icon = index.data(Qt::DecorationRole).value<QIcon>();
-    QString accountName = index.data(Qt::DisplayRole).toString();
-    QString connectionStatusString = index.data(AccountsListModel::ConnectionStateDisplayRole).toString();
-    QString connectionErrorString = index.data(AccountsListModel::ConnectionErrorMessageDisplayRole).toString();
-    QIcon connectionStatusIcon = index.data(AccountsListModel::ConnectionStateIconRole).value<QIcon>();
 
-    QRect innerRect = option.rect.adjusted(m_paddingSize,m_paddingSize,-m_paddingSize,-m_paddingSize); //add some padding
-
-    QSize checkBoxSize(32,20);
-    QSize decorationSize = option.decorationSize;
-    QSize statusTextSize = style->itemTextRect(option.fontMetrics, option.rect, Qt::AlignCenter , false , connectionStatusString).size();
-    QSize statusIconSize(16,16); //a nice small icon
-
-    QRect checkBoxRect(0, innerRect.top(), checkBoxSize.width(), innerRect.height());
-    QRect decorationRect(checkBoxRect.right(), innerRect.top(), decorationSize.width(), innerRect.height());
-
-    QRect statusTextRect(innerRect.right() - statusTextSize.width(), innerRect.top(), statusTextSize.width(), innerRect.height());
-    QRect statusIconRect(statusTextRect.left() - statusIconSize.width() -2, innerRect.top(), statusIconSize.width(), innerRect.height());
-    QRect mainTextRect(decorationRect.topRight() + QPoint(m_paddingSize,0), statusIconRect.bottomLeft());
-
-    QPixmap iconPixmap = icon.pixmap(decorationSize);
-    QPixmap statusPixmap = connectionStatusIcon.pixmap(statusIconSize);
-
-    painter->drawPixmap(style->itemPixmapRect(decorationRect, Qt::AlignCenter, iconPixmap), iconPixmap);
-
-    QFont accountNameFont = option.font;
-    QFont statusTextFont = option.font;
-
-    if (index.data(Qt::CheckStateRole).toBool()) {
-        accountNameFont.setBold(true);
-        painter->setPen(option.palette.color(QPalette::Active, QPalette::Text));
-    } else {
-        accountNameFont.setItalic(true);
-        statusTextFont.setItalic(true);
-        painter->setPen(option.palette.color(QPalette::Disabled, QPalette::Text));
-    }
-
-    if (itemView()->selectionModel()->isSelected(index) && itemView()->hasFocus()) {
-        painter->setPen(option.palette.color(QPalette::Active, QPalette::HighlightedText));
-    }
-
-    // This text gets painted with the mainTextFont when the account is disabled, otherwise the default font is used
-    painter->setFont(statusTextFont);
-    painter->drawText(mainTextRect, Qt::AlignBottom, connectionErrorString);
-    painter->drawPixmap(style->itemPixmapRect(statusIconRect, Qt::AlignCenter, statusPixmap), statusPixmap);
-    painter->drawText(statusTextRect, Qt::AlignCenter, connectionStatusString);
-
-    painter->setFont(accountNameFont);
-    painter->drawText(mainTextRect, Qt::AlignTop, accountName);
+void AccountsListDelegate::onCheckBoxToggled(bool checked)
+{
+    QModelIndex index = focusedIndex();
+    Q_EMIT itemChecked(index, checked);
 }
