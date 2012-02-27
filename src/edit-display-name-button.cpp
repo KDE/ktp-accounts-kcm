@@ -45,9 +45,6 @@ public:
 
     QString displayName() const;
 
-private Q_SLOTS:
-    void onTextChanged(const QString &text);
-
 private:
     Tp::AccountPtr m_account;
     KLineEdit *m_displayNameLineEdit;
@@ -64,7 +61,6 @@ EditDisplayNameDialog::EditDisplayNameDialog(Tp::AccountPtr account,
     setButtons( KDialog::Ok | KDialog::Cancel );
     setWindowIcon(KIcon(QLatin1String("telepathy-kde")));
     setFixedSize(250, 150);
-    enableButtonOk(false);
 
     QVBoxLayout *mainLayout = new QVBoxLayout(this);
 
@@ -97,18 +93,12 @@ EditDisplayNameDialog::EditDisplayNameDialog(Tp::AccountPtr account,
     QWidget * mainWidget = new QWidget(this);
     mainWidget->setLayout(mainLayout);
     setMainWidget(mainWidget);
-
-    connect(m_displayNameLineEdit, SIGNAL(textChanged(QString)), SLOT(onTextChanged(QString)));
 }
 
 EditDisplayNameDialog::~EditDisplayNameDialog()
 {
 }
 
-void EditDisplayNameDialog::onTextChanged(const QString& text)
-{
-    enableButtonOk(text != m_account->displayName());
-}
 
 QString EditDisplayNameDialog::displayName() const
 {
@@ -144,7 +134,7 @@ void EditDisplayNameButton::onClicked()
     if (!m_account.isNull() && m_account->isValid()) {
         EditDisplayNameDialog *dialog = new EditDisplayNameDialog(m_account, this);
         dialog->exec();
-        if (dialog->result() == KDialog::Accepted) {
+        if (dialog->result() == KDialog::Accepted && dialog->displayName() != m_account->displayName()) {
             kDebug() << "Setting display name" << dialog->displayName() << "for account" << account()->uniqueIdentifier();
             Tp::PendingOperation *op = m_account->setDisplayName(dialog->displayName());
             connect(op, SIGNAL(finished(Tp::PendingOperation*)), SLOT(onFinished(Tp::PendingOperation*)));
