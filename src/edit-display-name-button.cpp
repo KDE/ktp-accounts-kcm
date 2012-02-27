@@ -71,6 +71,7 @@ EditDisplayNameDialog::EditDisplayNameDialog(Tp::AccountPtr account,
     QHBoxLayout *topLayout = new QHBoxLayout(this);
 
     QLabel *topLabel = new QLabel(i18n("Choose a new display name for your account"), this);
+    topLabel->setWordWrap(true);
     QFont font = topLabel->font();
     font.setBold(true);
     topLabel->setFont(font);
@@ -89,6 +90,7 @@ EditDisplayNameDialog::EditDisplayNameDialog(Tp::AccountPtr account,
     mainLayout->addWidget(m_displayNameLineEdit);
 
     QLabel *bottomLabel = new QLabel(i18n("A display name is your local alias for the account, only you will see it."), this);
+    bottomLabel->setWordWrap(true);
     mainLayout->addWidget(bottomLabel);
 
     QWidget * mainWidget = new QWidget(this);
