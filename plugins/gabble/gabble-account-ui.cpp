@@ -76,6 +76,11 @@ AbstractAccountParametersWidget *GabbleAccountUi::mainOptionsWidget(
         model->setData(resourceIndex, QString::fromLatin1("kde-telepathy"), ParameterEditModel::ValueRole);
     }
 
+    QModelIndex priorityIndex = model->indexForParameter(model->parameter(QLatin1String("priority")));
+    if (priorityIndex.isValid() && model->data(priorityIndex, ParameterEditModel::ValueRole).toInt() == 0) {
+        model->setData(priorityIndex, 5, ParameterEditModel::ValueRole);
+    }
+
     if (m_serviceName == QLatin1String("google-talk")) {
         return new MainOptionsWidgetGoogleTalk(model, parent);
     } else if (m_serviceName == QLatin1String("facebook")) {
