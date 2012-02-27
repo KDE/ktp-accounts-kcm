@@ -71,9 +71,9 @@ AbstractAccountParametersWidget *GabbleAccountUi::mainOptionsWidget(
         ParameterEditModel *model,
         QWidget *parent) const
 {
-    QModelIndex index = model->indexForParameter(model->parameter(QLatin1String("resource")));
-    if (index.isValid() && model->data(index, ParameterEditModel::ValueRole).toString().isEmpty()) {
-        model->setData(index, QString(QLatin1String("kde-telepathy")), ParameterEditModel::ValueRole);
+    QModelIndex resourceIndex = model->indexForParameter(model->parameter(QLatin1String("resource")));
+    if (resourceIndex.isValid() && model->data(resourceIndex, ParameterEditModel::ValueRole).toString().isEmpty()) {
+        model->setData(resourceIndex, QString::fromLatin1("kde-telepathy"), ParameterEditModel::ValueRole);
     }
 
     if (m_serviceName == QLatin1String("google-talk")) {
