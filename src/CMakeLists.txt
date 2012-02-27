@@ -19,6 +19,7 @@ set (kcm_ktp_accounts_SRCS
      account-identity-dialog.cpp
      salut-details-dialog.cpp
      accounts-list-delegate.cpp
+     edit-display-name-button.cpp
 )
 
 
