@@ -197,6 +197,7 @@ void AccountsListDelegate::updateItemWidgets(const QList<QWidget *> widgets, con
     QFont displayNameButtonFont = option.font;
     QPalette displayNameButtonPalette = option.palette;
     if (isEnabled) {
+        displayNameButtonPalette.setColor(QPalette::WindowText, displayNameButtonPalette.color(QPalette::Normal, QPalette::Text));
         displayNameButtonFont.setBold(true);
     } else {
         displayNameButtonFont.setItalic(true);
@@ -227,7 +228,9 @@ void AccountsListDelegate::updateItemWidgets(const QList<QWidget *> widgets, con
     // connectionErrorLabel
     QFont connectionErrorLabelFont = option.font;
     QPalette connectionErrorLabelPalette = option.palette;
-    if (!isEnabled) {
+    if (isEnabled) {
+        connectionErrorLabelPalette.setColor(QPalette::WindowText, connectionErrorLabelPalette.color(QPalette::Normal, QPalette::Text));
+    } else {
         connectionErrorLabelFont.setItalic(true);
         connectionErrorLabelPalette.setColor(QPalette::Text, connectionErrorLabelPalette.color(QPalette::Disabled, QPalette::Text));
     }
