@@ -69,34 +69,41 @@ SimpleProfileSelectWidget::SimpleProfileSelectWidget(ProfileListModel *profileLi
     QCommandLinkButton *buttonJabber = new QCommandLinkButton(Dictionary::instance()->string(QLatin1String("jabber")), QString());
     buttonJabber->setIcon(KIcon(QLatin1String("im-jabber")));
     buttonJabber->setIconSize(QSize(32,32));
-    buttonJabber->setSizePolicy(QSizePolicy(QSizePolicy::Expanding, QSizePolicy::Fixed));
+    // NOTE: Setting a new created size policy breaks the vertical layout, so
+    //       instead we change the policies of the existing one
+    buttonJabber->sizePolicy().setHorizontalPolicy(QSizePolicy::Expanding);
+    buttonJabber->sizePolicy().setVerticalPolicy(QSizePolicy::Fixed);
 
     QCommandLinkButton *buttonGTalk = new QCommandLinkButton(Dictionary::instance()->string(QLatin1String("google-talk")));
     buttonGTalk->setIcon(KIcon(QLatin1String("im-google-talk")));
     buttonGTalk->setIconSize(QSize(32,32));
-    buttonGTalk->setSizePolicy(QSizePolicy(QSizePolicy::Expanding, QSizePolicy::Fixed));
-
+    buttonGTalk->sizePolicy().setHorizontalPolicy(QSizePolicy::Expanding);
+    buttonGTalk->sizePolicy().setVerticalPolicy(QSizePolicy::Fixed);
 
     QCommandLinkButton *buttonFacebook = new QCommandLinkButton(Dictionary::instance()->string(QLatin1String("facebook")));
     buttonFacebook->setIcon(KIcon(QLatin1String("im-facebook")));
     buttonFacebook->setIconSize(QSize(32,32));
-    buttonFacebook->setSizePolicy(QSizePolicy(QSizePolicy::Expanding, QSizePolicy::Fixed));
-    
+    buttonFacebook->sizePolicy().setHorizontalPolicy(QSizePolicy::Expanding);
+    buttonFacebook->sizePolicy().setVerticalPolicy(QSizePolicy::Fixed);
+
     QCommandLinkButton *buttonIcq = new QCommandLinkButton(Dictionary::instance()->string(QLatin1String("icq")));
     buttonIcq->setIcon(KIcon(QLatin1String("im-icq")));
     buttonIcq->setIconSize(QSize(32,32));
-    buttonIcq->setSizePolicy(QSizePolicy(QSizePolicy::Expanding, QSizePolicy::Fixed));
+    buttonIcq->sizePolicy().setHorizontalPolicy(QSizePolicy::Expanding);
+    buttonIcq->sizePolicy().setVerticalPolicy(QSizePolicy::Fixed);
 
     QCommandLinkButton *buttonMsn = new QCommandLinkButton(Dictionary::instance()->string(QLatin1String("msn")));
     buttonMsn->setIcon(KIcon(QLatin1String("im-msn")));
     buttonMsn->setIconSize(QSize(32,32));
-    buttonMsn->setSizePolicy(QSizePolicy(QSizePolicy::Expanding, QSizePolicy::Fixed));
-   
+    buttonMsn->sizePolicy().setHorizontalPolicy(QSizePolicy::Expanding);
+    buttonMsn->sizePolicy().setVerticalPolicy(QSizePolicy::Fixed);
+
     QCommandLinkButton *buttonOthers = new QCommandLinkButton(i18n("Others"), i18n("AOL, Gadu-Gadu, IRC, Yahoo and more..."));
     buttonOthers->setIcon(KIcon(QLatin1String("go-next")));
     buttonOthers->setIconSize(QSize(32,32));
-    buttonOthers->setSizePolicy(QSizePolicy(QSizePolicy::Expanding, QSizePolicy::Fixed));
-    
+    buttonOthers->sizePolicy().setHorizontalPolicy(QSizePolicy::Expanding);
+    buttonOthers->sizePolicy().setVerticalPolicy(QSizePolicy::Fixed);
+
     // Add them to the SignalMapper
     d->signalMapper->setMapping(buttonJabber,   QLatin1String("jabber"));
     d->signalMapper->setMapping(buttonGTalk,    QLatin1String("google-talk"));
