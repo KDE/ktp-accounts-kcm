@@ -63,7 +63,7 @@ EditDisplayNameDialog::EditDisplayNameDialog(Tp::AccountPtr account,
     setCaption(i18n("Edit Display Name"));
     setButtons( KDialog::Ok | KDialog::Cancel );
     setWindowIcon(KIcon(QLatin1String("telepathy-kde")));
-    setFixedSize(400, 150);
+    setFixedSize(250, 150);
     enableButtonOk(false);
 
     QVBoxLayout *mainLayout = new QVBoxLayout(this);
@@ -82,6 +82,7 @@ EditDisplayNameDialog::EditDisplayNameDialog(Tp::AccountPtr account,
     icon->setSizePolicy(QSizePolicy::Minimum, QSizePolicy::Minimum);
 
     topLayout->addWidget(topLabel);
+    topLayout->addStretch();
     topLayout->addWidget(icon);
 
     mainLayout->addLayout(topLayout);
