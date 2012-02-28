@@ -20,6 +20,7 @@
 
 #include "edit-display-name-button.h"
 
+#include <QtGui/QHBoxLayout>
 #include <QtGui/QVBoxLayout>
 #include <QtGui/QLabel>
 
@@ -60,37 +61,42 @@ EditDisplayNameDialog::EditDisplayNameDialog(Tp::AccountPtr account,
     setCaption(i18n("Edit Display Name"));
     setButtons( KDialog::Ok | KDialog::Cancel );
     setWindowIcon(KIcon(QLatin1String("telepathy-kde")));
-    setFixedSize(250, 150);
+    setFixedSize(400, 150);
 
-    QVBoxLayout *mainLayout = new QVBoxLayout(this);
-
-    QHBoxLayout *topLayout = new QHBoxLayout(this);
+    QWidget * mainWidget = new QWidget(this);
+    QVBoxLayout *mainLayout = new QVBoxLayout();
+    QHBoxLayout *topLayout = new QHBoxLayout();
 
     QLabel *topLabel = new QLabel(i18n("Choose a new display name for your account"), this);
+    topLabel->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Minimum);
     topLabel->setWordWrap(true);
     QFont font = topLabel->font();
     font.setBold(true);
     topLabel->setFont(font);
-    topLabel->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+    QLabel *bottomLabel = new QLabel(i18n("A display name is your local alias for the account, only you will see it."), this);
+    bottomLabel->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Minimum);
+    bottomLabel->setWordWrap(true);
 
     QLabel *icon = new QLabel;
-    icon->setPixmap(KIcon(account->iconName()).pixmap(KIconLoader::SizeMedium));
     icon->setSizePolicy(QSizePolicy::Minimum, QSizePolicy::Minimum);
+    icon->setPixmap(KIcon(account->iconName()).pixmap(KIconLoader::SizeMedium));
+
+    m_displayNameLineEdit = new KLineEdit(account->displayName(), this);
+    m_displayNameLineEdit->setToolTip(i18n("New display name"));
+    m_displayNameLineEdit->setWhatsThis(i18n("A display name is your local alias for the account, only you will see it."));
+
 
     topLayout->addWidget(topLabel);
-    topLayout->addStretch();
     topLayout->addWidget(icon);
 
     mainLayout->addLayout(topLayout);
+    mainLayout->addStretch();
 
-    m_displayNameLineEdit = new KLineEdit(account->displayName(), this);
     mainLayout->addWidget(m_displayNameLineEdit);
-
-    QLabel *bottomLabel = new QLabel(i18n("A display name is your local alias for the account, only you will see it."), this);
-    bottomLabel->setWordWrap(true);
     mainLayout->addWidget(bottomLabel);
+    mainLayout->addStretch();
 
-    QWidget * mainWidget = new QWidget(this);
     mainWidget->setLayout(mainLayout);
     setMainWidget(mainWidget);
 }
