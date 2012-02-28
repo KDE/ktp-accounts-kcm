@@ -173,7 +173,8 @@ void AccountsListDelegate::updateItemWidgets(const QList<QWidget *> widgets, con
     statusTextLabel->setPalette(statusTextLabelPalette);
     statusTextLabel->setFont(statusTextFont);
     statusTextLabel->setText(statusText);
-    statusTextLabel->setFixedSize(statusTextLabel->fontMetrics().boundingRect(statusText).width(), statusTextLabel->height());
+    statusTextLabel->setFixedSize(statusTextLabel->fontMetrics().boundingRect(statusText).width(),
+                                  statusTextLabel->height());
     int statusTextLabelLeftMargin = contentRect.right() - statusTextLabel->width();
     int statusTextLabelTopMargin = (outerRect.height() - statusTextLabel->height()) / 2;
     statusTextLabel->move(statusTextLabelLeftMargin, statusTextLabelTopMargin);
@@ -197,7 +198,7 @@ void AccountsListDelegate::updateItemWidgets(const QList<QWidget *> widgets, con
     QFont displayNameButtonFont = option.font;
     QPalette displayNameButtonPalette = option.palette;
     if (isEnabled) {
-        displayNameButtonPalette.setColor(QPalette::WindowText, displayNameButtonPalette.color(QPalette::Normal, QPalette::Text));
+        displayNameButtonPalette.setColor(QPalette::WindowText, displayNameButtonPalette.color(QPalette::Active, QPalette::Text));
         displayNameButtonFont.setBold(true);
     } else {
         displayNameButtonFont.setItalic(true);
@@ -214,9 +215,8 @@ void AccountsListDelegate::updateItemWidgets(const QList<QWidget *> widgets, con
     QString displayNameButtonText = displayNameButton->fontMetrics().elidedText(displayName,
                                                                                 Qt::ElideRight,
                                                                                 innerRect.width() - (7*2));
-    QRect displayNameButtonTextRect = displayNameButton->fontMetrics().boundingRect(displayNameButtonText);
     displayNameButton->setText(displayNameButtonText);
-    displayNameButton->setFixedSize(displayNameButtonTextRect.width() + (7*2),
+    displayNameButton->setFixedSize(displayNameButton->fontMetrics().boundingRect(displayNameButtonText).width() + (7*2),
                                     displayNameButton->minimumSizeHint().height());
     displayNameButton->setAccount(account);
 
@@ -229,7 +229,7 @@ void AccountsListDelegate::updateItemWidgets(const QList<QWidget *> widgets, con
     QFont connectionErrorLabelFont = option.font;
     QPalette connectionErrorLabelPalette = option.palette;
     if (isEnabled) {
-        connectionErrorLabelPalette.setColor(QPalette::WindowText, connectionErrorLabelPalette.color(QPalette::Normal, QPalette::Text));
+        connectionErrorLabelPalette.setColor(QPalette::WindowText, connectionErrorLabelPalette.color(QPalette::Active, QPalette::Text));
     } else {
         connectionErrorLabelFont.setItalic(true);
         connectionErrorLabelPalette.setColor(QPalette::Text, connectionErrorLabelPalette.color(QPalette::Disabled, QPalette::Text));
@@ -241,10 +241,12 @@ void AccountsListDelegate::updateItemWidgets(const QList<QWidget *> widgets, con
     connectionErrorLabel->setFont(connectionErrorLabelFont);
     connectionErrorLabel->setPalette(connectionErrorLabelPalette);
 
-    connectionErrorLabel->setText(connectionErrorLabel->fontMetrics().elidedText(connectionError,
+    QString connectionErrorLabelText = connectionErrorLabel->fontMetrics().elidedText(connectionError,
                                                                                       Qt::ElideRight,
-                                                                                      innerRect.width() - (7*2)));
-    connectionErrorLabel->setFixedSize(connectionErrorLabel->minimumSizeHint().width(), displayNameButton->height());
+                                                                                      innerRect.width() - (7*2));
+    connectionErrorLabel->setText(connectionErrorLabelText);
+    connectionErrorLabel->setFixedSize(connectionErrorLabel->fontMetrics().boundingRect(connectionErrorLabelText).width(),
+                                       displayNameButton->height());
 
     int connectionErrorLabelLeftMargin = innerRect.left() + 7;
     int connectionErrorLabelTopMargin = contentRect.bottom() - displayNameButton->height();
@@ -257,9 +259,7 @@ void AccountsListDelegate::paint(QPainter *painter, const QStyleOptionViewItem &
         return;
     }
 
-    QStyle *style = QApplication::style();
-
-    style->drawPrimitive(QStyle::PE_PanelItemViewItem, &option, painter, 0);
+    QApplication::style()->drawPrimitive(QStyle::PE_PanelItemViewItem, &option, painter, 0);
 }
 
 
