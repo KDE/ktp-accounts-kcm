@@ -151,6 +151,12 @@ void AccountsListDelegate::updateItemWidgets(const QList<QWidget *> widgets, con
     // changeIconButton
     changeIconButton->setIcon(accountIcon);
     changeIconButton->setAccount(account);
+    // At the moment (KDE 4.8.1) decorationSize is not passed from KWidgetItemDelegate
+    // through the QStyleOptionViewItem, therefore we leave default size unless
+    // the user has a more recent version.
+    if (option.decorationSize.width() > -1) {
+        changeIconButton->setButtonIconSize(option.decorationSize.width());
+    }
 
     int changeIconButtonLeftMargin = checkboxLeftMargin + checkbox->width();
     int changeIconButtonTopMargin = (outerRect.height() - changeIconButton->height()) / 2;
