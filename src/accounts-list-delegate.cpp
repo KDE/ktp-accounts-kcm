@@ -53,8 +53,8 @@ QSize AccountsListDelegate::sizeHint(const QStyleOptionViewItem &option, const Q
 {
     Q_UNUSED(index);
 
-    int iconHeight = option.decorationSize.height() + (7*2);  //icon height + padding either side
-    int textHeight = option.fontMetrics.height()*2 + (7*2);
+    int iconHeight = option.decorationSize.height() + (m_vpadding*2);  //icon height + padding either side
+    int textHeight = option.fontMetrics.height()*2 + (m_vpadding*2) + 10; // text height * 2 + padding + some space between the lines
 
     return QSize(-1,qMax(iconHeight, textHeight)); //any width,the view should give us the whole thing.
 }
@@ -131,7 +131,7 @@ void AccountsListDelegate::updateItemWidgets(const QList<QWidget *> widgets, con
 
 
     QRect outerRect(0, 0, option.rect.width(), option.rect.height());
-    QRect contentRect = outerRect.adjusted(7,2,-7,-2); //add some padding
+    QRect contentRect = outerRect.adjusted(m_hpadding,m_vpadding,-m_hpadding,-m_vpadding); //add some padding
 
 
     // checkbox
@@ -220,9 +220,9 @@ void AccountsListDelegate::updateItemWidgets(const QList<QWidget *> widgets, con
 
     QString displayNameButtonText = displayNameButton->fontMetrics().elidedText(displayName,
                                                                                 Qt::ElideRight,
-                                                                                innerRect.width() - (7*2));
+                                                                                innerRect.width() - (m_hpadding*2));
     displayNameButton->setText(displayNameButtonText);
-    displayNameButton->setFixedSize(displayNameButton->fontMetrics().boundingRect(displayNameButtonText).width() + (7*2),
+    displayNameButton->setFixedSize(displayNameButton->fontMetrics().boundingRect(displayNameButtonText).width() + (m_hpadding*2),
                                     displayNameButton->minimumSizeHint().height());
     displayNameButton->setAccount(account);
 
@@ -249,12 +249,12 @@ void AccountsListDelegate::updateItemWidgets(const QList<QWidget *> widgets, con
 
     QString connectionErrorLabelText = connectionErrorLabel->fontMetrics().elidedText(connectionError,
                                                                                       Qt::ElideRight,
-                                                                                      innerRect.width() - (7*2));
+                                                                                      innerRect.width() - (m_hpadding*2));
     connectionErrorLabel->setText(connectionErrorLabelText);
     connectionErrorLabel->setFixedSize(connectionErrorLabel->fontMetrics().boundingRect(connectionErrorLabelText).width(),
                                        displayNameButton->height());
 
-    int connectionErrorLabelLeftMargin = innerRect.left() + 7;
+    int connectionErrorLabelLeftMargin = innerRect.left() + m_hpadding;
     int connectionErrorLabelTopMargin = contentRect.bottom() - displayNameButton->height();
     connectionErrorLabel->move(connectionErrorLabelLeftMargin, connectionErrorLabelTopMargin);
 }
