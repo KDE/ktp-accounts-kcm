@@ -71,7 +71,7 @@ QList<QWidget*> AccountsListDelegate::createItemWidgets() const
     changeIconButton->setFlat(true);
     changeIconButton->setToolTip(i18n("Change account icon"));
     changeIconButton->setWhatsThis(i18n("This button allows to change the icon for your account.<br />"
-                                  "This icon is just used locally on your computer, your contacts won't be able to see it."));
+                                  "This icon is just used locally on your computer, your contacts will not be able to see it."));
 
     QLabel *statusTextLabel = new QLabel();
     QLabel *statusIconLabel = new QLabel();
@@ -81,7 +81,7 @@ QList<QWidget*> AccountsListDelegate::createItemWidgets() const
     displayNameButton->setToolTip(i18n("Change account display name"));
     displayNameButton->setWhatsThis(i18n("This button allows to change the display name for your account.<br />"
                                          "The display name is an alias for your account and is just used locally"
-                                         "on your computer, your contacts won't be able to see it."));
+                                         "on your computer, your contacts will not be able to see it."));
 
     QLabel *connectionErrorLabel = new QLabel();
 
