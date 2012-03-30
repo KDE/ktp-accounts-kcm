@@ -61,6 +61,9 @@ QSize AccountsListDelegate::sizeHint(const QStyleOptionViewItem &option, const Q
 
 QList<QWidget*> AccountsListDelegate::createItemWidgets() const
 {
+    // Items created by this method and added to the list returned will be
+    // deleted by KWidgetItemDelegate
+
     QCheckBox *checkbox = new QCheckBox();
     connect(checkbox, SIGNAL(clicked(bool)), SLOT(onCheckBoxToggled(bool)));
 
