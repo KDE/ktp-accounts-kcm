@@ -40,7 +40,7 @@ ChangeIconButton::~ChangeIconButton()
 {
 }
 
-void ChangeIconButton::setAccount(Tp::AccountPtr account)
+void ChangeIconButton::setAccount(const Tp::AccountPtr &account)
 {
     m_account = account;
 }

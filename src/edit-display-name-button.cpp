@@ -39,7 +39,7 @@ class EditDisplayNameDialog : public KDialog
     Q_DISABLE_COPY(EditDisplayNameDialog)
 
 public:
-    EditDisplayNameDialog(Tp::AccountPtr account,
+    EditDisplayNameDialog(const Tp::AccountPtr &account,
                           QWidget* parent = 0,
                           Qt::WFlags flags = 0);
     virtual ~EditDisplayNameDialog();
@@ -52,7 +52,7 @@ private:
 };
 
 
-EditDisplayNameDialog::EditDisplayNameDialog(Tp::AccountPtr account,
+EditDisplayNameDialog::EditDisplayNameDialog(const Tp::AccountPtr &account,
                                              QWidget* parent,
                                              Qt::WFlags flags)
     : KDialog(parent, flags),
@@ -125,7 +125,7 @@ EditDisplayNameButton::~EditDisplayNameButton()
 {
 }
 
-void EditDisplayNameButton::setAccount(Tp::AccountPtr account)
+void EditDisplayNameButton::setAccount(const Tp::AccountPtr &account)
 {
     m_account = account;
 }

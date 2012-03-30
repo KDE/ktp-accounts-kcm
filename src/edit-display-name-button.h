@@ -35,7 +35,7 @@ public:
     explicit EditDisplayNameButton(QWidget *parent = 0);
     virtual ~EditDisplayNameButton();
 
-    void setAccount(Tp::AccountPtr account);
+    void setAccount(const Tp::AccountPtr &account);
     Tp::AccountPtr account() const;
 
 private Q_SLOTS:

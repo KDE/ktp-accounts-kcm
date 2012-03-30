@@ -35,7 +35,7 @@ public:
     explicit ChangeIconButton(QWidget* parent = 0);
     virtual ~ChangeIconButton();
 
-    void setAccount(Tp::AccountPtr account);
+    void setAccount(const Tp::AccountPtr &account);
     Tp::AccountPtr account() const;
 
 private Q_SLOTS:
