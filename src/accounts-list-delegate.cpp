@@ -123,14 +123,14 @@ void AccountsListDelegate::updateItemWidgets(const QList<QWidget *> widgets, con
     Q_ASSERT(connectionErrorLabel);
 
 
-    bool isSelected = itemView()->selectionModel()->isSelected(index) && itemView()->hasFocus();
-    bool isEnabled = index.data(Qt::CheckStateRole).toBool();
-    QIcon accountIcon = index.data(Qt::DecorationRole).value<QIcon>();
-    QIcon statusIcon = index.data(AccountsListModel::ConnectionStateIconRole).value<QIcon>();
-    QString statusText = index.data(AccountsListModel::ConnectionStateDisplayRole).toString();
-    QString displayName = index.data(Qt::DisplayRole).toString();
-    QString connectionError = index.data(AccountsListModel::ConnectionErrorMessageDisplayRole).toString();
-    Tp::AccountPtr account = index.data(AccountsListModel::AccountItemRole).value<AccountItem*>()->account();
+    bool isSelected(itemView()->selectionModel()->isSelected(index) && itemView()->hasFocus());
+    bool isEnabled(index.data(Qt::CheckStateRole).toBool());
+    KIcon accountIcon(index.data(Qt::DecorationRole).value<QIcon>());
+    KIcon statusIcon(index.data(AccountsListModel::ConnectionStateIconRole).value<QIcon>());
+    QString statusText(index.data(AccountsListModel::ConnectionStateDisplayRole).toString());
+    QString displayName(index.data(Qt::DisplayRole).toString());
+    QString connectionError(index.data(AccountsListModel::ConnectionErrorMessageDisplayRole).toString());
+    Tp::AccountPtr account(index.data(AccountsListModel::AccountItemRole).value<AccountItem*>()->account());
 
 
     QRect outerRect(0, 0, option.rect.width(), option.rect.height());
