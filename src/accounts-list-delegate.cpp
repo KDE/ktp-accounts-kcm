@@ -80,7 +80,7 @@ QList<QWidget*> AccountsListDelegate::createItemWidgets() const
     displayNameButton->setFlat(true);
     displayNameButton->setToolTip(i18n("Change account display name"));
     displayNameButton->setWhatsThis(i18n("This button allows to change the display name for your account.<br />"
-                                         "The display name is an alias for your account and is just used locally"
+                                         "The display name is an alias for your account and is just used locally "
                                          "on your computer, your contacts will not be able to see it."));
 
     QLabel *connectionErrorLabel = new QLabel();
