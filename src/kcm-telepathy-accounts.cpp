@@ -134,7 +134,7 @@ KCMTelepathyAccounts::KCMTelepathyAccounts(QWidget *parent, const QVariantList& 
     AccountsListDelegate* salutDelegate = new AccountsListDelegate(m_ui->salutListView, this);
     m_ui->salutListView->setItemDelegate(salutDelegate);
 
-    int height = salutDelegate->sizeHint(QStyleOptionViewItem(), m_salutFilterModel->index(0,0)).height() + 4*2;
+    int height = salutDelegate->sizeHint(QStyleOptionViewItem(), m_salutFilterModel->index(0,0)).height() + 3*2;
     m_ui->salutListView->setMinimumHeight(height);
     m_ui->salutEnableFrame->setMinimumHeight(height);
 
