@@ -119,8 +119,8 @@ SimpleProfileSelectWidget::SimpleProfileSelectWidget(ProfileListModel *profileLi
     connect(buttonMsn,      SIGNAL(clicked()), d->signalMapper, SLOT(map()));
     connect(buttonOthers,   SIGNAL(clicked()), this,            SIGNAL(othersChosen()));
 
-    connect(d->signalMapper,SIGNAL(mapped(const QString &)),
-            this,           SLOT(onProfileClicked(const QString &)));
+    connect(d->signalMapper,SIGNAL(mapped(QString)),
+            this,           SLOT(onProfileClicked(QString)));
 
     // Add them to the Layout
     d->ui->verticalLayout->addWidget(buttonJabber);
