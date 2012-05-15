@@ -279,8 +279,7 @@ void AddAccountAssistant::onAccountCreated(Tp::PendingOperation *op)
     //save password to KWallet if needed
     QVariantMap values  = d->accountEditWidget->parametersSet();
     if (values.contains(QLatin1String("password"))) {
-        KTp::WalletInterface wallet(this->effectiveWinId());
-        wallet.setPassword(account, values[QLatin1String("password")].toString());
+        KTp::WalletInterface::setPassword(account, values[QLatin1String("password")].toString());
     }
 
     if (d->accountEditWidget->connectOnAdd()) {

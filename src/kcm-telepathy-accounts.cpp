@@ -341,9 +341,7 @@ void KCMTelepathyAccounts::onRemoveAccountClicked()
                                         QString(), KMessageBox::Notify | KMessageBox::Dangerous) == KMessageBox::Continue)
     {
         AccountItem *item = index.data(AccountsListModel::AccountItemRole).value<AccountItem*>();
-        KTp::WalletInterface wallet(this->effectiveWinId());
-        wallet.removeAccount(item->account());
-
+        KTp::WalletInterface::removeAccount(item->account());
         m_accountsListModel->removeAccount(m_currentModel->mapToSource(index));
     }
 }

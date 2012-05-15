@@ -71,10 +71,9 @@ EditAccountDialog::EditAccountDialog(AccountItem *item, QWidget *parent)
     //update the parameter model with the password from kwallet (if applicable)
     Tp::ProtocolParameter passwordParameter = parameterModel->parameter(QLatin1String("password"));
 
-    KTp::WalletInterface wallet(this->effectiveWinId());
-    if (passwordParameter.isValid() && wallet.hasPassword(d->item->account())) {
+    if (passwordParameter.isValid() && KTp::WalletInterface::hasPassword(d->item->account())) {
         QModelIndex index = parameterModel->indexForParameter(passwordParameter);
-        QString password = wallet.password(d->item->account());
+        QString password = KTp::WalletInterface::password(d->item->account());
         parameterModel->setData(index, password, Qt::EditRole);
     }
 
@@ -139,11 +138,10 @@ void EditAccountDialog::onParametersUpdated(Tp::PendingOperation *op)
 
     QVariantMap values = d->widget->parametersSet();
 
-    KTp::WalletInterface wallet(this->effectiveWinId());
     if (values.contains(QLatin1String("password"))) {
-        wallet.setPassword(d->item->account(), values[QLatin1String("password")].toString());
+        KTp::WalletInterface::setPassword(d->item->account(), values[QLatin1String("password")].toString());
     } else {
-        wallet.removePassword(d->item->account());
+        KTp::WalletInterface::removePassword(d->item->account());
     }
 
 
