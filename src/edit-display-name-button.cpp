@@ -138,12 +138,15 @@ Tp::AccountPtr EditDisplayNameButton::account() const
 void EditDisplayNameButton::onClicked()
 {
     if (!m_account.isNull() && m_account->isValid()) {
-        EditDisplayNameDialog *dialog = new EditDisplayNameDialog(m_account, this);
-        dialog->exec();
-        if (dialog->result() == KDialog::Accepted && dialog->displayName() != m_account->displayName()) {
-            kDebug() << "Setting display name" << dialog->displayName() << "for account" << account()->uniqueIdentifier();
-            Tp::PendingOperation *op = m_account->setDisplayName(dialog->displayName());
-            connect(op, SIGNAL(finished(Tp::PendingOperation*)), SLOT(onFinished(Tp::PendingOperation*)));
+        QWeakPointer<EditDisplayNameDialog> dialog = new EditDisplayNameDialog(m_account, this);
+        dialog.data()->exec();
+        if (!dialog.isNull()) {
+            if (dialog.data()->result() == KDialog::Accepted && dialog.data()->displayName() != m_account->displayName()) {
+                kDebug() << "Setting display name" << dialog.data()->displayName() << "for account" << account()->uniqueIdentifier();
+                Tp::PendingOperation *op = m_account->setDisplayName(dialog.data()->displayName());
+                connect(op, SIGNAL(finished(Tp::PendingOperation*)), SLOT(onFinished(Tp::PendingOperation*)));
+            }
+            dialog.data()->deleteLater();
         }
     }
 }
