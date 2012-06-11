@@ -45,6 +45,7 @@ public:
     }
     ParameterEditModel *parameterModel;
     QDataWidgetMapper *mapper;
+    QList<QWidget*> mappedWidgets;
     QMap<QPersistentModelIndex,ValidatedLineEdit*> validatedWidgets;
     QString errorMessage;
 };
@@ -139,6 +140,8 @@ void AbstractAccountParametersWidget::handleParameter(const QString &parameterNa
         if (!(index.flags() & Qt::ItemIsEnabled)) {
             dataWidget->setEnabled(false);
         }
+
+        d->mappedWidgets.append(dataWidget);
     }
 }
 
@@ -150,6 +153,15 @@ void AbstractAccountParametersWidget::submit()
     while (i != d->validatedWidgets.constEnd()) {
         d->parameterModel->setData(i.key(), i.value()->validationState(), ParameterEditModel::ValidityRole);
         ++i;
+    }
+
+    //reset disabled widgets to their default values
+    Q_FOREACH (QWidget *w, d->mappedWidgets) {
+        if (!w->isEnabled()) {
+            QModelIndex index = d->parameterModel->index(d->mapper->mappedSection(w), 0);
+            QVariant defaultValue = d->parameterModel->data(index, ParameterEditModel::DefaultValueRole);
+            d->parameterModel->setData(index, defaultValue, Qt::EditRole);
+        }
     }
 }
 
