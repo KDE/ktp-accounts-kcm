@@ -124,6 +124,8 @@ void AbstractAccountParametersWidget::handleParameter(const QString &parameterNa
         //for text edit boxes we force it to use the plainText property so that we don't get HTML all over our options
         if (dataWidget->inherits("QTextEdit")) {
             d->mapper->addMapping(dataWidget, index.row(), "plainText");
+        } else if (dataWidget->inherits("QComboBox") && parameterType == QVariant::String) {
+            d->mapper->addMapping(dataWidget, index.row(), "currentText");
         } else {
             d->mapper->addMapping(dataWidget, index.row());
         }
