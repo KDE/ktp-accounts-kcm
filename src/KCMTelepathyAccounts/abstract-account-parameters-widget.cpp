@@ -45,7 +45,6 @@ public:
     }
     ParameterEditModel *parameterModel;
     QDataWidgetMapper *mapper;
-    Tp::ProtocolParameterList parameters;
     QMap<QPersistentModelIndex,ValidatedLineEdit*> validatedWidgets;
     QString errorMessage;
 };
