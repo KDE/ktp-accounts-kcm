@@ -51,7 +51,7 @@ AbstractAccountParametersWidget *HazeSkypeAccountUi::mainOptionsWidget(
 
 bool HazeSkypeAccountUi::hasAdvancedOptionsWidget() const
 {
-    return true;
+    return false;
 }
 
 AbstractAccountParametersWidget *HazeSkypeAccountUi::advancedOptionsWidget(
