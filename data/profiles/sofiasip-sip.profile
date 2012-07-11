@@ -4,5 +4,5 @@
          manager="sofiasip"
          protocol="sip"
          icon="audio-headset">
-  <name>Voice over IP (VoIP/SIP)</name>
+  <name>SIP (VoIP)</name>
 </service>
