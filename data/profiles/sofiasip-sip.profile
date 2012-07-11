@@ -3,6 +3,6 @@
          type="IM"
          manager="sofiasip"
          protocol="sip"
-         icon="voicecall">
-  <name>Voice over IP (VoIP/SIP)</name>
+         icon="audio-headset">
+  <name>SIP (VoIP)</name>
 </service>
