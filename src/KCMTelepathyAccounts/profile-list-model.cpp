@@ -156,6 +156,19 @@ void ProfileListModel::populateList()
             continue;
         }
 
+        //Hide all IRC accounts
+        //this is a deliberate decision from Akademy meeting 2012
+        //"no, we don't support IRC", it's a different usage and in order to have a semi-decent IRC experience 
+        //we need to add a lot more that we simply don't have resources to do.
+        //It's a better user experience to learn how to use a different app than to try using this.
+        
+        //Remove this "continue" to re-enable IRC support, for personal reasons or hacking
+        //this topic can be discussed again as of July 2013
+        
+        if(profile->serviceName() == QLatin1String("irc")) {
+                continue;
+        }
+
         insertItems.append(new ProfileItem(profile, this));
     }
 
