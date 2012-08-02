@@ -30,6 +30,7 @@ Comment[zh_TW]=對使用 Gabble 連線管理員的帳號自訂帳號設定使用
 Icon=blockdevice
 Name=Gabble Account Configuration User Interface
 Name[ca]=Interfície d'usuari de configuració de compte de Gabble
+Name[cs]=Uživatelské rozhraní nastavení účtu Gabble
 Name[da]=Brugerflade til Gabble kontokonfiguration
 Name[de]=Benutzeroberfläche zur Einrichtung von Gabble-Zugängen
 Name[el]=Περιβάλλον διαμόρφωσης λογαριασμού χρήστη με Gabble
