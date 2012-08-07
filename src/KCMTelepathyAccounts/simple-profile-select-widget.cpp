@@ -65,71 +65,23 @@ SimpleProfileSelectWidget::SimpleProfileSelectWidget(ProfileListModel *profileLi
     d->ui = new Ui::SimpleProfileSelectWidget;
     d->ui->setupUi(this);
 
-    // Create the buttons for the Major Profiles
-    QCommandLinkButton *buttonJabber = new QCommandLinkButton(Dictionary::instance()->string(QLatin1String("jabber")), QString());
-    buttonJabber->setIcon(KIcon(QLatin1String("im-jabber")));
-    buttonJabber->setIconSize(QSize(32,32));
-    // NOTE: Setting a new created size policy breaks the vertical layout, so
-    //       instead we change the policies of the existing one
-    buttonJabber->sizePolicy().setHorizontalPolicy(QSizePolicy::Expanding);
-    buttonJabber->sizePolicy().setVerticalPolicy(QSizePolicy::Fixed);
+    // Add buttons to the SignalMapper
+    d->signalMapper->setMapping(d->ui->buttonJabber,   QLatin1String("jabber"));
+    d->signalMapper->setMapping(d->ui->buttonGTalk,    QLatin1String("google-talk"));
+    d->signalMapper->setMapping(d->ui->buttonFacebook, QLatin1String("facebook"));
+    d->signalMapper->setMapping(d->ui->buttonIcq,      QLatin1String("haze-icq"));
+    d->signalMapper->setMapping(d->ui->buttonMsn,      QLatin1String("msn"));
 
-    QCommandLinkButton *buttonGTalk = new QCommandLinkButton(Dictionary::instance()->string(QLatin1String("google-talk")));
-    buttonGTalk->setIcon(KIcon(QLatin1String("im-google-talk")));
-    buttonGTalk->setIconSize(QSize(32,32));
-    buttonGTalk->sizePolicy().setHorizontalPolicy(QSizePolicy::Expanding);
-    buttonGTalk->sizePolicy().setVerticalPolicy(QSizePolicy::Fixed);
-
-    QCommandLinkButton *buttonFacebook = new QCommandLinkButton(Dictionary::instance()->string(QLatin1String("facebook")));
-    buttonFacebook->setIcon(KIcon(QLatin1String("im-facebook")));
-    buttonFacebook->setIconSize(QSize(32,32));
-    buttonFacebook->sizePolicy().setHorizontalPolicy(QSizePolicy::Expanding);
-    buttonFacebook->sizePolicy().setVerticalPolicy(QSizePolicy::Fixed);
-
-    QCommandLinkButton *buttonIcq = new QCommandLinkButton(Dictionary::instance()->string(QLatin1String("icq")));
-    buttonIcq->setIcon(KIcon(QLatin1String("im-icq")));
-    buttonIcq->setIconSize(QSize(32,32));
-    buttonIcq->sizePolicy().setHorizontalPolicy(QSizePolicy::Expanding);
-    buttonIcq->sizePolicy().setVerticalPolicy(QSizePolicy::Fixed);
-
-    QCommandLinkButton *buttonMsn = new QCommandLinkButton(Dictionary::instance()->string(QLatin1String("msn")));
-    buttonMsn->setIcon(KIcon(QLatin1String("im-msn")));
-    buttonMsn->setIconSize(QSize(32,32));
-    buttonMsn->sizePolicy().setHorizontalPolicy(QSizePolicy::Expanding);
-    buttonMsn->sizePolicy().setVerticalPolicy(QSizePolicy::Fixed);
-
-    QCommandLinkButton *buttonOthers = new QCommandLinkButton(i18n("Others"), i18n("AOL, Gadu-Gadu, IRC, Yahoo and more..."));
-    buttonOthers->setIcon(KIcon(QLatin1String("go-next")));
-    buttonOthers->setIconSize(QSize(32,32));
-    buttonOthers->sizePolicy().setHorizontalPolicy(QSizePolicy::Expanding);
-    buttonOthers->sizePolicy().setVerticalPolicy(QSizePolicy::Fixed);
-
-    // Add them to the SignalMapper
-    d->signalMapper->setMapping(buttonJabber,   QLatin1String("jabber"));
-    d->signalMapper->setMapping(buttonGTalk,    QLatin1String("google-talk"));
-    d->signalMapper->setMapping(buttonFacebook, QLatin1String("facebook"));
-    d->signalMapper->setMapping(buttonIcq,      QLatin1String("haze-icq"));
-    d->signalMapper->setMapping(buttonMsn,      QLatin1String("msn"));
-
-    // Connect them to the SignalMapper
-    connect(buttonJabber,   SIGNAL(clicked()), d->signalMapper, SLOT(map()));
-    connect(buttonGTalk,    SIGNAL(clicked()), d->signalMapper, SLOT(map()));
-    connect(buttonFacebook, SIGNAL(clicked()), d->signalMapper, SLOT(map()));
-    connect(buttonIcq,      SIGNAL(clicked()), d->signalMapper, SLOT(map()));
-    connect(buttonMsn,      SIGNAL(clicked()), d->signalMapper, SLOT(map()));
-    connect(buttonOthers,   SIGNAL(clicked()), this,            SIGNAL(othersChosen()));
+    // Connect buttons to the SignalMapper
+    connect(d->ui->buttonJabber,   SIGNAL(clicked()), d->signalMapper, SLOT(map()));
+    connect(d->ui->buttonGTalk,    SIGNAL(clicked()), d->signalMapper, SLOT(map()));
+    connect(d->ui->buttonFacebook, SIGNAL(clicked()), d->signalMapper, SLOT(map()));
+    connect(d->ui->buttonIcq,      SIGNAL(clicked()), d->signalMapper, SLOT(map()));
+    connect(d->ui->buttonMsn,      SIGNAL(clicked()), d->signalMapper, SLOT(map()));
+    connect(d->ui->buttonOthers,   SIGNAL(clicked()), this,            SIGNAL(othersChosen()));
 
     connect(d->signalMapper,SIGNAL(mapped(QString)),
             this,           SLOT(onProfileClicked(QString)));
-
-    // Add them to the Layout
-    d->ui->verticalLayout->addWidget(buttonJabber);
-    d->ui->verticalLayout->addWidget(buttonGTalk);
-    d->ui->verticalLayout->addWidget(buttonFacebook);
-    d->ui->verticalLayout->addWidget(buttonIcq);
-    d->ui->verticalLayout->addWidget(buttonMsn);
-    d->ui->verticalLayout->addWidget(buttonOthers);
-    d->ui->verticalLayout->addStretch();
 
     // Disable everything until Tp::ProfileManager is ready
     d->ui->verticalLayout->setEnabled(false);
