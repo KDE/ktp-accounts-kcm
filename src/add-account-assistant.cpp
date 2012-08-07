@@ -122,8 +122,6 @@ AddAccountAssistant::AddAccountAssistant(Tp::AccountManagerPtr accountManager, Q
 
     // TODO re-enable the help when we will have one
     showButton(KDialog::Help, false);
-
-    resize(QSize(400, 480));
 }
 
 AddAccountAssistant::~AddAccountAssistant()
