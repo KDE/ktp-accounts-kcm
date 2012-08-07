@@ -120,6 +120,9 @@ AddAccountAssistant::AddAccountAssistant(Tp::AccountManagerPtr accountManager, Q
 
     setAppropriate(d->pageTwo, false);
 
+    // TODO re-enable the help when we will have one
+    showButton(KDialog::Help, false);
+
     resize(QSize(400, 480));
 }
 
