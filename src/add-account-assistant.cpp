@@ -118,7 +118,7 @@ AddAccountAssistant::AddAccountAssistant(Tp::AccountManagerPtr accountManager, Q
     addPage(d->pageTwo);
     addPage(d->pageThree);
 
-    KAssistantDialog::setAppropriate(d->pageTwo, false);
+    setAppropriate(d->pageTwo, false);
 
     resize(QSize(400, 480));
 }
