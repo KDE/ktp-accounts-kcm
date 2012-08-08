@@ -34,6 +34,7 @@ public:
     virtual ~EditAccountDialog();
 
 private Q_SLOTS:
+    void onWalletOpened(Tp::PendingOperation *op);
     void onParametersUpdated(Tp::PendingOperation *op);
     void onDisplayNameUpdated(Tp::PendingOperation *op);
 

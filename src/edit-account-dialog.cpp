@@ -22,6 +22,8 @@
 #include "edit-account-dialog.h"
 
 #include <KTp/wallet-interface.h>
+#include <KTp/pending-wallet.h>
+#include <KTp/wallet-utils.h>
 
 #include "KCMTelepathyAccounts/dictionary.h"
 #include "KCMTelepathyAccounts/abstract-account-parameters-widget.h"
@@ -59,6 +61,23 @@ EditAccountDialog::EditAccountDialog(AccountItem *item, QWidget *parent)
 {
     d->item = item;
 
+    connect(KTp::WalletInterface::openWallet(), SIGNAL(finished(Tp::PendingOperation*)), SLOT(onWalletOpened(Tp::PendingOperation*)));
+
+    setMinimumWidth(400);
+}
+
+EditAccountDialog::~EditAccountDialog()
+{
+    delete d;
+}
+
+void EditAccountDialog::onWalletOpened(Tp::PendingOperation *op)
+{
+    KTp::PendingWallet *walletOp = qobject_cast<KTp::PendingWallet*>(op);
+    Q_ASSERT(walletOp);
+
+    KTp::WalletInterface *walletInterface = walletOp->walletInterface();
+
     // Get the protocol's parameters and values.
     Tp::ProtocolInfo protocolInfo = d->item->account()->protocolInfo();
     Tp::ProtocolParameterList parameters = protocolInfo.parameters();
@@ -71,9 +90,9 @@ EditAccountDialog::EditAccountDialog(AccountItem *item, QWidget *parent)
     //update the parameter model with the password from kwallet (if applicable)
     Tp::ProtocolParameter passwordParameter = parameterModel->parameter(QLatin1String("password"));
 
-    if (passwordParameter.isValid() && KTp::WalletInterface::hasPassword(d->item->account())) {
+    if (passwordParameter.isValid() && walletInterface->hasPassword(d->item->account())) {
         QModelIndex index = parameterModel->indexForParameter(passwordParameter);
-        QString password = KTp::WalletInterface::password(d->item->account());
+        QString password = walletInterface->password(d->item->account());
         parameterModel->setData(index, password, Qt::EditRole);
     }
 
@@ -84,12 +103,6 @@ EditAccountDialog::EditAccountDialog(AccountItem *item, QWidget *parent)
                                       doNotConnectOnAdd,
                                       this);
     setMainWidget(d->widget);
-    setMinimumWidth(400);
-}
-
-EditAccountDialog::~EditAccountDialog()
-{
-    delete d;
 }
 
 void EditAccountDialog::accept()
@@ -139,9 +152,9 @@ void EditAccountDialog::onParametersUpdated(Tp::PendingOperation *op)
     QVariantMap values = d->widget->parametersSet();
 
     if (values.contains(QLatin1String("password"))) {
-        KTp::WalletInterface::setPassword(d->item->account(), values[QLatin1String("password")].toString());
+        KTp::WalletUtils::setAccountPassword(d->item->account(), values[QLatin1String("password")].toString());
     } else {
-        KTp::WalletInterface::removePassword(d->item->account());
+        KTp::WalletUtils::setAccountPassword(d->item->account(), QString());
     }
 
 

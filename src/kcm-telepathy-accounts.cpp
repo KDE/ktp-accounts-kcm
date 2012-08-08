@@ -29,8 +29,6 @@
 #include "accounts-list-delegate.h"
 #include "account-identity-dialog.h"
 
-#include <KTp/wallet-interface.h>
-
 #include <QtGui/QLabel>
 #include <QtGui/QSortFilterProxyModel>
 
@@ -341,9 +339,8 @@ void KCMTelepathyAccounts::onRemoveAccountClicked()
                                         QString(), KMessageBox::Notify | KMessageBox::Dangerous) == KMessageBox::Continue)
     {
         AccountItem *item = index.data(AccountsListModel::AccountItemRole).value<AccountItem*>();
-        KTp::WalletInterface::removeAccount(item->account());
-        m_accountsListModel->removeAccount(m_currentModel->mapToSource(index));
-    }
+        item->remove();
+     }
 }
 
 void KCMTelepathyAccounts::onModelDataChanged()

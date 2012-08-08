@@ -42,7 +42,7 @@ public:
     explicit AccountItem(const Tp::AccountPtr &account, AccountsListModel *parent = 0);
     virtual ~AccountItem();
     Tp::AccountPtr account() const;
-    void remove();
+    Tp::PendingOperation* remove();
     const KIcon& icon() const;
     Tp::ConnectionStatus connectionStatus() const;
     const QString connectionStateString() const;
@@ -62,7 +62,6 @@ Q_SIGNALS:
 
 private Q_SLOTS:
     void generateIcon();
-    void onAccountRemoved(Tp::PendingOperation *op);
 
 private:
     Tp::AccountPtr m_account;

@@ -24,18 +24,21 @@
 #include "edit-account-dialog.h"
 
 #include <KTp/error-dictionary.h>
+#include <KTp/wallet-utils.h>
 
 #include <KApplication>
 #include <KDebug>
 #include <KIcon>
 #include <KLocalizedString>
+#include <KPixmapSequence>
 
 #include <QtCore/QTimer>
 #include <QtGui/QPainter>
 
 #include <TelepathyQt/PendingOperation>
 #include <TelepathyQt/PendingReady>
-#include <KPixmapSequence>
+#include <TelepathyQt/PendingComposite>
+
 
 AccountItem::AccountItem(const Tp::AccountPtr &account, AccountsListModel *parent)
  : QObject(parent),
@@ -75,14 +78,12 @@ Tp::AccountPtr AccountItem::account() const
     return m_account;
 }
 
-void AccountItem::remove()
+Tp::PendingOperation* AccountItem::remove()
 {
-    kDebug() << "Account about to be removed";
-
-    Tp::PendingOperation *op = m_account->remove();
-    connect(op,
-            SIGNAL(finished(Tp::PendingOperation*)),
-            SLOT(onAccountRemoved(Tp::PendingOperation*)));
+    QList<Tp::PendingOperation*> ops;
+    ops.append(KTp::WalletUtils::removeAccountPassword(m_account));
+    ops.append(m_account->remove());
+    return new Tp::PendingComposite(ops, m_account);
 }
 
 const KIcon& AccountItem::icon() const
@@ -174,16 +175,6 @@ void AccountItem::generateIcon()
     }
 
     Q_EMIT(updated());
-}
-
-void AccountItem::onAccountRemoved(Tp::PendingOperation *op)
-{
-    if (op->isError()) {
-        kDebug() << "An error occurred removing the Account."
-                 << op->errorName()
-                 << op->errorMessage();
-        return;
-    }
 }
 
 void AccountItem::onTitleForCustomPages(QString mandatoryPage, QList<QString> optionalPage)
