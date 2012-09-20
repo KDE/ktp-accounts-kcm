@@ -185,7 +185,7 @@ void ProfileListModel::populateList()
         //Remove this "continue" to re-enable IRC support, for personal reasons or hacking
         //this topic can be discussed again as of July 2013
 
-        if(profile->serviceName() == QLatin1String("irc")) {
+        if(profile->protocolName() == QLatin1String("irc")) {
                 continue;
         }
 
