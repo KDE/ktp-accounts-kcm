@@ -27,6 +27,8 @@
 #include <TelepathyQt/PendingReady>
 #include <TelepathyQt/ProfileManager>
 #include <TelepathyQt/PendingStringList>
+#include <TelepathyQt/PendingComposite>
+
 
 #include <KDebug>
 #include <KIcon>
@@ -120,9 +122,10 @@ bool ProfileListModel::hasNonFakeProfile(const Tp::ProfilePtr& profile, const QL
             // check if this profile is for a special service or for this protocol in general
             if (otherProfile->serviceName() == otherProfile->cmName().append(QLatin1Char('-')).append(otherProfile->protocolName())
             || otherProfile->serviceName() == otherProfile->protocolName()) {
-                
+
                 //check we have a valid CM for the non-fake profile
-                if (m_connectionManagerNames.contains(otherProfile->cmName())) {
+
+                if (hasValidCM(otherProfile)) {
                     return true;
                 }
             }
@@ -130,6 +133,22 @@ bool ProfileListModel::hasNonFakeProfile(const Tp::ProfilePtr& profile, const QL
     }
 
     return false;
+}
+
+bool ProfileListModel::hasValidCM(const Tp::ProfilePtr &profile) const
+{
+    //check we have a valid CM for the non-fake profile
+    if (!m_connectionManagers.contains(profile->cmName())) {
+        return false;
+    }
+
+    //if cm exists but doesn't support protocol in profile.
+    if (!m_connectionManagers[profile->cmName()]->hasProtocol(profile->protocolName())) {
+        return false;
+    }
+
+
+    return true;
 }
 
 void ProfileListModel::populateList()
@@ -151,20 +170,21 @@ void ProfileListModel::populateList()
             }
         }
 
+
         //don't include profiles which we don't have a CM for
-        if (! m_connectionManagerNames.contains(profile->cmName())) {
+        if (!hasValidCM(profile)) {
             continue;
         }
 
         //Hide all IRC accounts
         //this is a deliberate decision from Akademy meeting 2012
-        //"no, we don't support IRC", it's a different usage and in order to have a semi-decent IRC experience 
+        //"no, we don't support IRC", it's a different usage and in order to have a semi-decent IRC experience
         //we need to add a lot more that we simply don't have resources to do.
         //It's a better user experience to learn how to use a different app than to try using this.
-        
+
         //Remove this "continue" to re-enable IRC support, for personal reasons or hacking
         //this topic can be discussed again as of July 2013
-        
+
         if(profile->serviceName() == QLatin1String("irc")) {
                 continue;
         }
@@ -186,8 +206,21 @@ void ProfileListModel::onConnectionManagerNamesFetched(Tp::PendingOperation *ope
     Tp::PendingStringList* connectionManagerNamesOperation = qobject_cast<Tp::PendingStringList*>(operation);
 
     Q_ASSERT(connectionManagerNamesOperation);
-    m_connectionManagerNames = connectionManagerNamesOperation->result();
 
+    QList<Tp::PendingOperation*> pendingOps;
+
+    Q_FOREACH(const QString &cmName, connectionManagerNamesOperation->result()) {
+        Tp::ConnectionManagerPtr cm = Tp::ConnectionManager::create(QDBusConnection::sessionBus(), cmName);
+        pendingOps.append(cm->becomeReady());
+        m_connectionManagers[cmName] = cm;
+    }
+
+    connect(new Tp::PendingComposite(pendingOps, m_profileManager), SIGNAL(finished(Tp::PendingOperation*)), SLOT(onConnectionManagersLoaded(Tp::PendingOperation*)));
+}
+
+void ProfileListModel::onConnectionManagersLoaded(Tp::PendingOperation *op)
+{
+    Q_UNUSED(op)
     populateList();
 }
 

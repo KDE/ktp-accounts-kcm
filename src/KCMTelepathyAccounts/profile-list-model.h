@@ -56,15 +56,17 @@ public:
 
 private Q_SLOTS:
     void onConnectionManagerNamesFetched(Tp::PendingOperation*);
+    void onConnectionManagersLoaded(Tp::PendingOperation *op);
     void onProfileManagerReady(Tp::PendingOperation *op);
 
 private:
     bool hasNonFakeProfile(const Tp::ProfilePtr &profile, const QList<Tp::ProfilePtr> &profiles) const;
+    bool hasValidCM(const Tp::ProfilePtr &profile) const;
     void populateList();
 
     Tp::ProfileManagerPtr m_profileManager;
     QList<ProfileItem*> m_profileItems;
-    QStringList m_connectionManagerNames;
+    QHash<QString, Tp::ConnectionManagerPtr> m_connectionManagers;
 };
 
 
