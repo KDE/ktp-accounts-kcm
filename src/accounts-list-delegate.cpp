@@ -130,7 +130,7 @@ void AccountsListDelegate::updateItemWidgets(const QList<QWidget *> widgets, con
     QString statusText(index.data(AccountsListModel::ConnectionStateDisplayRole).toString());
     QString displayName(index.data(Qt::DisplayRole).toString());
     QString connectionError(index.data(AccountsListModel::ConnectionErrorMessageDisplayRole).toString());
-    Tp::AccountPtr account(index.data(AccountsListModel::AccountItemRole).value<AccountItem*>()->account());
+    Tp::AccountPtr account(index.data(AccountsListModel::AccountRole).value<Tp::AccountPtr>());
 
 
     QRect outerRect(0, 0, option.rect.width(), option.rect.height());

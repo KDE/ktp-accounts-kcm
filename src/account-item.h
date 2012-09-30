@@ -42,7 +42,6 @@ public:
     explicit AccountItem(const Tp::AccountPtr &account, AccountsListModel *parent = 0);
     virtual ~AccountItem();
     Tp::AccountPtr account() const;
-    Tp::PendingOperation* remove();
     const KIcon& icon() const;
     Tp::ConnectionStatus connectionStatus() const;
     const QString connectionStateString() const;

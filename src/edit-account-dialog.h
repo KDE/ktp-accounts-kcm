@@ -30,7 +30,7 @@ class EditAccountDialog : public KDialog
     Q_OBJECT
 
 public:
-    explicit EditAccountDialog(AccountItem *item, QWidget *parent = 0);
+    explicit EditAccountDialog(const Tp::AccountPtr &account, QWidget *parent = 0);
     virtual ~EditAccountDialog();
 
     virtual void setVisible(bool visible);

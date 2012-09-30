@@ -39,6 +39,7 @@
 
 #include <QtCore/QList>
 
+#include <TelepathyQt/Account>
 #include <TelepathyQt/ConnectionManager>
 #include <TelepathyQt/PendingStringList>
 
@@ -46,21 +47,21 @@ class EditAccountDialog::Private
 {
 public:
     Private()
-            : item(0), widget(0), reconnectRequired(false), kwalletReady(false)
+        :  widget(0), reconnectRequired(false), kwalletReady(false)
     {
     }
 
-    AccountItem *item;
+    Tp::AccountPtr account;
     AccountEditWidget *widget;
     bool reconnectRequired;
     bool kwalletReady;
 };
 
-EditAccountDialog::EditAccountDialog(AccountItem *item, QWidget *parent)
+EditAccountDialog::EditAccountDialog(const Tp::AccountPtr &account, QWidget *parent)
         : KDialog(parent),
           d(new Private)
 {
-    d->item = item;
+    d->account = account;
 
     connect(KTp::WalletInterface::openWallet(), SIGNAL(finished(Tp::PendingOperation*)), SLOT(onWalletOpened(Tp::PendingOperation*)));
 
@@ -80,26 +81,26 @@ void EditAccountDialog::onWalletOpened(Tp::PendingOperation *op)
     KTp::WalletInterface *walletInterface = walletOp->walletInterface();
 
     // Get the protocol's parameters and values.
-    Tp::ProtocolInfo protocolInfo = d->item->account()->protocolInfo();
+    Tp::ProtocolInfo protocolInfo = d->account->protocolInfo();
     Tp::ProtocolParameterList parameters = protocolInfo.parameters();
-    QVariantMap parameterValues = d->item->account()->parameters();
+    QVariantMap parameterValues = d->account->parameters();
 
     // Add the parameters to the model.
     ParameterEditModel *parameterModel = new ParameterEditModel(this);
-    parameterModel->addItems(parameters, d->item->account()->profile()->parameters(), parameterValues);
+    parameterModel->addItems(parameters, d->account->profile()->parameters(), parameterValues);
 
     //update the parameter model with the password from kwallet (if applicable)
     Tp::ProtocolParameter passwordParameter = parameterModel->parameter(QLatin1String("password"));
 
-    if (passwordParameter.isValid() && walletInterface->hasPassword(d->item->account())) {
+    if (passwordParameter.isValid() && walletInterface->hasPassword(d->account)) {
         QModelIndex index = parameterModel->indexForParameter(passwordParameter);
-        QString password = walletInterface->password(d->item->account());
+        QString password = walletInterface->password(d->account);
         parameterModel->setData(index, password, Qt::EditRole);
     }
 
 
     // Set up the interface
-    d->widget = new AccountEditWidget(d->item->account()->profile(),
+    d->widget = new AccountEditWidget(d->account->profile(),
                                       parameterModel,
                                       doNotConnectOnAdd,
                                       this);
@@ -123,7 +124,7 @@ void EditAccountDialog::accept()
     //remove password from setParameters as this is now stored by kwallet instead
     setParameters.remove(QLatin1String("password"));
 
-    Tp::PendingStringList *psl = d->item->account()->updateParameters(setParameters, unsetParameters);
+    Tp::PendingStringList *psl = d->account->updateParameters(setParameters, unsetParameters);
 
     kDebug() << "Set parameters:" << setParameters;
     kDebug() << "Unset parameters:" << unsetParameters;
@@ -156,9 +157,9 @@ void EditAccountDialog::onParametersUpdated(Tp::PendingOperation *op)
     QVariantMap values = d->widget->parametersSet();
 
     if (values.contains(QLatin1String("password"))) {
-        KTp::WalletUtils::setAccountPassword(d->item->account(), values[QLatin1String("password")].toString());
+        KTp::WalletUtils::setAccountPassword(d->account, values[QLatin1String("password")].toString());
     } else {
-        KTp::WalletUtils::setAccountPassword(d->item->account(), QString());
+        KTp::WalletUtils::setAccountPassword(d->account, QString());
     }
 
 
@@ -168,10 +169,10 @@ void EditAccountDialog::onParametersUpdated(Tp::PendingOperation *op)
         displayName = values[QLatin1String("account")].toString();
     }
     else {
-        displayName = d->item->account()->profile()->protocolName();
+        displayName = d->account->profile()->protocolName();
     }
 
-    Tp::PendingOperation *dnop = d->item->account()->setDisplayName(displayName);
+    Tp::PendingOperation *dnop = d->account->setDisplayName(displayName);
 
     connect(dnop,
             SIGNAL(finished(Tp::PendingOperation*)),
@@ -189,7 +190,7 @@ void EditAccountDialog::onDisplayNameUpdated(Tp::PendingOperation *op)
     Q_EMIT finished();
 
     if (d->reconnectRequired) {
-        d->item->account()->reconnect();
+        d->account->reconnect();
     }
 
     // set the dialog as accepted and exit

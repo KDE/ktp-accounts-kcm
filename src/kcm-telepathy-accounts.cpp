@@ -41,12 +41,16 @@
 #include <KPixmapSequenceOverlayPainter>
 #include <KDebug>
 
+#include <KTp/wallet-utils.h>
+
 #include <TelepathyQt/Account>
 #include <TelepathyQt/AccountFactory>
 #include <TelepathyQt/PendingOperation>
 #include <TelepathyQt/PendingReady>
 #include <TelepathyQt/Types>
+#include <TelepathyQt/PendingComposite>
 #include <TelepathyQt/ConnectionManager>
+
 
 #include "salut-enabler.h"
 #include <KPixmapSequence>
@@ -211,9 +215,9 @@ void KCMTelepathyAccounts::onAccountEnabledChanged(const QModelIndex &index, boo
 
     if (enabled) {
         // connect the account
-        AccountItem *item = index.data(AccountsListModel::AccountItemRole).value<AccountItem*>();
-        if (item) {
-            item->account()->setRequestedPresence(Tp::Presence::available());
+        Tp::AccountPtr account = index.data(AccountsListModel::AccountRole).value<Tp::AccountPtr>();
+        if (!account.isNull()) {
+            account->setRequestedPresence(Tp::Presence::available());
         }
     }
 }
@@ -298,13 +302,14 @@ void KCMTelepathyAccounts::onEditAccountClicked()
     if (!index.isValid()) {
         return;
     }
-    AccountItem *item = index.data(AccountsListModel::AccountItemRole).value<AccountItem*>();
+    Tp::AccountPtr account = index.data(AccountsListModel::AccountRole).value<Tp::AccountPtr>();
 
-    if (!item)
+    if (account.isNull()) {
         return;
+    }
 
     // Item is OK. Edit the item.
-    EditAccountDialog dialog(item, this);
+    EditAccountDialog dialog(account, this);
     dialog.exec();
 }
 
@@ -319,13 +324,13 @@ void KCMTelepathyAccounts::onEditIdentityClicked()
         return;
     }
 
-    AccountItem *item = index.data(AccountsListModel::AccountItemRole).value<AccountItem*>();
+    Tp::AccountPtr account = index.data(AccountsListModel::AccountRole).value<Tp::AccountPtr>();
 
-    if (!item) {
+    if (account.isNull()) {
         return;
     }
 
-    AccountIdentityDialog dialog(item->account(),this);
+    AccountIdentityDialog dialog(account,this);
     dialog.exec();
 }
 
@@ -338,8 +343,16 @@ void KCMTelepathyAccounts::onRemoveAccountClicked()
                                         i18n("Remove Account"), KGuiItem(i18n("Remove Account"), QLatin1String("edit-delete")), KStandardGuiItem::cancel(),
                                         QString(), KMessageBox::Notify | KMessageBox::Dangerous) == KMessageBox::Continue)
     {
-        AccountItem *item = index.data(AccountsListModel::AccountItemRole).value<AccountItem*>();
-        item->remove();
+         Tp::AccountPtr account = index.data(AccountsListModel::AccountRole).value<Tp::AccountPtr>();
+
+         if (account.isNull()) {
+             return;
+         }
+
+         QList<Tp::PendingOperation*> ops;
+         ops.append(KTp::WalletUtils::removeAccountPassword(account));
+         ops.append(account->remove());
+         new Tp::PendingComposite(ops, account);
      }
 }
 

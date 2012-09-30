@@ -78,14 +78,6 @@ Tp::AccountPtr AccountItem::account() const
     return m_account;
 }
 
-Tp::PendingOperation* AccountItem::remove()
-{
-    QList<Tp::PendingOperation*> ops;
-    ops.append(KTp::WalletUtils::removeAccountPassword(m_account));
-    ops.append(m_account->remove());
-    return new Tp::PendingComposite(ops, m_account);
-}
-
 const KIcon& AccountItem::icon() const
 {
     Q_ASSERT(m_icon != 0);
