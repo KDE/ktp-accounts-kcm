@@ -169,11 +169,6 @@ void AccountItem::generateIcon()
     Q_EMIT(updated());
 }
 
-void AccountItem::onTitleForCustomPages(QString mandatoryPage, QList<QString> optionalPage)
-{
-    Q_EMIT setTitleForCustomPages(mandatoryPage, optionalPage);
-}
-
 Tp::ConnectionStatus AccountItem::connectionStatus() const
 {
     return m_account->connectionStatus();

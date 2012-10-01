@@ -49,15 +49,11 @@ public:
     const QString connectionStatusReason() const;
     const QString connectionProtocolName() const;
 
-public Q_SLOTS:
-    void onTitleForCustomPages(QString, QList<QString>);
-
 Q_SIGNALS:
     void ready();
     void removed();
     void updated();
     void protocolSelected(QString, QString);
-    void setTitleForCustomPages(QString, QList<QString>);
 
 private Q_SLOTS:
     void generateIcon();
