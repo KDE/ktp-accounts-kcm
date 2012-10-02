@@ -13,7 +13,6 @@ set (kcm_ktp_accounts_SRCS
      salut-message-widget.cpp
      kcm-telepathy-accounts.cpp
      accounts-list-model.cpp
-     account-item.cpp
      add-account-assistant.cpp
      edit-account-dialog.cpp
      account-identity-dialog.cpp
