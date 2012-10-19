@@ -23,11 +23,11 @@
 
 #include "ui_main-widget.h"
 
-#include "accounts-list-model.h"
 #include "add-account-assistant.h"
 #include "edit-account-dialog.h"
 #include "accounts-list-delegate.h"
 #include "account-identity-dialog.h"
+#include "salut-enabler.h"
 
 #include <QtGui/QLabel>
 #include <QtGui/QSortFilterProxyModel>
@@ -40,8 +40,10 @@
 #include <KMessageWidget>
 #include <KPixmapSequenceOverlayPainter>
 #include <KDebug>
+#include <KPixmapSequence>
 
 #include <KTp/wallet-utils.h>
+#include <KTp/Models/accounts-list-model.h>
 
 #include <TelepathyQt/Account>
 #include <TelepathyQt/AccountFactory>
@@ -52,8 +54,6 @@
 #include <TelepathyQt/ConnectionManager>
 
 
-#include "salut-enabler.h"
-#include <KPixmapSequence>
 
 K_PLUGIN_FACTORY(KCMTelepathyAccountsFactory, registerPlugin<KCMTelepathyAccounts>();)
 K_EXPORT_PLUGIN(KCMTelepathyAccountsFactory("telepathy_accounts", "telepathy-accounts-kcm"))
@@ -231,23 +231,9 @@ void KCMTelepathyAccounts::onAccountManagerReady(Tp::PendingOperation *op)
         return;
     }
 
-    // Add all the accounts to the Accounts Model.
-    QList<Tp::AccountPtr> accounts = m_accountManager->allAccounts();
-    Q_FOREACH (const Tp::AccountPtr &account, accounts) {
-        m_accountsListModel->addAccount(account);
-    }
-
-    onModelDataChanged();
-
-    connect(m_accountManager.data(),
-            SIGNAL(newAccount(Tp::AccountPtr)),
-            SLOT(onAccountCreated(Tp::AccountPtr)));
+    m_accountsListModel->setAccountManager(m_accountManager);
 }
 
-void KCMTelepathyAccounts::onAccountCreated(const Tp::AccountPtr &account)
-{
-    m_accountsListModel->addAccount(account);
-}
 
 void KCMTelepathyAccounts::onSelectedItemChanged(const QModelIndex &current, const QModelIndex &previous)
 {

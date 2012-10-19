@@ -21,9 +21,10 @@
 #ifndef KCM_TELEPATHY_ACCOUNTS_EDIT_ACCOUNT_DIALOG_H
 #define KCM_TELEPATHY_ACCOUNTS_EDIT_ACCOUNT_DIALOG_H
 
-#include "account-item.h"
-
 #include <KDialog>
+
+#include <TelepathyQt/Types>
+#include <TelepathyQt/PendingOperation>
 
 class EditAccountDialog : public KDialog
 {

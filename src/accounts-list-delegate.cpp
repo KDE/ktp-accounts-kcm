@@ -21,13 +21,11 @@
 
 #include "accounts-list-delegate.h"
 
-#include "account-item.h"
-#include "accounts-list-model.h"
 #include "edit-display-name-button.h"
 #include "change-icon-button.h"
 
 #include <KTp/presence.h>
-#include <KTp/Models/accounts-model.h>
+#include <KTp/Models/accounts-list-model.h>
 
 #include <KDE/KLocale>
 #include <KDE/KIconButton>
