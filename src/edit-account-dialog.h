@@ -33,6 +33,8 @@ public:
     explicit EditAccountDialog(AccountItem *item, QWidget *parent = 0);
     virtual ~EditAccountDialog();
 
+    virtual void setVisible(bool visible);
+
 private Q_SLOTS:
     void onWalletOpened(Tp::PendingOperation *op);
     void onParametersUpdated(Tp::PendingOperation *op);
