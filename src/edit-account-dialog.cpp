@@ -46,13 +46,14 @@ class EditAccountDialog::Private
 {
 public:
     Private()
-            : item(0), widget(0), reconnectRequired(false)
+            : item(0), widget(0), reconnectRequired(false), kwalletReady(false)
     {
     }
 
     AccountItem *item;
     AccountEditWidget *widget;
     bool reconnectRequired;
+    bool kwalletReady;
 };
 
 EditAccountDialog::EditAccountDialog(AccountItem *item, QWidget *parent)
@@ -103,6 +104,9 @@ void EditAccountDialog::onWalletOpened(Tp::PendingOperation *op)
                                       doNotConnectOnAdd,
                                       this);
     setMainWidget(d->widget);
+
+    d->kwalletReady = true;
+    show();
 }
 
 void EditAccountDialog::accept()
@@ -190,6 +194,16 @@ void EditAccountDialog::onDisplayNameUpdated(Tp::PendingOperation *op)
 
     // set the dialog as accepted and exit
     done(KDialog::Accepted);
+}
+
+void EditAccountDialog::setVisible(bool visible)
+{
+    if (visible && d->kwalletReady) {
+	KDialog::setVisible(visible);
+	return;
+    }
+
+    KDialog::setVisible(false);
 }
 
 #include "edit-account-dialog.moc"
