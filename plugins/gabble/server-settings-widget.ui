@@ -156,6 +156,8 @@
   <tabstop>portSpinBox</tabstop>
   <tabstop>keepaliveIntervalSpinBox</tabstop>
   <tabstop>lowBandwidthCheckBox</tabstop>
+  <tabstop>resourceLineEdit</tabstop>
+  <tabstop>prioritySpinBox</tabstop>
   <tabstop>requireEncryptionCheckBox</tabstop>
   <tabstop>ignoreSslErrorsCheckBox</tabstop>
   <tabstop>oldSslCheckBox</tabstop>

@@ -211,6 +211,15 @@
    <header>kpushbutton.h</header>
   </customwidget>
  </customwidgets>
+ <tabstops>
+  <tabstop>salutEnableCheckbox</tabstop>
+  <tabstop>salutListView</tabstop>
+  <tabstop>accountsListView</tabstop>
+  <tabstop>addAccountButton</tabstop>
+  <tabstop>editAccountButton</tabstop>
+  <tabstop>editAccountIdentityButton</tabstop>
+  <tabstop>removeAccountButton</tabstop>
+ </tabstops>
  <resources/>
  <connections/>
 </ui>

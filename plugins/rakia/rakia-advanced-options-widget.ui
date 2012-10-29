@@ -302,6 +302,20 @@ p, li { white-space: pre-wrap; }
    <header>knuminput.h</header>
   </customwidget>
  </customwidgets>
+ <tabstops>
+  <tabstop>authUserLineEdit</tabstop>
+  <tabstop>registrarLineEdit</tabstop>
+  <tabstop>proxyLineEdit</tabstop>
+  <tabstop>portSpinBox</tabstop>
+  <tabstop>transportComboBox</tabstop>
+  <tabstop>stunGroupBox</tabstop>
+  <tabstop>stunServerLineEdit</tabstop>
+  <tabstop>stunPortSpinBox</tabstop>
+  <tabstop>looseRoutingCheckBox</tabstop>
+  <tabstop>discoverBindingCheckBox</tabstop>
+  <tabstop>keepaliveMechanismComboBox</tabstop>
+  <tabstop>keepaliveIntervalNumInput</tabstop>
+ </tabstops>
  <resources/>
  <connections/>
 </ui>
