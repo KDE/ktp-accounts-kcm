@@ -20,6 +20,8 @@
 
 #include "icq-server-settings-widget.h"
 
+#include <KCMTelepathyAccounts/ParameterEditModel>
+
 IcqServerSettingsWidget::IcqServerSettingsWidget(ParameterEditModel *model,
                                                      QWidget *parent)
  : AbstractAccountParametersWidget(model, parent)
@@ -34,6 +36,11 @@ IcqServerSettingsWidget::IcqServerSettingsWidget(ParameterEditModel *model,
     handleParameter(QLatin1String("allow-multiple-logins"), QVariant::Bool, m_ui->allowMultipleLoginsCheckBox, 0);
     handleParameter(QLatin1String("always-use-rv-proxy"), QVariant::Bool, m_ui->alwaysUseRvProxyCheckBox, 0);
     handleParameter(QLatin1String("charset"), QVariant::String, m_ui->charsetComboBox, m_ui->charsetLabel);
+
+    // update combo box for charset parameter
+    m_ui->charsetComboBox->setCurrentItem(parameterModel()->data(
+            parameterModel()->indexForParameter(parameterModel()->parameter(QLatin1String("charset"))),
+            ParameterEditModel::ValueRole).toString());
 }
 
 IcqServerSettingsWidget::~IcqServerSettingsWidget()

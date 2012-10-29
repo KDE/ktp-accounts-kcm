@@ -20,6 +20,8 @@
 
 #include "yahoo-server-settings-widget.h"
 
+#include <KCMTelepathyAccounts/ParameterEditModel>
+
 YahooServerSettingsWidget::YahooServerSettingsWidget(ParameterEditModel *model,
                                                      QWidget *parent)
  : AbstractAccountParametersWidget(model, parent)
@@ -38,6 +40,11 @@ YahooServerSettingsWidget::YahooServerSettingsWidget(ParameterEditModel *model,
     //other
     handleParameter(QLatin1String("proxy-ssl"), QVariant::Bool, m_ui->SslProxy, 0);
     handleParameter(QLatin1String("ignore-invites"), QVariant::Bool, m_ui->ignoreInvites, 0);
+
+    // update combo box for charset parameter
+    m_ui->charsetComboBox->setCurrentItem(parameterModel()->data(
+            parameterModel()->indexForParameter(parameterModel()->parameter(QLatin1String("charset"))),
+            ParameterEditModel::ValueRole).toString());
 }
 
 YahooServerSettingsWidget::~YahooServerSettingsWidget()
