@@ -130,6 +130,9 @@ void AccountsListDelegate::updateItemWidgets(const QList<QWidget *> widgets, con
     QString connectionError(index.data(AccountsListModel::ConnectionErrorMessageDisplayRole).toString());
     Tp::AccountPtr account(index.data(AccountsListModel::AccountRole).value<Tp::AccountPtr>());
 
+    if (!account->isEnabled()) {
+      connectionError = i18n("Click checkbox to enable");
+    }
 
     QRect outerRect(0, 0, option.rect.width(), option.rect.height());
     QRect contentRect = outerRect.adjusted(m_hpadding,m_vpadding,-m_hpadding,-m_vpadding); //add some padding
