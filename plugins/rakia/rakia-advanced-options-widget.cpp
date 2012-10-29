@@ -69,6 +69,16 @@ RakiaAdvancedOptionsWidget::RakiaAdvancedOptionsWidget(ParameterEditModel* model
                     m_ui->keepaliveIntervalNumInput,
                     m_ui->keepaliveIntervalLabel);
 
+    // update combo box for transport parameter
+    m_ui->transportComboBox->setCurrentItem(parameterModel()->data(
+            parameterModel()->indexForParameter(parameterModel()->parameter(QLatin1String("transport"))),
+            ParameterEditModel::ValueRole).toString());
+
+    // update combo box for keepalive-mechanism parameter
+    m_ui->keepaliveMechanismComboBox->setCurrentItem(parameterModel()->data(
+            parameterModel()->indexForParameter(parameterModel()->parameter(QLatin1String("keepalive-mechanism"))),
+            ParameterEditModel::ValueRole).toString());
+
     kDebug() << parameterModel()->data(
                  parameterModel()->indexForParameter(parameterModel()->parameter(QLatin1String("discover-stun"))),
                  ParameterEditModel::ValueRole);
