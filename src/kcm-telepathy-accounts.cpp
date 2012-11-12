@@ -338,7 +338,7 @@ void KCMTelepathyAccounts::onRemoveAccountClicked()
          QList<Tp::PendingOperation*> ops;
          ops.append(KTp::WalletUtils::removeAccountPassword(account));
          ops.append(account->remove());
-         new Tp::PendingComposite(ops, account);
+         connect(new Tp::PendingComposite(ops, account), SIGNAL(finished(Tp::PendingOperation*)), SLOT(onOperationFinished(Tp::PendingOperation*)));
      }
 }
 
@@ -415,6 +415,13 @@ void KCMTelepathyAccounts::onSalutSetupDone()
     m_salutBusyWheel->stop();
     m_ui->salutEnableCheckbox->setChecked(false);
     m_ui->salutWidget->setEnabled(true);
+}
+
+void KCMTelepathyAccounts::onOperationFinished(Tp::PendingOperation *op)
+{
+    if (op->isError()) {
+        kDebug() << "operation failed " << op->errorName() << op->errorMessage();
+    }
 }
 
 /////

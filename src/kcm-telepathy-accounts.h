@@ -70,6 +70,7 @@ private Q_SLOTS:
     void onSalutInfoReady();
 
     void onSalutSetupDone();
+    void onOperationFinished(Tp::PendingOperation *op);
 
 private:
     Ui::MainWidget *m_ui;
