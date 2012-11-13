@@ -21,13 +21,11 @@
 
 #include "accounts-list-delegate.h"
 
-#include "account-item.h"
-#include "accounts-list-model.h"
 #include "edit-display-name-button.h"
 #include "change-icon-button.h"
 
 #include <KTp/presence.h>
-#include <KTp/Models/accounts-model.h>
+#include <KTp/Models/accounts-list-model.h>
 
 #include <KDE/KLocale>
 #include <KDE/KIconButton>
@@ -130,8 +128,11 @@ void AccountsListDelegate::updateItemWidgets(const QList<QWidget *> widgets, con
     QString statusText(index.data(AccountsListModel::ConnectionStateDisplayRole).toString());
     QString displayName(index.data(Qt::DisplayRole).toString());
     QString connectionError(index.data(AccountsListModel::ConnectionErrorMessageDisplayRole).toString());
-    Tp::AccountPtr account(index.data(AccountsListModel::AccountItemRole).value<AccountItem*>()->account());
+    Tp::AccountPtr account(index.data(AccountsListModel::AccountRole).value<Tp::AccountPtr>());
 
+    if (!account->isEnabled()) {
+      connectionError = i18n("Click checkbox to enable");
+    }
 
     QRect outerRect(0, 0, option.rect.width(), option.rect.height());
     QRect contentRect = outerRect.adjusted(m_hpadding,m_vpadding,-m_hpadding,-m_vpadding); //add some padding

@@ -23,11 +23,11 @@
 
 #include "ui_main-widget.h"
 
-#include "accounts-list-model.h"
 #include "add-account-assistant.h"
 #include "edit-account-dialog.h"
 #include "accounts-list-delegate.h"
 #include "account-identity-dialog.h"
+#include "salut-enabler.h"
 
 #include <QtGui/QLabel>
 #include <QtGui/QSortFilterProxyModel>
@@ -40,16 +40,20 @@
 #include <KMessageWidget>
 #include <KPixmapSequenceOverlayPainter>
 #include <KDebug>
+#include <KPixmapSequence>
+
+#include <KTp/wallet-utils.h>
+#include <KTp/Models/accounts-list-model.h>
 
 #include <TelepathyQt/Account>
 #include <TelepathyQt/AccountFactory>
 #include <TelepathyQt/PendingOperation>
 #include <TelepathyQt/PendingReady>
 #include <TelepathyQt/Types>
+#include <TelepathyQt/PendingComposite>
 #include <TelepathyQt/ConnectionManager>
 
-#include "salut-enabler.h"
-#include <KPixmapSequence>
+
 
 K_PLUGIN_FACTORY(KCMTelepathyAccountsFactory, registerPlugin<KCMTelepathyAccounts>();)
 K_EXPORT_PLUGIN(KCMTelepathyAccountsFactory("telepathy_accounts", "telepathy-accounts-kcm"))
@@ -211,9 +215,9 @@ void KCMTelepathyAccounts::onAccountEnabledChanged(const QModelIndex &index, boo
 
     if (enabled) {
         // connect the account
-        AccountItem *item = index.data(AccountsListModel::AccountItemRole).value<AccountItem*>();
-        if (item) {
-            item->account()->setRequestedPresence(Tp::Presence::available());
+        Tp::AccountPtr account = index.data(AccountsListModel::AccountRole).value<Tp::AccountPtr>();
+        if (!account.isNull()) {
+            account->setRequestedPresence(Tp::Presence::available());
         }
     }
 }
@@ -227,23 +231,9 @@ void KCMTelepathyAccounts::onAccountManagerReady(Tp::PendingOperation *op)
         return;
     }
 
-    // Add all the accounts to the Accounts Model.
-    QList<Tp::AccountPtr> accounts = m_accountManager->allAccounts();
-    Q_FOREACH (const Tp::AccountPtr &account, accounts) {
-        m_accountsListModel->addAccount(account);
-    }
-
-    onModelDataChanged();
-
-    connect(m_accountManager.data(),
-            SIGNAL(newAccount(Tp::AccountPtr)),
-            SLOT(onAccountCreated(Tp::AccountPtr)));
+    m_accountsListModel->setAccountManager(m_accountManager);
 }
 
-void KCMTelepathyAccounts::onAccountCreated(const Tp::AccountPtr &account)
-{
-    m_accountsListModel->addAccount(account);
-}
 
 void KCMTelepathyAccounts::onSelectedItemChanged(const QModelIndex &current, const QModelIndex &previous)
 {
@@ -298,13 +288,14 @@ void KCMTelepathyAccounts::onEditAccountClicked()
     if (!index.isValid()) {
         return;
     }
-    AccountItem *item = index.data(AccountsListModel::AccountItemRole).value<AccountItem*>();
+    Tp::AccountPtr account = index.data(AccountsListModel::AccountRole).value<Tp::AccountPtr>();
 
-    if (!item)
+    if (account.isNull()) {
         return;
+    }
 
     // Item is OK. Edit the item.
-    EditAccountDialog dialog(item, this);
+    EditAccountDialog dialog(account, this);
     dialog.exec();
 }
 
@@ -319,13 +310,13 @@ void KCMTelepathyAccounts::onEditIdentityClicked()
         return;
     }
 
-    AccountItem *item = index.data(AccountsListModel::AccountItemRole).value<AccountItem*>();
+    Tp::AccountPtr account = index.data(AccountsListModel::AccountRole).value<Tp::AccountPtr>();
 
-    if (!item) {
+    if (account.isNull()) {
         return;
     }
 
-    AccountIdentityDialog dialog(item->account(),this);
+    AccountIdentityDialog dialog(account,this);
     dialog.exec();
 }
 
@@ -338,8 +329,16 @@ void KCMTelepathyAccounts::onRemoveAccountClicked()
                                         i18n("Remove Account"), KGuiItem(i18n("Remove Account"), QLatin1String("edit-delete")), KStandardGuiItem::cancel(),
                                         QString(), KMessageBox::Notify | KMessageBox::Dangerous) == KMessageBox::Continue)
     {
-        AccountItem *item = index.data(AccountsListModel::AccountItemRole).value<AccountItem*>();
-        item->remove();
+         Tp::AccountPtr account = index.data(AccountsListModel::AccountRole).value<Tp::AccountPtr>();
+
+         if (account.isNull()) {
+             return;
+         }
+
+         QList<Tp::PendingOperation*> ops;
+         ops.append(KTp::WalletUtils::removeAccountPassword(account));
+         ops.append(account->remove());
+         connect(new Tp::PendingComposite(ops, account), SIGNAL(finished(Tp::PendingOperation*)), SLOT(onOperationFinished(Tp::PendingOperation*)));
      }
 }
 
@@ -416,6 +415,13 @@ void KCMTelepathyAccounts::onSalutSetupDone()
     m_salutBusyWheel->stop();
     m_ui->salutEnableCheckbox->setChecked(false);
     m_ui->salutWidget->setEnabled(true);
+}
+
+void KCMTelepathyAccounts::onOperationFinished(Tp::PendingOperation *op)
+{
+    if (op->isError()) {
+        kDebug() << "operation failed " << op->errorName() << op->errorMessage();
+    }
 }
 
 /////

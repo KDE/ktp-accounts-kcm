@@ -58,10 +58,7 @@ public Q_SLOTS:
 
 private Q_SLOTS:
     void onAccountManagerReady(Tp::PendingOperation *op);
-    void onAccountCreated(const Tp::AccountPtr &account);
-
     void onAccountEnabledChanged(const QModelIndex &index, bool enabled);
-
     void onSelectedItemChanged(const QModelIndex &current, const QModelIndex &previous);
     void onAddAccountClicked();
     void onEditAccountClicked();
@@ -73,6 +70,7 @@ private Q_SLOTS:
     void onSalutInfoReady();
 
     void onSalutSetupDone();
+    void onOperationFinished(Tp::PendingOperation *op);
 
 private:
     Ui::MainWidget *m_ui;
