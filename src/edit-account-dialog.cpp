@@ -123,6 +123,7 @@ void EditAccountDialog::accept()
 
     //remove password from setParameters as this is now stored by kwallet instead
     setParameters.remove(QLatin1String("password"));
+    unsetParameters.append(QLatin1String("password")); //remove the password from mission control
 
     Tp::PendingStringList *psl = d->account->updateParameters(setParameters, unsetParameters);
 
