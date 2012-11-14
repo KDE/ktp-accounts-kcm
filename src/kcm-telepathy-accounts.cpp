@@ -50,6 +50,7 @@
 #include <KTp/logs-importer.h>
 
 #include <TelepathyQt/Account>
+#include <TelepathyQt/AccountSet>
 #include <TelepathyQt/AccountFactory>
 #include <TelepathyQt/PendingOperation>
 #include <TelepathyQt/PendingReady>
@@ -222,7 +223,7 @@ void KCMTelepathyAccounts::onAccountEnabledChanged(const QModelIndex &index, boo
     else {
         value = QVariant(Qt::Unchecked);
     }
-    m_accountsListModel->setData(index, value, Qt::CheckStateRole);
+    m_accountsListModel->setData(index, value, AccountsListModel::EnabledRole);
 
     if (enabled) {
         // connect the account
@@ -242,7 +243,7 @@ void KCMTelepathyAccounts::onAccountManagerReady(Tp::PendingOperation *op)
         return;
     }
 
-    m_accountsListModel->setAccountManager(m_accountManager);
+    m_accountsListModel->setAccountSet(m_accountManager->validAccounts());
 }
 
 void KCMTelepathyAccounts::onNewAccountAdded(const Tp::AccountPtr& account)

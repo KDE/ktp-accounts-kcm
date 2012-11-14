@@ -122,7 +122,7 @@ void AccountsListDelegate::updateItemWidgets(const QList<QWidget *> widgets, con
 
 
     bool isSelected(itemView()->selectionModel()->isSelected(index) && itemView()->hasFocus());
-    bool isEnabled(index.data(Qt::CheckStateRole).toBool());
+    bool isEnabled(index.data(AccountsListModel::EnabledRole).toBool());
     KIcon accountIcon(index.data(Qt::DecorationRole).value<QIcon>());
     KIcon statusIcon(index.data(AccountsListModel::ConnectionStateIconRole).value<QIcon>());
     QString statusText(index.data(AccountsListModel::ConnectionStateDisplayRole).toString());
