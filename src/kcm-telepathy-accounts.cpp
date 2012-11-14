@@ -31,6 +31,8 @@
 
 #include <QtGui/QLabel>
 #include <QtGui/QSortFilterProxyModel>
+#include <QtGui/QProgressBar>
+#include <QtCore/QPointer>
 
 #include <KPluginFactory>
 #include <KIcon>
@@ -41,9 +43,11 @@
 #include <KPixmapSequenceOverlayPainter>
 #include <KDebug>
 #include <KPixmapSequence>
+#include <KProgressDialog>
 
 #include <KTp/wallet-utils.h>
 #include <KTp/Models/accounts-list-model.h>
+#include <KTp/logs-importer.h>
 
 #include <TelepathyQt/Account>
 #include <TelepathyQt/AccountFactory>
@@ -53,6 +57,9 @@
 #include <TelepathyQt/PendingComposite>
 #include <TelepathyQt/ConnectionManager>
 
+#include <TelepathyLoggerQt4/LogManager>
+#include <TelepathyLoggerQt4/Init>
+#include <TelepathyLoggerQt4/PendingOperation>
 
 
 K_PLUGIN_FACTORY(KCMTelepathyAccountsFactory, registerPlugin<KCMTelepathyAccounts>();)
@@ -78,6 +85,7 @@ KCMTelepathyAccounts::KCMTelepathyAccounts(QWidget *parent, const QVariantList& 
 
     // The first thing we must do is register Telepathy DBus Types.
     Tp::registerTypes();
+    Tpl::init();
 
     // Start setting up the Telepathy AccountManager.
     Tp::AccountFactoryPtr  accountFactory = Tp::AccountFactory::create(QDBusConnection::sessionBus(),
@@ -91,6 +99,9 @@ KCMTelepathyAccounts::KCMTelepathyAccounts(QWidget *parent, const QVariantList& 
     connect(m_accountManager->becomeReady(),
             SIGNAL(finished(Tp::PendingOperation*)),
             SLOT(onAccountManagerReady(Tp::PendingOperation*)));
+    connect(m_accountManager.constData(),
+	    SIGNAL(newAccount(Tp::AccountPtr)),
+	    SLOT(onNewAccountAdded(Tp::AccountPtr)));
 
     // Set up the UI stuff.
     m_ui = new Ui::MainWidget;
@@ -234,6 +245,56 @@ void KCMTelepathyAccounts::onAccountManagerReady(Tp::PendingOperation *op)
     m_accountsListModel->setAccountManager(m_accountManager);
 }
 
+void KCMTelepathyAccounts::onNewAccountAdded(const Tp::AccountPtr& account)
+{
+    KTp::LogsImporter logsImporter;
+    if (!logsImporter.hasKopeteLogs(account)) {
+	kDebug() << "No Kopete logs for" << account->uniqueIdentifier() << "found";
+	return;
+    }
+
+    int ret = KMessageBox::questionYesNo(this,
+		i18n("We have found Kopete logs for this account. Do you want to import the logs to KDE Telepathy?"),
+		i18n("Import Logs?"));
+
+    if (ret == KMessageBox::No) {
+	return;
+    }
+
+    m_importProgressDialog = new KProgressDialog(this);
+    m_importProgressDialog->setLabelText(i18n("Importing logs..."));
+    m_importProgressDialog->setAllowCancel(false);
+    m_importProgressDialog->progressBar()->setMinimum(0);
+    m_importProgressDialog->progressBar()->setMaximum(0);
+    m_importProgressDialog->setButtons(KDialog::Close);
+    m_importProgressDialog->enableButton(KDialog::Close, false);
+
+    connect(&logsImporter, SIGNAL(logsImported()), SLOT(onLogsImportDone()));
+    connect(&logsImporter, SIGNAL(error(QString)), SLOT(onLogsImportError(QString)));
+
+    logsImporter.startLogImport(account);
+    m_importProgressDialog->exec();
+
+    delete m_importProgressDialog;
+}
+
+void KCMTelepathyAccounts::onLogsImportError(const QString &error)
+{
+    if (m_importProgressDialog) {
+	m_importProgressDialog->close();
+    }
+
+    KMessageBox::error(this, error, i18n("Kopete Logs Import"));
+}
+
+void KCMTelepathyAccounts::onLogsImportDone()
+{
+    if (m_importProgressDialog) {
+	m_importProgressDialog->close();
+    }
+
+    KMessageBox::information(this, i18n("Kopete logs succesfully imported"), i18n("Kopete Logs Import"));
+}
 
 void KCMTelepathyAccounts::onSelectedItemChanged(const QModelIndex &current, const QModelIndex &previous)
 {
@@ -325,21 +386,32 @@ void KCMTelepathyAccounts::onRemoveAccountClicked()
 {
     QModelIndex index = m_currentListView->currentIndex();
 
-     if ( KMessageBox::warningContinueCancel(this, i18n("Are you sure you want to remove the account \"%1\"?", m_currentModel->data(index, Qt::DisplayRole).toString()),
-                                        i18n("Remove Account"), KGuiItem(i18n("Remove Account"), QLatin1String("edit-delete")), KStandardGuiItem::cancel(),
-                                        QString(), KMessageBox::Notify | KMessageBox::Dangerous) == KMessageBox::Continue)
-    {
-         Tp::AccountPtr account = index.data(AccountsListModel::AccountRole).value<Tp::AccountPtr>();
+    QString accountName = index.data(Qt::DisplayRole).toString();
 
-         if (account.isNull()) {
-             return;
-         }
+    KDialog *dialog = new KDialog(this); /* will be deleted by KMessageBox::createKMessageBox */
+    dialog->setButtons(KDialog::Yes | KDialog::Cancel);
+    dialog->setWindowTitle(i18n("Remove Account"));
+    dialog->setButtonGuiItem(KDialog::Yes, KGuiItem(i18n("Remove Account"), QLatin1String("edit-delete")));
+    bool removeLogs = false;
+    if (KMessageBox::createKMessageBox(dialog, QMessageBox::Warning, i18n("Are you sure you want to remove the account \"%1\"?", accountName),
+			QStringList(),  i18n("Remove conversations logs"), &removeLogs,
+			KMessageBox::Dangerous | KMessageBox::Notify) == KDialog::Yes) {
+
+	Tp::AccountPtr account = index.data(AccountsListModel::AccountRole).value<Tp::AccountPtr>();
+	if (account.isNull()) {
+	    return;
+	}
+
+	if (removeLogs) {
+	    Tpl::LogManagerPtr logManager = Tpl::LogManager::instance();
+	    logManager->clearAccountHistory(account);
+	}
 
          QList<Tp::PendingOperation*> ops;
          ops.append(KTp::WalletUtils::removeAccountPassword(account));
          ops.append(account->remove());
          connect(new Tp::PendingComposite(ops, account), SIGNAL(finished(Tp::PendingOperation*)), SLOT(onOperationFinished(Tp::PendingOperation*)));
-     }
+    }
 }
 
 void KCMTelepathyAccounts::onModelDataChanged()

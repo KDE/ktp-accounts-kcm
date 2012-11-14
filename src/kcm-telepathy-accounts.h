@@ -33,6 +33,7 @@ class AccountsListModel;
 class AddAccountAssistant;
 class QSortFilterProxyModel;
 class QListView;
+class KProgressDialog;
 
 namespace Tp {
     class PendingOperation;
@@ -72,6 +73,10 @@ private Q_SLOTS:
     void onSalutSetupDone();
     void onOperationFinished(Tp::PendingOperation *op);
 
+    void onNewAccountAdded(const Tp::AccountPtr &account);
+    void onLogsImportError(const QString&);
+    void onLogsImportDone();
+
 private:
     Ui::MainWidget *m_ui;
 
@@ -84,6 +89,8 @@ private:
 
     QWeakPointer<SalutEnabler> m_salutEnabler;
     KPixmapSequenceOverlayPainter *m_salutBusyWheel;
+
+    QPointer<KProgressDialog> m_importProgressDialog;
 };
 
 // Helper class for drawing error overlays

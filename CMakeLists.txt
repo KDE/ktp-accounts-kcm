@@ -7,6 +7,7 @@ set(IS_KTP_INTERNAL_MODULE TRUE)
 set(KDE_MIN_VERSION "4.7.0")
 find_package (KDE4 REQUIRED)
 find_package (TelepathyQt4 0.8.9 REQUIRED)
+find_package (TelepathyLoggerQt4 REQUIRED)
 find_package (KTp REQUIRED)
 
 # set some default settings
@@ -18,10 +19,12 @@ include (MacroLibrary)
 add_definitions (${KDE4_DEFINITIONS}
                  -DQT_NO_CAST_FROM_ASCII
                  -DQT_NO_KEYWORDS
+		 ${TELEPATHY_LOGGER_QT4_DEFINITIONS}
 )
 
 include_directories (${KDE4_INCLUDES}
                      ${TELEPATHY_QT4_INCLUDE_DIR}
+                     ${TELEPATHY_LOGGER_QT4_INCLUDE_DIRS}
                      ${KTP_INCLUDE_DIR}
                      ${CMAKE_CURRENT_SOURCE_DIR}/src
 )

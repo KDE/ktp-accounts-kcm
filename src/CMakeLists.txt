@@ -39,7 +39,7 @@ target_link_libraries (kcm_ktp_accounts
                        ${KTP_LIBRARIES}
                        ${KTP_MODELS_LIBRARIES}
                        ${KDE4_KIO_LIBS}
-
+                       ${TELEPATHY_LOGGER_QT4_LIBRARIES}
 )
 
 # Install:
