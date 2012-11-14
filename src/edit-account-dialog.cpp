@@ -111,6 +111,11 @@ void EditAccountDialog::onWalletOpened(Tp::PendingOperation *op)
 
 void EditAccountDialog::accept()
 {
+    if (!d->widget) {
+        kWarning(QLatin1String("mssing d->widget, not saving parameters");
+        return;
+    }
+
     QVariantMap setParameters = d->widget->parametersSet();
     QStringList unsetParameters = d->widget->parametersUnset();
 
