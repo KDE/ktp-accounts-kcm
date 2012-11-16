@@ -255,7 +255,10 @@ void KCMTelepathyAccounts::onNewAccountAdded(const Tp::AccountPtr& account)
 
     int ret = KMessageBox::questionYesNo(this,
 		i18n("We have found Kopete logs for this account. Do you want to import the logs to KDE Telepathy?"),
-		i18n("Import Logs?"));
+		i18n("Import Logs?"),
+		KGuiItem(i18n("Import Logs"), QLatin1String("document-import")),
+		KGuiItem(i18n("Close"), QLatin1String("dialog-close")));
+				;
 
     if (ret == KMessageBox::No) {
 	return;
