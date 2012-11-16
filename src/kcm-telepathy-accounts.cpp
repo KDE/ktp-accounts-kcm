@@ -293,7 +293,7 @@ void KCMTelepathyAccounts::onLogsImportDone()
 	m_importProgressDialog->close();
     }
 
-    KMessageBox::information(this, i18n("Kopete logs succesfully imported"), i18n("Kopete Logs Import"));
+    KMessageBox::information(this, i18n("Kopete logs successfully imported"), i18n("Kopete Logs Import"));
 }
 
 void KCMTelepathyAccounts::onSelectedItemChanged(const QModelIndex &current, const QModelIndex &previous)
