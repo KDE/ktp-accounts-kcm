@@ -112,7 +112,7 @@ void EditAccountDialog::onWalletOpened(Tp::PendingOperation *op)
 void EditAccountDialog::accept()
 {
     if (!d->widget) {
-        kWarning(QLatin1String("mssing d->widget, not saving parameters");
+        kWarning() << "missing d->widget, not saving parameters";
         return;
     }
 
