@@ -60,7 +60,7 @@ KCMTelepathyAccounts::KCMTelepathyAccounts(QWidget *parent, const QVariantList& 
    m_accountsListModel(0)
 {
     //set up component data.
-    KAboutData *aboutData = new KAboutData(I18N_NOOP("telepathy_accounts"), 0, ki18n("Instant Messaging and VOIP Accounts"), "0.5.1", KLocalizedString(), KAboutData::License_GPL);
+    KAboutData *aboutData = new KAboutData(I18N_NOOP("telepathy_accounts"), 0, ki18n("Instant Messaging and VOIP Accounts"), "0.5.2", KLocalizedString(), KAboutData::License_GPL);
 
     aboutData->addAuthor(ki18n("George Goldberg"), ki18n("Developer"),"grundleborg@googlemail.com");
     aboutData->addAuthor(ki18n("David Edmundson"), ki18n("Developer"), "david@davidedmundson.co.uk");
