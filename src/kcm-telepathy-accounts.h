@@ -29,11 +29,14 @@
 class QFrame;
 class KPixmapSequenceOverlayPainter;
 class SalutEnabler;
-class AccountsListModel;
 class AddAccountAssistant;
 class QSortFilterProxyModel;
 class QListView;
 class KProgressDialog;
+
+namespace KTp {
+    class AccountsListModel;
+}
 
 namespace Tp {
     class PendingOperation;
@@ -81,7 +84,7 @@ private:
     Ui::MainWidget *m_ui;
 
     Tp::AccountManagerPtr m_accountManager;
-    AccountsListModel *m_accountsListModel;
+    KTp::AccountsListModel *m_accountsListModel;
     QSortFilterProxyModel *m_salutFilterModel;
     QSortFilterProxyModel *m_accountsFilterModel;
     const QSortFilterProxyModel *m_currentModel;

@@ -69,7 +69,7 @@ K_EXPORT_PLUGIN(KCMTelepathyAccountsFactory("telepathy_accounts", "telepathy-acc
 
 KCMTelepathyAccounts::KCMTelepathyAccounts(QWidget *parent, const QVariantList& args)
  : KCModule(KCMTelepathyAccountsFactory::componentData(), parent, args),
-   m_accountsListModel(0)
+   m_accountsListModel(new KTp::AccountsListModel(this))
 {
     //set up component data.
     KAboutData *aboutData = new KAboutData(I18N_NOOP("telepathy_accounts"), 0, ki18n("Instant Messaging and VOIP Accounts"), "0.5.2", KLocalizedString(), KAboutData::License_GPL);
@@ -111,20 +111,19 @@ KCMTelepathyAccounts::KCMTelepathyAccounts(QWidget *parent, const QVariantList& 
     m_ui->salutEnableFrame->setHidden(true);
     m_ui->salutEnableCheckbox->setIcon(KIcon(QLatin1String("im-local-xmpp")));
     m_ui->salutEnableCheckbox->setIconSize(QSize(32, 32));
-    m_accountsListModel = new AccountsListModel(this);
 
     // On the kcm_telepathy_account we filter using "local-xmpp" and not using
     // "salut" because in this way we can see on top also local-xmpp accounts
     // configured using haze
     m_salutFilterModel = new QSortFilterProxyModel(this);
     m_salutFilterModel->setSourceModel(m_accountsListModel);
-    m_salutFilterModel->setFilterRole(AccountsListModel::ConnectionProtocolNameRole);
+    m_salutFilterModel->setFilterRole(KTp::AccountsListModel::ConnectionProtocolNameRole);
     m_salutFilterModel->setFilterFixedString(QLatin1String("local-xmpp"));
     m_ui->salutListView->setModel(m_salutFilterModel);
 
     m_accountsFilterModel = new QSortFilterProxyModel(this);
     m_accountsFilterModel->setSourceModel(m_accountsListModel);
-    m_accountsFilterModel->setFilterRole(AccountsListModel::ConnectionProtocolNameRole);
+    m_accountsFilterModel->setFilterRole(KTp::AccountsListModel::ConnectionProtocolNameRole);
     m_accountsFilterModel->setFilterRegExp(QLatin1String("^((?!local-xmpp).)*$"));
     m_accountsFilterModel->setSortRole(Qt::DisplayRole);
     m_accountsFilterModel->setSortCaseSensitivity(Qt::CaseInsensitive);
@@ -223,11 +222,11 @@ void KCMTelepathyAccounts::onAccountEnabledChanged(const QModelIndex &index, boo
     else {
         value = QVariant(Qt::Unchecked);
     }
-    m_accountsListModel->setData(index, value, AccountsListModel::EnabledRole);
+    m_accountsListModel->setData(index, value, KTp::AccountsListModel::EnabledRole);
 
     if (enabled) {
         // connect the account
-        Tp::AccountPtr account = index.data(AccountsListModel::AccountRole).value<Tp::AccountPtr>();
+        Tp::AccountPtr account = index.data(KTp::AccountsListModel::AccountRole).value<Tp::AccountPtr>();
         if (!account.isNull()) {
             account->setRequestedPresence(Tp::Presence::available());
         }
@@ -307,7 +306,7 @@ void KCMTelepathyAccounts::onSelectedItemChanged(const QModelIndex &current, con
     m_ui->removeAccountButton->setEnabled(current.isValid());
     m_ui->editAccountButton->setEnabled(current.isValid());
 
-    if (current.isValid() && current.data(AccountsListModel::ConnectionStateRole).toInt() == Tp::ConnectionStatusConnected) {
+    if (current.isValid() && current.data(KTp::AccountsListModel::ConnectionStateRole).toInt() == Tp::ConnectionStatusConnected) {
         m_ui->editAccountIdentityButton->setEnabled(true);
     } else {
         m_ui->editAccountIdentityButton->setEnabled(false);
@@ -353,7 +352,7 @@ void KCMTelepathyAccounts::onEditAccountClicked()
     if (!index.isValid()) {
         return;
     }
-    Tp::AccountPtr account = index.data(AccountsListModel::AccountRole).value<Tp::AccountPtr>();
+    Tp::AccountPtr account = index.data(KTp::AccountsListModel::AccountRole).value<Tp::AccountPtr>();
 
     if (account.isNull()) {
         return;
@@ -375,7 +374,7 @@ void KCMTelepathyAccounts::onEditIdentityClicked()
         return;
     }
 
-    Tp::AccountPtr account = index.data(AccountsListModel::AccountRole).value<Tp::AccountPtr>();
+    Tp::AccountPtr account = index.data(KTp::AccountsListModel::AccountRole).value<Tp::AccountPtr>();
 
     if (account.isNull()) {
         return;
@@ -401,7 +400,7 @@ void KCMTelepathyAccounts::onRemoveAccountClicked()
 			QStringList(),  i18n("Remove conversations logs"), &removeLogs,
 			KMessageBox::Dangerous | KMessageBox::Notify) == KDialog::Yes) {
 
-	Tp::AccountPtr account = index.data(AccountsListModel::AccountRole).value<Tp::AccountPtr>();
+	Tp::AccountPtr account = index.data(KTp::AccountsListModel::AccountRole).value<Tp::AccountPtr>();
 	if (account.isNull()) {
 	    return;
 	}
