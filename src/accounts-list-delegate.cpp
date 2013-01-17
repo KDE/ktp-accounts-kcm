@@ -122,13 +122,13 @@ void AccountsListDelegate::updateItemWidgets(const QList<QWidget *> widgets, con
 
 
     bool isSelected(itemView()->selectionModel()->isSelected(index) && itemView()->hasFocus());
-    bool isEnabled(index.data(AccountsListModel::EnabledRole).toBool());
+    bool isEnabled(index.data(KTp::AccountsListModel::EnabledRole).toBool());
     KIcon accountIcon(index.data(Qt::DecorationRole).value<QIcon>());
-    KIcon statusIcon(index.data(AccountsListModel::ConnectionStateIconRole).value<QIcon>());
-    QString statusText(index.data(AccountsListModel::ConnectionStateDisplayRole).toString());
+    KIcon statusIcon(index.data(KTp::AccountsListModel::ConnectionStateIconRole).value<QIcon>());
+    QString statusText(index.data(KTp::AccountsListModel::ConnectionStateDisplayRole).toString());
     QString displayName(index.data(Qt::DisplayRole).toString());
-    QString connectionError(index.data(AccountsListModel::ConnectionErrorMessageDisplayRole).toString());
-    Tp::AccountPtr account(index.data(AccountsListModel::AccountRole).value<Tp::AccountPtr>());
+    QString connectionError(index.data(KTp::AccountsListModel::ConnectionErrorMessageDisplayRole).toString());
+    Tp::AccountPtr account(index.data(KTp::AccountsListModel::AccountRole).value<Tp::AccountPtr>());
 
     if (!account->isEnabled()) {
       connectionError = i18n("Click checkbox to enable");
