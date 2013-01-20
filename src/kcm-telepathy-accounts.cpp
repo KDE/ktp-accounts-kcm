@@ -57,7 +57,9 @@ K_EXPORT_PLUGIN(KCMTelepathyAccountsFactory("telepathy_accounts", "telepathy-acc
 
 KCMTelepathyAccounts::KCMTelepathyAccounts(QWidget *parent, const QVariantList& args)
  : KCModule(KCMTelepathyAccountsFactory::componentData(), parent, args),
-   m_accountsListModel(0)
+   m_accountsListModel(0),
+   m_currentModel(0),
+   m_currentListView(0)
 {
     //set up component data.
     KAboutData *aboutData = new KAboutData(I18N_NOOP("telepathy_accounts"), 0, ki18n("Instant Messaging and VOIP Accounts"), "0.5.2", KLocalizedString(), KAboutData::License_GPL);
@@ -168,13 +170,15 @@ KCMTelepathyAccounts::KCMTelepathyAccounts(QWidget *parent, const QVariantList& 
             SLOT(onSelectedItemChanged(QModelIndex,QModelIndex)));
     connect(m_accountsListModel,
             SIGNAL(rowsInserted(QModelIndex,int,int)),
-            SLOT(onModelDataChanged()));
+            SLOT(onModelDataChanged(QModelIndex)));
     connect(m_accountsListModel,
             SIGNAL(rowsRemoved(QModelIndex,int,int)),
-            SLOT(onModelDataChanged()));
+            SLOT(onModelDataChanged(QModelIndex)));
     connect(m_ui->salutEnableCheckbox,
             SIGNAL(toggled(bool)),
             SLOT(onSalutEnableButtonToggled(bool)));
+    connect(m_accountsListModel, SIGNAL(dataChanged(QModelIndex,QModelIndex)),
+            SLOT(onModelDataChanged(QModelIndex)));
 
     // Check if salut is enabled
     Tp::ConnectionManagerPtr cm = Tp::ConnectionManager::create(QLatin1String("salut"));
@@ -249,16 +253,17 @@ void KCMTelepathyAccounts::onSelectedItemChanged(const QModelIndex &current, con
 {
     Q_UNUSED(previous);
 
-    m_ui->removeAccountButton->setEnabled(current.isValid());
-    m_ui->editAccountButton->setEnabled(current.isValid());
+    /* Only change m_currentModel and "Edit Identity" button state when
+     * "current" is a selected item, not deselected */
+    if (current.isValid()) {
+        m_currentModel = qobject_cast<const QSortFilterProxyModel*>(current.model());
 
-    if (current.isValid() && current.data(AccountsListModel::ConnectionStateRole).toInt() == Tp::ConnectionStatusConnected) {
-        m_ui->editAccountIdentityButton->setEnabled(true);
-    } else {
-        m_ui->editAccountIdentityButton->setEnabled(false);
+        if (current.data(AccountsListModel::ConnectionStateRole).toInt() == Tp::ConnectionStatusConnected) {
+            m_ui->editAccountIdentityButton->setEnabled(true);
+        } else {
+            m_ui->editAccountIdentityButton->setEnabled(false);
+        }
     }
-
-    m_currentModel = qobject_cast<const QSortFilterProxyModel*>(current.model());
 
     if (m_currentModel == m_salutFilterModel) {
         m_currentListView = m_ui->salutListView;
@@ -270,7 +275,10 @@ void KCMTelepathyAccounts::onSelectedItemChanged(const QModelIndex &current, con
         m_ui->salutListView->setCurrentIndex(QModelIndex());
     }
 
-    bool isAccount = (m_currentListView->currentIndex().isValid());
+    m_ui->removeAccountButton->setEnabled(m_currentListView->currentIndex().isValid());
+    m_ui->editAccountButton->setEnabled(m_currentListView->currentIndex().isValid());
+
+    bool isAccount = (m_currentListView->currentIndex().isValid() || m_ui->salutListView->currentIndex().isValid());
     m_ui->removeAccountButton->setEnabled(isAccount);
     m_ui->editAccountButton->setEnabled(isAccount);
 }
@@ -343,11 +351,17 @@ void KCMTelepathyAccounts::onRemoveAccountClicked()
      }
 }
 
-void KCMTelepathyAccounts::onModelDataChanged()
+void KCMTelepathyAccounts::onModelDataChanged(const QModelIndex &index)
 {
     bool salutEnabled = m_salutFilterModel->rowCount() == 0;
     m_ui->salutListView->setHidden(salutEnabled);
     m_ui->salutEnableFrame->setHidden(!salutEnabled);
+
+    /* When model changes and the change is the currently selected row, update
+     * state of buttons */
+    if (m_currentListView && m_currentModel && (index == m_currentModel->mapToSource(m_currentListView->currentIndex()))) {
+        onSelectedItemChanged(m_currentListView->currentIndex(), m_currentListView->currentIndex());
+    }
 }
 
 void KCMTelepathyAccounts::onSalutEnableButtonToggled(bool checked)

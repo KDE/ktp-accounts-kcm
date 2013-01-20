@@ -67,7 +67,7 @@ private Q_SLOTS:
     void onEditAccountClicked();
     void onEditIdentityClicked();
     void onRemoveAccountClicked();
-    void onModelDataChanged();
+    void onModelDataChanged(const QModelIndex &index);
     void onSalutEnableButtonToggled(bool checked);
     void onSalutConnectionManagerReady(Tp::PendingOperation*);
     void onSalutInfoReady();
