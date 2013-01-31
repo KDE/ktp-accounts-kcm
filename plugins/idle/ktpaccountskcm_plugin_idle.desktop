@@ -3,6 +3,7 @@ Encoding=UTF-8
 Comment=Custom account configuration user interface for accounts using the Idle connection manager.
 Comment[bs]=Korisnički interfejs za konfiguraciju korisničkih naloga koristeći Idle menadžer konekcja.
 Comment[ca]=Interfície d'usuari de configuració de compte personalitzat per comptes que utilitzen el gestor de connexions Idle.
+Comment[ca@valencia]=Interfície d'usuari de configuració de compte personalitzat per comptes que utilitzen el gestor de connexions Idle.
 Comment[cs]=Vlastní uživatelské rozhraní nastavení účtů pro účty používající správce spojení Idle.
 Comment[da]=Brugerflade til brugertilpasset kontokonfiguration til konti der bruger forbindelseshåndteringen Idle.
 Comment[de]=Eigene Benutzeroberfläche zum Einrichten von Zugängen, die die Idle-Verbindungsverwaltung verwenden.
