@@ -237,8 +237,6 @@ void KCMTelepathyAccounts::onAccountManagerReady(Tp::PendingOperation *op)
         m_accountsListModel->addAccount(account);
     }
 
-    onModelDataChanged();
-
     connect(m_accountManager.data(),
             SIGNAL(newAccount(Tp::AccountPtr)),
             SLOT(onAccountCreated(Tp::AccountPtr)));
