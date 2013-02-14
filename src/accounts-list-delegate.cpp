@@ -71,8 +71,51 @@ QList<QWidget*> AccountsListDelegate::createItemWidgets() const
     changeIconButton->setWhatsThis(i18n("This button allows to change the icon for your account.<br />"
                                   "This icon is just used locally on your computer, your contacts will not be able to see it."));
 
-    QLabel *statusTextLabel = new QLabel();
-    QLabel *statusIconLabel = new QLabel();
+    QPushButton *statusButton = new QPushButton();
+
+    KMenu *presenceMenu = new KMenu(statusButton);
+    QActionGroup *presenceActions = new QActionGroup(presenceMenu);
+    presenceActions->setExclusive(true);
+//     presenceActions->setData();
+
+    KAction *availableAction = new KAction(KTp::Presence(Tp::Presence::available()).icon(),
+                                           KTp::Presence(Tp::Presence::available()).displayString(),
+                                           0);
+    KAction *busyAction      = new KAction(KTp::Presence(Tp::Presence::busy()).icon(),
+                                           KTp::Presence(Tp::Presence::busy()).displayString(),
+                                           0);
+    KAction *hiddenAction    = new KAction(KTp::Presence(Tp::Presence::hidden()).icon(),
+                                           KTp::Presence(Tp::Presence::hidden()).displayString(),
+                                           0);
+    KAction *awayAction      = new KAction(KTp::Presence(Tp::Presence::away()).icon(),
+                                           KTp::Presence(Tp::Presence::away()).displayString(),
+                                           0);
+    KAction *xaAction        = new KAction(KTp::Presence(Tp::Presence::xa()).icon(),
+                                           KTp::Presence(Tp::Presence::xa()).displayString(),
+                                           0);
+    KAction *offlineAction   = new KAction(KTp::Presence(Tp::Presence::offline()).icon(),
+                                           KTp::Presence(Tp::Presence::offline()).displayString(),
+                                           0);
+
+//     availableAction->setUserData(QVariant::fromValue(KTp::Presence(Tp::Presence::available())));
+//     busyAction->setData(QVariant::fromValue(KTp::Presence(Tp::Presence::busy())));
+//     hiddenAction->setData(QVariant::fromValue(KTp::Presence(Tp::Presence::hidden())));
+//     awayAction->setData(QVariant::fromValue(KTp::Presence(Tp::Presence::away())));
+//     xaAction->setData(QVariant::fromValue(KTp::Presence(Tp::Presence::xa())));
+//     offlineAction->setData(QVariant::fromValue(KTp::Presence(Tp::Presence::offline())));
+
+    presenceActions->addAction(availableAction);
+    presenceActions->addAction(busyAction);
+    presenceActions->addAction(hiddenAction);
+    presenceActions->addAction(awayAction);
+    presenceActions->addAction(xaAction);
+    presenceActions->addAction(offlineAction);
+
+    presenceMenu->addActions(presenceActions->actions());
+
+    statusButton->setMenu(presenceMenu);
+    statusButton->setFlat(true);
+
 
     EditDisplayNameButton *displayNameButton = new EditDisplayNameButton();
     displayNameButton->setFlat(true);
@@ -85,8 +128,7 @@ QList<QWidget*> AccountsListDelegate::createItemWidgets() const
 
     return QList<QWidget*>() << checkbox
                              << changeIconButton
-                             << statusTextLabel
-                             << statusIconLabel
+                             << statusButton
                              << displayNameButton
                              << connectionErrorLabel;
 }
@@ -103,20 +145,18 @@ void AccountsListDelegate::updateItemWidgets(const QList<QWidget *> widgets, con
         return;
     }
 
-    Q_ASSERT(widgets.size() == 6);
+    Q_ASSERT(widgets.size() == 5);
 
     // Get the widgets
     QCheckBox* checkbox = qobject_cast<QCheckBox*>(widgets.at(0));
     ChangeIconButton* changeIconButton = qobject_cast<ChangeIconButton*>(widgets.at(1));
-    QLabel *statusTextLabel = qobject_cast<QLabel*>(widgets.at(2));
-    QLabel *statusIconLabel = qobject_cast<QLabel*>(widgets.at(3));
-    EditDisplayNameButton *displayNameButton = qobject_cast<EditDisplayNameButton*>(widgets.at(4));
-    QLabel *connectionErrorLabel = qobject_cast<QLabel*>(widgets.at(5));
+    QPushButton *statusButton = qobject_cast<QPushButton*>(widgets.at(2));
+    EditDisplayNameButton *displayNameButton = qobject_cast<EditDisplayNameButton*>(widgets.at(3));
+    QLabel *connectionErrorLabel = qobject_cast<QLabel*>(widgets.at(4));
 
     Q_ASSERT(checkbox);
     Q_ASSERT(changeIconButton);
-    Q_ASSERT(statusTextLabel);
-    Q_ASSERT(statusIconLabel);
+    Q_ASSERT(statusButton);
     Q_ASSERT(displayNameButton);
     Q_ASSERT(connectionErrorLabel);
 
@@ -167,40 +207,31 @@ void AccountsListDelegate::updateItemWidgets(const QList<QWidget *> widgets, con
     changeIconButton->move(changeIconButtonLeftMargin, changeIconButtonTopMargin);
 
 
-    // statusTextLabel
-    QFont statusTextFont = option.font;
-    QPalette statusTextLabelPalette = option.palette;
+    // statusButton
+    QPalette statusButtonPalette = option.palette;
     if (isEnabled) {
-        statusTextLabel->setEnabled(true);
-        statusTextFont.setItalic(false);
+        statusButton->setEnabled(true);
     } else {
-        statusTextLabel->setDisabled(true);
-        statusTextFont.setItalic(true);
+        statusButton->setDisabled(true);
     }
     if (isSelected) {
-        statusTextLabelPalette.setColor(QPalette::Text, statusTextLabelPalette.color(QPalette::Active, QPalette::HighlightedText));
+        // NOTE: Flat QPushButton use WindowText instead of ButtonText for button text color
+        statusButtonPalette.setColor(QPalette::WindowText, statusButtonPalette.color(QPalette::Active, QPalette::HighlightedText));
     }
-    statusTextLabel->setPalette(statusTextLabelPalette);
-    statusTextLabel->setFont(statusTextFont);
-    statusTextLabel->setText(statusText);
-    statusTextLabel->setFixedSize(statusTextLabel->fontMetrics().boundingRect(statusText).width(),
-                                  statusTextLabel->height());
-    int statusTextLabelLeftMargin = contentRect.right() - statusTextLabel->width();
-    int statusTextLabelTopMargin = (outerRect.height() - statusTextLabel->height()) / 2;
-    statusTextLabel->move(statusTextLabelLeftMargin, statusTextLabelTopMargin);
+    statusButton->setPalette(statusButtonPalette);
 
+    statusButton->setIcon(statusIcon);
+    statusButton->setText(statusText);
+    statusButton->setFixedSize(statusButton->minimumSizeHint());
 
-    // statusIconLabel
-    statusIconLabel->setPixmap(statusIcon.pixmap(KIconLoader::SizeSmall));
-    statusIconLabel->setFixedSize(statusIconLabel->minimumSizeHint());
-    int statusIconLabelLeftMargin = contentRect.right() - statusTextLabel->width() - statusIconLabel->width() - 6;
-    int statusIconLabelTopMargin = (outerRect.height() - statusIconLabel->height()) / 2;
-    statusIconLabel->move(statusIconLabelLeftMargin, statusIconLabelTopMargin);
+    int statusButtonLeftMargin = contentRect.right() - statusButton->width();
+    int statusButtonTopMargin = (outerRect.height() - statusButton->height()) / 2;
+    statusButton->move(statusButtonLeftMargin, statusButtonTopMargin);
 
 
     QRect innerRect = contentRect.adjusted(changeIconButton->geometry().right() - contentRect.left(),
                                            0,
-                                           -statusTextLabel->width() - statusIconLabel->width() - 6,
+                                           -statusButton->width(),
                                            0); // rect containing account name and error message
 
 
