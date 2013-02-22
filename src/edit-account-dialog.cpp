@@ -198,8 +198,8 @@ void EditAccountDialog::onDisplayNameUpdated(Tp::PendingOperation *op)
 void EditAccountDialog::setVisible(bool visible)
 {
     if (visible && d->kwalletReady) {
-	KDialog::setVisible(visible);
-	return;
+        KDialog::setVisible(visible);
+        return;
     }
 
     KDialog::setVisible(false);
