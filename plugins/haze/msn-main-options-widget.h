@@ -33,7 +33,7 @@ public:
     explicit MsnMainOptionsWidget(ParameterEditModel *model, QWidget *parent = 0);
     virtual ~MsnMainOptionsWidget();
 
-    virtual void updateDefaultDisplayName();
+    virtual QString defaultDisplayName() const;
 private:
     Q_DISABLE_COPY(MsnMainOptionsWidget);
     Ui::MsnMainOptionsWidget *m_ui;

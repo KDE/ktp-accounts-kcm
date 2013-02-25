@@ -39,9 +39,6 @@ MainOptionsWidgetFacebook::MainOptionsWidgetFacebook(ParameterEditModel *model,
         QString account = index.data().toString();
         //strip off any "@chat.facebook.com" from the parameter when displaying it in the text edit.
         account = account.left(account.indexOf(QLatin1Char('@')));
-        connect(m_ui->accountLineEdit,
-                SIGNAL(textChanged(QString)),
-                SLOT(updateDefaultDisplayName()));
         m_ui->accountLineEdit->setText(account);
     }
 
@@ -81,7 +78,7 @@ bool MainOptionsWidgetFacebook::validateParameterValues()
     return true;
 }
 
-void MainOptionsWidgetFacebook::updateDefaultDisplayName()
+QString MainOptionsWidgetFacebook::defaultDisplayName() const
 {
     QString displayName = m_ui->accountLineEdit->text();
     if (!displayName.isEmpty()) {
@@ -89,7 +86,7 @@ void MainOptionsWidgetFacebook::updateDefaultDisplayName()
         QString serverAddress = parameterModel()->indexForParameter(parameterModel()->parameter(QLatin1String("server"))).data().toString();
         displayName.append(serverAddress);
     }
-    setDefaultDisplayName(displayName);
+    return displayName;
 }
 
 #include "main-options-widget-facebook.moc"

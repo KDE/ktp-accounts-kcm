@@ -34,7 +34,7 @@ public:
                                     QWidget *parent = 0);
     virtual ~RakiaMainOptionsWidget();
 
-    virtual void updateDefaultDisplayName();
+    virtual QString defaultDisplayName() const;
 private:
     Q_DISABLE_COPY(RakiaMainOptionsWidget);
     Ui::RakiaMainOptionsWidget *m_ui;

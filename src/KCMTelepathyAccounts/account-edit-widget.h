@@ -42,6 +42,7 @@ class KCM_TELEPATHY_ACCOUNTS_EXPORT AccountEditWidget : public QWidget
 
 public:
     explicit AccountEditWidget(const Tp::ProfilePtr &info,
+                               const QString &displayName,
                                ParameterEditModel *parameterModel,
                                ConnectOnLoadType connectOnAddFlag = doNotConnectOnAdd,
                                QWidget *parent = 0);
@@ -54,24 +55,19 @@ public:
     virtual QVariantMap parametersSet() const;
     virtual QStringList parametersUnset() const;
 
-    virtual QString defaultDisplayName() const;
-    virtual QString displayName() const;
-    virtual void setDisplayName(const QString &displayName);
+    QString defaultDisplayName() const;
+    QString displayName() const;
+    // returns true if display name has changed
+    bool updateDisplayName();
 
 protected:
     ParameterEditModel *parameterModel() const;
 
 private Q_SLOTS:
     void onAdvancedClicked();
-    void onDefaultDisplayNameChanged(const QString &oldDefaultDisplayName,
-                                     const QString &newDefaultDisplayName);
 
 Q_SIGNALS:
     void feedbackMessage(const QString &text, const QString &comment, KMessageWidget::MessageType);
-    void displayNameChanged(const QString &oldDisplayName,
-                            const QString &newDisplayName);
-    void defaultDisplayNameChanged(const QString &oldDefaultDisplayName,
-                                   const QString &newDefaultDisplayName);
 
 private:
     Q_DISABLE_COPY(AccountEditWidget);

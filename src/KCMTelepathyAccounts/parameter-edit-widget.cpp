@@ -55,13 +55,6 @@ ParameterEditWidget::ParameterEditWidget(ParameterEditModel *parameterModel,
     connect(d->delegate,
             SIGNAL(dataChanged(QModelIndex,QVariant,int)),
             SLOT(onDelegateDataChanged(QModelIndex,QVariant,int)));
-
-    Tp::ProtocolParameter foundParameter = parameterModel->parameter(QLatin1String("account"));
-    if (foundParameter.isValid()) {
-        connect(d->delegate,
-                SIGNAL(dataChanged(QModelIndex,QVariant,int)),
-                SLOT(updateDefaultDisplayName()));
-    }
 }
 
 ParameterEditWidget::~ParameterEditWidget()
@@ -75,12 +68,13 @@ void ParameterEditWidget::onDelegateDataChanged(const QModelIndex &index, const 
     parameterModel()->setData(index, value, role);
 }
 
-void ParameterEditWidget::updateDefaultDisplayName()
+QString ParameterEditWidget::defaultDisplayName() const
 {
     Tp::ProtocolParameter foundParameter = parameterModel()->parameter(QLatin1String("account"));
     if (foundParameter.isValid()) {
-        setDefaultDisplayName(parameterModel()->data(parameterModel()->indexForParameter(foundParameter)).toString());
+        return parameterModel()->data(parameterModel()->indexForParameter(foundParameter)).toString();
     }
+    return QString();
 }
 
 #include "parameter-edit-widget.moc"

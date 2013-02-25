@@ -225,6 +225,7 @@ void AddAccountAssistant::accept()
         values.remove(QLatin1String("password"));
     }
 
+    d->accountEditWidget->updateDisplayName();
     Tp::PendingAccount *pa = d->accountManager->createAccount(d->currentProfileItem->cmName(),
                                                               d->currentProfileItem->protocolName(),
                                                               d->accountEditWidget->displayName(),
@@ -317,6 +318,7 @@ void AddAccountAssistant::pageThree()
 
     // Set up the account edit widget.
     d->accountEditWidget = new AccountEditWidget(d->currentProfileItem->profile(),
+                                                 QString(),
                                                  parameterModel,
                                                  doConnectOnAdd,
                                                  d->pageThreeWidget);

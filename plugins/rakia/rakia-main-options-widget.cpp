@@ -31,7 +31,7 @@ RakiaMainOptionsWidget::RakiaMainOptionsWidget(ParameterEditModel *model, QWidge
     m_ui = new Ui::RakiaMainOptionsWidget;
     m_ui->setupUi(this);
 
-    handleParameter(QLatin1String("account"),  QVariant::String, m_ui->accountLineEdit,  m_ui->accountLabel, true);
+    handleParameter(QLatin1String("account"),  QVariant::String, m_ui->accountLineEdit,  m_ui->accountLabel);
     handleParameter(QLatin1String("password"), QVariant::String, m_ui->passwordLineEdit, m_ui->passwordLabel);
     handleParameter(QLatin1String("alias"),    QVariant::String, m_ui->aliasLineEdit,    m_ui->aliasLabel);
 
@@ -48,7 +48,7 @@ RakiaMainOptionsWidget::~RakiaMainOptionsWidget()
     delete m_ui;
 }
 
-void RakiaMainOptionsWidget::updateDefaultDisplayName()
+QString RakiaMainOptionsWidget::defaultDisplayName() const
 {
-    setDefaultDisplayName(m_ui->accountLineEdit->text());
+    return m_ui->accountLineEdit->text();
 }

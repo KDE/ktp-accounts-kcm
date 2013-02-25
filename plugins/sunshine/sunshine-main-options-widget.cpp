@@ -29,7 +29,7 @@ SunshineMainOptionsWidget::SunshineMainOptionsWidget(ParameterEditModel *model, 
     m_ui = new Ui::SunshineMainOptionsWidget;
     m_ui->setupUi(this);
 
-    handleParameter(QLatin1String("account"),  QVariant::String, m_ui->accountLineEdit,  m_ui->accountLabel, true);
+    handleParameter(QLatin1String("account"),  QVariant::String, m_ui->accountLineEdit,  m_ui->accountLabel);
     handleParameter(QLatin1String("password"), QVariant::String, m_ui->passwordLineEdit, m_ui->passwordLabel);
 
     QTimer::singleShot(0, m_ui->accountLineEdit, SLOT(setFocus()));
@@ -40,9 +40,9 @@ SunshineMainOptionsWidget::~SunshineMainOptionsWidget()
     delete m_ui;
 }
 
-void SunshineMainOptionsWidget::updateDefaultDisplayName()
+QString SunshineMainOptionsWidget::defaultDisplayName() const
 {
-    setDefaultDisplayName(m_ui->accountLineEdit->text());
+    return m_ui->accountLineEdit->text();
 }
 
 #include "sunshine-main-options-widget.moc"

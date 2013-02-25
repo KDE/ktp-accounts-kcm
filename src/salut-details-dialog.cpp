@@ -77,6 +77,7 @@ SalutDetailsDialog::SalutDetailsDialog(const Tp::ProfileManagerPtr profileManage
 
     // Set up the interface
     d->widget = new AccountEditWidget(d->profile,
+                                      QString(),
                                       parameterModel,
                                       doNotConnectOnAdd,
                                       this);

@@ -31,7 +31,7 @@ SkypeMainOptionsWidget::SkypeMainOptionsWidget(ParameterEditModel *model, QWidge
     m_ui = new Ui::SkypeMainOptionsWidget;
     m_ui->setupUi(this);
 
-    handleParameter(QLatin1String("account"), QVariant::String, m_ui->accountLineEdit, m_ui->accountLabel, true);
+    handleParameter(QLatin1String("account"), QVariant::String, m_ui->accountLineEdit, m_ui->accountLabel);
 
 #ifdef Q_WS_X11
     // get autocomplete choices for the accountname
@@ -55,9 +55,9 @@ SkypeMainOptionsWidget::~SkypeMainOptionsWidget()
     delete m_ui;
 }
 
-void SkypeMainOptionsWidget::updateDefaultDisplayName()
+QString SkypeMainOptionsWidget::defaultDisplayName() const
 {
-    setDefaultDisplayName(m_ui->accountLineEdit->text());
+    return m_ui->accountLineEdit->text();
 }
 
 #include "skype-main-options-widget.moc"

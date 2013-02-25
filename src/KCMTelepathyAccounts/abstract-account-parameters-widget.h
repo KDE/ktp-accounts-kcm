@@ -56,16 +56,11 @@ public:
 
     virtual bool validateParameterValues();
 
-    QString defaultDisplayName() const;
-
-public Q_SLOTS:
-    /** This method is called when the display name should be updated
-     *  Main options widgets should reimplement this method
+    /** Returns the default display name.
+     *  This method should be re-implemented in the derived main widgets
+     *  \return The default display name, given the parameter currently set.
      */
-    virtual void updateDefaultDisplayName();
-
-Q_SIGNALS:
-    void defaultDisplayNameChanged(const QString &oldDisplayName, const QString &newDisplayName);
+    virtual QString defaultDisplayName() const;
 
 protected:
     /** Map an input widget to a protocol parameter.
@@ -76,27 +71,19 @@ protected:
         \param parameterType The expected type for the parameter. If this does not match, the input will be hidden.
         \param dataWidget The user interface widget (QLineEdit/QSpinBox etc) that should be mapped to the parameter.
         \param labelWidgets Any additional labels that should be hidden if the parameter does not exist.
-        \param updatesDisplayName Set this to true if modifying this parameter the display Name should be modified. (valid only for QLineEdits)
     */
     void handleParameter(const QString &parameterName,
                          QVariant::Type parameterType,
                          QWidget *dataWidget,
-                         const QList<QWidget*> &labelWidgets,
-                         bool updatesDefaultDisplayName = false);
+                         const QList<QWidget*> &labelWidgets);
 
     void handleParameter(const QString &parameterName,
                          QVariant::Type parameterType,
                          QWidget *dataWidget,
-                         QWidget *labelWidget = 0,
-                         bool updatesDefaultDisplayName = false);
+                         QWidget *labelWidget = 0);
 
     /** Returns the model containing all the protocol parameters*/
     ParameterEditModel *parameterModel() const;
-
-    /** Call this method from updateDefaultDisplayName() in derivated class to set
-     *  The display name and emit signals
-     */
-    void setDefaultDisplayName(const QString &defaultDisplayName);
 
 private:
     Q_DISABLE_COPY(AbstractAccountParametersWidget);

@@ -50,6 +50,7 @@ public:
     QString protocol;
     QString serviceName;
     QString displayName;
+    QString defaultDisplayName;
 
     QCheckBox *connectOnAdd;
 
@@ -60,6 +61,7 @@ public:
 };
 
 AccountEditWidget::AccountEditWidget(const Tp::ProfilePtr &profile,
+                                     const QString &displayName,
                                      ParameterEditModel *parameterModel,
                                      ConnectOnLoadType connectOnAddFlag,
                                      QWidget *parent)
@@ -74,6 +76,7 @@ AccountEditWidget::AccountEditWidget(const Tp::ProfilePtr &profile,
     d->serviceName = profile->serviceName();
     d->connectionManager = profile->cmName();
     d->protocol = profile->protocolName();
+    d->displayName = displayName;
 
     connect(d->ui->advancedButton, SIGNAL(clicked()),
             this, SLOT(onAdvancedClicked()));
@@ -153,10 +156,6 @@ void AccountEditWidget::loadWidgets()
         d->mainOptionsWidget->layout()->setContentsMargins(0, 0, 0, 0);
         d->ui->advancedButton->setVisible(d->accountUi->hasAdvancedOptionsWidget());
         d->ui->verticalLayout->insertWidget(2, d->mainOptionsWidget);
-        connect(d->mainOptionsWidget,
-                SIGNAL(defaultDisplayNameChanged(QString,QString)),
-                SLOT(onDefaultDisplayNameChanged(QString,QString)));
-        d->mainOptionsWidget->updateDefaultDisplayName();
 
         // check if all the parameters the UI supports are available in the CM plugin
         // also verify if the UI handle all mandatory parameters
@@ -189,11 +188,11 @@ void AccountEditWidget::loadWidgets()
         d->ui->advancedButton->setVisible(false);
         d->ui->verticalLayout->insertWidget(2, d->mainOptionsWidget);
         d->ui->verticalLayout->setStretch(2, 1);
-        connect(d->mainOptionsWidget,
-                SIGNAL(defaultDisplayNameChanged(QString,QString)),
-                SLOT(onDefaultDisplayNameChanged(QString,QString)));
-        d->mainOptionsWidget->updateDefaultDisplayName();
     }
+
+    // Update the default display name after setting up the ui and updating all
+    // the parameters so that it is generated accordingly.
+    d->defaultDisplayName = defaultDisplayName();
 }
 
 QVariantMap AccountEditWidget::parametersSet() const
@@ -269,45 +268,28 @@ QString AccountEditWidget::displayName() const
     return d->displayName;
 }
 
-void AccountEditWidget::setDisplayName(const QString &displayName)
+bool AccountEditWidget::updateDisplayName()
 {
-    QString oldDisplayName;
+    QString newDefaultDisplayName = defaultDisplayName();
     QString newDisplayName;
-
-    if (d->displayName.isEmpty()) {
-        oldDisplayName = defaultDisplayName();
-    } else {
-        oldDisplayName = d->displayName;
-    }
-
-    if (displayName.isEmpty()) {
-        newDisplayName = defaultDisplayName();
-    } else {
-        newDisplayName = displayName;
-    }
-
-    if (newDisplayName != oldDisplayName) {
-        d->displayName = displayName;
-        Q_EMIT displayNameChanged(oldDisplayName, newDisplayName);
-    }
-}
-
-void AccountEditWidget::onDefaultDisplayNameChanged(const QString &oldDefaultDisplayName,
-                                                    const QString &newDefaultDisplayName)
-{
-    Q_EMIT defaultDisplayNameChanged(oldDefaultDisplayName, newDefaultDisplayName);
-
-    QString oldDisplayName = displayName();
     // If the display name is empty or is the old default one the value is
     // cleared (empty displayName = use default one). If the display name
     // contains the old default value (probably the user added something, the
     // default part is replaced and the rest is not changed. Otherwise display
     // name was customized, therefore we leave it unchanged.
-    if (oldDisplayName.isEmpty() || oldDisplayName == oldDefaultDisplayName) {
-        setDisplayName(QString());
-    } else if (!oldDefaultDisplayName.isEmpty() && oldDisplayName.contains(oldDefaultDisplayName)) {
-        setDisplayName(oldDisplayName.replace(oldDefaultDisplayName, newDefaultDisplayName));
+    if (d->displayName.isEmpty() || d->displayName == d->defaultDisplayName) {
+        newDisplayName = newDefaultDisplayName;
+    } else {
+        newDisplayName = d->displayName;
+        newDisplayName.replace(d->defaultDisplayName, newDefaultDisplayName);
     }
+
+    d->defaultDisplayName = newDefaultDisplayName;
+    if (d->displayName != newDisplayName) {
+        d->displayName = newDisplayName;
+        return true;
+    }
+    return false;
 }
 
 #include "account-edit-widget.moc"

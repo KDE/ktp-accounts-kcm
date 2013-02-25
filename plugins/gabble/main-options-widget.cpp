@@ -28,7 +28,7 @@ MainOptionsWidget::MainOptionsWidget(ParameterEditModel *model,
     m_ui = new Ui::MainOptionsWidget;
     m_ui->setupUi(this);
 
-    handleParameter(QLatin1String("account"), QVariant::String, m_ui->accountLineEdit, m_ui->accountLabel, true);
+    handleParameter(QLatin1String("account"), QVariant::String, m_ui->accountLineEdit, m_ui->accountLabel);
     handleParameter(QLatin1String("password"), QVariant::String, m_ui->passwordLineEdit, m_ui->passwordLabel);
     handleParameter(QLatin1String("register"), QVariant::Bool, m_ui->registerCheckBox, 0);
     QTimer::singleShot(0, m_ui->accountLineEdit, SLOT(setFocus()));
@@ -39,9 +39,9 @@ MainOptionsWidget::~MainOptionsWidget()
     delete m_ui;
 }
 
-void MainOptionsWidget::updateDefaultDisplayName()
+QString MainOptionsWidget::defaultDisplayName() const
 {
-    setDefaultDisplayName(m_ui->accountLineEdit->text());
+    return m_ui->accountLineEdit->text();
 }
 
 #include "main-options-widget.moc"

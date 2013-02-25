@@ -36,7 +36,7 @@ public:
     explicit AimMainOptionsWidget(ParameterEditModel* model, QWidget* parent = 0);
     virtual ~AimMainOptionsWidget();
 
-    virtual void updateDefaultDisplayName();
+    virtual QString defaultDisplayName() const;
 private:
     Ui::AimMainOptionsWidget *m_ui;
 };

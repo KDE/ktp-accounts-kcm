@@ -36,7 +36,7 @@ public:
                                QWidget *parent = 0);
     virtual ~MainOptionsWidgetGoogleTalk();
 
-    virtual void updateDefaultDisplayName();
+    virtual QString defaultDisplayName() const;
 private:
     Ui::MainOptionsWidgetGoogleTalk *m_ui;
 };

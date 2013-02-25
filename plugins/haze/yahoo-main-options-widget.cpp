@@ -30,7 +30,7 @@ YahooMainOptionsWidget::YahooMainOptionsWidget(ParameterEditModel* model, QWidge
     m_ui->setupUi(this);
 
     //map the widgets to their data
-    handleParameter(QLatin1String("account"), QVariant::String, m_ui->accountLineEdit, m_ui->accountLabel, true);
+    handleParameter(QLatin1String("account"), QVariant::String, m_ui->accountLineEdit, m_ui->accountLabel);
     handleParameter(QLatin1String("password"), QVariant::String, m_ui->passwordLineEdit, m_ui->passwordLabel);
     QTimer::singleShot(0, m_ui->accountLineEdit, SLOT(setFocus()));
 }
@@ -60,9 +60,9 @@ void YahooMainOptionsWidget::submit()
     AbstractAccountParametersWidget::submit();
 }
 
-void YahooMainOptionsWidget::updateDefaultDisplayName()
+QString YahooMainOptionsWidget::defaultDisplayName() const
 {
-    setDefaultDisplayName(m_ui->accountLineEdit->text());
+    return m_ui->accountLineEdit->text();
 }
 
 #include "yahoo-main-options-widget.moc"

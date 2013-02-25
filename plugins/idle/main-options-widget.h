@@ -34,7 +34,7 @@ public:
                                QWidget *parent = 0);
     virtual ~MainOptionsWidget();
 
-    virtual void updateDefaultDisplayName();
+    virtual QString defaultDisplayName() const;
 private:
     Q_DISABLE_COPY(MainOptionsWidget);
     Ui::MainOptionsWidget *m_ui;

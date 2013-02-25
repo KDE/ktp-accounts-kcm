@@ -35,7 +35,7 @@ public:
     virtual ~YahooMainOptionsWidget();
 
     virtual void submit();
-    virtual void updateDefaultDisplayName();
+    virtual QString defaultDisplayName() const;
 private:
     Q_DISABLE_COPY(YahooMainOptionsWidget);
     Ui::YahooMainOptionsWidget* m_ui;

@@ -100,11 +100,10 @@ void EditAccountDialog::onWalletOpened(Tp::PendingOperation *op)
 
     // Set up the interface
     d->widget = new AccountEditWidget(d->account->profile(),
+                                      d->account->displayName(),
                                       parameterModel,
                                       doNotConnectOnAdd,
                                       this);
-
-    d->widget->setDisplayName(d->account->displayName());
 
     setMainWidget(d->widget);
 
@@ -170,11 +169,13 @@ void EditAccountDialog::onParametersUpdated(Tp::PendingOperation *op)
         KTp::WalletUtils::setAccountPassword(d->account, QString());
     }
 
-    Tp::PendingOperation *dnop = d->account->setDisplayName(d->widget->displayName());
-
-    connect(dnop,
-            SIGNAL(finished(Tp::PendingOperation*)),
-            SLOT(onDisplayNameUpdated(Tp::PendingOperation*)));
+    if(d->widget->updateDisplayName()) {
+        connect(d->account->setDisplayName(d->widget->displayName()),
+                SIGNAL(finished(Tp::PendingOperation*)),
+                SLOT(onDisplayNameUpdated(Tp::PendingOperation*)));
+    } else {
+        onFinished();
+    }
 }
 
 void EditAccountDialog::onDisplayNameUpdated(Tp::PendingOperation *op)
@@ -184,7 +185,11 @@ void EditAccountDialog::onDisplayNameUpdated(Tp::PendingOperation *op)
         kWarning() << "Could not update display name:" << op->errorName() << op->errorMessage();
         return;
     }
+    onFinished();
+}
 
+void EditAccountDialog::onFinished()
+{
     Q_EMIT finished();
 
     if (d->reconnectRequired) {

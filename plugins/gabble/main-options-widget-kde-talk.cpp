@@ -41,9 +41,6 @@ MainOptionsWidgetKDETalk::MainOptionsWidgetKDETalk(ParameterEditModel *model,
         QString account = index.data().toString();
         //strip off any "@kdetalk.net" from the parameter when displaying it in the text edit.
         account = account.left(account.indexOf(QLatin1Char('@')));
-        connect (m_ui->accountLineEdit,
-                 SIGNAL(textChanged(QString)),
-                 SLOT(updateDefaultDisplayName()));
         m_ui->accountLineEdit->setText(account);
     }
 
@@ -82,9 +79,9 @@ bool MainOptionsWidgetKDETalk::validateParameterValues()
     return true;
 }
 
-void MainOptionsWidgetKDETalk::updateDefaultDisplayName()
+QString MainOptionsWidgetKDETalk::defaultDisplayName() const
 {
-    setDefaultDisplayName(m_ui->accountLineEdit->text());
+    return m_ui->accountLineEdit->text();
 }
 
 #include "main-options-widget-kde-talk.moc"
