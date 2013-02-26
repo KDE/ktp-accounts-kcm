@@ -40,7 +40,7 @@ public:
 
 Q_SIGNALS:
     void feedbackMessage(const QString &text, const QString &comment, KMessageWidget::MessageType);
-    void dialogAccepted(const QVariantMap &values);
+    void dialogAccepted(const QString &displayName, const QVariantMap &values);
 
 private:
     void accept();

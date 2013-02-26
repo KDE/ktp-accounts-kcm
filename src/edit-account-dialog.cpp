@@ -98,12 +98,13 @@ void EditAccountDialog::onWalletOpened(Tp::PendingOperation *op)
         parameterModel->setData(index, password, Qt::EditRole);
     }
 
-
     // Set up the interface
     d->widget = new AccountEditWidget(d->account->profile(),
+                                      d->account->displayName(),
                                       parameterModel,
                                       doNotConnectOnAdd,
                                       this);
+
     setMainWidget(d->widget);
 
     d->kwalletReady = true;
@@ -168,21 +169,13 @@ void EditAccountDialog::onParametersUpdated(Tp::PendingOperation *op)
         KTp::WalletUtils::setAccountPassword(d->account, QString());
     }
 
-
-    // FIXME: Ask the user to submit a Display Name
-    QString displayName;
-    if (values.contains(QLatin1String("account"))) {
-        displayName = values[QLatin1String("account")].toString();
+    if(d->widget->updateDisplayName()) {
+        connect(d->account->setDisplayName(d->widget->displayName()),
+                SIGNAL(finished(Tp::PendingOperation*)),
+                SLOT(onDisplayNameUpdated(Tp::PendingOperation*)));
+    } else {
+        onFinished();
     }
-    else {
-        displayName = d->account->profile()->protocolName();
-    }
-
-    Tp::PendingOperation *dnop = d->account->setDisplayName(displayName);
-
-    connect(dnop,
-            SIGNAL(finished(Tp::PendingOperation*)),
-            SLOT(onDisplayNameUpdated(Tp::PendingOperation*)));
 }
 
 void EditAccountDialog::onDisplayNameUpdated(Tp::PendingOperation *op)
@@ -192,7 +185,11 @@ void EditAccountDialog::onDisplayNameUpdated(Tp::PendingOperation *op)
         kWarning() << "Could not update display name:" << op->errorName() << op->errorMessage();
         return;
     }
+    onFinished();
+}
 
+void EditAccountDialog::onFinished()
+{
     Q_EMIT finished();
 
     if (d->reconnectRequired) {
@@ -206,8 +203,8 @@ void EditAccountDialog::onDisplayNameUpdated(Tp::PendingOperation *op)
 void EditAccountDialog::setVisible(bool visible)
 {
     if (visible && d->kwalletReady) {
-	KDialog::setVisible(visible);
-	return;
+        KDialog::setVisible(visible);
+        return;
     }
 
     KDialog::setVisible(false);

@@ -40,4 +40,19 @@ MainOptionsWidget::~MainOptionsWidget()
     delete m_ui;
 }
 
+QString MainOptionsWidget::defaultDisplayName() const
+{
+    const QString &account = m_ui->accountLineEdit->text();
+    const QString &server = m_ui->serverLineEdit->text();
+    QString displayName;
+
+    if (!account.isEmpty()) {
+        displayName = account;
+        if (!server.isEmpty()) {
+            displayName.append(QString::fromLatin1(" on %1").arg(server));
+        }
+    }
+    return displayName;
+}
+
 #include "main-options-widget.moc"

@@ -38,4 +38,9 @@ MainOptionsWidgetGoogleTalk::~MainOptionsWidgetGoogleTalk()
     delete m_ui;
 }
 
+QString MainOptionsWidgetGoogleTalk::defaultDisplayName() const
+{
+    return m_ui->accountLineEdit->text();
+}
+
 #include "main-options-widget-googletalk.moc"

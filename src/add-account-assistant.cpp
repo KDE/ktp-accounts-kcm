@@ -217,16 +217,6 @@ void AddAccountAssistant::accept()
       properties.insert(QLatin1String("org.freedesktop.Telepathy.Account.Enabled"), true);
     }
 
-    // FIXME: Ask the user to submit a Display Name
-
-    QString displayName;
-    if (values.contains(QLatin1String("account"))) {
-        displayName = values[QLatin1String("account")].toString();
-    }
-    else {
-        displayName = d->currentProfileItem->protocolName();
-    }
-
     //remove password values from being sent. These are stored by KWallet instead
 
     //FIXME: This is a hack for jabber registration, we don't remove passwords - see Telepathy ML thread "Storing passwords in MC and regsitering new accounts"
@@ -235,9 +225,10 @@ void AddAccountAssistant::accept()
         values.remove(QLatin1String("password"));
     }
 
+    d->accountEditWidget->updateDisplayName();
     Tp::PendingAccount *pa = d->accountManager->createAccount(d->currentProfileItem->cmName(),
                                                               d->currentProfileItem->protocolName(),
-                                                              displayName,
+                                                              d->accountEditWidget->displayName(),
                                                               values,
                                                               properties);
 
@@ -327,6 +318,7 @@ void AddAccountAssistant::pageThree()
 
     // Set up the account edit widget.
     d->accountEditWidget = new AccountEditWidget(d->currentProfileItem->profile(),
+                                                 QString(),
                                                  parameterModel,
                                                  doConnectOnAdd,
                                                  d->pageThreeWidget);

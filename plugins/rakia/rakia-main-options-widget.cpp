@@ -47,3 +47,8 @@ RakiaMainOptionsWidget::~RakiaMainOptionsWidget()
 {
     delete m_ui;
 }
+
+QString RakiaMainOptionsWidget::defaultDisplayName() const
+{
+    return m_ui->accountLineEdit->text();
+}

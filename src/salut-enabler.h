@@ -52,7 +52,7 @@ public Q_SLOTS:
     void onUserAccepted();
     void onUserWantingChanges();
     void onUserCancelled();
-    void onDialogAccepted(const QVariantMap &values);
+    void onDialogAccepted(const QString &displayName, const QVariantMap &values);
 
 private Q_SLOTS:
     void onAccountCreated(Tp::PendingOperation *op);

@@ -3,6 +3,7 @@
  *
  * Copyright (C) 2009 Collabora Ltd. <info@collabora.com>
  * Copyright (C) 2011 Dominik Schmidt <kde@dominik-schmidt.de>
+ * Copyright (C) 2013 Daniele E. Domenichelli <ddomenichelli@kde.org>
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -65,6 +66,15 @@ ParameterEditWidget::~ParameterEditWidget()
 void ParameterEditWidget::onDelegateDataChanged(const QModelIndex &index, const QVariant &value, int role)
 {
     parameterModel()->setData(index, value, role);
+}
+
+QString ParameterEditWidget::defaultDisplayName() const
+{
+    Tp::ProtocolParameter foundParameter = parameterModel()->parameter(QLatin1String("account"));
+    if (foundParameter.isValid()) {
+        return parameterModel()->data(parameterModel()->indexForParameter(foundParameter)).toString();
+    }
+    return QString();
 }
 
 #include "parameter-edit-widget.moc"

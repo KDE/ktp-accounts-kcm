@@ -2,6 +2,7 @@
  * This file is part of telepathy-firstnames-kcm-plugins
  *
  * Copyright (C) 2011 Florian Reinhard <florian.reinhard@googlemail.com>
+ * Copyright (C) 2013 Daniele E. Domenichelli <ddomenichelli@kde.org>
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -37,9 +38,15 @@ SalutMainOptionsWidget::SalutMainOptionsWidget(ParameterEditModel *model, QWidge
 
     // if the first- and last-name are empty on startup we add them based on
     // the current users full name
-    if (m_ui->firstnameLineEdit->text().isEmpty()) {
+    if (m_ui->firstnameLineEdit->text().isEmpty() &&
+        m_ui->lastnameLineEdit->text().isEmpty() &&
+        m_ui->nicknameLineEdit->text().isEmpty())
+    {
         KUser user = KUser();
-        m_ui->firstnameLineEdit->setText(user.property(KUser::FullName).toString());
+        QString name = user.property(KUser::FullName).toString();
+        int lastSpacePosition = name.lastIndexOf(QLatin1Char(' '));
+        m_ui->firstnameLineEdit->setText(name.left(lastSpacePosition));
+        m_ui->lastnameLineEdit->setText(name.mid(lastSpacePosition + 1));
         m_ui->nicknameLineEdit->setText(user.loginName());
     }
 
@@ -49,6 +56,36 @@ SalutMainOptionsWidget::SalutMainOptionsWidget(ParameterEditModel *model, QWidge
 SalutMainOptionsWidget::~SalutMainOptionsWidget()
 {
     delete m_ui;
+}
+
+QString SalutMainOptionsWidget::defaultDisplayName() const
+{
+    QString displayName;
+    QString firstname = m_ui->firstnameLineEdit->text();
+    QString lastname = m_ui->lastnameLineEdit->text();
+    QString nickname = m_ui->nicknameLineEdit->text();
+
+    if (!firstname.isEmpty()) {
+        displayName = firstname;
+    }
+
+    if (!lastname.isEmpty()) {
+        if (!displayName.isEmpty()) {
+            displayName.append(QString::fromLatin1(" %1").arg(lastname));
+        } else {
+            displayName = lastname;
+        }
+    }
+
+    if (!nickname.isEmpty()) {
+        if (!displayName.isEmpty()) {
+            displayName.append(QString::fromLatin1(" (%1)").arg(nickname));
+        } else {
+            displayName = nickname;
+        }
+    }
+
+    return displayName;
 }
 
 #include "salut-main-options-widget.moc"

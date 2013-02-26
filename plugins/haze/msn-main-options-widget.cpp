@@ -38,4 +38,9 @@ MsnMainOptionsWidget::~MsnMainOptionsWidget()
     delete m_ui;
 }
 
+QString MsnMainOptionsWidget::defaultDisplayName() const
+{
+    return m_ui->accountLineEdit->text();
+}
+
 #include "msn-main-options-widget.moc"

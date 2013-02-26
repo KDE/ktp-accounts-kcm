@@ -87,7 +87,7 @@ bool AbstractAccountParametersWidget::validateParameterValues()
 void AbstractAccountParametersWidget::handleParameter(const QString &parameterName,
                                            QVariant::Type parameterType,
                                            QWidget* dataWidget,
-                                           QWidget* labelWidget = 0)
+                                           QWidget* labelWidget)
 {
     QList<QWidget*> labelWidgets;
     if (labelWidget) {
@@ -168,6 +168,12 @@ void AbstractAccountParametersWidget::submit()
 ParameterEditModel* AbstractAccountParametersWidget::parameterModel() const
 {
     return d->parameterModel;
+}
+
+QString AbstractAccountParametersWidget::defaultDisplayName() const
+{
+    kWarning() << "This method should be implemented by derived classed";
+    return QString();
 }
 
 

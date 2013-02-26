@@ -40,4 +40,9 @@ SunshineMainOptionsWidget::~SunshineMainOptionsWidget()
     delete m_ui;
 }
 
+QString SunshineMainOptionsWidget::defaultDisplayName() const
+{
+    return m_ui->accountLineEdit->text();
+}
+
 #include "sunshine-main-options-widget.moc"

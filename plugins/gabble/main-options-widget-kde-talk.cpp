@@ -79,4 +79,9 @@ bool MainOptionsWidgetKDETalk::validateParameterValues()
     return true;
 }
 
+QString MainOptionsWidgetKDETalk::defaultDisplayName() const
+{
+    return m_ui->accountLineEdit->text();
+}
+
 #include "main-options-widget-kde-talk.moc"

@@ -40,4 +40,9 @@ AimMainOptionsWidget::~AimMainOptionsWidget()
     delete m_ui;
 }
 
+QString AimMainOptionsWidget::defaultDisplayName() const
+{
+    return m_ui->accountLineEdit->text();
+}
+
 #include "aim-main-options-widget.moc"

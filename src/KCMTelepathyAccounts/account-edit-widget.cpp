@@ -3,6 +3,7 @@
  *
  * Copyright (C) 2010 Collabora Ltd. <info@collabora.com>
  * Copyright (C) 2011 Dominik Schmidt <kde@dominik-schmidt.de>
+ * Copyright (C) 2013 Daniele E. Domenichelli <ddomenichelli@kde.org>
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -48,6 +49,8 @@ public:
     QString connectionManager;
     QString protocol;
     QString serviceName;
+    QString displayName;
+    QString defaultDisplayName;
 
     QCheckBox *connectOnAdd;
 
@@ -58,6 +61,7 @@ public:
 };
 
 AccountEditWidget::AccountEditWidget(const Tp::ProfilePtr &profile,
+                                     const QString &displayName,
                                      ParameterEditModel *parameterModel,
                                      ConnectOnLoadType connectOnAddFlag,
                                      QWidget *parent)
@@ -72,6 +76,7 @@ AccountEditWidget::AccountEditWidget(const Tp::ProfilePtr &profile,
     d->serviceName = profile->serviceName();
     d->connectionManager = profile->cmName();
     d->protocol = profile->protocolName();
+    d->displayName = displayName;
 
     connect(d->ui->advancedButton, SIGNAL(clicked()),
             this, SLOT(onAdvancedClicked()));
@@ -184,6 +189,10 @@ void AccountEditWidget::loadWidgets()
         d->ui->verticalLayout->insertWidget(2, d->mainOptionsWidget);
         d->ui->verticalLayout->setStretch(2, 1);
     }
+
+    // Update the default display name after setting up the ui and updating all
+    // the parameters so that it is generated accordingly.
+    d->defaultDisplayName = defaultDisplayName();
 }
 
 QVariantMap AccountEditWidget::parametersSet() const
@@ -243,6 +252,44 @@ bool AccountEditWidget::connectOnAdd()
     else{
         return d->connectOnAdd->isChecked();
     }
+}
+
+QString AccountEditWidget::defaultDisplayName() const
+{
+    return d->mainOptionsWidget->defaultDisplayName();
+}
+
+QString AccountEditWidget::displayName() const
+{
+    if (d->displayName.isEmpty()) {
+        return d->mainOptionsWidget->defaultDisplayName();
+    }
+
+    return d->displayName;
+}
+
+bool AccountEditWidget::updateDisplayName()
+{
+    QString newDefaultDisplayName = defaultDisplayName();
+    QString newDisplayName;
+    // If the display name is empty or is the old default one the value is
+    // cleared (empty displayName = use default one). If the display name
+    // contains the old default value (probably the user added something, the
+    // default part is replaced and the rest is not changed. Otherwise display
+    // name was customized, therefore we leave it unchanged.
+    if (d->displayName.isEmpty() || d->displayName == d->defaultDisplayName) {
+        newDisplayName = newDefaultDisplayName;
+    } else {
+        newDisplayName = d->displayName;
+        newDisplayName.replace(d->defaultDisplayName, newDefaultDisplayName);
+    }
+
+    d->defaultDisplayName = newDefaultDisplayName;
+    if (d->displayName != newDisplayName) {
+        d->displayName = newDisplayName;
+        return true;
+    }
+    return false;
 }
 
 #include "account-edit-widget.moc"

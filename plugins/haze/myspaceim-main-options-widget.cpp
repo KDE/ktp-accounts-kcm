@@ -38,4 +38,9 @@ MySpaceIMMainOptionsWidget::~MySpaceIMMainOptionsWidget()
     delete m_ui;
 }
 
+QString MySpaceIMMainOptionsWidget::defaultDisplayName() const
+{
+    return m_ui->accountLineEdit->text();
+}
+
 #include "myspaceim-main-options-widget.moc"

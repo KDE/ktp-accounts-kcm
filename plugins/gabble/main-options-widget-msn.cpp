@@ -21,7 +21,7 @@
 #include "main-options-widget-msn.h"
 
 #include <KCMTelepathyAccounts/ParameterEditModel>
-
+#include <KLocalizedString>
 
 MainOptionsWidgetMSN::MainOptionsWidgetMSN(ParameterEditModel *model,
                                      QWidget *parent)
@@ -51,5 +51,11 @@ bool MainOptionsWidgetMSN::validateParameterValues()
     return true;
 }
 
+QString MainOptionsWidgetMSN::defaultDisplayName() const
+{
+    // FIXME Move the class Dictionary in common internals and use string from
+    //       Dictionary::instance()->string(QLatin1String("msn"))
+    return i18n("Windows Live Messenger");
+}
 
 #include "main-options-widget-msn.moc"

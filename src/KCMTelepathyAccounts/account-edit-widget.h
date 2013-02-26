@@ -3,6 +3,7 @@
  *
  * Copyright (C) 2010 Collabora Ltd. <info@collabora.com>
  * Copyright (C) 2011 Dominik Schmidt <kde@dominik-schmidt.de>
+ * Copyright (C) 2013 Daniele E. Domenichelli <ddomenichelli@kde.org>
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -41,6 +42,7 @@ class KCM_TELEPATHY_ACCOUNTS_EXPORT AccountEditWidget : public QWidget
 
 public:
     explicit AccountEditWidget(const Tp::ProfilePtr &info,
+                               const QString &displayName,
                                ParameterEditModel *parameterModel,
                                ConnectOnLoadType connectOnAddFlag = doNotConnectOnAdd,
                                QWidget *parent = 0);
@@ -52,6 +54,11 @@ public:
 
     virtual QVariantMap parametersSet() const;
     virtual QStringList parametersUnset() const;
+
+    QString defaultDisplayName() const;
+    QString displayName() const;
+    // returns true if display name has changed
+    bool updateDisplayName();
 
 protected:
     ParameterEditModel *parameterModel() const;

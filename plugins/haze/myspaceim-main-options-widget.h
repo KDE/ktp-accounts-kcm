@@ -31,6 +31,8 @@ class MySpaceIMMainOptionsWidget : public AbstractAccountParametersWidget
 public:
     explicit MySpaceIMMainOptionsWidget(ParameterEditModel *model, QWidget *parent = 0);
     virtual ~MySpaceIMMainOptionsWidget();
+
+    virtual QString defaultDisplayName() const;
 private:
     Q_DISABLE_COPY(MySpaceIMMainOptionsWidget);
     Ui::MySpaceIMMainOptionsWidget *m_ui;

@@ -78,5 +78,15 @@ bool MainOptionsWidgetFacebook::validateParameterValues()
     return true;
 }
 
+QString MainOptionsWidgetFacebook::defaultDisplayName() const
+{
+    QString displayName = m_ui->accountLineEdit->text();
+    if (!displayName.isEmpty()) {
+        displayName.append(QLatin1Char('@'));
+        QString serverAddress = parameterModel()->indexForParameter(parameterModel()->parameter(QLatin1String("server"))).data().toString();
+        displayName.append(serverAddress);
+    }
+    return displayName;
+}
 
 #include "main-options-widget-facebook.moc"

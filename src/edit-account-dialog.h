@@ -35,6 +35,7 @@ public:
     virtual ~EditAccountDialog();
 
     virtual void setVisible(bool visible);
+    virtual void accept();
 
 private Q_SLOTS:
     void onWalletOpened(Tp::PendingOperation *op);
@@ -44,7 +45,7 @@ private Q_SLOTS:
 private:
     Q_DISABLE_COPY(EditAccountDialog);
 
-    void accept();
+    void onFinished();
 
     class Private;
     Private * const d;

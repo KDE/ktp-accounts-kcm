@@ -55,6 +55,11 @@ public:
 
     virtual bool validateParameterValues();
 
+    /** Returns the default display name.
+     *  This method should be re-implemented in the derived main widgets
+     *  \return The default display name, given the parameter currently set.
+     */
+    virtual QString defaultDisplayName() const;
 
 protected:
     /** Map an input widget to a protocol parameter.
@@ -74,7 +79,7 @@ protected:
     void handleParameter(const QString &parameterName,
                          QVariant::Type parameterType,
                          QWidget *dataWidget,
-                         QWidget *labelWidget);
+                         QWidget *labelWidget = 0);
 
     /** Returns the model containing all the protocol parameters*/
     ParameterEditModel *parameterModel() const;
