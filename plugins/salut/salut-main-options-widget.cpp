@@ -2,7 +2,7 @@
  * This file is part of telepathy-firstnames-kcm-plugins
  *
  * Copyright (C) 2011 Florian Reinhard <florian.reinhard@googlemail.com>
- * Copyright (C) 2012 Daniele E. Domenichelli <daniele.domenichelli@gmail.com>
+ * Copyright (C) 2013 Daniele E. Domenichelli <ddomenichelli@kde.org>
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
