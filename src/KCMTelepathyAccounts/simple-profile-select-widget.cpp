@@ -70,14 +70,12 @@ SimpleProfileSelectWidget::SimpleProfileSelectWidget(ProfileListModel *profileLi
     d->signalMapper->setMapping(d->ui->buttonGTalk,    QLatin1String("google-talk"));
     d->signalMapper->setMapping(d->ui->buttonFacebook, QLatin1String("facebook"));
     d->signalMapper->setMapping(d->ui->buttonIcq,      QLatin1String("haze-icq"));
-    d->signalMapper->setMapping(d->ui->buttonMsn,      QLatin1String("msn"));
 
     // Connect buttons to the SignalMapper
     connect(d->ui->buttonJabber,   SIGNAL(clicked()), d->signalMapper, SLOT(map()));
     connect(d->ui->buttonGTalk,    SIGNAL(clicked()), d->signalMapper, SLOT(map()));
     connect(d->ui->buttonFacebook, SIGNAL(clicked()), d->signalMapper, SLOT(map()));
     connect(d->ui->buttonIcq,      SIGNAL(clicked()), d->signalMapper, SLOT(map()));
-    connect(d->ui->buttonMsn,      SIGNAL(clicked()), d->signalMapper, SLOT(map()));
     connect(d->ui->buttonOthers,   SIGNAL(clicked()), this,            SIGNAL(othersChosen()));
 
     connect(d->signalMapper,SIGNAL(mapped(QString)),
