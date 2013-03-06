@@ -2,6 +2,8 @@ include_directories (${CMAKE_CURRENT_BINARY_DIR}
                      ${CMAKE_CURRENT_SOURCE_DIR}
 )
 
+configure_file(version.h.in ${CMAKE_CURRENT_BINARY_DIR}/version.h)
+
 add_subdirectory (KCMTelepathyAccounts)
 
 project (ktp-accounts-kcm)

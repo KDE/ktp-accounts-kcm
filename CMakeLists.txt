@@ -1,5 +1,7 @@
 project (ktp-accounts-kcm)
 
+set(KTP_ACCOUNTS_KCM_VERSION "0.5.3")
+
 # Add the modules we ship to the module path
 SET(CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake/modules" ${CMAKE_MODULE_PATH})
 
