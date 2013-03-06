@@ -32,7 +32,10 @@ install (TARGETS ktpaccountskcm_plugin_salut
          DESTINATION ${PLUGIN_INSTALL_DIR}
 )
 
-install (FILES ktpaccountskcm_plugin_salut.desktop
+configure_file(${CMAKE_CURRENT_SOURCE_DIR}/ktpaccountskcm_plugin_salut.desktop.cmake
+               ${CMAKE_CURRENT_BINARY_DIR}/ktpaccountskcm_plugin_salut.desktop
+               @ONLY)
+
+install (FILES ${CMAKE_CURRENT_BINARY_DIR}/ktpaccountskcm_plugin_salut.desktop
          DESTINATION ${SERVICES_INSTALL_DIR}
 )
-

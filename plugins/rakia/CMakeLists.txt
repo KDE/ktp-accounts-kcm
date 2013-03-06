@@ -31,8 +31,10 @@ target_link_libraries (ktpaccountskcm_plugin_rakia
 install (TARGETS ktpaccountskcm_plugin_rakia
          DESTINATION ${PLUGIN_INSTALL_DIR}
 )
+configure_file(${CMAKE_CURRENT_SOURCE_DIR}/ktpaccountskcm_plugin_rakia.desktop.cmake
+               ${CMAKE_CURRENT_BINARY_DIR}/ktpaccountskcm_plugin_rakia.desktop
+               @ONLY)
 
-install (FILES ktpaccountskcm_plugin_rakia.desktop
+install (FILES ${CMAKE_CURRENT_BINARY_DIR}/ktpaccountskcm_plugin_rakia.desktop
          DESTINATION ${SERVICES_INSTALL_DIR}
 )
-
