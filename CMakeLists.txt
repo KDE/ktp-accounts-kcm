@@ -1,5 +1,7 @@
 project (ktp-accounts-kcm)
 
+set(KTP_ACCOUNTS_KCM_VERSION "0.5.3")
+
 # Add the modules we ship to the module path
 SET(CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake/modules" ${CMAKE_MODULE_PATH})
 
@@ -19,7 +21,7 @@ include (MacroLibrary)
 add_definitions (${KDE4_DEFINITIONS}
                  -DQT_NO_CAST_FROM_ASCII
                  -DQT_NO_KEYWORDS
-		 ${TELEPATHY_LOGGER_QT4_DEFINITIONS}
+                 ${TELEPATHY_LOGGER_QT4_DEFINITIONS}
 )
 
 include_directories (${KDE4_INCLUDES}

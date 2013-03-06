@@ -55,6 +55,10 @@ install (TARGETS ktpaccountskcm_plugin_haze
          DESTINATION ${PLUGIN_INSTALL_DIR}
 )
 
-install (FILES ktpaccountskcm_plugin_haze.desktop
+configure_file(${CMAKE_CURRENT_SOURCE_DIR}/ktpaccountskcm_plugin_haze.desktop.cmake
+               ${CMAKE_CURRENT_BINARY_DIR}/ktpaccountskcm_plugin_haze.desktop
+               @ONLY)
+
+install (FILES ${CMAKE_CURRENT_BINARY_DIR}/ktpaccountskcm_plugin_haze.desktop
          DESTINATION ${SERVICES_INSTALL_DIR}
 )
