@@ -4,7 +4,7 @@
          provider="kde-talk"
          manager="gabble"
          protocol="jabber"
-         icon="im-kde-talk">
+         icon="kde"> <!-- FIXME: Ask for proper icon once -->
   <name>KDE Talk</name>
 
   <parameters>
