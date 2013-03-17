@@ -104,8 +104,8 @@ KCMTelepathyAccounts::KCMTelepathyAccounts(QWidget *parent, const QVariantList& 
             SIGNAL(finished(Tp::PendingOperation*)),
             SLOT(onAccountManagerReady(Tp::PendingOperation*)));
     connect(m_accountManager.constData(),
-	    SIGNAL(newAccount(Tp::AccountPtr)),
-	    SLOT(onNewAccountAdded(Tp::AccountPtr)));
+            SIGNAL(newAccount(Tp::AccountPtr)),
+            SLOT(onNewAccountAdded(Tp::AccountPtr)));
 
     // Set up the UI stuff.
     m_ui = new Ui::MainWidget;
@@ -255,19 +255,18 @@ void KCMTelepathyAccounts::onNewAccountAdded(const Tp::AccountPtr& account)
 {
     KTp::LogsImporter logsImporter;
     if (!logsImporter.hasKopeteLogs(account)) {
-	kDebug() << "No Kopete logs for" << account->uniqueIdentifier() << "found";
-	return;
+        kDebug() << "No Kopete logs for" << account->uniqueIdentifier() << "found";
+        return;
     }
 
     int ret = KMessageBox::questionYesNo(this,
-		i18n("We have found Kopete logs for this account. Do you want to import the logs to KDE Telepathy?"),
-		i18n("Import Logs?"),
-		KGuiItem(i18n("Import Logs"), QLatin1String("document-import")),
-		KGuiItem(i18n("Close"), QLatin1String("dialog-close")));
-				;
+                i18n("We have found Kopete logs for this account. Do you want to import the logs to KDE Telepathy?"),
+                i18n("Import Logs?"),
+                KGuiItem(i18n("Import Logs"), QLatin1String("document-import")),
+                KGuiItem(i18n("Close"), QLatin1String("dialog-close")));
 
     if (ret == KMessageBox::No) {
-	return;
+        return;
     }
 
     m_importProgressDialog = new KProgressDialog(this);
@@ -290,7 +289,7 @@ void KCMTelepathyAccounts::onNewAccountAdded(const Tp::AccountPtr& account)
 void KCMTelepathyAccounts::onLogsImportError(const QString &error)
 {
     if (m_importProgressDialog) {
-	m_importProgressDialog->close();
+        m_importProgressDialog->close();
     }
 
     KMessageBox::error(this, error, i18n("Kopete Logs Import"));
@@ -299,7 +298,7 @@ void KCMTelepathyAccounts::onLogsImportError(const QString &error)
 void KCMTelepathyAccounts::onLogsImportDone()
 {
     if (m_importProgressDialog) {
-	m_importProgressDialog->close();
+        m_importProgressDialog->close();
     }
 
     KMessageBox::information(this, i18n("Kopete logs successfully imported"), i18n("Kopete Logs Import"));
@@ -407,23 +406,23 @@ void KCMTelepathyAccounts::onRemoveAccountClicked()
     dialog->setButtonGuiItem(KDialog::Yes, KGuiItem(i18n("Remove Account"), QLatin1String("edit-delete")));
     bool removeLogs = false;
     if (KMessageBox::createKMessageBox(dialog, QMessageBox::Warning, i18n("Are you sure you want to remove the account \"%1\"?", accountName),
-			QStringList(),  i18n("Remove conversations logs"), &removeLogs,
-			KMessageBox::Dangerous | KMessageBox::Notify) == KDialog::Yes) {
+                QStringList(),  i18n("Remove conversations logs"), &removeLogs,
+                KMessageBox::Dangerous | KMessageBox::Notify) == KDialog::Yes) {
 
-	Tp::AccountPtr account = index.data(KTp::AccountsListModel::AccountRole).value<Tp::AccountPtr>();
-	if (account.isNull()) {
-	    return;
-	}
+        Tp::AccountPtr account = index.data(KTp::AccountsListModel::AccountRole).value<Tp::AccountPtr>();
+        if (account.isNull()) {
+            return;
+        }
 
-	if (removeLogs) {
-	    Tpl::LogManagerPtr logManager = Tpl::LogManager::instance();
-	    logManager->clearAccountHistory(account);
-	}
+        if (removeLogs) {
+            Tpl::LogManagerPtr logManager = Tpl::LogManager::instance();
+            logManager->clearAccountHistory(account);
+        }
 
-         QList<Tp::PendingOperation*> ops;
-         ops.append(KTp::WalletUtils::removeAccountPassword(account));
-         ops.append(account->remove());
-         connect(new Tp::PendingComposite(ops, account), SIGNAL(finished(Tp::PendingOperation*)), SLOT(onOperationFinished(Tp::PendingOperation*)));
+        QList<Tp::PendingOperation*> ops;
+        ops.append(KTp::WalletUtils::removeAccountPassword(account));
+        ops.append(account->remove());
+        connect(new Tp::PendingComposite(ops, account), SIGNAL(finished(Tp::PendingOperation*)), SLOT(onOperationFinished(Tp::PendingOperation*)));
     }
 }
 
