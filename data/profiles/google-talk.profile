@@ -12,7 +12,7 @@
     <parameter name="port"    type="u" mandatory="1">5223</parameter>
     <parameter name="old-ssl" type="b" mandatory="1"
                label="Use old-style SSL">1</parameter>
-    <parameter name="fallback-conference-server">conference.jabber.org</parameter>
+    <parameter name="fallback-conference-server">groupchat.google.com</parameter>
   </parameters>
 
   <presences allow-others="1">
