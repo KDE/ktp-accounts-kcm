@@ -28,6 +28,8 @@
 #include "server-settings-widget.h"
 #include "proxy-settings-widget.h"
 
+#include <QHostInfo>
+
 #include <KCMTelepathyAccounts/AbstractAccountParametersWidget>
 #include <KCMTelepathyAccounts/GenericAdvancedOptionsWidget>
 #include <KCMTelepathyAccounts/ParameterEditModel>
@@ -72,8 +74,14 @@ AbstractAccountParametersWidget *GabbleAccountUi::mainOptionsWidget(
         QWidget *parent) const
 {
     QModelIndex resourceIndex = model->indexForParameter(model->parameter(QLatin1String("resource")));
-    if (resourceIndex.isValid() && model->data(resourceIndex, ParameterEditModel::ValueRole).toString().isEmpty()) {
-        model->setData(resourceIndex, QString::fromLatin1("kde-telepathy"), ParameterEditModel::ValueRole);
+
+    //if gabble still has parameter "resource" and the current value is either empty or the old resource value
+    if (resourceIndex.isValid() && (model->data(resourceIndex, ParameterEditModel::ValueRole).toString().isEmpty() ||
+                                    model->data(resourceIndex, ParameterEditModel::ValueRole).toString() == QLatin1String("kde-telepathy"))) {
+        //we want to make our resource ID pseudo unique so that you can log in from different machines that all use KTp
+        //we make a hash of the hostname then take the first 6 digits and add that to our ID so there's practically no chance of getting a duplicate
+        QString resourceId = QString::fromLatin1("kde-telepathy-").append(QString::number(qHash(QHostInfo::localHostName()) % 1000000));
+        model->setData(resourceIndex, resourceId, ParameterEditModel::ValueRole);
     }
 
     if (m_serviceName == QLatin1String("google-talk")) {
