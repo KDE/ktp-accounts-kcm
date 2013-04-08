@@ -65,7 +65,7 @@
 
 
 K_PLUGIN_FACTORY(KCMTelepathyAccountsFactory, registerPlugin<KCMTelepathyAccounts>();)
-K_EXPORT_PLUGIN(KCMTelepathyAccountsFactory("telepathy_accounts", "telepathy-accounts-kcm"))
+K_EXPORT_PLUGIN(KCMTelepathyAccountsFactory("kcm_ktp_accounts", "kcm_ktp_accounts"))
 
 
 KCMTelepathyAccounts::KCMTelepathyAccounts(QWidget *parent, const QVariantList& args)
