@@ -33,6 +33,7 @@
 #include <KLocalizedString>
 
 #include <QtGui/QFrame>
+#include <KTp/global-presence.h>
 
 #include "salut-details-dialog.h"
 #include "salut-message-widget.h"
@@ -67,6 +68,7 @@ public:
     SalutMessageWidget *messageWidget;
     QWeakPointer<QFrame> salutMessageFrame;
     QString displayName;
+    KTp::GlobalPresence *globalPresence;
 };
 
 SalutEnabler::SalutEnabler(const Tp::AccountManagerPtr accountManager, QObject *parent)
@@ -74,6 +76,9 @@ SalutEnabler::SalutEnabler(const Tp::AccountManagerPtr accountManager, QObject *
       d(new Private(this))
 {
     d->accountManager = accountManager;
+
+    d->globalPresence = new KTp::GlobalPresence(this);
+    d->globalPresence->setAccountManager(accountManager);
 
     d->connectionManager = Tp::ConnectionManager::create(salutConnManager);
     connect(d->connectionManager->becomeReady(),
@@ -252,7 +257,7 @@ void SalutEnabler::onAccountCreated(Tp::PendingOperation* op)
         return;
     }
 
-    pendingAccount->account()->setRequestedPresence(Tp::Presence::available());
+    pendingAccount->account()->setRequestedPresence(d->globalPresence->requestedPresence());
     pendingAccount->account()->setServiceName(d->profile->serviceName());
 
     d->salutMessageFrame.data()->deleteLater();;

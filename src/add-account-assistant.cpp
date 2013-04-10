@@ -23,6 +23,7 @@
 #include "add-account-assistant.h"
 
 #include <KTp/wallet-utils.h>
+#include <KTp/global-presence.h>
 
 #include "KCMTelepathyAccounts/abstract-account-parameters-widget.h"
 #include "KCMTelepathyAccounts/abstract-account-ui.h"
@@ -72,6 +73,7 @@ public:
     KPageWidgetItem *pageOne;
     KPageWidgetItem *pageTwo;
     KPageWidgetItem *pageThree;
+    KTp::GlobalPresence *globalPresence;
 };
 
 AddAccountAssistant::AddAccountAssistant(Tp::AccountManagerPtr accountManager, QWidget *parent)
@@ -79,6 +81,9 @@ AddAccountAssistant::AddAccountAssistant(Tp::AccountManagerPtr accountManager, Q
     d(new Private)
 {
     d->accountManager = accountManager;
+
+    d->globalPresence = new KTp::GlobalPresence(this);
+    d->globalPresence->setAccountManager(accountManager);
 
     // Set up the pages of the Assistant.
     d->profileListModel          = new ProfileListModel(this);
@@ -275,7 +280,7 @@ void AddAccountAssistant::onAccountCreated(Tp::PendingOperation *op)
     }
 
     if (d->accountEditWidget->connectOnAdd()) {
-        account->setRequestedPresence(Tp::Presence::available());
+        account->setRequestedPresence(d->globalPresence->requestedPresence());
     }
     account->setServiceName(d->currentProfileItem->serviceName());
     KAssistantDialog::accept();
