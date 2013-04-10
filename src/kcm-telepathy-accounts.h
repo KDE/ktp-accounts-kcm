@@ -36,6 +36,7 @@ class KProgressDialog;
 
 namespace KTp {
     class AccountsListModel;
+    class GlobalPresence;
 }
 
 namespace Tp {
@@ -89,6 +90,7 @@ private:
     QSortFilterProxyModel *m_accountsFilterModel;
     const QSortFilterProxyModel *m_currentModel;
     const QListView *m_currentListView;
+    KTp::GlobalPresence *m_globalPresence;
 
     QWeakPointer<SalutEnabler> m_salutEnabler;
     KPixmapSequenceOverlayPainter *m_salutBusyWheel;
