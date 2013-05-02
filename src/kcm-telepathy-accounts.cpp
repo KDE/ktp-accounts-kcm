@@ -372,8 +372,9 @@ void KCMTelepathyAccounts::onEditAccountClicked()
     }
 
     // Item is OK. Edit the item.
-    EditAccountDialog dialog(account, this);
-    dialog.exec();
+    QWeakPointer<EditAccountDialog> dialog = new EditAccountDialog(account, this);
+    dialog.data()->exec();
+    delete dialog.data();
 }
 
 void KCMTelepathyAccounts::onEditIdentityClicked()
