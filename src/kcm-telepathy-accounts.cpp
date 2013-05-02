@@ -146,10 +146,12 @@ KCMTelepathyAccounts::KCMTelepathyAccounts(QWidget *parent, const QVariantList& 
     m_salutBusyWheel->setWidget(m_ui->salutWidget);
     m_salutBusyWheel->setAlignment(Qt::AlignRight | Qt::AlignVCenter);
 
-    AccountsListDelegate* accountsDelegate = new AccountsListDelegate(m_ui->accountsListView, this);
+    // parent the delegates to the layout, because KWidgetItemDelegate doesn't like it if the view
+    // is deleted before the delegate
+    AccountsListDelegate* accountsDelegate = new AccountsListDelegate(m_ui->accountsListView, layout());
     m_ui->accountsListView->setItemDelegate(accountsDelegate);
 
-    AccountsListDelegate* salutDelegate = new AccountsListDelegate(m_ui->salutListView, this);
+    AccountsListDelegate* salutDelegate = new AccountsListDelegate(m_ui->salutListView, layout());
     m_ui->salutListView->setItemDelegate(salutDelegate);
 
     int height = salutDelegate->sizeHint(QStyleOptionViewItem(), m_salutFilterModel->index(0,0)).height() + 3*2;
