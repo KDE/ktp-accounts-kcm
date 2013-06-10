@@ -36,7 +36,6 @@ public:
 
     virtual void submit();
 private:
-    void initEncodings();
 
     Q_DISABLE_COPY(IcqServerSettingsWidget);
     Ui::IcqServerSettingsWidget *m_ui;
