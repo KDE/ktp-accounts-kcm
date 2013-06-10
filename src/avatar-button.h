@@ -37,6 +37,8 @@ public:
     AvatarButton(QWidget* parent = 0);
     ~AvatarButton();
 
+    void setAccount(const Tp::AccountPtr &account);
+
     void setAvatar(const Tp::Avatar &avatar);
     Tp::Avatar avatar() const;
 
@@ -46,10 +48,13 @@ Q_SIGNALS:
 private Q_SLOTS:
     void onLoadAvatarFromFile();
     void onClearAvatar();
-    void onAvatarFetched(KJob*);
 
 private:
+    QPixmap cropPixmap(const QPixmap &pixmap, int maxWidth, int maxHeight,
+                       int minWidth, int minHeight) const;
+
     Tp::Avatar m_avatar;
+    Tp::AccountPtr m_account;
 
 };
 

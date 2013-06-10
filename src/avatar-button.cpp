@@ -21,13 +21,26 @@
 #include "avatar-button.h"
 
 #include <QtGui/QWidgetAction>
+#include <QDataStream>
 
 #include <KFileDialog>
 #include <KMenu>
 #include <KLocalizedString>
 #include <KMessageBox>
+#include <KImageFilePreview>
 
-#include "fetch-avatar-job.h"
+#include <TelepathyQt/Account>
+
+#include <KDE/KDebug>
+#include <KGlobalSettings>
+#include <KPixmapRegionSelectorDialog>
+#include <KPixmapRegionSelectorWidget>
+
+// It has been decided by a fair dice roll that 128px is a reasonable avatar
+// size limit in case the server (or Telepathy backend) does not provide
+// such information
+#define AVATAR_MIN_SIZE 64
+#define AVATAR_MAX_SIZE 128
 
 AvatarButton::AvatarButton(QWidget *parent)
     : QToolButton(parent)
@@ -49,7 +62,8 @@ AvatarButton::~AvatarButton()
 
 }
 
-void AvatarButton::setAvatar(const Tp::Avatar &avatar) {
+void AvatarButton::setAvatar(const Tp::Avatar &avatar)
+{
     m_avatar = avatar;
 
     if (! avatar.avatarData.isNull()) {
@@ -63,44 +77,121 @@ void AvatarButton::setAvatar(const Tp::Avatar &avatar) {
     }
 }
 
-Tp::Avatar AvatarButton::avatar() const {
+Tp::Avatar AvatarButton::avatar() const
+{
     return m_avatar;
 }
 
+void AvatarButton::setAccount(const Tp::AccountPtr& account)
+{
+    m_account = account;
+}
 
 void AvatarButton::onLoadAvatarFromFile()
 {
-    KUrl fileUrl = KFileDialog::getImageOpenUrl(KUrl(), this,
-                                                i18n("Please choose your avatar"));
+    QStringList mimeTypes;
+    if (m_account) {
+        mimeTypes = m_account->avatarRequirements().supportedMimeTypes();
+    }
+    if (mimeTypes.isEmpty()) {
+        mimeTypes << QLatin1String("image/jpeg")
+                  << QLatin1String("image/png")
+                  << QLatin1String("imgae/gif");
+    }
 
-    if (!fileUrl.isEmpty()) {
-        FetchAvatarJob *job = new FetchAvatarJob(fileUrl, this);
+    QPointer<KFileDialog> dialog = new KFileDialog(KUrl::fromPath(KGlobalSettings::picturesPath()),
+                                                   mimeTypes.join(QLatin1String(" ")), this);
+    dialog->setOperationMode(KFileDialog::Opening);
+    dialog->setPreviewWidget(new KImageFilePreview(dialog));
+    dialog->setCaption(i18n("Please choose your avatar"));
 
-        connect(job, SIGNAL(result(KJob*)),
-                this, SLOT(onAvatarFetched(KJob*)));
+    KUrl fileUrl;
+    if (dialog->exec()) {
+        if (!dialog) {
+            return;
+        }
 
-        job->start();
-    } else {
+        fileUrl = dialog->selectedUrl();
+    }
+
+    delete dialog;
+
+    if (fileUrl.isEmpty()) {
         return;
     }
+
+    const QPixmap pixmap(fileUrl.toLocalFile());
+
+    const Tp::AvatarSpec spec = m_account->avatarRequirements();
+
+    const int maxWidth = spec.maximumWidth() > 0 ? spec.maximumWidth() : AVATAR_MAX_SIZE;
+    const int maxHeight = spec.maximumHeight() > 0 ? spec.maximumHeight() : AVATAR_MAX_SIZE;
+    const int minWidth = spec.minimumWidth() > 0 ? spec.minimumWidth() : AVATAR_MIN_SIZE;
+    const int minHeight = spec.minimumHeight() > 0 ? spec.minimumHeight() : AVATAR_MIN_SIZE;
+
+    QPixmap finalPixmap;
+    if (pixmap.width() > spec.maximumWidth() || pixmap.height() > spec.maximumHeight()) {
+        finalPixmap = cropPixmap(pixmap, maxWidth, maxHeight, minWidth, minHeight);
+    } else {
+        finalPixmap = pixmap;
+
+        if (pixmap.width() < minWidth) {
+            finalPixmap = finalPixmap.scaledToWidth(minWidth, Qt::SmoothTransformation);
+        }
+
+        if (pixmap.height() < minHeight) {
+            finalPixmap = finalPixmap.scaledToHeight(minHeight, Qt::SmoothTransformation);
+        }
+    }
+
+    if (finalPixmap.isNull()) {
+        return;
+    }
+
+    Tp::Avatar avatar;
+    avatar.MIMEType = QLatin1String("image/png");
+    QDataStream stream(&avatar.avatarData, QIODevice::WriteOnly);
+    if (!finalPixmap.save(stream.device(), "PNG")) {
+        KMessageBox::error(this, i18n("Failed to load avatar."));
+        return;
+    }
+
+    setAvatar(avatar);
+    Q_EMIT avatarChanged();
+}
+
+QPixmap AvatarButton::cropPixmap(const QPixmap& pixmap, int maxWidth, int maxHeight,
+                                 int minWidth, int minHeight) const
+{
+    QPointer<KPixmapRegionSelectorDialog> regionDlg = new KPixmapRegionSelectorDialog();
+    KPixmapRegionSelectorWidget *widget = regionDlg->pixmapRegionSelectorWidget();
+    widget->setPixmap(pixmap);
+    widget->setSelectionAspectRatio(maxWidth, maxHeight);
+
+    if (regionDlg->exec()) {
+        if (!regionDlg) {
+            return QPixmap();
+        }
+
+        delete regionDlg;
+
+        QImage selectedImage = widget->selectedImage();
+        if (selectedImage.width() > maxWidth || selectedImage.height() > maxHeight) {
+            return QPixmap::fromImage(selectedImage.scaled(maxWidth, maxHeight, Qt::KeepAspectRatio));
+        } else if (selectedImage.width() < minWidth || selectedImage.height() < minHeight) {
+            return QPixmap::fromImage(selectedImage.scaled(minWidth, minHeight, Qt::KeepAspectRatio));
+        } else {
+            return QPixmap::fromImage(widget->selectedImage());
+        }
+    }
+
+    delete regionDlg;
+
+    return QPixmap();
 }
 
 void AvatarButton::onClearAvatar()
 {
     setAvatar(Tp::Avatar());
     Q_EMIT avatarChanged();
-}
-
-void AvatarButton::onAvatarFetched(KJob *job)
-{
-    if (job->error()) {
-        KMessageBox::error(this, job->errorString());
-        return;
-    } else {
-        FetchAvatarJob *fetchJob = qobject_cast< FetchAvatarJob* >(job);
-
-        Q_ASSERT(fetchJob);
-        setAvatar(fetchJob->avatar());
-        Q_EMIT avatarChanged();
-    }
 }

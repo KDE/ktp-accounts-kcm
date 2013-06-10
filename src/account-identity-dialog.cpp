@@ -48,6 +48,7 @@ AccountIdentityDialog::AccountIdentityDialog(const Tp::AccountPtr &account, QWid
     onAvatarChanged(account->avatar());
 
     ui->accountId->setText(m_account->displayName());
+    ui->accountAvatar->setAccount(m_account);
 
     connect(this, SIGNAL(okClicked()), SLOT(apply()));
 }

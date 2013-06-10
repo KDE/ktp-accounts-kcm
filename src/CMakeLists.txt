@@ -10,7 +10,6 @@ project (ktp-accounts-kcm)
 
 set (kcm_ktp_accounts_SRCS
      avatar-button.cpp
-     fetch-avatar-job.cpp
      salut-enabler.cpp
      salut-message-widget.cpp
      kcm-telepathy-accounts.cpp
