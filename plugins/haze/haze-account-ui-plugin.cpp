@@ -26,6 +26,7 @@
 #include "haze-yahoo-account.h"
 #include "haze-aim-account.h"
 #include "haze-msn-account.h"
+#include "haze-groupwise-account.h"
 
 #include <KPluginFactory>
 
@@ -41,6 +42,7 @@ HazeAccountUiPlugin::HazeAccountUiPlugin(QObject *parent, const QVariantList &)
     registerProvidedProtocol(QLatin1String("haze"), QLatin1String("yahoo"));
     registerProvidedProtocol(QLatin1String("haze"), QLatin1String("aim"));
     registerProvidedProtocol(QLatin1String("haze"), QLatin1String("msn"));
+    registerProvidedProtocol(QLatin1String("haze"), QLatin1String("groupwise"));
 }
 
 HazeAccountUiPlugin::~HazeAccountUiPlugin()
@@ -64,7 +66,9 @@ AbstractAccountUi* HazeAccountUiPlugin::accountUi(const QString &connectionManag
             return new HazeAimAccount;
         } else if (protocol == QLatin1String("msn")) {
             return new HazeMsnAccountUi;
-        }
+        } else if (protocol == QLatin1String("groupwise")) {
+            return new HazeGroupWiseAccountUi;
+	}
     }
 
     return 0;
