@@ -147,7 +147,7 @@
         </sizepolicy>
        </property>
        <property name="text">
-        <string>Others</string>
+        <string>All</string>
        </property>
        <property name="icon">
         <iconset theme="go-next">
