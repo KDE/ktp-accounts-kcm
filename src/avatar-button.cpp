@@ -160,9 +160,14 @@ void AvatarButton::onLoadAvatarFromFile()
     Q_EMIT avatarChanged();
 }
 
-QPixmap AvatarButton::cropPixmap(const QPixmap& pixmap, int maxWidth, int maxHeight,
+QPixmap AvatarButton::cropPixmap(const QPixmap &pixmap, int maxWidth, int maxHeight,
                                  int minWidth, int minHeight) const
 {
+    //if there's no image we don't need to select a region
+    if (pixmap.isNull()) {
+        return pixmap;
+    }
+
     QPointer<KPixmapRegionSelectorDialog> regionDlg = new KPixmapRegionSelectorDialog();
     KPixmapRegionSelectorWidget *widget = regionDlg->pixmapRegionSelectorWidget();
     widget->setPixmap(pixmap);
