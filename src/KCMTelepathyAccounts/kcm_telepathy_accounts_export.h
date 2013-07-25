@@ -24,9 +24,9 @@
 #include <kdemacros.h>
 
 #ifndef KCM_TELEPATHY_ACCOUNTS_EXPORT
-# if defined(MAKE_KCM_TELEPATHY_ACCOUNTS_LIB_LIB)
+# if defined(MAKE_KCM_TELEPATHY_ACCOUNTS_LIB)
    /* We are building this library */
-#  define KCM_TELEPATHY_ACCOUNTS_EXPORT KCM_TELEPATHY_ACCOUNTS_EXPORT
+#  define KCM_TELEPATHY_ACCOUNTS_EXPORT KDE_EXPORT
 # else
    /* We are using this library */
 #  define KCM_TELEPATHY_ACCOUNTS_EXPORT KDE_IMPORT
