@@ -60,10 +60,11 @@
 #include <TelepathyQt/PendingComposite>
 #include <TelepathyQt/ConnectionManager>
 
+#ifdef HAVE_TPLOGGERQT
 #include <TelepathyLoggerQt4/LogManager>
 #include <TelepathyLoggerQt4/Init>
 #include <TelepathyLoggerQt4/PendingOperation>
-
+#endif
 
 K_PLUGIN_FACTORY(KCMTelepathyAccountsFactory, registerPlugin<KCMTelepathyAccounts>();)
 K_EXPORT_PLUGIN(KCMTelepathyAccountsFactory("kcm_ktp_accounts", "kcm_ktp_accounts"))
@@ -90,7 +91,9 @@ KCMTelepathyAccounts::KCMTelepathyAccounts(QWidget *parent, const QVariantList& 
 
     // The first thing we must do is register Telepathy DBus Types.
     Tp::registerTypes();
+#ifdef HAVE_TPLOGGERQT
     Tpl::init();
+#endif
 
     // Start setting up the Telepathy AccountManager.
     Tp::AccountFactoryPtr  accountFactory = Tp::AccountFactory::create(QDBusConnection::sessionBus(),
@@ -413,8 +416,16 @@ void KCMTelepathyAccounts::onRemoveAccountClicked()
     dialog->setWindowTitle(i18n("Remove Account"));
     dialog->setButtonGuiItem(KDialog::Yes, KGuiItem(i18n("Remove Account"), QLatin1String("edit-delete")));
     bool removeLogs = false;
+
+    // Don't show the 'Remove logs' checkbox when we don't support TpLogger
+#ifdef HAVE_TPLOGGERQT
+    const QString msg =  i18n("Remove conversations logs");
+#else
+    const QString msg;
+#endif
+
     if (KMessageBox::createKMessageBox(dialog, QMessageBox::Warning, i18n("Are you sure you want to remove the account \"%1\"?", accountName),
-                QStringList(),  i18n("Remove conversations logs"), &removeLogs,
+                QStringList(), msg , &removeLogs,
                 KMessageBox::Dangerous | KMessageBox::Notify) == KDialog::Yes) {
 
         Tp::AccountPtr account = index.data(KTp::AccountsListModel::AccountRole).value<Tp::AccountPtr>();
@@ -422,10 +433,12 @@ void KCMTelepathyAccounts::onRemoveAccountClicked()
             return;
         }
 
+#ifdef HAVE_TPLOGGERQT
         if (removeLogs) {
             Tpl::LogManagerPtr logManager = Tpl::LogManager::instance();
             logManager->clearAccountHistory(account);
         }
+#endif
 
         QList<Tp::PendingOperation*> ops;
         ops.append(KTp::WalletUtils::removeAccountPassword(account));
