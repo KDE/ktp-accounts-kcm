@@ -27,6 +27,7 @@
 #include "haze-aim-account.h"
 #include "haze-msn-account.h"
 #include "haze-groupwise-account.h"
+#include "haze-steam-account.h"
 
 #include <KPluginFactory>
 
@@ -43,6 +44,7 @@ HazeAccountUiPlugin::HazeAccountUiPlugin(QObject *parent, const QVariantList &)
     registerProvidedProtocol(QLatin1String("haze"), QLatin1String("aim"));
     registerProvidedProtocol(QLatin1String("haze"), QLatin1String("msn"));
     registerProvidedProtocol(QLatin1String("haze"), QLatin1String("groupwise"));
+    registerProvidedProtocol(QLatin1String("haze"), QLatin1String("steam-mobile"));
 }
 
 HazeAccountUiPlugin::~HazeAccountUiPlugin()
@@ -68,6 +70,8 @@ AbstractAccountUi* HazeAccountUiPlugin::accountUi(const QString &connectionManag
             return new HazeMsnAccountUi;
         } else if (protocol == QLatin1String("groupwise")) {
             return new HazeGroupWiseAccountUi;
+        } else if (protocol == QLatin1String("steam-mobile")) {
+            return new HazeSteamAccountUi;
 	}
     }
 
