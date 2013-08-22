@@ -263,8 +263,8 @@ void KCMTelepathyAccounts::onAccountManagerReady(Tp::PendingOperation *op)
 
 void KCMTelepathyAccounts::onNewAccountAdded(const Tp::AccountPtr& account)
 {
-    KTp::LogsImporter logsImporter;
-    if (!logsImporter.hasKopeteLogs(account)) {
+    QScopedPointer<KTp::LogsImporter> logsImporter(new KTp::LogsImporter(this));
+    if (!logsImporter->hasKopeteLogs(account)) {
         kDebug() << "No Kopete logs for" << account->uniqueIdentifier() << "found";
         return;
     }
@@ -287,10 +287,10 @@ void KCMTelepathyAccounts::onNewAccountAdded(const Tp::AccountPtr& account)
     m_importProgressDialog->setButtons(KDialog::Close);
     m_importProgressDialog->enableButton(KDialog::Close, false);
 
-    connect(&logsImporter, SIGNAL(logsImported()), SLOT(onLogsImportDone()));
-    connect(&logsImporter, SIGNAL(error(QString)), SLOT(onLogsImportError(QString)));
+    connect(logsImporter.data(), SIGNAL(logsImported()), SLOT(onLogsImportDone()));
+    connect(logsImporter.data(), SIGNAL(error(QString)), SLOT(onLogsImportError(QString)));
 
-    logsImporter.startLogImport(account);
+    logsImporter->startLogImport(account);
     m_importProgressDialog->exec();
 
     delete m_importProgressDialog;
@@ -298,10 +298,6 @@ void KCMTelepathyAccounts::onNewAccountAdded(const Tp::AccountPtr& account)
 
 void KCMTelepathyAccounts::onLogsImportError(const QString &error)
 {
-    if (m_importProgressDialog) {
-        m_importProgressDialog->close();
-    }
-
     KMessageBox::error(this, error, i18n("Kopete Logs Import"));
 }
 
