@@ -28,11 +28,15 @@
 ModemComboBox::ModemComboBox(QWidget* parent) : QComboBox(parent)
 {
     modems = ModemManager::modemInterfaces();
-    Q_FOREACH(ModemManager::ModemInterface::Ptr modem, modems) {
-        ModemManager::ModemGsmCardInterface::Ptr simCard = ModemManager::findModemInterface(modem->udi(), ModemManager::ModemInterface::GsmCard).objectCast<ModemManager::ModemGsmCardInterface>();
-        QString simIdent = simCard->getSimIdentifier();
-        QString spn = simCard->getSpn();
-        addItem(spn.isEmpty() ? QLatin1String("Unknown modem") : spn);
+    if(!modems.isEmpty()) {
+        Q_FOREACH(ModemManager::ModemInterface::Ptr modem, modems) {
+            ModemManager::ModemGsmCardInterface::Ptr simCard = ModemManager::findModemInterface(modem->udi(), ModemManager::ModemInterface::GsmCard).objectCast<ModemManager::ModemGsmCardInterface>();
+            if(!simCard.isNull()) {
+                QString simIdent = simCard->getSimIdentifier();
+                QString spn = simCard->getSpn();
+                addItem(spn.isEmpty() ? QLatin1String("Unknown modem") : spn);
+            }
+        }
     }
 }
 
@@ -43,7 +47,10 @@ ModemComboBox::~ModemComboBox()
 QString ModemComboBox::selectedSimIdentifier()
 {
     ModemManager::ModemGsmCardInterface::Ptr simCard = ModemManager::findModemInterface(modems.at(currentIndex())->udi(), ModemManager::ModemInterface::GsmCard).objectCast<ModemManager::ModemGsmCardInterface>();
-    return simCard->getSimIdentifier();
+    if(!simCard.isNull()) {
+        return simCard->getSimIdentifier();
+    }
+    return QString();
 }
 
 #include "modem-combobox.moc"
