@@ -36,15 +36,15 @@ MainOptionsWidget::MainOptionsWidget(ParameterEditModel *model,
 {
     m_ui = new Ui::MainOptionsWidget;
     m_ui->setupUi(this);
-    
+
     mapper = new QDataWidgetMapper(this);
     mapper->setModel(parameterModel());
     mapper->setSubmitPolicy(QDataWidgetMapper::ManualSubmit);
     mapper->setOrientation(Qt::Vertical);
-    mapper->addMapping(m_ui->numberLineEdit, parameterModel()->indexForParameter(parameterModel()->parameter(QLatin1String("number"))).row(), "text");
-    mapper->addMapping(m_ui->comboBox, parameterModel()->indexForParameter(parameterModel()->parameter(QLatin1String("simIdentifier"))).row(), "selectedSimIdentifier");
+    mapper->addMapping(m_ui->numberLineEdit, parameterModel()->indexForParameter(parameterModel()->parameter(QLatin1String("number"))).row());
+    mapper->addMapping(m_ui->comboBox, parameterModel()->indexForParameter(parameterModel()->parameter(QLatin1String("simIdentifier"))).row());
     mapper->toFirst();
-    
+
     QTimer::singleShot(0, m_ui->numberLineEdit, SLOT(setFocus()));
 }
 

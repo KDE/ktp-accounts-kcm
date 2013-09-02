@@ -29,12 +29,12 @@
 class ModemComboBox : public QComboBox
 {
     Q_OBJECT
+    Q_PROPERTY(QString selectedSimIdentifier READ selectedSimIdentifier USER true)
 
 public:
     explicit ModemComboBox(QWidget *parent = 0);
     virtual ~ModemComboBox();
     QString selectedSimIdentifier();
-    Q_PROPERTY(QString selectedSimIdentifier READ selectedSimIdentifier)
 private:
     ModemManager::ModemInterface::List modems;
 };
