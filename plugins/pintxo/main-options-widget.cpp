@@ -37,27 +37,14 @@ MainOptionsWidget::MainOptionsWidget(ParameterEditModel *model,
     m_ui = new Ui::MainOptionsWidget;
     m_ui->setupUi(this);
 
-    mapper = new QDataWidgetMapper(this);
-    mapper->setModel(parameterModel());
-    mapper->setSubmitPolicy(QDataWidgetMapper::ManualSubmit);
-    mapper->setOrientation(Qt::Vertical);
-    mapper->addMapping(m_ui->numberLineEdit, parameterModel()->indexForParameter(parameterModel()->parameter(QLatin1String("number"))).row());
-    mapper->addMapping(m_ui->comboBox, parameterModel()->indexForParameter(parameterModel()->parameter(QLatin1String("simIdentifier"))).row());
-    mapper->toFirst();
-
+    handleParameter(QLatin1String("number"), QVariant::String, m_ui->numberLineEdit, m_ui->numberLabel);
+    handleParameter(QLatin1String("simIdentifier"), QVariant::String, m_ui->comboBox, m_ui->modemLabel);
     QTimer::singleShot(0, m_ui->numberLineEdit, SLOT(setFocus()));
 }
 
 MainOptionsWidget::~MainOptionsWidget()
 {
     delete m_ui;
-}
-
-void MainOptionsWidget::submit()
-{
-    mapper->submit();
-    parameterModel()->setData(parameterModel()->indexForParameter(parameterModel()->parameter(QLatin1String("number"))), QValidator::Acceptable, ParameterEditModel::ValidityRole);
-    parameterModel()->setData(parameterModel()->indexForParameter(parameterModel()->parameter(QLatin1String("simIdentifier"))), QValidator::Acceptable, ParameterEditModel::ValidityRole);
 }
 
 bool MainOptionsWidget::validateParameterValues()

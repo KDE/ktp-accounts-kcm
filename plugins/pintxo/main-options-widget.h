@@ -36,7 +36,6 @@ public:
                                QWidget *parent = 0);
     virtual ~MainOptionsWidget();
     virtual QString defaultDisplayName() const;
-    virtual void submit();
     virtual bool validateParameterValues();
 private:
     Q_DISABLE_COPY(MainOptionsWidget);
