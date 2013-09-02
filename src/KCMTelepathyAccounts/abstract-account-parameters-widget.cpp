@@ -87,19 +87,21 @@ bool AbstractAccountParametersWidget::validateParameterValues()
 void AbstractAccountParametersWidget::handleParameter(const QString &parameterName,
                                            QVariant::Type parameterType,
                                            QWidget* dataWidget,
-                                           QWidget* labelWidget)
+                                           QWidget* labelWidget,
+                                           const QByteArray &dataWidgetProperty)
 {
     QList<QWidget*> labelWidgets;
     if (labelWidget) {
         labelWidgets << labelWidget;
     }
-    handleParameter(parameterName, parameterType, dataWidget, labelWidgets);
+    handleParameter(parameterName, parameterType, dataWidget, labelWidgets, dataWidgetProperty);
 }
 
 void AbstractAccountParametersWidget::handleParameter(const QString &parameterName,
                                            QVariant::Type parameterType,
                                            QWidget* dataWidget,
-                                           const QList<QWidget*> &labelWidgets)
+                                           const QList<QWidget*> &labelWidgets,
+                                           const QByteArray &dataWidgetProperty)
 {
     kDebug() << parameterType << parameterName;
 
@@ -122,13 +124,19 @@ void AbstractAccountParametersWidget::handleParameter(const QString &parameterNa
         kDebug() << index << parameterName;
         // insert it to valid parameters list
         //for text edit boxes we force it to use the plainText property so that we don't get HTML all over our options
-        if (dataWidget->inherits("QTextEdit")) {
-            d->mapper->addMapping(dataWidget, index.row(), "plainText");
-        } else if (dataWidget->inherits("QComboBox") && parameterType == QVariant::String) {
-            d->mapper->addMapping(dataWidget, index.row(), "currentText");
-        } else {
-            d->mapper->addMapping(dataWidget, index.row());
+        if (!dataWidgetProperty.isEmpty()) {
+            d->mapper->addMapping(dataWidget, index.row(), dataWidgetProperty);
         }
+        else {
+            if (dataWidget->inherits("QTextEdit")) {
+                d->mapper->addMapping(dataWidget, index.row(), "plainText");
+            } else if (dataWidget->inherits("QComboBox") && parameterType == QVariant::String) {
+                d->mapper->addMapping(dataWidget, index.row(), "currentText");
+            } else {
+                d->mapper->addMapping(dataWidget, index.row());
+            }
+        }
+
         d->mapper->toFirst();
 
         // check if the passed parameter is a validated one.. If so we're going to set the model here
@@ -172,7 +180,7 @@ ParameterEditModel* AbstractAccountParametersWidget::parameterModel() const
 
 QString AbstractAccountParametersWidget::defaultDisplayName() const
 {
-    kWarning() << "This method should be implemented by derived classed";
+    kWarning() << "This method should be implemented by derived classes";
     return QString();
 }
 

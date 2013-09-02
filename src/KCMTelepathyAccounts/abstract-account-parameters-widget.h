@@ -74,12 +74,14 @@ protected:
     void handleParameter(const QString &parameterName,
                          QVariant::Type parameterType,
                          QWidget *dataWidget,
-                         const QList<QWidget*> &labelWidgets);
+                         const QList<QWidget*> &labelWidgets,
+                         const QByteArray &dataWidgetProperty = QByteArray());
 
     void handleParameter(const QString &parameterName,
                          QVariant::Type parameterType,
                          QWidget *dataWidget,
-                         QWidget *labelWidget = 0);
+                         QWidget *labelWidget = 0,
+                         const QByteArray &dataWidgetProperty = QByteArray());
 
     /** Returns the model containing all the protocol parameters*/
     ParameterEditModel *parameterModel() const;
