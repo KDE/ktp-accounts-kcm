@@ -47,16 +47,6 @@ MainOptionsWidget::~MainOptionsWidget()
     delete m_ui;
 }
 
-bool MainOptionsWidget::validateParameterValues()
-{
-    QString parameterNumber = parameterModel()->data(parameterModel()->indexForParameter(parameterModel()->parameter(QLatin1String("number"))), ParameterEditModel::ValueRole).toString();
-    QString parameterSimIdentifier = parameterModel()->data(parameterModel()->indexForParameter(parameterModel()->parameter(QLatin1String("simIdentifier"))), ParameterEditModel::ValueRole).toString();
-    if(parameterNumber.isEmpty() || parameterSimIdentifier.isEmpty()) {
-        return 0;
-    }
-    return 1;
-}
-
 QString MainOptionsWidget::defaultDisplayName() const
 {
     return parameterModel()->data(parameterModel()->indexForParameter(parameterModel()->parameter(QLatin1String("number")))).toString();

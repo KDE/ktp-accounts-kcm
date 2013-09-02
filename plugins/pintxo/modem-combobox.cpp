@@ -46,11 +46,33 @@ ModemComboBox::~ModemComboBox()
 
 QString ModemComboBox::selectedSimIdentifier()
 {
-    ModemManager::ModemGsmCardInterface::Ptr simCard = ModemManager::findModemInterface(modems.at(currentIndex())->udi(), ModemManager::ModemInterface::GsmCard).objectCast<ModemManager::ModemGsmCardInterface>();
-    if(!simCard.isNull()) {
-        return simCard->getSimIdentifier();
+    ModemManager::ModemInterface::Ptr modem = modems.at(currentIndex());
+    if(!modem.isNull()){
+        ModemManager::ModemGsmCardInterface::Ptr simCard = ModemManager::findModemInterface(modems.at(currentIndex())->udi(), ModemManager::ModemInterface::GsmCard).objectCast<ModemManager::ModemGsmCardInterface>();
+        if(!simCard.isNull()) {
+            return simCard->getSimIdentifier();
+        }
     }
     return QString();
 }
+
+void ModemComboBox::setSelectedModem(const QString &selectedSimIdentifier)
+{
+    if(!modems.isEmpty()) {
+        int i = 0;
+        Q_FOREACH(ModemManager::ModemInterface::Ptr modem, modems) {
+            ModemManager::ModemGsmCardInterface::Ptr simCard = ModemManager::findModemInterface(modem->udi(), ModemManager::ModemInterface::GsmCard).objectCast<ModemManager::ModemGsmCardInterface>();
+            if(!simCard.isNull()) {
+                QString simIdent = simCard->getSimIdentifier();
+                if (simIdent == selectedSimIdentifier) {
+                    setCurrentIndex(i);
+                    return;
+                }
+                ++i;
+            }
+        }
+    }
+}
+
 
 #include "modem-combobox.moc"
