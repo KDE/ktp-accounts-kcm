@@ -1,14 +1,11 @@
 project (ktpaccountskcm-plugin-pintxo)
 
-#find_package(ModemManager REQUIRED)
+INCLUDE(FindPkgConfig)
 
 pkg_check_modules(LIBMODEMMANAGERQT REQUIRED ModemManagerQt)
     if (NOT LIBMODEMMANAGERQT_FOUND)
     message(FATAL_ERROR "ERROR: libModemManagerQt not found")
 endif (NOT LIBMODEMMANAGERQT_FOUND)
-
-
-INCLUDE(FindPkgConfig)
 
 include_directories (${CMAKE_CURRENT_BINARY_DIR}
                      ${CMAKE_CURRENT_SOURCE_DIR}
