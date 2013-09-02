@@ -38,7 +38,7 @@ MainOptionsWidget::MainOptionsWidget(ParameterEditModel *model,
     m_ui->setupUi(this);
 
     handleParameter(QLatin1String("number"), QVariant::String, m_ui->numberLineEdit, m_ui->numberLabel);
-    handleParameter(QLatin1String("simIdentifier"), QVariant::String, m_ui->comboBox, m_ui->modemLabel);
+    handleParameter(QLatin1String("simIdentifier"), QVariant::String, m_ui->comboBox, m_ui->modemLabel, "selectedSimIdentifier");
     QTimer::singleShot(0, m_ui->numberLineEdit, SLOT(setFocus()));
 }
 
