@@ -18,12 +18,12 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
+#include "modem-combobox.h"
+
 #include <QDebug>
 
 #include <ModemManagerQt/manager.h>
 #include <ModemManagerQt/modemgsmcardinterface.h>
-
-#include "modem-combobox.h"
 
 ModemComboBox::ModemComboBox(QWidget* parent) : QComboBox(parent)
 {

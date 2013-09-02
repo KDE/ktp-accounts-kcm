@@ -18,6 +18,9 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
+
+#include "main-options-widget.h"
+
 #include <QtGui/QDataWidgetMapper>
 
 #include <ModemManagerQt/manager.h>
@@ -26,7 +29,6 @@
 #include <KCMTelepathyAccounts/ParameterEditModel>
 
 #include "modem-combobox.h"
-#include "main-options-widget.h"
 
 MainOptionsWidget::MainOptionsWidget(ParameterEditModel *model,
                                      QWidget *parent)
