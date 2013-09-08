@@ -2,6 +2,7 @@
 Encoding=UTF-8
 Comment=Custom account configuration user interface for accounts using the Pintxo connection manager.
 Comment[cs]=Vlastní uživatelské rozhraní nastavení účtů pro účty používající správce spojení Pintxo.
+Comment[da]=Brugerflade til brugertilpasset kontokonfiguration til konti der bruger forbindelseshåndteringen Pintxo.
 Comment[es]=Interfaz de configuración de cuentas personalizadas para las cuentas que usen el gestor de conexiones Pintxo.
 Comment[fi]=Pintxo-yhteyshallintaa käyttävien tilien mukautettu hallintakäyttöliittymä.
 Comment[it]=Interfaccia utente personalizzata di configurazione account per account che usano il gestore di connessioni Pintxo.
@@ -15,6 +16,7 @@ Comment[x-test]=xxCustom account configuration user interface for accounts using
 Icon=phone
 Name=Pintxo Account Configuration User Interface
 Name[cs]=Uživatelské rozhraní nastavení účtu Pintxo
+Name[da]=Brugerflade til Pintxo kontokonfiguration
 Name[es]=Interfaz de configuración de cuentas Pintxo
 Name[fi]=Pintxo-tilinmäärityksen käyttöliittymä
 Name[it]=Interfaccia utente di configurazione account Pintxo
