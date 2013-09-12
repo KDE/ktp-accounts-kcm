@@ -21,6 +21,7 @@
 #include "modem-combobox.h"
 
 #include <QDebug>
+#include <QDBusReply>
 
 #include <ModemManagerQt/manager.h>
 #include <ModemManagerQt/modemgsmcardinterface.h>
@@ -33,8 +34,8 @@ ModemComboBox::ModemComboBox(QWidget* parent) : QComboBox(parent)
             ModemManager::ModemGsmCardInterface::Ptr simCard = ModemManager::findModemInterface(modem->udi(), ModemManager::ModemInterface::GsmCard).objectCast<ModemManager::ModemGsmCardInterface>();
             if(!simCard.isNull()) {
                 QString simIdent = simCard->getSimIdentifier();
-                QString spn = simCard->getSpn();
-                addItem(spn.isEmpty() ? QLatin1String("Unknown modem") : spn);
+                QDBusReply<QString> spn  = simCard->getSpn();
+                addItem(spn.isValid() ? spn.value() : QLatin1String("Unknown modem"));
             }
         }
     }
