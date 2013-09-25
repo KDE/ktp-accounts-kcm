@@ -1,8 +1,28 @@
 [Desktop Entry]
 Encoding=UTF-8
 Comment=Custom account configuration user interface for accounts using the Pintxo connection manager.
+Comment[bs]=Korisnički interfejs za konfiguraciju korisničkih naloga koristeći Pinxto menadžer konekcja.
+Comment[ca]=Interfície d'usuari de configuració de compte personalitzat per comptes que utilitzen el gestor de connexions Pintxo.
+Comment[de]=Eigene Benutzeroberfläche zum Einrichten von Zugängen, die die Pintxo-Verbindungsverwaltung verwenden.
+Comment[fr]=Interface utilisateur de configuration de comptes pour les comptes employant le gestionnaire de connexion « Pintxo ».
+Comment[it]=Interfaccia utente personalizzata di configurazione account per account che usano il gestore di connessioni Pintxo.
+Comment[kk]=Pintxo байланыс менеджерін қолданатын тіркелгі пайдаланушы интерфейс параметрлерін ыңғайлау.
+Comment[nl]=Gebruikersinterface voor aangepaste accountconfiguratie voor accounts die de Pintxo verbindingenbeheerder gebruiken.
+Comment[sv]=Användargränssnitt för anpassad kontoinställning av konton som använder anslutningshanteraren Pintxo.
+Comment[uk]=Інтерфейс користувача для нетипового налаштовування облікових записів, для роботи яких використовуються засоби керування з’єднанням Pintxo.
+Comment[x-test]=xxCustom account configuration user interface for accounts using the Pintxo connection manager.xx
 Icon=phone
 Name=Pintxo Account Configuration User Interface
+Name[bs]=Korisnički interfejs za konfiguraciju korisničkih naloga Pinxto
+Name[ca]=Interfície d'usuari de configuració de compte de Pintxo
+Name[de]=Benutzeroberfläche zur Einrichtung von Pintxo-Zugängen
+Name[fr]=Interface utilisateur pour la configuration de comptes « Pintxo ».
+Name[it]=Interfaccia utente di configurazione account Pintxo
+Name[kk]=Pintxo тіркелгі пайдаланушы интерфейсін баптау
+Name[nl]=Gebruikersinterface voor Pintxo accountconfiguratie
+Name[sv]=Användargränssnitt för inställning av Pintxo-konton
+Name[uk]=Інтерфейс користувача для налаштовування облікового запису Pintxo
+Name[x-test]=xxPintxo Account Configuration User Interfacexx
 Type=Service
 ServiceTypes=KTpAccountsKCM/AccountUiPlugin
 
