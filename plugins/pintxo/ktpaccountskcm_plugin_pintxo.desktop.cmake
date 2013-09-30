@@ -15,6 +15,7 @@ Comment[sk]=Vlastné používateľské rozhranie konfigurácie účtu pre účty
 Comment[sv]=Användargränssnitt för anpassad kontoinställning av konton som använder anslutningshanteraren Pintxo.
 Comment[uk]=Інтерфейс користувача для нетипового налаштовування облікових записів, для роботи яких використовуються засоби керування з’єднанням Pintxo.
 Comment[x-test]=xxCustom account configuration user interface for accounts using the Pintxo connection manager.xx
+Comment[zh_CN]=通过 Pintxo 连接管理器自定义账户的配置界面
 Icon=phone
 Name=Pintxo Account Configuration User Interface
 Name[bs]=Korisnički interfejs za konfiguraciju korisničkih naloga Pinxto
@@ -31,6 +32,7 @@ Name[sk]=Používateľské rozhranie konfigurácie účtu Pintxo
 Name[sv]=Användargränssnitt för inställning av Pintxo-konton
 Name[uk]=Інтерфейс користувача для налаштовування облікового запису Pintxo
 Name[x-test]=xxPintxo Account Configuration User Interfacexx
+Name[zh_CN]=Pintxo 账户用户配置界面
 Type=Service
 ServiceTypes=KTpAccountsKCM/AccountUiPlugin
 
