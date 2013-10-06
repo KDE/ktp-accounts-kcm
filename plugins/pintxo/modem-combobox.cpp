@@ -33,8 +33,8 @@ ModemComboBox::ModemComboBox(QWidget* parent) : QComboBox(parent)
         Q_FOREACH(ModemManager::ModemInterface::Ptr modem, modems) {
             ModemManager::ModemGsmCardInterface::Ptr simCard = ModemManager::findModemInterface(modem->udi(), ModemManager::ModemInterface::GsmCard).objectCast<ModemManager::ModemGsmCardInterface>();
             if(!simCard.isNull()) {
-                QString simIdent = simCard->getSimIdentifier();
-                QDBusReply<QString> spn  = simCard->getSpn();
+                QString simIdent = simCard->simIdentifier();
+                QDBusReply<QString> spn  = simCard->serviceProviderName();
                 addItem(spn.isValid() ? spn.value() : QLatin1String("Unknown modem"));
             }
         }
@@ -51,7 +51,7 @@ QString ModemComboBox::selectedSimIdentifier()
     if(!modem.isNull()){
         ModemManager::ModemGsmCardInterface::Ptr simCard = ModemManager::findModemInterface(modems.at(currentIndex())->udi(), ModemManager::ModemInterface::GsmCard).objectCast<ModemManager::ModemGsmCardInterface>();
         if(!simCard.isNull()) {
-            return simCard->getSimIdentifier();
+            return simCard->simIdentifier();
         }
     }
     return QString();
@@ -64,7 +64,7 @@ void ModemComboBox::setSelectedModem(const QString &selectedSimIdentifier)
         Q_FOREACH(ModemManager::ModemInterface::Ptr modem, modems) {
             ModemManager::ModemGsmCardInterface::Ptr simCard = ModemManager::findModemInterface(modem->udi(), ModemManager::ModemInterface::GsmCard).objectCast<ModemManager::ModemGsmCardInterface>();
             if(!simCard.isNull()) {
-                QString simIdent = simCard->getSimIdentifier();
+                QString simIdent = simCard->simIdentifier();
                 if (simIdent == selectedSimIdentifier) {
                     setCurrentIndex(i);
                     return;
