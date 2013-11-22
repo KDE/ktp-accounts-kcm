@@ -19,6 +19,7 @@
  */
 
 #include "main-options-widget.h"
+#include <KCMTelepathyAccounts/ParameterEditModel>
 
 MainOptionsWidget::MainOptionsWidget(ParameterEditModel *model,
                                      QWidget *parent)
@@ -28,6 +29,19 @@ MainOptionsWidget::MainOptionsWidget(ParameterEditModel *model,
     m_ui = new Ui::MainOptionsWidget;
     m_ui->setupUi(this);
 
+    Tp::ProtocolParameter parameter = parameterModel()->parameter(QLatin1String("account"));
+    const QModelIndex index = parameterModel()->indexForParameter(parameter);
+    
+    QString account;
+    if (index.isValid()) {
+	account = index.data().toString();
+    }
+    
+    // test if account name is set -> don't show registerCheckBox in edit mode
+    if (!account.isEmpty()) {
+	m_ui->registerCheckBox->setVisible(false);
+    }
+    
     handleParameter(QLatin1String("account"), QVariant::String, m_ui->accountLineEdit, m_ui->accountLabel);
     handleParameter(QLatin1String("password"), QVariant::String, m_ui->passwordLineEdit, m_ui->passwordLabel);
     handleParameter(QLatin1String("register"), QVariant::Bool, m_ui->registerCheckBox, 0);

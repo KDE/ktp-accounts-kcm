@@ -36,12 +36,18 @@ MainOptionsWidgetKDETalk::MainOptionsWidgetKDETalk(ParameterEditModel *model,
     m_ui->setupUi(this);
 
     Tp::ProtocolParameter parameter = parameterModel()->parameter(QLatin1String("account"));
-    QModelIndex index = parameterModel()->indexForParameter(parameter);
+    const QModelIndex index = parameterModel()->indexForParameter(parameter);
+    QString account;
     if (index.isValid()) {
-        QString account = index.data().toString();
+        account = index.data().toString();
         //strip off any "@kdetalk.net" from the parameter when displaying it in the text edit.
         account = account.left(account.indexOf(QLatin1Char('@')));
         m_ui->accountLineEdit->setText(account);
+    }
+    
+    // test if account name is set -> don't show registerCheckBox in edit mode
+    if (!account.isEmpty()) {
+	m_ui->registerCheckBox->setVisible(false);
     }
 
     handleParameter(QLatin1String("password"), QVariant::String, m_ui->passwordLineEdit, m_ui->passwordLabel);
