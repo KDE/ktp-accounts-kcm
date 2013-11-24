@@ -28,6 +28,9 @@ set (ktpaccountskcm_plugin_haze_SRCS
      groupwise-advanced-settings-widget.cpp
      haze-steam-account.cpp
      steam-main-options-widget.cpp
+     haze-sipe-account.cpp
+     sipe-main-options-widget.cpp
+     sipe-advanced-settings-widget.cpp
 )
 
 kde4_add_ui_files (ktpaccountskcm_plugin_haze_SRCS
@@ -45,6 +48,8 @@ kde4_add_ui_files (ktpaccountskcm_plugin_haze_SRCS
                    groupwise-advanced-settings-widget.ui
                    groupwise-main-options-widget.ui
                    steam-main-options-widget.ui
+                   sipe-main-options-widget.ui
+                   sipe-advanced-settings-widget.ui
 )
 
 kde4_add_plugin (ktpaccountskcm_plugin_haze

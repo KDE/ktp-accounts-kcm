@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>SipeAdvancedSettingsWidget</class>
+ <widget class="QWidget" name="SipeAdvancedSettingsWidget">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>828</width>
+    <height>405</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Advanced Options</string>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout_4">
+   <property name="margin">
+    <number>4</number>
+   </property>
+   <item>
+    <layout class="QFormLayout" name="formLayout">
+     <property name="sizeConstraint">
+      <enum>QLayout::SetMinimumSize</enum>
+     </property>
+     <property name="fieldGrowthPolicy">
+      <enum>QFormLayout::AllNonFixedFieldsGrow</enum>
+     </property>
+     <item row="0" column="0">
+      <widget class="QLabel" name="loginLabel">
+       <property name="text">
+        <string>Login</string>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="1">
+      <widget class="KLineEdit" name="loginLineEdit"/>
+     </item>
+     <item row="1" column="1">
+      <widget class="KLineEdit" name="serverLineEdit"/>
+     </item>
+     <item row="2" column="0">
+      <widget class="QLabel" name="transportLabel">
+       <property name="text">
+        <string>Connection type</string>
+       </property>
+      </widget>
+     </item>
+     <item row="2" column="1">
+      <widget class="KLineEdit" name="transportLineEdit">
+       <property name="text">
+        <string>auto</string>
+       </property>
+      </widget>
+     </item>
+     <item row="3" column="0">
+      <widget class="QLabel" name="useragentLabel">
+       <property name="text">
+        <string>User Agent</string>
+       </property>
+      </widget>
+     </item>
+     <item row="3" column="1">
+      <widget class="KLineEdit" name="useragentLineEdit"/>
+     </item>
+     <item row="4" column="0">
+      <widget class="QLabel" name="authenticationLabel">
+       <property name="text">
+        <string>Authentication scheme</string>
+       </property>
+      </widget>
+     </item>
+     <item row="4" column="1">
+      <widget class="KLineEdit" name="authenticationLineEdit">
+       <property name="text">
+        <string>ntlm</string>
+       </property>
+      </widget>
+     </item>
+     <item row="5" column="0">
+      <widget class="QLabel" name="dontpublishLabel">
+       <property name="text">
+        <string>Don't publish my calendar information</string>
+       </property>
+      </widget>
+     </item>
+     <item row="5" column="1">
+      <widget class="QCheckBox" name="dontpublishCheckBox"/>
+     </item>
+     <item row="6" column="0">
+      <widget class="QLabel" name="emailurlLabel">
+       <property name="text">
+        <string>Email services URL</string>
+       </property>
+      </widget>
+     </item>
+     <item row="6" column="1">
+      <widget class="KLineEdit" name="emailurlLineEdit"/>
+     </item>
+     <item row="7" column="0">
+      <widget class="QLabel" name="emailLabel">
+       <property name="text">
+        <string>Email address</string>
+       </property>
+      </widget>
+     </item>
+     <item row="7" column="1">
+      <widget class="KLineEdit" name="emailLineEdit"/>
+     </item>
+     <item row="8" column="0">
+      <widget class="QLabel" name="emailloginLabel">
+       <property name="text">
+        <string>Email login</string>
+       </property>
+      </widget>
+     </item>
+     <item row="8" column="1">
+      <widget class="KLineEdit" name="emailloginLineEdit"/>
+     </item>
+     <item row="9" column="0">
+      <widget class="QLabel" name="emailpasswordLabel">
+       <property name="text">
+        <string>Email password</string>
+       </property>
+      </widget>
+     </item>
+     <item row="10" column="0">
+      <widget class="QLabel" name="groupchatuserLabel">
+       <property name="text">
+        <string>Group Chat Proxy</string>
+       </property>
+      </widget>
+     </item>
+     <item row="10" column="1">
+      <widget class="KLineEdit" name="groupchatuserLineEdit"/>
+     </item>
+     <item row="9" column="1">
+      <widget class="KLineEdit" name="emailpasswordLineEdit">
+       <property name="passwordMode">
+        <bool>true</bool>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="0">
+      <widget class="QLabel" name="serverLabel">
+       <property name="text">
+        <string>Server[:Port]</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+  </layout>
+ </widget>
+ <customwidgets>
+  <customwidget>
+   <class>KLineEdit</class>
+   <extends>QLineEdit</extends>
+   <header>klineedit.h</header>
+  </customwidget>
+ </customwidgets>
+ <resources/>
+ <connections/>
+</ui>
