@@ -98,7 +98,7 @@
       <item row="1" column="0">
        <widget class="QLabel" name="resourceLabel">
         <property name="text">
-         <string>Resource Name:</string>
+         <string>Resource name:</string>
         </property>
        </widget>
       </item>

@@ -48,7 +48,7 @@
      <item row="2" column="0">
       <widget class="QLabel" name="steamguardLabel">
        <property name="text">
-        <string extracomment="'Steam Guard' is a service name and should not be translated">Steam Guard Code:</string>
+        <string extracomment="'Steam Guard' is a service name and should not be translated">Steam Guard code:</string>
        </property>
       </widget>
      </item>

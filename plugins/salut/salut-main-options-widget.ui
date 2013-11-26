@@ -22,7 +22,7 @@
      <item row="0" column="0">
       <widget class="QLabel" name="firstnameLabel">
        <property name="text">
-        <string>First Name:</string>
+        <string>First name:</string>
        </property>
        <property name="alignment">
         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -35,7 +35,7 @@
      <item row="1" column="0">
       <widget class="QLabel" name="lastnameLabel">
        <property name="text">
-        <string>Last Name:</string>
+        <string>Last name:</string>
        </property>
        <property name="alignment">
         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>

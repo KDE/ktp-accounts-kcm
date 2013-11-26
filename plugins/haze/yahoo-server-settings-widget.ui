@@ -127,7 +127,7 @@
      <item row="7" column="0">
       <widget class="QLabel" name="charsetLabel">
        <property name="text">
-        <string>Charset</string>
+        <string>Charset:</string>
        </property>
       </widget>
      </item>

@@ -28,7 +28,7 @@
      <item row="0" column="0">
       <widget class="QLabel" name="loginLabel">
        <property name="text">
-        <string>Login</string>
+        <string>Login:</string>
        </property>
       </widget>
      </item>
@@ -41,7 +41,7 @@
      <item row="2" column="0">
       <widget class="QLabel" name="transportLabel">
        <property name="text">
-        <string>Connection type</string>
+        <string>Connection type:</string>
        </property>
       </widget>
      </item>
@@ -55,7 +55,7 @@
      <item row="3" column="0">
       <widget class="QLabel" name="useragentLabel">
        <property name="text">
-        <string>User Agent</string>
+        <string>User agent:</string>
        </property>
       </widget>
      </item>
@@ -65,7 +65,7 @@
      <item row="4" column="0">
       <widget class="QLabel" name="authenticationLabel">
        <property name="text">
-        <string>Authentication scheme</string>
+        <string>Authentication scheme:</string>
        </property>
       </widget>
      </item>
@@ -79,7 +79,7 @@
      <item row="5" column="0">
       <widget class="QLabel" name="dontpublishLabel">
        <property name="text">
-        <string>Don't publish my calendar information</string>
+        <string>Do not publish my calendar information:</string>
        </property>
       </widget>
      </item>
@@ -89,7 +89,7 @@
      <item row="6" column="0">
       <widget class="QLabel" name="emailurlLabel">
        <property name="text">
-        <string>Email services URL</string>
+        <string>Email services URL:</string>
        </property>
       </widget>
      </item>
@@ -99,7 +99,7 @@
      <item row="7" column="0">
       <widget class="QLabel" name="emailLabel">
        <property name="text">
-        <string>Email address</string>
+        <string>Email address:</string>
        </property>
       </widget>
      </item>
@@ -109,7 +109,7 @@
      <item row="8" column="0">
       <widget class="QLabel" name="emailloginLabel">
        <property name="text">
-        <string>Email login</string>
+        <string>Email login:</string>
        </property>
       </widget>
      </item>
@@ -119,14 +119,14 @@
      <item row="9" column="0">
       <widget class="QLabel" name="emailpasswordLabel">
        <property name="text">
-        <string>Email password</string>
+        <string>Email password:</string>
        </property>
       </widget>
      </item>
      <item row="10" column="0">
       <widget class="QLabel" name="groupchatuserLabel">
        <property name="text">
-        <string>Group Chat Proxy</string>
+        <string>Group chat proxy:</string>
        </property>
       </widget>
      </item>
@@ -143,7 +143,7 @@
      <item row="1" column="0">
       <widget class="QLabel" name="serverLabel">
        <property name="text">
-        <string>Server[:Port]</string>
+        <string>Server[:port]:</string>
        </property>
       </widget>
      </item>

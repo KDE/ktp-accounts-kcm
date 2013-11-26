@@ -89,7 +89,7 @@
    <item row="5" column="1">
     <widget class="QCheckBox" name="rvProxy">
      <property name="text">
-      <string>Always use AIM proxy </string>
+      <string>Always use AIM proxy</string>
      </property>
      <property name="tristate">
       <bool>false</bool>
