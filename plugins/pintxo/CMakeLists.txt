@@ -2,7 +2,7 @@ project (ktpaccountskcm-plugin-pintxo)
 
 INCLUDE(FindPkgConfig)
 
-pkg_check_modules(LIBMODEMMANAGERQT ModemManagerQt>=0.5.1)
+pkg_check_modules(LIBMODEMMANAGERQT ModemManagerQt=0.5.1)
 if (LIBMODEMMANAGERQT_FOUND)
     MESSAGE("ModemManagerQt >= 0.5.1 found, building pintxo plugin for SMS messaging")
     include_directories (${CMAKE_CURRENT_BINARY_DIR}
