@@ -1,6 +1,7 @@
 [Desktop Entry]
 Encoding=UTF-8
 Comment=Custom account configuration user interface for accounts using the sipe connection manager.
+Comment[bs]=Korisnički interfejs za konfiguraciju korisničkih naloga koristeći sipe menadžer konekcja.
 Comment[cs]=Vlastní uživatelské rozhraní nastavení účtů pro účty používající správce spojení sipe.
 Comment[da]=Brugerflade til brugertilpasset kontokonfiguration til konti der bruger forbindelseshåndteringen sipe.
 Comment[de]=Eigene Benutzeroberfläche zum Einrichten von Zugängen, die die Sipe-Verbindungsverwaltung verwenden.
@@ -24,6 +25,7 @@ Comment[x-test]=xxCustom account configuration user interface for accounts using
 Comment[zh_TW]=對使用 sipe 連線管理員的帳號自訂帳號設定使用者介面。
 Icon=blockdevice
 Name=Sipe Account Configuration User Interface
+Name[bs]=Korisnički interfejs za konfiguraciju korisničkih naloga Sipe
 Name[cs]=Uživatelské rozhraní nastavení účtu Sipe
 Name[da]=Brugerflade til konfiguration af sipe-konto
 Name[de]=Benutzeroberfläche zur Einrichtung von Sipe-Zugängen
