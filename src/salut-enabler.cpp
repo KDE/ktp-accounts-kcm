@@ -38,8 +38,8 @@
 #include "salut-details-dialog.h"
 #include "salut-message-widget.h"
 
-#define TP_PROP_ACCOUNT_ENABLED (QLatin1String("org.freedesktop.Telepathy.Account.Enabled"))
-#define TP_PROP_ACCOUNT_SERVICE (QLatin1String("org.freedesktop.Telepathy.Account.Service"))
+#define TP_PROP_ACCOUNT_ENABLED (QLatin1String("im.telepathy.v1.Account.Enabled"))
+#define TP_PROP_ACCOUNT_SERVICE (QLatin1String("im.telepathy.v1.Account.Service"))
 
 const QLatin1String salutConnManager("salut");
 const QLatin1String localXmppProtocol("local-xmpp");

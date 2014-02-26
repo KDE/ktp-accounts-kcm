@@ -47,6 +47,9 @@
 #include <TelepathyQt/PendingAccount>
 #include <TelepathyQt/PendingOperation>
 
+#define TP_PROP_ACCOUNT_ENABLED (QLatin1String("im.telepathy.v1.Account.Enabled"))
+#define TP_PROP_ACCOUNT_SERVICE (QLatin1String("im.telepathy.v1.Account.Service"))
+
 class AddAccountAssistant::Private
 {
 public:
@@ -215,11 +218,11 @@ void AddAccountAssistant::accept()
     // https://bugs.freedesktop.org/show_bug.cgi?id=33153
     QVariantMap properties;
 
-    if (d->accountManager->supportedAccountProperties().contains(QLatin1String("org.freedesktop.Telepathy.Account.Service"))) {
-      properties.insert(QLatin1String("org.freedesktop.Telepathy.Account.Service"), d->currentProfileItem->serviceName());
+    if (d->accountManager->supportedAccountProperties().contains(TP_PROP_ACCOUNT_SERVICE)) {
+      properties.insert(TP_PROP_ACCOUNT_SERVICE, d->currentProfileItem->serviceName());
     }
-    if (d->accountManager->supportedAccountProperties().contains(QLatin1String("org.freedesktop.Telepathy.Account.Enabled"))) {
-      properties.insert(QLatin1String("org.freedesktop.Telepathy.Account.Enabled"), true);
+    if (d->accountManager->supportedAccountProperties().contains(TP_PROP_ACCOUNT_ENABLED)) {
+      properties.insert(TP_PROP_ACCOUNT_ENABLED, true);
     }
 
     //remove password values from being sent. These are stored by KWallet instead

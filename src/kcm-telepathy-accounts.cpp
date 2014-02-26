@@ -249,7 +249,7 @@ void KCMTelepathyAccounts::onAccountManagerReady(Tp::PendingOperation *op)
         return;
     }
 
-    m_accountsListModel->setAccountSet(m_accountManager->validAccounts());
+    m_accountsListModel->setAccountSet(m_accountManager->usableAccounts());
     m_globalPresence->setAccountManager(m_accountManager);
 
 }
