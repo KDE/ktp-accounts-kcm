@@ -18,6 +18,7 @@ Comment[ia]=Interfacie de usator pro configuration de conto personalisate pro co
 Comment[it]=Interfaccia utente personalizzata di configurazione account per account che usano il gestore di connessioni Butterfly.
 Comment[kk]=Butterfly байланыс менеджерін қолданатын тіркелгі пайдаланушы интерфейс параметрлерін ыңғайлау.
 Comment[km]=ចំណុច​ប្រទាក់​អ្នក​ប្រើ​ការ​កំណត់​រចនាសម្ព័ន្ធ​គណនី​ផ្ទាល់​ខ្លួន​ដោយ​ប្រើ​កម្មវិធី​គ្រប់គ្រង​ការ​តភ្ជាប់ Butterfly ។
+Comment[ko]=Butterfly 연결 관리자를 사용하는 계정 설정 사용자 인터페이스입니다.
 Comment[lt]=Savito paskyros konfigūravimo naudotojo sąsaja paskyroms naudojant Butterfly ryšio tvarkyklę.
 Comment[nb]=Brukerflate for å sette opp egendefinerte kontoer ved bruk av Butterfly tilkoblingsbehandler.
 Comment[nl]=Gebruikersinterface voor aangepaste accountconfiguratie voor accounts die de Butterfly verbindingenbeheerder gebruiken.
