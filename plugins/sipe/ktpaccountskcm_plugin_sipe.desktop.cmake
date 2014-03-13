@@ -1,8 +1,26 @@
 [Desktop Entry]
 Encoding=UTF-8
 Comment=Custom account configuration user interface for accounts using the sipe connection manager.
+Comment[ca]=Interfície d'usuari de configuració de compte personalitzat per comptes que utilitzen el gestor de connexions Sipe.
+Comment[de]=Eigene Benutzeroberfläche zum Einrichten von Zugängen, die die Sipe-Verbindungsverwaltung verwenden.
+Comment[fi]=Sipe-yhteyshallintaa käyttävien tilien mukautettu hallintakäyttöliittymä.
+Comment[fr]=Interface utilisateur personnalisée pour la configuration de comptes en utilisant le gestionnaire de connexions « sipe ».
+Comment[nl]=Gebruikersinterface voor aangepaste accountconfiguratie voor accounts die de Sipe verbindingenbeheerder gebruiken.
+Comment[pl]=Własny interfejsu użytkownika konfiguracji kont dla kont wykorzystujących menadżera połączeń sipe.
+Comment[sv]=Användargränssnitt för anpassad kontoinställning av konton som använder anslutningshanteraren Sipe.
+Comment[uk]=Інтерфейс користувача для нетипового налаштовування облікового запису за допомогою керування з’єднаннями sipe.
+Comment[x-test]=xxCustom account configuration user interface for accounts using the sipe connection manager.xx
 Icon=blockdevice
 Name=Sipe Account Configuration User Interface
+Name[ca]=Interfície d'usuari de configuració de compte de Sipe
+Name[de]=Benutzeroberfläche zur Einrichtung von Sipe-Zugängen
+Name[fi]=Sipe-tilinmäärityksen käyttöliittymä
+Name[fr]=Interface utilisateur pour la configuration de comptes « sipe ».
+Name[nl]=Gebruikersinterface voor Sipe accountconfiguratie
+Name[pl]=Interfejs użytkownika konfiguracji konta Sipe
+Name[sv]=Användargränssnitt för inställning av Sipe-konton
+Name[uk]=Інтерфейс користувача для налаштовування sipe
+Name[x-test]=xxSipe Account Configuration User Interfacexx
 Type=Service
 ServiceTypes=KTpAccountsKCM/AccountUiPlugin
 
