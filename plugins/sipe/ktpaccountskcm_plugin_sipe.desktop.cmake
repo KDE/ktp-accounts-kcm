@@ -26,6 +26,7 @@ Comment[sr@latin]=Korisničko sučelje za podešavanje posebnih naloga pod menad
 Comment[sv]=Användargränssnitt för anpassad kontoinställning av konton som använder anslutningshanteraren Sipe.
 Comment[uk]=Інтерфейс користувача для нетипового налаштовування облікового запису за допомогою керування з’єднаннями sipe.
 Comment[x-test]=xxCustom account configuration user interface for accounts using the sipe connection manager.xx
+Comment[zh_TW]=對使用 sipe 連線管理員的帳號自訂帳號設定使用者介面。
 Icon=blockdevice
 Name=Sipe Account Configuration User Interface
 Name[bs]=Korisnički interfejs za konfiguraciju korisničkih naloga Sipe
@@ -53,6 +54,7 @@ Name[sr@latin]=Korisničko sučelje za podešavanje naloga pod SIPE‑om
 Name[sv]=Användargränssnitt för inställning av Sipe-konton
 Name[uk]=Інтерфейс користувача для налаштовування sipe
 Name[x-test]=xxSipe Account Configuration User Interfacexx
+Name[zh_TW]=Sipe 帳號設定使用者介面
 Type=Service
 ServiceTypes=KTpAccountsKCM/AccountUiPlugin
 
