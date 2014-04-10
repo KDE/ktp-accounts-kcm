@@ -12,6 +12,7 @@ X-KDE-SubstituteUID=false
 X-KDE-RootOnly=false
 Categories=Qt;KDE;X-KDE-settings-network;
 X-KDE-System-Settings-Parent-Category=im-and-voip
+X-KDE-Weight=1
 Icon=telepathy-kde
 
 Name=Accounts
