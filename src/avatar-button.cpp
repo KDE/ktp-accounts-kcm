@@ -1,5 +1,5 @@
 /*
- * Button representing user's Avatar
+ * Button representing user's TpDBus::Avatar
  *
  * Copyright (C) 2011  Martin Klapetek <martin.klapetek@gmail.com>
  *
@@ -62,7 +62,7 @@ AvatarButton::~AvatarButton()
 
 }
 
-void AvatarButton::setAvatar(const Tp::Avatar &avatar)
+void AvatarButton::setAvatar(const TpDBus::Avatar &avatar)
 {
     m_avatar = avatar;
 
@@ -77,7 +77,7 @@ void AvatarButton::setAvatar(const Tp::Avatar &avatar)
     }
 }
 
-Tp::Avatar AvatarButton::avatar() const
+TpDBus::Avatar AvatarButton::avatar() const
 {
     return m_avatar;
 }
@@ -148,7 +148,7 @@ void AvatarButton::onLoadAvatarFromFile()
         return;
     }
 
-    Tp::Avatar avatar;
+    TpDBus::Avatar avatar;
     avatar.MIMEType = QLatin1String("image/png");
     QDataStream stream(&avatar.avatarData, QIODevice::WriteOnly);
     if (!finalPixmap.save(stream.device(), "PNG")) {
@@ -197,6 +197,6 @@ QPixmap AvatarButton::cropPixmap(const QPixmap &pixmap, int maxWidth, int maxHei
 
 void AvatarButton::onClearAvatar()
 {
-    setAvatar(Tp::Avatar());
+    setAvatar(TpDBus::Avatar());
     Q_EMIT avatarChanged();
 }

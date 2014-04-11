@@ -43,7 +43,7 @@ AccountIdentityDialog::AccountIdentityDialog(const Tp::AccountPtr &account, QWid
     setButtons(KDialog::Ok | KDialog::Cancel);
 
     connect(m_account.data(), SIGNAL(nicknameChanged(QString)), SLOT(onNicknameChanged(QString)));
-    connect(m_account.data(), SIGNAL(avatarChanged(Tp::Avatar)), SLOT(onAvatarChanged(Tp::Avatar)));
+    connect(m_account.data(), SIGNAL(avatarChanged(TpDBus::Avatar)), SLOT(onAvatarChanged(TpDBus::Avatar)));
     onNicknameChanged(account->nickname());
     onAvatarChanged(account->avatar());
 
@@ -63,7 +63,7 @@ void AccountIdentityDialog::onNicknameChanged(const QString &nickname)
     ui->accountNickname->setText(nickname);
 }
 
-void AccountIdentityDialog::onAvatarChanged(const Tp::Avatar &avatar)
+void AccountIdentityDialog::onAvatarChanged(const TpDBus::Avatar &avatar)
 {
     ui->accountAvatar->setAvatar(avatar);
 }

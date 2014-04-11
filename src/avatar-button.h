@@ -1,5 +1,5 @@
 /*
- * Button representing user's Avatar
+ * Button representing user's TpDBus::Avatar
  *
  * Copyright (C) 2011  Martin Klapetek <martin.klapetek@gmail.com>
  *
@@ -39,8 +39,8 @@ public:
 
     void setAccount(const Tp::AccountPtr &account);
 
-    void setAvatar(const Tp::Avatar &avatar);
-    Tp::Avatar avatar() const;
+    void setAvatar(const TpDBus::Avatar &avatar);
+    TpDBus::Avatar avatar() const;
 
 Q_SIGNALS:
     void avatarChanged();
@@ -53,7 +53,7 @@ private:
     QPixmap cropPixmap(const QPixmap &pixmap, int maxWidth, int maxHeight,
                        int minWidth, int minHeight) const;
 
-    Tp::Avatar m_avatar;
+    TpDBus::Avatar m_avatar;
     Tp::AccountPtr m_account;
 
 };

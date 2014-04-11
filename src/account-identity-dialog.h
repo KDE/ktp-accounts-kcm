@@ -49,7 +49,7 @@ public Q_SLOTS:
 
 private Q_SLOTS:
     void onNicknameChanged(const QString &nickname);
-    void onAvatarChanged(const Tp::Avatar &avatar);
+    void onAvatarChanged(const TpDBus::Avatar &avatar);
 
 private:
     Tp::AccountPtr m_account;
