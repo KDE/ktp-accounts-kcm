@@ -70,7 +70,7 @@ void AvatarButton::setAvatar(const Tp::Avatar &avatar)
         KIcon avatarIcon;
         QPixmap avatarPixmap = QPixmap::fromImage(QImage::fromData(avatar.avatarData));
         //scale oversized avatars to fit, but don't stretch smaller avatars
-        avatarIcon.addPixmap(avatarPixmap.scaled(iconSize().boundedTo(avatarPixmap.size()), Qt::KeepAspectRatio));
+        avatarIcon.addPixmap(avatarPixmap.scaled(iconSize().boundedTo(avatarPixmap.size()), Qt::KeepAspectRatio, Qt::SmoothTransformation));
         setIcon(avatarIcon);
     } else {
         setIcon(KIcon(QLatin1String("im-user")));
