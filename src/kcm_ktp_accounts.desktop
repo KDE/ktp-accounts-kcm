@@ -12,6 +12,7 @@ X-KDE-SubstituteUID=false
 X-KDE-RootOnly=false
 Categories=Qt;KDE;X-KDE-settings-network;
 X-KDE-System-Settings-Parent-Category=im-and-voip
+X-KDE-Weight=1
 Icon=telepathy-kde
 
 Name=Accounts
@@ -39,7 +40,6 @@ Name[mr]=खाते
 Name[nb]=Kontoer
 Name[nds]=Kontos
 Name[nl]=Accounts
-Name[pa]=ਖਾਤੇ
 Name[pl]=Konta
 Name[pt]=Contas
 Name[pt_BR]=Contas
