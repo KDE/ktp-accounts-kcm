@@ -21,6 +21,7 @@ Comment[km]=ចំណុច​ប្រទាក់​អ្នក​ប្រ�
 Comment[ko]=Butterfly 연결 관리자를 사용하는 계정 설정 사용자 인터페이스입니다.
 Comment[lt]=Savito paskyros konfigūravimo naudotojo sąsaja paskyroms naudojant Butterfly ryšio tvarkyklę.
 Comment[nb]=Brukerflate for å sette opp egendefinerte kontoer ved bruk av Butterfly tilkoblingsbehandler.
+Comment[nds]=Topasst Kontoinstellen-Böversiet för Kontos, de den Verbinnenpleger „Butterfly“ bruukt
 Comment[nl]=Gebruikersinterface voor aangepaste accountconfiguratie voor accounts die de Butterfly verbindingenbeheerder gebruiken.
 Comment[pl]=Własny interfejsu użytkownika konfiguracji kont dla kont wykorzystujących menadżera połączeń Butterfly.
 Comment[pt]=Interface de utilizador de configuração de contas personalizadas com o gestor de ligações Butterfly.
