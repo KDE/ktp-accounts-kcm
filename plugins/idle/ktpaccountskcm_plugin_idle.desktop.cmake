@@ -8,6 +8,7 @@ Comment[cs]=Vlastní uživatelské rozhraní nastavení účtů pro účty použ
 Comment[da]=Brugerflade til brugertilpasset kontokonfiguration til konti der bruger forbindelseshåndteringen Idle.
 Comment[de]=Eigene Benutzeroberfläche zum Einrichten von Zugängen, die die Idle-Verbindungsverwaltung verwenden.
 Comment[el]=Περιβάλλον προσαρμοσμένης διαμόρφωσης λογαριασμού χρήστη για λογαριασμούς που χρησιμοποιούν το διαχειριστή συνδέσεων Idle.
+Comment[en_GB]=Custom account configuration user interface for accounts using the Idle connection manager.
 Comment[es]=Interfaz de configuración de cuentas personalizadas para las cuentas que usen el gestor de conexiones Idle.
 Comment[et]=Idle ühendusehaldurit kasutavate kontode kohandatud konto seadistamise kasutajaliides
 Comment[fi]=Idle-yhteyshallintaa käyttävien tilien mukautettu hallintakäyttöliittymä.
