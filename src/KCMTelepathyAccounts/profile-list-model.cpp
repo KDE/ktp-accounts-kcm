@@ -29,9 +29,8 @@
 #include <TelepathyQt/PendingStringList>
 #include <TelepathyQt/PendingComposite>
 
-
-#include <KDebug>
 #include <KIcon>
+#include <QDebug>
 
 ProfileListModel::ProfileListModel(QObject *parent)
  : QAbstractListModel(parent)
@@ -53,7 +52,7 @@ void ProfileListModel::onProfileManagerReady(Tp::PendingOperation *op)
 {
     // Check the pending operation completed successfully.
     if (op->isError()) {
-        kDebug() << "becomeReady() failed:" << op->errorName() << op->errorMessage();
+        qDebug() << "becomeReady() failed:" << op->errorName() << op->errorMessage();
         return;
     }
     Tp::PendingStringList* pendingNames = Tp::ConnectionManager::listNames();

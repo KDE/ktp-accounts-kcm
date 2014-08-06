@@ -25,11 +25,11 @@
 #include "parameter-item.h"
 
 #include <KApplication>
-#include <KDebug>
 #include <KLocale>
 #include <KMessageWidget>
 
 #include <QtGui/QValidator>
+#include <QDebug>
 
 #include <TelepathyQt/Profile>
 #include <TelepathyQt/ConnectionManager>
@@ -123,7 +123,7 @@ Qt::ItemFlags ParameterEditModel::flags(const QModelIndex &index) const
 bool ParameterEditModel::setData(const QModelIndex &index, const QVariant &value, int role)
 {
     if (!index.isValid()) {
-        kDebug() << "Invalid item row accessed.";
+        qDebug() << "Invalid item row accessed.";
         return false;
     }
 
@@ -298,7 +298,7 @@ bool ParameterEditModel::validateParameterValues()
 {
     Q_FOREACH (ParameterItem *item, m_items) {
         if (item->validity() != QValidator::Acceptable) {
-           kWarning() << "Parameter" << item->name() << "is not valid:" << item->value();
+           qWarning() << "Parameter" << item->name() << "is not valid:" << item->value();
            Q_EMIT feedbackMessage(i18n("Parameter \"<b>%1</b>\" is not valid.",
                                 item->localizedName()),
                                 QString(),

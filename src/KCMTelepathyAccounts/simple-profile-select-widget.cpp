@@ -26,8 +26,6 @@
 
 #include "ui_simple-profile-select-widget.h"
 
-#include <KDebug>
-
 #include <TelepathyQt/PendingReady>
 #include <TelepathyQt/ProfileManager>
 #include <TelepathyQt/Feature>
@@ -36,6 +34,7 @@
 #include <QtGui/QSortFilterProxyModel>
 #include <QtGui/QItemSelectionModel>
 #include <QtGui/QCommandLinkButton>
+#include <QDebug>
 
 class SimpleProfileSelectWidget::Private
 {
@@ -102,7 +101,7 @@ void SimpleProfileSelectWidget::onProfileClicked(QString profileName)
 {
     d->profileName = profileName;
 
-    kDebug() << "Selected profile: " << d->profileName;
+    qDebug() << "Selected profile: " << d->profileName;
 
     Q_EMIT profileChosen();
 }

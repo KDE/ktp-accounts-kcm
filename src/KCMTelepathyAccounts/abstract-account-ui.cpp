@@ -22,7 +22,7 @@
 
 #include "abstract-account-ui.h"
 
-#include <KDebug>
+#include <QDebug>
 
 class AbstractAccountUi::Private
 {
@@ -67,7 +67,7 @@ void AbstractAccountUi::registerSupportedParameter(const QString &name, QVariant
     // Check that the parameter is not already in the list
     Q_FOREACH (QVariant::Type t, d->supportedParameters.values(name)) {
         if (t == type) {
-            kWarning() << "Parameter:" << name << "of type:" << type << "is already added.";
+            qWarning() << "Parameter:" << name << "of type:" << type << "is already added.";
             return;
         }
     }

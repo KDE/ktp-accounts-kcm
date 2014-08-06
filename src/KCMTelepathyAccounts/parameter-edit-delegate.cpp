@@ -23,7 +23,7 @@
 #include "parameter-edit-model.h"
 
 #include <KLineEdit>
-#include <KDebug>
+#include <QDebug>
 
 #include <QtGui/QApplication>
 #include <QtGui/QCheckBox>
@@ -209,7 +209,7 @@ void ParameterEditDelegate::onSpinBoxValueChanged(int value)
     QSpinBox *widget = qobject_cast<QSpinBox*>(sender());
 
     if (!widget) {
-        kWarning() << "Slot called by object of the wrong type.";
+        qWarning() << "Slot called by object of the wrong type.";
         return;
     }
 
