@@ -22,7 +22,7 @@
 
 #include "parameter-edit-model.h"
 
-#include <KLocale>
+#include <KLocalizedString>
 #include <KIconLoader>
 
 #include <QtGui/QWidget>

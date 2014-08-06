@@ -20,7 +20,7 @@
 
 #include "dictionary.h"
 
-#include <KLocale>
+#include <KLocalizedString>
 
 Dictionary* Dictionary::s_self = 0;
 

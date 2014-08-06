@@ -25,7 +25,7 @@
 #include "parameter-item.h"
 
 #include <KApplication>
-#include <KLocale>
+#include <KLocalizedString>
 #include <KMessageWidget>
 
 #include <QtGui/QValidator>

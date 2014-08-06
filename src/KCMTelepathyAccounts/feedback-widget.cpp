@@ -23,8 +23,8 @@
 
 #include "feedback-widget.h"
 
-#include <KLocale>
 #include <KPushButton>
+#include <KLocalizedString>
 #include <KColorScheme>
 
 #include <QtGui/QWidget>

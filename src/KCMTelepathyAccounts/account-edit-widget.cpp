@@ -30,7 +30,7 @@
 #include "dictionary.h"
 #include "feedback-widget.h"
 
-#include <KLocale>
+#include <KLocalizedString>
 #include <KMessageWidget>
 
 #include <TelepathyQt/Profile>

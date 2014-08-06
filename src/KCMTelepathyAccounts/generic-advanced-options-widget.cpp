@@ -19,8 +19,8 @@
  */
 
 #include <KTabWidget>
-#include <KLocale>
 #include <QtGui/QHBoxLayout>
+#include <KLocalizedString>
 
 #include "generic-advanced-options-widget.h"
 
