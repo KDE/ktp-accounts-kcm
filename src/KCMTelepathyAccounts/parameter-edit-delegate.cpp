@@ -41,8 +41,9 @@ ParameterEditDelegate::~ParameterEditDelegate()
 }
 
 
-QList<QWidget*> ParameterEditDelegate::createItemWidgets() const
+QList<QWidget*> ParameterEditDelegate::createItemWidgets(const QModelIndex &index) const
 {
+    Q_UNUSED(index)
     QList<QWidget*> widgets;
 
     // Create all the possible widgets for displaying the parameter.
