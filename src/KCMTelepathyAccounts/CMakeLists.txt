@@ -59,23 +59,29 @@ set (libktpaccountskcminternal_PRETTY_HDRS
      ValidatedLineEdit
 )
 
-kde4_add_ui_files (libktpaccountskcminternal_SRCS
-                   account-edit-widget.ui
-                   parameter-edit-widget.ui
-                   profile-select-widget.ui
-                   simple-profile-select-widget.ui
+ki18n_wrap_ui (libktpaccountskcminternal_SRCS
+               account-edit-widget.ui
+               parameter-edit-widget.ui
+               profile-select-widget.ui
+               simple-profile-select-widget.ui
 )
 
-kde4_add_library (ktpaccountskcminternal
-                  SHARED
-                  ${libktpaccountskcminternal_SRCS}
+add_library(ktpaccountskcminternal
+            SHARED
+            ${libktpaccountskcminternal_SRCS}
 )
 
 target_link_libraries (ktpaccountskcminternal
-                       ${QT_LIBRARIES}
-                       ${KDE4_KDEUI_LIBS}
-                       ${KDE4_KIO_LIBS}
-                       ${TELEPATHY_QT4_LIBRARIES}
+                       Qt5::Widgets
+                       Qt5::Core
+#                        KF5::KIO
+                       KF5::I18n
+                       KF5::WidgetsAddons
+                       KF5::ConfigWidgets
+                       KF5::ItemViews
+                       KF5::IconThemes
+                       KF5::Service
+                       ${TELEPATHY_QT5_LIBRARIES}
 )
 
 
@@ -95,12 +101,12 @@ install (TARGETS ktpaccountskcminternal
          ${INSTALL_TARGETS_DEFAULT_ARGS}
 )
 
-#install (FILES
-#         ${libktpaccountskcminternal_HDRS}
-#         ${libktpaccountskcminternal_PRETTY_HDRS}
-#         kcm_telepathy_accounts_export.h
-#         DESTINATION ${INCLUDE_INSTALL_DIR}/KCMTelepathyAccounts COMPONENT Devel
-#)
+install (FILES
+        ${libktpaccountskcminternal_HDRS}
+        ${libktpaccountskcminternal_PRETTY_HDRS}
+        kcm_telepathy_accounts_export.h
+        DESTINATION ${INCLUDE_INSTALL_DIR}/KCMTelepathyAccounts COMPONENT Devel
+)
 
 install (FILES
          ktpaccountskcminternal-accountuiplugin.desktop
