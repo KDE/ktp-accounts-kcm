@@ -26,9 +26,9 @@
 #include <QtCore/QPair>
 #include <QtGui/QValidator>
 
-#include <KLineEdit>
+#include <QLineEdit>
 
-class KCM_TELEPATHY_ACCOUNTS_EXPORT UnsignedIntegerEdit : public KLineEdit
+class KCM_TELEPATHY_ACCOUNTS_EXPORT UnsignedIntegerEdit : public QLineEdit
 {
     Q_OBJECT
 
