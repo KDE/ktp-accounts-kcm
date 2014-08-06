@@ -30,7 +30,7 @@
          </widget>
         </item>
         <item>
-         <widget class="KLineEdit" name="stunServerLineEdit"/>
+         <widget class="QLineEdit" name="stunServerLineEdit"/>
         </item>
         <item>
          <widget class="QLabel" name="stunPortLabel">
@@ -58,7 +58,7 @@
          </widget>
         </item>
         <item>
-         <widget class="KLineEdit" name="fallbackStunServerLineEdit"/>
+         <widget class="QLineEdit" name="fallbackStunServerLineEdit"/>
         </item>
         <item>
          <widget class="QLabel" name="fallbackStunPortLabel">
@@ -95,7 +95,7 @@
          </widget>
         </item>
         <item>
-         <widget class="KLineEdit" name="httpsProxyServerLineEdit"/>
+         <widget class="QLineEdit" name="httpsProxyServerLineEdit"/>
         </item>
         <item>
          <widget class="QLabel" name="httpsProxyPortLabel">
@@ -153,7 +153,7 @@ p, li { white-space: pre-wrap; }
          </widget>
         </item>
         <item>
-         <widget class="KLineEdit" name="fallbackConferenceServerLineEdit"/>
+         <widget class="QLineEdit" name="fallbackConferenceServerLineEdit"/>
         </item>
        </layout>
       </item>
@@ -163,11 +163,6 @@ p, li { white-space: pre-wrap; }
   </layout>
  </widget>
  <customwidgets>
-  <customwidget>
-   <class>KLineEdit</class>
-   <extends>QLineEdit</extends>
-   <header>klineedit.h</header>
-  </customwidget>
   <customwidget>
    <class>KTextEdit</class>
    <extends>QTextEdit</extends>

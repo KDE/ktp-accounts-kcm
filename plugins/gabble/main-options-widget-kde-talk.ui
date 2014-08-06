@@ -29,7 +29,7 @@
      <item row="0" column="1">
       <layout class="QHBoxLayout" name="hLayout">
        <item>
-        <widget class="KLineEdit" name="accountLineEdit"/>
+        <widget class="QLineEdit" name="accountLineEdit"/>
        </item>
        <item>
         <widget class="QLabel" name="label">
@@ -51,12 +51,9 @@
       </widget>
      </item>
      <item row="1" column="1">
-      <widget class="KLineEdit" name="passwordLineEdit">
+      <widget class="QLineEdit" name="passwordLineEdit">
        <property name="echoMode">
         <enum>QLineEdit::Password</enum>
-       </property>
-       <property name="passwordMode">
-        <bool>true</bool>
        </property>
       </widget>
      </item>
@@ -72,11 +69,6 @@
   </layout>
  </widget>
  <customwidgets>
-  <customwidget>
-   <class>KLineEdit</class>
-   <extends>QLineEdit</extends>
-   <header>klineedit.h</header>
-  </customwidget>
  </customwidgets>
  <resources/>
  <connections/>
