@@ -37,6 +37,7 @@
 #include <QtCore/QList>
 #include <QtGui/QCheckBox>
 
+#include <QDialog>
 
 class AccountEditWidget::Private
 {
@@ -213,18 +214,18 @@ void AccountEditWidget::onAdvancedClicked()
         return;
     }
 
-    QWeakPointer<KDialog> dialog = new KDialog(this);
+    QPointer<QDialog> dialog = new QDialog(this);
     dialog.data()->setWindowTitle(i18n("Advanced Options"));
 
     AbstractAccountParametersWidget *advancedWidget;
     advancedWidget = d->accountUi->advancedOptionsWidget(d->parameterModel,
                                                          dialog.data());
-    dialog.data()->setMainWidget(advancedWidget);
+//     dialog.data()->setMainWidget(advancedWidget);
 
     // loop until the entered values are ok or the user cancels the dialog
 
     while (true) {
-        if (dialog.data()->exec() == KDialog::Accepted) {
+        if (dialog.data()->exec() == QDialog::Accepted) {
             advancedWidget->submit();
             // validate the parameter values
             if (!advancedWidget->validateParameterValues()) {
