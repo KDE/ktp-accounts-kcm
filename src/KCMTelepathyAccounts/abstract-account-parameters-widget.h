@@ -25,9 +25,9 @@
 
 #include "kcm_telepathy_accounts_export.h"
 
-#include <QtCore/QMap>
-#include <QtCore/QVariant>
-#include <QtGui/QWidget>
+#include <QMap>
+#include <QVariant>
+#include <QWidget>
 
 #include <TelepathyQt/ConnectionManager>
 

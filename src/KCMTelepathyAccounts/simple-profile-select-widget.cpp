@@ -30,11 +30,11 @@
 #include <TelepathyQt/ProfileManager>
 #include <TelepathyQt/Feature>
 
-#include <QtCore/QSignalMapper>
-#include <QtGui/QSortFilterProxyModel>
-#include <QtGui/QItemSelectionModel>
-#include <QtGui/QCommandLinkButton>
 #include <QDebug>
+#include <QSignalMapper>
+#include <QSortFilterProxyModel>
+#include <QItemSelectionModel>
+#include <QCommandLinkButton>
 
 class SimpleProfileSelectWidget::Private
 {

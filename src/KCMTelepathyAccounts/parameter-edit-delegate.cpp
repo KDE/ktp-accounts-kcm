@@ -24,12 +24,12 @@
 
 #include <QDebug>
 
-#include <QtGui/QApplication>
-#include <QtGui/QCheckBox>
-#include <QtGui/QLabel>
-#include <QtGui/QSpinBox>
-#include <QtGui/QPainter>
 #include <QLineEdit>
+#include <QApplication>
+#include <QCheckBox>
+#include <QLabel>
+#include <QSpinBox>
+#include <QPainter>
 
 ParameterEditDelegate::ParameterEditDelegate(QAbstractItemView *itemView, QObject *parent)
  : KWidgetItemDelegate(itemView, parent)

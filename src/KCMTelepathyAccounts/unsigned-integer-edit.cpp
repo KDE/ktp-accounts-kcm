@@ -20,8 +20,8 @@
 
 #include "unsigned-integer-edit.h"
 
-#include <QtGui/QIntValidator>
 #include <QDebug>
+#include <QIntValidator>
 
 UnsignedIntegerEdit::UnsignedIntegerEdit(QWidget *parent)
  : QLineEdit(parent)

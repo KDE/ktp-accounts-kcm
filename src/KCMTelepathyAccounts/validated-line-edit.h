@@ -23,7 +23,7 @@
 
 #include <QLineEdit>
 #include <kdemacros.h>
-#include <QtGui/QValidator>
+#include <QValidator>
 
 class QLabel;
 class QHBoxLayout;

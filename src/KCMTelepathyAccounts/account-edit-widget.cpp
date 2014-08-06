@@ -34,9 +34,9 @@
 #include <KMessageWidget>
 
 #include <TelepathyQt/Profile>
-#include <QtCore/QList>
-#include <QtGui/QCheckBox>
 
+#include <QList>
+#include <QCheckBox>
 #include <QDialog>
 
 class AccountEditWidget::Private

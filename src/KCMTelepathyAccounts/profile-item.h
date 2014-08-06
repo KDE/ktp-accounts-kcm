@@ -24,7 +24,7 @@
 
 #include "kcm_telepathy_accounts_export.h"
 
-#include <QtCore/QObject>
+#include <QObject>
 #include <QIcon>
 
 #include <TelepathyQt/Profile>

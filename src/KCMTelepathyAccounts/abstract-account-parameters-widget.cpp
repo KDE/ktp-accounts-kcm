@@ -26,13 +26,13 @@
 
 #include <KLocalizedString>
 
-#include <QtCore/QMap>
-#include <QtGui/QLineEdit>
-#include <QtGui/QCheckBox>
-#include <QtGui/QComboBox>
-#include <QtGui/QSpinBox>
-#include <QtGui/QDataWidgetMapper>
 #include <QDebug>
+#include <QMap>
+#include <QLineEdit>
+#include <QCheckBox>
+#include <QComboBox>
+#include <QSpinBox>
+#include <QDataWidgetMapper>
 
 
 class AbstractAccountParametersWidget::Private

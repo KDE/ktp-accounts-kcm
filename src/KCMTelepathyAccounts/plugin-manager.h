@@ -23,8 +23,8 @@
 
 #include "kcm_telepathy_accounts_export.h"
 
-#include <QtCore/QList>
-#include <QtCore/QObject>
+#include <QList>
+#include <QObject>
 
 class AbstractAccountUi;
 class AbstractAccountUiPlugin;

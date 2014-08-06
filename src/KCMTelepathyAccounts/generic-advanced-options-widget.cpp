@@ -18,10 +18,12 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
-#include <QtGui/QHBoxLayout>
 #include <KLocalizedString>
 
 #include <QTabWidget>
+#include <QTabBar>
+#include <QHBoxLayout>
+
 #include "generic-advanced-options-widget.h"
 
 class GenericAdvancedOptionsWidget::Private

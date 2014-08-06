@@ -28,8 +28,8 @@
 
 #include <QDebug>
 
-#include <QtGui/QSortFilterProxyModel>
-#include <QtGui/QItemSelectionModel>
+#include <QSortFilterProxyModel>
+#include <QItemSelectionModel>
 
 class ProfileSelectWidget::Private
 {

@@ -23,8 +23,8 @@
 
 #include "kcm_telepathy_accounts_export.h"
 
-#include <QtCore/QPair>
-#include <QtGui/QValidator>
+#include <QPair>
+#include <QValidator>
 
 #include <QLineEdit>
 

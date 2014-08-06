@@ -25,15 +25,15 @@
 #include <KLocalizedString>
 #include <KIconLoader>
 
-#include <QtGui/QWidget>
-#include <QtGui/QHBoxLayout>
-#include <QtGui/QVBoxLayout>
-#include <QtGui/QPaintEvent>
-#include <QtGui/QPainter>
-#include <QtCore/QAbstractItemModel>
-#include <QtCore/QPersistentModelIndex>
 #include <QIcon>
 #include <QLineEdit>
+#include <QWidget>
+#include <QHBoxLayout>
+#include <QVBoxLayout>
+#include <QPaintEvent>
+#include <QPainter>
+#include <QAbstractItemModel>
+#include <QPersistentModelIndex>
 
 class ValidationIconWidget : public QWidget
 {

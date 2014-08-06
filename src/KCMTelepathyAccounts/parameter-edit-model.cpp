@@ -24,12 +24,11 @@
 
 #include "parameter-item.h"
 
-#include <KApplication>
 #include <KLocalizedString>
 #include <KMessageWidget>
 
-#include <QtGui/QValidator>
 #include <QDebug>
+#include <QValidator>
 
 #include <TelepathyQt/Profile>
 #include <TelepathyQt/ConnectionManager>
