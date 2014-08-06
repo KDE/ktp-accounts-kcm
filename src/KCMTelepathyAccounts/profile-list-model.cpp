@@ -29,8 +29,8 @@
 #include <TelepathyQt/PendingStringList>
 #include <TelepathyQt/PendingComposite>
 
-#include <KIcon>
 #include <QDebug>
+#include <QIcon>
 
 ProfileListModel::ProfileListModel(QObject *parent)
  : QAbstractListModel(parent)

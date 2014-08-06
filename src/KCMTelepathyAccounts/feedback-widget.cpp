@@ -24,7 +24,6 @@
 #include "feedback-widget.h"
 
 #include <KLocale>
-#include <KIcon>
 #include <KPushButton>
 #include <KColorScheme>
 
@@ -35,6 +34,7 @@
 #include <QtGui/QPaintEvent>
 #include <QtGui/QPainter>
 #include <QtCore/QTimer>
+#include <QIcon>
 
 FeedbackWidget::FeedbackWidget(QWidget *parent)
     : KMessageWidget(parent)

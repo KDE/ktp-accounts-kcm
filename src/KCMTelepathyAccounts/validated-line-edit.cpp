@@ -22,7 +22,6 @@
 
 #include "parameter-edit-model.h"
 
-#include <KIcon>
 #include <KLineEdit>
 #include <KLocale>
 #include <KIconLoader>
@@ -34,6 +33,7 @@
 #include <QtGui/QPainter>
 #include <QtCore/QAbstractItemModel>
 #include <QtCore/QPersistentModelIndex>
+#include <QIcon>
 
 class ValidationIconWidget : public QWidget
 {
