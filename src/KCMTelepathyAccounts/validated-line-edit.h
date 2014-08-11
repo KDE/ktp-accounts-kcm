@@ -22,7 +22,6 @@
 #define VALIDATEDLINEEDIT_H
 
 #include <QLineEdit>
-#include <kdemacros.h>
 #include <QValidator>
 
 class QLabel;
@@ -32,7 +31,7 @@ class ValidationIconWidget;
 class QAbstractItemModel;
 class QModelIndex;
 
-class KDE_EXPORT ValidatedLineEdit : public QLineEdit
+class Q_DECL_EXPORT ValidatedLineEdit : public QLineEdit
 {
     Q_OBJECT
 
