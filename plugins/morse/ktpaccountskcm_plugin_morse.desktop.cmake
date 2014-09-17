@@ -1,6 +1,9 @@
 [Desktop Entry]
 Encoding=UTF-8
 Comment=Custom account configuration user interface for accounts using the Morse connection manager.
+Comment[cs]=Vlastní uživatelské rozhraní nastavení účtů pro účty používající správce spojení Morse.
+Comment[de]=Eigene Benutzeroberfläche zum Einrichten von Zugängen, die die Morse-Verbindungsverwaltung verwenden.
+Comment[en_GB]=Custom account configuration user interface for accounts using the Morse connection manager.
 Comment[it]=Interfaccia utente personalizzata di configurazione account per account che usano il gestore di connessioni Morse.
 Comment[nl]=Gebruikersinterface voor aangepaste accountconfiguratie voor accounts die de Morse verbindingenbeheerder gebruiken.
 Comment[pt]=Interface de utilizador de configuração de contas personalizadas com o gestor de ligações Morse.
