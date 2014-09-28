@@ -13,6 +13,7 @@ Comment[nl]=Gebruikersinterface voor aangepaste accountconfiguratie voor account
 Comment[pl]=Dostosowana nakładka graficzna do ustawiania kont dla kont wykorzystujących usługę połączeń Morse.
 Comment[pt]=Interface de utilizador de configuração de contas personalizadas com o gestor de ligações Morse.
 Comment[pt_BR]=Interface de configuração de contas personalizadas usando o gerenciador de conexões Morse.
+Comment[sk]=Vlastné používateľské rozhranie konfigurácie účtu pre účty používajúce správcu pripojení Morse.
 Comment[sr]=Корисничко сучеље за подешавање посебних налога под менаџером везе Морзе.
 Comment[sr@ijekavian]=Корисничко сучеље за подешавање посебних налога под менаџером везе Морзе.
 Comment[sr@ijekavianlatin]=Korisničko sučelje za podešavanje posebnih naloga pod menadžerom veze Morse.
