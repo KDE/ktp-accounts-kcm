@@ -20,9 +20,7 @@
 
 #include "icq-server-settings-widget.h"
 
-#include <KDE/KLocale>
-#include <KDE/KGlobal>
-#include <KDE/KCharsets>
+#include <KCharsets>
 
 #include <KCMTelepathyAccounts/ParameterEditModel>
 
@@ -41,14 +39,15 @@ IcqServerSettingsWidget::IcqServerSettingsWidget(ParameterEditModel *model,
     handleParameter(QLatin1String("always-use-rv-proxy"), QVariant::Bool, m_ui->alwaysUseRvProxyCheckBox, 0);
 
     // update combo box for charset parameter
-    Q_FOREACH (const QString &name, KGlobal::charsets()->descriptiveEncodingNames()) {
+    Q_FOREACH (const QString &name, KCharsets::charsets()->descriptiveEncodingNames()) {
         m_ui->charsetComboBox->addItem(name);
     }
 
     const QString encName = parameterModel()->data(
         parameterModel()->indexForParameter(parameterModel()->parameter(QLatin1String("charset"))),
         ParameterEditModel::ValueRole).toString();
-    m_ui->charsetComboBox->setCurrentItem(KGlobal::charsets()->descriptionForEncoding(encName));
+//KF5 TODO
+//     m_ui->charsetComboBox->setCurrentItem(KCharsets::charsets()->descriptionForEncoding(encName));
 }
 
 IcqServerSettingsWidget::~IcqServerSettingsWidget()
@@ -60,7 +59,7 @@ void IcqServerSettingsWidget::submit()
 {
     AbstractAccountParametersWidget::submit();
 
-    const QString name = KGlobal::charsets()->encodingForName(m_ui->charsetComboBox->currentText());
+    const QString name = KCharsets::charsets()->encodingForName(m_ui->charsetComboBox->currentText());
     parameterModel()->setData(
         parameterModel()->indexForParameter(parameterModel()->parameter(QLatin1String("charset"))),
         name, ParameterEditModel::ValueRole);

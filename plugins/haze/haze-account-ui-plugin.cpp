@@ -84,6 +84,5 @@ AbstractAccountUi* HazeAccountUiPlugin::accountUi(const QString &connectionManag
 
 
 K_PLUGIN_FACTORY(factory, registerPlugin<HazeAccountUiPlugin>();)
-K_EXPORT_PLUGIN(factory("kcmtelepathyaccounts_plugin_haze"))
 
 #include "haze-account-ui-plugin.moc"

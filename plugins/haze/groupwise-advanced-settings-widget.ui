@@ -33,7 +33,7 @@
       </widget>
      </item>
      <item row="0" column="1">
-      <widget class="KLineEdit" name="serverLineEdit"/>
+      <widget class="QLineEdit" name="serverLineEdit"/>
      </item>
      <item row="1" column="0">
       <widget class="QLabel" name="portLabel">
@@ -43,7 +43,7 @@
       </widget>
      </item>
      <item row="1" column="1">
-      <widget class="KIntSpinBox" name="portSpinBox">
+      <widget class="QSpinBox" name="portSpinBox">
        <property name="maximum">
         <number>65535</number>
        </property>
@@ -66,18 +66,7 @@
    </item>
   </layout>
  </widget>
- <customwidgets>
-  <customwidget>
-   <class>KIntSpinBox</class>
-   <extends>QSpinBox</extends>
-   <header>knuminput.h</header>
-  </customwidget>
-  <customwidget>
-   <class>KLineEdit</class>
-   <extends>QLineEdit</extends>
-   <header>klineedit.h</header>
-  </customwidget>
- </customwidgets>
+ <customwidgets/>
  <resources/>
  <connections/>
 </ui>

@@ -42,9 +42,10 @@ YahooServerSettingsWidget::YahooServerSettingsWidget(ParameterEditModel *model,
     handleParameter(QLatin1String("ignore-invites"), QVariant::Bool, m_ui->ignoreInvites, 0);
 
     // update combo box for charset parameter
-    m_ui->charsetComboBox->setCurrentItem(parameterModel()->data(
-            parameterModel()->indexForParameter(parameterModel()->parameter(QLatin1String("charset"))),
-            ParameterEditModel::ValueRole).toString());
+    //KF5 TODO
+//     m_ui->charsetComboBox->setCurrentItem(parameterModel()->data(
+//             parameterModel()->indexForParameter(parameterModel()->parameter(QLatin1String("charset"))),
+//             ParameterEditModel::ValueRole).toString());
 }
 
 YahooServerSettingsWidget::~YahooServerSettingsWidget()

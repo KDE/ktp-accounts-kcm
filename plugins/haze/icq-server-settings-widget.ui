@@ -46,7 +46,7 @@
       </widget>
      </item>
      <item row="1" column="1">
-      <widget class="KLineEdit" name="serverLineEdit"/>
+      <widget class="QLineEdit" name="serverLineEdit"/>
      </item>
      <item row="2" column="0">
       <widget class="QLabel" name="portLabel">
@@ -56,7 +56,7 @@
       </widget>
      </item>
      <item row="2" column="1">
-      <widget class="KIntSpinBox" name="portSpinBox">
+      <widget class="QSpinBox" name="portSpinBox">
        <property name="sizePolicy">
         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
          <horstretch>0</horstretch>
@@ -130,7 +130,7 @@
       </widget>
      </item>
      <item row="8" column="1">
-      <widget class="KComboBox" name="charsetComboBox">
+      <widget class="QComboBox" name="charsetComboBox">
       </widget>
      </item>
     </layout>
@@ -150,23 +150,7 @@
    </item>
   </layout>
  </widget>
- <customwidgets>
-  <customwidget>
-   <class>KIntSpinBox</class>
-   <extends>QSpinBox</extends>
-   <header>knuminput.h</header>
-  </customwidget>
-  <customwidget>
-   <class>KLineEdit</class>
-   <extends>QLineEdit</extends>
-   <header>klineedit.h</header>
-  </customwidget>
-  <customwidget>
-   <class>KComboBox</class>
-   <extends>QComboBox</extends>
-   <header>kcombobox.h</header>
-  </customwidget>
- </customwidgets>
+ <customwidgets/>
  <resources/>
  <connections/>
 </ui>
