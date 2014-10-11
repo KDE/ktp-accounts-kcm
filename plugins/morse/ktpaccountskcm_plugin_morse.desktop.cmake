@@ -7,6 +7,7 @@ Comment[da]=Brugerflade til brugertilpasset kontokonfiguration til konti der bru
 Comment[de]=Eigene Benutzeroberfläche zum Einrichten von Zugängen, die die Morse-Verbindungsverwaltung verwenden.
 Comment[en_GB]=Custom account configuration user interface for accounts using the Morse connection manager.
 Comment[et]=Morse ühendusehaldurit kasutavate kontode kohandatud konto seadistamise kasutajaliides
+Comment[fi]=Morse-yhteyshallintaa käyttävien tilien mukautettu hallintakäyttöliittymä.
 Comment[fr]=Interface utilisateur personnalisée pour la configuration de comptes en utilisant le gestionnaire de connexions « Morse ».
 Comment[it]=Interfaccia utente personalizzata di configurazione account per account che usano il gestore di connessioni Morse.
 Comment[nb]=Brukerflate for å sette opp egendefinerte kontoer ved bruk av Morse tilkoblingsbehandler.
