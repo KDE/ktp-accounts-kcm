@@ -24,6 +24,7 @@ Comment[sr@latin]=Korisničko sučelje za podešavanje posebnih naloga pod menad
 Comment[sv]=Användargränssnitt för anpassad kontoinställning av konton som använder anslutningshanteraren Morse.
 Comment[uk]=Інтерфейс користувача для нетипового налаштовування облікового запису за допомогою керування з’єднаннями Morse.
 Comment[x-test]=xxCustom account configuration user interface for accounts using the Morse connection manager.xx
+Comment[zh_CN]=通过 Morse 连接管理器自定义账户的配置界面
 Type=Service
 ServiceTypes=KTpAccountsKCM/AccountUiPlugin
 
