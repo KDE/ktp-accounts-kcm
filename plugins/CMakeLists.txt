@@ -1,7 +1,7 @@
 add_subdirectory (gabble)
 add_subdirectory (haze)
+add_subdirectory (idle)
 # macro_optional_add_subdirectory (butterfly)
-# macro_optional_add_subdirectory (idle)
 # macro_optional_add_subdirectory (rakia)
 # macro_optional_add_subdirectory (salut)
 # macro_optional_add_subdirectory (sunshine)

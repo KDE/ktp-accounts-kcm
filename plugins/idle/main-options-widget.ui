@@ -28,7 +28,7 @@
     </widget>
    </item>
    <item row="0" column="1">
-    <widget class="KLineEdit" name="serverLineEdit"/>
+    <widget class="QLineEdit" name="serverLineEdit"/>
    </item>
    <item row="1" column="1">
     <widget class="QLabel" name="label">
@@ -48,7 +48,7 @@
     </widget>
    </item>
    <item row="3" column="1">
-    <widget class="KLineEdit" name="accountLineEdit"/>
+    <widget class="QLineEdit" name="accountLineEdit"/>
    </item>
    <item row="5" column="0">
     <widget class="QLabel" name="fullnameLabel">
@@ -61,7 +61,7 @@
     </widget>
    </item>
    <item row="5" column="1">
-    <widget class="KLineEdit" name="fullnameLineEdit"/>
+    <widget class="QLineEdit" name="fullnameLineEdit"/>
    </item>
    <item row="6" column="1">
     <widget class="QLabel" name="label_2">
@@ -72,13 +72,6 @@
    </item>
   </layout>
  </widget>
- <customwidgets>
-  <customwidget>
-   <class>KLineEdit</class>
-   <extends>QLineEdit</extends>
-   <header>klineedit.h</header>
-  </customwidget>
- </customwidgets>
  <tabstops>
   <tabstop>serverLineEdit</tabstop>
   <tabstop>accountLineEdit</tabstop>
