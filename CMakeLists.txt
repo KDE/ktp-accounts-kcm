@@ -14,7 +14,8 @@ set(KTP_ACCOUNTS_KCM_VERSION "0.9.99")
 set(IS_KTP_INTERNAL_MODULE TRUE)
 
 find_package (TelepathyQt5 REQUIRED)
-# find_package (KTp REQUIRED)
+find_package (KTp REQUIRED)
+find_package (KAccounts REQUIRED)
 
 # make some more macros available
 # include (MacroLibrary)

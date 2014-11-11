@@ -7,3 +7,5 @@ add_subdirectory (idle)
 # macro_optional_add_subdirectory (sunshine)
 # macro_optional_add_subdirectory (pintxo)
 # macro_optional_add_subdirectory (sipe)
+
+add_subdirectory(kaccounts)
