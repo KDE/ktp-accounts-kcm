@@ -16,6 +16,8 @@ set(IS_KTP_INTERNAL_MODULE TRUE)
 find_package (TelepathyQt5 REQUIRED)
 find_package (KTp REQUIRED)
 find_package (KAccounts REQUIRED)
+find_package (AccountsFileDir REQUIRED)
+find_package (Intltool REQUIRED) #needed to generate service and provider files
 
 # make some more macros available
 # include (MacroLibrary)
