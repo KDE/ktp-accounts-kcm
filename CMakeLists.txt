@@ -14,7 +14,6 @@ set(KTP_ACCOUNTS_KCM_VERSION "0.9.99")
 set(IS_KTP_INTERNAL_MODULE TRUE)
 
 find_package (TelepathyQt5 REQUIRED)
-find_package (KTp REQUIRED)
 find_package (KAccounts REQUIRED)
 find_package (AccountsFileDir REQUIRED)
 find_package (Intltool REQUIRED) #needed to generate service and provider files
@@ -34,10 +33,8 @@ add_definitions (
                  -DQT_NO_KEYWORDS
 )
 
-include_directories (${TELEPATHY_QT5_INCLUDE_DIR}
-#                      ${KTP_INCLUDE_DIR}
-                     ${CMAKE_CURRENT_SOURCE_DIR}/src
-)
+include_directories (${CMAKE_CURRENT_SOURCE_DIR}/src
+                     ${TELEPATHY_QT5_INCLUDE_DIR})
 
 add_subdirectory (src)
 add_subdirectory (data)

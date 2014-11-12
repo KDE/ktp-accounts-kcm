@@ -31,8 +31,6 @@
 #include <TelepathyQt/PendingAccount>
 #include <TelepathyQt/ProfileManager>
 
-#include <KTp/wallet-utils.h>
-
 #include <KLocalizedString>
 
 #include <QDBusConnection>
