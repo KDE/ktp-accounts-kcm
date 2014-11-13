@@ -25,14 +25,14 @@
 #include "validated-line-edit.h"
 
 #include <KLocalizedString>
-#include <KDebug>
 
-#include <QtCore/QMap>
-#include <QtGui/QLineEdit>
-#include <QtGui/QCheckBox>
-#include <QtGui/QComboBox>
-#include <QtGui/QSpinBox>
-#include <QtGui/QDataWidgetMapper>
+#include <QDebug>
+#include <QMap>
+#include <QLineEdit>
+#include <QCheckBox>
+#include <QComboBox>
+#include <QSpinBox>
+#include <QDataWidgetMapper>
 
 
 class AbstractAccountParametersWidget::Private
@@ -103,13 +103,13 @@ void AbstractAccountParametersWidget::handleParameter(const QString &parameterNa
                                            const QList<QWidget*> &labelWidgets,
                                            const QByteArray &dataWidgetProperty)
 {
-    kDebug() << parameterType << parameterName;
+    qDebug() << parameterType << parameterName;
 
     Tp::ProtocolParameter foundParameter = d->parameterModel->parameter(parameterName);
 
     if (!foundParameter.isValid() || foundParameter.type() != parameterType) {
         // hide widgets because they are not needed
-        kDebug() << "Field" << parameterName << "hidden";
+        qDebug() << "Field" << parameterName << "hidden";
         dataWidget->hide();
         Q_FOREACH (QWidget *label, labelWidgets) {
             if (label) {
@@ -121,7 +121,7 @@ void AbstractAccountParametersWidget::handleParameter(const QString &parameterNa
 
     QModelIndex index = d->parameterModel->indexForParameter(foundParameter);
     if (index.isValid()) {
-        kDebug() << index << parameterName;
+        qDebug() << index << parameterName;
         // insert it to valid parameters list
         //for text edit boxes we force it to use the plainText property so that we don't get HTML all over our options
         if (!dataWidgetProperty.isEmpty()) {
@@ -180,7 +180,7 @@ ParameterEditModel* AbstractAccountParametersWidget::parameterModel() const
 
 QString AbstractAccountParametersWidget::defaultDisplayName() const
 {
-    kWarning() << "This method should be implemented by derived classes";
+    qWarning() << "This method should be implemented by derived classes";
     return QString();
 }
 

@@ -24,12 +24,12 @@
 
 #include "kcm_telepathy_accounts_export.h"
 
-#include <QtCore/QObject>
+#include <QObject>
+#include <QIcon>
 
 #include <TelepathyQt/Profile>
 
 class ProfileListModel;
-class KIcon;
 
 class KCM_TELEPATHY_ACCOUNTS_EXPORT ProfileItem : public QObject
 {
@@ -47,14 +47,14 @@ public:
     QString cmName() const;
     QString protocolName() const;
     Tp::ProfilePtr profile() const;
-    const KIcon& icon() const;
+    const QIcon icon() const;
 
 private:
     void generateIcon();
 
     Tp::ProfilePtr m_profile;
     QString m_localizedName;
-    KIcon* m_icon;
+    QIcon m_icon;
 };
 
 

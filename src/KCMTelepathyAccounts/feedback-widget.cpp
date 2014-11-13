@@ -23,18 +23,18 @@
 
 #include "feedback-widget.h"
 
-#include <KLocale>
-#include <KIcon>
-#include <KPushButton>
+#include <KLocalizedString>
 #include <KColorScheme>
 
-#include <QtGui/QWidget>
-#include <QtGui/QLabel>
-#include <QtGui/QHBoxLayout>
-#include <QtGui/QVBoxLayout>
-#include <QtGui/QPaintEvent>
-#include <QtGui/QPainter>
-#include <QtCore/QTimer>
+#include <QIcon>
+#include <QPushButton>
+#include <QWidget>
+#include <QLabel>
+#include <QHBoxLayout>
+#include <QVBoxLayout>
+#include <QPaintEvent>
+#include <QPainter>
+#include <QTimer>
 
 FeedbackWidget::FeedbackWidget(QWidget *parent)
     : KMessageWidget(parent)

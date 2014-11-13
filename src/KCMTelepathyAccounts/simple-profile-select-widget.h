@@ -24,7 +24,7 @@
 #include "kcm_telepathy_accounts_export.h"
 #include "profile-list-model.h"
 
-#include <QtGui/QWidget>
+#include <QWidget>
 
 namespace Tp {
     class PendingOperation;

@@ -20,9 +20,8 @@
 
 #include "unsigned-integer-edit.h"
 
-#include <KDebug>
-
-#include <QtGui/QIntValidator>
+#include <QDebug>
+#include <QIntValidator>
 
 UnsignedIntegerEdit::UnsignedIntegerEdit(QWidget *parent)
  : QLineEdit(parent)
@@ -65,7 +64,7 @@ QPair<quint32, quint32> UnsignedIntegerEdit::validRange() const
     QIntValidator const *intValidator = qobject_cast<const QIntValidator*>(validator());
 
     if (!intValidator) {
-        kWarning() << "Somehow this is not an int validator :/";
+        qWarning() << "Somehow this is not an int validator :/";
         return ret;
     }
 

@@ -24,7 +24,7 @@
 #include "abstract-account-ui.h"
 
 #include <KServiceTypeTrader>
-#include <KDebug>
+#include <QDebug>
 
 PluginManager* PluginManager::s_self = 0;
 
@@ -66,17 +66,17 @@ void PluginManager::loadPlugins()
         KPluginFactory *factory = KPluginLoader(service->library()).factory();
 
         if (!factory) {
-            kWarning() << "KPluginFactory could not load the plugin:" << service->library();
+            qWarning() << "KPluginFactory could not load the plugin:" << service->library();
             continue;
         }
 
        AbstractAccountUiPlugin *plugin = factory->create<AbstractAccountUiPlugin>(this);
 
        if (plugin) {
-           kDebug() << "Loaded plugin:" << service->name();
+           qDebug() << "Loaded plugin:" << service->name();
            m_plugins.append(plugin);
        } else {
-           kDebug() << error;
+           qDebug() << error;
        }
     }
 }

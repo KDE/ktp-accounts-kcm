@@ -24,12 +24,13 @@
 #define KCM_TELEPATHY_ACCOUNTS_ACCOUNT_EDIT_WIDGET_H
 
 #include "kcm_telepathy_accounts_export.h"
+#include "parameter-edit-model.h"
 
-#include <QtGui/QWidget>
 #include <KMessageWidget>
 
+#include <QWidget>
+
 #include <TelepathyQt/ConnectionManager>
-#include "parameter-edit-model.h"
 
 enum ConnectOnLoadType{
     doConnectOnAdd,

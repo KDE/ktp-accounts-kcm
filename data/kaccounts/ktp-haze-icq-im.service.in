@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<service id="ktp-haze-icq-im">
+  <type>IM</type>
+  <!-- ICQ Chat - Service name being displayed as a checkbox label to enable/disable this service -->
+  <_name>Chat</_name>
+  <icon>im-icq</icon>
+  <provider>ktp-haze-icq</provider>
+  <translations>kaccounts-providers</translations>
+</service>

@@ -26,10 +26,10 @@
 
 #include "ui_profile-select-widget.h"
 
-#include <KDebug>
+#include <QDebug>
 
-#include <QtGui/QSortFilterProxyModel>
-#include <QtGui/QItemSelectionModel>
+#include <QSortFilterProxyModel>
+#include <QItemSelectionModel>
 
 class ProfileSelectWidget::Private
 {
@@ -94,7 +94,7 @@ ProfileItem *ProfileSelectWidget::selectedProfile()
 
     // If more than 1 profile is selected (shouldn't be possible, but just in case) error.
     if (selectedIndexes.size() > 1) {
-        kWarning() << "More than 1 profile is selected.";
+        qWarning() << "More than 1 profile is selected.";
         return 0;
     }
 

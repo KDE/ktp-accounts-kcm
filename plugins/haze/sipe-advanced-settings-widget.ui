@@ -33,10 +33,10 @@
       </widget>
      </item>
      <item row="0" column="1">
-      <widget class="KLineEdit" name="loginLineEdit"/>
+      <widget class="QLineEdit" name="loginLineEdit"/>
      </item>
      <item row="1" column="1">
-      <widget class="KLineEdit" name="serverLineEdit"/>
+      <widget class="QLineEdit" name="serverLineEdit"/>
      </item>
      <item row="2" column="0">
       <widget class="QLabel" name="transportLabel">
@@ -46,7 +46,7 @@
       </widget>
      </item>
      <item row="2" column="1">
-      <widget class="KLineEdit" name="transportLineEdit">
+      <widget class="QLineEdit" name="transportLineEdit">
        <property name="text">
         <string>auto</string>
        </property>
@@ -60,7 +60,7 @@
       </widget>
      </item>
      <item row="3" column="1">
-      <widget class="KLineEdit" name="useragentLineEdit"/>
+      <widget class="QLineEdit" name="useragentLineEdit"/>
      </item>
      <item row="4" column="0">
       <widget class="QLabel" name="authenticationLabel">
@@ -70,7 +70,7 @@
       </widget>
      </item>
      <item row="4" column="1">
-      <widget class="KLineEdit" name="authenticationLineEdit">
+      <widget class="QLineEdit" name="authenticationLineEdit">
        <property name="text">
         <string>ntlm</string>
        </property>
@@ -94,7 +94,7 @@
       </widget>
      </item>
      <item row="6" column="1">
-      <widget class="KLineEdit" name="emailurlLineEdit"/>
+      <widget class="QLineEdit" name="emailurlLineEdit"/>
      </item>
      <item row="7" column="0">
       <widget class="QLabel" name="emailLabel">
@@ -104,7 +104,7 @@
       </widget>
      </item>
      <item row="7" column="1">
-      <widget class="KLineEdit" name="emailLineEdit"/>
+      <widget class="QLineEdit" name="emailLineEdit"/>
      </item>
      <item row="8" column="0">
       <widget class="QLabel" name="emailloginLabel">
@@ -114,7 +114,7 @@
       </widget>
      </item>
      <item row="8" column="1">
-      <widget class="KLineEdit" name="emailloginLineEdit"/>
+      <widget class="QLineEdit" name="emailloginLineEdit"/>
      </item>
      <item row="9" column="0">
       <widget class="QLabel" name="emailpasswordLabel">
@@ -131,12 +131,12 @@
       </widget>
      </item>
      <item row="10" column="1">
-      <widget class="KLineEdit" name="groupchatuserLineEdit"/>
+      <widget class="QLineEdit" name="groupchatuserLineEdit"/>
      </item>
      <item row="9" column="1">
-      <widget class="KLineEdit" name="emailpasswordLineEdit">
-       <property name="passwordMode">
-        <bool>true</bool>
+      <widget class="QLineEdit" name="emailpasswordLineEdit">
+       <property name="echoMode">
+        <enum>QLineEdit::Password</enum>
        </property>
       </widget>
      </item>
@@ -151,13 +151,7 @@
    </item>
   </layout>
  </widget>
- <customwidgets>
-  <customwidget>
-   <class>KLineEdit</class>
-   <extends>QLineEdit</extends>
-   <header>klineedit.h</header>
-  </customwidget>
- </customwidgets>
+ <customwidgets/>
  <resources/>
  <connections/>
 </ui>

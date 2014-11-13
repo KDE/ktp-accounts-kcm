@@ -23,10 +23,10 @@
 
 #include "kcm_telepathy_accounts_export.h"
 
-#include <QtCore/QList>
-#include <QtCore/QMap>
-#include <QtCore/QObject>
-#include <QtCore/QVariant>
+#include <QList>
+#include <QMap>
+#include <QObject>
+#include <QVariant>
 
 #include <TelepathyQt/ConnectionManager>
 

@@ -22,14 +22,14 @@
 
 #include "parameter-edit-model.h"
 
-#include <KLineEdit>
-#include <KDebug>
+#include <QDebug>
 
-#include <QtGui/QApplication>
-#include <QtGui/QCheckBox>
-#include <QtGui/QLabel>
-#include <QtGui/QSpinBox>
-#include <QtGui/QPainter>
+#include <QLineEdit>
+#include <QApplication>
+#include <QCheckBox>
+#include <QLabel>
+#include <QSpinBox>
+#include <QPainter>
 
 ParameterEditDelegate::ParameterEditDelegate(QAbstractItemView *itemView, QObject *parent)
  : KWidgetItemDelegate(itemView, parent)
@@ -41,13 +41,14 @@ ParameterEditDelegate::~ParameterEditDelegate()
 }
 
 
-QList<QWidget*> ParameterEditDelegate::createItemWidgets() const
+QList<QWidget*> ParameterEditDelegate::createItemWidgets(const QModelIndex &index) const
 {
+    Q_UNUSED(index)
     QList<QWidget*> widgets;
 
     // Create all the possible widgets for displaying the parameter.
     QLabel *nameLabel = new QLabel();
-    KLineEdit *lineEdit = new KLineEdit();
+    QLineEdit *lineEdit = new QLineEdit();
     QCheckBox *checkBox = new QCheckBox();
     QSpinBox *spinBox = new QSpinBox();
 
@@ -80,7 +81,7 @@ void ParameterEditDelegate::updateItemWidgets(const QList<QWidget*> widgets,
     nameLabel->resize(QSize(((right - (4 * margin)) / 2), option.rect.height()));
 
     // Get all the optional input widgets.
-    KLineEdit *lineEdit = qobject_cast<KLineEdit*>(widgets.at(1));
+    QLineEdit *lineEdit = qobject_cast<QLineEdit*>(widgets.at(1));
     QCheckBox *checkBox = qobject_cast<QCheckBox*>(widgets.at(2));
     QSpinBox  *spinBox  = qobject_cast<QSpinBox*>(widgets.at(3));
 
@@ -209,7 +210,7 @@ void ParameterEditDelegate::onSpinBoxValueChanged(int value)
     QSpinBox *widget = qobject_cast<QSpinBox*>(sender());
 
     if (!widget) {
-        kWarning() << "Slot called by object of the wrong type.";
+        qWarning() << "Slot called by object of the wrong type.";
         return;
     }
 

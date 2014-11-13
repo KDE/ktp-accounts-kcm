@@ -21,8 +21,8 @@
 #ifndef TELEPATHY_ACCOUNTS_KCM_DICTIONARY_H
 #define TELEPATHY_ACCOUNTS_KCM_DICTIONARY_H
 
-#include <QtCore/QMap>
-#include <QtCore/QString>
+#include <QMap>
+#include <QString>
 
 class Dictionary
 {

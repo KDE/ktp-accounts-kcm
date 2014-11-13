@@ -22,18 +22,18 @@
 
 #include "parameter-edit-model.h"
 
-#include <KIcon>
-#include <KLineEdit>
-#include <KLocale>
+#include <KLocalizedString>
 #include <KIconLoader>
 
-#include <QtGui/QWidget>
-#include <QtGui/QHBoxLayout>
-#include <QtGui/QVBoxLayout>
-#include <QtGui/QPaintEvent>
-#include <QtGui/QPainter>
-#include <QtCore/QAbstractItemModel>
-#include <QtCore/QPersistentModelIndex>
+#include <QIcon>
+#include <QLineEdit>
+#include <QWidget>
+#include <QHBoxLayout>
+#include <QVBoxLayout>
+#include <QPaintEvent>
+#include <QPainter>
+#include <QAbstractItemModel>
+#include <QPersistentModelIndex>
 
 class ValidationIconWidget : public QWidget
 {
@@ -93,7 +93,7 @@ class ValidatedLineEdit::Private
 };
 
 ValidatedLineEdit::ValidatedLineEdit(QWidget *parent)
-    : KLineEdit(parent),
+    : QLineEdit(parent),
       d(new Private())
 {
     d->validationIcon = new ValidationIconWidget(this);
@@ -157,7 +157,7 @@ void ValidatedLineEdit::onTextChanged(const QString &text)
 void ValidatedLineEdit::resizeEvent(QResizeEvent *event)
 {
     updateIcon();
-    KLineEdit::resizeEvent(event);
+    QLineEdit::resizeEvent(event);
 }
 
 void ValidatedLineEdit::updateIcon()

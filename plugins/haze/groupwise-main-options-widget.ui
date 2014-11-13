@@ -36,14 +36,14 @@
       </widget>
      </item>
      <item row="0" column="1">
-      <widget class="KLineEdit" name="accountLineEdit">
+      <widget class="QLineEdit" name="accountLineEdit">
        <property name="toolTip">
         <string>The GroupWise username is your email address.</string>
        </property>
        <property name="text">
         <string/>
        </property>
-       <property name="clickMessage">
+       <property name="placeholderText">
         <string/>
        </property>
       </widget>
@@ -56,9 +56,9 @@
       </widget>
      </item>
      <item row="1" column="1">
-      <widget class="KLineEdit" name="passwordLineEdit">
-       <property name="passwordMode">
-        <bool>true</bool>
+      <widget class="QLineEdit" name="passwordLineEdit">
+       <property name="echoMode">
+        <enum>QLineEdit::Password</enum>
        </property>
       </widget>
      </item>
@@ -66,13 +66,6 @@
    </item>
   </layout>
  </widget>
- <customwidgets>
-  <customwidget>
-   <class>KLineEdit</class>
-   <extends>QLineEdit</extends>
-   <header>klineedit.h</header>
-  </customwidget>
- </customwidgets>
  <resources/>
  <connections/>
 </ui>

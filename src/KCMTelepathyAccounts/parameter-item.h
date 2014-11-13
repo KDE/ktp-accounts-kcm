@@ -21,9 +21,9 @@
 #ifndef LIB_KCM_TELEPATHY_ACCOUNTS_PARAMETER_ITEM_H
 #define LIB_KCM_TELEPATHY_ACCOUNTS_PARAMETER_ITEM_H
 
-#include <QtCore/QObject>
-#include <QtCore/QVariant>
-#include <QtGui/QValidator>
+#include <QObject>
+#include <QVariant>
+#include <QValidator>
 
 #include <TelepathyQt/ConnectionManager>
 #include <TelepathyQt/Profile>

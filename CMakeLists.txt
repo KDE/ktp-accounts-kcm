@@ -1,34 +1,40 @@
 project (ktp-accounts-kcm)
 
-set(KTP_ACCOUNTS_KCM_VERSION "0.8.80")
+cmake_minimum_required(VERSION 2.8.12)
 
-# Add the modules we ship to the module path
-SET(CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake/modules" ${CMAKE_MODULE_PATH})
+find_package(ECM 1.0.0 REQUIRED NO_MODULE)
 
-cmake_policy(SET CMP0002 OLD)
+set(CMAKE_MODULE_PATH ${ECM_MODULE_PATH} ${ECM_KDE_MODULE_DIR} ${CMAKE_CURRENT_SOURCE_DIR}/cmake/modules)
+
+find_package(Qt5 5.2.0 CONFIG REQUIRED Core Widgets DBus)
+find_package(KF5 5.0.0 REQUIRED KCMUtils KIO I18n WidgetsAddons Codecs CoreAddons ConfigWidgets IconThemes ItemViews)
+
+set(KTP_ACCOUNTS_KCM_VERSION "0.9.99")
 
 set(IS_KTP_INTERNAL_MODULE TRUE)
-set(KDE_MIN_VERSION "4.7.0")
-find_package (KDE4 REQUIRED)
-find_package (TelepathyQt4 0.8.9 REQUIRED)
-find_package (KTp REQUIRED)
 
-# set some default settings
-include (KDE4Defaults)
+find_package (TelepathyQt5 REQUIRED)
+find_package (KAccounts REQUIRED)
+find_package (AccountsFileDir REQUIRED)
+find_package (Intltool REQUIRED) #needed to generate service and provider files
 
 # make some more macros available
-include (MacroLibrary)
+# include (MacroLibrary)
 
-add_definitions (${KDE4_DEFINITIONS}
-                 -DQT_NO_CAST_FROM_ASCII
+include(KDEInstallDirs)
+include(KDECMakeSettings)
+include(KDEFrameworkCompilerSettings)
+include(KDECompilerSettings)
+include(ECMInstallIcons)
+include(FeatureSummary)
+
+add_definitions (
+#                  -DQT_NO_CAST_FROM_ASCII
                  -DQT_NO_KEYWORDS
 )
 
-include_directories (${KDE4_INCLUDES}
-                     ${TELEPATHY_QT4_INCLUDE_DIR}
-                     ${KTP_INCLUDE_DIR}
-                     ${CMAKE_CURRENT_SOURCE_DIR}/src
-)
+include_directories (${CMAKE_CURRENT_SOURCE_DIR}/src
+                     ${TELEPATHY_QT5_INCLUDE_DIR})
 
 add_subdirectory (src)
 add_subdirectory (data)

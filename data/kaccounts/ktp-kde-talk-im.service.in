@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<service id="ktp-kde-talk-im">
+  <type>IM</type>
+  <!-- KDE Talk Chat - Service name being displayed as a checkbox label to enable/disable this service -->
+  <_name>Chat</_name>
+  <icon>kde</icon>
+  <provider>ktp-kde-talk</provider>
+  <translations>kaccounts-providers</translations>
+</service>

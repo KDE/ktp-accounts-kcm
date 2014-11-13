@@ -16,7 +16,7 @@ set (ktpaccountskcm_plugin_gabble_SRCS
      proxy-settings-widget.cpp
 )
 
-kde4_add_ui_files (ktpaccountskcm_plugin_gabble_SRCS
+ki18n_wrap_ui (ktpaccountskcm_plugin_gabble_SRCS
                    main-options-widget.ui
                    main-options-widget-googletalk.ui
                    main-options-widget-facebook.ui
@@ -27,15 +27,16 @@ kde4_add_ui_files (ktpaccountskcm_plugin_gabble_SRCS
 )
 
 
-kde4_add_plugin (ktpaccountskcm_plugin_gabble
-                 ${ktpaccountskcm_plugin_gabble_SRCS}
+add_library (ktpaccountskcm_plugin_gabble MODULE
+             ${ktpaccountskcm_plugin_gabble_SRCS}
 )
 
 target_link_libraries (ktpaccountskcm_plugin_gabble
                        ktpaccountskcminternal
-                       ${QT_LIBRARIES}
-                       ${KDE4_KDEUI_LIBS}
-                       ${TELEPATHY_QT4_LIBRARIES}
+                       Qt5::Core
+                       Qt5::Widgets
+                       KF5::TextWidgets
+                       ${TELEPATHY_QT5_LIBRARIES}
 )
 
 # Install:

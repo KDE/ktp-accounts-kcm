@@ -18,9 +18,11 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
-#include <KTabWidget>
-#include <KLocale>
-#include <QtGui/QHBoxLayout>
+#include <KLocalizedString>
+
+#include <QTabWidget>
+#include <QTabBar>
+#include <QHBoxLayout>
 
 #include "generic-advanced-options-widget.h"
 
@@ -30,7 +32,7 @@ public:
     Private()
     {
     }
-    KTabWidget *tabWidget;
+    QTabWidget *tabWidget;
     QList<AbstractAccountParametersWidget*> widgets;
 };
 
@@ -39,11 +41,11 @@ GenericAdvancedOptionsWidget::GenericAdvancedOptionsWidget(ParameterEditModel *p
  : AbstractAccountParametersWidget(parameterModel, parent),
    d(new Private)
 {
-    d->tabWidget = new KTabWidget();
+    d->tabWidget = new QTabWidget();
     QHBoxLayout *layout = new QHBoxLayout(this);
     layout->addWidget(d->tabWidget);
 
-    d->tabWidget->setTabBarHidden(true);
+    d->tabWidget->tabBar()->hide();
 }
 
 GenericAdvancedOptionsWidget::~GenericAdvancedOptionsWidget()
@@ -65,7 +67,7 @@ bool GenericAdvancedOptionsWidget::validateParameterValues()
 
 void GenericAdvancedOptionsWidget::setTabBarHidden(bool hidden)
 {
-    d->tabWidget->setTabBarHidden(hidden);
+    d->tabWidget->tabBar()->setHidden(hidden);
 }
 
 void GenericAdvancedOptionsWidget::submit()
@@ -79,7 +81,7 @@ void GenericAdvancedOptionsWidget::submit()
 void GenericAdvancedOptionsWidget::addTab(AbstractAccountParametersWidget* tab, const QString& label)
 {
     if (d->tabWidget->count() == 1) {
-        d->tabWidget->setTabBarHidden(false);
+        d->tabWidget->tabBar()->show();
     }
 
     d->tabWidget->addTab(tab, label);

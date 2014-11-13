@@ -20,7 +20,7 @@
 
 #include "abstract-account-ui-plugin.h"
 
-#include <KDebug>
+#include <QDebug>
 
 class AbstractAccountUiPlugin::Private
 {
@@ -55,7 +55,7 @@ void AbstractAccountUiPlugin::registerProvidedProtocol(const QString &connection
     // Check the protocol is not already entered
     Q_FOREACH (const QString &value, d->providedProtocols.values(connectionManager)) {
         if (value == protocol) {
-            kWarning() << "Tried to add connection manager:" << connectionManager
+            qWarning() << "Tried to add connection manager:" << connectionManager
                        << "and protocol:" << protocol << "combination twice.";
             return;
         }

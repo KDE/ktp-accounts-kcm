@@ -25,7 +25,7 @@
 
 #include "kcm_telepathy_accounts_export.h"
 
-#include <QtCore/QAbstractListModel>
+#include <QAbstractListModel>
 
 #include <TelepathyQt/Profile>
 #include <TelepathyQt/ProtocolParameter>

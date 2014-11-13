@@ -33,7 +33,7 @@ set (ktpaccountskcm_plugin_haze_SRCS
      sipe-advanced-settings-widget.cpp
 )
 
-kde4_add_ui_files (ktpaccountskcm_plugin_haze_SRCS
+ki18n_wrap_ui (ktpaccountskcm_plugin_haze_SRCS
                    icq-main-options-widget.ui
                    icq-server-settings-widget.ui
                    myspaceim-main-options-widget.ui
@@ -52,15 +52,16 @@ kde4_add_ui_files (ktpaccountskcm_plugin_haze_SRCS
                    sipe-advanced-settings-widget.ui
 )
 
-kde4_add_plugin (ktpaccountskcm_plugin_haze
+add_library (ktpaccountskcm_plugin_haze MODULE
                  ${ktpaccountskcm_plugin_haze_SRCS}
 )
 
 target_link_libraries (ktpaccountskcm_plugin_haze
                        ktpaccountskcminternal
-                       ${QT_LIBRARIES}
-                       ${KDE4_KDEUI_LIBS}
-                       ${TELEPATHY_QT4_LIBRARIES}
+                       Qt5::Core
+                       Qt5::Widgets
+                       KF5::Codecs
+                       ${TELEPATHY_QT5_LIBRARIES}
 )
 
 # Install:
