@@ -38,6 +38,7 @@
 #include <QList>
 #include <QCheckBox>
 #include <QDialog>
+#include <QDialogButtonBox>
 
 class AccountEditWidget::Private
 {
@@ -220,7 +221,15 @@ void AccountEditWidget::onAdvancedClicked()
     AbstractAccountParametersWidget *advancedWidget;
     advancedWidget = d->accountUi->advancedOptionsWidget(d->parameterModel,
                                                          dialog.data());
-//     dialog.data()->setMainWidget(advancedWidget);
+
+    QDialogButtonBox *dbb = new QDialogButtonBox(QDialogButtonBox::Ok | QDialogButtonBox::Cancel, dialog.data());
+    connect(dbb, SIGNAL(accepted()), dialog.data(), SLOT(accept()));
+    connect(dbb, SIGNAL(rejected()), dialog.data(), SLOT(reject()));
+
+    QVBoxLayout *layout = new QVBoxLayout(dialog.data());
+    layout->addWidget(advancedWidget);
+    layout->addWidget(dbb);
+    dialog.data()->setLayout(layout);
 
     // loop until the entered values are ok or the user cancels the dialog
 
