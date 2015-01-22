@@ -86,8 +86,8 @@ target_link_libraries (ktpaccountskcminternal
 
 
 set_target_properties (ktpaccountskcminternal PROPERTIES
-                       VERSION ${GENERIC_LIB_VERSION}
-                       SOVERSION ${GENERIC_LIB_SOVERSION}
+                       VERSION ${KTP_ACCOUNTS_KCM_VERSION}
+                       SOVERSION ${KTP_ACCOUNTS_KCM_SONUMBER}
 )
 
 if (MSVC)
