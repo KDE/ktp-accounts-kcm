@@ -3,6 +3,7 @@ project (ktpaccountskcm-plugin-kaccounts)
 include_directories (${CMAKE_CURRENT_BINARY_DIR}
                      ${CMAKE_CURRENT_SOURCE_DIR}
                      ${KACCOUNTS_INCLUDE_DIR}
+                     ${ACCOUNTSQT_INCLUDE_DIRS}
 )
 
 set (ktpaccountskcm_plugin_kaccounts_SRCS

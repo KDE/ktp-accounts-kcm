@@ -39,8 +39,12 @@ public:
     KAccountsUiProvider(QObject *parent = 0);
     virtual ~KAccountsUiProvider();
 
-    virtual void showDialog();
+    virtual void init(KAccountsUiPlugin::UiType type);
+
+    virtual void showNewAccountDialog();
+    virtual void showConfigureAccountDialog(const quint32 accountId);
     virtual void setProviderName(const QString &providerName);
+    virtual QStringList supportedServicesForConfig() const;
 
 Q_SIGNALS:
     void feedbackMessage(const QString &text, const QString &comment, KMessageWidget::MessageType);
@@ -49,8 +53,11 @@ private Q_SLOTS:
     void onProfileManagerReady(Tp::PendingOperation*);
     void onConnectionManagerReady(Tp::PendingOperation*);
     void onAccountCreated(Tp::PendingOperation*);
-    void onDialogAccepted();
-    void onDialogRejected();
+    void onCreateAccountDialogAccepted();
+    void onCreateAccountDialogRejected();
+    void onConfigureAccountDialogAccepted();
+    void onConfigureAccountDialogRejected();
+    void onConfigureAccountFinished();
 
 private:
     class Private;

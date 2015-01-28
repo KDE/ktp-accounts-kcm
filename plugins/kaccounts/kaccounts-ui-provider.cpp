@@ -23,6 +23,8 @@
 #include <KCMTelepathyAccounts/ParameterEditModel>
 #include <KCMTelepathyAccounts/account-edit-widget.h>
 
+#include <KAccounts/getcredentialsjob.h>
+
 #include <TelepathyQt/Profile>
 #include <TelepathyQt/ConnectionManager>
 #include <TelepathyQt/AccountManager>
@@ -30,8 +32,11 @@
 #include <TelepathyQt/PendingReady>
 #include <TelepathyQt/PendingAccount>
 #include <TelepathyQt/ProfileManager>
+#include <TelepathyQt/PendingStringList>
 
 #include <KLocalizedString>
+#include <KSharedConfig>
+#include <KConfigGroup>
 
 #include <QDBusConnection>
 #include <QDebug>
@@ -51,6 +56,9 @@ public:
     QDialog *dialog;
     bool thingsReady;
     QString profileName;
+    KAccountsUiPlugin::UiType type;
+    Tp::AccountPtr account;
+    bool reconnectRequired;
 };
 
 KAccountsUiProvider::KAccountsUiProvider(QObject *parent)
@@ -58,6 +66,7 @@ KAccountsUiProvider::KAccountsUiProvider(QObject *parent)
       d(new Private)
 {
     d->accountEditWidget = 0;
+    d->reconnectRequired = false;
 
     Tp::registerTypes();
 
@@ -70,19 +79,35 @@ KAccountsUiProvider::KAccountsUiProvider(QObject *parent)
 
     d->accountManager = Tp::AccountManager::create(accountFactory);
     d->accountManager->becomeReady();
-
-    d->profileManager = Tp::ProfileManager::create(QDBusConnection::sessionBus());
-    Tp::PendingOperation *op = d->profileManager->becomeReady(Tp::Features() << Tp::ProfileManager::FeatureFakeProfiles);
-    connect(op, SIGNAL(finished(Tp::PendingOperation*)), this, SLOT(onProfileManagerReady(Tp::PendingOperation*)));
 }
 
 KAccountsUiProvider::~KAccountsUiProvider()
 {
     // tp managers are automatically ref-count-deleted
-
-    delete d->accountEditWidget;
-    delete d->dialog;
     delete d;
+}
+
+QStringList KAccountsUiProvider::supportedServicesForConfig() const
+{
+    return QStringList() << QStringLiteral("IM");
+}
+
+void KAccountsUiProvider::init(KAccountsUiPlugin::UiType type)
+{
+    d->type = type;
+
+    if (d->type == KAccountsUiPlugin::NewAccountDialog) {
+        d->profileManager = Tp::ProfileManager::create(QDBusConnection::sessionBus());
+        Tp::PendingOperation *op = d->profileManager->becomeReady(Tp::Features() << Tp::ProfileManager::FeatureFakeProfiles);
+        connect(op, SIGNAL(finished(Tp::PendingOperation*)), this, SLOT(onProfileManagerReady(Tp::PendingOperation*)));
+    } else {
+        if (d->accountManager->isReady()) {
+            Q_EMIT uiReady();
+        } else {
+            // let's wait for AM to become ready first
+            connect(d->accountManager->becomeReady(), &Tp::PendingOperation::finished, this, &KAccountsUiProvider::uiReady);
+        }
+    }
 }
 
 void KAccountsUiProvider::onProfileManagerReady(Tp::PendingOperation *op)
@@ -96,7 +121,7 @@ void KAccountsUiProvider::onProfileManagerReady(Tp::PendingOperation *op)
     // OR if profile name was set and profile manager is not yet ready, return.
     // If profile name is set and this returns, it will get through this again when profile manager
     // becomes ready and vice-versa.
-    if (d->profileName.isEmpty() || !d->profileManager->isReady(Tp::Features() << Tp::ProfileManager::FeatureFakeProfiles)) {
+    if (d->profileName.isEmpty() || (d->profileManager && !d->profileManager->isReady(Tp::Features() << Tp::ProfileManager::FeatureFakeProfiles))) {
         return;
     }
 
@@ -132,6 +157,7 @@ void KAccountsUiProvider::onConnectionManagerReady(Tp::PendingOperation*)
     }
 
     d->dialog = new QDialog();
+    d->dialog->setAttribute(Qt::WA_DeleteOnClose);
     QVBoxLayout *mainLayout = new QVBoxLayout(d->dialog);
     d->dialog->setLayout(mainLayout);
 
@@ -140,11 +166,11 @@ void KAccountsUiProvider::onConnectionManagerReady(Tp::PendingOperation*)
                                                  QString(),
                                                  parameterModel,
                                                  doConnectOnAdd,
-                                                 0);
+                                                 d->dialog);
 
     QDialogButtonBox *dbb = new QDialogButtonBox(QDialogButtonBox::Ok | QDialogButtonBox::Cancel, d->dialog);
-    connect(dbb, SIGNAL(accepted()), this, SLOT(onDialogAccepted()));
-    connect(dbb, SIGNAL(rejected()), this, SLOT(onDialogRejected()));
+    connect(dbb, SIGNAL(accepted()), this, SLOT(onCreateAccountDialogAccepted()));
+    connect(dbb, SIGNAL(rejected()), this, SLOT(onCreateAccountDialogRejected()));
 
     mainLayout->addWidget(d->accountEditWidget);
     mainLayout->addWidget(dbb);
@@ -157,14 +183,76 @@ void KAccountsUiProvider::onConnectionManagerReady(Tp::PendingOperation*)
     Q_EMIT uiReady();
 }
 
-void KAccountsUiProvider::showDialog()
+void KAccountsUiProvider::showNewAccountDialog()
 {
     d->dialog->exec();
 }
 
-void KAccountsUiProvider::onDialogAccepted()
+void KAccountsUiProvider::showConfigureAccountDialog(const quint32 accountId)
 {
-    qDebug();
+    KSharedConfigPtr kaccountsConfig = KSharedConfig::openConfig(QStringLiteral("kaccounts-ktprc"));
+    KConfigGroup ktpKaccountsGroup = kaccountsConfig->group(QStringLiteral("kaccounts-ktp"));
+    QString accountUid = ktpKaccountsGroup.readEntry(QString::number(accountId));
+
+    if (accountUid.isEmpty()) {
+        qWarning() << "Empty accountUid, returning...";
+        return;
+    }
+
+    d->account = d->accountManager->accountForObjectPath(accountUid);
+
+    // Get the protocol's parameters and values.
+    Tp::ProtocolInfo protocolInfo = d->account->protocolInfo();
+    Tp::ProtocolParameterList parameters = protocolInfo.parameters();
+    QVariantMap parameterValues = d->account->parameters();
+
+    // Add the parameters to the model.
+    ParameterEditModel *parameterModel = new ParameterEditModel(this);
+    parameterModel->addItems(parameters, d->account->profile()->parameters(), parameterValues);
+
+    //update the parameter model with the password from kwallet (if applicable)
+    Tp::ProtocolParameter passwordParameter = parameterModel->parameter(QLatin1String("password"));
+
+
+    d->dialog = new QDialog();
+    d->dialog->setAttribute(Qt::WA_DeleteOnClose);
+    QVBoxLayout *mainLayout = new QVBoxLayout(d->dialog);
+    d->dialog->setLayout(mainLayout);
+
+    QDialogButtonBox *dbb = new QDialogButtonBox(QDialogButtonBox::Ok | QDialogButtonBox::Cancel, d->dialog);
+    connect(dbb, SIGNAL(accepted()), this, SLOT(onConfigureAccountDialogAccepted()));
+    connect(dbb, SIGNAL(rejected()), this, SLOT(onConfigureAccountDialogRejected()));
+
+    if (passwordParameter.isValid()) {
+        QModelIndex index = parameterModel->indexForParameter(passwordParameter);
+        GetCredentialsJob *credentialsJob = new GetCredentialsJob(accountId, this);
+        connect(credentialsJob, &GetCredentialsJob::finished, [=](KJob *job){
+            QString secret = qobject_cast<GetCredentialsJob*>(job)->credentialsData().value(QLatin1String("Secret")).toString();
+            parameterModel->setData(index, secret, Qt::EditRole);
+        });
+        credentialsJob->start();
+    }
+
+
+    d->accountEditWidget = new AccountEditWidget(d->account->profile(),
+                                                 d->account->displayName(),
+                                                 parameterModel,
+                                                 doNotConnectOnAdd,
+                                                 d->dialog);
+
+    connect(this,
+            SIGNAL(feedbackMessage(QString,QString,KMessageWidget::MessageType)),
+            d->accountEditWidget,
+            SIGNAL(feedbackMessage(QString,QString,KMessageWidget::MessageType)), Qt::UniqueConnection);
+
+    mainLayout->addWidget(d->accountEditWidget);
+    mainLayout->addWidget(dbb);
+
+    d->dialog->exec();
+}
+
+void KAccountsUiProvider::onCreateAccountDialogAccepted()
+{
     // Get the parameter values.
     QVariantMap values  = d->accountEditWidget->parametersSet();
 
@@ -208,14 +296,13 @@ void KAccountsUiProvider::onDialogAccepted()
             SLOT(onAccountCreated(Tp::PendingOperation*)));
 }
 
-void KAccountsUiProvider::onDialogRejected()
+void KAccountsUiProvider::onCreateAccountDialogRejected()
 {
     d->dialog->reject();
 }
 
 void KAccountsUiProvider::onAccountCreated(Tp::PendingOperation *op)
 {
-    qDebug();
     if (op->isError()) {
         Q_EMIT feedbackMessage(i18n("Failed to create account"),
                                 i18n("Possibly not all required fields are valid"),
@@ -232,7 +319,7 @@ void KAccountsUiProvider::onAccountCreated(Tp::PendingOperation *op)
                                 QString(),
                                 KMessageWidget::Error);
         qWarning() << "Method called with wrong type.";
-        Q_EMIT error(QStringLiteral("Eh"));
+        Q_EMIT error(QStringLiteral("Something went wrong with Telepathy"));
         return;
     }
 
@@ -251,4 +338,77 @@ void KAccountsUiProvider::onAccountCreated(Tp::PendingOperation *op)
     Q_EMIT success(values[QStringLiteral("account")].toString(), values[QStringLiteral("password")].toString(), additionalData);
 
     d->dialog->accept();
+}
+
+void KAccountsUiProvider::onConfigureAccountDialogAccepted()
+{
+    QVariantMap setParameters = d->accountEditWidget->parametersSet();
+    QStringList unsetParameters = d->accountEditWidget->parametersUnset();
+
+    // Check all pages of parameters pass validation.
+    if (!d->accountEditWidget->validateParameterValues()) {
+        qWarning() << "A widget failed parameter validation. Not accepting wizard.";
+        return;
+    }
+
+    //remove password from setParameters as this is now stored by kwallet instead
+    setParameters.remove(QStringLiteral("password"));
+    unsetParameters.append(QStringLiteral("password")); //remove the password from mission control
+
+    Tp::PendingStringList *psl = d->account->updateParameters(setParameters, unsetParameters);
+
+    connect(psl, &Tp::PendingOperation::finished, this, [=](Tp::PendingOperation *op){
+        if (op->isError()) {
+            // FIXME: Visual feedback in GUI to user.
+            qWarning() << "Could not update parameters:" << op->errorName() << op->errorMessage();
+            return;
+        }
+
+        Tp::PendingStringList *psl = qobject_cast<Tp::PendingStringList*>(op);
+
+        Q_ASSERT(psl);
+        if (!psl) {
+            qWarning() << "Something  weird happened";
+        }
+
+        if (psl->result().size() > 0) {
+            qDebug() << "The following parameters won't be updated until reconnection: " << psl->result();
+            d->reconnectRequired = true;
+        }
+
+        QVariantMap values = d->accountEditWidget->parametersSet();
+
+        if (values.contains(QLatin1String("password"))) {
+            //TODO Store the new password in sso
+        } else {
+            //TODO ...or remove it.
+        }
+
+        if (d->accountEditWidget->updateDisplayName()) {
+            connect(d->account->setDisplayName(d->accountEditWidget->displayName()), &Tp::PendingOperation::finished,
+                    this, [=](Tp::PendingOperation *op) {
+                        if (op->isError()) {
+                            qWarning() << "Error updating display name:" << op->errorName() << op->errorMessage();
+                        }
+
+                        onConfigureAccountFinished();
+                    });
+        } else {
+            onConfigureAccountFinished();
+        }
+    });
+}
+
+void KAccountsUiProvider::onConfigureAccountFinished()
+{
+    if (d->reconnectRequired) {
+        d->account->reconnect();
+    }
+
+    d->dialog->accept();
+}
+
+void KAccountsUiProvider::onConfigureAccountDialogRejected()
+{
+    d->dialog->reject();
 }
