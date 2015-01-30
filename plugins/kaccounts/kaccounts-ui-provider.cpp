@@ -24,6 +24,13 @@
 #include <KCMTelepathyAccounts/account-edit-widget.h>
 
 #include <KAccounts/getcredentialsjob.h>
+#include <KAccounts/core.h>
+
+#include <SignOn/Identity>
+#include <SignOn/IdentityInfo>
+#include <Accounts/Account>
+#include <Accounts/AccountService>
+#include <Accounts/Manager>
 
 #include <TelepathyQt/Profile>
 #include <TelepathyQt/ConnectionManager>
@@ -218,6 +225,7 @@ void KAccountsUiProvider::showConfigureAccountDialog(const quint32 accountId)
     d->dialog->setAttribute(Qt::WA_DeleteOnClose);
     QVBoxLayout *mainLayout = new QVBoxLayout(d->dialog);
     d->dialog->setLayout(mainLayout);
+    d->dialog->setProperty("accountId", accountId);
 
     QDialogButtonBox *dbb = new QDialogButtonBox(QDialogButtonBox::Ok | QDialogButtonBox::Cancel, d->dialog);
     connect(dbb, SIGNAL(accepted()), this, SLOT(onConfigureAccountDialogAccepted()));
@@ -380,8 +388,10 @@ void KAccountsUiProvider::onConfigureAccountDialogAccepted()
 
         if (values.contains(QLatin1String("password"))) {
             //TODO Store the new password in sso
+            quint32 accountId = d->dialog->property("accountId").toUInt();
+            storePasswordInSso(accountId, values.value(QStringLiteral("password")).toString());
         } else {
-            //TODO ...or remove it.
+            //TODO ...or remove it?
         }
 
         if (d->accountEditWidget->updateDisplayName()) {
@@ -411,4 +421,21 @@ void KAccountsUiProvider::onConfigureAccountFinished()
 void KAccountsUiProvider::onConfigureAccountDialogRejected()
 {
     d->dialog->reject();
+}
+
+void KAccountsUiProvider::storePasswordInSso(const quint32 accountId, const QString &password)
+{
+    Accounts::Manager *manager = KAccounts::accountsManager();
+    Accounts::Account *account = manager->account(accountId);
+    SignOn::Identity *identity;
+
+    if (account) {
+        Accounts::AccountService *service = new Accounts::AccountService(account, manager->service(QString()), this);
+        Accounts::AuthData authData = service->authData();
+        identity = SignOn::Identity::existingIdentity(authData.credentialsId(), this);
+
+        SignOn::IdentityInfo info;
+        info.setSecret(password);
+        identity->storeCredentials(info);
+    }
 }

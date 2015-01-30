@@ -59,6 +59,8 @@ private Q_SLOTS:
     void onConfigureAccountDialogRejected();
     void onConfigureAccountFinished();
 
+    void storePasswordInSso(const quint32 accountId, const QString &password);
+
 private:
     class Private;
     Private * const d;
