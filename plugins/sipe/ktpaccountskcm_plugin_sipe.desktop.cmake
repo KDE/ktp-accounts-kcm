@@ -1,7 +1,7 @@
 [Desktop Entry]
 Encoding=UTF-8
 Comment=Custom account configuration user interface for accounts using the sipe connection manager.
-Comment[bs]=Korisnički interfejs za konfiguraciju korisničkih naloga koristeći sipe menadžer konekcja.
+Comment[bs]=Korisnički interfejs za konfiguraciju korisničkih naloga koristeći sipzmenadžer konekcja.
 Comment[ca]=Interfície d'usuari de configuració de compte personalitzat per comptes que utilitzen el gestor de connexions Sipe.
 Comment[ca@valencia]=Interfície d'usuari de configuració de compte personalitzat per comptes que utilitzen el gestor de connexions Sipe.
 Comment[cs]=Vlastní uživatelské rozhraní nastavení účtů pro účty používající správce spojení sipe.
