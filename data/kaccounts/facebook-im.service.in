@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <service id="facebook-im">
   <type>IM</type>
-  <!-- "Chat" on Facebook - Service name being displayed as a checkbox label to enable/disable this service
+  <!-- "Chat" on Facebook - The string below is being displayed as a checkbox label to enable/disable this service
        Would be nice to use the localized name of this service if it exists/makes sense -->
   <_name>Chat</_name>
   <icon>facebook-im</icon>
