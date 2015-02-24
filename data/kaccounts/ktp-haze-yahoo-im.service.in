@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<service id="ktp-haze-yahoo-im">
+  <type>IM</type>
+  <!-- Yahoo! Messenger Chat - The string below is being displayed as a checkbox label to enable/disable this service -->
+  <_name>Chat</_name>
+  <icon>im-yahoo</icon>
+  <provider>ktp-haze-yahoo</provider>
+  <translations>kaccounts-providers</translations>
+</service>
+
