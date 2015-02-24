@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<provider id="ktp-steam">
+    <_name>Steam Chat</_name>
+    <icon>input-gaming</icon>
+    <!-- Tooltip text appearing over the button to create this type of account -->
+    <_description>Steam Chat account</_description>
+    <translations>kaccounts-providers</translations>
+
+    <template>
+        <group name="auth">
+            <setting name="method">password</setting>
+            <setting name="mechanism">password</setting>
+        </group>
+    </template>
+</provider>

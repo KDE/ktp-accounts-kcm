@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<service id="ktp-steam-im">
+  <type>IM</type>
+  <!-- Steam Chat - The string below is being displayed as a checkbox label to enable/disable this service -->
+  <_name>Chat</_name>
+  <icon>input-gaming</icon>
+  <provider>ktp-steam</provider>
+  <translations>kaccounts-providers</translations>
+</service>
