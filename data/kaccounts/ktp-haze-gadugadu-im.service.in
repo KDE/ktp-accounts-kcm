@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<service id="ktp-gadugadu-im">
+  <type>IM</type>
+  <!-- Gadu-Gadu Chat - The string below is being displayed as a checkbox label to enable/disable this service -->
+  <_name>Chat</_name>
+  <icon>im-gadugadu</icon>
+  <provider>ktp-gadugadu</provider>
+  <translations>kaccounts-providers</translations>
+</service>
+
