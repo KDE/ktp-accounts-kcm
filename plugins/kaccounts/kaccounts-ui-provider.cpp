@@ -176,8 +176,8 @@ void KAccountsUiProvider::onConnectionManagerReady(Tp::PendingOperation*)
                                                  d->dialog);
 
     QDialogButtonBox *dbb = new QDialogButtonBox(QDialogButtonBox::Ok | QDialogButtonBox::Cancel, d->dialog);
-    connect(dbb, SIGNAL(accepted()), this, SLOT(onCreateAccountDialogAccepted()));
-    connect(dbb, SIGNAL(rejected()), this, SLOT(onCreateAccountDialogRejected()));
+    connect(dbb, &QDialogButtonBox::accepted, this, &KAccountsUiProvider::onCreateAccountDialogAccepted);
+    connect(dbb, &QDialogButtonBox::rejected, this, &KAccountsUiProvider::onCreateAccountDialogRejected);
 
     mainLayout->addWidget(d->accountEditWidget);
     mainLayout->addWidget(dbb);
@@ -228,8 +228,8 @@ void KAccountsUiProvider::showConfigureAccountDialog(const quint32 accountId)
     d->dialog->setProperty("accountId", accountId);
 
     QDialogButtonBox *dbb = new QDialogButtonBox(QDialogButtonBox::Ok | QDialogButtonBox::Cancel, d->dialog);
-    connect(dbb, SIGNAL(accepted()), this, SLOT(onConfigureAccountDialogAccepted()));
-    connect(dbb, SIGNAL(rejected()), this, SLOT(onConfigureAccountDialogRejected()));
+    connect(dbb, &QDialogButtonBox::accepted, this, &KAccountsUiProvider::onConfigureAccountDialogAccepted);
+    connect(dbb, &QDialogButtonBox::rejected, this, &KAccountsUiProvider::onConfigureAccountDialogRejected);
 
     if (passwordParameter.isValid()) {
         QModelIndex index = parameterModel->indexForParameter(passwordParameter);
@@ -237,6 +237,7 @@ void KAccountsUiProvider::showConfigureAccountDialog(const quint32 accountId)
         connect(credentialsJob, &GetCredentialsJob::finished, [=](KJob *job){
             QString secret = qobject_cast<GetCredentialsJob*>(job)->credentialsData().value(QLatin1String("Secret")).toString();
             parameterModel->setData(index, secret, Qt::EditRole);
+            job->deleteLater();
         });
         credentialsJob->start();
     }
@@ -307,6 +308,7 @@ void KAccountsUiProvider::onCreateAccountDialogAccepted()
 void KAccountsUiProvider::onCreateAccountDialogRejected()
 {
     d->dialog->reject();
+    Q_EMIT error(QStringLiteral("User Cancelled"));
 }
 
 void KAccountsUiProvider::onAccountCreated(Tp::PendingOperation *op)
@@ -421,6 +423,7 @@ void KAccountsUiProvider::onConfigureAccountFinished()
 void KAccountsUiProvider::onConfigureAccountDialogRejected()
 {
     d->dialog->reject();
+    Q_EMIT error(QStringLiteral("User Cancelled"));
 }
 
 void KAccountsUiProvider::storePasswordInSso(const quint32 accountId, const QString &password)
