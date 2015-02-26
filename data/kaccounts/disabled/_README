@@ -1,0 +1,20 @@
+This folder contains provider/service files for services or accounts that are
+either currently broken or not properly supported. You can install these at
+your own risk and play around, but please don't report any bugs for these.
+
+You can install these by executing:
+
+mkdir -p build && cd build && cmake .. && make install
+
+===============================================================================
+
+Current disabled providers:
+
+ * steam/ktp-haze-steam-mobile
+
+   This requires the pidgin-opensteamworks plugin, which uses a bit of a hack
+   in order to store the authentication data and supports only "libgnome-keyring.so"
+   which usually requires manual symlinking of system libraries. This is very bad
+   and thus is not officially supported by us. Once it's using the keyring properly
+   via the APIs meant to be used or even better once it works with KWallet (properly)
+   it will be moved to supported providers.

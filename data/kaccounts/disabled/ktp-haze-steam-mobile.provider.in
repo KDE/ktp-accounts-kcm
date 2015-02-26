@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<provider id="ktp-steam">
+<provider id="ktp-haze-steam-mobile">
     <_name>Steam Chat</_name>
     <icon>input-gaming</icon>
     <!-- Tooltip text appearing over the button to create this type of account -->
