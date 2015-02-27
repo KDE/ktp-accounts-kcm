@@ -16,6 +16,7 @@ X-KDE-Weight=1
 Icon=telepathy-kde
 
 Name=Accounts
+Name[ast]=Cuentes
 Name[bs]=Nalozi
 Name[ca]=Comptes
 Name[ca@valencia]=Comptes
