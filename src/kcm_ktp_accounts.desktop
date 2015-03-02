@@ -63,6 +63,7 @@ Name[x-test]=xxAccountsxx
 Name[zh_CN]=账户
 Name[zh_TW]=帳號
 Comment=Add, edit and remove your instant messaging and VoIP accounts.
+Comment[ast]=Amiesta, edita y desanicia les tos cuentes de mensaxería nel intre y VoIP.
 Comment[bs]=Dodajite, mijenjajte i uklanjajte naloge za instant poruke i VoIP.
 Comment[ca]=Afegeix, edita i elimina els comptes de missatgeria instantània i VoIP.
 Comment[ca@valencia]=Afig, edita i elimina els comptes de missatgeria instantània i VoIP.
