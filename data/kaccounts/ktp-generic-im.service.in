@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<service id="ktp-generic-im">
+  <type>IM</type>
+  <name>Chat</name>
+  <icon>telepathy-kde</icon>
+  <provider>ktp-generic</provider>
+</service>
