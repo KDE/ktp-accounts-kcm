@@ -99,13 +99,7 @@ endif (MSVC)
 # Install:
 install (TARGETS ktpaccountskcminternal
          ${INSTALL_TARGETS_DEFAULT_ARGS}
-)
-
-install (FILES
-        ${libktpaccountskcminternal_HDRS}
-        ${libktpaccountskcminternal_PRETTY_HDRS}
-        kcm_telepathy_accounts_export.h
-        DESTINATION ${INCLUDE_INSTALL_DIR}/KCMTelepathyAccounts COMPONENT Devel
+         LIBRARY NAMELINK_SKIP
 )
 
 install (FILES
