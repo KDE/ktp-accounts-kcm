@@ -2,7 +2,6 @@ project (ktpaccountskcm-plugin-kaccounts)
 
 include_directories (${CMAKE_CURRENT_BINARY_DIR}
                      ${CMAKE_CURRENT_SOURCE_DIR}
-                     ${KACCOUNTS_INCLUDE_DIR}
                      ${ACCOUNTSQT_INCLUDE_DIRS}
                      ${SIGNONQT_INCLUDE_DIRS}
 
@@ -22,7 +21,7 @@ target_link_libraries (ktpaccountskcm_plugin_kaccounts
                        Qt5::Widgets
                        KF5::TextWidgets
                        ${TELEPATHY_QT5_LIBRARIES}
-                       ${KACCOUNTS_LIBRARIES}
+                       KAccounts
                        ${ACCOUNTSQT_LIBRARIES}
                        ${SIGNONQT_LIBRARIES}
 )
