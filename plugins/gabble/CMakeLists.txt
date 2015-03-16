@@ -35,7 +35,6 @@ target_link_libraries (ktpaccountskcm_plugin_gabble
                        ktpaccountskcminternal
                        Qt5::Core
                        Qt5::Widgets
-                       KF5::TextWidgets
                        ${TELEPATHY_QT5_LIBRARIES}
 )
 

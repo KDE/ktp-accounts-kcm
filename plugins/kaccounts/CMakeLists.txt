@@ -19,7 +19,6 @@ target_link_libraries (ktpaccountskcm_plugin_kaccounts
                        ktpaccountskcminternal
                        Qt5::Core
                        Qt5::Widgets
-                       KF5::TextWidgets
                        ${TELEPATHY_QT5_LIBRARIES}
                        KAccounts
                        ${ACCOUNTSQT_LIBRARIES}
