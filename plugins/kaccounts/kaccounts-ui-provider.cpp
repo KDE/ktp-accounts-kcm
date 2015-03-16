@@ -313,7 +313,7 @@ void KAccountsUiProvider::onCreateAccountDialogAccepted()
 void KAccountsUiProvider::onCreateAccountDialogRejected()
 {
     d->dialog->reject();
-    Q_EMIT error(QStringLiteral("User Cancelled"));
+    Q_EMIT error(QString());
 }
 
 void KAccountsUiProvider::onAccountCreated(Tp::PendingOperation *op)
@@ -428,7 +428,7 @@ void KAccountsUiProvider::onConfigureAccountFinished()
 void KAccountsUiProvider::onConfigureAccountDialogRejected()
 {
     d->dialog->reject();
-    Q_EMIT error(QStringLiteral("User Cancelled"));
+    Q_EMIT error(QString());
 }
 
 void KAccountsUiProvider::storePasswordInSso(const quint32 accountId, const QString &password)
