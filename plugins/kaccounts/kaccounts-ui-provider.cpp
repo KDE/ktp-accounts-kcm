@@ -136,6 +136,11 @@ void KAccountsUiProvider::onProfileManagerReady(Tp::PendingOperation *op)
 
     d->profile = d->profileManager->profileForService(d->profileName);
 
+    if (d->profile.isNull()) {
+        Q_EMIT  error(i18n("To connect to this IM network, you need to install additional plugins. Please install the telepathy-haze and telepathy-gabble packages using your package manager."));
+        return;
+    }
+
     d->connectionManager = Tp::ConnectionManager::create(d->profile->cmName());
     connect(d->connectionManager->becomeReady(), SIGNAL(finished(Tp::PendingOperation*)),
             this, SLOT(onConnectionManagerReady(Tp::PendingOperation*)));

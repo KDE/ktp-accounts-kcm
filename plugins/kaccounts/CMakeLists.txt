@@ -7,6 +7,8 @@ include_directories (${CMAKE_CURRENT_BINARY_DIR}
 
 )
 
+add_definitions(-DTRANSLATION_DOMAIN=\"kcm_ktp_accounts\")
+
 set (ktpaccountskcm_plugin_kaccounts_SRCS
      kaccounts-ui-provider.cpp
 )
@@ -19,7 +21,6 @@ target_link_libraries (ktpaccountskcm_plugin_kaccounts
                        ktpaccountskcminternal
                        Qt5::Core
                        Qt5::Widgets
-                       KF5::TextWidgets
                        ${TELEPATHY_QT5_LIBRARIES}
                        KAccounts
                        ${ACCOUNTSQT_LIBRARIES}
