@@ -4,6 +4,8 @@ include_directories (${CMAKE_CURRENT_BINARY_DIR}
                      ${CMAKE_CURRENT_SOURCE_DIR}
 )
 
+add_definitions(-DTRANSLATION_DOMAIN=\"kcmtelepathyaccounts_plugin_gabble\")
+
 set (ktpaccountskcm_plugin_gabble_SRCS
      gabble-account-ui-plugin.cpp
      gabble-account-ui.cpp
