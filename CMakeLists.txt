@@ -7,7 +7,7 @@ find_package(ECM 1.0.0 REQUIRED NO_MODULE)
 set(CMAKE_MODULE_PATH ${ECM_MODULE_PATH} ${ECM_KDE_MODULE_DIR} ${CMAKE_CURRENT_SOURCE_DIR}/cmake/modules)
 
 find_package(Qt5 5.2.0 CONFIG REQUIRED Core Widgets DBus)
-find_package(KF5 5.0.0 REQUIRED KCMUtils KIO I18n WidgetsAddons Codecs CoreAddons ConfigWidgets IconThemes ItemViews)
+find_package(KF5 5.0.0 REQUIRED KCMUtils KIO I18n WidgetsAddons Codecs CoreAddons ConfigWidgets IconThemes ItemViews TextWidgets)
 
 set(KTP_ACCOUNTS_KCM_SONUMBER "9")
 set(KTP_ACCOUNTS_KCM_VERSION "0.${KTP_ACCOUNTS_KCM_SONUMBER}.80")
