@@ -165,7 +165,7 @@ void AbstractAccountParametersWidget::submit()
 
     //reset disabled widgets to their default values
     Q_FOREACH (QWidget *w, d->mappedWidgets) {
-        if (!w->isEnabled()) {
+        if (!w->isEnabled() && w->property("noDefault").toBool() != true) {
             QModelIndex index = d->parameterModel->index(d->mapper->mappedSection(w), 0);
             QVariant defaultValue = d->parameterModel->data(index, ParameterEditModel::DefaultValueRole);
             d->parameterModel->setData(index, defaultValue, Qt::EditRole);
