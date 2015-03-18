@@ -10,7 +10,7 @@ find_package(Qt5 5.2.0 CONFIG REQUIRED Core Widgets DBus)
 find_package(KF5 5.0.0 REQUIRED KCMUtils KIO I18n WidgetsAddons Codecs CoreAddons ConfigWidgets IconThemes ItemViews)
 
 set(KTP_ACCOUNTS_KCM_SONUMBER "9")
-set(KTP_ACCOUNTS_KCM_VERSION "0.${KTP_ACCOUNTS_KCM_SONUMBER}.80")
+set(KTP_ACCOUNTS_KCM_VERSION "15.03.95")
 
 set(IS_KTP_INTERNAL_MODULE TRUE)
 
