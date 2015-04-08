@@ -1,7 +1,6 @@
 [Desktop Entry]
 Encoding=UTF-8
 Comment=Custom account configuration user interface for accounts using the Rakia/SofiaSIP connection manager.
-Comment[ast]=Interfaz d'usuariu de configuración de cuenta personalizada pa cuentes qu'usen el xestor de conexones Rakia/SofiaSIP.
 Comment[bs]=Korisnički interfejs za konfiguraciju korisničkih naloga koristeći Rakia/Sofia SIP menadžer konekcja.
 Comment[ca]=Interfície d'usuari de configuració de compte personalitzat per comptes que utilitzen el gestor de connexions Rakia/SofiaSIP.
 Comment[ca@valencia]=Interfície d'usuari de configuració de compte personalitzat per comptes que utilitzen el gestor de connexions Rakia/SofiaSIP.
@@ -45,7 +44,6 @@ Comment[zh_CN]=通过 Rakia/SofiaSIP 连接管理器自定义账户的配置界�
 Comment[zh_TW]=對使用 Rakia/SofiaSIP 連線管理員的帳號自訂帳號設定使用者介面。
 Icon=blockdevice
 Name=Rakia/SofiaSIP Account Configuration User Interface
-Name[ast]=Interfaz d'usuariu de configuración de cuenta Rakia/SofiaSIP
 Name[bs]=Korisnički interfejs za konfiguraciju korisničkih naloga Rakia/Sofia SIP
 Name[ca]=Interfície d'usuari de configuració de compte de Rakia/SofiaSIP
 Name[ca@valencia]=Interfície d'usuari de configuració de compte de Rakia/SofiaSIP
