@@ -40,6 +40,7 @@
 #include <TelepathyQt/PendingAccount>
 #include <TelepathyQt/ProfileManager>
 #include <TelepathyQt/PendingStringList>
+#include <TelepathyQt/AccountSet>
 
 #include <KLocalizedString>
 #include <KSharedConfig>
@@ -203,16 +204,16 @@ void KAccountsUiProvider::showNewAccountDialog()
 
 void KAccountsUiProvider::showConfigureAccountDialog(const quint32 accountId)
 {
-    KSharedConfigPtr kaccountsConfig = KSharedConfig::openConfig(QStringLiteral("kaccounts-ktprc"));
-    KConfigGroup ktpKaccountsGroup = kaccountsConfig->group(QStringLiteral("kaccounts-ktp"));
-    QString accountUid = ktpKaccountsGroup.readEntry(QString::number(accountId));
-
-    if (accountUid.isEmpty()) {
-        qWarning() << "Empty accountUid, returning...";
-        return;
+    Q_FOREACH (const Tp::AccountPtr &account, d->accountManager->validAccounts()->accounts())  {
+        if (account->uniqueIdentifier().endsWith(QString::number(accountId))) {
+            d->account = account;
+        }
     }
 
-    d->account = d->accountManager->accountForObjectPath(accountUid);
+    if (!d->account) {
+        qWarning() << "Couldn't find account for" << accountId;
+        return;
+    }
 
     // Get the protocol's parameters and values.
     Tp::ProtocolInfo protocolInfo = d->account->protocolInfo();
@@ -300,16 +301,18 @@ void KAccountsUiProvider::onCreateAccountDialogAccepted()
         values.remove(QLatin1String("password"));
     }
 
-    d->accountEditWidget->updateDisplayName();
-    Tp::PendingAccount *pa = d->accountManager->createAccount(d->profile->cmName(),
-                                                              d->profile->protocolName(),
-                                                              d->accountEditWidget->displayName(),
-                                                              values,
-                                                              properties);
+    onAccountCreated(values);
 
-    connect(pa,
-            SIGNAL(finished(Tp::PendingOperation*)),
-            SLOT(onAccountCreated(Tp::PendingOperation*)));
+//     d->accountEditWidget->updateDisplayName();
+//     Tp::PendingAccount *pa = d->accountManager->createAccount(d->profile->cmName(),
+//                                                               d->profile->protocolName(),
+//                                                               d->accountEditWidget->displayName(),
+//                                                               values,
+//                                                               properties);
+//
+//     connect(pa,
+//             SIGNAL(finished(Tp::PendingOperation*)),
+//             SLOT(onAccountCreated(Tp::PendingOperation*)));
 }
 
 void KAccountsUiProvider::onCreateAccountDialogRejected()
@@ -317,33 +320,33 @@ void KAccountsUiProvider::onCreateAccountDialogRejected()
     Q_EMIT error(QString());
 }
 
-void KAccountsUiProvider::onAccountCreated(Tp::PendingOperation *op)
+void KAccountsUiProvider::onAccountCreated(const QVariantMap &data)
 {
-    if (op->isError()) {
-        Q_EMIT feedbackMessage(i18n("Failed to create account"),
-                                i18n("Possibly not all required fields are valid"),
-                                KMessageWidget::Error);
-        qWarning() << "Adding Account failed:" << op->errorName() << op->errorMessage();
-        Q_EMIT error(op->errorMessage());
-        return;
-    }
-
-    // Get the PendingAccount.
-    Tp::PendingAccount *pendingAccount = qobject_cast<Tp::PendingAccount*>(op);
-    if (!pendingAccount) {
-        Q_EMIT feedbackMessage(i18n("Something went wrong with Telepathy"),
-                                QString(),
-                                KMessageWidget::Error);
-        qWarning() << "Method called with wrong type.";
-        Q_EMIT error(QStringLiteral("Something went wrong with Telepathy"));
-        return;
-    }
-
-    Tp::AccountPtr account = pendingAccount->account();
-    account->setServiceName(d->profile->serviceName());
-    if (d->accountEditWidget->connectOnAdd()) {
-        account->setRequestedPresence(Tp::Presence::available());
-    }
+//     if (op->isError()) {
+//         Q_EMIT feedbackMessage(i18n("Failed to create account"),
+//                                 i18n("Possibly not all required fields are valid"),
+//                                 KMessageWidget::Error);
+//         qWarning() << "Adding Account failed:" << op->errorName() << op->errorMessage();
+//         Q_EMIT error(op->errorMessage());
+//         return;
+//     }
+//
+//     // Get the PendingAccount.
+//     Tp::PendingAccount *pendingAccount = qobject_cast<Tp::PendingAccount*>(op);
+//     if (!pendingAccount) {
+//         Q_EMIT feedbackMessage(i18n("Something went wrong with Telepathy"),
+//                                 QString(),
+//                                 KMessageWidget::Error);
+//         qWarning() << "Method called with wrong type.";
+//         Q_EMIT error(QStringLiteral("Something went wrong with Telepathy"));
+//         return;
+//     }
+//
+//     Tp::AccountPtr account = pendingAccount->account();
+//     account->setServiceName(d->profile->serviceName());
+//     if (d->accountEditWidget->connectOnAdd()) {
+//         account->setRequestedPresence(Tp::Presence::available());
+//     }
 
     QVariantMap values  = d->accountEditWidget->parametersSet();
 

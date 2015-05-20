@@ -52,7 +52,7 @@ Q_SIGNALS:
 private Q_SLOTS:
     void onProfileManagerReady(Tp::PendingOperation*);
     void onConnectionManagerReady(Tp::PendingOperation*);
-    void onAccountCreated(Tp::PendingOperation*);
+    void onAccountCreated(const QVariantMap &data);
     void onCreateAccountDialogAccepted();
     void onCreateAccountDialogRejected();
     void onConfigureAccountDialogAccepted();
