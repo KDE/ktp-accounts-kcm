@@ -352,9 +352,9 @@ void KAccountsUiProvider::onAccountCreated(const QVariantMap &data)
 
     QVariantMap additionalData;
 
-    additionalData.insert(QStringLiteral("uid"), account->objectPath());
+//     additionalData.insert(QStringLiteral("uid"), account->objectPath());
 
-    Q_EMIT success(values[QStringLiteral("account")].toString(), values[QStringLiteral("password")].toString(), additionalData);
+    Q_EMIT success(values[QStringLiteral("account")].toString(), values[QStringLiteral("password")].toString(), values);
 
     d->dialog->accept();
 }
