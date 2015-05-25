@@ -6,4 +6,15 @@
   <icon>im-jabber-talk</icon>
   <provider>ktp-jabber</provider>
   <translations>kaccounts-providers</translations>
+
+  <template>
+      <group name="telepathy">
+          <setting name="manager">gabble</setting>
+          <setting name="protocol">jabber</setting>
+      </group>
+      <group name="auth">
+          <setting name="method">password</setting>
+          <setting name="mechanism">password</setting>
+      </group>
+  </template>
 </service>

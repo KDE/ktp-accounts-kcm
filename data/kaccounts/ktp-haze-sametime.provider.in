@@ -5,11 +5,5 @@
     <!-- Tooltip text appearing over the button to create this type of account -->
     <_description>Chat account in an IBM Sametime network</_description>
     <translations>kaccounts-providers</translations>
-
-    <template>
-        <group name="auth">
-            <setting name="method">password</setting>
-            <setting name="mechanism">password</setting>
-        </group>
-    </template>
+    <plugin>ktpaccountskcm_plugin_kaccounts</plugin>
 </provider>
