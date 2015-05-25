@@ -63,10 +63,12 @@ public:
     Tp::ProfileManagerPtr profileManager;
     QDialog *dialog;
     bool thingsReady;
-    QString profileName;
+    QString providerName;
     KAccountsUiPlugin::UiType type;
     Tp::AccountPtr account;
     bool reconnectRequired;
+    QString manager;
+    QString protocol;
 };
 
 KAccountsUiProvider::KAccountsUiProvider(QObject *parent)
@@ -77,16 +79,6 @@ KAccountsUiProvider::KAccountsUiProvider(QObject *parent)
     d->reconnectRequired = false;
 
     Tp::registerTypes();
-
-    // Start setting up the Telepathy AccountManager.
-    Tp::AccountFactoryPtr  accountFactory = Tp::AccountFactory::create(QDBusConnection::sessionBus(),
-                                                                       Tp::Features() << Tp::Account::FeatureCore
-                                                                       << Tp::Account::FeatureCapabilities
-                                                                       << Tp::Account::FeatureProtocolInfo
-                                                                       << Tp::Account::FeatureProfile);
-
-    d->accountManager = Tp::AccountManager::create(accountFactory);
-    d->accountManager->becomeReady();
 }
 
 KAccountsUiProvider::~KAccountsUiProvider()
@@ -104,18 +96,72 @@ void KAccountsUiProvider::init(KAccountsUiPlugin::UiType type)
 {
     d->type = type;
 
-    if (d->type == KAccountsUiPlugin::NewAccountDialog) {
-        d->profileManager = Tp::ProfileManager::create(QDBusConnection::sessionBus());
-        Tp::PendingOperation *op = d->profileManager->becomeReady(Tp::Features() << Tp::ProfileManager::FeatureFakeProfiles);
-        connect(op, SIGNAL(finished(Tp::PendingOperation*)), this, SLOT(onProfileManagerReady(Tp::PendingOperation*)));
-    } else {
+    if (d->type == KAccountsUiPlugin::ConfigureAccountDialog) {
         if (d->accountManager->isReady()) {
             Q_EMIT uiReady();
         } else {
+            Tp::AccountFactoryPtr  accountFactory = Tp::AccountFactory::create(QDBusConnection::sessionBus(),
+                                                                               Tp::Features() << Tp::Account::FeatureCore
+                                                                               << Tp::Account::FeatureCapabilities
+                                                                               << Tp::Account::FeatureProtocolInfo
+                                                                               << Tp::Account::FeatureProfile);
+            d->accountManager = Tp::AccountManager::create(accountFactory);
             // let's wait for AM to become ready first
             connect(d->accountManager->becomeReady(), &Tp::PendingOperation::finished, this, &KAccountsUiProvider::uiReady);
         }
     }
+}
+
+void KAccountsUiProvider::setProviderName(const QString &providerName)
+{
+    d->providerName = providerName;
+
+    Accounts::ServiceList list = KAccounts::accountsManager()->serviceList(QStringLiteral("IM"));
+    Accounts::Service neededService;
+    Q_FOREACH (const Accounts::Service &service, list) {
+        if (service.provider() == providerName) {
+            neededService = service;
+            break;
+        }
+    }
+
+    if (!neededService.isValid()) {
+        Q_EMIT  error(i18n("Cannot find the needed service file for %1. Please check your installation.", providerName));
+        return;
+    }
+
+    auto nodeList = neededService.domDocument().elementsByTagName(QStringLiteral("group"));
+
+    for (int i = 0; i < nodeList.size(); i++) {
+        auto attrsMap = nodeList.at(i).attributes();
+        if (attrsMap.contains(QStringLiteral("name")) && attrsMap.namedItem(QStringLiteral("name")).nodeValue() == QLatin1String("telepathy")) {
+            QDomElement settingNode = nodeList.at(i).firstChildElement(QStringLiteral("setting"));
+
+            while (!settingNode.isNull()) {
+                if (settingNode.attribute(QStringLiteral("name")) == QLatin1String("manager")) {
+                    d->manager = settingNode.text();
+                }
+                if (settingNode.attribute(QStringLiteral("name")) == QLatin1String("protocol")) {
+                    d->protocol = settingNode.text();
+                }
+
+                settingNode = settingNode.nextSiblingElement(QStringLiteral("setting"));
+            }
+
+            if (!d->manager.isEmpty() && !d->protocol.isEmpty()) {
+                break;
+            }
+        }
+    }
+
+    qDebug() << "Requested UI for manager" << d->manager << "and protocol" << d->protocol;
+
+    if (d->profileManager.isNull()) {
+        d->profileManager = Tp::ProfileManager::create(QDBusConnection::sessionBus());
+    }
+
+    Tp::PendingOperation *op = d->profileManager->becomeReady(Tp::Features() << Tp::ProfileManager::FeatureFakeProfiles);
+    connect(op, SIGNAL(finished(Tp::PendingOperation*)), this, SLOT(onProfileManagerReady(Tp::PendingOperation*)));
 }
 
 void KAccountsUiProvider::onProfileManagerReady(Tp::PendingOperation *op)
@@ -129,29 +175,31 @@ void KAccountsUiProvider::onProfileManagerReady(Tp::PendingOperation *op)
     // OR if profile name was set and profile manager is not yet ready, return.
     // If profile name is set and this returns, it will get through this again when profile manager
     // becomes ready and vice-versa.
-    if (d->profileName.isEmpty() || (d->profileManager && !d->profileManager->isReady(Tp::Features() << Tp::ProfileManager::FeatureFakeProfiles))) {
+    if (d->profileManager && !d->profileManager->isReady(Tp::Features() << Tp::ProfileManager::FeatureFakeProfiles)) {
         return;
     }
 
-    qDebug() << "Creating service for" << d->profileName;
+    qDebug() << "Creating service for" << d->providerName;
 
-    d->profile = d->profileManager->profileForService(d->profileName);
+    // KDE Talk is a bit special case so special handling needs to be added
+    bool kdeTalk = d->providerName.contains(QStringLiteral("kde-talk"));
+
+    auto profiles = d->profileManager->profilesForProtocol(d->protocol);
+    Q_FOREACH (const Tp::ProfilePtr &profile, profiles) {
+        if (profile->cmName() == d->manager && (kdeTalk && profile->serviceName() == QLatin1String("kde-talk"))) {
+            d->profile = profile;
+            break;
+        }
+    }
 
     if (d->profile.isNull()) {
-        Q_EMIT  error(i18n("To connect to this IM network, you need to install additional plugins. Please install the telepathy-haze and telepathy-gabble packages using your package manager."));
+        Q_EMIT  error(i18n("This IM Account cannot be created - a Telepathy Connection Manager named '%1' is missing. Please try installing it with your package manager.", d->manager));
         return;
     }
 
-    d->connectionManager = Tp::ConnectionManager::create(d->profile->cmName());
-    connect(d->connectionManager->becomeReady(), SIGNAL(finished(Tp::PendingOperation*)),
-            this, SLOT(onConnectionManagerReady(Tp::PendingOperation*)));
-}
-
-void KAccountsUiProvider::setProviderName(const QString &providerName)
-{
-    d->profileName = providerName;
-
-    onProfileManagerReady(0);
+    d->connectionManager = Tp::ConnectionManager::create(d->manager);
+    Tp::PendingOperation *cmReady = d->connectionManager->becomeReady(Tp::Features() << Tp::ConnectionManager::FeatureCore);
+    connect(cmReady, SIGNAL(finished(Tp::PendingOperation*)), this, SLOT(onConnectionManagerReady(Tp::PendingOperation*)));
 }
 
 void KAccountsUiProvider::onConnectionManagerReady(Tp::PendingOperation*)
@@ -159,17 +207,11 @@ void KAccountsUiProvider::onConnectionManagerReady(Tp::PendingOperation*)
     Tp::ProtocolInfo protocolInfo = d->connectionManager->protocol(d->profile->protocolName());
     Tp::ProtocolParameterList parameters = protocolInfo.parameters();
 
+    d->dialog = new QDialog();
     // Add the parameters to the model.
-    ParameterEditModel *parameterModel = new ParameterEditModel(this);
+    ParameterEditModel *parameterModel = new ParameterEditModel(d->dialog);
     parameterModel->addItems(parameters, d->profile->parameters());
 
-    // Delete account previous widget if it already existed.
-    if (d->accountEditWidget) {
-        d->accountEditWidget->deleteLater();
-        d->accountEditWidget = 0;
-    }
-
-    d->dialog = new QDialog();
     d->dialog->setAttribute(Qt::WA_DeleteOnClose);
     QVBoxLayout *mainLayout = new QVBoxLayout(d->dialog);
     d->dialog->setLayout(mainLayout);
@@ -183,8 +225,7 @@ void KAccountsUiProvider::onConnectionManagerReady(Tp::PendingOperation*)
 
     QDialogButtonBox *dbb = new QDialogButtonBox(QDialogButtonBox::Ok | QDialogButtonBox::Cancel, d->dialog);
     connect(dbb, &QDialogButtonBox::accepted, this, &KAccountsUiProvider::onCreateAccountDialogAccepted);
-    connect(dbb, &QDialogButtonBox::rejected, d->dialog, &QDialog::reject);
-    connect(d->dialog, &QDialog::rejected, this, &KAccountsUiProvider::onCreateAccountDialogRejected);
+    connect(dbb, &QDialogButtonBox::rejected, this, &KAccountsUiProvider::onCreateAccountDialogRejected);
 
     mainLayout->addWidget(d->accountEditWidget);
     mainLayout->addWidget(dbb);
@@ -236,8 +277,7 @@ void KAccountsUiProvider::showConfigureAccountDialog(const quint32 accountId)
 
     QDialogButtonBox *dbb = new QDialogButtonBox(QDialogButtonBox::Ok | QDialogButtonBox::Cancel, d->dialog);
     connect(dbb, &QDialogButtonBox::accepted, this, &KAccountsUiProvider::onConfigureAccountDialogAccepted);
-    connect(dbb, &QDialogButtonBox::rejected, d->dialog, &QDialog::reject);
-    connect(d->dialog, &QDialog::rejected, this, &KAccountsUiProvider::onConfigureAccountDialogRejected);
+    connect(dbb, &QDialogButtonBox::rejected, this, &KAccountsUiProvider::onConfigureAccountDialogRejected);
 
     if (passwordParameter.isValid()) {
         QModelIndex index = parameterModel->indexForParameter(passwordParameter);
@@ -301,62 +341,16 @@ void KAccountsUiProvider::onCreateAccountDialogAccepted()
         values.remove(QLatin1String("password"));
     }
 
-    onAccountCreated(values);
+    //TODO: prefix all the values with telepathy or some mc-key
+    Q_EMIT success(values[QStringLiteral("account")].toString(), values[QStringLiteral("password")].toString(), values);
 
-//     d->accountEditWidget->updateDisplayName();
-//     Tp::PendingAccount *pa = d->accountManager->createAccount(d->profile->cmName(),
-//                                                               d->profile->protocolName(),
-//                                                               d->accountEditWidget->displayName(),
-//                                                               values,
-//                                                               properties);
-//
-//     connect(pa,
-//             SIGNAL(finished(Tp::PendingOperation*)),
-//             SLOT(onAccountCreated(Tp::PendingOperation*)));
+    d->dialog->accept();
 }
 
 void KAccountsUiProvider::onCreateAccountDialogRejected()
 {
     Q_EMIT error(QString());
-}
-
-void KAccountsUiProvider::onAccountCreated(const QVariantMap &data)
-{
-//     if (op->isError()) {
-//         Q_EMIT feedbackMessage(i18n("Failed to create account"),
-//                                 i18n("Possibly not all required fields are valid"),
-//                                 KMessageWidget::Error);
-//         qWarning() << "Adding Account failed:" << op->errorName() << op->errorMessage();
-//         Q_EMIT error(op->errorMessage());
-//         return;
-//     }
-//
-//     // Get the PendingAccount.
-//     Tp::PendingAccount *pendingAccount = qobject_cast<Tp::PendingAccount*>(op);
-//     if (!pendingAccount) {
-//         Q_EMIT feedbackMessage(i18n("Something went wrong with Telepathy"),
-//                                 QString(),
-//                                 KMessageWidget::Error);
-//         qWarning() << "Method called with wrong type.";
-//         Q_EMIT error(QStringLiteral("Something went wrong with Telepathy"));
-//         return;
-//     }
-//
-//     Tp::AccountPtr account = pendingAccount->account();
-//     account->setServiceName(d->profile->serviceName());
-//     if (d->accountEditWidget->connectOnAdd()) {
-//         account->setRequestedPresence(Tp::Presence::available());
-//     }
-
-    QVariantMap values  = d->accountEditWidget->parametersSet();
-
-    QVariantMap additionalData;
-
-//     additionalData.insert(QStringLiteral("uid"), account->objectPath());
-
-    Q_EMIT success(values[QStringLiteral("account")].toString(), values[QStringLiteral("password")].toString(), values);
-
-    d->dialog->accept();
+    d->dialog->reject();
 }
 
 void KAccountsUiProvider::onConfigureAccountDialogAccepted()
@@ -387,7 +381,7 @@ void KAccountsUiProvider::onConfigureAccountDialogAccepted()
 
         Q_ASSERT(psl);
         if (!psl) {
-            qWarning() << "Something  weird happened";
+            qWarning() << "Something  weird happened; couldn't update the parameters";
         }
 
         if (psl->result().size() > 0) {
@@ -432,6 +426,7 @@ void KAccountsUiProvider::onConfigureAccountFinished()
 void KAccountsUiProvider::onConfigureAccountDialogRejected()
 {
     Q_EMIT error(QString());
+    d->dialog->reject();
 }
 
 void KAccountsUiProvider::storePasswordInSso(const quint32 accountId, const QString &password)
