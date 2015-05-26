@@ -227,7 +227,8 @@ void KAccountsUiProvider::onConnectionManagerReady(Tp::PendingOperation*)
 
     QDialogButtonBox *dbb = new QDialogButtonBox(QDialogButtonBox::Ok | QDialogButtonBox::Cancel, d->dialog);
     connect(dbb, &QDialogButtonBox::accepted, this, &KAccountsUiProvider::onCreateAccountDialogAccepted);
-    connect(dbb, &QDialogButtonBox::rejected, this, &KAccountsUiProvider::onCreateAccountDialogRejected);
+    connect(dbb, &QDialogButtonBox::rejected, d->dialog, &QDialog::reject);
+    connect(d->dialog, &QDialog::rejected, this, &KAccountsUiProvider::onCreateAccountDialogRejected);
 
     mainLayout->addWidget(d->accountEditWidget);
     mainLayout->addWidget(dbb);
@@ -279,7 +280,8 @@ void KAccountsUiProvider::showConfigureAccountDialog(const quint32 accountId)
 
     QDialogButtonBox *dbb = new QDialogButtonBox(QDialogButtonBox::Ok | QDialogButtonBox::Cancel, d->dialog);
     connect(dbb, &QDialogButtonBox::accepted, this, &KAccountsUiProvider::onConfigureAccountDialogAccepted);
-    connect(dbb, &QDialogButtonBox::rejected, this, &KAccountsUiProvider::onConfigureAccountDialogRejected);
+    connect(dbb, &QDialogButtonBox::rejected, d->dialog, &QDialog::reject);
+    connect(d->dialog, &QDialog::rejected, this, &KAccountsUiProvider::onConfigureAccountDialogRejected);
 
     if (passwordParameter.isValid()) {
         QModelIndex index = parameterModel->indexForParameter(passwordParameter);
@@ -352,7 +354,6 @@ void KAccountsUiProvider::onCreateAccountDialogAccepted()
 void KAccountsUiProvider::onCreateAccountDialogRejected()
 {
     Q_EMIT error(QString());
-    d->dialog->reject();
 }
 
 void KAccountsUiProvider::onConfigureAccountDialogAccepted()
@@ -428,7 +429,6 @@ void KAccountsUiProvider::onConfigureAccountFinished()
 void KAccountsUiProvider::onConfigureAccountDialogRejected()
 {
     Q_EMIT error(QString());
-    d->dialog->reject();
 }
 
 void KAccountsUiProvider::storePasswordInSso(const quint32 accountId, const QString &password)
