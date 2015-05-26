@@ -79,6 +79,14 @@ KAccountsUiProvider::KAccountsUiProvider(QObject *parent)
     d->reconnectRequired = false;
 
     Tp::registerTypes();
+
+    Tp::AccountFactoryPtr  accountFactory = Tp::AccountFactory::create(QDBusConnection::sessionBus(),
+                                                                       Tp::Features() << Tp::Account::FeatureCore
+                                                                       << Tp::Account::FeatureCapabilities
+                                                                       << Tp::Account::FeatureProtocolInfo
+                                                                       << Tp::Account::FeatureProfile);
+    d->accountManager = Tp::AccountManager::create(accountFactory);
+    d->accountManager->becomeReady();
 }
 
 KAccountsUiProvider::~KAccountsUiProvider()
@@ -100,12 +108,6 @@ void KAccountsUiProvider::init(KAccountsUiPlugin::UiType type)
         if (d->accountManager->isReady()) {
             Q_EMIT uiReady();
         } else {
-            Tp::AccountFactoryPtr  accountFactory = Tp::AccountFactory::create(QDBusConnection::sessionBus(),
-                                                                               Tp::Features() << Tp::Account::FeatureCore
-                                                                               << Tp::Account::FeatureCapabilities
-                                                                               << Tp::Account::FeatureProtocolInfo
-                                                                               << Tp::Account::FeatureProfile);
-            d->accountManager = Tp::AccountManager::create(accountFactory);
             // let's wait for AM to become ready first
             connect(d->accountManager->becomeReady(), &Tp::PendingOperation::finished, this, &KAccountsUiProvider::uiReady);
         }
