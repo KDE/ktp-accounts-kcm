@@ -186,7 +186,7 @@ void KAccountsUiProvider::onProfileManagerReady(Tp::PendingOperation *op)
 
     auto profiles = d->profileManager->profilesForProtocol(d->protocol);
     Q_FOREACH (const Tp::ProfilePtr &profile, profiles) {
-        if (profile->cmName() == d->manager && (kdeTalk && profile->serviceName() == QLatin1String("kde-talk"))) {
+        if (profile->cmName() == d->manager || (kdeTalk && profile->serviceName() == QLatin1String("kde-talk"))) {
             d->profile = profile;
             break;
         }
