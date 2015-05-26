@@ -184,11 +184,11 @@ void KAccountsUiProvider::onProfileManagerReady(Tp::PendingOperation *op)
     qDebug() << "Creating service for" << d->providerName;
 
     // KDE Talk is a bit special case so special handling needs to be added
-    bool kdeTalk = d->providerName.contains(QStringLiteral("kde-talk"));
+    QString profileService = d->providerName.mid(4);
 
     auto profiles = d->profileManager->profilesForProtocol(d->protocol);
     Q_FOREACH (const Tp::ProfilePtr &profile, profiles) {
-        if (profile->cmName() == d->manager || (kdeTalk && profile->serviceName() == QLatin1String("kde-talk"))) {
+        if (profile->cmName() == d->manager && profile->protocolName() == d->protocol && profileService == profile->serviceName()) {
             d->profile = profile;
             break;
         }
