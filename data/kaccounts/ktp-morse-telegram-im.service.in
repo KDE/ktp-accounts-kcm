@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<service id="ktp-telegram-im">
+  <type>IM</type>
+
+  <_name>Chat</_name>
+  <icon>im-jabber-talk</icon>
+  <provider>ktp-morse-telegram</provider>
+  <translations>kaccounts-providers</translations>
+</service>
