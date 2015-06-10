@@ -5,4 +5,5 @@
     <!-- Tooltip text appearing over the button to create this type of account -->
     <_description>Telegram account</_description>
     <translations>kaccounts-providers</translations>
+    <plugin>ktpaccountskcm_plugin_kaccounts</plugin>
 </provider>

@@ -6,4 +6,15 @@
   <icon>im-jabber-talk</icon>
   <provider>ktp-morse-telegram</provider>
   <translations>kaccounts-providers</translations>
+
+  <template>
+      <group name="telepathy">
+          <setting name="manager">morse</setting>
+          <setting name="protocol">telegram</setting>
+      </group>
+      <group name="auth">
+          <setting name="method">password</setting>
+          <setting name="mechanism">password</setting>
+      </group>
+  </template>
 </service>

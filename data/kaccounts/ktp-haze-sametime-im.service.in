@@ -6,4 +6,15 @@
     <icon>im-user</icon>
     <provider>ktp-haze-sametime</provider>
     <translations>kaccounts-providers</translations>
+
+    <template>
+        <group name="telepathy">
+            <setting name="manager">haze</setting>
+            <setting name="protocol">sametime</setting>
+        </group>
+        <group name="auth">
+            <setting name="method">password</setting>
+            <setting name="mechanism">password</setting>
+        </group>
+    </template>
 </service>
