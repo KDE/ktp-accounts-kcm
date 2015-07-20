@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <provider id="ktp-morse-telegram">
     <_name>Telegram</_name>
-    <icon>telegram</icon>
+    <icon>telepathy-kde</icon>
     <!-- Tooltip text appearing over the button to create this type of account -->
     <_description>Telegram account</_description>
     <translations>kaccounts-providers</translations>

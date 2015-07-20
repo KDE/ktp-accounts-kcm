@@ -3,7 +3,7 @@
   <type>IM</type>
 
   <_name>Chat</_name>
-  <icon>im-jabber-talk</icon>
+  <icon>telepathy-kde</icon>
   <provider>ktp-morse-telegram</provider>
   <translations>kaccounts-providers</translations>
 
