@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<service id="ktp-haze-aim-im">
+  <type>IM</type>
+  <!-- AIM Chat - Service name being displayed as a checkbox label to enable/disable this service -->
+  <_name>Chat</_name>
+  <icon>im-aim</icon>
+  <provider>ktp-haze-aim</provider>
+  <translations>kaccounts-providers</translations>
+
+  <template>
+      <group name="telepathy">
+          <setting name="manager">haze</setting>
+          <setting name="protocol">aim</setting>
+      </group>
+      <group name="auth">
+          <setting name="method">password</setting>
+          <setting name="mechanism">password</setting>
+      </group>
+  </template>
+</service>
