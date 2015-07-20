@@ -23,6 +23,8 @@ find_package (TelepathyQt5 REQUIRED)
 find_package (KAccounts REQUIRED)
 find_package (Intltool REQUIRED) #needed to generate service and provider files
 
+set(CMAKE_MODULE_PATH ${KACCOUNTS_MACROS_PATH} ${CMAKE_MODULE_PATH}) #for KAccountsMacros
+
 # make some more macros available
 # include (MacroLibrary)
 
@@ -32,6 +34,7 @@ include(KDEFrameworkCompilerSettings)
 include(KDECompilerSettings)
 include(ECMInstallIcons)
 include(FeatureSummary)
+include(KAccountsMacros)
 
 add_definitions (
 #                  -DQT_NO_CAST_FROM_ASCII
