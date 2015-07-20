@@ -33,7 +33,7 @@
       </widget>
      </item>
      <item row="0" column="1">
-      <widget class="KLineEdit" name="loginLineEdit"/>
+      <widget class="QLineEdit" name="loginLineEdit"/>
      </item>
      <item row="1" column="0">
       <widget class="QLabel" name="serverLabel">
@@ -43,7 +43,7 @@
       </widget>
      </item>
      <item row="1" column="1">
-      <widget class="KLineEdit" name="serverLineEdit"/>
+      <widget class="QLineEdit" name="serverLineEdit"/>
      </item>
      <item row="2" column="0">
       <widget class="QLabel" name="portLabel">
@@ -53,7 +53,17 @@
       </widget>
      </item>
      <item row="2" column="1">
-      <widget class="KIntSpinBox" name="portSpinBox"/>
+      <widget class="QSpinBox" name="portSpinBox">
+       <property name="minimum">
+        <number>0</number>
+       </property>
+       <property name="maximum">
+        <number>65535</number>
+       </property>
+       <property name="value">
+        <number>5060</number>
+       </property>
+      </widget>
      </item>
      <item row="3" column="0">
       <widget class="QLabel" name="transportLabel">
@@ -63,7 +73,7 @@
       </widget>
      </item>
      <item row="3" column="1">
-      <widget class="KComboBox" name="transportComboBox">
+      <widget class="QComboBox" name="transportComboBox">
        <item>
         <property name="text">
          <string>auto</string>
@@ -89,7 +99,7 @@
       </widget>
      </item>
      <item row="4" column="1">
-      <widget class="KLineEdit" name="useragentLineEdit"/>
+      <widget class="QLineEdit" name="useragentLineEdit"/>
      </item>
      <item row="5" column="0">
       <widget class="QLabel" name="authenticationLabel">
@@ -99,7 +109,7 @@
       </widget>
      </item>
      <item row="5" column="1">
-      <widget class="KComboBox" name="authenticationComboBox">
+      <widget class="QComboBox" name="authenticationComboBox">
        <item>
         <property name="text">
          <string>ntlm</string>
@@ -135,23 +145,6 @@
    </item>
   </layout>
  </widget>
- <customwidgets>
-  <customwidget>
-   <class>KComboBox</class>
-   <extends>QComboBox</extends>
-   <header>kcombobox.h</header>
-  </customwidget>
-  <customwidget>
-   <class>KLineEdit</class>
-   <extends>QLineEdit</extends>
-   <header>klineedit.h</header>
-  </customwidget>
-  <customwidget>
-   <class>KIntSpinBox</class>
-   <extends>QSpinBox</extends>
-   <header>knuminput.h</header>
-  </customwidget>
- </customwidgets>
  <resources/>
  <connections/>
 </ui>

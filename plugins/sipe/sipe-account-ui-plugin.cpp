@@ -50,6 +50,5 @@ AbstractAccountUi* SipeAccountUiPlugin::accountUi(
 }
 
 K_PLUGIN_FACTORY(factory, registerPlugin<SipeAccountUiPlugin>();)
-K_EXPORT_PLUGIN(factory("kcmtelepathyaccounts_plugin_sipe"))
 
 #include "sipe-account-ui-plugin.moc"
