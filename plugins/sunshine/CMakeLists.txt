@@ -13,7 +13,7 @@ set (ktpaccountskcm_plugin_sunshine_SRCS
      sunshine-advanced-options-widget.cpp
 )
 
-qt5_wrap_ui (ktpaccountskcm_plugin_sunshine_SRCS
+ki18n_wrap_ui (ktpaccountskcm_plugin_sunshine_SRCS
                    sunshine-main-options-widget.ui
                    sunshine-advanced-options-widget.ui
 )

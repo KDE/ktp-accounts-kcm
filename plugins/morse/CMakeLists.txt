@@ -12,7 +12,7 @@ set (ktpaccountskcm_plugin_morse_SRCS
      main-options-widget.cpp
 )
 
-qt5_wrap_ui (ktpaccountskcm_plugin_morse_SRCS
+ki18n_wrap_ui (ktpaccountskcm_plugin_morse_SRCS
                    main-options-widget.ui
 )
 
