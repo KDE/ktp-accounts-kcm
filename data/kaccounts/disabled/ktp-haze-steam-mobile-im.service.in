@@ -6,4 +6,14 @@
   <icon>input-gaming</icon>
   <provider>ktp-haze-steam-mobile</provider>
   <translations>kaccounts-providers</translations>
+  <template>
+      <group name="telepathy">
+          <setting name="manager">haze</setting>
+          <setting name="protocol">steam-mobile</setting>
+      </group>
+      <group name="auth">
+          <setting name="method">password</setting>
+          <setting name="mechanism">password</setting>
+      </group>
+  </template>
 </service>
