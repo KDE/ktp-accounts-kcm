@@ -13,7 +13,7 @@ set (ktpaccountskcm_plugin_sipe_SRCS
      sipe-advanced-options-widget.cpp
 )
 
-qt5_wrap_ui (ktpaccountskcm_plugin_sipe_SRCS
+ki18n_wrap_ui (ktpaccountskcm_plugin_sipe_SRCS
              sipe-main-options-widget.ui
              sipe-advanced-options-widget.ui
 )
