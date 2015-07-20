@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<provider id="ktp-haze-sipe">
-    <_name>Office 365 (Lync)</_name>
-    <icon>im-sipe</icon>
+<provider id="ktp-sipe-haze">
+    <_name>Office 365/Lync (via libpurple)</_name>
+    <icon>telepathy-kde</icon>
     <!-- Tooltip text appearing over the button to create this type of account -->
     <_description>Chat account in the Office 365/Lync network</_description>
     <translations>kaccounts-providers</translations>
