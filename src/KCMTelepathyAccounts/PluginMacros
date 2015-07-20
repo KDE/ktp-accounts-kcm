@@ -1,7 +1,0 @@
-#ifndef LIB_KCM_TELEPATHY_ACCOUNTS_PLUGIN_MACROS_PRETTY_H
-#define LIB_KCM_TELEPATHY_ACCOUNTS_PLUGIN_MACROS_PRETTY_H
-
-#include <KCMTelepathyAccounts/plugin-macros.h>
-
-#endif
-
