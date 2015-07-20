@@ -4,6 +4,8 @@ include_directories (${CMAKE_CURRENT_BINARY_DIR}
                      ${CMAKE_CURRENT_SOURCE_DIR}
 )
 
+add_definitions(-DTRANSLATION_DOMAIN=\"ktpaccountskcm_plugin_sunshine\")
+
 set (ktpaccountskcm_plugin_sunshine_SRCS
      sunshine-account-ui-plugin.cpp
      sunshine-account-ui.cpp
@@ -11,12 +13,12 @@ set (ktpaccountskcm_plugin_sunshine_SRCS
      sunshine-advanced-options-widget.cpp
 )
 
-kde4_add_ui_files (ktpaccountskcm_plugin_sunshine_SRCS
+qt5_wrap_ui (ktpaccountskcm_plugin_sunshine_SRCS
                    sunshine-main-options-widget.ui
                    sunshine-advanced-options-widget.ui
 )
 
-kde4_add_plugin (ktpaccountskcm_plugin_sunshine
+add_library (ktpaccountskcm_plugin_sunshine MODULE
                  ${ktpaccountskcm_plugin_sunshine_SRCS}
 )
 

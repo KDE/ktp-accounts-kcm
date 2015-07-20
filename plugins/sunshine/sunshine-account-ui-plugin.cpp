@@ -54,6 +54,5 @@ AbstractAccountUi* SunshineAccountUiPlugin::accountUi(const QString &connectionM
 }
 
 K_PLUGIN_FACTORY(factory, registerPlugin<SunshineAccountUiPlugin>();)
-K_EXPORT_PLUGIN(factory("kcmtelepathyaccounts_plugin_sunshine"))
 
 #include "sunshine-account-ui-plugin.moc"
