@@ -195,7 +195,8 @@ void KAccountsUiProvider::onProfileManagerReady(Tp::PendingOperation *op)
     }
 
     if (d->profile.isNull() || profiles.isEmpty()) {
-        Q_EMIT  error(i18n("This IM Account cannot be created - a Telepathy Connection Manager named '%1' is missing. Please try installing it with your package manager.", d->manager));
+        Q_EMIT  error(i18n("This IM Account cannot be created - a Telepathy Connection Manager named '%1' is missing or it cannot handle protocol '%2'. " \
+                           "Please try installing %1 with your package manager.", d->manager, d->protocol));
         return;
     }
 

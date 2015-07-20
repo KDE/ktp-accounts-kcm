@@ -50,6 +50,5 @@ AbstractAccountUi* MorseAccountUiPlugin::accountUi(const QString &connectionMana
 }
 
 K_PLUGIN_FACTORY(factory, registerPlugin<MorseAccountUiPlugin>();)
-K_EXPORT_PLUGIN(factory("kcmtelepathyaccounts_plugin_morse"))
 
 #include "morse-account-ui-plugin.moc"

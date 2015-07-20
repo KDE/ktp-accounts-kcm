@@ -4,25 +4,27 @@ include_directories (${CMAKE_CURRENT_BINARY_DIR}
                      ${CMAKE_CURRENT_SOURCE_DIR}
 )
 
+add_definitions(-DTRANSLATION_DOMAIN=\"kcmtelepathyaccounts_plugin_morse\")
+
 set (ktpaccountskcm_plugin_morse_SRCS
      morse-account-ui-plugin.cpp
      telegram-account-ui.cpp
      main-options-widget.cpp
 )
 
-kde4_add_ui_files (ktpaccountskcm_plugin_morse_SRCS
+qt5_wrap_ui (ktpaccountskcm_plugin_morse_SRCS
                    main-options-widget.ui
 )
 
-kde4_add_plugin (ktpaccountskcm_plugin_morse
+add_library (ktpaccountskcm_plugin_morse MODULE
                  ${ktpaccountskcm_plugin_morse_SRCS}
 )
 
 target_link_libraries (ktpaccountskcm_plugin_morse
                        ktpaccountskcminternal
-                       ${QT_LIBRARIES}
-                       ${KDE4_KDEUI_LIBS}
-                       ${TELEPATHY_QT4_LIBRARIES}
+                       Qt5::Core
+                       Qt5::Widgets
+                       ${TELEPATHY_QT5_LIBRARIES}
 )
 
 # Install:
