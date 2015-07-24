@@ -21,8 +21,6 @@
 #include "sunshine-account-ui-plugin.h"
 #include "sunshine-account-ui.h"
 
-#include <KCMTelepathyAccounts/PluginMacros>
-
 #include <KPluginFactory>
 
 #include <QtCore/QVariantList>

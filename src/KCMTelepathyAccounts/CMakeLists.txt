@@ -32,7 +32,6 @@ set (libktpaccountskcminternal_HDRS
      abstract-account-parameters-widget.h
      generic-advanced-options-widget.h
      account-edit-widget.h
-     plugin-macros.h
      plugin-manager.h
      profile-list-model.h
      profile-select-widget.h
@@ -49,7 +48,6 @@ set (libktpaccountskcminternal_PRETTY_HDRS
      AbstractAccountParametersWidget
      GenericAdvancedOptionsWidget
      AccountEditWidget
-     PluginMacros
      ConnectionManagerItem
      PluginManager
      ProtocolSelectWidget
