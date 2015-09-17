@@ -106,10 +106,10 @@ void KAccountsUiProvider::init(KAccountsUiPlugin::UiType type)
 
     if (d->type == KAccountsUiPlugin::ConfigureAccountDialog) {
         if (d->accountManager->isReady()) {
-            Q_EMIT uiReady();
+            Q_EMIT configUiReady();
         } else {
             // let's wait for AM to become ready first
-            connect(d->accountManager->becomeReady(), &Tp::PendingOperation::finished, this, &KAccountsUiProvider::uiReady);
+            connect(d->accountManager->becomeReady(), &Tp::PendingOperation::finished, this, &KAccountsUiProvider::configUiReady);
         }
     }
 }
