@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<provider id="ktp-haze-skypeweb">
+    <_name>Skype</_name>
+    <icon>im-skype</icon>
+    <!-- Tooltip text appearing over the button to create this type of account -->
+    <_description>Chat account in the Skype network</_description>
+    <translations>kaccounts-providers</translations>
+    <plugin>ktpaccountskcm_plugin_kaccounts</plugin>
+</provider>

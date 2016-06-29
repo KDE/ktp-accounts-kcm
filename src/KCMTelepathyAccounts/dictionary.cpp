@@ -60,6 +60,7 @@ Dictionary::Dictionary()
     m_strings.insert(QLatin1String("google-talk"), i18n("Google Talk"));
     m_strings.insert(QLatin1String("groupwise"), i18n("Novell Groupwise"));
     m_strings.insert(QLatin1String("icq"), i18n("ICQ"));
+    m_strings.insert(QLatin1String("skypeweb"), i18n("Skype"));
     m_strings.insert(QLatin1String("irc"), i18n("Internet Relay Chat"));
     m_strings.insert(QLatin1String("jabber"), i18n("Jabber/XMPP"));
     m_strings.insert(QLatin1String("local-xmpp"), i18n("Bonjour/Salut"));

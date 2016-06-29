@@ -21,6 +21,7 @@
 #include "haze-account-ui-plugin.h"
 
 #include "haze-icq-account.h"
+#include "haze-skypeweb-account.h"
 #include "haze-myspaceim-account-ui.h"
 #include "haze-skype-account-ui.h"
 #include "haze-yahoo-account.h"
@@ -47,6 +48,7 @@ HazeAccountUiPlugin::HazeAccountUiPlugin(QObject *parent, const QVariantList &)
     registerProvidedProtocol(QLatin1String("haze"), QLatin1String("groupwise"));
     registerProvidedProtocol(QLatin1String("haze"), QLatin1String("steam-mobile"));
     registerProvidedProtocol(QLatin1String("haze"), QLatin1String("sipe"));
+    registerProvidedProtocol(QLatin1String("haze"), QLatin1String("skypeweb"));
 }
 
 HazeAccountUiPlugin::~HazeAccountUiPlugin()
@@ -60,6 +62,8 @@ AbstractAccountUi* HazeAccountUiPlugin::accountUi(const QString &connectionManag
     if (connectionManager == QLatin1String("haze")) {
         if (protocol == QLatin1String("icq")) {
             return new HazeIcqAccountUi;
+        } else if (protocol == QLatin1String("skypeweb")) {
+            return new HazeSkypeWebAccountUi;
         } else if (protocol == QLatin1String("myspace")) {
             return new HazeMySpaceIMAccountUi;
         } else if (protocol == QLatin1String("bigbrownchunx-skype-dbus")) {
