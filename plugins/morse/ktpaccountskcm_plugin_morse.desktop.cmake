@@ -20,6 +20,7 @@ Comment[it]=Interfaccia utente personalizzata di configurazione account per acco
 Comment[ko]=Morse 연결 관리자를 사용하는 계정 설정 사용자 인터페이스입니다.
 Comment[nb]=Brukerflate for å sette opp egendefinerte kontoer ved bruk av Morse tilkoblingsbehandler.
 Comment[nl]=Gebruikersinterface voor aangepaste accountconfiguratie voor accounts die de Morse verbindingenbeheerder gebruiken.
+Comment[nn]=Brukarflate for å setja oppkontoar med Morse tilkoplingshandsamar.
 Comment[pl]=Dostosowana nakładka graficzna do ustawiania kont dla kont wykorzystujących usługę połączeń Morse.
 Comment[pt]=Interface de utilizador de configuração de contas personalizadas com o gestor de ligações Morse.
 Comment[pt_BR]=Interface de configuração de contas usando o gerenciador de conexões Morse.

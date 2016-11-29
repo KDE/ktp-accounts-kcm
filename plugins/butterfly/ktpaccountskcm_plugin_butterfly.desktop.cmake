@@ -25,6 +25,7 @@ Comment[lt]=Savito paskyros konfigūravimo naudotojo sąsaja paskyroms naudojant
 Comment[nb]=Brukerflate for å sette opp egendefinerte kontoer ved bruk av Butterfly tilkoblingsbehandler.
 Comment[nds]=Topasst Kontoinstellen-Böversiet för Kontos, de den Verbinnenpleger „Butterfly“ bruukt
 Comment[nl]=Gebruikersinterface voor aangepaste accountconfiguratie voor accounts die de Butterfly verbindingenbeheerder gebruiken.
+Comment[nn]=Brukarflate for å setja oppkontoar med Butterfly tilkoplingshandsamar.
 Comment[pl]=Dostosowana nakładka graficzna do ustawiania kont dla kont wykorzystujących usługę połączeń Butterfly.
 Comment[pt]=Interface de utilizador de configuração de contas personalizadas com o gestor de ligações Butterfly.
 Comment[pt_BR]=Interface de configuração de contas usando o gerenciador de conexões Butterfly.
