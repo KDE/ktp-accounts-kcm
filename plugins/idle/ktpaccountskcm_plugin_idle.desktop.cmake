@@ -25,6 +25,7 @@ Comment[lt]=Savito paskyros konfigūravimo naudotojo sąsaja paskyroms naudojant
 Comment[nb]=Brukerflate for å sette opp egendefinerte kontoer ved bruk av Idle tilkoblingsbehandler.
 Comment[nds]=Topasst Kontoinstellen-Böversiet för Kontos, de den Verbinnenpleger „Idle“ bruukt
 Comment[nl]=Gebruikersinterface voor aangepaste accountconfiguratie voor accounts die de Idle verbindingenbeheerder gebruiken.
+Comment[nn]=Brukarflate for å setja oppkontoar med Idle tilkoplingshandsamar.
 Comment[pl]=Dostosowana nakładka graficzna do ustawiania kont dla kont wykorzystujących usługę połączeń Idle.
 Comment[pt]=Interface de utilizador de configuração de contas personalizadas com o gestor de ligações Idle.
 Comment[pt_BR]=Interface de configuração de contas usando o gerenciador de conexões Idle.
