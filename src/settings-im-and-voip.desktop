@@ -7,7 +7,6 @@ X-KDE-Weight=200
 Icon=telepathy-kde
 
 Name=Instant Messaging and VoIP
-Name[ast]=Mensaxería nel intre y VoIP
 Name[bs]=Instant poruke i  VoIP
 Name[ca]=Missatgeria instantània i VoIP
 Name[ca@valencia]=Missatgeria instantània i VoIP
@@ -53,7 +52,6 @@ Name[x-test]=xxInstant Messaging and VoIPxx
 Name[zh_CN]=即时通讯和语音
 Name[zh_TW]=即時訊息與 VoIP
 X-KDE-Keywords=KTp,Chat, Telepathy, IM
-X-KDE-Keywords[ast]=KTp,Charra, Charrar, Mensaxería, Telepathy, IM, MI
 X-KDE-Keywords[bs]=KTp,Chat, Telepathy, IM
 X-KDE-Keywords[ca]=KTp,Xat, Telepathy, MI
 X-KDE-Keywords[ca@valencia]=KTp,Xat, Telepathy, MI

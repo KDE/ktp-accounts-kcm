@@ -1,7 +1,6 @@
 [Desktop Entry]
 Encoding=UTF-8
 Comment=Custom account configuration user interface for accounts using the Gabble connection manager.
-Comment[ast]=Interfaz d'usuariu de configuración de cuenta personalizada pa cuentes qu'usen el xestor de conexones Gabble.
 Comment[bs]=Korisnički interfejs za konfiguraciju korisničkih naloga koristeći Gabble menadžer konekcja.
 Comment[ca]=Interfície d'usuari de configuració del compte personalitzat per a comptes que utilitzen el gestor de connexions Gabble.
 Comment[ca@valencia]=Interfície d'usuari de configuració del compte personalitzat per a comptes que utilitzen el gestor de connexions Gabble.
@@ -46,7 +45,6 @@ Comment[zh_CN]=通过 Gabble 连接管理器自定义账户的配置界面
 Comment[zh_TW]=對使用 Gabble 連線管理員的帳號自訂帳號設定使用者介面。
 Icon=blockdevice
 Name=Gabble Account Configuration User Interface
-Name[ast]=Interfaz d'usuariu de configuración de cuenta Gabble
 Name[bs]=Korisnički interfejs za konfiguraciju korisničkih naloga Gabble
 Name[ca]=Interfície d'usuari de configuració del compte de Gabble
 Name[ca@valencia]=Interfície d'usuari de configuració del compte de Gabble
