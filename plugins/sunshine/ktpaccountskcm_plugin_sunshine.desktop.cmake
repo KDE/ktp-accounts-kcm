@@ -45,6 +45,7 @@ Comment[zh_CN]=通过 Sunshine 链接管理器自定义 Gadu-Gadu 账户的配�
 Comment[zh_TW]=對使用 Sunshine 連線管理員的 Gadu-Gadu 帳號自訂帳號設定使用者介面。
 Icon=blockdevice
 Name=Gadu-Gadu Account Configuration User Interface
+Name[ast]=Interfaz d'usuariu de configuración de cuentes Gadu-Gadu
 Name[bs]=Korisnički interfejs za konfiguraciju Gadu-Gadu korisničkih naloga
 Name[ca]=Interfície d'usuari de configuració del compte de Gadu-Gadu
 Name[ca@valencia]=Interfície d'usuari de configuració del compte de Gadu-Gadu

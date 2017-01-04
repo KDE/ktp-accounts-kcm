@@ -45,6 +45,7 @@ Comment[zh_CN]=通过 Rakia/SofiaSIP 连接管理器自定义账户的配置界�
 Comment[zh_TW]=對使用 Rakia/SofiaSIP 連線管理員的帳號自訂帳號設定使用者介面。
 Icon=blockdevice
 Name=Rakia/SofiaSIP Account Configuration User Interface
+Name[ast]=Interfaz d'usuariu de configuración de cuentes Rakia/SofiaSIP
 Name[bs]=Korisnički interfejs za konfiguraciju korisničkih naloga Rakia/Sofia SIP
 Name[ca]=Interfície d'usuari de configuració del compte de Rakia/SofiaSIP
 Name[ca@valencia]=Interfície d'usuari de configuració del compte de Rakia/SofiaSIP

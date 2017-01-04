@@ -45,6 +45,7 @@ Comment[zh_CN]=通过 Gabble 连接管理器自定义账户的配置界面
 Comment[zh_TW]=對使用 Gabble 連線管理員的帳號自訂帳號設定使用者介面。
 Icon=blockdevice
 Name=Gabble Account Configuration User Interface
+Name[ast]=Interfaz d'usuariu de configuración de cuentes Gabble
 Name[bs]=Korisnički interfejs za konfiguraciju korisničkih naloga Gabble
 Name[ca]=Interfície d'usuari de configuració del compte de Gabble
 Name[ca@valencia]=Interfície d'usuari de configuració del compte de Gabble

@@ -43,6 +43,7 @@ Comment[zh_CN]=通过 Pintxo 连接管理器自定义账户的配置界面
 Comment[zh_TW]=對使用 Pintxo 連線管理員的帳號自訂帳號設定使用者介面。
 Icon=phone
 Name=Pintxo Account Configuration User Interface
+Name[ast]=Interfaz d'usuariu de configuración de cuentes Pintxo
 Name[bs]=Korisnički interfejs za konfiguraciju korisničkih naloga Pinxto
 Name[ca]=Interfície d'usuari de configuració del compte de Pintxo
 Name[ca@valencia]=Interfície d'usuari de configuració del compte de Pintxo
