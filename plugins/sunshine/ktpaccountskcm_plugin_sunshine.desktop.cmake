@@ -1,6 +1,7 @@
 [Desktop Entry]
 Encoding=UTF-8
 Comment=Custom account configuration user interface for Gadu-Gadu accounts using the Sunshine connection manager.
+Comment[ast]=Interfaz d'usuariu de configuraciones personalizaes de cuentes pa cuentes qu'usen el xestor de conexones Gadu-Gadu.
 Comment[bs]=Korisnički interfejs za konfiguraciju Gadu-Gadu korisničkih naloga koristeći Sunshine menadžer konekcja.
 Comment[ca]=Interfície d'usuari de configuració del compte personalitzat per a comptes del Gadu-Gadu que utilitzen el gestor de connexions Sunshine.
 Comment[ca@valencia]=Interfície d'usuari de configuració del compte personalitzat per a comptes del Gadu-Gadu que utilitzen el gestor de connexions Sunshine.

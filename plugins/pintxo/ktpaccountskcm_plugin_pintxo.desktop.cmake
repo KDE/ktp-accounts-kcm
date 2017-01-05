@@ -1,6 +1,7 @@
 [Desktop Entry]
 Encoding=UTF-8
 Comment=Custom account configuration user interface for accounts using the Pintxo connection manager.
+Comment[ast]=Interfaz d'usuariu de configuraciones personalizaes de cuentes pa cuentes qu'usen el xestor de conexones Pintxo.
 Comment[bs]=Korisnički interfejs za konfiguraciju korisničkih naloga koristeći Pinxto menadžer konekcja.
 Comment[ca]=Interfície d'usuari de configuració del compte personalitzat per a comptes que utilitzen el gestor de connexions Pintxo.
 Comment[ca@valencia]=Interfície d'usuari de configuració del compte personalitzat per a comptes que utilitzen el gestor de connexions Pintxo.
