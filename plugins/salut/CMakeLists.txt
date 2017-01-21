@@ -11,20 +11,20 @@ set (ktpaccountskcm_plugin_salut_SRCS
      salut-advanced-options-widget.cpp
 )
 
-kde4_add_ui_files (ktpaccountskcm_plugin_salut_SRCS
+ki18n_wrap_ui (ktpaccountskcm_plugin_salut_SRCS
                    salut-main-options-widget.ui
                    salut-advanced-options-widget.ui
 )
 
-kde4_add_plugin (ktpaccountskcm_plugin_salut
+add_library  (ktpaccountskcm_plugin_salut MODULE
                  ${ktpaccountskcm_plugin_salut_SRCS}
 )
 
 target_link_libraries (ktpaccountskcm_plugin_salut
                        ktpaccountskcminternal
-                       ${QT_LIBRARIES}
-                       ${KDE4_KDEUI_LIBS}
-                       ${TELEPATHY_QT4_LIBRARIES}
+                       Qt5::Core
+                       Qt5::Widgets
+                       ${TELEPATHY_QT5LIBRARIES}
 )
 
 # Install:

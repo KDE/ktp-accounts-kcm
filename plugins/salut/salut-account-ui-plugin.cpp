@@ -21,10 +21,7 @@
 #include "salut-account-ui-plugin.h"
 #include "salut-account-ui.h"
 
-#include <KCMTelepathyAccounts/PluginMacros>
-
 #include <KPluginFactory>
-#include <KDebug>
 
 #include <QtCore/QVariantList>
 
@@ -43,10 +40,6 @@ AbstractAccountUi* SalutAccountUiPlugin::accountUi(const QString &connectionMana
         const QString &protocol,
         const QString &serviceName)
 {
-    kDebug() << "connectionManager: " << connectionManager <<
-             ", protocol: " << protocol <<
-             ", servicename: " << serviceName;
-
     // We support salut/local-xmpp
     if (connectionManager == QLatin1String("salut") && protocol == QLatin1String("local-xmpp")) {
         return new SalutAccountUi;
@@ -56,6 +49,5 @@ AbstractAccountUi* SalutAccountUiPlugin::accountUi(const QString &connectionMana
 }
 
 K_PLUGIN_FACTORY(factory, registerPlugin<SalutAccountUiPlugin>();)
-K_EXPORT_PLUGIN(factory("kcmtelepathyaccounts_plugin_salut"))
 
 #include "salut-account-ui-plugin.moc"

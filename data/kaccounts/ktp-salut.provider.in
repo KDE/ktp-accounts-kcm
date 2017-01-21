@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<provider id="ktp-salut">
+    <name>Bonjour/Salut</name>
+    <icon>im-local-xmpp</icon>
+    <description>Bonjour/Salut chat account</description>
+    <translations>kaccounts-providers</translations>
+    <plugin>ktpaccountskcm_plugin_kaccounts</plugin>
+</provider>

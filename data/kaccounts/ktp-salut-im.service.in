@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<service id="ktp-salut-im">
+  <type>IM</type>
+  <!-- Jabber/XMPP - The string below is being displayed as a checkbox label to enable/disable this service -->
+  <_name>Chat</_name>
+  <icon>im-local-xmpp</icon>
+  <provider>ktp-salut</provider>
+  <translations>kaccounts-providers</translations>
+
+  <template>
+      <group name="telepathy">
+          <setting name="manager">salut</setting>
+          <setting name="protocol">local-xmpp</setting>
+      </group>
+      <group name="auth">
+          <setting name="method">password</setting>
+          <setting name="mechanism">password</setting>
+      </group>
+  </template>
+</service>
