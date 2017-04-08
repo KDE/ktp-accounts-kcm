@@ -16,6 +16,7 @@ Comment[fi]=Morse-yhteyshallintaa käyttävien tilien mukautettu hallintakäytt�
 Comment[fr]=Interface utilisateur personnalisée pour la configuration de comptes en utilisant le gestionnaire de connexions « Morse ».
 Comment[gl]=Interface de usuario de configuración personalizada da conta para contas que empreguen o xestor de conexións Morse.
 Comment[hu]=Egyedi beállítófelület a Morse kapcsolatkezelőt használó azonosítókhoz.
+Comment[ia]=Interfacie de usator pro configuration de conto personalisate pro contos usante le gerente de connexion Morse.
 Comment[it]=Interfaccia utente personalizzata di configurazione account per account che usano il gestore di connessioni Morse.
 Comment[ko]=Morse 연결 관리자를 사용하는 계정 설정 사용자 인터페이스입니다.
 Comment[nb]=Brukerflate for å sette opp egendefinerte kontoer ved bruk av Morse tilkoblingsbehandler.
