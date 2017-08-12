@@ -36,7 +36,7 @@ public:
                                  QWidget *parent = 0) const;
 
 private:
-    Q_DISABLE_COPY(HazeSteamAccountUi);
+    Q_DISABLE_COPY(HazeSteamAccountUi)
 };
 
 #endif // header guard

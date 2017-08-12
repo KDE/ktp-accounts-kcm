@@ -34,7 +34,7 @@ public:
     virtual ~MySpaceIMAdvancedSettingsWidget();
 
 private:
-    Q_DISABLE_COPY(MySpaceIMAdvancedSettingsWidget);
+    Q_DISABLE_COPY(MySpaceIMAdvancedSettingsWidget)
     Ui::MySpaceIMAdvancedSettingsWidget *m_ui;
 };
 

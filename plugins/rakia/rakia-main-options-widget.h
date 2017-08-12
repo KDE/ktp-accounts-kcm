@@ -36,7 +36,7 @@ public:
 
     virtual QString defaultDisplayName() const;
 private:
-    Q_DISABLE_COPY(RakiaMainOptionsWidget);
+    Q_DISABLE_COPY(RakiaMainOptionsWidget)
     Ui::RakiaMainOptionsWidget *m_ui;
 };
 

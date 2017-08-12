@@ -36,7 +36,7 @@ public:
     virtual AbstractAccountParametersWidget* advancedOptionsWidget(ParameterEditModel *model, QWidget *parent = 0) const;
 
 private:
-    Q_DISABLE_COPY(SipeAccountUi);
+    Q_DISABLE_COPY(SipeAccountUi)
 };
 
 #endif // header guard

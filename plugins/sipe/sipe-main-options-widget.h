@@ -37,7 +37,7 @@ public:
     virtual void submit();
 
 private:
-    Q_DISABLE_COPY(SipeMainOptionsWidget);
+    Q_DISABLE_COPY(SipeMainOptionsWidget)
     Ui::SipeMainOptionsWidget *m_ui;
 };
 

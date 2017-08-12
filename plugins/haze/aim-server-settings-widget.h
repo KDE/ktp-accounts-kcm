@@ -35,7 +35,7 @@ public:
     virtual ~AimServerSettingsWidget();
 
 private:
-    Q_DISABLE_COPY(AimServerSettingsWidget);
+    Q_DISABLE_COPY(AimServerSettingsWidget)
     Ui::AimServerSettingsWidget *m_ui;
 };
 

@@ -35,7 +35,7 @@ public:
     virtual ~ServerSettingsWidget();
 
 private:
-    Q_DISABLE_COPY(ServerSettingsWidget);
+    Q_DISABLE_COPY(ServerSettingsWidget)
     Ui::ServerSettingsWidget *m_ui;
 };
 

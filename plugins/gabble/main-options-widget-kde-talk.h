@@ -31,7 +31,7 @@ namespace Ui {
 class MainOptionsWidgetKDETalk : public AbstractAccountParametersWidget
 {
     Q_OBJECT
-    Q_DISABLE_COPY(MainOptionsWidgetKDETalk);
+    Q_DISABLE_COPY(MainOptionsWidgetKDETalk)
 
 
 public:

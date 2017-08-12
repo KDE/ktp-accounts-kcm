@@ -32,7 +32,7 @@
 class SalutDetailsDialog : public KDialog
 {
     Q_OBJECT
-    Q_DISABLE_COPY(SalutDetailsDialog);
+    Q_DISABLE_COPY(SalutDetailsDialog)
 
 public:
     explicit SalutDetailsDialog(const Tp::ProfileManagerPtr profileManager, const Tp::ConnectionManagerPtr connectionManager, QWidget *parent = 0);

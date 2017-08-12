@@ -36,7 +36,7 @@ public:
     virtual bool hasAdvancedOptionsWidget() const;
 
 private:
-    Q_DISABLE_COPY(HazeMsnAccountUi);
+    Q_DISABLE_COPY(HazeMsnAccountUi)
 };
 
 #endif // KCMTELEPATHYACCOUNTS_PLUGIN_HAZE_MSN_ACCOUNT_H

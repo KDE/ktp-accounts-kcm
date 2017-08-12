@@ -43,7 +43,7 @@ public:
     void addTab(AbstractAccountParametersWidget *tab, const QString &label);
 
 private:
-    Q_DISABLE_COPY(GenericAdvancedOptionsWidget);
+    Q_DISABLE_COPY(GenericAdvancedOptionsWidget)
 
     class Private;
     Private * const d;

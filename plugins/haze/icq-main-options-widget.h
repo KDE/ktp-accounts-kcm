@@ -35,7 +35,7 @@ public:
 
     virtual QString defaultDisplayName() const;
 private:
-    Q_DISABLE_COPY(IcqMainOptionsWidget);
+    Q_DISABLE_COPY(IcqMainOptionsWidget)
     Ui::IcqMainOptionsWidget *m_ui;
 };
 

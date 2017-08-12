@@ -45,7 +45,7 @@ protected:
     virtual void registerProvidedProtocol(const QString &connectionManager, const QString &protocol);
 
 private:
-    Q_DISABLE_COPY(AbstractAccountUiPlugin);
+    Q_DISABLE_COPY(AbstractAccountUiPlugin)
 
     class Private;
     Private * const d;

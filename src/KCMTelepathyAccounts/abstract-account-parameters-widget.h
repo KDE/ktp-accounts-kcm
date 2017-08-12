@@ -87,7 +87,7 @@ protected:
     ParameterEditModel *parameterModel() const;
 
 private:
-    Q_DISABLE_COPY(AbstractAccountParametersWidget);
+    Q_DISABLE_COPY(AbstractAccountParametersWidget)
 
     class Private;
     Private * const d;

@@ -34,7 +34,7 @@ public:
     virtual ~GroupWiseAdvancedSettingsWidget();
 
 private:
-    Q_DISABLE_COPY(GroupWiseAdvancedSettingsWidget);
+    Q_DISABLE_COPY(GroupWiseAdvancedSettingsWidget)
     Ui::GroupWiseAdvancedSettingsWidget *m_ui;
 };
 

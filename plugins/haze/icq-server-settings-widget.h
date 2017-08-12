@@ -37,7 +37,7 @@ public:
     virtual void submit();
 private:
 
-    Q_DISABLE_COPY(IcqServerSettingsWidget);
+    Q_DISABLE_COPY(IcqServerSettingsWidget)
     Ui::IcqServerSettingsWidget *m_ui;
 };
 

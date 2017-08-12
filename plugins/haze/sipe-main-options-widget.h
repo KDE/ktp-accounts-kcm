@@ -34,7 +34,7 @@ public:
 
     virtual QString defaultDisplayName() const;
 private:
-    Q_DISABLE_COPY(SipeMainOptionsWidget);
+    Q_DISABLE_COPY(SipeMainOptionsWidget)
     Ui::SipeMainOptionsWidget *m_ui;
 };
 

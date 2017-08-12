@@ -40,7 +40,7 @@ public:
                                      QWidget *parent = 0) const;
 
 private:
-    Q_DISABLE_COPY(HazeGroupWiseAccountUi);
+    Q_DISABLE_COPY(HazeGroupWiseAccountUi)
 };
 
 #endif // header guard

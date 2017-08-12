@@ -37,7 +37,7 @@ public:
     virtual ~MainOptionsWidget();
     virtual QString defaultDisplayName() const;
 private:
-    Q_DISABLE_COPY(MainOptionsWidget);
+    Q_DISABLE_COPY(MainOptionsWidget)
     Ui::MainOptionsWidget *m_ui;
     QString simIdent;
     QDataWidgetMapper* mapper;

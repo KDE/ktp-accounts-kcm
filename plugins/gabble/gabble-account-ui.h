@@ -40,7 +40,7 @@ public:
                                      QWidget *parent = 0) const;
 
 private:
-    Q_DISABLE_COPY(GabbleAccountUi);
+    Q_DISABLE_COPY(GabbleAccountUi)
     QString m_serviceName;
 };
 

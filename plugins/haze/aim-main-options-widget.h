@@ -30,7 +30,7 @@ class AimMainOptionsWidget
             : public AbstractAccountParametersWidget
 {
     Q_OBJECT
-    Q_DISABLE_COPY(AimMainOptionsWidget);
+    Q_DISABLE_COPY(AimMainOptionsWidget)
 
 public:
     explicit AimMainOptionsWidget(ParameterEditModel* model, QWidget* parent = 0);

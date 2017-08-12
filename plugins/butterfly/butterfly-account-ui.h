@@ -35,7 +35,7 @@ public:
               *mainOptionsWidget(ParameterEditModel *model,
                                  QWidget *parent = 0) const;
 private:
-    Q_DISABLE_COPY(ButterflyAccountUi);
+    Q_DISABLE_COPY(ButterflyAccountUi)
 };
 
 

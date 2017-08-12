@@ -56,7 +56,7 @@ protected:
     virtual void registerSupportedParameter(const QString &name, QVariant::Type type);
 
 private:
-    Q_DISABLE_COPY(AbstractAccountUi);
+    Q_DISABLE_COPY(AbstractAccountUi)
 
     class Private;
     Private * const d;

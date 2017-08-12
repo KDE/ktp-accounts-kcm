@@ -28,7 +28,7 @@
 class MainOptionsWidgetMSN : public AbstractAccountParametersWidget
 {
     Q_OBJECT
-    Q_DISABLE_COPY(MainOptionsWidgetMSN);
+    Q_DISABLE_COPY(MainOptionsWidgetMSN)
 
 public:
     explicit MainOptionsWidgetMSN(ParameterEditModel *model,

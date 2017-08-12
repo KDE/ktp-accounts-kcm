@@ -40,7 +40,7 @@ public:
                            QWidget *parent = 0) const;
 
 private:
-    Q_DISABLE_COPY(SalutAccountUi);
+    Q_DISABLE_COPY(SalutAccountUi)
 };
 
 #endif // header guard

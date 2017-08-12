@@ -50,7 +50,7 @@ namespace Ui {
 class KCMTelepathyAccounts : public KCModule
 {
     Q_OBJECT
-    Q_DISABLE_COPY(KCMTelepathyAccounts);
+    Q_DISABLE_COPY(KCMTelepathyAccounts)
 
 public:
     explicit KCMTelepathyAccounts(QWidget *parent = 0,

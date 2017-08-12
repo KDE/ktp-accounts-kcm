@@ -35,7 +35,7 @@ public:
     virtual ~SalutAdvancedOptionsWidget();
 
 private:
-    Q_DISABLE_COPY(SalutAdvancedOptionsWidget);
+    Q_DISABLE_COPY(SalutAdvancedOptionsWidget)
     Ui::SalutAdvancedOptionsWidget *m_ui;
 };
 

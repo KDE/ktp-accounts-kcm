@@ -35,7 +35,7 @@ public:
     virtual ~SunshineAdvancedOptionsWidget();
 
 private:
-    Q_DISABLE_COPY(SunshineAdvancedOptionsWidget);
+    Q_DISABLE_COPY(SunshineAdvancedOptionsWidget)
     Ui::SunshineAdvancedOptionsWidget *m_ui;
 };
 

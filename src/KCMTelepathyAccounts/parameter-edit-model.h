@@ -37,7 +37,7 @@ class ParameterItem;
 class KCM_TELEPATHY_ACCOUNTS_EXPORT ParameterEditModel : public QAbstractListModel
 {
     Q_OBJECT
-    Q_DISABLE_COPY(ParameterEditModel);
+    Q_DISABLE_COPY(ParameterEditModel)
 
 public:
     enum Roles {
