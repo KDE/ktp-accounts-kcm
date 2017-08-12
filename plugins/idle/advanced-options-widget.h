@@ -35,7 +35,7 @@ public:
     virtual ~AdvancedOptionsWidget();
 
 private:
-    Q_DISABLE_COPY(AdvancedOptionsWidget);
+    Q_DISABLE_COPY(AdvancedOptionsWidget)
     Ui::AdvancedOptionsWidget *m_ui;
 };
 

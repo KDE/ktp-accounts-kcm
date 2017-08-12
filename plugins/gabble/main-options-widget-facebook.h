@@ -28,7 +28,7 @@
 class MainOptionsWidgetFacebook : public AbstractAccountParametersWidget
 {
     Q_OBJECT
-    Q_DISABLE_COPY(MainOptionsWidgetFacebook);
+    Q_DISABLE_COPY(MainOptionsWidgetFacebook)
 
 public:
     explicit MainOptionsWidgetFacebook(ParameterEditModel *model,

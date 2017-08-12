@@ -35,7 +35,7 @@ public:
 
     virtual QString defaultDisplayName() const;
 private:
-    Q_DISABLE_COPY(MsnMainOptionsWidget);
+    Q_DISABLE_COPY(MsnMainOptionsWidget)
     Ui::MsnMainOptionsWidget *m_ui;
 };
 

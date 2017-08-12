@@ -37,7 +37,7 @@ class ProfileItem;
 class KCM_TELEPATHY_ACCOUNTS_EXPORT ProfileListModel : public QAbstractListModel
 {
     Q_OBJECT
-    Q_DISABLE_COPY(ProfileListModel);
+    Q_DISABLE_COPY(ProfileListModel)
 
 public:
     enum Roles {

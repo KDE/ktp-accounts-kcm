@@ -34,7 +34,7 @@ public:
 
     virtual QString defaultDisplayName() const;
 private:
-    Q_DISABLE_COPY(SkypeMainOptionsWidget);
+    Q_DISABLE_COPY(SkypeMainOptionsWidget)
     Ui::SkypeMainOptionsWidget *m_ui;
 };
 

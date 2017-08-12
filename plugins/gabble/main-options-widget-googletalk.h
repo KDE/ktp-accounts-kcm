@@ -28,7 +28,7 @@
 class MainOptionsWidgetGoogleTalk : public AbstractAccountParametersWidget
 {
     Q_OBJECT
-    Q_DISABLE_COPY(MainOptionsWidgetGoogleTalk);
+    Q_DISABLE_COPY(MainOptionsWidgetGoogleTalk)
 
 
 public:

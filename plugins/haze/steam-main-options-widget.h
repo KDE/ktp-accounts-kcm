@@ -34,7 +34,7 @@ public:
 
     virtual QString defaultDisplayName() const;
 private:
-    Q_DISABLE_COPY(SteamMainOptionsWidget);
+    Q_DISABLE_COPY(SteamMainOptionsWidget)
     Ui::SteamMainOptionsWidget *m_ui;
 };
 

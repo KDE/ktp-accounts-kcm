@@ -34,7 +34,7 @@ public:
 
     virtual QString defaultDisplayName() const;
 private:
-    Q_DISABLE_COPY(MySpaceIMMainOptionsWidget);
+    Q_DISABLE_COPY(MySpaceIMMainOptionsWidget)
     Ui::MySpaceIMMainOptionsWidget *m_ui;
 };
 

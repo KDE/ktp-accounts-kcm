@@ -32,7 +32,7 @@
 class ParameterItem : public QObject
 {
     Q_OBJECT
-    Q_DISABLE_COPY(ParameterItem);
+    Q_DISABLE_COPY(ParameterItem)
 
 public:
     ParameterItem(const Tp::ProtocolParameter &parameter,

@@ -34,7 +34,7 @@ class ProfileListModel;
 class KCM_TELEPATHY_ACCOUNTS_EXPORT ProfileItem : public QObject
 {
     Q_OBJECT
-    Q_DISABLE_COPY(ProfileItem);
+    Q_DISABLE_COPY(ProfileItem)
 
 public:
     explicit ProfileItem(const Tp::ProfilePtr &profile, QObject *parent);

@@ -42,7 +42,7 @@ public:
                            QWidget *parent = 0) const;
 
 private:
-    Q_DISABLE_COPY(HazeYahooAccount);
+    Q_DISABLE_COPY(HazeYahooAccount)
 };
 
 #endif // header guard

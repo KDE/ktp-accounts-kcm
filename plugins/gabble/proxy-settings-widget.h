@@ -35,7 +35,7 @@ public:
     virtual ~ProxySettingsWidget();
 
 private:
-    Q_DISABLE_COPY(ProxySettingsWidget);
+    Q_DISABLE_COPY(ProxySettingsWidget)
     Ui::ProxySettingsWidget *m_ui;
 };
 

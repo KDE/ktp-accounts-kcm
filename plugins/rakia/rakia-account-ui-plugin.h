@@ -38,7 +38,7 @@ public:
                                          const QString &serviceName);
 
 private:
-    Q_DISABLE_COPY(RakiaAccountUiPlugin);
+    Q_DISABLE_COPY(RakiaAccountUiPlugin)
 };
 
 

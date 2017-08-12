@@ -37,7 +37,7 @@ public:
     virtual bool hasAdvancedOptionsWidget() const;
 
 private:
-    Q_DISABLE_COPY(HazeSkypeWebAccountUi);
+    Q_DISABLE_COPY(HazeSkypeWebAccountUi)
 };
 
 #endif // header guard

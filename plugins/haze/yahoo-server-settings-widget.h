@@ -35,7 +35,7 @@ public:
     virtual ~YahooServerSettingsWidget();
 
 private:
-    Q_DISABLE_COPY(YahooServerSettingsWidget);
+    Q_DISABLE_COPY(YahooServerSettingsWidget)
     Ui::YahooServerSettingsWidget *m_ui;
 };
 

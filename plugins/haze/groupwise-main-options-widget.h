@@ -34,7 +34,7 @@ public:
 
     virtual QString defaultDisplayName() const;
 private:
-    Q_DISABLE_COPY(GroupWiseMainOptionsWidget);
+    Q_DISABLE_COPY(GroupWiseMainOptionsWidget)
     Ui::GroupWiseMainOptionsWidget *m_ui;
 };
 

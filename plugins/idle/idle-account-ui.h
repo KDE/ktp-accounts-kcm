@@ -39,7 +39,7 @@ public:
               *advancedOptionsWidget(ParameterEditModel *model,
                                      QWidget *parent = 0) const;
 private:
-    Q_DISABLE_COPY(IdleAccountUi);
+    Q_DISABLE_COPY(IdleAccountUi)
 };
 
 

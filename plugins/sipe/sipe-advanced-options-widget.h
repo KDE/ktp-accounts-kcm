@@ -34,7 +34,7 @@ public:
     virtual ~SipeAdvancedOptionsWidget();
 
 private:
-    Q_DISABLE_COPY(SipeAdvancedOptionsWidget);
+    Q_DISABLE_COPY(SipeAdvancedOptionsWidget)
     Ui::SipeAdvancedOptionsWidget *m_ui;
 };
 

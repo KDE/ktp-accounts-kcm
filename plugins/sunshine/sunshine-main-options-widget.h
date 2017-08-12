@@ -36,7 +36,7 @@ public:
 
     virtual QString defaultDisplayName() const;
 private:
-    Q_DISABLE_COPY(SunshineMainOptionsWidget);
+    Q_DISABLE_COPY(SunshineMainOptionsWidget)
     Ui::SunshineMainOptionsWidget *m_ui;
 };
 

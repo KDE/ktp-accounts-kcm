@@ -71,7 +71,7 @@ Q_SIGNALS:
     void feedbackMessage(const QString &text, const QString &comment, KMessageWidget::MessageType);
 
 private:
-    Q_DISABLE_COPY(AccountEditWidget);
+    Q_DISABLE_COPY(AccountEditWidget)
 
     void loadWidgets();
 

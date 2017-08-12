@@ -39,7 +39,7 @@ public Q_SLOTS:
     void updateKeepalive(int index);
 
 private:
-    Q_DISABLE_COPY(RakiaAdvancedOptionsWidget);
+    Q_DISABLE_COPY(RakiaAdvancedOptionsWidget)
     Ui::RakiaAdvancedOptionsWidget *m_ui;
 };
 

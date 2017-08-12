@@ -34,7 +34,7 @@ public:
     virtual ~SkypeAdvancedSettingsWidget();
 
 private:
-    Q_DISABLE_COPY(SkypeAdvancedSettingsWidget);
+    Q_DISABLE_COPY(SkypeAdvancedSettingsWidget)
     Ui::SkypeAdvancedSettingsWidget *m_ui;
 };
 
