@@ -40,6 +40,8 @@ AbstractAccountUi* SalutAccountUiPlugin::accountUi(const QString &connectionMana
         const QString &protocol,
         const QString &serviceName)
 {
+    Q_UNUSED(serviceName)
+
     // We support salut/local-xmpp
     if (connectionManager == QLatin1String("salut") && protocol == QLatin1String("local-xmpp")) {
         return new SalutAccountUi;
