@@ -56,10 +56,10 @@ public:
     explicit ParameterEditModel(QObject *parent = 0);
     virtual ~ParameterEditModel();
 
-    virtual int rowCount(const QModelIndex &index) const;
-    virtual QVariant data(const QModelIndex &index, int role = Qt::DisplayRole) const;
-    virtual Qt::ItemFlags flags(const QModelIndex &index) const;
-    virtual bool setData(const QModelIndex &index, const QVariant &value, int role);
+    virtual int rowCount(const QModelIndex &index) const override;
+    virtual QVariant data(const QModelIndex &index, int role = Qt::DisplayRole) const override;
+    virtual Qt::ItemFlags flags(const QModelIndex &index) const override;
+    virtual bool setData(const QModelIndex &index, const QVariant &value, int role) override;
     QModelIndex indexForParameter(const Tp::ProtocolParameter &parameter) const;
     QModelIndex indexForParameter(const Tp::Profile::Parameter &parameter) const;
     Tp::ProtocolParameter parameter(const QString &parameterName) const;

@@ -33,7 +33,7 @@ public:
                                   QWidget *parent = 0);
     virtual ~SkypeWebOptionsWidget();
 
-    virtual QString defaultDisplayName() const;
+    virtual QString defaultDisplayName() const override;
 private:
     Q_DISABLE_COPY(SkypeWebOptionsWidget)
     Ui::SkypeWebOptionsWidget *m_ui;

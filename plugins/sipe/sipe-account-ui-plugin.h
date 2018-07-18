@@ -33,7 +33,7 @@ public:
     SipeAccountUiPlugin(QObject *parent, const QVariantList &);
     virtual ~SipeAccountUiPlugin();
 
-    virtual AbstractAccountUi* accountUi(const QString &connectionManager, const QString &protocol, const QString &serviceName);
+    virtual AbstractAccountUi* accountUi(const QString &connectionManager, const QString &protocol, const QString &serviceName) override;
 
 private:
     Q_DISABLE_COPY(SipeAccountUiPlugin)

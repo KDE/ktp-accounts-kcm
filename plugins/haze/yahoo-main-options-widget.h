@@ -34,8 +34,8 @@ public:
     explicit YahooMainOptionsWidget(ParameterEditModel* model, QWidget* parent = 0);
     virtual ~YahooMainOptionsWidget();
 
-    virtual void submit();
-    virtual QString defaultDisplayName() const;
+    virtual void submit() override;
+    virtual QString defaultDisplayName() const override;
 private:
     Q_DISABLE_COPY(YahooMainOptionsWidget)
     Ui::YahooMainOptionsWidget* m_ui;

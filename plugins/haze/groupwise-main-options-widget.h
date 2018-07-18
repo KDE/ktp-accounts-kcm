@@ -32,7 +32,7 @@ public:
     explicit GroupWiseMainOptionsWidget(ParameterEditModel *model, QWidget *parent = 0);
     virtual ~GroupWiseMainOptionsWidget();
 
-    virtual QString defaultDisplayName() const;
+    virtual QString defaultDisplayName() const override;
 private:
     Q_DISABLE_COPY(GroupWiseMainOptionsWidget)
     Ui::GroupWiseMainOptionsWidget *m_ui;

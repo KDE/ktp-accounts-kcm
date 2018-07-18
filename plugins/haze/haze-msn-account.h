@@ -32,8 +32,8 @@ public:
     virtual ~HazeMsnAccountUi();
 
 //     virtual AbstractAccountParametersWidget *advancedOptionsWidget(ParameterEditModel *model, QWidget *parent = 0) const;
-    virtual AbstractAccountParametersWidget *mainOptionsWidget(ParameterEditModel *model, QWidget *parent = 0) const;
-    virtual bool hasAdvancedOptionsWidget() const;
+    virtual AbstractAccountParametersWidget *mainOptionsWidget(ParameterEditModel *model, QWidget *parent = 0) const override;
+    virtual bool hasAdvancedOptionsWidget() const override;
 
 private:
     Q_DISABLE_COPY(HazeMsnAccountUi)

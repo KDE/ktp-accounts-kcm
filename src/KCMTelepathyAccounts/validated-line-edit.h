@@ -55,7 +55,7 @@ protected Q_SLOTS:
     void onTextChanged(const QString &text);
 
 protected:
-    virtual void resizeEvent(QResizeEvent *event);
+    virtual void resizeEvent(QResizeEvent *event) override;
     void updateIcon();
     void validate();
 

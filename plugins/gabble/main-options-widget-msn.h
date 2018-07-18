@@ -35,9 +35,9 @@ public:
                                   QWidget *parent = 0);
     virtual ~MainOptionsWidgetMSN();
 
-    virtual void submit();
-    virtual bool validateParameterValues();
-    virtual QString defaultDisplayName() const;
+    virtual void submit() override;
+    virtual bool validateParameterValues() override;
+    virtual QString defaultDisplayName() const override;
 private:
     Ui::MainOptionsWidgetMSN *m_ui;
 };

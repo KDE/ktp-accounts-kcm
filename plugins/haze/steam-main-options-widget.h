@@ -32,7 +32,7 @@ public:
     explicit SteamMainOptionsWidget(ParameterEditModel *model, QWidget *parent = 0);
     virtual ~SteamMainOptionsWidget();
 
-    virtual QString defaultDisplayName() const;
+    virtual QString defaultDisplayName() const override;
 private:
     Q_DISABLE_COPY(SteamMainOptionsWidget)
     Ui::SteamMainOptionsWidget *m_ui;

@@ -32,7 +32,7 @@ public:
     explicit MySpaceIMMainOptionsWidget(ParameterEditModel *model, QWidget *parent = 0);
     virtual ~MySpaceIMMainOptionsWidget();
 
-    virtual QString defaultDisplayName() const;
+    virtual QString defaultDisplayName() const override;
 private:
     Q_DISABLE_COPY(MySpaceIMMainOptionsWidget)
     Ui::MySpaceIMMainOptionsWidget *m_ui;

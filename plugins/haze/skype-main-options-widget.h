@@ -32,8 +32,7 @@ public:
     explicit SkypeMainOptionsWidget(ParameterEditModel *model, QWidget *parent = 0);
     virtual ~SkypeMainOptionsWidget();
 
-    virtual QString defaultDisplayName() const;
-private:
+    virtual QString defaultDisplayName() const override;
     Q_DISABLE_COPY(SkypeMainOptionsWidget)
     Ui::SkypeMainOptionsWidget *m_ui;
 };

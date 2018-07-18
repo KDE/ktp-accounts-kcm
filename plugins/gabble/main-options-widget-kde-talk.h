@@ -39,9 +39,9 @@ public:
                                       QWidget *parent = 0);
     virtual ~MainOptionsWidgetKDETalk();
 
-    virtual void submit();
-    virtual bool validateParameterValues();
-    virtual QString defaultDisplayName() const;
+    virtual void submit() override;
+    virtual bool validateParameterValues() override;
+    virtual QString defaultDisplayName() const override;
 
 private:
     Ui::MainOptionsWidgetKDETalk *m_ui;

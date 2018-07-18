@@ -37,7 +37,7 @@ public:
                                  QWidget *parent = 0);
     ~ParameterEditWidget();
 
-    virtual QString defaultDisplayName() const;
+    virtual QString defaultDisplayName() const override;
 private Q_SLOTS:
     void onDelegateDataChanged(const QModelIndex &index, const QVariant &value, int role);
 

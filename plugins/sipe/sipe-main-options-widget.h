@@ -33,8 +33,8 @@ public:
     explicit SipeMainOptionsWidget(ParameterEditModel *model, QWidget *parent = 0);
     virtual ~SipeMainOptionsWidget();
 
-    virtual QString defaultDisplayName() const;
-    virtual void submit();
+    virtual QString defaultDisplayName() const override;
+    virtual void submit() override;
 
 private:
     Q_DISABLE_COPY(SipeMainOptionsWidget)

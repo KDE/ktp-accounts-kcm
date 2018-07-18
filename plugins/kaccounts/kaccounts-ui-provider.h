@@ -39,12 +39,12 @@ public:
     KAccountsUiProvider(QObject *parent = 0);
     virtual ~KAccountsUiProvider();
 
-    virtual void init(KAccountsUiPlugin::UiType type);
+    virtual void init(KAccountsUiPlugin::UiType type) override;
 
-    virtual void showNewAccountDialog();
-    virtual void showConfigureAccountDialog(const quint32 accountId);
-    virtual void setProviderName(const QString &providerName);
-    virtual QStringList supportedServicesForConfig() const;
+    virtual void showNewAccountDialog() override;
+    virtual void showConfigureAccountDialog(const quint32 accountId) override;
+    virtual void setProviderName(const QString &providerName) override;
+    virtual QStringList supportedServicesForConfig() const override;
 
 Q_SIGNALS:
     void feedbackMessage(const QString &text, const QString &comment, KMessageWidget::MessageType);

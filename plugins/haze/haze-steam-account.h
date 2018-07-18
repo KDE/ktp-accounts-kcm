@@ -33,7 +33,7 @@ public:
 
     virtual AbstractAccountParametersWidget
               *mainOptionsWidget(ParameterEditModel *model,
-                                 QWidget *parent = 0) const;
+                                 QWidget *parent = 0) const override;
 
 private:
     Q_DISABLE_COPY(HazeSteamAccountUi)

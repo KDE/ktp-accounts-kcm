@@ -34,11 +34,11 @@ public:
                                           QWidget *parent = 0);
     virtual ~GenericAdvancedOptionsWidget();
 
-    virtual bool validateParameterValues();
+    virtual bool validateParameterValues() override;
 
     void setTabBarHidden(bool hidden);
 
-    void submit();
+    void submit() override;
 
     void addTab(AbstractAccountParametersWidget *tab, const QString &label);
 

@@ -48,8 +48,8 @@ public:
     explicit ProfileListModel(QObject *parent = 0);
     virtual ~ProfileListModel();
 
-    virtual int rowCount(const QModelIndex &index) const;
-    virtual QVariant data(const QModelIndex &index, int role = Qt::DisplayRole) const;
+    virtual int rowCount(const QModelIndex &index) const override;
+    virtual QVariant data(const QModelIndex &index, int role = Qt::DisplayRole) const override;
 
     ProfileItem *itemForIndex(const QModelIndex &index) const;
     ProfileItem *itemForService(const QString &serviceName) const;

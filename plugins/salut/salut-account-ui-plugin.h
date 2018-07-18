@@ -35,7 +35,7 @@ public:
 
     virtual AbstractAccountUi* accountUi(const QString &connectionManager,
                                          const QString &protocol,
-                                         const QString &serviceName);
+                                         const QString &serviceName) override;
 
 private:
     Q_DISABLE_COPY(SalutAccountUiPlugin)

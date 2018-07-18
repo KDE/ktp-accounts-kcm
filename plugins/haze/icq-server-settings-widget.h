@@ -34,7 +34,7 @@ public:
                                        QWidget *parent = 0);
     virtual ~IcqServerSettingsWidget();
 
-    virtual void submit();
+    virtual void submit() override;
 private:
 
     Q_DISABLE_COPY(IcqServerSettingsWidget)

@@ -33,7 +33,7 @@ public:
                                   QWidget *parent = 0);
     virtual ~IcqMainOptionsWidget();
 
-    virtual QString defaultDisplayName() const;
+    virtual QString defaultDisplayName() const override;
 private:
     Q_DISABLE_COPY(IcqMainOptionsWidget)
     Ui::IcqMainOptionsWidget *m_ui;
