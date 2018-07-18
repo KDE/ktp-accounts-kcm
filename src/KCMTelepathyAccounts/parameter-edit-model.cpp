@@ -136,7 +136,7 @@ bool ParameterEditModel::setData(const QModelIndex &index, const QVariant &value
         Q_EMIT dataChanged(index, index);
         return true;
 
-    } else if (ParameterEditModel::ValidityRole) {
+    } else if (role == ParameterEditModel::ValidityRole) {
         if (value.toInt() == QValidator::Acceptable) {
             m_items.at(index.row())->setValidity(QValidator::Acceptable);
         } else if (value.toInt() == QValidator::Intermediate) {
