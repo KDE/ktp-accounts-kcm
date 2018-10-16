@@ -12,6 +12,7 @@ Comment[el]=Περιβάλλον προσαρμοσμένης διαμόρφωσ
 Comment[en_GB]=Custom account configuration user interface for accounts using the Morse connection manager.
 Comment[es]=Interfaz de configuración de cuentas personalizadas para las cuentas que usen el gestor de conexiones Morse.
 Comment[et]=Morse ühendusehaldurit kasutavate kontode kohandatud konto seadistamise kasutajaliides
+Comment[eu]=Kontuak konfiguratzeko norberak finkaturiko erabiltzaile interfazea «Morse» konexio kudeatzailea erabiltzen duten kontuetarako.
 Comment[fi]=Morse-yhteyshallintaa käyttävien tilien mukautettu hallintakäyttöliittymä.
 Comment[fr]=Interface utilisateur personnalisée pour la configuration de comptes en utilisant le gestionnaire de connexions « Morse ».
 Comment[gl]=Interface de usuario de configuración personalizada da conta para contas que empreguen o xestor de conexións Morse.
