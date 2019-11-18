@@ -69,6 +69,10 @@ add_library(ktpaccountskcminternal
             ${libktpaccountskcminternal_SRCS}
 )
 
+if (TARGET TelepathyQt5::Core) # telepathy-qt 0.9.8
+    set (TELEPATHY_QT5_LIBRARIES TelepathyQt5::Core)
+endif()
+
 target_link_libraries (ktpaccountskcminternal
                        Qt5::Widgets
                        Qt5::Core
