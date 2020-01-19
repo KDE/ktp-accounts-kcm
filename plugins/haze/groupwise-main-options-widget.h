@@ -29,7 +29,7 @@ class GroupWiseMainOptionsWidget : public AbstractAccountParametersWidget
 {
     Q_OBJECT
 public:
-    explicit GroupWiseMainOptionsWidget(ParameterEditModel *model, QWidget *parent = 0);
+    explicit GroupWiseMainOptionsWidget(ParameterEditModel *model, QWidget *parent = nullptr);
     ~GroupWiseMainOptionsWidget() override;
 
     QString defaultDisplayName() const override;

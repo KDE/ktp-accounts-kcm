@@ -28,7 +28,7 @@ class ParameterEditDelegate : public KWidgetItemDelegate
     Q_OBJECT
 
 public:
-    explicit ParameterEditDelegate(QAbstractItemView *itemView, QObject *parent = 0);
+    explicit ParameterEditDelegate(QAbstractItemView *itemView, QObject *parent = nullptr);
     ~ParameterEditDelegate() override;
 
     void paint(QPainter *painter,

@@ -32,7 +32,7 @@ class MainOptionsWidgetMSN : public AbstractAccountParametersWidget
 
 public:
     explicit MainOptionsWidgetMSN(ParameterEditModel *model,
-                                  QWidget *parent = 0);
+                                  QWidget *parent = nullptr);
     ~MainOptionsWidgetMSN() override;
 
     void submit() override;

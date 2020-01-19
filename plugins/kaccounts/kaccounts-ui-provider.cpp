@@ -75,7 +75,7 @@ KAccountsUiProvider::KAccountsUiProvider(QObject *parent)
     : KAccountsUiPlugin(parent),
       d(new Private)
 {
-    d->accountEditWidget = 0;
+    d->accountEditWidget = nullptr;
     d->reconnectRequired = false;
 
     Tp::registerTypes();

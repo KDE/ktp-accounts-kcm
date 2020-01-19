@@ -31,7 +31,7 @@ class YahooServerSettingsWidget : public AbstractAccountParametersWidget
 
 public:
     explicit YahooServerSettingsWidget(ParameterEditModel *model,
-                                       QWidget *parent = 0);
+                                       QWidget *parent = nullptr);
     ~YahooServerSettingsWidget() override;
 
 private:

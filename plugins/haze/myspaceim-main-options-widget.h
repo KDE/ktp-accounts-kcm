@@ -29,7 +29,7 @@ class MySpaceIMMainOptionsWidget : public AbstractAccountParametersWidget
 {
     Q_OBJECT
 public:
-    explicit MySpaceIMMainOptionsWidget(ParameterEditModel *model, QWidget *parent = 0);
+    explicit MySpaceIMMainOptionsWidget(ParameterEditModel *model, QWidget *parent = nullptr);
     ~MySpaceIMMainOptionsWidget() override;
 
     QString defaultDisplayName() const override;

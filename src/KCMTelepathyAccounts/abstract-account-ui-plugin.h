@@ -34,7 +34,7 @@ class KCM_TELEPATHY_ACCOUNTS_EXPORT AbstractAccountUiPlugin : public QObject
     Q_OBJECT
 
 public:
-    explicit AbstractAccountUiPlugin(QObject *parent = 0);
+    explicit AbstractAccountUiPlugin(QObject *parent = nullptr);
     ~AbstractAccountUiPlugin() override;
 
     virtual const QMap<QString, QString> &providedProtocols() const;

@@ -31,7 +31,7 @@ class AdvancedOptionsWidget : public AbstractAccountParametersWidget
 
 public:
     explicit AdvancedOptionsWidget(ParameterEditModel *model,
-                               QWidget *parent = 0);
+                               QWidget *parent = nullptr);
     ~AdvancedOptionsWidget() override;
 
 private:

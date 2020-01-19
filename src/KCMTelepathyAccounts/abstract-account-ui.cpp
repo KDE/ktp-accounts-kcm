@@ -54,7 +54,7 @@ AbstractAccountParametersWidget* AbstractAccountUi::advancedOptionsWidget(Parame
 {
     Q_UNUSED(parameterModel);
     Q_UNUSED(parent);
-    return 0;
+    return nullptr;
 }
 
 const QMap<QString, QVariant::Type> &AbstractAccountUi::supportedParameters() const

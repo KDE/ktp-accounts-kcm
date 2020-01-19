@@ -80,7 +80,7 @@ class ValidatedLineEdit::Private
 {
     public:
     Private()
-        : validationIcon(0)
+        : validationIcon(nullptr)
     {
 
     }

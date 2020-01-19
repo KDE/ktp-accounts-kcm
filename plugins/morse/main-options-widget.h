@@ -31,7 +31,7 @@ class MainOptionsWidget : public AbstractAccountParametersWidget
 
 public:
     explicit MainOptionsWidget(ParameterEditModel *model,
-                               QWidget *parent = 0);
+                               QWidget *parent = nullptr);
     ~MainOptionsWidget() override;
 
     QString defaultDisplayName() const override;

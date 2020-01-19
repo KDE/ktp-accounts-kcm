@@ -31,7 +31,7 @@ class YahooMainOptionsWidget : public AbstractAccountParametersWidget
     Q_OBJECT
 
 public:
-    explicit YahooMainOptionsWidget(ParameterEditModel* model, QWidget* parent = 0);
+    explicit YahooMainOptionsWidget(ParameterEditModel* model, QWidget* parent = nullptr);
     ~YahooMainOptionsWidget() override;
 
     void submit() override;

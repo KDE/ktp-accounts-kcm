@@ -28,16 +28,16 @@ class HazeSipeAccountUi : public AbstractAccountUi
     Q_OBJECT
 
 public:
-    explicit HazeSipeAccountUi(QObject *parent = 0);
+    explicit HazeSipeAccountUi(QObject *parent = nullptr);
     ~HazeSipeAccountUi() override;
 
     AbstractAccountParametersWidget
               *mainOptionsWidget(ParameterEditModel *model,
-                                 QWidget *parent = 0) const override;
+                                 QWidget *parent = nullptr) const override;
     bool hasAdvancedOptionsWidget() const override;
     AbstractAccountParametersWidget
               *advancedOptionsWidget(ParameterEditModel *model,
-                                     QWidget *parent = 0) const override;
+                                     QWidget *parent = nullptr) const override;
 
 private:
     Q_DISABLE_COPY(HazeSipeAccountUi)

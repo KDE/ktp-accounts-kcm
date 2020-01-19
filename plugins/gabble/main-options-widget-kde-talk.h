@@ -36,7 +36,7 @@ class MainOptionsWidgetKDETalk : public AbstractAccountParametersWidget
 
 public:
     explicit MainOptionsWidgetKDETalk(ParameterEditModel *model,
-                                      QWidget *parent = 0);
+                                      QWidget *parent = nullptr);
     ~MainOptionsWidgetKDETalk() override;
 
     void submit() override;

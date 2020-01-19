@@ -33,7 +33,7 @@ class AimMainOptionsWidget
     Q_DISABLE_COPY(AimMainOptionsWidget)
 
 public:
-    explicit AimMainOptionsWidget(ParameterEditModel* model, QWidget* parent = 0);
+    explicit AimMainOptionsWidget(ParameterEditModel* model, QWidget* parent = nullptr);
     ~AimMainOptionsWidget() override;
 
     QString defaultDisplayName() const override;

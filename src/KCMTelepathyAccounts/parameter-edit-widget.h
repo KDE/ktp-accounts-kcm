@@ -34,7 +34,7 @@ class KCM_TELEPATHY_ACCOUNTS_EXPORT ParameterEditWidget : public AbstractAccount
 
 public:
     explicit ParameterEditWidget(ParameterEditModel *parameterModel,
-                                 QWidget *parent = 0);
+                                 QWidget *parent = nullptr);
     ~ParameterEditWidget() override;
 
     QString defaultDisplayName() const override;

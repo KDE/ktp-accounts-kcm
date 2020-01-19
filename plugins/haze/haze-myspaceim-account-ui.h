@@ -28,16 +28,16 @@ class HazeMySpaceIMAccountUi : public AbstractAccountUi
     Q_OBJECT
 
 public:
-    explicit HazeMySpaceIMAccountUi(QObject *parent = 0);
+    explicit HazeMySpaceIMAccountUi(QObject *parent = nullptr);
     ~HazeMySpaceIMAccountUi() override;
 
     AbstractAccountParametersWidget
               *mainOptionsWidget(ParameterEditModel *model,
-                                 QWidget *parent = 0) const override;
+                                 QWidget *parent = nullptr) const override;
     bool hasAdvancedOptionsWidget() const override;
     AbstractAccountParametersWidget
               *advancedOptionsWidget(ParameterEditModel *model,
-                                     QWidget *parent = 0) const override;
+                                     QWidget *parent = nullptr) const override;
 
 private:
     Q_DISABLE_COPY(HazeMySpaceIMAccountUi)

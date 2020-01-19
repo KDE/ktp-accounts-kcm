@@ -30,7 +30,7 @@ class MsnMainOptionsWidget : public AbstractAccountParametersWidget
     Q_OBJECT
 
 public:
-    explicit MsnMainOptionsWidget(ParameterEditModel *model, QWidget *parent = 0);
+    explicit MsnMainOptionsWidget(ParameterEditModel *model, QWidget *parent = nullptr);
     ~MsnMainOptionsWidget() override;
 
     QString defaultDisplayName() const override;

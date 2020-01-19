@@ -31,7 +31,7 @@ class AimServerSettingsWidget : public AbstractAccountParametersWidget
 
 public:
     explicit AimServerSettingsWidget(ParameterEditModel *model,
-                                       QWidget *parent = 0);
+                                       QWidget *parent = nullptr);
     ~AimServerSettingsWidget() override;
 
 private:

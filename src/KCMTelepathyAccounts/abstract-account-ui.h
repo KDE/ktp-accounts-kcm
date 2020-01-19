@@ -38,19 +38,19 @@ class KCM_TELEPATHY_ACCOUNTS_EXPORT AbstractAccountUi : public QObject
     Q_OBJECT
 
 public:
-    explicit AbstractAccountUi(QObject *parent = 0);
+    explicit AbstractAccountUi(QObject *parent = nullptr);
     ~AbstractAccountUi() override;
 
     virtual const QMap<QString, QVariant::Type> &supportedParameters() const;
 
     virtual AbstractAccountParametersWidget
               *mainOptionsWidget(ParameterEditModel *parameterModel,
-                                 QWidget *parent = 0) const = 0;
+                                 QWidget *parent = nullptr) const = 0;
 
     virtual bool hasAdvancedOptionsWidget() const;
     virtual AbstractAccountParametersWidget
               *advancedOptionsWidget(ParameterEditModel *parameterModel,
-                                     QWidget *parent = 0) const;
+                                     QWidget *parent = nullptr) const;
 
 protected:
     virtual void registerSupportedParameter(const QString &name, QVariant::Type type);

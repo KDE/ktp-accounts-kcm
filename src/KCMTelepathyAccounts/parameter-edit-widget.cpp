@@ -31,7 +31,7 @@ class ParameterEditWidget::Private
 {
 public:
     Private()
-     : ui(0), delegate(0)
+     : ui(nullptr), delegate(nullptr)
     {
     }
 

@@ -83,7 +83,7 @@ AbstractAccountUi* HazeAccountUiPlugin::accountUi(const QString &connectionManag
         }
     }
 
-    return 0;
+    return nullptr;
 }
 
 

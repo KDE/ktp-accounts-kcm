@@ -44,7 +44,7 @@ class AccountEditWidget::Private
 {
 public:
     Private()
-            : accountUi(0), mainOptionsWidget(0)
+            : accountUi(nullptr), mainOptionsWidget(nullptr)
     {
     }
 
@@ -109,7 +109,7 @@ AccountEditWidget::AccountEditWidget(const Tp::ProfilePtr &profile,
         d->connectOnAdd->setChecked(true);
         d->ui->verticalLayout->addWidget(d->connectOnAdd);
     } else {
-        d->connectOnAdd = 0;
+        d->connectOnAdd = nullptr;
     }
 
     loadWidgets();
@@ -179,7 +179,7 @@ void AccountEditWidget::loadWidgets()
         //        it is like this in a hope the case won't happen often
         if (!mandatoryParameters.isEmpty()) {
             delete d->mainOptionsWidget;
-            d->mainOptionsWidget = 0;
+            d->mainOptionsWidget = nullptr;
         }
     }
 
@@ -256,7 +256,7 @@ ParameterEditModel* AccountEditWidget::parameterModel() const
 
 bool AccountEditWidget::connectOnAdd()
 {
-    if (d->connectOnAdd == 0) {
+    if (d->connectOnAdd == nullptr) {
         return false;
     }
     else{

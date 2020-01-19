@@ -31,7 +31,7 @@ class ProxySettingsWidget : public AbstractAccountParametersWidget
 
 public:
     explicit ProxySettingsWidget(ParameterEditModel *model,
-                                 QWidget *parent = 0);
+                                 QWidget *parent = nullptr);
     ~ProxySettingsWidget() override;
 
 private:

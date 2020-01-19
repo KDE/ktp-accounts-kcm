@@ -28,16 +28,16 @@ class HazeIcqAccountUi : public AbstractAccountUi
     Q_OBJECT
 
 public:
-    explicit HazeIcqAccountUi(QObject *parent = 0);
+    explicit HazeIcqAccountUi(QObject *parent = nullptr);
     ~HazeIcqAccountUi() override;
 
     AbstractAccountParametersWidget
               *mainOptionsWidget(ParameterEditModel *model,
-                                 QWidget *parent = 0) const override;
+                                 QWidget *parent = nullptr) const override;
     bool hasAdvancedOptionsWidget() const override;
     AbstractAccountParametersWidget
               *advancedOptionsWidget(ParameterEditModel *model,
-                                     QWidget *parent = 0) const override;
+                                     QWidget *parent = nullptr) const override;
 
 private:
     Q_DISABLE_COPY(HazeIcqAccountUi)

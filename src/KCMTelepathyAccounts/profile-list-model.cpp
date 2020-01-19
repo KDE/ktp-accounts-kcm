@@ -110,7 +110,7 @@ ProfileItem *ProfileListModel::itemForService(const QString &serviceName) const
         }
     }
 
-    return 0;
+    return nullptr;
 }
 
 bool ProfileListModel::hasNonFakeProfile(const Tp::ProfilePtr& profile, const QList<Tp::ProfilePtr> &profiles) const
@@ -154,7 +154,7 @@ void ProfileListModel::populateList()
 {
     Q_FOREACH (ProfileItem *item, m_profileItems) {
         delete item;
-        item = 0;
+        item = nullptr;
     }
 
     m_profileItems.clear();

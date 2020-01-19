@@ -28,12 +28,12 @@ class HazeSkypeWebAccountUi : public AbstractAccountUi
     Q_OBJECT
 
 public:
-    explicit HazeSkypeWebAccountUi(QObject *parent = 0);
+    explicit HazeSkypeWebAccountUi(QObject *parent = nullptr);
     ~HazeSkypeWebAccountUi() override;
 
     AbstractAccountParametersWidget
               *mainOptionsWidget(ParameterEditModel *model,
-                                 QWidget *parent = 0) const override;
+                                 QWidget *parent = nullptr) const override;
     bool hasAdvancedOptionsWidget() const override;
 
 private:

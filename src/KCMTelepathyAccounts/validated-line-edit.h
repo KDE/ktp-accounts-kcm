@@ -43,7 +43,7 @@ public:
         IPAddressValidator
     };
 
-    ValidatedLineEdit(QWidget *parent = 0);
+    ValidatedLineEdit(QWidget *parent = nullptr);
     ~ValidatedLineEdit() override;
 
     void setValidator(PredefinedValidator validator);

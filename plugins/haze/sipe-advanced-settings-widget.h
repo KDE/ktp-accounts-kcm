@@ -30,7 +30,7 @@ class SipeAdvancedSettingsWidget : public AbstractAccountParametersWidget
     Q_OBJECT
 
 public:
-    explicit SipeAdvancedSettingsWidget(ParameterEditModel *model, QWidget *parent = 0);
+    explicit SipeAdvancedSettingsWidget(ParameterEditModel *model, QWidget *parent = nullptr);
     ~SipeAdvancedSettingsWidget() override;
 
 private:

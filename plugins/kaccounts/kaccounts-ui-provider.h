@@ -36,7 +36,7 @@ class KAccountsUiProvider : public KAccountsUiPlugin
     Q_INTERFACES(KAccountsUiPlugin)
 
 public:
-    KAccountsUiProvider(QObject *parent = 0);
+    KAccountsUiProvider(QObject *parent = nullptr);
     ~KAccountsUiProvider() override;
 
     void init(KAccountsUiPlugin::UiType type) override;

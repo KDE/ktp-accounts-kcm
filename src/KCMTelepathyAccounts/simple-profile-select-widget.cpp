@@ -40,9 +40,9 @@ class SimpleProfileSelectWidget::Private
 {
 public:
     Private()
-     : profileListModel(0),
-       ui(0),
-       signalMapper(0)
+     : profileListModel(nullptr),
+       ui(nullptr),
+       signalMapper(nullptr)
     {
     }
 

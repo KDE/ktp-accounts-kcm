@@ -22,7 +22,7 @@
 
 #include <KLocalizedString>
 
-Dictionary* Dictionary::s_self = 0;
+Dictionary* Dictionary::s_self = nullptr;
 
 Dictionary::Dictionary()
 {
@@ -81,7 +81,7 @@ Dictionary::Dictionary()
 Dictionary::~Dictionary()
 {
     // Delete the singleton instance of this class
-    s_self = 0;
+    s_self = nullptr;
 }
 
 Dictionary *Dictionary::instance()

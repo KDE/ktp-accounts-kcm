@@ -163,7 +163,7 @@ void ParameterEditDelegate::paint(QPainter *painter,
     Q_UNUSED(index);
 
     QStyle *style = QApplication::style();
-    style->drawPrimitive(QStyle::PE_PanelItemViewItem, &option, painter, 0);
+    style->drawPrimitive(QStyle::PE_PanelItemViewItem, &option, painter, nullptr);
 
     painter->save();
 

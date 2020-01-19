@@ -46,7 +46,7 @@ AbstractAccountUi* SipeAccountUiPlugin::accountUi(
         AbstractAccountUi *sipeAccountUi = new SipeAccountUi(this);
         return sipeAccountUi;
     }
-    return 0;
+    return nullptr;
 }
 
 K_PLUGIN_FACTORY(factory, registerPlugin<SipeAccountUiPlugin>();)

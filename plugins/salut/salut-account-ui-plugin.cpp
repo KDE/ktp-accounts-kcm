@@ -47,7 +47,7 @@ AbstractAccountUi* SalutAccountUiPlugin::accountUi(const QString &connectionMana
         return new SalutAccountUi;
     }
 
-    return 0;
+    return nullptr;
 }
 
 K_PLUGIN_FACTORY(factory, registerPlugin<SalutAccountUiPlugin>();)

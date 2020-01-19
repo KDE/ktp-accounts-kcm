@@ -32,7 +32,7 @@ class MainOptionsWidgetFacebook : public AbstractAccountParametersWidget
 
 public:
     explicit MainOptionsWidgetFacebook(ParameterEditModel *model,
-                               QWidget *parent = 0);
+                               QWidget *parent = nullptr);
     ~MainOptionsWidgetFacebook() override;
 
     void submit() override;

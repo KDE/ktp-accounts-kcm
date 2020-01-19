@@ -48,7 +48,7 @@ AbstractAccountUi* SunshineAccountUiPlugin::accountUi(const QString &connectionM
         return new SunshineAccountUi;
     }
 
-    return 0;
+    return nullptr;
 }
 
 K_PLUGIN_FACTORY(factory, registerPlugin<SunshineAccountUiPlugin>();)

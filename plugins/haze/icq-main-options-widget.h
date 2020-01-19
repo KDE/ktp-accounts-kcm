@@ -30,7 +30,7 @@ class IcqMainOptionsWidget : public AbstractAccountParametersWidget
     Q_OBJECT
 public:
     explicit IcqMainOptionsWidget(ParameterEditModel *model,
-                                  QWidget *parent = 0);
+                                  QWidget *parent = nullptr);
     ~IcqMainOptionsWidget() override;
 
     QString defaultDisplayName() const override;

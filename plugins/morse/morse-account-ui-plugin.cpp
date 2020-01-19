@@ -46,7 +46,7 @@ AbstractAccountUi* MorseAccountUiPlugin::accountUi(const QString &connectionMana
         return new TelegramAccountUi;
     }
 
-    return 0;
+    return nullptr;
 }
 
 K_PLUGIN_FACTORY(factory, registerPlugin<MorseAccountUiPlugin>();)

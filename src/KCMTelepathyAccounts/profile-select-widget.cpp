@@ -35,9 +35,9 @@ class ProfileSelectWidget::Private
 {
 public:
     Private()
-     : ui(0),
-       sortModel(0),
-       sourceModel(0)
+     : ui(nullptr),
+       sortModel(nullptr),
+       sourceModel(nullptr)
     {
     }
 
@@ -95,12 +95,12 @@ ProfileItem *ProfileSelectWidget::selectedProfile()
     // If more than 1 profile is selected (shouldn't be possible, but just in case) error.
     if (selectedIndexes.size() > 1) {
         qWarning() << "More than 1 profile is selected.";
-        return 0;
+        return nullptr;
     }
 
     // If no indexes are selected, return 0.
     if (selectedIndexes.size() == 0) {
-        return 0;
+        return nullptr;
     }
 
     // 1 index is selected. Return the Pr for that.

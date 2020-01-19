@@ -46,7 +46,7 @@ public:
                                const QString &displayName,
                                ParameterEditModel *parameterModel,
                                ConnectOnLoadType connectOnAddFlag = doNotConnectOnAdd,
-                               QWidget *parent = 0);
+                               QWidget *parent = nullptr);
     ~AccountEditWidget() override;
 
     QString errorMessage() const;

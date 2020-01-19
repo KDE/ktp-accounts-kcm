@@ -42,7 +42,7 @@ class KCM_TELEPATHY_ACCOUNTS_EXPORT AbstractAccountParametersWidget : public QWi
 
 public:
     explicit AbstractAccountParametersWidget(ParameterEditModel *parameterModel,
-                                             QWidget *parent = 0);
+                                             QWidget *parent = nullptr);
     ~AbstractAccountParametersWidget() override;
 
     virtual QString errorMessage() const;
@@ -80,7 +80,7 @@ protected:
     void handleParameter(const QString &parameterName,
                          QVariant::Type parameterType,
                          QWidget *dataWidget,
-                         QWidget *labelWidget = 0,
+                         QWidget *labelWidget = nullptr,
                          const QByteArray &dataWidgetProperty = QByteArray());
 
     /** Returns the model containing all the protocol parameters*/

@@ -45,7 +45,7 @@ public:
         ProfileCmNameRole = Qt::UserRole+2
     };
 
-    explicit ProfileListModel(QObject *parent = 0);
+    explicit ProfileListModel(QObject *parent = nullptr);
     ~ProfileListModel() override;
 
     int rowCount(const QModelIndex &index) const override;

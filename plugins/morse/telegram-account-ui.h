@@ -28,12 +28,12 @@ class TelegramAccountUi : public AbstractAccountUi
     Q_OBJECT
 
 public:
-    explicit TelegramAccountUi(QObject *parent = 0);
+    explicit TelegramAccountUi(QObject *parent = nullptr);
     ~TelegramAccountUi() override;
 
     AbstractAccountParametersWidget
               *mainOptionsWidget(ParameterEditModel *model,
-                                 QWidget *parent = 0) const override;
+                                 QWidget *parent = nullptr) const override;
 private:
     Q_DISABLE_COPY(TelegramAccountUi)
 };

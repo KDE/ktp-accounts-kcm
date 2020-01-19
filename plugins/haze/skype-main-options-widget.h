@@ -29,7 +29,7 @@ class SkypeMainOptionsWidget : public AbstractAccountParametersWidget
 {
     Q_OBJECT
 public:
-    explicit SkypeMainOptionsWidget(ParameterEditModel *model, QWidget *parent = 0);
+    explicit SkypeMainOptionsWidget(ParameterEditModel *model, QWidget *parent = nullptr);
     ~SkypeMainOptionsWidget() override;
 
     QString defaultDisplayName() const override;

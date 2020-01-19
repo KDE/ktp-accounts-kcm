@@ -26,7 +26,7 @@
 #include <KServiceTypeTrader>
 #include <QDebug>
 
-PluginManager* PluginManager::s_self = 0;
+PluginManager* PluginManager::s_self = nullptr;
 
 PluginManager::PluginManager(QObject *parent)
  : QObject(parent)
@@ -40,14 +40,14 @@ PluginManager::PluginManager(QObject *parent)
 PluginManager::~PluginManager()
 {
     // Delete the singleton instance of this class
-    s_self = 0;
+    s_self = nullptr;
 }
 
 PluginManager *PluginManager::instance()
 {
     // Construct the singleton if hasn't been already
     if (!s_self) {
-        s_self = new PluginManager(0);
+        s_self = new PluginManager(nullptr);
     }
 
     // Return the singleton instance of this class
@@ -99,7 +99,7 @@ AbstractAccountUi *PluginManager::accountUiForProtocol(const QString &connection
         }
     }
 
-    return 0;
+    return nullptr;
 }
 
 

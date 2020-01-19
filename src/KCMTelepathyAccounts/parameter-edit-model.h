@@ -53,7 +53,7 @@ public:
         UserRole = Qt::UserRole + 42
     };
 
-    explicit ParameterEditModel(QObject *parent = 0);
+    explicit ParameterEditModel(QObject *parent = nullptr);
     ~ParameterEditModel() override;
 
     int rowCount(const QModelIndex &index) const override;

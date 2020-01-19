@@ -29,7 +29,7 @@ class SteamMainOptionsWidget : public AbstractAccountParametersWidget
 {
     Q_OBJECT
 public:
-    explicit SteamMainOptionsWidget(ParameterEditModel *model, QWidget *parent = 0);
+    explicit SteamMainOptionsWidget(ParameterEditModel *model, QWidget *parent = nullptr);
     ~SteamMainOptionsWidget() override;
 
     QString defaultDisplayName() const override;

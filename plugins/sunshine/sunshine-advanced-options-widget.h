@@ -31,7 +31,7 @@ class SunshineAdvancedOptionsWidget : public AbstractAccountParametersWidget
 
 public:
     explicit SunshineAdvancedOptionsWidget(ParameterEditModel *model,
-                                        QWidget *parent = 0);
+                                        QWidget *parent = nullptr);
     ~SunshineAdvancedOptionsWidget() override;
 
 private:

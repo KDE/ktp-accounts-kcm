@@ -39,8 +39,8 @@ class AbstractAccountParametersWidget::Private
 {
 public:
     Private()
-        : parameterModel(0),
-          mapper(0)
+        : parameterModel(nullptr),
+          mapper(nullptr)
     {
     }
     ParameterEditModel *parameterModel;

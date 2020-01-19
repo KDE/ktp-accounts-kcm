@@ -41,7 +41,7 @@ class KCM_TELEPATHY_ACCOUNTS_EXPORT ProfileSelectWidget : public QWidget
     Q_OBJECT
 
 public:
-    explicit ProfileSelectWidget(ProfileListModel *sprofileListModel, QWidget *parent = 0, bool enableSalut = false);
+    explicit ProfileSelectWidget(ProfileListModel *sprofileListModel, QWidget *parent = nullptr, bool enableSalut = false);
     ~ProfileSelectWidget() override;
 
     ProfileItem *selectedProfile();

@@ -38,7 +38,7 @@ public:
     ParameterItem(const Tp::ProtocolParameter &parameter,
                   const Tp::Profile::Parameter &profileParameter,
                   const QVariant &originalValue,
-                  QObject *parent = 0);
+                  QObject *parent = nullptr);
     ~ParameterItem() override;
 
     QString name() const;

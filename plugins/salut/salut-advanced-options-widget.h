@@ -31,7 +31,7 @@ class SalutAdvancedOptionsWidget : public AbstractAccountParametersWidget
 
 public:
     explicit SalutAdvancedOptionsWidget(ParameterEditModel *model,
-                                        QWidget *parent = 0);
+                                        QWidget *parent = nullptr);
     ~SalutAdvancedOptionsWidget() override;
 
 private:

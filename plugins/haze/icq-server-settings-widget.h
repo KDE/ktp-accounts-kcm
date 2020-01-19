@@ -31,7 +31,7 @@ class IcqServerSettingsWidget : public AbstractAccountParametersWidget
 
 public:
     explicit IcqServerSettingsWidget(ParameterEditModel *model,
-                                       QWidget *parent = 0);
+                                       QWidget *parent = nullptr);
     ~IcqServerSettingsWidget() override;
 
     void submit() override;

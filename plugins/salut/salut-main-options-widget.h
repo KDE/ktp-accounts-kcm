@@ -31,7 +31,7 @@ class SalutMainOptionsWidget : public AbstractAccountParametersWidget
 
 public:
     explicit SalutMainOptionsWidget(ParameterEditModel *model,
-                                    QWidget *parent = 0);
+                                    QWidget *parent = nullptr);
     ~SalutMainOptionsWidget() override;
 
     QString defaultDisplayName() const override;

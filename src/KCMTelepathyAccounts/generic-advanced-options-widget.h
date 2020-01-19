@@ -31,7 +31,7 @@ class KCM_TELEPATHY_ACCOUNTS_EXPORT GenericAdvancedOptionsWidget : public Abstra
 
 public:
     explicit GenericAdvancedOptionsWidget(ParameterEditModel* model,
-                                          QWidget *parent = 0);
+                                          QWidget *parent = nullptr);
     ~GenericAdvancedOptionsWidget() override;
 
     bool validateParameterValues() override;

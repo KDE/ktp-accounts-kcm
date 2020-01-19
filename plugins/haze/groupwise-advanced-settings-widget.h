@@ -30,7 +30,7 @@ class GroupWiseAdvancedSettingsWidget : public AbstractAccountParametersWidget
     Q_OBJECT
 
 public:
-    explicit GroupWiseAdvancedSettingsWidget(ParameterEditModel *model, QWidget *parent = 0);
+    explicit GroupWiseAdvancedSettingsWidget(ParameterEditModel *model, QWidget *parent = nullptr);
     ~GroupWiseAdvancedSettingsWidget() override;
 
 private:

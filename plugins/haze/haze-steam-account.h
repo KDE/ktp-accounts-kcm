@@ -28,12 +28,12 @@ class HazeSteamAccountUi : public AbstractAccountUi
     Q_OBJECT
 
 public:
-    explicit HazeSteamAccountUi(QObject *parent = 0);
+    explicit HazeSteamAccountUi(QObject *parent = nullptr);
     ~HazeSteamAccountUi() override;
 
     AbstractAccountParametersWidget
               *mainOptionsWidget(ParameterEditModel *model,
-                                 QWidget *parent = 0) const override;
+                                 QWidget *parent = nullptr) const override;
 
 private:
     Q_DISABLE_COPY(HazeSteamAccountUi)

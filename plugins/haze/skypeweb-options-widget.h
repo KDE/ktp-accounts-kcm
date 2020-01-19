@@ -30,7 +30,7 @@ class SkypeWebOptionsWidget : public AbstractAccountParametersWidget
     Q_OBJECT
 public:
     explicit SkypeWebOptionsWidget(ParameterEditModel *model,
-                                  QWidget *parent = 0);
+                                  QWidget *parent = nullptr);
     ~SkypeWebOptionsWidget() override;
 
     QString defaultDisplayName() const override;

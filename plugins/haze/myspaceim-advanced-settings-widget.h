@@ -30,7 +30,7 @@ class MySpaceIMAdvancedSettingsWidget : public AbstractAccountParametersWidget
     Q_OBJECT
 
 public:
-    explicit MySpaceIMAdvancedSettingsWidget(ParameterEditModel *model, QWidget *parent = 0);
+    explicit MySpaceIMAdvancedSettingsWidget(ParameterEditModel *model, QWidget *parent = nullptr);
     ~MySpaceIMAdvancedSettingsWidget() override;
 
 private:

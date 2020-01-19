@@ -31,7 +31,7 @@ class SunshineMainOptionsWidget : public AbstractAccountParametersWidget
 
 public:
     explicit SunshineMainOptionsWidget(ParameterEditModel *model,
-                                    QWidget *parent = 0);
+                                    QWidget *parent = nullptr);
     ~SunshineMainOptionsWidget() override;
 
     QString defaultDisplayName() const override;

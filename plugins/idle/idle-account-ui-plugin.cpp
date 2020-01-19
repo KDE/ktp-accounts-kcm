@@ -45,7 +45,7 @@ AbstractAccountUi* IdleAccountUiPlugin::accountUi(const QString &connectionManag
         return new IdleAccountUi;
     }
 
-    return 0;
+    return nullptr;
 }
 
 K_PLUGIN_FACTORY(factory, registerPlugin<IdleAccountUiPlugin>();)

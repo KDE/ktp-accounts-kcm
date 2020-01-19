@@ -29,7 +29,7 @@ class SipeMainOptionsWidget : public AbstractAccountParametersWidget
 {
     Q_OBJECT
 public:
-    explicit SipeMainOptionsWidget(ParameterEditModel *model, QWidget *parent = 0);
+    explicit SipeMainOptionsWidget(ParameterEditModel *model, QWidget *parent = nullptr);
     ~SipeMainOptionsWidget() override;
 
     QString defaultDisplayName() const override;

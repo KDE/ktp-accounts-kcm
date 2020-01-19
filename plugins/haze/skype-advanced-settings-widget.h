@@ -30,7 +30,7 @@ class SkypeAdvancedSettingsWidget : public AbstractAccountParametersWidget
     Q_OBJECT
 
 public:
-    explicit SkypeAdvancedSettingsWidget(ParameterEditModel *model, QWidget *parent = 0);
+    explicit SkypeAdvancedSettingsWidget(ParameterEditModel *model, QWidget *parent = nullptr);
     ~SkypeAdvancedSettingsWidget() override;
 
 private:

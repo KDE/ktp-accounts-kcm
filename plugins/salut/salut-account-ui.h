@@ -28,16 +28,16 @@ class SalutAccountUi : public AbstractAccountUi
     Q_OBJECT
 
 public:
-    explicit SalutAccountUi(QObject *parent = 0);
+    explicit SalutAccountUi(QObject *parent = nullptr);
     ~SalutAccountUi() override;
 
     AbstractAccountParametersWidget
     *mainOptionsWidget(ParameterEditModel *model,
-                       QWidget *parent = 0) const override;
+                       QWidget *parent = nullptr) const override;
     bool hasAdvancedOptionsWidget() const override;
     AbstractAccountParametersWidget
     *advancedOptionsWidget(ParameterEditModel *model,
-                           QWidget *parent = 0) const override;
+                           QWidget *parent = nullptr) const override;
 
 private:
     Q_DISABLE_COPY(SalutAccountUi)

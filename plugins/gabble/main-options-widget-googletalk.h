@@ -33,7 +33,7 @@ class MainOptionsWidgetGoogleTalk : public AbstractAccountParametersWidget
 
 public:
     explicit MainOptionsWidgetGoogleTalk(ParameterEditModel *model,
-                               QWidget *parent = 0);
+                               QWidget *parent = nullptr);
     ~MainOptionsWidgetGoogleTalk() override;
 
     QString defaultDisplayName() const override;

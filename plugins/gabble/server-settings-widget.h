@@ -31,7 +31,7 @@ class ServerSettingsWidget : public AbstractAccountParametersWidget
 
 public:
     explicit ServerSettingsWidget(ParameterEditModel *model,
-                                       QWidget *parent = 0);
+                                       QWidget *parent = nullptr);
     ~ServerSettingsWidget() override;
 
 private:

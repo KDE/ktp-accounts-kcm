@@ -43,7 +43,7 @@ AbstractAccountUi* GabbleAccountUiPlugin::accountUi(const QString &connectionMan
         return new GabbleAccountUi(serviceName, this);
     }
 
-    return 0;
+    return nullptr;
 }
 
 K_PLUGIN_FACTORY(factory, registerPlugin<GabbleAccountUiPlugin>();)

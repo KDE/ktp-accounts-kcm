@@ -36,7 +36,7 @@ class FeedbackWidget : public KMessageWidget
     Q_DISABLE_COPY(FeedbackWidget)
 
 public:
-    FeedbackWidget(QWidget *parent = 0);
+    FeedbackWidget(QWidget *parent = nullptr);
     ~FeedbackWidget() override;
 
 public Q_SLOTS:
