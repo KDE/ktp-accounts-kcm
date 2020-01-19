@@ -44,7 +44,7 @@ public:
     };
 
     ValidatedLineEdit(QWidget *parent = 0);
-    virtual ~ValidatedLineEdit();
+    ~ValidatedLineEdit() override;
 
     void setValidator(PredefinedValidator validator);
     void setValidator(const QString &regexp, const QString &errorMessage);
@@ -55,7 +55,7 @@ protected Q_SLOTS:
     void onTextChanged(const QString &text);
 
 protected:
-    virtual void resizeEvent(QResizeEvent *event) override;
+    void resizeEvent(QResizeEvent *event) override;
     void updateIcon();
     void validate();
 

@@ -32,9 +32,9 @@ class MainOptionsWidget : public AbstractAccountParametersWidget
 public:
     explicit MainOptionsWidget(ParameterEditModel *model,
                                QWidget *parent = 0);
-    virtual ~MainOptionsWidget();
+    ~MainOptionsWidget() override;
 
-    virtual QString defaultDisplayName() const override;
+    QString defaultDisplayName() const override;
 private:
     Q_DISABLE_COPY(MainOptionsWidget)
     Ui::MainOptionsWidget *m_ui;

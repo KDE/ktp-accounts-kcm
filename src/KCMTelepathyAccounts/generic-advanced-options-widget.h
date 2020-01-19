@@ -32,9 +32,9 @@ class KCM_TELEPATHY_ACCOUNTS_EXPORT GenericAdvancedOptionsWidget : public Abstra
 public:
     explicit GenericAdvancedOptionsWidget(ParameterEditModel* model,
                                           QWidget *parent = 0);
-    virtual ~GenericAdvancedOptionsWidget();
+    ~GenericAdvancedOptionsWidget() override;
 
-    virtual bool validateParameterValues() override;
+    bool validateParameterValues() override;
 
     void setTabBarHidden(bool hidden);
 

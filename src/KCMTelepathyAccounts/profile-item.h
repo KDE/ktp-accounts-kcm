@@ -38,7 +38,7 @@ class KCM_TELEPATHY_ACCOUNTS_EXPORT ProfileItem : public QObject
 
 public:
     explicit ProfileItem(const Tp::ProfilePtr &profile, QObject *parent);
-    virtual ~ProfileItem();
+    ~ProfileItem() override;
 
     QString serviceName() const;
     QString name() const;

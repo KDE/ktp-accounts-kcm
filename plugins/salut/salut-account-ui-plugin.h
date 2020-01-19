@@ -31,9 +31,9 @@ class SalutAccountUiPlugin : public AbstractAccountUiPlugin
 
 public:
     SalutAccountUiPlugin(QObject *parent, const QVariantList &);
-    virtual ~SalutAccountUiPlugin();
+    ~SalutAccountUiPlugin() override;
 
-    virtual AbstractAccountUi* accountUi(const QString &connectionManager,
+    AbstractAccountUi* accountUi(const QString &connectionManager,
                                          const QString &protocol,
                                          const QString &serviceName) override;
 

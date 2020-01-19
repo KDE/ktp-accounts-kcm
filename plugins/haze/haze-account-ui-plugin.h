@@ -31,9 +31,9 @@ class HazeAccountUiPlugin : public AbstractAccountUiPlugin
 
 public:
     HazeAccountUiPlugin(QObject *parent, const QVariantList &);
-    virtual ~HazeAccountUiPlugin();
+    ~HazeAccountUiPlugin() override;
 
-    virtual AbstractAccountUi* accountUi(const QString &connectionManager, const QString &protocol, const QString &serviceName) override;
+    AbstractAccountUi* accountUi(const QString &connectionManager, const QString &protocol, const QString &serviceName) override;
 
 private:
     Q_DISABLE_COPY(HazeAccountUiPlugin)

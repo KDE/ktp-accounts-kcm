@@ -31,7 +31,7 @@ class GroupWiseAdvancedSettingsWidget : public AbstractAccountParametersWidget
 
 public:
     explicit GroupWiseAdvancedSettingsWidget(ParameterEditModel *model, QWidget *parent = 0);
-    virtual ~GroupWiseAdvancedSettingsWidget();
+    ~GroupWiseAdvancedSettingsWidget() override;
 
 private:
     Q_DISABLE_COPY(GroupWiseAdvancedSettingsWidget)

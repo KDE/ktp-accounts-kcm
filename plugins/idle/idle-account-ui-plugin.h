@@ -31,9 +31,9 @@ class IdleAccountUiPlugin : public AbstractAccountUiPlugin
 
 public:
     IdleAccountUiPlugin(QObject *parent, const QVariantList &);
-    virtual ~IdleAccountUiPlugin();
+    ~IdleAccountUiPlugin() override;
 
-    virtual AbstractAccountUi* accountUi(const QString &connectionManager, const QString &protocol, const QString &serviceName) override;
+    AbstractAccountUi* accountUi(const QString &connectionManager, const QString &protocol, const QString &serviceName) override;
 
 private:
     Q_DISABLE_COPY(IdleAccountUiPlugin)

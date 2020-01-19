@@ -31,7 +31,7 @@ class MySpaceIMAdvancedSettingsWidget : public AbstractAccountParametersWidget
 
 public:
     explicit MySpaceIMAdvancedSettingsWidget(ParameterEditModel *model, QWidget *parent = 0);
-    virtual ~MySpaceIMAdvancedSettingsWidget();
+    ~MySpaceIMAdvancedSettingsWidget() override;
 
 private:
     Q_DISABLE_COPY(MySpaceIMAdvancedSettingsWidget)

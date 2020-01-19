@@ -29,12 +29,12 @@ class ParameterEditDelegate : public KWidgetItemDelegate
 
 public:
     explicit ParameterEditDelegate(QAbstractItemView *itemView, QObject *parent = 0);
-    virtual ~ParameterEditDelegate();
+    ~ParameterEditDelegate() override;
 
-    virtual void paint(QPainter *painter,
+    void paint(QPainter *painter,
                        const QStyleOptionViewItem &option,
                        const QModelIndex &index) const override;
-    virtual QSize sizeHint(const QStyleOptionViewItem &option, const QModelIndex &index) const override;
+    QSize sizeHint(const QStyleOptionViewItem &option, const QModelIndex &index) const override;
 
 private Q_SLOTS:
     void onLineEditTextChanged(QString text);
@@ -45,8 +45,8 @@ Q_SIGNALS:
     void dataChanged(const QModelIndex &index, const QVariant &value, int role);
 
 protected:
-    virtual QList<QWidget*> createItemWidgets(const QModelIndex &index) const override;
-    virtual void updateItemWidgets(const QList<QWidget*> widgets,
+    QList<QWidget*> createItemWidgets(const QModelIndex &index) const override;
+    void updateItemWidgets(const QList<QWidget*> widgets,
                                    const QStyleOptionViewItem &option,
                                    const QPersistentModelIndex &index) const override;
 };

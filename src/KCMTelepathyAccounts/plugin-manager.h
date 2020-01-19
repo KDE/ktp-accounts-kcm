@@ -37,7 +37,7 @@ class KCM_TELEPATHY_ACCOUNTS_EXPORT PluginManager : public QObject
 public:
     static PluginManager *instance();
 
-    virtual ~PluginManager();
+    ~PluginManager() override;
 
     AbstractAccountUi *accountUiForProtocol(const QString &connectionManager, const QString &protocol, const QString &serviceName);
 

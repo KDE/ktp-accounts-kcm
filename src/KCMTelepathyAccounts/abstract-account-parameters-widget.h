@@ -43,7 +43,7 @@ class KCM_TELEPATHY_ACCOUNTS_EXPORT AbstractAccountParametersWidget : public QWi
 public:
     explicit AbstractAccountParametersWidget(ParameterEditModel *parameterModel,
                                              QWidget *parent = 0);
-    virtual ~AbstractAccountParametersWidget();
+    ~AbstractAccountParametersWidget() override;
 
     virtual QString errorMessage() const;
     void setErrorMessage(const QString &errorMsg);

@@ -32,7 +32,7 @@ class YahooServerSettingsWidget : public AbstractAccountParametersWidget
 public:
     explicit YahooServerSettingsWidget(ParameterEditModel *model,
                                        QWidget *parent = 0);
-    virtual ~YahooServerSettingsWidget();
+    ~YahooServerSettingsWidget() override;
 
 private:
     Q_DISABLE_COPY(YahooServerSettingsWidget)

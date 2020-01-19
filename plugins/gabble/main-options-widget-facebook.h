@@ -33,11 +33,11 @@ class MainOptionsWidgetFacebook : public AbstractAccountParametersWidget
 public:
     explicit MainOptionsWidgetFacebook(ParameterEditModel *model,
                                QWidget *parent = 0);
-    virtual ~MainOptionsWidgetFacebook();
+    ~MainOptionsWidgetFacebook() override;
 
-    virtual void submit() override;
-    virtual bool validateParameterValues() override;
-    virtual QString defaultDisplayName() const override;
+    void submit() override;
+    bool validateParameterValues() override;
+    QString defaultDisplayName() const override;
 private:
     Ui::MainOptionsWidgetFacebook *m_ui;
 };

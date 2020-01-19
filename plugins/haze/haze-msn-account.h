@@ -29,11 +29,11 @@ class HazeMsnAccountUi: public AbstractAccountUi
 
 public:
     explicit HazeMsnAccountUi(QObject *parent = 0);
-    virtual ~HazeMsnAccountUi();
+    ~HazeMsnAccountUi() override;
 
 //     virtual AbstractAccountParametersWidget *advancedOptionsWidget(ParameterEditModel *model, QWidget *parent = 0) const;
-    virtual AbstractAccountParametersWidget *mainOptionsWidget(ParameterEditModel *model, QWidget *parent = 0) const override;
-    virtual bool hasAdvancedOptionsWidget() const override;
+    AbstractAccountParametersWidget *mainOptionsWidget(ParameterEditModel *model, QWidget *parent = 0) const override;
+    bool hasAdvancedOptionsWidget() const override;
 
 private:
     Q_DISABLE_COPY(HazeMsnAccountUi)

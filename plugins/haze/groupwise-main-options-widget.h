@@ -30,9 +30,9 @@ class GroupWiseMainOptionsWidget : public AbstractAccountParametersWidget
     Q_OBJECT
 public:
     explicit GroupWiseMainOptionsWidget(ParameterEditModel *model, QWidget *parent = 0);
-    virtual ~GroupWiseMainOptionsWidget();
+    ~GroupWiseMainOptionsWidget() override;
 
-    virtual QString defaultDisplayName() const override;
+    QString defaultDisplayName() const override;
 private:
     Q_DISABLE_COPY(GroupWiseMainOptionsWidget)
     Ui::GroupWiseMainOptionsWidget *m_ui;

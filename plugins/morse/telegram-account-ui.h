@@ -29,9 +29,9 @@ class TelegramAccountUi : public AbstractAccountUi
 
 public:
     explicit TelegramAccountUi(QObject *parent = 0);
-    virtual ~TelegramAccountUi();
+    ~TelegramAccountUi() override;
 
-    virtual AbstractAccountParametersWidget
+    AbstractAccountParametersWidget
               *mainOptionsWidget(ParameterEditModel *model,
                                  QWidget *parent = 0) const override;
 private:

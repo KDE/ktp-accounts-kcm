@@ -32,7 +32,7 @@ class SalutAdvancedOptionsWidget : public AbstractAccountParametersWidget
 public:
     explicit SalutAdvancedOptionsWidget(ParameterEditModel *model,
                                         QWidget *parent = 0);
-    virtual ~SalutAdvancedOptionsWidget();
+    ~SalutAdvancedOptionsWidget() override;
 
 private:
     Q_DISABLE_COPY(SalutAdvancedOptionsWidget)

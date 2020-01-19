@@ -31,9 +31,9 @@ class MsnMainOptionsWidget : public AbstractAccountParametersWidget
 
 public:
     explicit MsnMainOptionsWidget(ParameterEditModel *model, QWidget *parent = 0);
-    virtual ~MsnMainOptionsWidget();
+    ~MsnMainOptionsWidget() override;
 
-    virtual QString defaultDisplayName() const override;
+    QString defaultDisplayName() const override;
 private:
     Q_DISABLE_COPY(MsnMainOptionsWidget)
     Ui::MsnMainOptionsWidget *m_ui;

@@ -33,11 +33,11 @@ class MainOptionsWidgetMSN : public AbstractAccountParametersWidget
 public:
     explicit MainOptionsWidgetMSN(ParameterEditModel *model,
                                   QWidget *parent = 0);
-    virtual ~MainOptionsWidgetMSN();
+    ~MainOptionsWidgetMSN() override;
 
-    virtual void submit() override;
-    virtual bool validateParameterValues() override;
-    virtual QString defaultDisplayName() const override;
+    void submit() override;
+    bool validateParameterValues() override;
+    QString defaultDisplayName() const override;
 private:
     Ui::MainOptionsWidgetMSN *m_ui;
 };

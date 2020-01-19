@@ -34,9 +34,9 @@ class AimMainOptionsWidget
 
 public:
     explicit AimMainOptionsWidget(ParameterEditModel* model, QWidget* parent = 0);
-    virtual ~AimMainOptionsWidget();
+    ~AimMainOptionsWidget() override;
 
-    virtual QString defaultDisplayName() const override;
+    QString defaultDisplayName() const override;
 private:
     Ui::AimMainOptionsWidget *m_ui;
 };

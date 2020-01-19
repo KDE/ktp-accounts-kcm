@@ -34,9 +34,9 @@ class MainOptionsWidgetGoogleTalk : public AbstractAccountParametersWidget
 public:
     explicit MainOptionsWidgetGoogleTalk(ParameterEditModel *model,
                                QWidget *parent = 0);
-    virtual ~MainOptionsWidgetGoogleTalk();
+    ~MainOptionsWidgetGoogleTalk() override;
 
-    virtual QString defaultDisplayName() const override;
+    QString defaultDisplayName() const override;
 private:
     Ui::MainOptionsWidgetGoogleTalk *m_ui;
 };

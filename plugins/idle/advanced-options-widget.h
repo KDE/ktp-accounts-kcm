@@ -32,7 +32,7 @@ class AdvancedOptionsWidget : public AbstractAccountParametersWidget
 public:
     explicit AdvancedOptionsWidget(ParameterEditModel *model,
                                QWidget *parent = 0);
-    virtual ~AdvancedOptionsWidget();
+    ~AdvancedOptionsWidget() override;
 
 private:
     Q_DISABLE_COPY(AdvancedOptionsWidget)

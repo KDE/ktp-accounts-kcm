@@ -32,7 +32,7 @@ class ServerSettingsWidget : public AbstractAccountParametersWidget
 public:
     explicit ServerSettingsWidget(ParameterEditModel *model,
                                        QWidget *parent = 0);
-    virtual ~ServerSettingsWidget();
+    ~ServerSettingsWidget() override;
 
 private:
     Q_DISABLE_COPY(ServerSettingsWidget)

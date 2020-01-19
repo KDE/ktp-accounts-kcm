@@ -37,7 +37,7 @@ class FeedbackWidget : public KMessageWidget
 
 public:
     FeedbackWidget(QWidget *parent = 0);
-    virtual ~FeedbackWidget();
+    ~FeedbackWidget() override;
 
 public Q_SLOTS:
     void setMessage(const QString &text, const QString &comment, KMessageWidget::MessageType type);

@@ -32,10 +32,10 @@ class YahooMainOptionsWidget : public AbstractAccountParametersWidget
 
 public:
     explicit YahooMainOptionsWidget(ParameterEditModel* model, QWidget* parent = 0);
-    virtual ~YahooMainOptionsWidget();
+    ~YahooMainOptionsWidget() override;
 
-    virtual void submit() override;
-    virtual QString defaultDisplayName() const override;
+    void submit() override;
+    QString defaultDisplayName() const override;
 private:
     Q_DISABLE_COPY(YahooMainOptionsWidget)
     Ui::YahooMainOptionsWidget* m_ui;

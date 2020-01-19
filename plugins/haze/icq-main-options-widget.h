@@ -31,9 +31,9 @@ class IcqMainOptionsWidget : public AbstractAccountParametersWidget
 public:
     explicit IcqMainOptionsWidget(ParameterEditModel *model,
                                   QWidget *parent = 0);
-    virtual ~IcqMainOptionsWidget();
+    ~IcqMainOptionsWidget() override;
 
-    virtual QString defaultDisplayName() const override;
+    QString defaultDisplayName() const override;
 private:
     Q_DISABLE_COPY(IcqMainOptionsWidget)
     Ui::IcqMainOptionsWidget *m_ui;

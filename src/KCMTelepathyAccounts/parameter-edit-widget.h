@@ -35,9 +35,9 @@ class KCM_TELEPATHY_ACCOUNTS_EXPORT ParameterEditWidget : public AbstractAccount
 public:
     explicit ParameterEditWidget(ParameterEditModel *parameterModel,
                                  QWidget *parent = 0);
-    ~ParameterEditWidget();
+    ~ParameterEditWidget() override;
 
-    virtual QString defaultDisplayName() const override;
+    QString defaultDisplayName() const override;
 private Q_SLOTS:
     void onDelegateDataChanged(const QModelIndex &index, const QVariant &value, int role);
 

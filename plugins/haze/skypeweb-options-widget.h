@@ -31,9 +31,9 @@ class SkypeWebOptionsWidget : public AbstractAccountParametersWidget
 public:
     explicit SkypeWebOptionsWidget(ParameterEditModel *model,
                                   QWidget *parent = 0);
-    virtual ~SkypeWebOptionsWidget();
+    ~SkypeWebOptionsWidget() override;
 
-    virtual QString defaultDisplayName() const override;
+    QString defaultDisplayName() const override;
 private:
     Q_DISABLE_COPY(SkypeWebOptionsWidget)
     Ui::SkypeWebOptionsWidget *m_ui;

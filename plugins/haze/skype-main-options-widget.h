@@ -30,9 +30,9 @@ class SkypeMainOptionsWidget : public AbstractAccountParametersWidget
     Q_OBJECT
 public:
     explicit SkypeMainOptionsWidget(ParameterEditModel *model, QWidget *parent = 0);
-    virtual ~SkypeMainOptionsWidget();
+    ~SkypeMainOptionsWidget() override;
 
-    virtual QString defaultDisplayName() const override;
+    QString defaultDisplayName() const override;
     Q_DISABLE_COPY(SkypeMainOptionsWidget)
     Ui::SkypeMainOptionsWidget *m_ui;
 };

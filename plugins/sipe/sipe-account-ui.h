@@ -29,11 +29,11 @@ class SipeAccountUi : public AbstractAccountUi
 
 public:
     explicit SipeAccountUi(QObject *parent = 0);
-    virtual ~SipeAccountUi();
+    ~SipeAccountUi() override;
 
-    virtual AbstractAccountParametersWidget* mainOptionsWidget(ParameterEditModel *model, QWidget *parent = 0) const override;
-    virtual bool hasAdvancedOptionsWidget() const override;
-    virtual AbstractAccountParametersWidget* advancedOptionsWidget(ParameterEditModel *model, QWidget *parent = 0) const override;
+    AbstractAccountParametersWidget* mainOptionsWidget(ParameterEditModel *model, QWidget *parent = 0) const override;
+    bool hasAdvancedOptionsWidget() const override;
+    AbstractAccountParametersWidget* advancedOptionsWidget(ParameterEditModel *model, QWidget *parent = 0) const override;
 
 private:
     Q_DISABLE_COPY(SipeAccountUi)

@@ -32,7 +32,7 @@ class AimServerSettingsWidget : public AbstractAccountParametersWidget
 public:
     explicit AimServerSettingsWidget(ParameterEditModel *model,
                                        QWidget *parent = 0);
-    virtual ~AimServerSettingsWidget();
+    ~AimServerSettingsWidget() override;
 
 private:
     Q_DISABLE_COPY(AimServerSettingsWidget)

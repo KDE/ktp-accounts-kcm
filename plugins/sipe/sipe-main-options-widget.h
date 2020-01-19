@@ -31,10 +31,10 @@ class SipeMainOptionsWidget : public AbstractAccountParametersWidget
 
 public:
     explicit SipeMainOptionsWidget(ParameterEditModel *model, QWidget *parent = 0);
-    virtual ~SipeMainOptionsWidget();
+    ~SipeMainOptionsWidget() override;
 
-    virtual QString defaultDisplayName() const override;
-    virtual void submit() override;
+    QString defaultDisplayName() const override;
+    void submit() override;
 
 private:
     Q_DISABLE_COPY(SipeMainOptionsWidget)

@@ -32,7 +32,7 @@ class ProxySettingsWidget : public AbstractAccountParametersWidget
 public:
     explicit ProxySettingsWidget(ParameterEditModel *model,
                                  QWidget *parent = 0);
-    virtual ~ProxySettingsWidget();
+    ~ProxySettingsWidget() override;
 
 private:
     Q_DISABLE_COPY(ProxySettingsWidget)

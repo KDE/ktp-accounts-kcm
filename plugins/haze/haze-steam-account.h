@@ -29,9 +29,9 @@ class HazeSteamAccountUi : public AbstractAccountUi
 
 public:
     explicit HazeSteamAccountUi(QObject *parent = 0);
-    virtual ~HazeSteamAccountUi();
+    ~HazeSteamAccountUi() override;
 
-    virtual AbstractAccountParametersWidget
+    AbstractAccountParametersWidget
               *mainOptionsWidget(ParameterEditModel *model,
                                  QWidget *parent = 0) const override;
 

@@ -32,9 +32,9 @@ class IcqServerSettingsWidget : public AbstractAccountParametersWidget
 public:
     explicit IcqServerSettingsWidget(ParameterEditModel *model,
                                        QWidget *parent = 0);
-    virtual ~IcqServerSettingsWidget();
+    ~IcqServerSettingsWidget() override;
 
-    virtual void submit() override;
+    void submit() override;
 private:
 
     Q_DISABLE_COPY(IcqServerSettingsWidget)

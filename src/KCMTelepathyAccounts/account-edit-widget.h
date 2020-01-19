@@ -47,7 +47,7 @@ public:
                                ParameterEditModel *parameterModel,
                                ConnectOnLoadType connectOnAddFlag = doNotConnectOnAdd,
                                QWidget *parent = 0);
-    virtual ~AccountEditWidget();
+    ~AccountEditWidget() override;
 
     QString errorMessage() const;
     virtual bool validateParameterValues() const;

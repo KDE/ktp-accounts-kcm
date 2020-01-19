@@ -32,9 +32,9 @@ class SalutMainOptionsWidget : public AbstractAccountParametersWidget
 public:
     explicit SalutMainOptionsWidget(ParameterEditModel *model,
                                     QWidget *parent = 0);
-    virtual ~SalutMainOptionsWidget();
+    ~SalutMainOptionsWidget() override;
 
-    virtual QString defaultDisplayName() const override;
+    QString defaultDisplayName() const override;
 private:
     Q_DISABLE_COPY(SalutMainOptionsWidget)
     Ui::SalutMainOptionsWidget *m_ui;

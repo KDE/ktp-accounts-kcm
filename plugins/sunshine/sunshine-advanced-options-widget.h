@@ -32,7 +32,7 @@ class SunshineAdvancedOptionsWidget : public AbstractAccountParametersWidget
 public:
     explicit SunshineAdvancedOptionsWidget(ParameterEditModel *model,
                                         QWidget *parent = 0);
-    virtual ~SunshineAdvancedOptionsWidget();
+    ~SunshineAdvancedOptionsWidget() override;
 
 private:
     Q_DISABLE_COPY(SunshineAdvancedOptionsWidget)

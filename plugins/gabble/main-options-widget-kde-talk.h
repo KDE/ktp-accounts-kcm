@@ -37,11 +37,11 @@ class MainOptionsWidgetKDETalk : public AbstractAccountParametersWidget
 public:
     explicit MainOptionsWidgetKDETalk(ParameterEditModel *model,
                                       QWidget *parent = 0);
-    virtual ~MainOptionsWidgetKDETalk();
+    ~MainOptionsWidgetKDETalk() override;
 
-    virtual void submit() override;
-    virtual bool validateParameterValues() override;
-    virtual QString defaultDisplayName() const override;
+    void submit() override;
+    bool validateParameterValues() override;
+    QString defaultDisplayName() const override;
 
 private:
     Ui::MainOptionsWidgetKDETalk *m_ui;

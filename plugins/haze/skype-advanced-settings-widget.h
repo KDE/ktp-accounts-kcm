@@ -31,7 +31,7 @@ class SkypeAdvancedSettingsWidget : public AbstractAccountParametersWidget
 
 public:
     explicit SkypeAdvancedSettingsWidget(ParameterEditModel *model, QWidget *parent = 0);
-    virtual ~SkypeAdvancedSettingsWidget();
+    ~SkypeAdvancedSettingsWidget() override;
 
 private:
     Q_DISABLE_COPY(SkypeAdvancedSettingsWidget)

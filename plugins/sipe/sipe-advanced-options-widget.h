@@ -31,7 +31,7 @@ class SipeAdvancedOptionsWidget : public AbstractAccountParametersWidget
 
 public:
     explicit SipeAdvancedOptionsWidget(ParameterEditModel *model, QWidget *parent = 0);
-    virtual ~SipeAdvancedOptionsWidget();
+    ~SipeAdvancedOptionsWidget() override;
 
 private:
     Q_DISABLE_COPY(SipeAdvancedOptionsWidget)

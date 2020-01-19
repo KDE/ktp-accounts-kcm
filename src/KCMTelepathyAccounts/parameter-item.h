@@ -39,7 +39,7 @@ public:
                   const Tp::Profile::Parameter &profileParameter,
                   const QVariant &originalValue,
                   QObject *parent = 0);
-    virtual ~ParameterItem();
+    ~ParameterItem() override;
 
     QString name() const;
     QString localizedName() const;

@@ -32,9 +32,9 @@ class SunshineMainOptionsWidget : public AbstractAccountParametersWidget
 public:
     explicit SunshineMainOptionsWidget(ParameterEditModel *model,
                                     QWidget *parent = 0);
-    virtual ~SunshineMainOptionsWidget();
+    ~SunshineMainOptionsWidget() override;
 
-    virtual QString defaultDisplayName() const override;
+    QString defaultDisplayName() const override;
 private:
     Q_DISABLE_COPY(SunshineMainOptionsWidget)
     Ui::SunshineMainOptionsWidget *m_ui;

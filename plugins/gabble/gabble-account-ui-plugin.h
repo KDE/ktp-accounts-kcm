@@ -31,9 +31,9 @@ class GabbleAccountUiPlugin : public AbstractAccountUiPlugin
 
 public:
     GabbleAccountUiPlugin(QObject *parent, const QVariantList &);
-    virtual ~GabbleAccountUiPlugin();
+    ~GabbleAccountUiPlugin() override;
 
-    virtual AbstractAccountUi* accountUi(const QString &connectionManager, const QString &protocol, const QString &serviceName) override;
+    AbstractAccountUi* accountUi(const QString &connectionManager, const QString &protocol, const QString &serviceName) override;
 
 private:
     Q_DISABLE_COPY(GabbleAccountUiPlugin)

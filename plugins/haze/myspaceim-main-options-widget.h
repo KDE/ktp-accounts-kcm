@@ -30,9 +30,9 @@ class MySpaceIMMainOptionsWidget : public AbstractAccountParametersWidget
     Q_OBJECT
 public:
     explicit MySpaceIMMainOptionsWidget(ParameterEditModel *model, QWidget *parent = 0);
-    virtual ~MySpaceIMMainOptionsWidget();
+    ~MySpaceIMMainOptionsWidget() override;
 
-    virtual QString defaultDisplayName() const override;
+    QString defaultDisplayName() const override;
 private:
     Q_DISABLE_COPY(MySpaceIMMainOptionsWidget)
     Ui::MySpaceIMMainOptionsWidget *m_ui;

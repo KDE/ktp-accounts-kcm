@@ -29,12 +29,12 @@ class HazeSkypeWebAccountUi : public AbstractAccountUi
 
 public:
     explicit HazeSkypeWebAccountUi(QObject *parent = 0);
-    virtual ~HazeSkypeWebAccountUi();
+    ~HazeSkypeWebAccountUi() override;
 
-    virtual AbstractAccountParametersWidget
+    AbstractAccountParametersWidget
               *mainOptionsWidget(ParameterEditModel *model,
                                  QWidget *parent = 0) const override;
-    virtual bool hasAdvancedOptionsWidget() const override;
+    bool hasAdvancedOptionsWidget() const override;
 
 private:
     Q_DISABLE_COPY(HazeSkypeWebAccountUi)

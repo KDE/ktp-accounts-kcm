@@ -29,13 +29,13 @@ class HazeIcqAccountUi : public AbstractAccountUi
 
 public:
     explicit HazeIcqAccountUi(QObject *parent = 0);
-    virtual ~HazeIcqAccountUi();
+    ~HazeIcqAccountUi() override;
 
-    virtual AbstractAccountParametersWidget
+    AbstractAccountParametersWidget
               *mainOptionsWidget(ParameterEditModel *model,
                                  QWidget *parent = 0) const override;
-    virtual bool hasAdvancedOptionsWidget() const override;
-    virtual AbstractAccountParametersWidget
+    bool hasAdvancedOptionsWidget() const override;
+    AbstractAccountParametersWidget
               *advancedOptionsWidget(ParameterEditModel *model,
                                      QWidget *parent = 0) const override;
 

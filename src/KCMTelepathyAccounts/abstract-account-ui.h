@@ -39,7 +39,7 @@ class KCM_TELEPATHY_ACCOUNTS_EXPORT AbstractAccountUi : public QObject
 
 public:
     explicit AbstractAccountUi(QObject *parent = 0);
-    virtual ~AbstractAccountUi();
+    ~AbstractAccountUi() override;
 
     virtual const QMap<QString, QVariant::Type> &supportedParameters() const;
 
