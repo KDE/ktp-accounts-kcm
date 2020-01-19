@@ -34,9 +34,9 @@ IcqServerSettingsWidget::IcqServerSettingsWidget(ParameterEditModel *model,
 
     handleParameter(QLatin1String("server"), QVariant::String, m_ui->serverLineEdit, m_ui->serverLabel);
     handleParameter(QLatin1String("port"), QVariant::Int, m_ui->portSpinBox, m_ui->portLabel);
-    handleParameter(QLatin1String("use-ssl"), QVariant::Bool, m_ui->useSslCheckBox, 0);
-    handleParameter(QLatin1String("allow-multiple-logins"), QVariant::Bool, m_ui->allowMultipleLoginsCheckBox, 0);
-    handleParameter(QLatin1String("always-use-rv-proxy"), QVariant::Bool, m_ui->alwaysUseRvProxyCheckBox, 0);
+    handleParameter(QLatin1String("use-ssl"), QVariant::Bool, m_ui->useSslCheckBox);
+    handleParameter(QLatin1String("allow-multiple-logins"), QVariant::Bool, m_ui->allowMultipleLoginsCheckBox);
+    handleParameter(QLatin1String("always-use-rv-proxy"), QVariant::Bool, m_ui->alwaysUseRvProxyCheckBox);
 
     // update combo box for charset parameter
     Q_FOREACH (const QString &name, KCharsets::charsets()->descriptiveEncodingNames()) {

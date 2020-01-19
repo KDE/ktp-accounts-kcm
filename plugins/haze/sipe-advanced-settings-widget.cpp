@@ -34,7 +34,7 @@ SipeAdvancedSettingsWidget::SipeAdvancedSettingsWidget(ParameterEditModel *model
     handleParameter(QLatin1String("transport"), QVariant::String, m_ui->transportLineEdit, m_ui->transportLabel);
     handleParameter(QLatin1String("useragent"), QVariant::String, m_ui->useragentLineEdit, m_ui->useragentLabel);
     handleParameter(QLatin1String("authentication"), QVariant::String, m_ui->authenticationLineEdit, m_ui->authenticationLabel);
-    handleParameter(QLatin1String("dont-publish"), QVariant::Bool, m_ui->dontpublishCheckBox, 0);
+    handleParameter(QLatin1String("dont-publish"), QVariant::Bool, m_ui->dontpublishCheckBox);
     handleParameter(QLatin1String("email-url"), QVariant::String, m_ui->emailurlLineEdit, m_ui->emailurlLabel);
     handleParameter(QLatin1String("email"), QVariant::String, m_ui->emailLineEdit, m_ui->emailLabel);
     handleParameter(QLatin1String("email-login"), QVariant::String, m_ui->emailloginLineEdit, m_ui->emailloginLabel);

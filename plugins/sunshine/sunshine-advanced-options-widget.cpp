@@ -30,8 +30,7 @@ SunshineAdvancedOptionsWidget::SunshineAdvancedOptionsWidget(ParameterEditModel*
     m_ui->setupUi(this);
 
     handleParameter(QLatin1String("use-specified-server"), QVariant::Bool,
-                    m_ui->serverGroupBox,
-                    0);
+                    m_ui->serverGroupBox);
     handleParameter(QLatin1String("server"), QVariant::String,
                     m_ui->serverLineEdit,
                     m_ui->serverLabel);

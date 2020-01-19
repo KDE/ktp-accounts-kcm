@@ -44,7 +44,7 @@ MainOptionsWidget::MainOptionsWidget(ParameterEditModel *model,
     
     handleParameter(QLatin1String("account"), QVariant::String, m_ui->accountLineEdit, m_ui->accountLabel);
     handleParameter(QLatin1String("password"), QVariant::String, m_ui->passwordLineEdit, m_ui->passwordLabel);
-    handleParameter(QLatin1String("register"), QVariant::Bool, m_ui->registerCheckBox, 0);
+    handleParameter(QLatin1String("register"), QVariant::Bool, m_ui->registerCheckBox);
     QTimer::singleShot(0, m_ui->accountLineEdit, SLOT(setFocus()));
 }
 

@@ -34,8 +34,8 @@ SipeAdvancedOptionsWidget::SipeAdvancedOptionsWidget(ParameterEditModel *model, 
     handleParameter(QLatin1String("transport"), QVariant::String, m_ui->transportComboBox, m_ui->transportLabel);
     handleParameter(QLatin1String("useragent"), QVariant::String, m_ui->useragentLineEdit, m_ui->useragentLabel);
     handleParameter(QLatin1String("authentication"), QVariant::String, m_ui->authenticationComboBox, m_ui->authenticationLabel);
-    handleParameter(QLatin1String("single-sign-on"), QVariant::Bool, m_ui->singlesignonCheckBox, 0);
-    handleParameter(QLatin1String("don't-publish-calendar"), QVariant::Bool, m_ui->dontpublishcalendarCheckBox, 0);
+    handleParameter(QLatin1String("single-sign-on"), QVariant::Bool, m_ui->singlesignonCheckBox);
+    handleParameter(QLatin1String("don't-publish-calendar"), QVariant::Bool, m_ui->dontpublishcalendarCheckBox);
 }
 
 SipeAdvancedOptionsWidget::~SipeAdvancedOptionsWidget()

@@ -30,11 +30,11 @@ ServerSettingsWidget::ServerSettingsWidget(ParameterEditModel *model,
 
     handleParameter(QLatin1String("server"), QVariant::String, m_ui->serverLineEdit, m_ui->serverLabel);
     handleParameter(QLatin1String("port"), QVariant::UInt, m_ui->portSpinBox, m_ui->portLabel);
-    handleParameter(QLatin1String("keepalive-interval"), QVariant::UInt, m_ui->keepaliveIntervalSpinBox, 0);
-    handleParameter(QLatin1String("low-bandwidth"), QVariant::Bool, m_ui->lowBandwidthCheckBox, 0);
-    handleParameter(QLatin1String("require-encryption"), QVariant::Bool, m_ui->requireEncryptionCheckBox, 0);
-    handleParameter(QLatin1String("ignore-ssl-errors"), QVariant::Bool, m_ui->ignoreSslErrorsCheckBox, 0);
-    handleParameter(QLatin1String("old-ssl"), QVariant::Bool, m_ui->oldSslCheckBox, 0);
+    handleParameter(QLatin1String("keepalive-interval"), QVariant::UInt, m_ui->keepaliveIntervalSpinBox);
+    handleParameter(QLatin1String("low-bandwidth"), QVariant::Bool, m_ui->lowBandwidthCheckBox);
+    handleParameter(QLatin1String("require-encryption"), QVariant::Bool, m_ui->requireEncryptionCheckBox);
+    handleParameter(QLatin1String("ignore-ssl-errors"), QVariant::Bool, m_ui->ignoreSslErrorsCheckBox);
+    handleParameter(QLatin1String("old-ssl"), QVariant::Bool, m_ui->oldSslCheckBox);
     handleParameter(QLatin1String("resource"), QVariant::String, m_ui->resourceLineEdit, m_ui->resourceLabel);
     handleParameter(QLatin1String("priority"), QVariant::Int, m_ui->prioritySpinBox, m_ui->priorityLabel);
 }

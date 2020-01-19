@@ -28,11 +28,11 @@ SkypeAdvancedSettingsWidget::SkypeAdvancedSettingsWidget(ParameterEditModel *mod
     m_ui->setupUi(this);
 
     //server
-    handleParameter(QLatin1String("skypeout-online"),  QVariant::Bool, m_ui->skypeOutCheckBox, 0);
-    handleParameter(QLatin1String("skype-sync"),       QVariant::Bool, m_ui->syncCheckBox, 0);
-    handleParameter(QLatin1String("check-for-updates"),QVariant::Bool, m_ui->updatesCheckBox, 0);
-    handleParameter(QLatin1String("reject-all-auths"), QVariant::Bool, m_ui->authRequestsCheckBox, 0);
-    handleParameter(QLatin1String("skype-autostart"),  QVariant::Bool, m_ui->autostartCheckBox, 0);
+    handleParameter(QLatin1String("skypeout-online"),  QVariant::Bool, m_ui->skypeOutCheckBox);
+    handleParameter(QLatin1String("skype-sync"),       QVariant::Bool, m_ui->syncCheckBox);
+    handleParameter(QLatin1String("check-for-updates"),QVariant::Bool, m_ui->updatesCheckBox);
+    handleParameter(QLatin1String("reject-all-auths"), QVariant::Bool, m_ui->authRequestsCheckBox);
+    handleParameter(QLatin1String("skype-autostart"),  QVariant::Bool, m_ui->autostartCheckBox);
 }
 
 SkypeAdvancedSettingsWidget::~SkypeAdvancedSettingsWidget()

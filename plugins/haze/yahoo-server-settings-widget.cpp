@@ -38,8 +38,8 @@ YahooServerSettingsWidget::YahooServerSettingsWidget(ParameterEditModel *model,
     handleParameter(QLatin1String("room-list-locale"), QVariant::String, m_ui->roomListLocale, m_ui->roomListLocaleLablel);
     handleParameter(QLatin1String("charset"), QVariant::String, m_ui->charsetComboBox, m_ui->charsetLabel);
     //other
-    handleParameter(QLatin1String("proxy-ssl"), QVariant::Bool, m_ui->SslProxy, 0);
-    handleParameter(QLatin1String("ignore-invites"), QVariant::Bool, m_ui->ignoreInvites, 0);
+    handleParameter(QLatin1String("proxy-ssl"), QVariant::Bool, m_ui->SslProxy);
+    handleParameter(QLatin1String("ignore-invites"), QVariant::Bool, m_ui->ignoreInvites);
 
     // update combo box for charset parameter
     //KF5 TODO

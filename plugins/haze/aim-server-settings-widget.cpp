@@ -33,10 +33,10 @@ AimServerSettingsWidget::AimServerSettingsWidget(ParameterEditModel *model,
     handleParameter(QLatin1String("port"), QVariant::UInt, m_ui->serverPort, m_ui->serverPortLabel);
     //security
     handleParameter(QLatin1String("encryption"), QVariant::String, m_ui->encryption, m_ui->encryptionLabel);
-    handleParameter(QLatin1String("always-use-rv-proxy"), QVariant::Bool, m_ui->rvProxy, 0);
+    handleParameter(QLatin1String("always-use-rv-proxy"), QVariant::Bool, m_ui->rvProxy);
     //other
-    handleParameter(QLatin1String("use-clientlogin"), QVariant::Bool, m_ui->clientLogin, 0);
-    handleParameter(QLatin1String("allow-multiple-logins"), QVariant::Bool, m_ui->multipleLogins, 0);
+    handleParameter(QLatin1String("use-clientlogin"), QVariant::Bool, m_ui->clientLogin);
+    handleParameter(QLatin1String("allow-multiple-logins"), QVariant::Bool, m_ui->multipleLogins);
 }
 
 AimServerSettingsWidget::~AimServerSettingsWidget()

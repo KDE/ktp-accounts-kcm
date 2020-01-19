@@ -106,7 +106,7 @@ QVariant ParameterEditModel::data(const QModelIndex &index, int role) const
 
 Qt::ItemFlags ParameterEditModel::flags(const QModelIndex &index) const
 {
-    Qt::ItemFlags flags = 0;
+    Qt::ItemFlags flags;
     if (!index.isValid()) {
         return flags;
     }
