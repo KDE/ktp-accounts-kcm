@@ -47,7 +47,7 @@ MainOptionsWidgetKDETalk::MainOptionsWidgetKDETalk(ParameterEditModel *model,
     
     // test if account name is set -> don't show registerCheckBox in edit mode
     if (!account.isEmpty()) {
-	m_ui->registerCheckBox->setVisible(false);
+        m_ui->registerCheckBox->setVisible(false);
     }
 
     handleParameter(QLatin1String("password"), QVariant::String, m_ui->passwordLineEdit, m_ui->passwordLabel);

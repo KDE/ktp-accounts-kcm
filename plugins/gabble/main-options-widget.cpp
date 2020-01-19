@@ -39,7 +39,7 @@ MainOptionsWidget::MainOptionsWidget(ParameterEditModel *model,
     
     // test if account name is set -> don't show registerCheckBox in edit mode
     if (!account.isEmpty()) {
-	m_ui->registerCheckBox->setVisible(false);
+        m_ui->registerCheckBox->setVisible(false);
     }
     
     handleParameter(QLatin1String("account"), QVariant::String, m_ui->accountLineEdit, m_ui->accountLabel);
