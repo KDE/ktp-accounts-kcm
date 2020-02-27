@@ -2,9 +2,8 @@ This folder contains provider/service files for services or accounts that are
 either currently broken or not properly supported. You can install these at
 your own risk and play around, but please don't report any bugs for these.
 
-You can install these by executing:
+You can install these by adding -DBUILD_DISABLED_PROVIDERS=On to your cmake call.
 
-mkdir -p build && cd build && cmake .. && make install
 
 ===============================================================================
 

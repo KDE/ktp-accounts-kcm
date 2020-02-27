@@ -4,7 +4,7 @@ cmake_minimum_required(VERSION 2.8.12)
 
 find_package(ECM 1.0.0 REQUIRED NO_MODULE)
 
-set(CMAKE_MODULE_PATH ${ECM_MODULE_PATH} ${ECM_KDE_MODULE_DIR} ${CMAKE_CURRENT_SOURCE_DIR}/cmake/modules)
+set(CMAKE_MODULE_PATH ${ECM_MODULE_PATH} ${ECM_KDE_MODULE_DIR})
 
 find_package(Qt5 5.2.0 CONFIG REQUIRED Core Widgets DBus)
 find_package(KF5 5.11 REQUIRED KCMUtils KIO I18n WidgetsAddons Codecs CoreAddons ConfigWidgets IconThemes ItemViews)
@@ -21,7 +21,6 @@ set(IS_KTP_INTERNAL_MODULE TRUE)
 
 find_package (TelepathyQt5 REQUIRED)
 find_package (KAccounts REQUIRED)
-find_package (Intltool REQUIRED) #needed to generate service and provider files
 
 set(CMAKE_MODULE_PATH ${KACCOUNTS_MACROS_PATH} ${CMAKE_MODULE_PATH}) #for KAccountsMacros
 
@@ -43,6 +42,8 @@ add_definitions (
 
 include_directories (${CMAKE_CURRENT_SOURCE_DIR}/src
                      ${TELEPATHY_QT5_INCLUDE_DIR})
+
+option(BUILD_DISABLED_PROVIDERS "Build providers that are disabled by default" OFF)
 
 add_subdirectory (src)
 add_subdirectory (data)
