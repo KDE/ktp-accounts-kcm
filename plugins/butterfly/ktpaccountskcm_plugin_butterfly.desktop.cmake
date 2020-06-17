@@ -41,7 +41,6 @@ Comment[sv]=Användargränssnitt för anpassad kontoinställning av konton som a
 Comment[tr]=Butterfly bağlantı yöneticisi kullanan hesaplar için özel hesap yapılandırma kullanıcı arayüzü
 Comment[uk]=Інтерфейс користувача для нетипового налаштовування облікового запису за допомогою керування з’єднаннями Butterfly.
 Comment[wa]=Eterface uzeu po-z apontyî a vosse môde les contes tot s' siervant do manaedjeu d' raloyaedje Butterfly.
-Comment[x-test]=xxCustom account configuration user interface for accounts using the Butterfly connection manager.xx
 Comment[zh_CN]=通过 Butterfly 连接管理器自定义账户的配置界面
 Comment[zh_TW]=對使用 Butterfly 連線管理員的帳號自訂帳號設定使用者介面。
 Type=Service
