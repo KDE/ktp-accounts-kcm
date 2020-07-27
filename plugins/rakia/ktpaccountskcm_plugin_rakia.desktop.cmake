@@ -2,7 +2,7 @@
 Encoding=UTF-8
 Comment=Custom account configuration user interface for accounts using the Rakia/SofiaSIP connection manager.
 Comment[bs]=Korisnički interfejs za konfiguraciju korisničkih naloga koristeći Rakia/Sofia SIP menadžer konekcja.
-Comment[ca]=Interfície d'usuari de configuració del compte personalitzat per a comptes que utilitzen el gestor de connexions Rakia/SofiaSIP.
+Comment[ca]=Interfície d'usuari de configuració del compte personalitzat per a comptes que usen el gestor de connexions Rakia/SofiaSIP.
 Comment[ca@valencia]=Interfície d'usuari de configuració del compte personalitzat per a comptes que utilitzen el gestor de connexions Rakia/SofiaSIP.
 Comment[cs]=Vlastní uživatelské rozhraní nastavení účtů pro účty používající správce spojení Raika/SofiaSIP.
 Comment[da]=Brugerflade til brugertilpasset kontokonfiguration til konti der bruger forbindelseshåndteringen Rakia/SofiaSIP.
