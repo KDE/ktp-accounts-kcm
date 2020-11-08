@@ -10,8 +10,8 @@ find_package(Qt5 5.2.0 CONFIG REQUIRED Core Widgets DBus)
 find_package(KF5 5.11 REQUIRED KCMUtils KIO I18n WidgetsAddons Codecs CoreAddons ConfigWidgets IconThemes ItemViews)
 
 # KDE Application Version, managed by release script
-set (RELEASE_SERVICE_VERSION_MAJOR "20")
-set (RELEASE_SERVICE_VERSION_MINOR "11")
+set (RELEASE_SERVICE_VERSION_MAJOR "21")
+set (RELEASE_SERVICE_VERSION_MINOR "03")
 set (RELEASE_SERVICE_VERSION_MICRO "70")
 
 set(KTP_ACCOUNTS_KCM_SONUMBER "9")
