@@ -33,7 +33,7 @@
    <item row="1" column="1">
     <widget class="QLabel" name="label">
      <property name="text">
-      <string>&lt;i&gt;Example:&lt;/i&gt; chat.freenode.net</string>
+      <string>&lt;i&gt;Example:&lt;/i&gt; irc.libera.chat</string>
      </property>
     </widget>
    </item>
