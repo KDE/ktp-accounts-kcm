@@ -183,6 +183,3 @@ QString AbstractAccountParametersWidget::defaultDisplayName() const
     qWarning() << "This method should be implemented by derived classes";
     return QString();
 }
-
-
-#include "abstract-account-parameters-widget.moc"

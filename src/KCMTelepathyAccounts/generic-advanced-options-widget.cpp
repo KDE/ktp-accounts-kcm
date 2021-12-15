@@ -87,6 +87,3 @@ void GenericAdvancedOptionsWidget::addTab(AbstractAccountParametersWidget* tab, 
     d->tabWidget->addTab(tab, label);
     d->widgets.append(tab);
 }
-
-
-#include "generic-advanced-options-widget.moc"

@@ -301,5 +301,3 @@ bool AccountEditWidget::updateDisplayName()
     }
     return false;
 }
-
-#include "account-edit-widget.moc"

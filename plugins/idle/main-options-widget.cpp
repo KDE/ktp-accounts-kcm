@@ -54,5 +54,3 @@ QString MainOptionsWidget::defaultDisplayName() const
     }
     return displayName;
 }
-
-#include "main-options-widget.moc"

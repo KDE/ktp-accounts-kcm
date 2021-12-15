@@ -61,6 +61,3 @@ AbstractAccountParametersWidget *HazeSkypeAccountUi::advancedOptionsWidget(
     AbstractAccountParametersWidget *skypeAdvancedSettingsWidget = new SkypeAdvancedSettingsWidget(model, parent);
     return skypeAdvancedSettingsWidget;
 }
-
-
-#include "haze-skype-account-ui.moc"

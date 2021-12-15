@@ -113,6 +113,3 @@ void ProfileSelectWidget::onSelectionChanged(const QItemSelection &selected)
 {
     Q_EMIT profileSelected(!selected.isEmpty());
 }
-
-
-#include "profile-select-widget.moc"

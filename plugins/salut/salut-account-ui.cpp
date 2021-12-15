@@ -64,5 +64,3 @@ AbstractAccountParametersWidget *SalutAccountUi::advancedOptionsWidget(
 
     return aowidget;
 }
-
-#include "salut-account-ui.moc"

@@ -60,5 +60,3 @@ void FeedbackWidget::setText(const QString &text, KMessageWidget::MessageType ty
     KMessageWidget::setText(text);
     this->animatedShow();
 }
-
-#include "feedback-widget.moc"

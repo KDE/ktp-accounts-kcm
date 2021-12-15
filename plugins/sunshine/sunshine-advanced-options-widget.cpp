@@ -49,5 +49,3 @@ SunshineAdvancedOptionsWidget::~SunshineAdvancedOptionsWidget()
 {
     delete m_ui;
 }
-
-#include "sunshine-advanced-options-widget.moc"

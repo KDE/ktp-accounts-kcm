@@ -57,5 +57,3 @@ QString MainOptionsWidgetMSN::defaultDisplayName() const
     //       Dictionary::instance()->string(QLatin1String("msn"))
     return i18n("Windows Live Messenger");
 }
-
-#include "main-options-widget-msn.moc"

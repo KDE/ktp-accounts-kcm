@@ -43,6 +43,3 @@ ServerSettingsWidget::~ServerSettingsWidget()
 {
     delete m_ui;
 }
-
-
-#include "server-settings-widget.moc"

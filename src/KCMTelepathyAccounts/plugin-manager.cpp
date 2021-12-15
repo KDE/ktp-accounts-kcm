@@ -101,6 +101,3 @@ AbstractAccountUi *PluginManager::accountUiForProtocol(const QString &connection
 
     return nullptr;
 }
-
-
-#include "plugin-manager.moc"

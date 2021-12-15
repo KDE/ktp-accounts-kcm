@@ -42,5 +42,3 @@ AbstractAccountParametersWidget *HazeSteamAccountUi::mainOptionsWidget(
 {
     return new SteamMainOptionsWidget(model, parent);
 }
-
-#include "haze-steam-account.moc"

@@ -105,6 +105,3 @@ void SimpleProfileSelectWidget::onProfileClicked(QString profileName)
 
     Q_EMIT profileChosen();
 }
-
-#include "simple-profile-select-widget.moc"
-

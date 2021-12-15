@@ -61,5 +61,3 @@ AbstractAccountParametersWidget *IdleAccountUi::advancedOptionsWidget(
 {
     return new AdvancedOptionsWidget(model, parent);
 }
-
-#include "idle-account-ui.moc"

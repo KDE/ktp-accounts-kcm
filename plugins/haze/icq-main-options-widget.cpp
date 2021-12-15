@@ -42,5 +42,3 @@ QString IcqMainOptionsWidget::defaultDisplayName() const
 {
     return m_ui->accountLineEdit->text();
 }
-
-#include "icq-main-options-widget.moc"

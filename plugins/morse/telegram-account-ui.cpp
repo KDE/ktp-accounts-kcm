@@ -40,5 +40,3 @@ AbstractAccountParametersWidget *TelegramAccountUi::mainOptionsWidget(
 {
     return new MainOptionsWidget(model, parent);
 }
-
-#include "telegram-account-ui.moc"

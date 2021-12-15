@@ -37,5 +37,3 @@ GroupWiseAdvancedSettingsWidget::~GroupWiseAdvancedSettingsWidget()
 {
     delete m_ui;
 }
-
-#include "groupwise-advanced-settings-widget.moc"

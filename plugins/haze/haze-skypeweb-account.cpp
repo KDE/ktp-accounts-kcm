@@ -48,5 +48,3 @@ bool HazeSkypeWebAccountUi::hasAdvancedOptionsWidget() const
 {
     return false;
 }
-  
-#include "haze-skypeweb-account.moc"

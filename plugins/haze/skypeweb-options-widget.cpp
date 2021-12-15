@@ -42,5 +42,3 @@ QString SkypeWebOptionsWidget::defaultDisplayName() const
 {
     return m_ui->accountLineEdit->text();
 }
-
-#include "skypeweb-options-widget.moc"

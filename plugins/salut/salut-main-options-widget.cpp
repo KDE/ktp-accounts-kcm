@@ -87,5 +87,3 @@ QString SalutMainOptionsWidget::defaultDisplayName() const
 
     return displayName;
 }
-
-#include "salut-main-options-widget.moc"

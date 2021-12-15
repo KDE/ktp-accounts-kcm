@@ -43,5 +43,3 @@ QString SteamMainOptionsWidget::defaultDisplayName() const
 {
     return m_ui->accountLineEdit->text();
 }
-
-#include "steam-main-options-widget.moc"

@@ -75,6 +75,3 @@ void AbstractAccountUi::registerSupportedParameter(const QString &name, QVariant
     // Add the parameter to the list.
     d->supportedParameters.insertMulti(name, type);
 }
-
-
-#include "abstract-account-ui.moc"

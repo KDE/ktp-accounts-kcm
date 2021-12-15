@@ -218,6 +218,3 @@ void ParameterEditDelegate::onSpinBoxValueChanged(int value)
 
     Q_EMIT dataChanged(index, QVariant(QString::number(value)), ParameterEditModel::ValueRole);
 }
-
-
-#include "parameter-edit-delegate.moc"

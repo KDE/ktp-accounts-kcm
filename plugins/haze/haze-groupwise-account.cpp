@@ -59,5 +59,3 @@ AbstractAccountParametersWidget *HazeGroupWiseAccountUi::advancedOptionsWidget(
     AbstractAccountParametersWidget *groupwiseAdvancedSettingsWidget = new GroupWiseAdvancedSettingsWidget(model, parent);
     return groupwiseAdvancedSettingsWidget;
 }
-
-#include "haze-groupwise-account.moc"

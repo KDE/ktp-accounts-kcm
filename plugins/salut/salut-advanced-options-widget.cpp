@@ -38,5 +38,3 @@ SalutAdvancedOptionsWidget::~SalutAdvancedOptionsWidget()
 {
     delete m_ui;
 }
-
-#include "salut-advanced-options-widget.moc"

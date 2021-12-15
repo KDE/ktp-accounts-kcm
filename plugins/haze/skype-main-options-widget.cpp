@@ -59,5 +59,3 @@ QString SkypeMainOptionsWidget::defaultDisplayName() const
 {
     return m_ui->accountLineEdit->text();
 }
-
-#include "skype-main-options-widget.moc"

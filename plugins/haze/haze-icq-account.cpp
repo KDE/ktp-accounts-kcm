@@ -64,6 +64,3 @@ AbstractAccountParametersWidget *HazeIcqAccountUi::advancedOptionsWidget(
     AbstractAccountParametersWidget *icqServerSettingsWidget = new IcqServerSettingsWidget(model, parent);
     return icqServerSettingsWidget;
 }
-
-
-#include "haze-icq-account.moc"

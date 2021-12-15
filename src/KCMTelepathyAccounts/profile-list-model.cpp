@@ -222,6 +222,3 @@ void ProfileListModel::onConnectionManagersLoaded(Tp::PendingOperation *op)
     Q_UNUSED(op)
     populateList();
 }
-
-
-#include "profile-list-model.moc"

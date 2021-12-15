@@ -88,5 +88,3 @@ void ProfileItem::generateIcon()
 {
     m_icon = QIcon::fromTheme(profile()->iconName());
 }
-
-#include "profile-item.moc"

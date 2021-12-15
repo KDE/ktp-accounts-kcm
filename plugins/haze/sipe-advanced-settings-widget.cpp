@@ -46,5 +46,3 @@ SipeAdvancedSettingsWidget::~SipeAdvancedSettingsWidget()
 {
     delete m_ui;
 }
-
-#include "sipe-advanced-settings-widget.moc"

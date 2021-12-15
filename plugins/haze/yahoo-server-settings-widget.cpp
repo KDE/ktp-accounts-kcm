@@ -52,5 +52,3 @@ YahooServerSettingsWidget::~YahooServerSettingsWidget()
 {
     delete m_ui;
 }
-
-#include "yahoo-server-settings-widget.moc"

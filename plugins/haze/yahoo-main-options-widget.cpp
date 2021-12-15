@@ -64,5 +64,3 @@ QString YahooMainOptionsWidget::defaultDisplayName() const
 {
     return m_ui->accountLineEdit->text();
 }
-
-#include "yahoo-main-options-widget.moc"

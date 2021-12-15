@@ -42,6 +42,3 @@ ProxySettingsWidget::~ProxySettingsWidget()
 {
     delete m_ui;
 }
-
-
-#include "proxy-settings-widget.moc"

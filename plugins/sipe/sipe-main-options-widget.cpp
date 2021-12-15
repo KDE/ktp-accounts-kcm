@@ -67,5 +67,3 @@ void SipeMainOptionsWidget::submit()
         parameterModel()->setData(index, account, Qt::EditRole);
     }
 }
-
-#include "sipe-main-options-widget.moc"

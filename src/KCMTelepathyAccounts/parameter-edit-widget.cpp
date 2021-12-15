@@ -76,5 +76,3 @@ QString ParameterEditWidget::defaultDisplayName() const
     }
     return QString();
 }
-
-#include "parameter-edit-widget.moc"

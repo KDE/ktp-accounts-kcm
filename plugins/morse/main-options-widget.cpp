@@ -44,5 +44,3 @@ QString MainOptionsWidget::defaultDisplayName() const
 {
     return i18nc("name of the IM service Telegram", "Telegram (%1)", m_ui->accountLineEdit->text());
 }
-
-#include "main-options-widget.moc"

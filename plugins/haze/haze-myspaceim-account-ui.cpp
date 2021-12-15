@@ -59,5 +59,3 @@ AbstractAccountParametersWidget *HazeMySpaceIMAccountUi::advancedOptionsWidget(
     AbstractAccountParametersWidget *myspaceimAdvancedSettingsWidget = new MySpaceIMAdvancedSettingsWidget(model, parent);
     return myspaceimAdvancedSettingsWidget;
 }
-
-#include "haze-myspaceim-account-ui.moc"

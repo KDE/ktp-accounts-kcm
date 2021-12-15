@@ -40,5 +40,3 @@ AdvancedOptionsWidget::~AdvancedOptionsWidget()
 {
     delete m_ui;
 }
-
-#include "advanced-options-widget.moc"

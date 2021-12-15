@@ -61,5 +61,3 @@ AbstractAccountParametersWidget *SipeAccountUi::advancedOptionsWidget(ParameterE
     AbstractAccountParametersWidget *sipeAdvancedOptionsWidget = new SipeAdvancedOptionsWidget(model, parent);
     return sipeAdvancedOptionsWidget;
 }
-
-#include "sipe-account-ui.moc"

@@ -64,5 +64,3 @@ void IcqServerSettingsWidget::submit()
         parameterModel()->indexForParameter(parameterModel()->parameter(QLatin1String("charset"))),
         name, ParameterEditModel::ValueRole);
 }
-
-#include "icq-server-settings-widget.moc"

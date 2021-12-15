@@ -88,5 +88,3 @@ QString MainOptionsWidgetFacebook::defaultDisplayName() const
     }
     return displayName;
 }
-
-#include "main-options-widget-facebook.moc"

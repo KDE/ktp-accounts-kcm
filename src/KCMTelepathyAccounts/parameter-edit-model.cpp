@@ -308,7 +308,3 @@ bool ParameterEditModel::validateParameterValues()
 
     return true;
 }
-
-
-#include "parameter-edit-model.moc"
-

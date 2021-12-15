@@ -43,5 +43,3 @@ AimServerSettingsWidget::~AimServerSettingsWidget()
 {
     delete m_ui;
 }
-
-#include "aim-server-settings-widget.moc"

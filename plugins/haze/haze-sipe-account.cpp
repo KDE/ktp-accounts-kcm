@@ -67,5 +67,3 @@ AbstractAccountParametersWidget *HazeSipeAccountUi::advancedOptionsWidget(
     AbstractAccountParametersWidget *sipeAdvancedSettingsWidget = new SipeAdvancedSettingsWidget(model, parent);
     return sipeAdvancedSettingsWidget;
 }
-
-#include "haze-sipe-account.moc"

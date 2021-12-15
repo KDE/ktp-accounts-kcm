@@ -68,5 +68,3 @@ AbstractAccountParametersWidget *SunshineAccountUi::advancedOptionsWidget(
 
     return aowidget;
 }
-
-#include "sunshine-account-ui.moc"

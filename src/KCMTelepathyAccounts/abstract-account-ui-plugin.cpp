@@ -64,6 +64,3 @@ void AbstractAccountUiPlugin::registerProvidedProtocol(const QString &connection
     // Pair is not already added. Add it.
     d->providedProtocols.insertMulti(connectionManager, protocol);
 }
-
-
-#include "abstract-account-ui-plugin.moc"
