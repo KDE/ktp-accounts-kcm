@@ -1,6 +1,6 @@
-project (ktp-accounts-kcm)
+cmake_minimum_required(VERSION 3.16)
 
-cmake_minimum_required(VERSION 2.8.12)
+project (ktp-accounts-kcm)
 
 find_package(ECM 1.0.0 REQUIRED NO_MODULE)
 
