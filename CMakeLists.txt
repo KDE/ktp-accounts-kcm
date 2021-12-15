@@ -1,18 +1,41 @@
 cmake_minimum_required(VERSION 3.16)
 
-project (ktp-accounts-kcm)
-
-find_package(ECM 1.0.0 REQUIRED NO_MODULE)
-
-set(CMAKE_MODULE_PATH ${ECM_MODULE_PATH})
-
-find_package(Qt5 5.2.0 CONFIG REQUIRED Core Widgets DBus)
-find_package(KF5 5.11 REQUIRED KCMUtils KIO I18n WidgetsAddons Codecs CoreAddons ConfigWidgets IconThemes ItemViews)
-
-# KDE Application Version, managed by release script
+# KDE Gear Version, managed by release script
 set (RELEASE_SERVICE_VERSION_MAJOR "22")
 set (RELEASE_SERVICE_VERSION_MINOR "03")
 set (RELEASE_SERVICE_VERSION_MICRO "70")
+
+project (ktp-accounts-kcm)
+
+set(QT_MIN_VERSION "5.15.0")
+set(KF_MIN_VERSION "5.85.0")
+
+find_package(ECM ${KF_MIN_VERSION} REQUIRED NO_MODULE)
+set(CMAKE_MODULE_PATH ${ECM_MODULE_PATH})
+
+include(KDEInstallDirs)
+include(KDECMakeSettings)
+include(KDECompilerSettings NO_POLICY_SCOPE)
+
+include(ECMInstallIcons)
+include(FeatureSummary)
+
+find_package(Qt5 ${QT_MIN_VERSION} CONFIG REQUIRED
+    Core
+    DBus
+    Widgets
+)
+find_package(KF5 ${KF_MIN_VERSION} REQUIRED
+    Codecs
+    ConfigWidgets
+    CoreAddons
+    I18n
+    IconThemes
+    ItemViews
+    KCMUtils
+    KIO
+    WidgetsAddons
+)
 
 set(KTP_ACCOUNTS_KCM_SONUMBER "9")
 set(KTP_ACCOUNTS_KCM_VERSION "${RELEASE_SERVICE_VERSION_MAJOR}.${RELEASE_SERVICE_VERSION_MINOR}.${RELEASE_SERVICE_VERSION_MICRO}")
@@ -27,17 +50,11 @@ set(CMAKE_MODULE_PATH ${KACCOUNTS_MACROS_PATH} ${CMAKE_MODULE_PATH}) #for KAccou
 # make some more macros available
 # include (MacroLibrary)
 
-include(KDEInstallDirs)
-include(KDECMakeSettings)
-include(KDEFrameworkCompilerSettings NO_POLICY_SCOPE)
-include(KDECompilerSettings NO_POLICY_SCOPE)
-include(ECMInstallIcons)
-include(FeatureSummary)
 include(KAccountsMacros)
 
-add_definitions (
-#                  -DQT_NO_CAST_FROM_ASCII
-                 -DQT_NO_KEYWORDS
+# added by KDE_COMPILERSETTINGS_LEVEL 5.85
+remove_definitions (
+    -DQT_NO_FOREACH
 )
 
 include_directories (${CMAKE_CURRENT_SOURCE_DIR}/src
