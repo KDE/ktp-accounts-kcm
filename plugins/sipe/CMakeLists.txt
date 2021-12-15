@@ -1,9 +1,5 @@
 project (ktpaccountskcm-plugin-sipe)
 
-include_directories (${CMAKE_CURRENT_BINARY_DIR}
-                     ${CMAKE_CURRENT_SOURCE_DIR}
-)
-
 add_definitions(-DTRANSLATION_DOMAIN=\"kcmtelepathyaccounts_plugin_sipe\")
 
 set (ktpaccountskcm_plugin_sipe_SRCS

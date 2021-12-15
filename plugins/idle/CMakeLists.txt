@@ -1,9 +1,5 @@
 project (ktpaccountskcm-plugin-idle)
 
-include_directories (${CMAKE_CURRENT_BINARY_DIR}
-                     ${CMAKE_CURRENT_SOURCE_DIR}
-)
-
 set (ktpaccountskcm_plugin_idle_SRCS
      idle-account-ui-plugin.cpp
      idle-account-ui.cpp

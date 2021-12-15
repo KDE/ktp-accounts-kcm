@@ -1,10 +1,8 @@
 project (ktpaccountskcm-plugin-kaccounts)
 
-include_directories (${CMAKE_CURRENT_BINARY_DIR}
-                     ${CMAKE_CURRENT_SOURCE_DIR}
-                     ${ACCOUNTSQT_INCLUDE_DIRS}
-                     ${SIGNONQT_INCLUDE_DIRS}
-
+include_directories (
+    ${ACCOUNTSQT_INCLUDE_DIRS}
+    ${SIGNONQT_INCLUDE_DIRS}
 )
 
 add_definitions(-DTRANSLATION_DOMAIN=\"kcm_ktp_accounts\")

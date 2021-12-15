@@ -1,9 +1,5 @@
 project (libktpaccountskcminternal)
 
-include_directories (${CMAKE_CURRENT_BINARY_DIR}
-                     ${CMAKE_CURRENT_SOURCE_DIR}
-)
-
 add_definitions (-DMAKE_KCM_TELEPATHY_ACCOUNTS_LIB)
 
 set (libktpaccountskcminternal_SRCS

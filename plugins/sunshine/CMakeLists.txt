@@ -1,9 +1,5 @@
 project (ktpaccountskcm-plugin-sunshine)
 
-include_directories (${CMAKE_CURRENT_BINARY_DIR}
-                     ${CMAKE_CURRENT_SOURCE_DIR}
-)
-
 add_definitions(-DTRANSLATION_DOMAIN=\"ktpaccountskcm_plugin_sunshine\")
 
 set (ktpaccountskcm_plugin_sunshine_SRCS
