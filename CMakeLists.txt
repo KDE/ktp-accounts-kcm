@@ -40,8 +40,6 @@ find_package(KF5 ${KF_MIN_VERSION} REQUIRED
     WidgetsAddons
 )
 
-set(IS_KTP_INTERNAL_MODULE TRUE)
-
 find_package (TelepathyQt5 REQUIRED)
 find_package (KAccounts REQUIRED)
 
