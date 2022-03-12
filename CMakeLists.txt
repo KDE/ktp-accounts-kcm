@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.16)
 
 # KDE Gear Version, managed by release script
 set (RELEASE_SERVICE_VERSION_MAJOR "22")
-set (RELEASE_SERVICE_VERSION_MINOR "03")
+set (RELEASE_SERVICE_VERSION_MINOR "07")
 set (RELEASE_SERVICE_VERSION_MICRO "70")
 
 set(KTP_ACCOUNTS_KCM_SONUMBER "9")
