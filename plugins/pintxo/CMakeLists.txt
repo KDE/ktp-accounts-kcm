@@ -40,7 +40,7 @@ if (LIBMODEMMANAGERQT_FOUND)
 
     # Install:
     install (TARGETS ktpaccountskcm_plugin_pintxo
-            DESTINATION ${PLUGIN_INSTALL_DIR}
+            DESTINATION ${KDE_INSTALL_PLUGINDIR}
     )
 
     configure_file(${CMAKE_CURRENT_SOURCE_DIR}/ktpaccountskcm_plugin_pintxo.desktop.cmake
@@ -48,7 +48,7 @@ if (LIBMODEMMANAGERQT_FOUND)
                 @ONLY)
 
     install (FILES ${CMAKE_CURRENT_BINARY_DIR}/ktpaccountskcm_plugin_pintxo.desktop
-            DESTINATION ${SERVICES_INSTALL_DIR}
+            DESTINATION ${KDE_INSTALL_KSERVICES5DIR}
     )
 
 endif (LIBMODEMMANAGERQT_FOUND)

@@ -25,7 +25,7 @@ target_link_libraries (ktpaccountskcm_plugin_salut
 
 # Install:
 install (TARGETS ktpaccountskcm_plugin_salut
-         DESTINATION ${PLUGIN_INSTALL_DIR}
+         DESTINATION ${KDE_INSTALL_PLUGINDIR}
 )
 
 configure_file(${CMAKE_CURRENT_SOURCE_DIR}/ktpaccountskcm_plugin_salut.desktop.cmake
@@ -33,5 +33,5 @@ configure_file(${CMAKE_CURRENT_SOURCE_DIR}/ktpaccountskcm_plugin_salut.desktop.c
                @ONLY)
 
 install (FILES ${CMAKE_CURRENT_BINARY_DIR}/ktpaccountskcm_plugin_salut.desktop
-         DESTINATION ${SERVICES_INSTALL_DIR}
+         DESTINATION ${KDE_INSTALL_KSERVICES5DIR}
 )

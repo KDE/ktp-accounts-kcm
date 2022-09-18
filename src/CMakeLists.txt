@@ -42,13 +42,13 @@ add_subdirectory (KCMTelepathyAccounts)
 #
 # # Install:
 # install (TARGETS kcm_ktp_accounts
-#          DESTINATION ${PLUGIN_INSTALL_DIR}
+#          DESTINATION ${KDE_INSTALL_PLUGINDIR}
 # )
 #
 # install (FILES kcm_ktp_accounts.desktop
-#          DESTINATION ${SERVICES_INSTALL_DIR}
+#          DESTINATION ${KDE_INSTALL_KSERVICES5DIR}
 # )
 #
 # install (FILES settings-im-and-voip.desktop
-#          DESTINATION ${SERVICES_INSTALL_DIR}
+#          DESTINATION ${KDE_INSTALL_KSERVICES5DIR}
 # )

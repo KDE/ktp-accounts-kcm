@@ -27,7 +27,7 @@ target_link_libraries (ktpaccountskcm_plugin_butterfly
 
 # Install:
 install (TARGETS ktpaccountskcm_plugin_butterfly
-         DESTINATION ${PLUGIN_INSTALL_DIR}
+         DESTINATION ${KDE_INSTALL_PLUGINDIR}
 )
 
 configure_file(${CMAKE_CURRENT_SOURCE_DIR}/ktpaccountskcm_plugin_butterfly.desktop.cmake
@@ -35,5 +35,5 @@ configure_file(${CMAKE_CURRENT_SOURCE_DIR}/ktpaccountskcm_plugin_butterfly.deskt
                @ONLY)
 
 install (FILES ${CMAKE_CURRENT_BINARY_DIR}/ktpaccountskcm_plugin_butterfly.desktop
-         DESTINATION ${SERVICES_INSTALL_DIR}
+         DESTINATION ${KDE_INSTALL_KSERVICES5DIR}
 )

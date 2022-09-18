@@ -1,4 +1,4 @@
 install (DIRECTORY profiles
-         DESTINATION ${SHARE_INSTALL_PREFIX}/telepathy)
+         DESTINATION ${KDE_INSTALL_DATAROOTDIR}/telepathy)
 
 add_subdirectory (kaccounts)

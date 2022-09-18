@@ -27,5 +27,5 @@ target_link_libraries (ktpaccountskcm_plugin_kaccounts
 
 # Install:
 install (TARGETS ktpaccountskcm_plugin_kaccounts
-         DESTINATION ${PLUGIN_INSTALL_DIR}/kaccounts/ui
+         DESTINATION ${KDE_INSTALL_PLUGINDIR}/kaccounts/ui
 )

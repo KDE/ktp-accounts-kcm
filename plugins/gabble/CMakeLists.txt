@@ -38,7 +38,7 @@ target_link_libraries (ktpaccountskcm_plugin_gabble
 
 # Install:
 install (TARGETS ktpaccountskcm_plugin_gabble
-         DESTINATION ${PLUGIN_INSTALL_DIR}
+         DESTINATION ${KDE_INSTALL_PLUGINDIR}
 )
 
 configure_file(${CMAKE_CURRENT_SOURCE_DIR}/ktpaccountskcm_plugin_gabble.desktop.cmake
@@ -46,5 +46,5 @@ configure_file(${CMAKE_CURRENT_SOURCE_DIR}/ktpaccountskcm_plugin_gabble.desktop.
                @ONLY)
 
 install (FILES ${CMAKE_CURRENT_BINARY_DIR}/ktpaccountskcm_plugin_gabble.desktop
-         DESTINATION ${SERVICES_INSTALL_DIR}
+         DESTINATION ${KDE_INSTALL_KSERVICES5DIR}
 )

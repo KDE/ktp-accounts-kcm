@@ -27,7 +27,7 @@ target_link_libraries (ktpaccountskcm_plugin_sunshine
 
 # Install:
 install (TARGETS ktpaccountskcm_plugin_sunshine
-         DESTINATION ${PLUGIN_INSTALL_DIR}
+         DESTINATION ${KDE_INSTALL_PLUGINDIR}
 )
 
 configure_file(${CMAKE_CURRENT_SOURCE_DIR}/ktpaccountskcm_plugin_sunshine.desktop.cmake
@@ -35,5 +35,5 @@ configure_file(${CMAKE_CURRENT_SOURCE_DIR}/ktpaccountskcm_plugin_sunshine.deskto
                @ONLY)
 
 install (FILES ${CMAKE_CURRENT_BINARY_DIR}/ktpaccountskcm_plugin_sunshine.desktop
-         DESTINATION ${SERVICES_INSTALL_DIR}
+         DESTINATION ${KDE_INSTALL_KSERVICES5DIR}
 )

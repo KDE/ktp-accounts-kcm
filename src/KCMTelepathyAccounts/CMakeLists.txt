@@ -96,12 +96,12 @@ endif (MSVC)
 
 # Install:
 install (TARGETS ktpaccountskcminternal
-         ${INSTALL_TARGETS_DEFAULT_ARGS}
+         ${KDE_INSTALL_TARGETS_DEFAULT_ARGS}
          LIBRARY NAMELINK_SKIP
 )
 
 install (FILES
          ktpaccountskcminternal-accountuiplugin.desktop
-         DESTINATION ${SERVICETYPES_INSTALL_DIR}
+         DESTINATION ${KDE_INSTALL_KSERVICETYPES5DIR}
 )
 
