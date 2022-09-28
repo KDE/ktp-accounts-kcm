@@ -63,6 +63,7 @@ Name[gl]=Interface de usuario para a configuración de contas de Gadu-Gadu
 Name[hu]=Gadu-Gadu azonosítóbeállító felület
 Name[ia]=Interfacie de usator de configuration de conto de Gadu-Gadu
 Name[it]=Interfaccia utente di configurazione account Gadu-Gadu
+Name[ka]=Gadu-Gadu -ის ანგარიშის მორგების ინტერფეისი
 Name[kk]=Gadu-Gadu тіркелгі пайдаланушы интерфейсін баптау
 Name[km]=ចំណុច​ប្រទាក់​អ្នក​ប្រើ​ការ​កំណត់​រចនាសម្ព័ន្ធ​គណនី Gadu-Gadu
 Name[ko]=Gadu-Gadu 계정 설정 사용자 인터페이스

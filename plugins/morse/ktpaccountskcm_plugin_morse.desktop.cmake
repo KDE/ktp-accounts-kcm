@@ -18,6 +18,7 @@ Comment[gl]=Interface de usuario de configuración personalizada da conta para c
 Comment[hu]=Egyedi beállítófelület a Morse kapcsolatkezelőt használó azonosítókhoz.
 Comment[ia]=Interfacie de usator pro configuration de conto personalisate pro contos usante le gerente de connexion Morse.
 Comment[it]=Interfaccia utente personalizzata di configurazione account per account che usano il gestore di connessioni Morse.
+Comment[ka]=ხელით მითითებული ანგარიშის მორგების მომხმარებლის ინტერფეისი Morse -ის შეერთების მმართველის გამოყენებით.
 Comment[ko]=Morse 연결 관리자를 사용하는 계정 설정 사용자 인터페이스입니다.
 Comment[nb]=Brukerflate for å sette opp egendefinerte kontoer ved bruk av Morse tilkoblingsbehandler.
 Comment[nl]=Gebruikersinterface voor aangepaste accountconfiguratie voor accounts die de Morse verbindingenbeheerder gebruiken.
