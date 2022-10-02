@@ -1,0 +1,32 @@
+# Burkhard Lück <lueck@hube-lueck.de>, 2013.
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2019-05-20 03:11+0200\n"
+"PO-Revision-Date: 2013-09-08 21:36+0200\n"
+"Last-Translator: Burkhard Lück <lueck@hube-lueck.de>\n"
+"Language-Team: German <kde-i18n-de@kde.org>\n"
+"Language: de\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+
+#. i18n: ectx: property (windowTitle), widget (QWidget, MainOptionsWidget)
+#: main-options-widget.ui:20
+#, kde-format
+msgid "Account Preferences"
+msgstr "Zugangseinstellungen"
+
+#. i18n: ectx: property (text), widget (QLabel, numberLabel)
+#: main-options-widget.ui:28
+#, kde-format
+msgid "Account name:"
+msgstr "Zugangsname:"
+
+#. i18n: ectx: property (text), widget (QLabel, modemLabel)
+#: main-options-widget.ui:55
+#, kde-format
+msgid "Modem:"
+msgstr "Modem:"

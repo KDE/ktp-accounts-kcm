@@ -1,0 +1,511 @@
+# Copyright (C) YEAR This_file_is_part_of_KDE
+# This file is distributed under the same license as the PACKAGE package.
+#
+# Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>, 2011, 2012, 2014, 2016, 2021.
+# Marta Rybczyńska <kde-i18n@rybczynska.net>, 2013.
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2021-03-28 16:10+0000\n"
+"PO-Revision-Date: 2021-12-30 13:26+0100\n"
+"Last-Translator: Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>\n"
+"Language-Team: Polish <kde-i18n-doc@kde.org>\n"
+"Language: pl\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Lokalize 22.03.70\n"
+"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
+"|| n%100>=20) ? 1 : 2);\n"
+
+#. i18n: ectx: property (windowTitle), widget (QWidget, SipeMainOptionsWidget)
+#. i18n: ectx: property (windowTitle), widget (QWidget, IcqMainOptionsWidget)
+#. i18n: ectx: property (windowTitle), widget (QWidget, GroupWiseMainOptionsWidget)
+#. i18n: ectx: property (windowTitle), widget (QWidget, YahooMainOptionsWidget)
+#. i18n: ectx: property (windowTitle), widget (QWidget, SkypeWebOptionsWidget)
+#. i18n: ectx: property (windowTitle), widget (QWidget, SteamMainOptionsWidget)
+#. i18n: ectx: property (windowTitle), widget (QWidget, MySpaceIMMainOptionsWidget)
+#. i18n: ectx: property (windowTitle), widget (QWidget, AimMainOptionsWidget)
+#. i18n: ectx: property (windowTitle), widget (QWidget, MsnMainOptionsWidget)
+#. i18n: ectx: property (windowTitle), widget (QWidget, SkypeMainOptionsWidget)
+#: aim-main-options-widget.ui:20 groupwise-main-options-widget.ui:20
+#: icq-main-options-widget.ui:20 msn-main-options-widget.ui:20
+#: myspaceim-main-options-widget.ui:20 sipe-main-options-widget.ui:20
+#: skype-main-options-widget.ui:20 skypeweb-options-widget.ui:20
+#: steam-main-options-widget.ui:20 yahoo-main-options-widget.ui:20
+#, kde-format
+msgid "Account Preferences"
+msgstr "Właściwości konta"
+
+#. i18n: ectx: property (text), widget (QLabel, accountLabel)
+#: aim-main-options-widget.ui:29 groupwise-main-options-widget.ui:34
+#: myspaceim-main-options-widget.ui:34 sipe-main-options-widget.ui:34
+#: steam-main-options-widget.ui:34 yahoo-main-options-widget.ui:34
+#, kde-format
+msgid "Username:"
+msgstr "Nazwa użytkownika:"
+
+#. i18n: ectx: property (text), widget (QLabel, passwordLabel)
+#: aim-main-options-widget.ui:46 groupwise-main-options-widget.ui:54
+#: icq-main-options-widget.ui:44 msn-main-options-widget.ui:53
+#: myspaceim-main-options-widget.ui:54 sipe-main-options-widget.ui:54
+#: skypeweb-options-widget.ui:44 steam-main-options-widget.ui:75
+#: yahoo-main-options-widget.ui:48
+#, kde-format
+msgid "Password:"
+msgstr "Hasło:"
+
+#. i18n: ectx: property (windowTitle), widget (QWidget, YahooServerSettingsWidget)
+#. i18n: ectx: property (windowTitle), widget (QWidget, SipeAdvancedSettingsWidget)
+#. i18n: ectx: property (windowTitle), widget (QWidget, AimServerSettingsWidget)
+#. i18n: ectx: property (windowTitle), widget (QWidget, SkypeAdvancedSettingsWidget)
+#. i18n: ectx: property (windowTitle), widget (QWidget, MySpaceIMAdvancedSettingsWidget)
+#. i18n: ectx: property (windowTitle), widget (QWidget, GroupWiseAdvancedSettingsWidget)
+#: aim-server-settings-widget.ui:14 groupwise-advanced-settings-widget.ui:14
+#: myspaceim-advanced-settings-widget.ui:14 sipe-advanced-settings-widget.ui:14
+#: skype-advanced-settings-widget.ui:14 yahoo-server-settings-widget.ui:14
+#, kde-format
+msgid "Advanced Options"
+msgstr "Ustawienia rozszerzone"
+
+#. i18n: ectx: property (text), widget (QLabel, serverHeadlineLabel)
+#: aim-server-settings-widget.ui:32 icq-server-settings-widget.ui:37
+#: yahoo-server-settings-widget.ui:37
+#, kde-format
+msgid "<b>Server</b>"
+msgstr "<b>Serwer</b>"
+
+#. i18n: ectx: property (text), widget (QLabel, serverLabel)
+#. i18n: ectx: property (text), widget (QLabel, serverAddressLabel)
+#: aim-server-settings-widget.ui:39 icq-server-settings-widget.ui:44
+#, kde-format
+msgid "Address:"
+msgstr "Adres:"
+
+#. i18n: ectx: property (text), widget (QLabel, serverPortLabel)
+#. i18n: ectx: property (text), widget (QLabel, xferPortLabel)
+#. i18n: ectx: property (text), widget (QLabel, portLabel)
+#: aim-server-settings-widget.ui:49 groupwise-advanced-settings-widget.ui:41
+#: icq-server-settings-widget.ui:54 myspaceim-advanced-settings-widget.ui:41
+#: yahoo-server-settings-widget.ui:44 yahoo-server-settings-widget.ui:87
+#, kde-format
+msgid "Port:"
+msgstr "Port:"
+
+#. i18n: ectx: property (text), widget (QLabel, securityHeadlineLabel)
+#. i18n: ectx: property (text), widget (QLabel, transferHeadlineLabel)
+#: aim-server-settings-widget.ui:75 icq-server-settings-widget.ui:80
+#, kde-format
+msgid "<b>Security</b>"
+msgstr "<b>Bezpieczeństwo</b>"
+
+#. i18n: ectx: property (text), widget (QLabel, encryptionLabel)
+#: aim-server-settings-widget.ui:82
+#, kde-format
+msgid "Encryption:"
+msgstr "Szyfrowanie:"
+
+#. i18n: ectx: property (text), widget (QCheckBox, rvProxy)
+#: aim-server-settings-widget.ui:92
+#, kde-format
+msgid "Always use AIM proxy"
+msgstr "Zawsze używaj pośrednika AIM"
+
+#. i18n: ectx: property (text), widget (QLabel, otherHeadlineLabel)
+#: aim-server-settings-widget.ui:108 icq-server-settings-widget.ui:114
+#: yahoo-server-settings-widget.ui:152
+#, kde-format
+msgid "<b>Other</b>"
+msgstr "<b>Inny</b>"
+
+#. i18n: ectx: property (text), widget (QCheckBox, clientLogin)
+#: aim-server-settings-widget.ui:115
+#, kde-format
+msgid "Use clientLogin"
+msgstr "Użyj clientLogin"
+
+#. i18n: ectx: property (text), widget (QCheckBox, multipleLogins)
+#: aim-server-settings-widget.ui:122
+#, kde-format
+msgid "Allow multiple simultaneous logins"
+msgstr "Zezwalaj na wiele jednoczesnych loginów"
+
+#. i18n: ectx: property (text), widget (QLabel, serverLabel)
+#: groupwise-advanced-settings-widget.ui:31
+#: myspaceim-advanced-settings-widget.ui:31
+#, kde-format
+msgid "Server:"
+msgstr "Serwer:"
+
+#. i18n: ectx: property (toolTip), widget (QLineEdit, accountLineEdit)
+#: groupwise-main-options-widget.ui:41
+#, kde-format
+msgid "The GroupWise username is your email address."
+msgstr "Nazwa użytkownika GroupWise jest twoim adresem poczty elektronicznej."
+
+#. i18n: ectx: property (text), widget (QLabel, accountLabel)
+#: icq-main-options-widget.ui:34
+#, kde-format
+msgid "UIN:"
+msgstr "UIN:"
+
+#. i18n: ectx: property (windowTitle), widget (QWidget, IcqServerSettingsWidget)
+#: icq-server-settings-widget.ui:14
+#, kde-format
+msgid "Connection Settings"
+msgstr "Ustawienia połączenia"
+
+#. i18n: ectx: property (text), widget (QCheckBox, useSslCheckBox)
+#: icq-server-settings-widget.ui:87
+#, kde-format
+msgid "Use SSL"
+msgstr "Użyj SSL"
+
+#. i18n: ectx: property (text), widget (QCheckBox, allowMultipleLoginsCheckBox)
+#: icq-server-settings-widget.ui:94
+#, kde-format
+msgid "Allow multiple logins"
+msgstr "Zezwalaj na wiele loginów"
+
+#. i18n: ectx: property (text), widget (QCheckBox, alwaysUseRvProxyCheckBox)
+#: icq-server-settings-widget.ui:121
+#, kde-format
+msgid "Always use RV-Proxy"
+msgstr "Zawsze używaj pośrednika RV"
+
+#. i18n: ectx: property (text), widget (QLabel, charsetLabel)
+#: icq-server-settings-widget.ui:128
+#, kde-format
+msgid "Charset"
+msgstr "Zestaw znaków"
+
+#. i18n: ectx: property (text), widget (QLabel, emailLabel)
+#. i18n: ectx: property (text), widget (QLabel, accountLabel)
+#: msn-main-options-widget.ui:29 sipe-advanced-settings-widget.ui:102
+#, kde-format
+msgid "Email address:"
+msgstr "Adres poczty elektronicznej:"
+
+#. i18n: ectx: property (text), widget (QLabel, label)
+#: msn-main-options-widget.ui:46
+#, kde-format
+msgid "Example: user@hotmail.com"
+msgstr "Przykład: użytkownik@hotmail.com"
+
+#. i18n: ectx: property (toolTip), widget (QLineEdit, accountLineEdit)
+#: myspaceim-main-options-widget.ui:41
+#, kde-format
+msgid "The MySpaceIM username is your email address."
+msgstr "Nazwa użytkownika MySpaceIM jest twoim adresem e-mail."
+
+#. i18n: ectx: property (placeholderText), widget (QLineEdit, accountLineEdit)
+#: myspaceim-main-options-widget.ui:47 sipe-main-options-widget.ui:47
+#, kde-format
+msgid "john@doe.com"
+msgstr "jan@kowalski.com"
+
+#. i18n: ectx: property (text), widget (QLabel, loginLabel)
+#: sipe-advanced-settings-widget.ui:31
+#, kde-format
+msgid "Login:"
+msgstr "Login:"
+
+#. i18n: ectx: property (text), widget (QLabel, transportLabel)
+#: sipe-advanced-settings-widget.ui:44
+#, kde-format
+msgid "Connection type:"
+msgstr "Rodzaj połączenia:"
+
+#. i18n: ectx: property (text), widget (QLineEdit, transportLineEdit)
+#: sipe-advanced-settings-widget.ui:51
+#, kde-format
+msgid "auto"
+msgstr "samoczynne"
+
+#. i18n: ectx: property (text), widget (QLabel, useragentLabel)
+#: sipe-advanced-settings-widget.ui:58
+#, kde-format
+msgid "User agent:"
+msgstr "Identyfikacja przeglądarki (User-Agent):"
+
+#. i18n: ectx: property (text), widget (QLabel, authenticationLabel)
+#: sipe-advanced-settings-widget.ui:68
+#, kde-format
+msgid "Authentication scheme:"
+msgstr "Schemat uwierzytelniania:"
+
+#. i18n: ectx: property (text), widget (QLineEdit, authenticationLineEdit)
+#: sipe-advanced-settings-widget.ui:75
+#, kde-format
+msgid "ntlm"
+msgstr "ntlm"
+
+#. i18n: ectx: property (text), widget (QLabel, dontpublishLabel)
+#: sipe-advanced-settings-widget.ui:82
+#, kde-format
+msgid "Do not publish my calendar information:"
+msgstr "Nie publikuj informacji z mojego kalendarza"
+
+#. i18n: ectx: property (text), widget (QLabel, emailurlLabel)
+#: sipe-advanced-settings-widget.ui:92
+#, kde-format
+msgid "Email services URL:"
+msgstr "Adres URL usług pocztowych:"
+
+#. i18n: ectx: property (text), widget (QLabel, emailloginLabel)
+#: sipe-advanced-settings-widget.ui:112
+#, kde-format
+msgid "Email login:"
+msgstr "Użytkownik poczty:"
+
+#. i18n: ectx: property (text), widget (QLabel, emailpasswordLabel)
+#: sipe-advanced-settings-widget.ui:122
+#, kde-format
+msgid "Email password:"
+msgstr "Hasło do poczty:"
+
+#. i18n: ectx: property (text), widget (QLabel, groupchatuserLabel)
+#: sipe-advanced-settings-widget.ui:129
+#, kde-format
+msgid "Group chat proxy:"
+msgstr "Pośrednik rozmowy grupowej:"
+
+#. i18n: ectx: property (text), widget (QLabel, serverLabel)
+#: sipe-advanced-settings-widget.ui:146
+#, kde-format
+msgid "Server[:port]:"
+msgstr "Serwer[:port]:"
+
+#. i18n: ectx: property (toolTip), widget (QLineEdit, accountLineEdit)
+#: sipe-main-options-widget.ui:41
+#, kde-format
+msgid "The Sipe username is your email address."
+msgstr "Nazwa użytkownika Sipe jest twoim adresem poczty elektronicznej."
+
+#. i18n: ectx: property (text), widget (QCheckBox, skypeOutCheckBox)
+#: skype-advanced-settings-widget.ui:31
+#, kde-format
+msgid "Show SkypeOut contacts as 'Online'"
+msgstr "Pokaż kontakty SkypeOut jako 'Dostępne'"
+
+#. i18n: ectx: property (text), widget (QCheckBox, syncCheckBox)
+#: skype-advanced-settings-widget.ui:38
+#, kde-format
+msgid "Make Skype online/offline when going online/offline"
+msgstr ""
+"Przełączaj Skype na dostępny/niedostępny stając się dostępnym/niedostępnym"
+
+#. i18n: ectx: property (text), widget (QCheckBox, updatesCheckBox)
+#: skype-advanced-settings-widget.ui:45
+#, kde-format
+msgid "Automatically check for updates"
+msgstr "Samoczynnie sprawdzaj uaktualnienia"
+
+#. i18n: ectx: property (text), widget (QCheckBox, authRequestsCheckBox)
+#: skype-advanced-settings-widget.ui:52
+#, kde-format
+msgid "Automatically reject all authorization requests"
+msgstr "Samoczynnie odrzucaj wszystkie żądania uwierzytelnienia"
+
+#. i18n: ectx: property (text), widget (QCheckBox, autostartCheckBox)
+#: skype-advanced-settings-widget.ui:59
+#, kde-format
+msgid "Auto-start Skype if not running"
+msgstr "Samoczynnie uruchom Skype, jeśli nie jest uruchomiony"
+
+#. i18n: ectx: property (text), widget (QLabel, accountLabel)
+#: skype-main-options-widget.ui:37
+#, kde-format
+msgid "Account:"
+msgstr "Konto:"
+
+#. i18n: ectx: property (text), widget (QLabel, accountLabel)
+#: skypeweb-options-widget.ui:34
+#, kde-format
+msgid "Name:"
+msgstr "Nazwa:"
+
+#. i18n: 'Steam Guard' is a service name and should not be translated
+#. i18n: ectx: property (text), widget (QLabel, steamguardLabel)
+#: steam-main-options-widget.ui:51
+#, kde-format
+msgid "Steam Guard code:"
+msgstr "Kod Steam Guard:"
+
+#. i18n: 'Steam Guard' is a service name and should not be translated
+#. i18n: ectx: property (text), widget (QLabel, label)
+#: steam-main-options-widget.ui:82
+#, kde-format
+msgid "The Steam Guard code will be emailed to you after attempting to login"
+msgstr "Kod Steam Guard zostanie do ciebie wysłany po próbie logowania"
+
+#. i18n: ectx: property (text), widget (QLabel, transferHeadlineLabel)
+#: yahoo-server-settings-widget.ui:73
+#, kde-format
+msgid "<b>File Transfer</b>"
+msgstr "<b>Przesyłanie plików</b>"
+
+#. i18n: ectx: property (text), widget (QLabel, xferHostLabel)
+#: yahoo-server-settings-widget.ui:80
+#, kde-format
+msgid "Host:"
+msgstr "Host:"
+
+#. i18n: ectx: property (text), widget (QLabel, localeHeadlineLabel)
+#: yahoo-server-settings-widget.ui:116
+#, kde-format
+msgid "<b>Locale</b>"
+msgstr "<b>Ustawienia regionalne</b>"
+
+#. i18n: ectx: property (text), widget (QLabel, roomListLocaleLablel)
+#: yahoo-server-settings-widget.ui:123
+#, kde-format
+msgid "Room List:"
+msgstr "Lista pokojów:"
+
+#. i18n: ectx: property (text), widget (QLabel, charsetLabel)
+#: yahoo-server-settings-widget.ui:130
+#, kde-format
+msgid "Charset:"
+msgstr "Zestaw znaków:"
+
+#. i18n: ectx: property (text), item, widget (QComboBox, charsetComboBox)
+#: yahoo-server-settings-widget.ui:138
+#, kde-format
+msgid "UTF-8"
+msgstr "UTF-8"
+
+#. i18n: ectx: property (text), widget (QCheckBox, SslProxy)
+#: yahoo-server-settings-widget.ui:159
+#, kde-format
+msgid "Use SSL on proxy"
+msgstr "Użyj SSL na pośredniku"
+
+#. i18n: ectx: property (text), widget (QCheckBox, ignoreInvites)
+#: yahoo-server-settings-widget.ui:166
+#, kde-format
+msgid "Ignore invites"
+msgstr "Ignoruj zaproszenia"
+
+#, fuzzy
+#~| msgid "Email address:"
+#~ msgid "Email address"
+#~ msgstr "Adres e-mail:"
+
+#~ msgid "Big5"
+#~ msgstr "Big5"
+
+#~ msgid "Big5-HKSCS"
+#~ msgstr "Big5-HKSCS"
+
+#~ msgid "euc-JP Japanese"
+#~ msgstr "euc-JP Japońskie"
+
+#~ msgid "euc-KR Korean"
+#~ msgstr "euc-KR Koreańskie"
+
+#~ msgid "GB-2312 Chinese"
+#~ msgstr "GB-2312 Chińskie"
+
+#~ msgid "GBK Chinese"
+#~ msgstr "GBK Chińskie"
+
+#~ msgid "GB18030 Chinese"
+#~ msgstr "GB18030 Chińskie"
+
+#~ msgid "JIS Japanese"
+#~ msgstr "JIS Japońskie"
+
+#~ msgid "Shift-JIS Japanese"
+#~ msgstr "Shift-JIS Japońskie"
+
+#~ msgid "KOI8-R Russian"
+#~ msgstr "KOI8-R Rosyjskie"
+
+#~ msgid "KOI8-U Ukrainian"
+#~ msgstr "KOI8-U Ukraińskie"
+
+#~ msgid "ISO-8859-1 Western"
+#~ msgstr "ISO-8859-1 Zachodnie"
+
+#~ msgid "ISO-8859-2 Central European"
+#~ msgstr "ISO-8859-2 Środkowoeuropejskie"
+
+#~ msgid "ISO-8859-3 Central European"
+#~ msgstr "ISO-8859-3 Środkowoeuropejskie"
+
+#~ msgid "ISO-8859-4 Baltic"
+#~ msgstr "ISO-8859-4 Bałtyckie"
+
+#~ msgid "ISO-8859-5 Cyrillic"
+#~ msgstr "ISO-8859-5 Cyrylica"
+
+#~ msgid "ISO-8859-6 Arabic"
+#~ msgstr "ISO-8859-6 Arabskie"
+
+#~ msgid "ISO-8859-7 Greek"
+#~ msgstr "ISO-8859-7 Greckie"
+
+#~ msgid "ISO-8859-8 Hebrew, visually ordered"
+#~ msgstr "ISO-8859-8 Hebrajskie, uporządkowane wizualnie"
+
+#~ msgid "ISO-8859-8-I Hebrew, logically ordered"
+#~ msgstr "ISO-8859-8-I Hebrajskie, uporządkowane logicznie"
+
+#~ msgid "ISO-8859-9 Turkish"
+#~ msgstr "ISO-8859-9 Tureckie"
+
+#~ msgid "ISO-8859-10"
+#~ msgstr "ISO-8859-10"
+
+#~ msgid "ISO-8859-13"
+#~ msgstr "ISO-8859-13"
+
+#~ msgid "ISO-8859-14"
+#~ msgstr "ISO-8859-14"
+
+#~ msgid "ISO-8859-15 Western"
+#~ msgstr "ISO-8859-15 Zachodnie"
+
+#~ msgid "Windows-1250 Central European"
+#~ msgstr "Windows-1250 Środkowoeuropejskie"
+
+#~ msgid "Windows-1251 Cyrillic"
+#~ msgstr "Windows-1251 Cyrylica"
+
+#~ msgid "Windows-1252 Western"
+#~ msgstr "Windows-1252 Zachodnie"
+
+#~ msgid "Windows-1253 Greek"
+#~ msgstr "Windows-1253 Greckie"
+
+#~ msgid "Windows-1254 Turkish"
+#~ msgstr "Windows-1254 Tureckie"
+
+#~ msgid "Windows-1255 Hebrew"
+#~ msgstr "Windows-1255 Hebrajskie"
+
+#~ msgid "Windows-1256 Arabic"
+#~ msgstr "Windows-1256 Arabskie"
+
+#~ msgid "Windows-1257 Baltic"
+#~ msgstr "Windows-1257 Bałtyckie"
+
+#~ msgid "Windows-1258 Viet Nam"
+#~ msgstr "Windows-1258 Wietnamskie"
+
+#~ msgid "IBM 850"
+#~ msgstr "IBM 850"
+
+#~ msgid "IBM 866"
+#~ msgstr "IBM 866"
+
+#~ msgid "TIS-620 Thai"
+#~ msgstr "TIS-620 Tajskie"
+
+#~ msgid "UTF-8 Unicode"
+#~ msgstr "UTF-8 Unicode"
+
+#~ msgid "UTF-16 Unicode"
+#~ msgstr "UTF-16 Unicode"

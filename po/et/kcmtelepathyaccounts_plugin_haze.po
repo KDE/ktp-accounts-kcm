@@ -1,0 +1,566 @@
+# Copyright (C) YEAR This_file_is_part_of_KDE
+# This file is distributed under the same license as the PACKAGE package.
+#
+# Marek Laane <bald@smail.ee>, 2011, 2012, 2014, 2016.
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2021-03-28 16:10+0000\n"
+"PO-Revision-Date: 2016-07-27 19:56+0300\n"
+"Last-Translator: Marek Laane <qiilaq69@gmail.com>\n"
+"Language-Team: Estonian <kde-et@linux.ee>\n"
+"Language: et\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Lokalize 1.5\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+
+#. i18n: ectx: property (windowTitle), widget (QWidget, SipeMainOptionsWidget)
+#. i18n: ectx: property (windowTitle), widget (QWidget, IcqMainOptionsWidget)
+#. i18n: ectx: property (windowTitle), widget (QWidget, GroupWiseMainOptionsWidget)
+#. i18n: ectx: property (windowTitle), widget (QWidget, YahooMainOptionsWidget)
+#. i18n: ectx: property (windowTitle), widget (QWidget, SkypeWebOptionsWidget)
+#. i18n: ectx: property (windowTitle), widget (QWidget, SteamMainOptionsWidget)
+#. i18n: ectx: property (windowTitle), widget (QWidget, MySpaceIMMainOptionsWidget)
+#. i18n: ectx: property (windowTitle), widget (QWidget, AimMainOptionsWidget)
+#. i18n: ectx: property (windowTitle), widget (QWidget, MsnMainOptionsWidget)
+#. i18n: ectx: property (windowTitle), widget (QWidget, SkypeMainOptionsWidget)
+#: aim-main-options-widget.ui:20 groupwise-main-options-widget.ui:20
+#: icq-main-options-widget.ui:20 msn-main-options-widget.ui:20
+#: myspaceim-main-options-widget.ui:20 sipe-main-options-widget.ui:20
+#: skype-main-options-widget.ui:20 skypeweb-options-widget.ui:20
+#: steam-main-options-widget.ui:20 yahoo-main-options-widget.ui:20
+#, kde-format
+msgid "Account Preferences"
+msgstr "Konto valikud"
+
+#. i18n: ectx: property (text), widget (QLabel, accountLabel)
+#: aim-main-options-widget.ui:29 groupwise-main-options-widget.ui:34
+#: myspaceim-main-options-widget.ui:34 sipe-main-options-widget.ui:34
+#: steam-main-options-widget.ui:34 yahoo-main-options-widget.ui:34
+#, kde-format
+msgid "Username:"
+msgstr "Kasutajanimi:"
+
+#. i18n: ectx: property (text), widget (QLabel, passwordLabel)
+#: aim-main-options-widget.ui:46 groupwise-main-options-widget.ui:54
+#: icq-main-options-widget.ui:44 msn-main-options-widget.ui:53
+#: myspaceim-main-options-widget.ui:54 sipe-main-options-widget.ui:54
+#: skypeweb-options-widget.ui:44 steam-main-options-widget.ui:75
+#: yahoo-main-options-widget.ui:48
+#, kde-format
+msgid "Password:"
+msgstr "Parool:"
+
+#. i18n: ectx: property (windowTitle), widget (QWidget, YahooServerSettingsWidget)
+#. i18n: ectx: property (windowTitle), widget (QWidget, SipeAdvancedSettingsWidget)
+#. i18n: ectx: property (windowTitle), widget (QWidget, AimServerSettingsWidget)
+#. i18n: ectx: property (windowTitle), widget (QWidget, SkypeAdvancedSettingsWidget)
+#. i18n: ectx: property (windowTitle), widget (QWidget, MySpaceIMAdvancedSettingsWidget)
+#. i18n: ectx: property (windowTitle), widget (QWidget, GroupWiseAdvancedSettingsWidget)
+#: aim-server-settings-widget.ui:14 groupwise-advanced-settings-widget.ui:14
+#: myspaceim-advanced-settings-widget.ui:14 sipe-advanced-settings-widget.ui:14
+#: skype-advanced-settings-widget.ui:14 yahoo-server-settings-widget.ui:14
+#, kde-format
+msgid "Advanced Options"
+msgstr "Muud valikud"
+
+#. i18n: ectx: property (text), widget (QLabel, serverHeadlineLabel)
+#: aim-server-settings-widget.ui:32 icq-server-settings-widget.ui:37
+#: yahoo-server-settings-widget.ui:37
+#, kde-format
+msgid "<b>Server</b>"
+msgstr "<b>Server</b>"
+
+#. i18n: ectx: property (text), widget (QLabel, serverLabel)
+#. i18n: ectx: property (text), widget (QLabel, serverAddressLabel)
+#: aim-server-settings-widget.ui:39 icq-server-settings-widget.ui:44
+#, kde-format
+msgid "Address:"
+msgstr "Aadress:"
+
+#. i18n: ectx: property (text), widget (QLabel, serverPortLabel)
+#. i18n: ectx: property (text), widget (QLabel, xferPortLabel)
+#. i18n: ectx: property (text), widget (QLabel, portLabel)
+#: aim-server-settings-widget.ui:49 groupwise-advanced-settings-widget.ui:41
+#: icq-server-settings-widget.ui:54 myspaceim-advanced-settings-widget.ui:41
+#: yahoo-server-settings-widget.ui:44 yahoo-server-settings-widget.ui:87
+#, kde-format
+msgid "Port:"
+msgstr "Port:"
+
+#. i18n: ectx: property (text), widget (QLabel, securityHeadlineLabel)
+#. i18n: ectx: property (text), widget (QLabel, transferHeadlineLabel)
+#: aim-server-settings-widget.ui:75 icq-server-settings-widget.ui:80
+#, kde-format
+msgid "<b>Security</b>"
+msgstr "<b>Turvalisus</b>"
+
+#. i18n: ectx: property (text), widget (QLabel, encryptionLabel)
+#: aim-server-settings-widget.ui:82
+#, kde-format
+msgid "Encryption:"
+msgstr "Krüptimine:"
+
+#. i18n: ectx: property (text), widget (QCheckBox, rvProxy)
+#: aim-server-settings-widget.ui:92
+#, kde-format
+msgid "Always use AIM proxy"
+msgstr "Alati kasutatakse AIM-puhverserverit"
+
+#. i18n: ectx: property (text), widget (QLabel, otherHeadlineLabel)
+#: aim-server-settings-widget.ui:108 icq-server-settings-widget.ui:114
+#: yahoo-server-settings-widget.ui:152
+#, kde-format
+msgid "<b>Other</b>"
+msgstr "<b>Muu</b>"
+
+#. i18n: ectx: property (text), widget (QCheckBox, clientLogin)
+#: aim-server-settings-widget.ui:115
+#, kde-format
+msgid "Use clientLogin"
+msgstr "clientLogini kasutamine"
+
+#. i18n: ectx: property (text), widget (QCheckBox, multipleLogins)
+#: aim-server-settings-widget.ui:122
+#, kde-format
+msgid "Allow multiple simultaneous logins"
+msgstr "Mitmekordse üheaegse sisselogimise lubamine"
+
+#. i18n: ectx: property (text), widget (QLabel, serverLabel)
+#: groupwise-advanced-settings-widget.ui:31
+#: myspaceim-advanced-settings-widget.ui:31
+#, kde-format
+msgid "Server:"
+msgstr "Server:"
+
+#. i18n: ectx: property (toolTip), widget (QLineEdit, accountLineEdit)
+#: groupwise-main-options-widget.ui:41
+#, kde-format
+msgid "The GroupWise username is your email address."
+msgstr "GroupWise'i kasutajanimi on sinu e-posti aadress."
+
+#. i18n: ectx: property (text), widget (QLabel, accountLabel)
+#: icq-main-options-widget.ui:34
+#, kde-format
+msgid "UIN:"
+msgstr "UIN:"
+
+#. i18n: ectx: property (windowTitle), widget (QWidget, IcqServerSettingsWidget)
+#: icq-server-settings-widget.ui:14
+#, kde-format
+msgid "Connection Settings"
+msgstr "Ühenduse seadistused"
+
+#. i18n: ectx: property (text), widget (QCheckBox, useSslCheckBox)
+#: icq-server-settings-widget.ui:87
+#, kde-format
+msgid "Use SSL"
+msgstr "SSL-i kasutamine"
+
+#. i18n: ectx: property (text), widget (QCheckBox, allowMultipleLoginsCheckBox)
+#: icq-server-settings-widget.ui:94
+#, kde-format
+msgid "Allow multiple logins"
+msgstr "Mitmekordse sisselogimise lubamine"
+
+#. i18n: ectx: property (text), widget (QCheckBox, alwaysUseRvProxyCheckBox)
+#: icq-server-settings-widget.ui:121
+#, kde-format
+msgid "Always use RV-Proxy"
+msgstr "Alati kasutatakse RV-puhverserverit"
+
+#. i18n: ectx: property (text), widget (QLabel, charsetLabel)
+#: icq-server-settings-widget.ui:128
+#, kde-format
+msgid "Charset"
+msgstr "Kooditabel"
+
+#. i18n: ectx: property (text), widget (QLabel, emailLabel)
+#. i18n: ectx: property (text), widget (QLabel, accountLabel)
+#: msn-main-options-widget.ui:29 sipe-advanced-settings-widget.ui:102
+#, kde-format
+msgid "Email address:"
+msgstr "E-posti aadress:"
+
+#. i18n: ectx: property (text), widget (QLabel, label)
+#: msn-main-options-widget.ui:46
+#, kde-format
+msgid "Example: user@hotmail.com"
+msgstr "Näide: kasutaja@hotmail.com"
+
+#. i18n: ectx: property (toolTip), widget (QLineEdit, accountLineEdit)
+#: myspaceim-main-options-widget.ui:41
+#, kde-format
+msgid "The MySpaceIM username is your email address."
+msgstr "MySpaceIM-i kasutajanimi on sinu e-posti aadress."
+
+#. i18n: ectx: property (placeholderText), widget (QLineEdit, accountLineEdit)
+#: myspaceim-main-options-widget.ui:47 sipe-main-options-widget.ui:47
+#, kde-format
+msgid "john@doe.com"
+msgstr "jaan@jalgratas.com"
+
+#. i18n: ectx: property (text), widget (QLabel, loginLabel)
+#: sipe-advanced-settings-widget.ui:31
+#, kde-format
+msgid "Login:"
+msgstr "Kasutajanimi:"
+
+#. i18n: ectx: property (text), widget (QLabel, transportLabel)
+#: sipe-advanced-settings-widget.ui:44
+#, kde-format
+msgid "Connection type:"
+msgstr "Ühenduse tüüp:"
+
+#. i18n: ectx: property (text), widget (QLineEdit, transportLineEdit)
+#: sipe-advanced-settings-widget.ui:51
+#, kde-format
+msgid "auto"
+msgstr "automaatne"
+
+#. i18n: ectx: property (text), widget (QLabel, useragentLabel)
+#: sipe-advanced-settings-widget.ui:58
+#, kde-format
+msgid "User agent:"
+msgstr "Identifikaator:"
+
+#. i18n: ectx: property (text), widget (QLabel, authenticationLabel)
+#: sipe-advanced-settings-widget.ui:68
+#, kde-format
+msgid "Authentication scheme:"
+msgstr "Autentimisskeem:"
+
+#. i18n: ectx: property (text), widget (QLineEdit, authenticationLineEdit)
+#: sipe-advanced-settings-widget.ui:75
+#, kde-format
+msgid "ntlm"
+msgstr "ntlm"
+
+#. i18n: ectx: property (text), widget (QLabel, dontpublishLabel)
+#: sipe-advanced-settings-widget.ui:82
+#, kde-format
+msgid "Do not publish my calendar information:"
+msgstr "Minu kalendriteavet ei avaldata:"
+
+#. i18n: ectx: property (text), widget (QLabel, emailurlLabel)
+#: sipe-advanced-settings-widget.ui:92
+#, kde-format
+msgid "Email services URL:"
+msgstr "E-posti teenuste URL:"
+
+#. i18n: ectx: property (text), widget (QLabel, emailloginLabel)
+#: sipe-advanced-settings-widget.ui:112
+#, kde-format
+msgid "Email login:"
+msgstr "E-posti kasutajanimi:"
+
+#. i18n: ectx: property (text), widget (QLabel, emailpasswordLabel)
+#: sipe-advanced-settings-widget.ui:122
+#, kde-format
+msgid "Email password:"
+msgstr "E-posti parool:"
+
+#. i18n: ectx: property (text), widget (QLabel, groupchatuserLabel)
+#: sipe-advanced-settings-widget.ui:129
+#, kde-format
+msgid "Group chat proxy:"
+msgstr "Grupivestluse puhverserver:"
+
+#. i18n: ectx: property (text), widget (QLabel, serverLabel)
+#: sipe-advanced-settings-widget.ui:146
+#, kde-format
+msgid "Server[:port]:"
+msgstr "Server[:port]:"
+
+#. i18n: ectx: property (toolTip), widget (QLineEdit, accountLineEdit)
+#: sipe-main-options-widget.ui:41
+#, kde-format
+msgid "The Sipe username is your email address."
+msgstr "Sipe'i kasutajanimi on sinu e-posti aadress."
+
+#. i18n: ectx: property (text), widget (QCheckBox, skypeOutCheckBox)
+#: skype-advanced-settings-widget.ui:31
+#, kde-format
+msgid "Show SkypeOut contacts as 'Online'"
+msgstr "SkypeOuti kontaktide näitamine võrgusolevatena"
+
+#. i18n: ectx: property (text), widget (QCheckBox, syncCheckBox)
+#: skype-advanced-settings-widget.ui:38
+#, kde-format
+msgid "Make Skype online/offline when going online/offline"
+msgstr ""
+"Skype'i oleku määramine võrgus- või võrgust ära olevaks minemisel võrku või "
+"lahkumisel võrgust"
+
+#. i18n: ectx: property (text), widget (QCheckBox, updatesCheckBox)
+#: skype-advanced-settings-widget.ui:45
+#, kde-format
+msgid "Automatically check for updates"
+msgstr "Automaatne uuenduste otsimine"
+
+#. i18n: ectx: property (text), widget (QCheckBox, authRequestsCheckBox)
+#: skype-advanced-settings-widget.ui:52
+#, kde-format
+msgid "Automatically reject all authorization requests"
+msgstr "Kõigi autentimissoovide automaatne tagasilükkamine"
+
+#. i18n: ectx: property (text), widget (QCheckBox, autostartCheckBox)
+#: skype-advanced-settings-widget.ui:59
+#, kde-format
+msgid "Auto-start Skype if not running"
+msgstr "Skype'i automaatne käivitamine, kui see ei tööta"
+
+#. i18n: ectx: property (text), widget (QLabel, accountLabel)
+#: skype-main-options-widget.ui:37
+#, kde-format
+msgid "Account:"
+msgstr "Konto:"
+
+#. i18n: ectx: property (text), widget (QLabel, accountLabel)
+#: skypeweb-options-widget.ui:34
+#, kde-format
+msgid "Name:"
+msgstr "Nimi:"
+
+#. i18n: 'Steam Guard' is a service name and should not be translated
+#. i18n: ectx: property (text), widget (QLabel, steamguardLabel)
+#: steam-main-options-widget.ui:51
+#, kde-format
+msgid "Steam Guard code:"
+msgstr "Steam Guardi kood:"
+
+#. i18n: 'Steam Guard' is a service name and should not be translated
+#. i18n: ectx: property (text), widget (QLabel, label)
+#: steam-main-options-widget.ui:82
+#, kde-format
+msgid "The Steam Guard code will be emailed to you after attempting to login"
+msgstr "Steam Guardi kood saadetakse sulle e-postiga pärast sisselogimiskatset"
+
+#. i18n: ectx: property (text), widget (QLabel, transferHeadlineLabel)
+#: yahoo-server-settings-widget.ui:73
+#, kde-format
+msgid "<b>File Transfer</b>"
+msgstr "<b>Failiedastus</b>"
+
+#. i18n: ectx: property (text), widget (QLabel, xferHostLabel)
+#: yahoo-server-settings-widget.ui:80
+#, kde-format
+msgid "Host:"
+msgstr "Masin:"
+
+#. i18n: ectx: property (text), widget (QLabel, localeHeadlineLabel)
+#: yahoo-server-settings-widget.ui:116
+#, kde-format
+msgid "<b>Locale</b>"
+msgstr "<b>Lokaat</b>"
+
+#. i18n: ectx: property (text), widget (QLabel, roomListLocaleLablel)
+#: yahoo-server-settings-widget.ui:123
+#, kde-format
+msgid "Room List:"
+msgstr "Tubade nimekiri:"
+
+#. i18n: ectx: property (text), widget (QLabel, charsetLabel)
+#: yahoo-server-settings-widget.ui:130
+#, kde-format
+msgid "Charset:"
+msgstr "Kooditabel:"
+
+#. i18n: ectx: property (text), item, widget (QComboBox, charsetComboBox)
+#: yahoo-server-settings-widget.ui:138
+#, kde-format
+msgid "UTF-8"
+msgstr "UTF-8"
+
+#. i18n: ectx: property (text), widget (QCheckBox, SslProxy)
+#: yahoo-server-settings-widget.ui:159
+#, kde-format
+msgid "Use SSL on proxy"
+msgstr "SSL-i kasutamine puhverserveris"
+
+#. i18n: ectx: property (text), widget (QCheckBox, ignoreInvites)
+#: yahoo-server-settings-widget.ui:166
+#, kde-format
+msgid "Ignore invites"
+msgstr "Kutsete eiramine"
+
+#, fuzzy
+#~| msgid "Email address:"
+#~ msgid "Email address"
+#~ msgstr "E-posti aadress:"
+
+#~ msgid ""
+#~ "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/"
+#~ "REC-html40/strict.dtd\">\n"
+#~ "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/"
+#~ "css\">\n"
+#~ "p, li { white-space: pre-wrap; }\n"
+#~ "</style></head><body style=\" font-family:'Sans Serif'; font-size:9pt; "
+#~ "font-weight:400; font-style:normal;\">\n"
+#~ "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-"
+#~ "right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-"
+#~ "size:10pt; font-weight:600;\">Security</span></p></body></html>"
+#~ msgstr ""
+#~ "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/"
+#~ "REC-html40/strict.dtd\">\n"
+#~ "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/"
+#~ "css\">\n"
+#~ "p, li { white-space: pre-wrap; }\n"
+#~ "</style></head><body style=\" font-family:'Sans Serif'; font-size:9pt; "
+#~ "font-weight:400; font-style:normal;\">\n"
+#~ "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-"
+#~ "right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-"
+#~ "size:10pt; font-weight:600;\">Turvalisus</span></p></body></html>"
+
+#~ msgid ""
+#~ "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/"
+#~ "REC-html40/strict.dtd\">\n"
+#~ "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/"
+#~ "css\">\n"
+#~ "p, li { white-space: pre-wrap; }\n"
+#~ "</style></head><body style=\" font-family:'Sans Serif'; font-size:9pt; "
+#~ "font-weight:400; font-style:normal;\">\n"
+#~ "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-"
+#~ "right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-"
+#~ "weight:600;\">Other</span></p></body></html>"
+#~ msgstr ""
+#~ "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/"
+#~ "REC-html40/strict.dtd\">\n"
+#~ "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/"
+#~ "css\">\n"
+#~ "p, li { white-space: pre-wrap; }\n"
+#~ "</style></head><body style=\" font-family:'Sans Serif'; font-size:9pt; "
+#~ "font-weight:400; font-style:normal;\">\n"
+#~ "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-"
+#~ "right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-"
+#~ "weight:600;\">Muu</span></p></body></html>"
+
+#~ msgid "Password"
+#~ msgstr "Parool"
+
+#~ msgid ""
+#~ "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/"
+#~ "REC-html40/strict.dtd\">\n"
+#~ "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/"
+#~ "css\">\n"
+#~ "p, li { white-space: pre-wrap; }\n"
+#~ "</style></head><body style=\" font-family:'Sans Serif'; font-size:10pt; "
+#~ "font-weight:400; font-style:normal;\">\n"
+#~ "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-"
+#~ "right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-"
+#~ "weight:600;\">Server</span></p></body></html>"
+#~ msgstr ""
+#~ "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/"
+#~ "REC-html40/strict.dtd\">\n"
+#~ "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/"
+#~ "css\">\n"
+#~ "p, li { white-space: pre-wrap; }\n"
+#~ "</style></head><body style=\" font-family:'Sans Serif'; font-size:10pt; "
+#~ "font-weight:400; font-style:normal;\">\n"
+#~ "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-"
+#~ "right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-"
+#~ "weight:600;\">Server</span></p></body></html>"
+
+#~ msgid ""
+#~ "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/"
+#~ "REC-html40/strict.dtd\">\n"
+#~ "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/"
+#~ "css\">\n"
+#~ "p, li { white-space: pre-wrap; }\n"
+#~ "</style></head><body style=\" font-family:'Sans Serif'; font-size:10pt; "
+#~ "font-weight:400; font-style:normal;\">\n"
+#~ "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-"
+#~ "right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-"
+#~ "weight:600;\">File Transfer</span></p></body></html>"
+#~ msgstr ""
+#~ "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/"
+#~ "REC-html40/strict.dtd\">\n"
+#~ "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/"
+#~ "css\">\n"
+#~ "p, li { white-space: pre-wrap; }\n"
+#~ "</style></head><body style=\" font-family:'Sans Serif'; font-size:10pt; "
+#~ "font-weight:400; font-style:normal;\">\n"
+#~ "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-"
+#~ "right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-"
+#~ "weight:600;\">Failiedastus</span></p></body></html>"
+
+#~ msgid "Port"
+#~ msgstr "Port"
+
+#~ msgid ""
+#~ "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/"
+#~ "REC-html40/strict.dtd\">\n"
+#~ "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/"
+#~ "css\">\n"
+#~ "p, li { white-space: pre-wrap; }\n"
+#~ "</style></head><body style=\" font-family:'Sans Serif'; font-size:10pt; "
+#~ "font-weight:400; font-style:normal;\">\n"
+#~ "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-"
+#~ "right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-"
+#~ "weight:600;\">Locale</span></p></body></html>"
+#~ msgstr ""
+#~ "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/"
+#~ "REC-html40/strict.dtd\">\n"
+#~ "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/"
+#~ "css\">\n"
+#~ "p, li { white-space: pre-wrap; }\n"
+#~ "</style></head><body style=\" font-family:'Sans Serif'; font-size:10pt; "
+#~ "font-weight:400; font-style:normal;\">\n"
+#~ "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-"
+#~ "right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-"
+#~ "weight:600;\">Lokaat</span></p></body></html>"
+
+#~ msgid ""
+#~ "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/"
+#~ "REC-html40/strict.dtd\">\n"
+#~ "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/"
+#~ "css\">\n"
+#~ "p, li { white-space: pre-wrap; }\n"
+#~ "</style></head><body style=\" font-family:'Sans Serif'; font-size:10pt; "
+#~ "font-weight:400; font-style:normal;\">\n"
+#~ "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-"
+#~ "right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-"
+#~ "weight:600;\">Other</span></p></body></html>"
+#~ msgstr ""
+#~ "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/"
+#~ "REC-html40/strict.dtd\">\n"
+#~ "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/"
+#~ "css\">\n"
+#~ "p, li { white-space: pre-wrap; }\n"
+#~ "</style></head><body style=\" font-family:'Sans Serif'; font-size:10pt; "
+#~ "font-weight:400; font-style:normal;\">\n"
+#~ "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-"
+#~ "right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-"
+#~ "weight:600;\">Muu</span></p></body></html>"
+
+#~ msgid "Username"
+#~ msgstr "Kasutajanimi"
+
+#~ msgid "Address"
+#~ msgstr "Aadress"
+
+#~ msgid ""
+#~ "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/"
+#~ "REC-html40/strict.dtd\">\n"
+#~ "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/"
+#~ "css\">\n"
+#~ "p, li { white-space: pre-wrap; }\n"
+#~ "</style></head><body style=\" font-family:'Sans Serif'; font-size:10pt; "
+#~ "font-weight:400; font-style:normal;\">\n"
+#~ "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-"
+#~ "right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-"
+#~ "weight:600;\">Security</span></p></body></html>"
+#~ msgstr ""
+#~ "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/"
+#~ "REC-html40/strict.dtd\">\n"
+#~ "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/"
+#~ "css\">\n"
+#~ "p, li { white-space: pre-wrap; }\n"
+#~ "</style></head><body style=\" font-family:'Sans Serif'; font-size:10pt; "
+#~ "font-weight:400; font-style:normal;\">\n"
+#~ "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-"
+#~ "right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-"
+#~ "weight:600;\">Turvalisus</span></p></body></html>"

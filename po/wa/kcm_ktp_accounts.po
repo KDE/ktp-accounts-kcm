@@ -1,0 +1,676 @@
+# Copyright (C) YEAR This_file_is_part_of_KDE
+# This file is distributed under the same license as the PACKAGE package.
+#
+# Jean Cayron <jean.cayron@base.be>, 2013.
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2019-05-20 03:11+0200\n"
+"PO-Revision-Date: 2013-01-12 16:08+0100\n"
+"Last-Translator: Jean Cayron <jean.cayron@base.be>\n"
+"Language-Team: Walloon <linux-wa@walon.org>\n"
+"Language: wa\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Lokalize 1.5\n"
+
+#, kde-format
+msgctxt "NAME OF TRANSLATORS"
+msgid "Your names"
+msgstr "Djan Cayron"
+
+#, kde-format
+msgctxt "EMAIL OF TRANSLATORS"
+msgid "Your emails"
+msgstr "jean.cayron@gmail.com"
+
+#: account-identity-dialog.cpp:42
+#, kde-format
+msgid "Edit Account Identity"
+msgstr "Candjî idintité do conte"
+
+#. i18n: ectx: property (text), widget (QLabel, label_3)
+#: account-identity-dialog.ui:40
+#, kde-format
+msgid "Nickname:"
+msgstr "Metou no :"
+
+#. i18n: ectx: property (text), widget (QLabel, label)
+#: account-identity-dialog.ui:50
+#, kde-format
+msgid "Account:"
+msgstr "Conte :"
+
+#. i18n: ectx: property (text), widget (AvatarButton, accountAvatar)
+#: account-identity-dialog.ui:87
+#, kde-format
+msgid "..."
+msgstr "..."
+
+#: accounts-list-delegate.cpp:70
+#, kde-format
+msgid "Change account icon"
+msgstr "Candjî d' imådjete do conte"
+
+#: accounts-list-delegate.cpp:71
+#, fuzzy, kde-format
+#| msgid ""
+#| "This button allows to change the icon for your account.<br />This icon is "
+#| "just used locally on your computer, your contacts will not be able to see "
+#| "it."
+msgid ""
+"This button allows you to change the icon for your account.<br />This icon "
+"is just used locally on your computer, your contacts will not be able to see "
+"it."
+msgstr ""
+"Ci boton ci permet di candjî l' imådjete di vosse conte.<br />Ciste imådjete "
+"est djusse eployeye coinreçmint so vosse copiutrece, vos soçons nel sårént "
+"nén véy."
+
+#: accounts-list-delegate.cpp:79
+#, kde-format
+msgid "Change account display name"
+msgstr "Candjî l' no do conte håyné"
+
+#: accounts-list-delegate.cpp:80
+#, fuzzy, kde-format
+#| msgid ""
+#| "This button allows to change the display name for your account.<br />The "
+#| "display name is an alias for your account and is just used locally on "
+#| "your computer, your contacts will not be able to see it."
+msgid ""
+"This button allows you to change the display name for your account.<br />The "
+"display name is an alias for your account and is just used locally on your "
+"computer, your contacts will not be able to see it."
+msgstr ""
+"Ci boton ci permet di candjî l' no håyné po vosse conte.<br />Li no håyné "
+"est on no metou po vosse conte eyet est djusse eployî coinreçmint so vosse "
+"copiutrece, vos soçons nel sårént nén véy."
+
+#: accounts-list-delegate.cpp:134
+#, kde-format
+msgid "Click checkbox to enable"
+msgstr "Clitchî sol boesse a clitchî po mete e-n alaedje"
+
+#: accounts-list-delegate.cpp:144
+#, kde-format
+msgid "Disable account"
+msgstr "Essocter conte"
+
+#: accounts-list-delegate.cpp:147
+#, kde-format
+msgid "Enable account"
+msgstr "Mete e-n alaedje conte"
+
+#: add-account-assistant.cpp:95 add-account-assistant.cpp:96
+#, kde-format
+msgid "Step 1: Select an Instant Messaging Network."
+msgstr "Etape 1 : Tchoezi ene rantoele di messaedjreye sol moumint."
+
+#: add-account-assistant.cpp:120
+#, kde-format
+msgid "Step 2: Fill in the required Parameters."
+msgstr "Etape 2 : Rintrer les parametes k' i fåt."
+
+#: add-account-assistant.cpp:172
+#, kde-format
+msgid ""
+"To connect to this IM network, you need to install additional plugins. "
+"Please install the telepathy-haze and telepathy-gabble packages using your "
+"package manager."
+msgstr ""
+"Po s' raloyû a cisse rantoele di MSM chal, vos dvoz astaler des tchôkes-"
+"divins di dpus. Astalez les pacaedjes telepathy-haze eyet telepathy-gabble, "
+"s' i vs plait, tot s' siervant d' vosse manaedjeu des pacaedjes."
+
+#: add-account-assistant.cpp:172
+#, kde-format
+msgid "Missing Telepathy Connection Manager"
+msgstr "Manaedjeu di raloyaedje Telepathy mancant"
+
+#: add-account-assistant.cpp:208 add-account-assistant.cpp:257
+#: salut-enabler.cpp:243
+#, kde-format
+msgid "Failed to create account"
+msgstr "L' ahivaedje do conte a fwait berwete"
+
+#: add-account-assistant.cpp:258 salut-enabler.cpp:244
+#, kde-format
+msgid "Possibly not all required fields are valid"
+msgstr ""
+"I s' pout k' tos les tchamps k' on-z a dandjî n' sont nén tertos valåbes"
+
+#: add-account-assistant.cpp:267 salut-enabler.cpp:253
+#, kde-format
+msgid "Something went wrong with Telepathy"
+msgstr "Åk n' a nén stî avou Telepathy"
+
+#: avatar-button.cpp:54
+#, kde-format
+msgid "Load from file..."
+msgstr "Tcherdjî d' on fitchî..."
+
+#: avatar-button.cpp:55
+#, kde-format
+msgid "Clear Avatar"
+msgstr "Disfacer vizaedje"
+
+#: avatar-button.cpp:106
+#, kde-format
+msgid "Please choose your avatar"
+msgstr "Tchoezixhoz vosse vizaedje s' i vs plait"
+
+#: avatar-button.cpp:155
+#, fuzzy, kde-format
+#| msgid "Failed to create account"
+msgid "Failed to load avatar."
+msgstr "L' ahivaedje do conte a fwait berwete"
+
+#: edit-display-name-button.cpp:61
+#, kde-format
+msgid "Edit Display Name"
+msgstr "Candjî no håyné"
+
+#: edit-display-name-button.cpp:70
+#, kde-format
+msgid "Choose a new display name for your account"
+msgstr "Tchoezi on novea no håyné po vosse conte"
+
+#: edit-display-name-button.cpp:77 edit-display-name-button.cpp:87
+#, kde-format
+msgid ""
+"A display name is your local alias for the account, only you will see it."
+msgstr ""
+"On no håyné est vosse no metou coinrece pol conte, i gn a k' vos kel voerè."
+
+#: edit-display-name-button.cpp:86
+#, kde-format
+msgid "New display name"
+msgstr "Novea no håyné"
+
+#: kcm-telepathy-accounts.cpp:76
+#, kde-format
+msgid "telepathy_accounts"
+msgstr "contes_telepathy"
+
+#: kcm-telepathy-accounts.cpp:76
+#, kde-format
+msgid "Instant Messaging and VOIP Accounts"
+msgstr "Contes di messaedjreye sol moumint eyet di VoIP"
+
+#: kcm-telepathy-accounts.cpp:78
+#, kde-format
+msgid "George Goldberg"
+msgstr "George Goldberg"
+
+#: kcm-telepathy-accounts.cpp:78 kcm-telepathy-accounts.cpp:79
+#: kcm-telepathy-accounts.cpp:80 kcm-telepathy-accounts.cpp:81
+#: kcm-telepathy-accounts.cpp:82 kcm-telepathy-accounts.cpp:83
+#: kcm-telepathy-accounts.cpp:84
+#, kde-format
+msgid "Developer"
+msgstr "Programeu"
+
+#: kcm-telepathy-accounts.cpp:79
+#, kde-format
+msgid "David Edmundson"
+msgstr "David Edmundson"
+
+#: kcm-telepathy-accounts.cpp:80
+#, kde-format
+msgid "Dominik Schmidt"
+msgstr "Dominik Schmidt"
+
+#: kcm-telepathy-accounts.cpp:81
+#, kde-format
+msgid "Thomas Richard"
+msgstr "Thomas Richard"
+
+#: kcm-telepathy-accounts.cpp:82
+#, kde-format
+msgid "Florian Reinhard"
+msgstr "Florian Reinhard"
+
+#: kcm-telepathy-accounts.cpp:83
+#, kde-format
+msgid "Daniele E. Domenichelli"
+msgstr "Daniele E. Domenichelli"
+
+#: kcm-telepathy-accounts.cpp:84
+#, kde-format
+msgid "Martin Klapetek"
+msgstr "Martin Klapetek"
+
+#: kcm-telepathy-accounts.cpp:266
+#, kde-format
+msgid ""
+"We have found Kopete logs for this account. Do you want to import the logs "
+"to KDE Telepathy?"
+msgstr ""
+"Nos avans trové des djournås di Kopete (des eredjistraedjes des vîs "
+"berdelaedjes) po ç' conte chal. Voloz abaguer ces djournås la dins KDE "
+"Telepathy ?"
+
+#: kcm-telepathy-accounts.cpp:267
+#, kde-format
+msgid "Import Logs?"
+msgstr "Abaguer djournås ?"
+
+#: kcm-telepathy-accounts.cpp:268
+#, kde-format
+msgid "Import Logs"
+msgstr "Abaguer djournås"
+
+#: kcm-telepathy-accounts.cpp:269
+#, kde-format
+msgid "Close"
+msgstr "Clôre"
+
+#: kcm-telepathy-accounts.cpp:276
+#, kde-format
+msgid "Importing logs..."
+msgstr "Abagaedje des djournås..."
+
+#: kcm-telepathy-accounts.cpp:294 kcm-telepathy-accounts.cpp:303
+#, kde-format
+msgid "Kopete Logs Import"
+msgstr "Abagaedje di djournås di Kopete"
+
+#: kcm-telepathy-accounts.cpp:303
+#, kde-format
+msgid "Kopete logs successfully imported"
+msgstr "Les djournås di Kopete ont stî abagués comifåt"
+
+#. i18n: ectx: property (text), widget (KPushButton, removeAccountButton)
+#: kcm-telepathy-accounts.cpp:405 kcm-telepathy-accounts.cpp:406
+#: main-widget.ui:184
+#, kde-format
+msgid "Remove Account"
+msgstr "Oister conte"
+
+#: kcm-telepathy-accounts.cpp:409
+#, kde-format
+msgid "Remove conversations logs"
+msgstr "Oister les djournås des berdelaedje"
+
+#: kcm-telepathy-accounts.cpp:410
+#, kde-format
+msgid "Are you sure you want to remove the account \"%1\"?"
+msgstr "Voloz vs oister l' conte « %1 » po do bon ?"
+
+#: kcm-telepathy-accounts.cpp:492
+#, kde-format
+msgid "Install telepathy-salut to enable"
+msgstr "Astaler telepathy-salut pol mete e-n alaedje"
+
+#: kcm-telepathy-accounts.cpp:534
+#, kde-format
+msgid ""
+"Something went terribly wrong and the IM system could not be initialized.\n"
+"It is likely your system is missing Telepathy Mission Control package.\n"
+"Please install it and restart this module."
+msgstr ""
+"Åk n' a vraiymint nén stî eyet l' sistinme di MSM n' a nén savou esse "
+"inicialijhî.\n"
+"I shonne k' i manke a vosse sistinme li pacaedje Telepathy Mission Control.\n"
+"Astalez l', s' i vs plait, eyet renonder ci module chal."
+
+#: KCMTelepathyAccounts/abstract-account-parameters-widget.cpp:59
+#, kde-format
+msgid "All mandatory fields must be filled"
+msgstr "Tos les tchamps rekis doevnut esse rimplis"
+
+#: KCMTelepathyAccounts/account-edit-widget.cpp:108
+#, kde-format
+msgid "Connect when wizard is finished"
+msgstr "Raloyî cwant l' macrea a fini"
+
+#: KCMTelepathyAccounts/account-edit-widget.cpp:219
+#, kde-format
+msgid "Advanced Options"
+msgstr "Sipepieusès tchuzes"
+
+#. i18n: ectx: property (text), widget (QPushButton, advancedButton)
+#: KCMTelepathyAccounts/account-edit-widget.ui:62
+#, kde-format
+msgid "Advanced"
+msgstr "Sipepieus"
+
+#: KCMTelepathyAccounts/dictionary.cpp:33
+#, kde-format
+msgid "Password"
+msgstr "Sicret"
+
+#: KCMTelepathyAccounts/dictionary.cpp:34
+#, kde-format
+msgid "Account"
+msgstr "Conte"
+
+#: KCMTelepathyAccounts/dictionary.cpp:35
+#, kde-format
+msgid "Priority"
+msgstr "Prumiristé"
+
+#: KCMTelepathyAccounts/dictionary.cpp:36
+#, kde-format
+msgid "Port"
+msgstr "Pôrt"
+
+#: KCMTelepathyAccounts/dictionary.cpp:37
+#, kde-format
+msgid "Alias"
+msgstr "No metou"
+
+#: KCMTelepathyAccounts/dictionary.cpp:38
+#, kde-format
+msgid "Register new Account"
+msgstr "Edjîstrer on novea conte"
+
+#: KCMTelepathyAccounts/dictionary.cpp:39
+#, kde-format
+msgid "Server Address"
+msgstr "Adresse do sierveu"
+
+#: KCMTelepathyAccounts/dictionary.cpp:40
+#, kde-format
+msgid "Fallback STUN server address"
+msgstr "Tcheyåjhe adresse do sierveu STUN"
+
+#: KCMTelepathyAccounts/dictionary.cpp:41
+#, kde-format
+msgid "Resource"
+msgstr "Rissource"
+
+#: KCMTelepathyAccounts/dictionary.cpp:42
+#, kde-format
+msgid "HTTPS Proxy Port"
+msgstr "Pôrt do procsi HTTPS"
+
+#: KCMTelepathyAccounts/dictionary.cpp:43
+#, kde-format
+msgid "Require Encryption"
+msgstr "A dandjî d' en ecriptaedje"
+
+#: KCMTelepathyAccounts/dictionary.cpp:44
+#, kde-format
+msgid "Old-style SSL support"
+msgstr "Sopoirt SSL al viye môde"
+
+#: KCMTelepathyAccounts/dictionary.cpp:45
+#, kde-format
+msgid "Fallback STUN port"
+msgstr "Tcheyåjhe pôrt STUN"
+
+#: KCMTelepathyAccounts/dictionary.cpp:46
+#, kde-format
+msgid "Fallback Conference Server Address"
+msgstr "Tcheyåjhe adresse do sierveu Conference"
+
+#: KCMTelepathyAccounts/dictionary.cpp:47
+#, kde-format
+msgid "Low Bandwidth Mode"
+msgstr "Môde pitite lårdjeur di bine"
+
+#: KCMTelepathyAccounts/dictionary.cpp:48
+#, kde-format
+msgid "STUN Server Address"
+msgstr "Adresse do sierveu STUN"
+
+#: KCMTelepathyAccounts/dictionary.cpp:49
+#, kde-format
+msgid "STUN Port"
+msgstr "Pôrt STUN"
+
+#: KCMTelepathyAccounts/dictionary.cpp:50
+#, kde-format
+msgid "Fallback SOCKS5 Proxy Addresses"
+msgstr "Tcheyåjhès adresses do procsi SOCKS5"
+
+#: KCMTelepathyAccounts/dictionary.cpp:51
+#, kde-format
+msgid "HTTPS Proxy Server Address"
+msgstr "Adresse do sierveu prcosi HTTPS"
+
+#: KCMTelepathyAccounts/dictionary.cpp:52
+#, kde-format
+msgid "Ignore SSL Errors"
+msgstr "Passer houte des arokes SSL"
+
+#: KCMTelepathyAccounts/dictionary.cpp:53
+#, kde-format
+msgid "Keepalive Interval"
+msgstr "Keepalive totes les"
+
+#: KCMTelepathyAccounts/dictionary.cpp:56
+#, kde-format
+msgid "AOL Instant Messenger"
+msgstr "Messaedjî sol moumint AOL"
+
+#: KCMTelepathyAccounts/dictionary.cpp:57
+#: KCMTelepathyAccounts/dictionary.cpp:63
+#, kde-format
+msgid "Skype"
+msgstr "Skype"
+
+#. i18n: ectx: property (text), widget (QCommandLinkButton, buttonFacebook)
+#: KCMTelepathyAccounts/dictionary.cpp:58
+#: KCMTelepathyAccounts/simple-profile-select-widget.ui:124
+#, kde-format
+msgid "Facebook Chat"
+msgstr "Berdelaedje Facebook"
+
+#: KCMTelepathyAccounts/dictionary.cpp:59
+#, kde-format
+msgid "Gadu-Gadu"
+msgstr "Gadu-Gadu"
+
+#. i18n: ectx: property (text), widget (QCommandLinkButton, buttonGTalk)
+#: KCMTelepathyAccounts/dictionary.cpp:60
+#: KCMTelepathyAccounts/simple-profile-select-widget.ui:100
+#, kde-format
+msgid "Google Talk"
+msgstr "Google Talk"
+
+#: KCMTelepathyAccounts/dictionary.cpp:61
+#, kde-format
+msgid "Novell Groupwise"
+msgstr "Novell Groupwise"
+
+#: KCMTelepathyAccounts/dictionary.cpp:62
+#, kde-format
+msgid "ICQ"
+msgstr "ICQ"
+
+#: KCMTelepathyAccounts/dictionary.cpp:64
+#, kde-format
+msgid "Internet Relay Chat"
+msgstr "Internet Relay Chat"
+
+#. i18n: ectx: property (text), widget (QCommandLinkButton, buttonJabber)
+#: KCMTelepathyAccounts/dictionary.cpp:65
+#: KCMTelepathyAccounts/simple-profile-select-widget.ui:54
+#, kde-format
+msgid "Jabber/XMPP"
+msgstr "Jabber/XMPP"
+
+#: KCMTelepathyAccounts/dictionary.cpp:66
+#, kde-format
+msgid "Bonjour/Salut"
+msgstr "Bonjour/Salut"
+
+#: KCMTelepathyAccounts/dictionary.cpp:67
+#, kde-format
+msgid "MXit"
+msgstr "MXit"
+
+#: KCMTelepathyAccounts/dictionary.cpp:68
+#, kde-format
+msgid "Windows Live Messenger"
+msgstr "Messaedjî Windows Live"
+
+#: KCMTelepathyAccounts/dictionary.cpp:69
+#, kde-format
+msgid "MySpaceIM"
+msgstr "MySpaceIM"
+
+#: KCMTelepathyAccounts/dictionary.cpp:70
+#, kde-format
+msgid "Tencent QQ"
+msgstr "Tencent QQ"
+
+#: KCMTelepathyAccounts/dictionary.cpp:71
+#, kde-format
+msgid "IBM Lotus Sametime"
+msgstr "IBM Lotus Sametime"
+
+#: KCMTelepathyAccounts/dictionary.cpp:72
+#, kde-format
+msgid "SILC"
+msgstr "SILC"
+
+#: KCMTelepathyAccounts/dictionary.cpp:73
+#, kde-format
+msgid "Session Initiation Protocol (SIP)"
+msgstr "Protocole d' iniciåcion di session (SIP)"
+
+#: KCMTelepathyAccounts/dictionary.cpp:74
+#, kde-format
+msgid "GSM Telephony"
+msgstr "Telefoneye GSM"
+
+#: KCMTelepathyAccounts/dictionary.cpp:75
+#, kde-format
+msgid "Trepia"
+msgstr "Trepia"
+
+#: KCMTelepathyAccounts/dictionary.cpp:76
+#, kde-format
+msgid "Yahoo! Messenger"
+msgstr "Messaedjî Yahoo!"
+
+#: KCMTelepathyAccounts/dictionary.cpp:77
+#, kde-format
+msgid "Yahoo! Messenger Japan"
+msgstr "Messaedjî Yahoo! Djapon"
+
+#: KCMTelepathyAccounts/dictionary.cpp:78
+#, kde-format
+msgid "Zephyr"
+msgstr "Zephyr"
+
+#: KCMTelepathyAccounts/parameter-edit-model.cpp:301
+#, kde-format
+msgid "Parameter \"<b>%1</b>\" is not valid."
+msgstr "Li paramete « <b>%1</b> » n' est nén valåbe."
+
+#. i18n: ectx: property (text), widget (QCommandLinkButton, buttonKDETalk)
+#: KCMTelepathyAccounts/simple-profile-select-widget.ui:78
+#, kde-format
+msgid "KDETalk"
+msgstr ""
+
+#. i18n: ectx: property (text), widget (QCommandLinkButton, buttonOthers)
+#: KCMTelepathyAccounts/simple-profile-select-widget.ui:148
+#, kde-format
+msgid "All"
+msgstr ""
+
+#. i18n: ectx: property (description), widget (QCommandLinkButton, buttonOthers)
+#: KCMTelepathyAccounts/simple-profile-select-widget.ui:162
+#, kde-format
+msgid "AOL, Gadu-Gadu, Yahoo and more..."
+msgstr "AOL, Gadu-Gadu, Yahoo eyet co dpus..."
+
+#: KCMTelepathyAccounts/validated-line-edit.cpp:100
+#, kde-format
+msgid "This field is required"
+msgstr "Ci tchamp chal est reki"
+
+#: KCMTelepathyAccounts/validated-line-edit.cpp:121
+#, kde-format
+msgid "This field should not be empty"
+msgstr "Ci tchamp la n' divreut nén esse vude"
+
+#: KCMTelepathyAccounts/validated-line-edit.cpp:125
+#, kde-format
+msgid "This field should contain an email address"
+msgstr "I dvreut î aveur ene adresse emile dins ç' tchamp la"
+
+#: KCMTelepathyAccounts/validated-line-edit.cpp:129
+#, kde-format
+msgid "This field should contain a hostname"
+msgstr "I dvreut î aveur on no di lodjoe dins ç' tchamp la"
+
+#: KCMTelepathyAccounts/validated-line-edit.cpp:133
+#, kde-format
+msgid "This field should contain an IP address"
+msgstr "I dvreut î aveur ene adresse IP dins ç' tchamp la"
+
+#: KCMTelepathyAccounts/validated-line-edit.cpp:178
+#, kde-format
+msgid "This field is valid"
+msgstr "Ci tchamp chal est valåbe"
+
+#. i18n: ectx: property (text), widget (QLabel, salutEnableLabel)
+#: main-widget.ui:80
+#, kde-format
+msgid "Enable local network discovery"
+msgstr "Mete e-n alaedje li discovraedje del rantoele coinrece"
+
+#. i18n: ectx: property (text), widget (QLabel, salutEnableStatusLabel)
+#: main-widget.ui:100
+#, kde-format
+msgid "Connect to people near you"
+msgstr "Si raloyî a des djins dlé vos"
+
+#. i18n: ectx: property (text), widget (KPushButton, addAccountButton)
+#: main-widget.ui:151
+#, kde-format
+msgid "Add Account"
+msgstr "Radjouter on conte"
+
+#. i18n: ectx: property (text), widget (KPushButton, editAccountButton)
+#: main-widget.ui:161
+#, kde-format
+msgid "Edit Account"
+msgstr "Candjî l' conte"
+
+#. i18n: ectx: property (toolTip), widget (KPushButton, editAccountIdentityButton)
+#: main-widget.ui:171
+#, kde-format
+msgid "Edit how you appear to others. Requires the account to be online."
+msgstr "Candjî comint vos aparexhoz ås ôtes. I fåt kel conte fouxhe so fyis."
+
+#. i18n: ectx: property (text), widget (KPushButton, editAccountIdentityButton)
+#: main-widget.ui:174
+#, kde-format
+msgid "Edit Identity"
+msgstr "Candjî l' idintité"
+
+#: salut-message-widget.cpp:50
+#, kde-format
+msgid "Configure manually..."
+msgstr "Apontyî al mwin..."
+
+#: salut-message-widget.cpp:54
+#, kde-format
+msgid "Cancel"
+msgstr "Rinoncî"
+
+#: salut-message-widget.cpp:104
+#, kde-format
+msgid "You will appear as \"%1\" on your local network."
+msgstr "Vos aparexhroz come « %1 » so vosse rantoele coinrece."
+
+#~ msgid "Others"
+#~ msgstr "Ôtes"
+
+#~ msgid ""
+#~ "The file you have selected does not seem to be an image.\n"
+#~ "Please select an image file."
+#~ msgstr ""
+#~ "Li fitchî k' vos avoz tchoezi n' shonne nén esse ene imådje.\n"
+#~ "Tchoezixhoz ene imådje, s' i vs plait."

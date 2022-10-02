@@ -1,0 +1,44 @@
+# Copyright (C) YEAR This_file_is_part_of_KDE
+# This file is distributed under the same license as the PACKAGE package.
+#
+# Adrián Chaves Fernández (Gallaecio) <adriyetichaves@gmail.com>, 2015.
+# Adrián Chaves (Gallaecio) <adrian@chaves.io>, 2017.
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2019-05-20 03:11+0200\n"
+"PO-Revision-Date: 2017-09-09 12:34+0100\n"
+"Last-Translator: Adrián Chaves (Gallaecio) <adrian@chaves.io>\n"
+"Language-Team: Galician <kde-i18n-doc@kde.org>\n"
+"Language: gl\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+
+#: main-options-widget.cpp:45
+#, kde-format
+msgctxt "name of the IM service Telegram"
+msgid "Telegram (%1)"
+msgstr "Telegram (%1)"
+
+#. i18n: ectx: property (windowTitle), widget (QWidget, MainOptionsWidget)
+#: main-options-widget.ui:20
+#, kde-format
+msgid "Account Preferences"
+msgstr "Configuración da conta"
+
+#. i18n: ectx: property (text), widget (QLabel, label)
+#: main-options-widget.ui:29
+#, kde-format
+msgid "An authentication code will be texted to your phone on first login."
+msgstr ""
+"Enviaráselle unha mensaxe de texto ao teléfono cun código de autenticación "
+"cando acceda por primeira vez."
+
+#. i18n: ectx: property (text), widget (QLabel, accountLabel)
+#: main-options-widget.ui:43
+#, kde-format
+msgid "Phone Number:"
+msgstr "Número de teléfono:"

@@ -1,0 +1,54 @@
+# Copyright (C) YEAR This_file_is_part_of_KDE
+# This file is distributed under the same license as the PACKAGE package.
+#
+# Marek Laane <bald@smail.ee>, 2011, 2014.
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2019-05-20 03:11+0200\n"
+"PO-Revision-Date: 2014-09-22 17:34+0300\n"
+"Last-Translator: Marek Laane <bald@smail.ee>\n"
+"Language-Team: Estonian <kde-et@linux.ee>\n"
+"Language: et\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Lokalize 1.5\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+
+#. i18n: ectx: property (windowTitle), widget (QWidget, MainOptionsWidget)
+#: main-options-widget.ui:20
+#, kde-format
+msgid "Account Preferences"
+msgstr "Konto valikud"
+
+#. i18n: ectx: property (text), widget (QLabel, accountLabel)
+#: main-options-widget.ui:29
+#, kde-format
+msgid "Email address:"
+msgstr "E-posti aadress:"
+
+#. i18n: ectx: property (text), widget (QLabel, label)
+#: main-options-widget.ui:46
+#, kde-format
+msgid "Example: user@hotmail.com"
+msgstr "Näide: kasutaja@hotmail.com"
+
+#. i18n: ectx: property (text), widget (QLabel, passwordLabel)
+#: main-options-widget.ui:53
+#, kde-format
+msgid "Password:"
+msgstr "Parool:"
+
+#~ msgctxt "name of the IM service Telegram"
+#~ msgid "Telegram (%1)"
+#~ msgstr "Telegram (%1)"
+
+#~ msgid "An authentication code will be texted to your phone on first login."
+#~ msgstr ""
+#~ "Autentimiskood saadetakse esimesel sisselogimisel tekstisõnumiga "
+#~ "telefonile."
+
+#~ msgid "Phone Number:"
+#~ msgstr "Telefoninumber:"

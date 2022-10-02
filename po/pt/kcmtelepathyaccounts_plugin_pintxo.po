@@ -1,0 +1,31 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: kcmtelepathyaccounts_plugin_pintxo\n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2019-05-20 03:11+0200\n"
+"PO-Revision-Date: 2013-09-03 09:55+0100\n"
+"Last-Translator: José Nuno Coelho Pires <zepires@gmail.com>\n"
+"Language-Team: Portuguese <kde-i18n-pt@kde.org>\n"
+"Language: pt\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+
+#. i18n: ectx: property (windowTitle), widget (QWidget, MainOptionsWidget)
+#: main-options-widget.ui:20
+#, kde-format
+msgid "Account Preferences"
+msgstr "Preferências da Conta"
+
+#. i18n: ectx: property (text), widget (QLabel, numberLabel)
+#: main-options-widget.ui:28
+#, kde-format
+msgid "Account name:"
+msgstr "Nome da conta:"
+
+#. i18n: ectx: property (text), widget (QLabel, modemLabel)
+#: main-options-widget.ui:55
+#, kde-format
+msgid "Modem:"
+msgstr "Modem:"

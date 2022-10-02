@@ -1,0 +1,645 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: kdeorg\n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2019-05-20 03:11+0200\n"
+"PO-Revision-Date: 2022-09-20 01:56\n"
+"Last-Translator: \n"
+"Language-Team: Chinese Simplified\n"
+"Language: zh_CN\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Crowdin-Project: kdeorg\n"
+"X-Crowdin-Project-ID: 269464\n"
+"X-Crowdin-Language: zh-CN\n"
+"X-Crowdin-File: /kf5-trunk/messages/ktp-accounts-kcm/kcm_ktp_accounts.pot\n"
+"X-Crowdin-File-ID: 5416\n"
+
+#, kde-format
+msgctxt "NAME OF TRANSLATORS"
+msgid "Your names"
+msgstr "KDE 中国"
+
+#, kde-format
+msgctxt "EMAIL OF TRANSLATORS"
+msgid "Your emails"
+msgstr "kde-china@kde.org"
+
+#: account-identity-dialog.cpp:42
+#, kde-format
+msgid "Edit Account Identity"
+msgstr "编辑账户身份"
+
+#. i18n: ectx: property (text), widget (QLabel, label_3)
+#: account-identity-dialog.ui:40
+#, kde-format
+msgid "Nickname:"
+msgstr "昵称："
+
+#. i18n: ectx: property (text), widget (QLabel, label)
+#: account-identity-dialog.ui:50
+#, kde-format
+msgid "Account:"
+msgstr "账户："
+
+#. i18n: ectx: property (text), widget (AvatarButton, accountAvatar)
+#: account-identity-dialog.ui:87
+#, kde-format
+msgid "..."
+msgstr "..."
+
+#: accounts-list-delegate.cpp:70
+#, kde-format
+msgid "Change account icon"
+msgstr "更改账户图标"
+
+#: accounts-list-delegate.cpp:71
+#, kde-format
+msgid ""
+"This button allows you to change the icon for your account.<br />This icon "
+"is just used locally on your computer, your contacts will not be able to see "
+"it."
+msgstr "此按钮允许您修改账户图标。<br/>此图标仅在本地可见，对联系人不可见。"
+
+#: accounts-list-delegate.cpp:79
+#, kde-format
+msgid "Change account display name"
+msgstr "修改账户显示名称"
+
+#: accounts-list-delegate.cpp:80
+#, kde-format
+msgid ""
+"This button allows you to change the display name for your account.<br />The "
+"display name is an alias for your account and is just used locally on your "
+"computer, your contacts will not be able to see it."
+msgstr ""
+"此按钮允许您修改账户显示名称。<br/>显示名称仅在本地可见，对联系人不可见。"
+
+#: accounts-list-delegate.cpp:134
+#, kde-format
+msgid "Click checkbox to enable"
+msgstr "单击复选框来启用"
+
+#: accounts-list-delegate.cpp:144
+#, kde-format
+msgid "Disable account"
+msgstr "禁用账户"
+
+#: accounts-list-delegate.cpp:147
+#, kde-format
+msgid "Enable account"
+msgstr "启用账户"
+
+#: add-account-assistant.cpp:95 add-account-assistant.cpp:96
+#, kde-format
+msgid "Step 1: Select an Instant Messaging Network."
+msgstr "第 1 步：选择一个即时通讯网络"
+
+#: add-account-assistant.cpp:120
+#, kde-format
+msgid "Step 2: Fill in the required Parameters."
+msgstr "第 2 步：填写所需参数。"
+
+#: add-account-assistant.cpp:172
+#, kde-format
+msgid ""
+"To connect to this IM network, you need to install additional plugins. "
+"Please install the telepathy-haze and telepathy-gabble packages using your "
+"package manager."
+msgstr ""
+"为了连接此即时通讯网络，您需要安装额外的插件。请通过您的包管理器安装 "
+"telepathy-haze 和 telepathy-gabble。"
+
+#: add-account-assistant.cpp:172
+#, kde-format
+msgid "Missing Telepathy Connection Manager"
+msgstr "缺少 Telepathy 连接管理器"
+
+#: add-account-assistant.cpp:208 add-account-assistant.cpp:257
+#: salut-enabler.cpp:243
+#, kde-format
+msgid "Failed to create account"
+msgstr "创建账户失败"
+
+#: add-account-assistant.cpp:258 salut-enabler.cpp:244
+#, kde-format
+msgid "Possibly not all required fields are valid"
+msgstr "必填字段的内容可能存在无效项"
+
+#: add-account-assistant.cpp:267 salut-enabler.cpp:253
+#, kde-format
+msgid "Something went wrong with Telepathy"
+msgstr "Telepathy 出现某些错误"
+
+#: avatar-button.cpp:54
+#, kde-format
+msgid "Load from file..."
+msgstr "从文件加载..."
+
+#: avatar-button.cpp:55
+#, kde-format
+msgid "Clear Avatar"
+msgstr "清除头像"
+
+#: avatar-button.cpp:106
+#, kde-format
+msgid "Please choose your avatar"
+msgstr "选择您的头像"
+
+#: avatar-button.cpp:155
+#, kde-format
+msgid "Failed to load avatar."
+msgstr "加载头像失败。"
+
+#: edit-display-name-button.cpp:61
+#, kde-format
+msgid "Edit Display Name"
+msgstr "编辑显示名称"
+
+#: edit-display-name-button.cpp:70
+#, kde-format
+msgid "Choose a new display name for your account"
+msgstr "为您的账户选择一个新的显示名称"
+
+#: edit-display-name-button.cpp:77 edit-display-name-button.cpp:87
+#, kde-format
+msgid ""
+"A display name is your local alias for the account, only you will see it."
+msgstr "显示名称是您账户的本地别名，只有您才能看到它。"
+
+#: edit-display-name-button.cpp:86
+#, kde-format
+msgid "New display name"
+msgstr "新显示名称"
+
+#: kcm-telepathy-accounts.cpp:76
+#, kde-format
+msgid "telepathy_accounts"
+msgstr "telepathy_accounts"
+
+#: kcm-telepathy-accounts.cpp:76
+#, kde-format
+msgid "Instant Messaging and VOIP Accounts"
+msgstr "即时通讯和语音账户"
+
+#: kcm-telepathy-accounts.cpp:78
+#, kde-format
+msgid "George Goldberg"
+msgstr "George Goldberg"
+
+#: kcm-telepathy-accounts.cpp:78 kcm-telepathy-accounts.cpp:79
+#: kcm-telepathy-accounts.cpp:80 kcm-telepathy-accounts.cpp:81
+#: kcm-telepathy-accounts.cpp:82 kcm-telepathy-accounts.cpp:83
+#: kcm-telepathy-accounts.cpp:84
+#, kde-format
+msgid "Developer"
+msgstr "开发者"
+
+#: kcm-telepathy-accounts.cpp:79
+#, kde-format
+msgid "David Edmundson"
+msgstr "David Edmundson"
+
+#: kcm-telepathy-accounts.cpp:80
+#, kde-format
+msgid "Dominik Schmidt"
+msgstr "Dominik Schmidt"
+
+#: kcm-telepathy-accounts.cpp:81
+#, kde-format
+msgid "Thomas Richard"
+msgstr "Thomas Richard"
+
+#: kcm-telepathy-accounts.cpp:82
+#, kde-format
+msgid "Florian Reinhard"
+msgstr "Florian Reinhard"
+
+#: kcm-telepathy-accounts.cpp:83
+#, kde-format
+msgid "Daniele E. Domenichelli"
+msgstr "Daniele E. Domenichelli"
+
+#: kcm-telepathy-accounts.cpp:84
+#, kde-format
+msgid "Martin Klapetek"
+msgstr "Martin Klapetek"
+
+#: kcm-telepathy-accounts.cpp:266
+#, kde-format
+msgid ""
+"We have found Kopete logs for this account. Do you want to import the logs "
+"to KDE Telepathy?"
+msgstr "找到了此账户的对应 Kopete 日志。您是否想将日志导入到 KDE Telepathy？"
+
+#: kcm-telepathy-accounts.cpp:267
+#, kde-format
+msgid "Import Logs?"
+msgstr "导入日志？"
+
+#: kcm-telepathy-accounts.cpp:268
+#, kde-format
+msgid "Import Logs"
+msgstr "导入日志"
+
+#: kcm-telepathy-accounts.cpp:269
+#, kde-format
+msgid "Close"
+msgstr "关闭"
+
+#: kcm-telepathy-accounts.cpp:276
+#, kde-format
+msgid "Importing logs..."
+msgstr "正在导入日志..."
+
+#: kcm-telepathy-accounts.cpp:294 kcm-telepathy-accounts.cpp:303
+#, kde-format
+msgid "Kopete Logs Import"
+msgstr "Kopete 日志导入"
+
+#: kcm-telepathy-accounts.cpp:303
+#, kde-format
+msgid "Kopete logs successfully imported"
+msgstr "Kopete 日志成功导入"
+
+#. i18n: ectx: property (text), widget (KPushButton, removeAccountButton)
+#: kcm-telepathy-accounts.cpp:405 kcm-telepathy-accounts.cpp:406
+#: main-widget.ui:184
+#, kde-format
+msgid "Remove Account"
+msgstr "删除账户"
+
+#: kcm-telepathy-accounts.cpp:409
+#, kde-format
+msgid "Remove conversations logs"
+msgstr "移除对话日志"
+
+#: kcm-telepathy-accounts.cpp:410
+#, kde-format
+msgid "Are you sure you want to remove the account \"%1\"?"
+msgstr "您确定要删除账户“%1”吗？"
+
+#: kcm-telepathy-accounts.cpp:492
+#, kde-format
+msgid "Install telepathy-salut to enable"
+msgstr "安装 telepathy-salut 来启用"
+
+#: kcm-telepathy-accounts.cpp:534
+#, kde-format
+msgid ""
+"Something went terribly wrong and the IM system could not be initialized.\n"
+"It is likely your system is missing Telepathy Mission Control package.\n"
+"Please install it and restart this module."
+msgstr ""
+"发生了严重错误，即时通讯系统无法初始化。\n"
+"这可能是因为您的系统缺少 Telepathy 任务控制软件包。\n"
+"请安装并重启此模块。"
+
+#: KCMTelepathyAccounts/abstract-account-parameters-widget.cpp:59
+#, kde-format
+msgid "All mandatory fields must be filled"
+msgstr "所有必须字段都必须填写"
+
+#: KCMTelepathyAccounts/account-edit-widget.cpp:108
+#, kde-format
+msgid "Connect when wizard is finished"
+msgstr "向导完成时连接"
+
+#: KCMTelepathyAccounts/account-edit-widget.cpp:219
+#, kde-format
+msgid "Advanced Options"
+msgstr "高级选项"
+
+#. i18n: ectx: property (text), widget (QPushButton, advancedButton)
+#: KCMTelepathyAccounts/account-edit-widget.ui:62
+#, kde-format
+msgid "Advanced"
+msgstr "高级"
+
+#: KCMTelepathyAccounts/dictionary.cpp:33
+#, kde-format
+msgid "Password"
+msgstr "密码"
+
+#: KCMTelepathyAccounts/dictionary.cpp:34
+#, kde-format
+msgid "Account"
+msgstr "账户"
+
+#: KCMTelepathyAccounts/dictionary.cpp:35
+#, kde-format
+msgid "Priority"
+msgstr "优先级"
+
+#: KCMTelepathyAccounts/dictionary.cpp:36
+#, kde-format
+msgid "Port"
+msgstr "端口"
+
+#: KCMTelepathyAccounts/dictionary.cpp:37
+#, kde-format
+msgid "Alias"
+msgstr "别名"
+
+#: KCMTelepathyAccounts/dictionary.cpp:38
+#, kde-format
+msgid "Register new Account"
+msgstr "注册新账户"
+
+#: KCMTelepathyAccounts/dictionary.cpp:39
+#, kde-format
+msgid "Server Address"
+msgstr "服务器地址"
+
+#: KCMTelepathyAccounts/dictionary.cpp:40
+#, kde-format
+msgid "Fallback STUN server address"
+msgstr "备选 STUN 服务器地址"
+
+#: KCMTelepathyAccounts/dictionary.cpp:41
+#, kde-format
+msgid "Resource"
+msgstr "资源"
+
+#: KCMTelepathyAccounts/dictionary.cpp:42
+#, kde-format
+msgid "HTTPS Proxy Port"
+msgstr "HTTPS 代理端口"
+
+#: KCMTelepathyAccounts/dictionary.cpp:43
+#, kde-format
+msgid "Require Encryption"
+msgstr "需要加密"
+
+#: KCMTelepathyAccounts/dictionary.cpp:44
+#, kde-format
+msgid "Old-style SSL support"
+msgstr "老式的 SSL 支持"
+
+#: KCMTelepathyAccounts/dictionary.cpp:45
+#, kde-format
+msgid "Fallback STUN port"
+msgstr "备选 STUN 端口"
+
+#: KCMTelepathyAccounts/dictionary.cpp:46
+#, kde-format
+msgid "Fallback Conference Server Address"
+msgstr "备选会议服务器地址"
+
+#: KCMTelepathyAccounts/dictionary.cpp:47
+#, kde-format
+msgid "Low Bandwidth Mode"
+msgstr "低带宽模式"
+
+#: KCMTelepathyAccounts/dictionary.cpp:48
+#, kde-format
+msgid "STUN Server Address"
+msgstr "STUN 服务器地址"
+
+#: KCMTelepathyAccounts/dictionary.cpp:49
+#, kde-format
+msgid "STUN Port"
+msgstr "STUN 端口"
+
+#: KCMTelepathyAccounts/dictionary.cpp:50
+#, kde-format
+msgid "Fallback SOCKS5 Proxy Addresses"
+msgstr "备选 SOCKS5 代理服务器地址"
+
+#: KCMTelepathyAccounts/dictionary.cpp:51
+#, kde-format
+msgid "HTTPS Proxy Server Address"
+msgstr "HTTPS 代理服务器地址"
+
+#: KCMTelepathyAccounts/dictionary.cpp:52
+#, kde-format
+msgid "Ignore SSL Errors"
+msgstr "忽略 SSL 错误"
+
+#: KCMTelepathyAccounts/dictionary.cpp:53
+#, kde-format
+msgid "Keepalive Interval"
+msgstr "保持活动间隔"
+
+#: KCMTelepathyAccounts/dictionary.cpp:56
+#, kde-format
+msgid "AOL Instant Messenger"
+msgstr "AOL 即时通讯"
+
+#: KCMTelepathyAccounts/dictionary.cpp:57
+#: KCMTelepathyAccounts/dictionary.cpp:63
+#, kde-format
+msgid "Skype"
+msgstr "Skype"
+
+#. i18n: ectx: property (text), widget (QCommandLinkButton, buttonFacebook)
+#: KCMTelepathyAccounts/dictionary.cpp:58
+#: KCMTelepathyAccounts/simple-profile-select-widget.ui:124
+#, kde-format
+msgid "Facebook Chat"
+msgstr "Facebook 聊天"
+
+#: KCMTelepathyAccounts/dictionary.cpp:59
+#, kde-format
+msgid "Gadu-Gadu"
+msgstr "Gadu-Gadu"
+
+#. i18n: ectx: property (text), widget (QCommandLinkButton, buttonGTalk)
+#: KCMTelepathyAccounts/dictionary.cpp:60
+#: KCMTelepathyAccounts/simple-profile-select-widget.ui:100
+#, kde-format
+msgid "Google Talk"
+msgstr "Google Talk"
+
+#: KCMTelepathyAccounts/dictionary.cpp:61
+#, kde-format
+msgid "Novell Groupwise"
+msgstr "Novell Groupwise"
+
+#: KCMTelepathyAccounts/dictionary.cpp:62
+#, kde-format
+msgid "ICQ"
+msgstr "ICQ"
+
+#: KCMTelepathyAccounts/dictionary.cpp:64
+#, kde-format
+msgid "Internet Relay Chat"
+msgstr "IRC"
+
+#. i18n: ectx: property (text), widget (QCommandLinkButton, buttonJabber)
+#: KCMTelepathyAccounts/dictionary.cpp:65
+#: KCMTelepathyAccounts/simple-profile-select-widget.ui:54
+#, kde-format
+msgid "Jabber/XMPP"
+msgstr "Jabber/XMPP"
+
+#: KCMTelepathyAccounts/dictionary.cpp:66
+#, kde-format
+msgid "Bonjour/Salut"
+msgstr "Bonjour/Salut"
+
+#: KCMTelepathyAccounts/dictionary.cpp:67
+#, kde-format
+msgid "MXit"
+msgstr "MXit"
+
+#: KCMTelepathyAccounts/dictionary.cpp:68
+#, kde-format
+msgid "Windows Live Messenger"
+msgstr "Windows Live Messenger"
+
+#: KCMTelepathyAccounts/dictionary.cpp:69
+#, kde-format
+msgid "MySpaceIM"
+msgstr "MySpaceIM"
+
+#: KCMTelepathyAccounts/dictionary.cpp:70
+#, kde-format
+msgid "Tencent QQ"
+msgstr "腾讯 QQ"
+
+#: KCMTelepathyAccounts/dictionary.cpp:71
+#, kde-format
+msgid "IBM Lotus Sametime"
+msgstr "IBM Lotus Sametime"
+
+#: KCMTelepathyAccounts/dictionary.cpp:72
+#, kde-format
+msgid "SILC"
+msgstr "SILC"
+
+#: KCMTelepathyAccounts/dictionary.cpp:73
+#, kde-format
+msgid "Session Initiation Protocol (SIP)"
+msgstr "会话初始化协议 (SIP)"
+
+#: KCMTelepathyAccounts/dictionary.cpp:74
+#, kde-format
+msgid "GSM Telephony"
+msgstr "GSM Telephony"
+
+#: KCMTelepathyAccounts/dictionary.cpp:75
+#, kde-format
+msgid "Trepia"
+msgstr "Trepia"
+
+#: KCMTelepathyAccounts/dictionary.cpp:76
+#, kde-format
+msgid "Yahoo! Messenger"
+msgstr "Yahoo! 即时通讯"
+
+#: KCMTelepathyAccounts/dictionary.cpp:77
+#, kde-format
+msgid "Yahoo! Messenger Japan"
+msgstr "Yahoo! 即时通讯日本"
+
+#: KCMTelepathyAccounts/dictionary.cpp:78
+#, kde-format
+msgid "Zephyr"
+msgstr "Zephyr"
+
+#: KCMTelepathyAccounts/parameter-edit-model.cpp:301
+#, kde-format
+msgid "Parameter \"<b>%1</b>\" is not valid."
+msgstr "参数“<b>%1</b>”无效。"
+
+#. i18n: ectx: property (text), widget (QCommandLinkButton, buttonKDETalk)
+#: KCMTelepathyAccounts/simple-profile-select-widget.ui:78
+#, kde-format
+msgid "KDETalk"
+msgstr "KDETalk"
+
+#. i18n: ectx: property (text), widget (QCommandLinkButton, buttonOthers)
+#: KCMTelepathyAccounts/simple-profile-select-widget.ui:148
+#, kde-format
+msgid "All"
+msgstr "全部"
+
+#. i18n: ectx: property (description), widget (QCommandLinkButton, buttonOthers)
+#: KCMTelepathyAccounts/simple-profile-select-widget.ui:162
+#, kde-format
+msgid "AOL, Gadu-Gadu, Yahoo and more..."
+msgstr "AOL，Gadu-Gadu，Yahoo 以及其他..."
+
+#: KCMTelepathyAccounts/validated-line-edit.cpp:100
+#, kde-format
+msgid "This field is required"
+msgstr "此字段需要填写"
+
+#: KCMTelepathyAccounts/validated-line-edit.cpp:121
+#, kde-format
+msgid "This field should not be empty"
+msgstr "此字段不能为空"
+
+#: KCMTelepathyAccounts/validated-line-edit.cpp:125
+#, kde-format
+msgid "This field should contain an email address"
+msgstr "此字段应当包含一个电子邮件地址"
+
+#: KCMTelepathyAccounts/validated-line-edit.cpp:129
+#, kde-format
+msgid "This field should contain a hostname"
+msgstr "此字段应当包含一个域名"
+
+#: KCMTelepathyAccounts/validated-line-edit.cpp:133
+#, kde-format
+msgid "This field should contain an IP address"
+msgstr "此字段应当包含一个 IP 地址"
+
+#: KCMTelepathyAccounts/validated-line-edit.cpp:178
+#, kde-format
+msgid "This field is valid"
+msgstr "此字段有效"
+
+#. i18n: ectx: property (text), widget (QLabel, salutEnableLabel)
+#: main-widget.ui:80
+#, kde-format
+msgid "Enable local network discovery"
+msgstr "启用本地网络发现"
+
+#. i18n: ectx: property (text), widget (QLabel, salutEnableStatusLabel)
+#: main-widget.ui:100
+#, kde-format
+msgid "Connect to people near you"
+msgstr "连接您附近的人"
+
+#. i18n: ectx: property (text), widget (KPushButton, addAccountButton)
+#: main-widget.ui:151
+#, kde-format
+msgid "Add Account"
+msgstr "添加账户"
+
+#. i18n: ectx: property (text), widget (KPushButton, editAccountButton)
+#: main-widget.ui:161
+#, kde-format
+msgid "Edit Account"
+msgstr "编辑账户"
+
+#. i18n: ectx: property (toolTip), widget (KPushButton, editAccountIdentityButton)
+#: main-widget.ui:171
+#, kde-format
+msgid "Edit how you appear to others. Requires the account to be online."
+msgstr "编辑您如何对他人显示。需要账户在线。"
+
+#. i18n: ectx: property (text), widget (KPushButton, editAccountIdentityButton)
+#: main-widget.ui:174
+#, kde-format
+msgid "Edit Identity"
+msgstr "编辑身份"
+
+#: salut-message-widget.cpp:50
+#, kde-format
+msgid "Configure manually..."
+msgstr "手动配置..."
+
+#: salut-message-widget.cpp:54
+#, kde-format
+msgid "Cancel"
+msgstr "取消"
+
+#: salut-message-widget.cpp:104
+#, kde-format
+msgid "You will appear as \"%1\" on your local network."
+msgstr "您将会作为“%1”出现在您的本地网络。"

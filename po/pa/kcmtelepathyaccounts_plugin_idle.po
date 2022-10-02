@@ -1,0 +1,86 @@
+# Copyright (C) YEAR This_file_is_part_of_KDE
+# This file is distributed under the same license as the PACKAGE package.
+#
+# A S Alam <aalam@users.sf.net>, 2013.
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2021-07-05 00:17+0000\n"
+"PO-Revision-Date: 2013-01-31 09:10+0000\n"
+"Last-Translator: A S Alam <aalam@users.sf.net>\n"
+"Language-Team: Punjabi/Panjabi <punjabi-users@lists.sf.net>\n"
+"Language: pa\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Lokalize 1.5\n"
+
+#. i18n: ectx: property (windowTitle), widget (QWidget, MainOptionsWidget)
+#. i18n: ectx: property (windowTitle), widget (QWidget, AdvancedOptionsWidget)
+#: advanced-options-widget.ui:14 main-options-widget.ui:14
+#, kde-format
+msgid "Account Preferences"
+msgstr "ਅਕਾਊਂਟ ਪਸੰਦ"
+
+#. i18n: ectx: property (text), widget (QLabel, usernameLabel)
+#: advanced-options-widget.ui:23
+#, kde-format
+msgid "Username:"
+msgstr "ਯੂਜ਼ਰ ਨਾਂ:"
+
+#. i18n: ectx: property (text), widget (QLabel, passwordLabel)
+#: advanced-options-widget.ui:43
+#, kde-format
+msgid "Password:"
+msgstr "ਪਾਸਵਰਡ:"
+
+#. i18n: ectx: property (text), widget (QLabel, charsetLabel)
+#: advanced-options-widget.ui:69
+#, kde-format
+msgid "Character set:"
+msgstr ""
+
+#. i18n: ectx: property (text), widget (QLabel, portLabel)
+#: advanced-options-widget.ui:82
+#, kde-format
+msgid "Server port:"
+msgstr "ਸਰਵਰ ਪੋਰਟ:"
+
+#. i18n: ectx: property (text), widget (QLabel, useSslLabel)
+#: advanced-options-widget.ui:99
+#, kde-format
+msgid "Use SSL?"
+msgstr "SSL ਵਰਤੋਂ?"
+
+#. i18n: ectx: property (text), widget (QLabel, serverLabel)
+#: main-options-widget.ui:23
+#, kde-format
+msgid "Server address:"
+msgstr "ਸਰਵਰ ਐਡਰੈੱਸ:"
+
+#. i18n: ectx: property (text), widget (QLabel, label)
+#: main-options-widget.ui:36
+#, fuzzy, kde-format
+#| msgid "<i>Example:</i> chat.freenode.net"
+msgid "<i>Example:</i> irc.libera.chat"
+msgstr "<i>ਜਿਵੇਂ:</i> chat.freenode.net"
+
+#. i18n: ectx: property (text), widget (QLabel, accountLabel)
+#: main-options-widget.ui:43
+#, kde-format
+msgid "Nickname:"
+msgstr "ਛੋਟਾ ਨਾਂ:"
+
+#. i18n: ectx: property (text), widget (QLabel, fullnameLabel)
+#: main-options-widget.ui:56
+#, kde-format
+msgid "Real name:"
+msgstr "ਅਸਲੀ ਨਾਂ:"
+
+#. i18n: ectx: property (text), widget (QLabel, label_2)
+#: main-options-widget.ui:69
+#, kde-format
+msgid "Real name can be left empty."
+msgstr ""

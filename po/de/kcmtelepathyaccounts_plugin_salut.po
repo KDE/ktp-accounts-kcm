@@ -1,0 +1,63 @@
+# Frederik Schwarzer <schwarzer@kde.org>, 2011, 2012.
+# Burkhard Lück <lueck@hube-lueck.de>, 2013.
+msgid ""
+msgstr ""
+"Project-Id-Version: kcmtelepathyaccounts_plugin_salut\n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2019-05-20 03:11+0200\n"
+"PO-Revision-Date: 2013-11-27 06:44+0100\n"
+"Last-Translator: Burkhard Lück <lueck@hube-lueck.de>\n"
+"Language-Team: German <kde-i18n-de@kde.org>\n"
+"Language: de\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+
+#. i18n: ectx: property (title), widget (QGroupBox, additionalGroupBox)
+#: salut-advanced-options-widget.ui:17
+#, kde-format
+msgid "Additional Information"
+msgstr "Zusätzliche Informationen"
+
+#. i18n: ectx: property (text), widget (QLabel, pubnameLabel)
+#: salut-advanced-options-widget.ui:26
+#, kde-format
+msgid "Published name:"
+msgstr "Veröffentlichter Name:"
+
+#. i18n: ectx: property (text), widget (QLabel, emailLabel)
+#: salut-advanced-options-widget.ui:40
+#, kde-format
+msgid "Email:"
+msgstr "E-Mail:"
+
+#. i18n: ectx: property (text), widget (QLabel, jidLabel)
+#: salut-advanced-options-widget.ui:54
+#, kde-format
+msgid "Jabber ID:"
+msgstr "Jabber-ID:"
+
+#. i18n: ectx: property (windowTitle), widget (QWidget, SalutMainOptionsWidget)
+#: salut-main-options-widget.ui:14
+#, kde-format
+msgid "Account Preferences"
+msgstr "Zugangseinstellungen"
+
+#. i18n: ectx: property (text), widget (QLabel, firstnameLabel)
+#: salut-main-options-widget.ui:25
+#, kde-format
+msgid "First name:"
+msgstr "Vorname:"
+
+#. i18n: ectx: property (text), widget (QLabel, lastnameLabel)
+#: salut-main-options-widget.ui:38
+#, kde-format
+msgid "Last name:"
+msgstr "Nachname:"
+
+#. i18n: ectx: property (text), widget (QLabel, nicknameLabel)
+#: salut-main-options-widget.ui:51
+#, kde-format
+msgid "Nickname:"
+msgstr "Spitzname:"

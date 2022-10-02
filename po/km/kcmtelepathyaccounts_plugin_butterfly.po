@@ -1,0 +1,44 @@
+# translation of kcmtelepathyaccounts_plugin_butterfly.po to Khmer
+# Copyright (C) YEAR This_file_is_part_of_KDE
+# This file is distributed under the same license as the PACKAGE package.
+# Khoem Sokhem <khoemsokhem@khmeros.info>, 2011.
+# sutha <sutha@khmeros.info>, 2012.
+msgid ""
+msgstr ""
+"Project-Id-Version: kcmtelepathyaccounts_plugin_butterfly\n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2019-05-20 03:11+0200\n"
+"PO-Revision-Date: 2012-06-15 16:44+0700\n"
+"Last-Translator: sutha <sutha@khmeros.info>\n"
+"Language-Team: Khmer <support@khmeros>\n"
+"Language: km\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: WordForge 0.8 RC1\n"
+"X-Language: km-KH\n"
+
+#. i18n: ectx: property (windowTitle), widget (QWidget, MainOptionsWidget)
+#: main-options-widget.ui:20
+#, kde-format
+msgid "Account Preferences"
+msgstr "ចំណូលចិត្ត​គណនី"
+
+#. i18n: ectx: property (text), widget (QLabel, accountLabel)
+#: main-options-widget.ui:29
+#, kde-format
+msgid "Email address:"
+msgstr "អាសយដ្ឋាន​អ៊ីមែល ៖"
+
+#. i18n: ectx: property (text), widget (QLabel, label)
+#: main-options-widget.ui:46
+#, kde-format
+msgid "Example: user@hotmail.com"
+msgstr "ឧទាហរណ៍ ៖ user@hotmail.com"
+
+#. i18n: ectx: property (text), widget (QLabel, passwordLabel)
+#: main-options-widget.ui:53
+#, kde-format
+msgid "Password:"
+msgstr "ពាក្យ​សម្ងាត់ ៖"

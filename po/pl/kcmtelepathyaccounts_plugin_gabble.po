@@ -1,0 +1,280 @@
+# Copyright (C) YEAR This_file_is_part_of_KDE
+# This file is distributed under the same license as the PACKAGE package.
+#
+# Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>, 2011, 2012, 2014, 2015, 2021.
+# Marta Rybczyńska <kde-i18n@rybczynska.net>, 2013.
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2021-03-28 16:10+0000\n"
+"PO-Revision-Date: 2021-12-30 13:26+0100\n"
+"Last-Translator: Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>\n"
+"Language-Team: Polish <kde-i18n-doc@kde.org>\n"
+"Language: pl\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Lokalize 22.03.70\n"
+"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
+"|| n%100>=20) ? 1 : 2);\n"
+
+#: gabble-account-ui.cpp:112
+#, kde-format
+msgid "Server"
+msgstr "Serwer"
+
+#: gabble-account-ui.cpp:114
+#, kde-format
+msgid "Proxy"
+msgstr "Pośrednik"
+
+#. i18n: ectx: property (windowTitle), widget (QWidget, MainOptionsWidgetGoogleTalk)
+#. i18n: ectx: property (windowTitle), widget (QWidget, MainOptionsWidget)
+#. i18n: ectx: property (windowTitle), widget (QWidget, MainOptionsWidgetKDETalk)
+#. i18n: ectx: property (windowTitle), widget (QWidget, MainOptionsWidgetMSN)
+#. i18n: ectx: property (windowTitle), widget (QWidget, MainOptionsWidgetFacebook)
+#: main-options-widget-facebook.ui:14 main-options-widget-googletalk.ui:14
+#: main-options-widget-kde-talk.ui:14 main-options-widget-msn.ui:14
+#: main-options-widget.ui:14
+#, kde-format
+msgid "Account Preferences"
+msgstr "Właściwości konta"
+
+#. i18n: ectx: property (text), widget (QLabel, accountLabel)
+#: main-options-widget-facebook.ui:25
+#, kde-format
+msgid "Username:"
+msgstr "Nazwa użytkownika:"
+
+#. i18n: ectx: property (text), widget (QLabel, passwordLabel)
+#: main-options-widget-facebook.ui:38 main-options-widget-kde-talk.ui:46
+#: main-options-widget.ui:42
+#, kde-format
+msgid "Password:"
+msgstr "Hasło:"
+
+#. i18n: ectx: property (text), widget (QLabel, label)
+#: main-options-widget-facebook.ui:63
+#, kde-format
+msgid ""
+"This is your username, not your normal Facebook login.<br/>\n"
+"If you are facebook.com/<b>badger</b>, enter <b>badger</b>.<br/>\n"
+"Use <a href=\"http://www.facebook.com/username/\">this page</a> to choose a "
+"Facebook username."
+msgstr ""
+"Jest to twoja nazwa użytkownika, a nie twój normalny login do Facebooka.<br/"
+">\n"
+"Jeżeli jesteś facebook.com/<b>wiercibrzuch</b>, wpisz <b>wiercibrzuch</b>."
+"<br/>\n"
+"Użyj <a href=\"http://www.facebook.com/username/\">tej strony</a>, aby "
+"wybrać nazwę użytkownika Facebooka."
+
+#. i18n: ectx: property (text), widget (QLabel, accountLabel)
+#: main-options-widget-googletalk.ui:29
+#, kde-format
+msgid "Email address:"
+msgstr "Adres e-mail:"
+
+#. i18n: ectx: property (text), widget (QLabel, accountLabel)
+#: main-options-widget-kde-talk.ui:22
+#, kde-format
+msgid "KDE Talk ID:"
+msgstr "ID KDE Talk:"
+
+#. i18n: ectx: property (text), widget (QLabel, label)
+#: main-options-widget-kde-talk.ui:37
+#, kde-format
+msgid "@kdetalk.net"
+msgstr "@kdetalk.net"
+
+#. i18n: ectx: property (text), widget (QCheckBox, registerCheckBox)
+#: main-options-widget-kde-talk.ui:63 main-options-widget.ui:52
+#, kde-format
+msgid "Register new account"
+msgstr "Zarejestruj nowe konto"
+
+#: main-options-widget-msn.cpp:58
+#, kde-format
+msgid "Windows Live Messenger"
+msgstr "Windows Live Messenger"
+
+#. i18n: ectx: property (text), widget (QLabel, label)
+#: main-options-widget-msn.ui:20
+#, kde-format
+msgid "You will be prompted for login details during connection."
+msgstr "Zostaniesz poproszony o szczegóły loginu podczas łączenia."
+
+#. i18n: ectx: property (text), widget (QLabel, accountLabel)
+#: main-options-widget.ui:32
+#, kde-format
+msgid "Jabber ID:"
+msgstr "Identyfikator Jabbera:"
+
+#. i18n: ectx: property (windowTitle), widget (QWidget, ProxySettingsWidget)
+#: proxy-settings-widget.ui:14
+#, kde-format
+msgid "Advanced Options"
+msgstr "Ustawienia rozszerzone"
+
+#. i18n: ectx: property (title), widget (QGroupBox, stunGroupBox)
+#: proxy-settings-widget.ui:20
+#, kde-format
+msgid "STUN Server Settings"
+msgstr "Ustawienia serwera STUN"
+
+#. i18n: ectx: property (text), widget (QLabel, stunServerLabel)
+#: proxy-settings-widget.ui:28
+#, kde-format
+msgid "STUN server:"
+msgstr "Serwer STUN:"
+
+#. i18n: ectx: property (text), widget (QLabel, stunPortLabel)
+#. i18n: ectx: property (text), widget (QLabel, fallbackStunPortLabel)
+#. i18n: ectx: property (text), widget (QLabel, httpsProxyPortLabel)
+#: proxy-settings-widget.ui:38 proxy-settings-widget.ui:66
+#: proxy-settings-widget.ui:103
+#, kde-format
+msgid "Port:"
+msgstr "Port:"
+
+#. i18n: ectx: property (text), widget (QLabel, fallbackStunServerLabel)
+#: proxy-settings-widget.ui:56
+#, kde-format
+msgid "Fallback STUN server:"
+msgstr "Zapasowy serwer STUN:"
+
+#. i18n: ectx: property (title), widget (QGroupBox, proxyGroupBox)
+#: proxy-settings-widget.ui:85
+#, kde-format
+msgid "Proxy Settings"
+msgstr "Ustawienia pośrednika"
+
+#. i18n: ectx: property (text), widget (QLabel, httpsProxyServerLabel)
+#: proxy-settings-widget.ui:93
+#, kde-format
+msgid "HTTPS proxy server:"
+msgstr "Serwer pośredniczący HTTPS:"
+
+#. i18n: ectx: property (text), widget (QLabel, fallbackSocks5ProxiesLabel)
+#: proxy-settings-widget.ui:119
+#, kde-format
+msgid "Fallback SOCKS 5 proxy servers:"
+msgstr "Zapasowe serwery pośredniczące SOCKS 5:"
+
+#. i18n: ectx: property (html), widget (QTextEdit, fallbackSocks5ProxiesTextEdit)
+#: proxy-settings-widget.ui:130
+#, kde-format
+msgid ""
+"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/"
+"REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css"
+"\">\n"
+"p, li { white-space: pre-wrap; }\n"
+"</style></head><body style=\" font-family:'Sans Serif'; font-size:9pt; font-"
+"weight:400; font-style:normal;\">\n"
+"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; "
+"margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"></"
+"p></body></html>"
+msgstr ""
+"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/"
+"REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css"
+"\">\n"
+"p, li { white-space: pre-wrap; }\n"
+"</style></head><body style=\" font-family:'Sans Serif'; font-size:9pt; font-"
+"weight:400; font-style:normal;\">\n"
+"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; "
+"margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"></"
+"p></body></html>"
+
+#. i18n: ectx: property (title), widget (QGroupBox, conferenceGroupBox)
+#: proxy-settings-widget.ui:143
+#, kde-format
+msgid "Conference Server Settings"
+msgstr "Ustawienia serwera konferencji"
+
+#. i18n: ectx: property (text), widget (QLabel, fallbackConferenceServerLabel)
+#: proxy-settings-widget.ui:151
+#, kde-format
+msgid "Fallback conference server:"
+msgstr "Zapasowy serwer konferencji:"
+
+#. i18n: ectx: property (windowTitle), widget (QWidget, ServerSettingsWidget)
+#. i18n: ectx: property (title), widget (QGroupBox, connectionGroupBox)
+#: server-settings-widget.ui:14 server-settings-widget.ui:63
+#, kde-format
+msgid "Connection Settings"
+msgstr "Ustawienia połączenia"
+
+#. i18n: ectx: property (title), widget (QGroupBox, serverGroupBox)
+#: server-settings-widget.ui:20
+#, kde-format
+msgid "Server Settings"
+msgstr "Ustawienia serwera"
+
+#. i18n: ectx: property (text), widget (QLabel, serverLabel)
+#: server-settings-widget.ui:26
+#, kde-format
+msgid "Server address:"
+msgstr "Adres serwera:"
+
+#. i18n: ectx: property (text), widget (QLabel, portLabel)
+#: server-settings-widget.ui:36
+#, kde-format
+msgid "Server port:"
+msgstr "Port serwera:"
+
+#. i18n: ectx: property (text), widget (QLabel, keepaliveIntervalLabel)
+#: server-settings-widget.ui:69
+#, kde-format
+msgid "Keep Alive interval:"
+msgstr "Przedział utrzymywania żywym:"
+
+#. i18n: ectx: property (text), widget (QCheckBox, lowBandwidthCheckBox)
+#: server-settings-widget.ui:79
+#, kde-format
+msgid "Use low bandwidth mode"
+msgstr "Użyj trybu wąskiego pasma przesyłowego"
+
+#. i18n: ectx: property (title), widget (QGroupBox, groupBox)
+#: server-settings-widget.ui:89
+#, kde-format
+msgid "Resource"
+msgstr "Zasób"
+
+#. i18n: ectx: property (text), widget (QLabel, resourceLabel)
+#: server-settings-widget.ui:101
+#, kde-format
+msgid "Resource name:"
+msgstr "Nazwa zasobu:"
+
+#. i18n: ectx: property (text), widget (QLabel, priorityLabel)
+#: server-settings-widget.ui:108
+#, kde-format
+msgid "Priority:"
+msgstr "Priorytet:"
+
+#. i18n: ectx: property (title), widget (QGroupBox, securityGroupBox)
+#: server-settings-widget.ui:118
+#, kde-format
+msgid "Security Settings"
+msgstr "Ustawienia bezpieczeństwa"
+
+#. i18n: ectx: property (text), widget (QCheckBox, requireEncryptionCheckBox)
+#: server-settings-widget.ui:124
+#, kde-format
+msgid "Require encrypted connection"
+msgstr "Wymagaj szyfrowanego połączenia"
+
+#. i18n: ectx: property (text), widget (QCheckBox, ignoreSslErrorsCheckBox)
+#: server-settings-widget.ui:131
+#, kde-format
+msgid "Ignore SSL errors"
+msgstr "Ignoruj błędy SSL"
+
+#. i18n: ectx: property (text), widget (QCheckBox, oldSslCheckBox)
+#: server-settings-widget.ui:138
+#, kde-format
+msgid "Use old-style SSL"
+msgstr "Użyj SSL w starym stylu"

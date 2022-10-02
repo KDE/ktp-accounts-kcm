@@ -1,0 +1,278 @@
+# Copyright (C) YEAR This_file_is_part_of_KDE
+# This file is distributed under the same license as the PACKAGE package.
+#
+# Translators:
+# Volkan Gezer <volkangezer@gmail.com>, 2013.
+# Emir SARI <emir_sari@icloud.com>, 2022.
+msgid ""
+msgstr ""
+"Project-Id-Version: extragear-network-kde4\n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2021-03-28 16:10+0000\n"
+"PO-Revision-Date: 2022-06-23 10:22+0300\n"
+"Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
+"Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
+"Language: tr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Generator: Lokalize 22.04.2\n"
+
+#: gabble-account-ui.cpp:112
+#, kde-format
+msgid "Server"
+msgstr "Sunucu"
+
+#: gabble-account-ui.cpp:114
+#, kde-format
+msgid "Proxy"
+msgstr "Vekil Sunucu"
+
+#. i18n: ectx: property (windowTitle), widget (QWidget, MainOptionsWidgetGoogleTalk)
+#. i18n: ectx: property (windowTitle), widget (QWidget, MainOptionsWidget)
+#. i18n: ectx: property (windowTitle), widget (QWidget, MainOptionsWidgetKDETalk)
+#. i18n: ectx: property (windowTitle), widget (QWidget, MainOptionsWidgetMSN)
+#. i18n: ectx: property (windowTitle), widget (QWidget, MainOptionsWidgetFacebook)
+#: main-options-widget-facebook.ui:14 main-options-widget-googletalk.ui:14
+#: main-options-widget-kde-talk.ui:14 main-options-widget-msn.ui:14
+#: main-options-widget.ui:14
+#, kde-format
+msgid "Account Preferences"
+msgstr "Hesap Tercihleri"
+
+#. i18n: ectx: property (text), widget (QLabel, accountLabel)
+#: main-options-widget-facebook.ui:25
+#, kde-format
+msgid "Username:"
+msgstr "Kullanıcı Adı:"
+
+#. i18n: ectx: property (text), widget (QLabel, passwordLabel)
+#: main-options-widget-facebook.ui:38 main-options-widget-kde-talk.ui:46
+#: main-options-widget.ui:42
+#, kde-format
+msgid "Password:"
+msgstr "Parola:"
+
+#. i18n: ectx: property (text), widget (QLabel, label)
+#: main-options-widget-facebook.ui:63
+#, kde-format
+msgid ""
+"This is your username, not your normal Facebook login.<br/>\n"
+"If you are facebook.com/<b>badger</b>, enter <b>badger</b>.<br/>\n"
+"Use <a href=\"http://www.facebook.com/username/\">this page</a> to choose a "
+"Facebook username."
+msgstr ""
+"Bu, kullanıcı adınızdır. Normal Facebook oturum bilginiz değil.<br/>\n"
+"Eğer facebook.com/<b>foo</b> iseniz, <b>foo</b> yazın.<br/>\n"
+"Bir Facebook kullanıcı adı seçmek için <a href=\"http://www.facebook.com/"
+"username/\">bu sayfayı</a> kullanın."
+
+#. i18n: ectx: property (text), widget (QLabel, accountLabel)
+#: main-options-widget-googletalk.ui:29
+#, kde-format
+msgid "Email address:"
+msgstr "E-posta adresi:"
+
+#. i18n: ectx: property (text), widget (QLabel, accountLabel)
+#: main-options-widget-kde-talk.ui:22
+#, kde-format
+msgid "KDE Talk ID:"
+msgstr "KDE Talk Kimliği:"
+
+#. i18n: ectx: property (text), widget (QLabel, label)
+#: main-options-widget-kde-talk.ui:37
+#, kde-format
+msgid "@kdetalk.net"
+msgstr "@kdetalk.net"
+
+#. i18n: ectx: property (text), widget (QCheckBox, registerCheckBox)
+#: main-options-widget-kde-talk.ui:63 main-options-widget.ui:52
+#, kde-format
+msgid "Register new account"
+msgstr "Yeni hesap oluştur"
+
+#: main-options-widget-msn.cpp:58
+#, kde-format
+msgid "Windows Live Messenger"
+msgstr "Windows Live Messenger"
+
+#. i18n: ectx: property (text), widget (QLabel, label)
+#: main-options-widget-msn.ui:20
+#, kde-format
+msgid "You will be prompted for login details during connection."
+msgstr "Bağlantı sırasında oturum ayrıntılarınız sorulacaktır."
+
+#. i18n: ectx: property (text), widget (QLabel, accountLabel)
+#: main-options-widget.ui:32
+#, kde-format
+msgid "Jabber ID:"
+msgstr "Jabber Kimliği:"
+
+#. i18n: ectx: property (windowTitle), widget (QWidget, ProxySettingsWidget)
+#: proxy-settings-widget.ui:14
+#, kde-format
+msgid "Advanced Options"
+msgstr "Gelişmiş Seçenekler"
+
+#. i18n: ectx: property (title), widget (QGroupBox, stunGroupBox)
+#: proxy-settings-widget.ui:20
+#, kde-format
+msgid "STUN Server Settings"
+msgstr "STUN Sunucu Ayarları"
+
+#. i18n: ectx: property (text), widget (QLabel, stunServerLabel)
+#: proxy-settings-widget.ui:28
+#, kde-format
+msgid "STUN server:"
+msgstr "STUN sunucusu:"
+
+#. i18n: ectx: property (text), widget (QLabel, stunPortLabel)
+#. i18n: ectx: property (text), widget (QLabel, fallbackStunPortLabel)
+#. i18n: ectx: property (text), widget (QLabel, httpsProxyPortLabel)
+#: proxy-settings-widget.ui:38 proxy-settings-widget.ui:66
+#: proxy-settings-widget.ui:103
+#, kde-format
+msgid "Port:"
+msgstr "Kapı:"
+
+#. i18n: ectx: property (text), widget (QLabel, fallbackStunServerLabel)
+#: proxy-settings-widget.ui:56
+#, kde-format
+msgid "Fallback STUN server:"
+msgstr "İkincil STUN sunucusu:"
+
+#. i18n: ectx: property (title), widget (QGroupBox, proxyGroupBox)
+#: proxy-settings-widget.ui:85
+#, kde-format
+msgid "Proxy Settings"
+msgstr "Vekil Sunucu Ayarları"
+
+#. i18n: ectx: property (text), widget (QLabel, httpsProxyServerLabel)
+#: proxy-settings-widget.ui:93
+#, kde-format
+msgid "HTTPS proxy server:"
+msgstr "HTTPS vekil sunucusu:"
+
+#. i18n: ectx: property (text), widget (QLabel, fallbackSocks5ProxiesLabel)
+#: proxy-settings-widget.ui:119
+#, kde-format
+msgid "Fallback SOCKS 5 proxy servers:"
+msgstr "İkincil SOCKS 5 vekil sunucuları:"
+
+#. i18n: ectx: property (html), widget (QTextEdit, fallbackSocks5ProxiesTextEdit)
+#: proxy-settings-widget.ui:130
+#, kde-format
+msgid ""
+"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/"
+"REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css"
+"\">\n"
+"p, li { white-space: pre-wrap; }\n"
+"</style></head><body style=\" font-family:'Sans Serif'; font-size:9pt; font-"
+"weight:400; font-style:normal;\">\n"
+"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; "
+"margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"></"
+"p></body></html>"
+msgstr ""
+"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/"
+"REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css"
+"\">\n"
+"p, li { white-space: pre-wrap; }\n"
+"</style></head><body style=\" font-family:'Sans Serif'; font-size:9pt; font-"
+"weight:400; font-style:normal;\">\n"
+"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; "
+"margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"></"
+"p></body></html>"
+
+#. i18n: ectx: property (title), widget (QGroupBox, conferenceGroupBox)
+#: proxy-settings-widget.ui:143
+#, kde-format
+msgid "Conference Server Settings"
+msgstr "Konferans Sunucu Ayarları"
+
+#. i18n: ectx: property (text), widget (QLabel, fallbackConferenceServerLabel)
+#: proxy-settings-widget.ui:151
+#, kde-format
+msgid "Fallback conference server:"
+msgstr "İkincil konferans sunucusu:"
+
+#. i18n: ectx: property (windowTitle), widget (QWidget, ServerSettingsWidget)
+#. i18n: ectx: property (title), widget (QGroupBox, connectionGroupBox)
+#: server-settings-widget.ui:14 server-settings-widget.ui:63
+#, kde-format
+msgid "Connection Settings"
+msgstr "Bağlantı Ayarları"
+
+#. i18n: ectx: property (title), widget (QGroupBox, serverGroupBox)
+#: server-settings-widget.ui:20
+#, kde-format
+msgid "Server Settings"
+msgstr "Sunucu Ayarları"
+
+#. i18n: ectx: property (text), widget (QLabel, serverLabel)
+#: server-settings-widget.ui:26
+#, kde-format
+msgid "Server address:"
+msgstr "Sunucu adresi:"
+
+#. i18n: ectx: property (text), widget (QLabel, portLabel)
+#: server-settings-widget.ui:36
+#, kde-format
+msgid "Server port:"
+msgstr "Sunucu kapısı:"
+
+#. i18n: ectx: property (text), widget (QLabel, keepaliveIntervalLabel)
+#: server-settings-widget.ui:69
+#, kde-format
+msgid "Keep Alive interval:"
+msgstr "CanlıTut (KeepAlive) aralığı:"
+
+#. i18n: ectx: property (text), widget (QCheckBox, lowBandwidthCheckBox)
+#: server-settings-widget.ui:79
+#, kde-format
+msgid "Use low bandwidth mode"
+msgstr "Düşük bant genişliği kipini kullan"
+
+#. i18n: ectx: property (title), widget (QGroupBox, groupBox)
+#: server-settings-widget.ui:89
+#, kde-format
+msgid "Resource"
+msgstr "Özkaynak"
+
+#. i18n: ectx: property (text), widget (QLabel, resourceLabel)
+#: server-settings-widget.ui:101
+#, kde-format
+msgid "Resource name:"
+msgstr "Özkaynak adı:"
+
+#. i18n: ectx: property (text), widget (QLabel, priorityLabel)
+#: server-settings-widget.ui:108
+#, kde-format
+msgid "Priority:"
+msgstr "Öncelik:"
+
+#. i18n: ectx: property (title), widget (QGroupBox, securityGroupBox)
+#: server-settings-widget.ui:118
+#, kde-format
+msgid "Security Settings"
+msgstr "Güvenlik Ayarları"
+
+#. i18n: ectx: property (text), widget (QCheckBox, requireEncryptionCheckBox)
+#: server-settings-widget.ui:124
+#, kde-format
+msgid "Require encrypted connection"
+msgstr "Şifreli bağlantı gerektir"
+
+#. i18n: ectx: property (text), widget (QCheckBox, ignoreSslErrorsCheckBox)
+#: server-settings-widget.ui:131
+#, kde-format
+msgid "Ignore SSL errors"
+msgstr "SSL hatalarını yok say"
+
+#. i18n: ectx: property (text), widget (QCheckBox, oldSslCheckBox)
+#: server-settings-widget.ui:138
+#, kde-format
+msgid "Use old-style SSL"
+msgstr "Eski SSL biçemini kullan"

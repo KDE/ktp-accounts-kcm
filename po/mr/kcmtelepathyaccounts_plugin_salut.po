@@ -1,0 +1,69 @@
+# Copyright (C) YEAR This_file_is_part_of_KDE
+# This file is distributed under the same license as the PACKAGE package.
+#
+# Chetan Khona <chetan@kompkin.com>, 2013.
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2019-05-20 03:11+0200\n"
+"PO-Revision-Date: 2013-03-13 12:31+0530\n"
+"Last-Translator: Chetan Khona <chetan@kompkin.com>\n"
+"Language-Team: Marathi <kde-i18n-doc@kde.org>\n"
+"Language: mr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n!=1);\n"
+"X-Generator: Lokalize 1.5\n"
+
+#. i18n: ectx: property (title), widget (QGroupBox, additionalGroupBox)
+#: salut-advanced-options-widget.ui:17
+#, kde-format
+msgid "Additional Information"
+msgstr "अधिक माहिती"
+
+#. i18n: ectx: property (text), widget (QLabel, pubnameLabel)
+#: salut-advanced-options-widget.ui:26
+#, fuzzy, kde-format
+#| msgid "Published Name:"
+msgid "Published name:"
+msgstr "प्रकाशित नाव :"
+
+#. i18n: ectx: property (text), widget (QLabel, emailLabel)
+#: salut-advanced-options-widget.ui:40
+#, kde-format
+msgid "Email:"
+msgstr "इमेल :"
+
+#. i18n: ectx: property (text), widget (QLabel, jidLabel)
+#: salut-advanced-options-widget.ui:54
+#, kde-format
+msgid "Jabber ID:"
+msgstr "जेबर आयडी :"
+
+#. i18n: ectx: property (windowTitle), widget (QWidget, SalutMainOptionsWidget)
+#: salut-main-options-widget.ui:14
+#, kde-format
+msgid "Account Preferences"
+msgstr "खाते प्राधान्ये"
+
+#. i18n: ectx: property (text), widget (QLabel, firstnameLabel)
+#: salut-main-options-widget.ui:25
+#, fuzzy, kde-format
+#| msgid "First Name:"
+msgid "First name:"
+msgstr "प्रथम नाव :"
+
+#. i18n: ectx: property (text), widget (QLabel, lastnameLabel)
+#: salut-main-options-widget.ui:38
+#, fuzzy, kde-format
+#| msgid "Last Name:"
+msgid "Last name:"
+msgstr "आडनाव :"
+
+#. i18n: ectx: property (text), widget (QLabel, nicknameLabel)
+#: salut-main-options-widget.ui:51
+#, kde-format
+msgid "Nickname:"
+msgstr "टोपणनाव :"

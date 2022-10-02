@@ -1,0 +1,271 @@
+# Translation of kcmtelepathyaccounts_plugin_gabble.po into Serbian.
+# Mladen Pejakovic <pejakm@gmail.com>, 2012.
+# Chusslove Illich <caslav.ilic@gmx.net>, 2012, 2013.
+msgid ""
+msgstr ""
+"Project-Id-Version: kcmtelepathyaccounts_plugin_gabble\n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2019-05-20 03:11+0200\n"
+"PO-Revision-Date: 2013-11-30 18:07+0100\n"
+"Last-Translator: Chusslove Illich <caslav.ilic@gmx.net>\n"
+"Language-Team: Serbian <kde-i18n-sr@kde.org>\n"
+"Language: sr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=4; plural=n==1 ? 3 : n%10==1 && n%100!=11 ? 0 : n"
+"%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"X-Accelerator-Marker: &\n"
+"X-Text-Markup: kde4\n"
+"X-Environment: kde\n"
+
+# >> @title:tab
+#: gabble-account-ui.cpp:112
+#, kde-format
+msgid "Server"
+msgstr "Сервер"
+
+# >> @title:tab
+#: gabble-account-ui.cpp:114
+#, kde-format
+msgid "Proxy"
+msgstr "Прокси"
+
+#. i18n: ectx: property (windowTitle), widget (QWidget, MainOptionsWidgetMSN)
+#. i18n: ectx: property (windowTitle), widget (QWidget, MainOptionsWidgetGoogleTalk)
+#. i18n: ectx: property (windowTitle), widget (QWidget, MainOptionsWidgetFacebook)
+#. i18n: ectx: property (windowTitle), widget (QWidget, MainOptionsWidget)
+#. i18n: ectx: property (windowTitle), widget (QWidget, MainOptionsWidgetKDETalk)
+#: main-options-widget-facebook.ui:14 main-options-widget-googletalk.ui:14
+#: main-options-widget-kde-talk.ui:14 main-options-widget-msn.ui:14
+#: main-options-widget.ui:14
+#, kde-format
+msgid "Account Preferences"
+msgstr "Поставке налога"
+
+#. i18n: ectx: property (text), widget (QLabel, accountLabel)
+#: main-options-widget-facebook.ui:25
+#, kde-format
+msgid "Username:"
+msgstr "Корисничко име:"
+
+#. i18n: ectx: property (text), widget (QLabel, passwordLabel)
+#: main-options-widget-facebook.ui:38 main-options-widget-kde-talk.ui:46
+#: main-options-widget.ui:42
+#, kde-format
+msgid "Password:"
+msgstr "Лозинка:"
+
+#. i18n: ectx: property (text), widget (QLabel, label)
+#: main-options-widget-facebook.ui:63
+#, kde-format
+msgid ""
+"This is your username, not your normal Facebook login.<br/>\n"
+"If you are facebook.com/<b>badger</b>, enter <b>badger</b>.<br/>\n"
+"Use <a href=\"http://www.facebook.com/username/\">this page</a> to choose a "
+"Facebook username."
+msgstr ""
+"Ово је ваше корисничко име, а не уобичајена пријава на Фејсбуку.<br/>Ако је "
+"пријава facebook.com/<b>jazavac</b>, унесите <b>jazavac</b>.<br/>Идите на <a "
+"href=\"http://www.facebook.com/username/\">ову страницу</a> да изаберете "
+"корисничко име на Фејсбуку."
+
+#. i18n: ectx: property (text), widget (QLabel, accountLabel)
+#: main-options-widget-googletalk.ui:29
+#, kde-format
+msgid "Email address:"
+msgstr "Адреса е‑поште:"
+
+#. i18n: ectx: property (text), widget (QLabel, accountLabel)
+#: main-options-widget-kde-talk.ui:22
+#, kde-format
+msgid "KDE Talk ID:"
+msgstr "ИД на КДЕ разговору:"
+
+#. i18n: ectx: property (text), widget (QLabel, label)
+#: main-options-widget-kde-talk.ui:37
+#, kde-format
+msgid "@kdetalk.net"
+msgstr "@kdetalk.net"
+
+#. i18n: ectx: property (text), widget (QCheckBox, registerCheckBox)
+#: main-options-widget-kde-talk.ui:63 main-options-widget.ui:52
+#, kde-format
+msgid "Register new account"
+msgstr "Региструј нови налог"
+
+#: main-options-widget-msn.cpp:58
+#, kde-format
+msgid "Windows Live Messenger"
+msgstr "Виндоуз лајв месенџер"
+
+#. i18n: ectx: property (text), widget (QLabel, label)
+#: main-options-widget-msn.ui:20
+#, kde-format
+msgid "You will be prompted for login details during connection."
+msgstr "Приликом повезивања бићете упитани за детаље пријаве."
+
+#. i18n: ectx: property (text), widget (QLabel, accountLabel)
+#: main-options-widget.ui:32
+#, kde-format
+msgid "Jabber ID:"
+msgstr "Џабер ИД:"
+
+#. i18n: ectx: property (windowTitle), widget (QWidget, ProxySettingsWidget)
+#: proxy-settings-widget.ui:14
+#, kde-format
+msgid "Advanced Options"
+msgstr "Напредне опције"
+
+#. i18n: ectx: property (title), widget (QGroupBox, stunGroupBox)
+#: proxy-settings-widget.ui:20
+#, kde-format
+msgid "STUN Server Settings"
+msgstr "Поставке СТУН сервера"
+
+#. i18n: ectx: property (text), widget (QLabel, stunServerLabel)
+#: proxy-settings-widget.ui:28
+#, kde-format
+msgid "STUN server:"
+msgstr "СТУН сервер:"
+
+#. i18n: ectx: property (text), widget (QLabel, stunPortLabel)
+#. i18n: ectx: property (text), widget (QLabel, fallbackStunPortLabel)
+#. i18n: ectx: property (text), widget (QLabel, httpsProxyPortLabel)
+#: proxy-settings-widget.ui:38 proxy-settings-widget.ui:66
+#: proxy-settings-widget.ui:103
+#, kde-format
+msgid "Port:"
+msgstr "Порт:"
+
+#. i18n: ectx: property (text), widget (QLabel, fallbackStunServerLabel)
+#: proxy-settings-widget.ui:56
+#, kde-format
+msgid "Fallback STUN server:"
+msgstr "Одступни СТУН сервер:"
+
+#. i18n: ectx: property (title), widget (QGroupBox, proxyGroupBox)
+#: proxy-settings-widget.ui:85
+#, kde-format
+msgid "Proxy Settings"
+msgstr "Поставке проксија"
+
+#. i18n: ectx: property (text), widget (QLabel, httpsProxyServerLabel)
+#: proxy-settings-widget.ui:93
+#, kde-format
+msgid "HTTPS proxy server:"
+msgstr "ХТТПС прокси сервер:"
+
+#. i18n: ectx: property (text), widget (QLabel, fallbackSocks5ProxiesLabel)
+#: proxy-settings-widget.ui:119
+#, kde-format
+msgid "Fallback SOCKS 5 proxy servers:"
+msgstr "Одступни СОКС‑5 прокси сервери:"
+
+# >! Empty message?
+#. i18n: ectx: property (html), widget (QTextEdit, fallbackSocks5ProxiesTextEdit)
+#: proxy-settings-widget.ui:130
+#, kde-format
+msgid ""
+"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/"
+"REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css"
+"\">\n"
+"p, li { white-space: pre-wrap; }\n"
+"</style></head><body style=\" font-family:'Sans Serif'; font-size:9pt; font-"
+"weight:400; font-style:normal;\">\n"
+"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; "
+"margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"></"
+"p></body></html>"
+msgstr "<html><p></p></html>"
+
+#. i18n: ectx: property (title), widget (QGroupBox, conferenceGroupBox)
+#: proxy-settings-widget.ui:143
+#, kde-format
+msgid "Conference Server Settings"
+msgstr "Поставке конференцијског сервера"
+
+#. i18n: ectx: property (text), widget (QLabel, fallbackConferenceServerLabel)
+#: proxy-settings-widget.ui:151
+#, kde-format
+msgid "Fallback conference server:"
+msgstr "Одступни конференцијски сервер:"
+
+#. i18n: ectx: property (windowTitle), widget (QWidget, ServerSettingsWidget)
+#. i18n: ectx: property (title), widget (QGroupBox, connectionGroupBox)
+#: server-settings-widget.ui:14 server-settings-widget.ui:63
+#, kde-format
+msgid "Connection Settings"
+msgstr "Поставке везе"
+
+#. i18n: ectx: property (title), widget (QGroupBox, serverGroupBox)
+#: server-settings-widget.ui:20
+#, kde-format
+msgid "Server Settings"
+msgstr "Поставке сервера"
+
+#. i18n: ectx: property (text), widget (QLabel, serverLabel)
+#: server-settings-widget.ui:26
+#, kde-format
+msgid "Server address:"
+msgstr "Адреса сервера:"
+
+#. i18n: ectx: property (text), widget (QLabel, portLabel)
+#: server-settings-widget.ui:36
+#, kde-format
+msgid "Server port:"
+msgstr "Порт сервера:"
+
+#. i18n: ectx: property (text), widget (QLabel, keepaliveIntervalLabel)
+#: server-settings-widget.ui:69
+#, kde-format
+msgid "Keep Alive interval:"
+msgstr "Период одржавања везе:"
+
+#. i18n: ectx: property (text), widget (QCheckBox, lowBandwidthCheckBox)
+#: server-settings-widget.ui:79
+#, kde-format
+msgid "Use low bandwidth mode"
+msgstr "Режим ниског протока"
+
+#. i18n: ectx: property (title), widget (QGroupBox, groupBox)
+#: server-settings-widget.ui:89
+#, kde-format
+msgid "Resource"
+msgstr "Ресурс"
+
+#. i18n: ectx: property (text), widget (QLabel, resourceLabel)
+#: server-settings-widget.ui:101
+#, kde-format
+msgid "Resource name:"
+msgstr "Име ресурса:"
+
+#. i18n: ectx: property (text), widget (QLabel, priorityLabel)
+#: server-settings-widget.ui:108
+#, kde-format
+msgid "Priority:"
+msgstr "Приоритет:"
+
+#. i18n: ectx: property (title), widget (QGroupBox, securityGroupBox)
+#: server-settings-widget.ui:118
+#, kde-format
+msgid "Security Settings"
+msgstr "Поставке безбедности"
+
+#. i18n: ectx: property (text), widget (QCheckBox, requireEncryptionCheckBox)
+#: server-settings-widget.ui:124
+#, kde-format
+msgid "Require encrypted connection"
+msgstr "Захтевај шифровану везу"
+
+#. i18n: ectx: property (text), widget (QCheckBox, ignoreSslErrorsCheckBox)
+#: server-settings-widget.ui:131
+#, kde-format
+msgid "Ignore SSL errors"
+msgstr "Занемари ССЛ грешке"
+
+#. i18n: ectx: property (text), widget (QCheckBox, oldSslCheckBox)
+#: server-settings-widget.ui:138
+#, kde-format
+msgid "Use old-style SSL"
+msgstr "Користи старовремски ССЛ"

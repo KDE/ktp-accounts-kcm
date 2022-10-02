@@ -1,0 +1,391 @@
+# Translation of kcmtelepathyaccounts_plugin_haze.po into Serbian.
+# Mladen Pejakovic <pejakm@gmail.com>, 2012.
+# Chusslove Illich <caslav.ilic@gmx.net>, 2012, 2013, 2016.
+msgid ""
+msgstr ""
+"Project-Id-Version: kcmtelepathyaccounts_plugin_haze\n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2019-05-20 03:11+0200\n"
+"PO-Revision-Date: 2016-07-10 19:45+0200\n"
+"Last-Translator: Chusslove Illich <caslav.ilic@gmx.net>\n"
+"Language-Team: Serbian <kde-i18n-sr@kde.org>\n"
+"Language: sr@latin\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=4; plural=n==1 ? 3 : n%10==1 && n%100!=11 ? 0 : n"
+"%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"X-Accelerator-Marker: &\n"
+"X-Text-Markup: kde4\n"
+"X-Environment: kde\n"
+
+#. i18n: ectx: property (windowTitle), widget (QWidget, SipeMainOptionsWidget)
+#. i18n: ectx: property (windowTitle), widget (QWidget, SkypeWebOptionsWidget)
+#. i18n: ectx: property (windowTitle), widget (QWidget, MsnMainOptionsWidget)
+#. i18n: ectx: property (windowTitle), widget (QWidget, SteamMainOptionsWidget)
+#. i18n: ectx: property (windowTitle), widget (QWidget, MySpaceIMMainOptionsWidget)
+#. i18n: ectx: property (windowTitle), widget (QWidget, IcqMainOptionsWidget)
+#. i18n: ectx: property (windowTitle), widget (QWidget, GroupWiseMainOptionsWidget)
+#. i18n: ectx: property (windowTitle), widget (QWidget, AimMainOptionsWidget)
+#. i18n: ectx: property (windowTitle), widget (QWidget, YahooMainOptionsWidget)
+#. i18n: ectx: property (windowTitle), widget (QWidget, SkypeMainOptionsWidget)
+#: aim-main-options-widget.ui:20 groupwise-main-options-widget.ui:20
+#: icq-main-options-widget.ui:20 msn-main-options-widget.ui:20
+#: myspaceim-main-options-widget.ui:20 sipe-main-options-widget.ui:20
+#: skype-main-options-widget.ui:20 skypeweb-options-widget.ui:20
+#: steam-main-options-widget.ui:20 yahoo-main-options-widget.ui:20
+#, kde-format
+msgid "Account Preferences"
+msgstr "Postavke naloga"
+
+#. i18n: ectx: property (text), widget (QLabel, accountLabel)
+#: aim-main-options-widget.ui:29 groupwise-main-options-widget.ui:34
+#: myspaceim-main-options-widget.ui:34 sipe-main-options-widget.ui:34
+#: steam-main-options-widget.ui:34 yahoo-main-options-widget.ui:34
+#, kde-format
+msgid "Username:"
+msgstr "Korisničko ime:"
+
+#. i18n: ectx: property (text), widget (QLabel, passwordLabel)
+#: aim-main-options-widget.ui:46 groupwise-main-options-widget.ui:54
+#: icq-main-options-widget.ui:44 msn-main-options-widget.ui:53
+#: myspaceim-main-options-widget.ui:54 sipe-main-options-widget.ui:54
+#: skypeweb-options-widget.ui:44 steam-main-options-widget.ui:75
+#: yahoo-main-options-widget.ui:48
+#, kde-format
+msgid "Password:"
+msgstr "Lozinka:"
+
+#. i18n: ectx: property (windowTitle), widget (QWidget, AimServerSettingsWidget)
+#. i18n: ectx: property (windowTitle), widget (QWidget, SkypeAdvancedSettingsWidget)
+#. i18n: ectx: property (windowTitle), widget (QWidget, YahooServerSettingsWidget)
+#. i18n: ectx: property (windowTitle), widget (QWidget, MySpaceIMAdvancedSettingsWidget)
+#. i18n: ectx: property (windowTitle), widget (QWidget, GroupWiseAdvancedSettingsWidget)
+#. i18n: ectx: property (windowTitle), widget (QWidget, SipeAdvancedSettingsWidget)
+#: aim-server-settings-widget.ui:14 groupwise-advanced-settings-widget.ui:14
+#: myspaceim-advanced-settings-widget.ui:14 sipe-advanced-settings-widget.ui:14
+#: skype-advanced-settings-widget.ui:14 yahoo-server-settings-widget.ui:14
+#, kde-format
+msgid "Advanced Options"
+msgstr "Napredne opcije"
+
+#. i18n: ectx: property (text), widget (QLabel, serverHeadlineLabel)
+#: aim-server-settings-widget.ui:32 icq-server-settings-widget.ui:37
+#: yahoo-server-settings-widget.ui:37
+#, kde-format
+msgid "<b>Server</b>"
+msgstr "<b>Server</b>"
+
+#. i18n: ectx: property (text), widget (QLabel, serverAddressLabel)
+#. i18n: ectx: property (text), widget (QLabel, serverLabel)
+#: aim-server-settings-widget.ui:39 icq-server-settings-widget.ui:44
+#, kde-format
+msgid "Address:"
+msgstr "Adresa:"
+
+#. i18n: ectx: property (text), widget (QLabel, serverPortLabel)
+#. i18n: ectx: property (text), widget (QLabel, xferPortLabel)
+#. i18n: ectx: property (text), widget (QLabel, portLabel)
+#: aim-server-settings-widget.ui:49 groupwise-advanced-settings-widget.ui:41
+#: icq-server-settings-widget.ui:54 myspaceim-advanced-settings-widget.ui:41
+#: yahoo-server-settings-widget.ui:44 yahoo-server-settings-widget.ui:87
+#, kde-format
+msgid "Port:"
+msgstr "Port:"
+
+#. i18n: ectx: property (text), widget (QLabel, transferHeadlineLabel)
+#. i18n: ectx: property (text), widget (QLabel, securityHeadlineLabel)
+#: aim-server-settings-widget.ui:75 icq-server-settings-widget.ui:80
+#, kde-format
+msgid "<b>Security</b>"
+msgstr "<b>Bezbednost</b>"
+
+#. i18n: ectx: property (text), widget (QLabel, encryptionLabel)
+#: aim-server-settings-widget.ui:82
+#, kde-format
+msgid "Encryption:"
+msgstr "Šifrovanje:"
+
+#. i18n: ectx: property (text), widget (QCheckBox, rvProxy)
+#: aim-server-settings-widget.ui:92
+#, kde-format
+msgid "Always use AIM proxy"
+msgstr "Uvek koristi AIM proksi"
+
+#. i18n: ectx: property (text), widget (QLabel, otherHeadlineLabel)
+#: aim-server-settings-widget.ui:108 icq-server-settings-widget.ui:114
+#: yahoo-server-settings-widget.ui:152
+#, kde-format
+msgid "<b>Other</b>"
+msgstr "<b>Ostalo</b>"
+
+# literal-segment: clientLogin
+#. i18n: ectx: property (text), widget (QCheckBox, clientLogin)
+#: aim-server-settings-widget.ui:115
+#, kde-format
+msgid "Use clientLogin"
+msgstr "Koristi clientLogin"
+
+#. i18n: ectx: property (text), widget (QCheckBox, multipleLogins)
+#: aim-server-settings-widget.ui:122
+#, kde-format
+msgid "Allow multiple simultaneous logins"
+msgstr "Dozvoli više istovremenih prijava"
+
+#. i18n: ectx: property (text), widget (QLabel, serverLabel)
+#: groupwise-advanced-settings-widget.ui:31
+#: myspaceim-advanced-settings-widget.ui:31
+#, kde-format
+msgid "Server:"
+msgstr "Server:"
+
+#. i18n: ectx: property (toolTip), widget (QLineEdit, accountLineEdit)
+#: groupwise-main-options-widget.ui:41
+#, kde-format
+msgid "The GroupWise username is your email address."
+msgstr "Korisničko ime na GroupWiseu je vaša adresa e‑pošte."
+
+#. i18n: ectx: property (text), widget (QLabel, accountLabel)
+#: icq-main-options-widget.ui:34
+#, kde-format
+msgid "UIN:"
+msgstr "UIN:"
+
+#. i18n: ectx: property (windowTitle), widget (QWidget, IcqServerSettingsWidget)
+#: icq-server-settings-widget.ui:14
+#, kde-format
+msgid "Connection Settings"
+msgstr "Postavke veze"
+
+#. i18n: ectx: property (text), widget (QCheckBox, useSslCheckBox)
+#: icq-server-settings-widget.ui:87
+#, kde-format
+msgid "Use SSL"
+msgstr "Koristi SSL"
+
+#. i18n: ectx: property (text), widget (QCheckBox, allowMultipleLoginsCheckBox)
+#: icq-server-settings-widget.ui:94
+#, kde-format
+msgid "Allow multiple logins"
+msgstr "Dozvoli više prijava"
+
+# literal-segment: RV-Proxy
+#. i18n: ectx: property (text), widget (QCheckBox, alwaysUseRvProxyCheckBox)
+#: icq-server-settings-widget.ui:121
+#, kde-format
+msgid "Always use RV-Proxy"
+msgstr "Uvek koristi RvProxy"
+
+#. i18n: ectx: property (text), widget (QLabel, charsetLabel)
+#: icq-server-settings-widget.ui:128
+#, kde-format
+msgid "Charset"
+msgstr "Kodiranje"
+
+#. i18n: ectx: property (text), widget (QLabel, accountLabel)
+#. i18n: ectx: property (text), widget (QLabel, emailLabel)
+#: msn-main-options-widget.ui:29 sipe-advanced-settings-widget.ui:102
+#, kde-format
+msgid "Email address:"
+msgstr "Adresa e‑pošte:"
+
+#. i18n: ectx: property (text), widget (QLabel, label)
+#: msn-main-options-widget.ui:46
+#, kde-format
+msgid "Example: user@hotmail.com"
+msgstr "Primer: korisnik@hotmail.com"
+
+#. i18n: ectx: property (toolTip), widget (QLineEdit, accountLineEdit)
+#: myspaceim-main-options-widget.ui:41
+#, kde-format
+msgid "The MySpaceIM username is your email address."
+msgstr "Korisničko ime u MySpaceovom IM‑u je vaša adresa e‑pošte."
+
+#. i18n: ectx: property (placeholderText), widget (QLineEdit, accountLineEdit)
+#: myspaceim-main-options-widget.ui:47 sipe-main-options-widget.ui:47
+#, kde-format
+msgid "john@doe.com"
+msgstr "neko@nepoznat.com"
+
+#. i18n: ectx: property (text), widget (QLabel, loginLabel)
+#: sipe-advanced-settings-widget.ui:31
+#, kde-format
+msgid "Login:"
+msgstr "Prijava:"
+
+#. i18n: ectx: property (text), widget (QLabel, transportLabel)
+#: sipe-advanced-settings-widget.ui:44
+#, kde-format
+msgid "Connection type:"
+msgstr "Tip veze:"
+
+#. i18n: ectx: property (text), widget (QLineEdit, transportLineEdit)
+#: sipe-advanced-settings-widget.ui:51
+#, kde-format
+msgid "auto"
+msgstr "automatski"
+
+#. i18n: ectx: property (text), widget (QLabel, useragentLabel)
+#: sipe-advanced-settings-widget.ui:58
+#, kde-format
+msgid "User agent:"
+msgstr "Korisnički agent:"
+
+#. i18n: ectx: property (text), widget (QLabel, authenticationLabel)
+#: sipe-advanced-settings-widget.ui:68
+#, kde-format
+msgid "Authentication scheme:"
+msgstr "Autentifikaciona šema:"
+
+#. i18n: ectx: property (text), widget (QLineEdit, authenticationLineEdit)
+#: sipe-advanced-settings-widget.ui:75
+#, kde-format
+msgid "ntlm"
+msgstr "NTLM"
+
+#. i18n: ectx: property (text), widget (QLabel, dontpublishLabel)
+#: sipe-advanced-settings-widget.ui:82
+#, kde-format
+msgid "Do not publish my calendar information:"
+msgstr "Ne objavljuj moje kalendarske podatke:"
+
+#. i18n: ectx: property (text), widget (QLabel, emailurlLabel)
+#: sipe-advanced-settings-widget.ui:92
+#, kde-format
+msgid "Email services URL:"
+msgstr "URL servisa e‑pošte:"
+
+#. i18n: ectx: property (text), widget (QLabel, emailloginLabel)
+#: sipe-advanced-settings-widget.ui:112
+#, kde-format
+msgid "Email login:"
+msgstr "Prijava za e‑poštu:"
+
+#. i18n: ectx: property (text), widget (QLabel, emailpasswordLabel)
+#: sipe-advanced-settings-widget.ui:122
+#, kde-format
+msgid "Email password:"
+msgstr "Lozinka za e‑poštu:"
+
+#. i18n: ectx: property (text), widget (QLabel, groupchatuserLabel)
+#: sipe-advanced-settings-widget.ui:129
+#, kde-format
+msgid "Group chat proxy:"
+msgstr "Proksi za grupno ćaskanje:"
+
+#. i18n: ectx: property (text), widget (QLabel, serverLabel)
+#: sipe-advanced-settings-widget.ui:146
+#, kde-format
+msgid "Server[:port]:"
+msgstr "Server[:port]:"
+
+#. i18n: ectx: property (toolTip), widget (QLineEdit, accountLineEdit)
+#: sipe-main-options-widget.ui:41
+#, kde-format
+msgid "The Sipe username is your email address."
+msgstr "Korisničko ime u SIPE‑u je vaša adresa e‑pošte."
+
+#. i18n: ectx: property (text), widget (QCheckBox, skypeOutCheckBox)
+#: skype-advanced-settings-widget.ui:31
+#, kde-format
+msgid "Show SkypeOut contacts as 'Online'"
+msgstr "Prikaži SkypeOut kontakte kao „na vezi“"
+
+#. i18n: ectx: property (text), widget (QCheckBox, syncCheckBox)
+#: skype-advanced-settings-widget.ui:38
+#, kde-format
+msgid "Make Skype online/offline when going online/offline"
+msgstr "Neka Skype prati promene stanja na vezi/van veze"
+
+#. i18n: ectx: property (text), widget (QCheckBox, updatesCheckBox)
+#: skype-advanced-settings-widget.ui:45
+#, kde-format
+msgid "Automatically check for updates"
+msgstr "Automatski proveravaj nadogradnje"
+
+#. i18n: ectx: property (text), widget (QCheckBox, authRequestsCheckBox)
+#: skype-advanced-settings-widget.ui:52
+#, kde-format
+msgid "Automatically reject all authorization requests"
+msgstr "Automatski odbacuj sve zahteve za ovlašćivanje"
+
+#. i18n: ectx: property (text), widget (QCheckBox, autostartCheckBox)
+#: skype-advanced-settings-widget.ui:59
+#, kde-format
+msgid "Auto-start Skype if not running"
+msgstr "Automatski pokreni Skype ako već nije pokrenut"
+
+#. i18n: ectx: property (text), widget (QLabel, accountLabel)
+#: skype-main-options-widget.ui:37
+#, kde-format
+msgid "Account:"
+msgstr "Nalog:"
+
+#. i18n: ectx: property (text), widget (QLabel, accountLabel)
+#: skypeweb-options-widget.ui:34
+#, kde-format
+msgid "Name:"
+msgstr "Ime:"
+
+#. i18n: 'Steam Guard' is a service name and should not be translated
+#. i18n: ectx: property (text), widget (QLabel, steamguardLabel)
+#: steam-main-options-widget.ui:51
+#, kde-format
+msgid "Steam Guard code:"
+msgstr "Kod za Steamov Guard:"
+
+#. i18n: 'Steam Guard' is a service name and should not be translated
+#. i18n: ectx: property (text), widget (QLabel, label)
+#: steam-main-options-widget.ui:82
+#, kde-format
+msgid "The Steam Guard code will be emailed to you after attempting to login"
+msgstr ""
+"Kod za Steamov Guard biće vam poslat e‑poštom po pokušaju prijavljivanja."
+
+#. i18n: ectx: property (text), widget (QLabel, transferHeadlineLabel)
+#: yahoo-server-settings-widget.ui:73
+#, kde-format
+msgid "<b>File Transfer</b>"
+msgstr "<b>Prenos fajlova</b>"
+
+#. i18n: ectx: property (text), widget (QLabel, xferHostLabel)
+#: yahoo-server-settings-widget.ui:80
+#, kde-format
+msgid "Host:"
+msgstr "Domaćin:"
+
+#. i18n: ectx: property (text), widget (QLabel, localeHeadlineLabel)
+#: yahoo-server-settings-widget.ui:116
+#, kde-format
+msgid "<b>Locale</b>"
+msgstr "<b>Lokalitet</b>"
+
+#. i18n: ectx: property (text), widget (QLabel, roomListLocaleLablel)
+#: yahoo-server-settings-widget.ui:123
+#, kde-format
+msgid "Room List:"
+msgstr "Spisak soba:"
+
+#. i18n: ectx: property (text), widget (QLabel, charsetLabel)
+#: yahoo-server-settings-widget.ui:130
+#, kde-format
+msgid "Charset:"
+msgstr "Kodiranje:"
+
+#. i18n: ectx: property (text), item, widget (QComboBox, charsetComboBox)
+#: yahoo-server-settings-widget.ui:138
+#, kde-format
+msgid "UTF-8"
+msgstr "UTF‑8"
+
+#. i18n: ectx: property (text), widget (QCheckBox, SslProxy)
+#: yahoo-server-settings-widget.ui:159
+#, kde-format
+msgid "Use SSL on proxy"
+msgstr "Koristi SSL za proksi"
+
+#. i18n: ectx: property (text), widget (QCheckBox, ignoreInvites)
+#: yahoo-server-settings-widget.ui:166
+#, kde-format
+msgid "Ignore invites"
+msgstr "Zanemari pozivnice"

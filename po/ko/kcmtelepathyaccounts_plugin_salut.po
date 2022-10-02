@@ -1,0 +1,65 @@
+# Copyright (C) YEAR This_file_is_part_of_KDE
+# This file is distributed under the same license as the PACKAGE package.
+#
+# Shinjo Park <kde@peremen.name>, 2014.
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2019-05-20 03:11+0200\n"
+"PO-Revision-Date: 2014-03-09 04:23+0900\n"
+"Last-Translator: Shinjo Park <kde@peremen.name>\n"
+"Language-Team: Korean <kde-kr@kde.org>\n"
+"Language: ko\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#. i18n: ectx: property (title), widget (QGroupBox, additionalGroupBox)
+#: salut-advanced-options-widget.ui:17
+#, kde-format
+msgid "Additional Information"
+msgstr "추가 정보"
+
+#. i18n: ectx: property (text), widget (QLabel, pubnameLabel)
+#: salut-advanced-options-widget.ui:26
+#, kde-format
+msgid "Published name:"
+msgstr "공개 이름:"
+
+#. i18n: ectx: property (text), widget (QLabel, emailLabel)
+#: salut-advanced-options-widget.ui:40
+#, kde-format
+msgid "Email:"
+msgstr "이메일:"
+
+#. i18n: ectx: property (text), widget (QLabel, jidLabel)
+#: salut-advanced-options-widget.ui:54
+#, kde-format
+msgid "Jabber ID:"
+msgstr "Jabber ID:"
+
+#. i18n: ectx: property (windowTitle), widget (QWidget, SalutMainOptionsWidget)
+#: salut-main-options-widget.ui:14
+#, kde-format
+msgid "Account Preferences"
+msgstr "계정 설정"
+
+#. i18n: ectx: property (text), widget (QLabel, firstnameLabel)
+#: salut-main-options-widget.ui:25
+#, kde-format
+msgid "First name:"
+msgstr "이름:"
+
+#. i18n: ectx: property (text), widget (QLabel, lastnameLabel)
+#: salut-main-options-widget.ui:38
+#, kde-format
+msgid "Last name:"
+msgstr "성:"
+
+#. i18n: ectx: property (text), widget (QLabel, nicknameLabel)
+#: salut-main-options-widget.ui:51
+#, kde-format
+msgid "Nickname:"
+msgstr "별명:"

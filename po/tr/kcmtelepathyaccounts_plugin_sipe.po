@@ -1,0 +1,140 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR This_file_is_part_of_KDE
+# This file is distributed under the same license as the PACKAGE package.
+#
+# Translators:
+# Volkan Gezer <volkangezer@gmail.com>, 2014
+msgid ""
+msgstr ""
+"Project-Id-Version: extragear-network-kde4\n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2019-05-20 03:11+0200\n"
+"PO-Revision-Date: 2014-06-08 13:51+0000\n"
+"Last-Translator: Volkan Gezer <volkangezer@gmail.com>\n"
+"Language-Team: Turkish (http://www.transifex.com/projects/p/extragear-"
+"network-k-tr/language/tr/)\n"
+"Language: tr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#. i18n: ectx: property (windowTitle), widget (QWidget, SipeAdvancedOptionsWidget)
+#: sipe-advanced-options-widget.ui:14
+#, kde-format
+msgid "Advanced Options"
+msgstr "Gelişmiş Seçenekler"
+
+#. i18n: ectx: property (text), widget (QLabel, loginLabel)
+#: sipe-advanced-options-widget.ui:31
+#, kde-format
+msgid "Login:"
+msgstr "Giriş:"
+
+#. i18n: ectx: property (text), widget (QLabel, serverLabel)
+#: sipe-advanced-options-widget.ui:41
+#, kde-format
+msgid "Server:"
+msgstr "Sunucu:"
+
+#. i18n: ectx: property (text), widget (QLabel, portLabel)
+#: sipe-advanced-options-widget.ui:51
+#, kde-format
+msgid "Port:"
+msgstr "Bağlantı noktası:"
+
+#. i18n: ectx: property (text), widget (QLabel, transportLabel)
+#: sipe-advanced-options-widget.ui:71
+#, kde-format
+msgid "Connection type:"
+msgstr "Bağlantı türü:"
+
+#. i18n: ectx: property (text), item, widget (QComboBox, transportComboBox)
+#: sipe-advanced-options-widget.ui:79
+#, kde-format
+msgid "auto"
+msgstr "otomatik"
+
+#. i18n: ectx: property (text), item, widget (QComboBox, transportComboBox)
+#: sipe-advanced-options-widget.ui:84
+#, kde-format
+msgid "ssl"
+msgstr "ssl"
+
+#. i18n: ectx: property (text), item, widget (QComboBox, transportComboBox)
+#: sipe-advanced-options-widget.ui:89
+#, kde-format
+msgid "tcp"
+msgstr "tcp"
+
+#. i18n: ectx: property (text), widget (QLabel, useragentLabel)
+#: sipe-advanced-options-widget.ui:97
+#, kde-format
+msgid "User Agent:"
+msgstr "Kullanıcı Aracısı:"
+
+#. i18n: ectx: property (text), widget (QLabel, authenticationLabel)
+#: sipe-advanced-options-widget.ui:107
+#, kde-format
+msgid "Authentication scheme:"
+msgstr "Kimlik doğrulama düzeni:"
+
+#. i18n: ectx: property (text), item, widget (QComboBox, authenticationComboBox)
+#: sipe-advanced-options-widget.ui:115
+#, kde-format
+msgid "ntlm"
+msgstr "ntlm"
+
+#. i18n: ectx: property (text), item, widget (QComboBox, authenticationComboBox)
+#: sipe-advanced-options-widget.ui:120
+#, kde-format
+msgid "krb5"
+msgstr "krb5"
+
+#. i18n: ectx: property (text), item, widget (QComboBox, authenticationComboBox)
+#: sipe-advanced-options-widget.ui:125
+#, kde-format
+msgid "tls-dsk"
+msgstr "tls-dsk"
+
+#. i18n: ectx: property (text), widget (QCheckBox, singlesignonCheckBox)
+#: sipe-advanced-options-widget.ui:135
+#, kde-format
+msgid "Single Sign On"
+msgstr "Çoklu Oturum Açma"
+
+#. i18n: ectx: property (text), widget (QCheckBox, dontpublishcalendarCheckBox)
+#: sipe-advanced-options-widget.ui:142
+#, kde-format
+msgid "Do not publish my calendar information"
+msgstr "Takvim bilgilerimi yayınlama"
+
+#. i18n: ectx: property (windowTitle), widget (QWidget, SipeMainOptionsWidget)
+#: sipe-main-options-widget.ui:20
+#, kde-format
+msgid "Account Preferences"
+msgstr "Hesap Tercihleri"
+
+#. i18n: ectx: property (text), widget (QLabel, accountLabel)
+#: sipe-main-options-widget.ui:34
+#, kde-format
+msgid "Username:"
+msgstr "Kullanıcı Adı:"
+
+#. i18n: ectx: property (toolTip), widget (QLineEdit, accountLineEdit)
+#: sipe-main-options-widget.ui:41
+#, kde-format
+msgid "The Sipe username is your email address."
+msgstr "Sipe kullanıcı adı, e-postanızdır."
+
+#. i18n: ectx: property (placeholderText), widget (QLineEdit, accountLineEdit)
+#: sipe-main-options-widget.ui:47
+#, kde-format
+msgid "john@doe.com"
+msgstr "birisi@örnek.com"
+
+#. i18n: ectx: property (text), widget (QLabel, passwordLabel)
+#: sipe-main-options-widget.ui:54
+#, kde-format
+msgid "Password:"
+msgstr "Parola:"

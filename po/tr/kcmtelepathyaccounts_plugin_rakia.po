@@ -1,0 +1,329 @@
+# Copyright (C) YEAR This_file_is_part_of_KDE
+# This file is distributed under the same license as the PACKAGE package.
+#
+# Translators:
+# Volkan Gezer <volkangezer@gmail.com>, 2013.
+# Emir SARI <emir_sari@icloud.com>, 2022.
+msgid ""
+msgstr ""
+"Project-Id-Version: extragear-network-kde4\n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2019-05-20 03:11+0200\n"
+"PO-Revision-Date: 2022-06-23 10:24+0300\n"
+"Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
+"Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
+"Language: tr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Generator: Lokalize 22.04.2\n"
+
+#. i18n: ectx: property (title), widget (QGroupBox, authGroupBox)
+#: rakia-advanced-options-widget.ui:17
+#, kde-format
+msgid "Authentication"
+msgstr "Kimlik Doğrulama"
+
+#. i18n: ectx: property (text), widget (QLabel, authUserLabel)
+#: rakia-advanced-options-widget.ui:26
+#, kde-format
+msgid "User:"
+msgstr "Kullanıcı:"
+
+#. i18n: ectx: property (toolTip), widget (KLineEdit, authUserLineEdit)
+#: rakia-advanced-options-widget.ui:33
+#, kde-format
+msgid ""
+"Username for your SIP account. If your username is different from the user "
+"part your SIP URI, provide it here."
+msgstr ""
+"SIP hesabınız için kullanıcı adınız. Eğer kullanıcı adınız SIP URI'ından "
+"farklı ise buraya yazın."
+
+#. i18n: ectx: property (text), widget (QLabel, registrarLabel)
+#: rakia-advanced-options-widget.ui:40
+#, kde-format
+msgid "Registrar:"
+msgstr "Kayıtçı:"
+
+#. i18n: ectx: property (toolTip), widget (KLineEdit, registrarLineEdit)
+#: rakia-advanced-options-widget.ui:47
+#, kde-format
+msgid ""
+"Registrar for your SIP account. If your registrar is different from the "
+"server part your SIP URI, provide it here."
+msgstr ""
+"SIP hesabınız için kayıtçınız. Eğer kayıtçınız SIP URI'ındaki sunucu "
+"bölümünden farklı ise buraya yazın."
+
+#. i18n: ectx: property (title), widget (QGroupBox, proxyGroupBox)
+#: rakia-advanced-options-widget.ui:57
+#, kde-format
+msgid "Proxy"
+msgstr "Vekil"
+
+#. i18n: ectx: property (text), widget (QLabel, proxyLabel)
+#: rakia-advanced-options-widget.ui:66
+#, kde-format
+msgid "Proxy host:"
+msgstr "Vekil sunucusu:"
+
+#. i18n: ectx: property (text), widget (QLabel, portLabel)
+#: rakia-advanced-options-widget.ui:76
+#, kde-format
+msgid "Proxy port:"
+msgstr "Proxy sunucu kapısı:"
+
+#. i18n: ectx: property (text), widget (QLabel, transportLabel)
+#: rakia-advanced-options-widget.ui:83
+#, kde-format
+msgid "Transport:"
+msgstr "Ulaşım:"
+
+#. i18n: ectx: property (text), item, widget (KComboBox, transportComboBox)
+#. i18n: ectx: property (text), item, widget (KComboBox, keepaliveMechanismComboBox)
+#: rakia-advanced-options-widget.ui:91 rakia-advanced-options-widget.ui:246
+#, kde-format
+msgid "auto"
+msgstr "otomatik"
+
+#. i18n: ectx: property (text), item, widget (KComboBox, transportComboBox)
+#: rakia-advanced-options-widget.ui:96
+#, kde-format
+msgid "udp"
+msgstr "udp"
+
+#. i18n: ectx: property (text), item, widget (KComboBox, transportComboBox)
+#: rakia-advanced-options-widget.ui:101
+#, kde-format
+msgid "tcp"
+msgstr "tcp"
+
+#. i18n: ectx: property (text), item, widget (KComboBox, transportComboBox)
+#: rakia-advanced-options-widget.ui:106
+#, kde-format
+msgid "tls"
+msgstr "tls"
+
+#. i18n: ectx: property (title), widget (QGroupBox, stunGroupBox)
+#: rakia-advanced-options-widget.ui:124
+#, kde-format
+msgid "Custom STUN settings"
+msgstr "Özel STUN ayarları"
+
+#. i18n: ectx: property (text), widget (QLabel, stunServerLabel)
+#: rakia-advanced-options-widget.ui:136
+#, kde-format
+msgid "STUN server:"
+msgstr "STUN sunucusu:"
+
+#. i18n: ectx: property (text), widget (QLabel, stunPortLabel)
+#: rakia-advanced-options-widget.ui:143
+#, kde-format
+msgid "STUN port:"
+msgstr "STUN kapısı:"
+
+#. i18n: ectx: property (toolTip), widget (KLineEdit, stunServerLineEdit)
+#: rakia-advanced-options-widget.ui:157
+#, kde-format
+msgid "STUN server address (FQDN or IP address)"
+msgstr "STUN sunucu adresi (FQDN veya IP adresi)"
+
+#. i18n: ectx: property (title), widget (QGroupBox, networkingGroupBox)
+#: rakia-advanced-options-widget.ui:167
+#, kde-format
+msgid "Network and Routing"
+msgstr "Ağ ve Yönlendirme"
+
+#. i18n: ectx: property (toolTip), widget (QCheckBox, discoverBindingCheckBox)
+#: rakia-advanced-options-widget.ui:173
+#, kde-format
+msgid "Enable discovery of public IP address beyond NAT"
+msgstr "NAT ötesinde açık IP adresi bulmayı etkinleştir"
+
+#. i18n: ectx: property (text), widget (QCheckBox, discoverBindingCheckBox)
+#: rakia-advanced-options-widget.ui:176
+#, kde-format
+msgid "Discover Public Contact"
+msgstr "Herkese Açık Kişi Bul"
+
+#. i18n: ectx: property (toolTip), widget (QCheckBox, looseRoutingCheckBox)
+#: rakia-advanced-options-widget.ui:183
+#, kde-format
+msgid "Enable loose routing as per RFC 3261"
+msgstr "RFC 3261 olarak geniş yönlendirmeyi etkinleştir"
+
+#. i18n: ectx: property (text), widget (QCheckBox, looseRoutingCheckBox)
+#: rakia-advanced-options-widget.ui:186
+#, kde-format
+msgid "Use Loose Routing"
+msgstr "Geniş Yönlendirme Kullan"
+
+#. i18n: ectx: property (text), widget (QLabel, looseRoutingLabel)
+#: rakia-advanced-options-widget.ui:193
+#, kde-format
+msgid "Routing:"
+msgstr "Yönlendirme:"
+
+#. i18n: ectx: property (text), widget (QLabel, discoverBindingLabel)
+#: rakia-advanced-options-widget.ui:200
+#, kde-format
+msgid "NAT"
+msgstr "NAT"
+
+#. i18n: ectx: property (title), widget (QGroupBox, keepaliveGroupBox)
+#: rakia-advanced-options-widget.ui:210
+#, kde-format
+msgid "KeepAlive"
+msgstr "CanlıTut (KeepAlive)"
+
+#. i18n: ectx: property (text), widget (QLabel, keepaliveIntervalLabel)
+#: rakia-advanced-options-widget.ui:216
+#, kde-format
+msgid "Interval:"
+msgstr "Aralık:"
+
+#. i18n: ectx: property (toolTip), widget (KIntNumInput, keepaliveIntervalNumInput)
+#: rakia-advanced-options-widget.ui:223
+#, kde-format
+msgid ""
+"Interval between keepalive probes in seconds (0 = disabled, unset = use a "
+"default interval)"
+msgstr ""
+"Saniye cinsinden canlıTutma denemeleri arasındaki beklenecek süre (0 = devre "
+"dışı, ayarlanmamış = bir öntanımlı aralık kullanın)"
+
+#. i18n: ectx: property (toolTip), widget (KComboBox, keepaliveMechanismComboBox)
+#: rakia-advanced-options-widget.ui:242
+#, kde-format
+msgid ""
+"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/"
+"REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css"
+"\">\n"
+"p, li { white-space: pre-wrap; }\n"
+"</style></head><body style=\" font-family:'Ubuntu'; font-size:9pt; font-"
+"weight:400; font-style:normal;\">\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-"
+"right:0px; -qt-block-indent:0; text-indent:0px;\">Keepalive mechanism for "
+"SIP registration</p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-"
+"right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-"
+"weight:600;\">auto</span>: Keepalive management is up to the implementation</"
+"p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-"
+"right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-"
+"weight:600;\">options</span>: Maintain registration with OPTIONS requests</"
+"p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-"
+"right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-"
+"weight:600;\">register</span>: Maintain registration with REGISTER requests</"
+"p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-"
+"right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-"
+"weight:600;\">stun</span>: Maintain registration with STUN as described in "
+"IETF draft-sip-outbound</p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-"
+"right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-"
+"weight:600;\">off</span>: Disable keepalive management</p></body></html>"
+msgstr ""
+"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/"
+"REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css"
+"\">\n"
+"p, li { white-space: pre-wrap; }\n"
+"</style></head><body style=\" font-family:'Ubuntu'; font-size:9pt; font-"
+"weight:400; font-style:normal;\">\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-"
+"right:0px; -qt-block-indent:0; text-indent:0px;\">SIP kaydı için Keepalive "
+"mekanizması</p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-"
+"right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-"
+"weight:600;\">otomatik</span>: Keepalive yönetimi uygulamaya bağlı</p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-"
+"right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-"
+"weight:600;\">seçenekler</span>: Kaydı SEÇENEK istekleri ile yönet</p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-"
+"right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-"
+"weight:600;\">kayıt ol</span>: Kaydı KAYIT istekleri ile yönet</p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-"
+"right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-"
+"weight:600;\">stun</span>: Kaydı IETF draft-sip-outbound olarak tanımlanmış "
+"STUN ile yönet</p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-"
+"right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-"
+"weight:600;\">kapalı</span>: Keepalive yönetimini devre dışı bırak</p></"
+"body></html>"
+
+#. i18n: ectx: property (text), item, widget (KComboBox, keepaliveMechanismComboBox)
+#: rakia-advanced-options-widget.ui:251
+#, kde-format
+msgid "register"
+msgstr "kayıt ol"
+
+#. i18n: ectx: property (text), item, widget (KComboBox, keepaliveMechanismComboBox)
+#: rakia-advanced-options-widget.ui:256
+#, kde-format
+msgid "options"
+msgstr "seçenekler"
+
+#. i18n: ectx: property (text), item, widget (KComboBox, keepaliveMechanismComboBox)
+#: rakia-advanced-options-widget.ui:261
+#, kde-format
+msgid "stun"
+msgstr "stun"
+
+#. i18n: ectx: property (text), item, widget (KComboBox, keepaliveMechanismComboBox)
+#: rakia-advanced-options-widget.ui:266
+#, kde-format
+msgid "off"
+msgstr "kapalı"
+
+#. i18n: ectx: property (text), widget (QLabel, keepaliveMechanismLabel)
+#: rakia-advanced-options-widget.ui:274
+#, kde-format
+msgid "Mechanism:"
+msgstr "Mekanizma:"
+
+#. i18n: ectx: property (windowTitle), widget (QWidget, RakiaMainOptionsWidget)
+#: rakia-main-options-widget.ui:14
+#, kde-format
+msgid "Account Preferences"
+msgstr "Hesap Tercihleri"
+
+#. i18n: ectx: property (text), widget (QLabel, accountLabel)
+#: rakia-main-options-widget.ui:35
+#, kde-format
+msgid "SIP URI:"
+msgstr "SIP URI:"
+
+#. i18n: ectx: property (text), widget (QLabel, passwordLabel)
+#: rakia-main-options-widget.ui:45
+#, kde-format
+msgid "Password:"
+msgstr "Parola:"
+
+#. i18n: ectx: property (text), widget (QLabel, aliasLabel)
+#: rakia-main-options-widget.ui:55
+#, kde-format
+msgid "Alias:"
+msgstr "Takma Ad:"
+
+#. i18n: ectx: property (toolTip), widget (KLineEdit, aliasLineEdit)
+#: rakia-main-options-widget.ui:62
+#, kde-format
+msgid ""
+"This Alias is being used for SIMPLE, a instant messaging extension for SIP. "
+"If left blank, your SIP URI will be shown to the receiver instead of your "
+"Alias."
+msgstr ""
+"Bu takma ad, SIP için anında iletileşme uzantısı olan SIMPLE için "
+"kullanılıyor. Boş bırakılırsa, alıcıya takma adınız yerine SIP URI'ınız "
+"gösterilecek."
+
+#. i18n: ectx: property (text), widget (QLabel, label)
+#: rakia-main-options-widget.ui:72
+#, kde-format
+msgid "<b>Example:</b> user@my.sip.server"
+msgstr "<b>Örnek:</b> kullanıcı@sip.sunucum"

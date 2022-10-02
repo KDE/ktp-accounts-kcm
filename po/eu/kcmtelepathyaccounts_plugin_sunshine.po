@@ -1,0 +1,94 @@
+# Translation of kcmtelepathyaccounts_plugin_sunshine.po to Euskara/Basque (eu).
+# Copyright (C) 2018, This file is copyright:
+# This file is distributed under the same license as the ktp-accounts-kcm package.
+# KDE euskaratzeko proiektuaren arduraduna <xalba@euskalnet.net>.
+#
+# Translators:
+# Gontzal M. Pujana <juchuf@gmail.com>, 2018.
+msgid ""
+msgstr ""
+"Project-Id-Version: ktp-accounts-kcm\n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2019-05-20 03:11+0200\n"
+"PO-Revision-Date: 2019-07-12 21:09+0200\n"
+"Last-Translator: Iñigo Salvador Azurmendi <xalba@euskalnet.net>\n"
+"Language-Team: Basque <kde-i18n-eu@kde.org>\n"
+"Language: eu\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Lokalize 19.04.3\n"
+
+#. i18n: ectx: property (title), widget (QGroupBox, serverGroupBox)
+#: sunshine-advanced-options-widget.ui:17
+#, kde-format
+msgid "Custom Server Settings"
+msgstr "Zerbitzari ezarpen pertsonalizatuak"
+
+#. i18n: ectx: property (text), widget (QLabel, serverLabel)
+#: sunshine-advanced-options-widget.ui:32
+#, kde-format
+msgid "Server:"
+msgstr "Zerbitzaria:"
+
+#. i18n: ectx: property (toolTip), widget (QLineEdit, serverLineEdit)
+#: sunshine-advanced-options-widget.ui:39
+#, kde-format
+msgid "STUN server address (FQDN or IP address)"
+msgstr "STUN zerbitzariaren helbidea (FQDN edo IP helbidea)"
+
+#. i18n: ectx: property (text), widget (QLabel, portLabel)
+#: sunshine-advanced-options-widget.ui:46
+#, kde-format
+msgid "Port:"
+msgstr "Ataka:"
+
+#. i18n: ectx: property (title), widget (QGroupBox, miscGroupBox)
+#: sunshine-advanced-options-widget.ui:63
+#, kde-format
+msgid "Miscellaneous Settings"
+msgstr "Bestelako ezarpenak"
+
+#. i18n: ectx: property (text), widget (QLabel, exportContactsLabel)
+#: sunshine-advanced-options-widget.ui:72
+#, kde-format
+msgid "Contacts:"
+msgstr "Kontaktuak:"
+
+#. i18n: ectx: property (text), widget (QCheckBox, exportContactsCheckBox)
+#: sunshine-advanced-options-widget.ui:79
+#, kde-format
+msgid "Synchronize your contacts with the Gadu-Gadu server"
+msgstr "Sinkronizatu zure kontaktuak Gadu-Gadu zerbitzariarekin"
+
+#. i18n: ectx: property (text), widget (QLabel, sslLabel)
+#: sunshine-advanced-options-widget.ui:86
+#, kde-format
+msgid "Security:"
+msgstr "Segurtasuna:"
+
+#. i18n: ectx: property (text), widget (QCheckBox, sslCheckBox)
+#: sunshine-advanced-options-widget.ui:93
+#, kde-format
+msgid "Use Transport Layer Security (TLS/SSL)"
+msgstr ""
+"Erabili garraio geruzako segurtasuna («Transport Layer Security» TLS/SSL)"
+
+#. i18n: ectx: property (windowTitle), widget (QWidget, SunshineMainOptionsWidget)
+#: sunshine-main-options-widget.ui:14
+#, kde-format
+msgid "Account Preferences"
+msgstr "Kontu hobespenak"
+
+#. i18n: ectx: property (text), widget (QLabel, accountLabel)
+#: sunshine-main-options-widget.ui:25
+#, kde-format
+msgid "Account:"
+msgstr "Kontua:"
+
+#. i18n: ectx: property (text), widget (QLabel, passwordLabel)
+#: sunshine-main-options-widget.ui:38
+#, kde-format
+msgid "Password:"
+msgstr "Pasahitza:"

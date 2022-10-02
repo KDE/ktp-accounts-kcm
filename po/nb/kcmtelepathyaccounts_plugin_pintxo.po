@@ -1,0 +1,38 @@
+# Translation of kcmtelepathyaccounts_plugin_pintxo to Norwegian Bokmål
+#
+# Bjørn Steensrud <bjornst@skogkatt.homelinux.org>, 2013.
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2019-05-20 03:11+0200\n"
+"PO-Revision-Date: 2013-09-17 20:36+0200\n"
+"Last-Translator: Bjørn Steensrud <bjornst@skogkatt.homelinux.org>\n"
+"Language-Team: Norwegian Bokmål <l10n-no@lister.huftis.org>\n"
+"Language: nb\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Lokalize 1.5\n"
+"X-Environment: kde\n"
+"X-Accelerator-Marker: &\n"
+"X-Text-Markup: kde4\n"
+
+#. i18n: ectx: property (windowTitle), widget (QWidget, MainOptionsWidget)
+#: main-options-widget.ui:20
+#, kde-format
+msgid "Account Preferences"
+msgstr "Kontoinnstillinger"
+
+#. i18n: ectx: property (text), widget (QLabel, numberLabel)
+#: main-options-widget.ui:28
+#, kde-format
+msgid "Account name:"
+msgstr "Kontonavn:"
+
+#. i18n: ectx: property (text), widget (QLabel, modemLabel)
+#: main-options-widget.ui:55
+#, kde-format
+msgid "Modem:"
+msgstr "Modem:"

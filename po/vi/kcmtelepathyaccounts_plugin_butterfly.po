@@ -1,0 +1,42 @@
+# Copyright (C) YEAR This_file_is_part_of_KDE
+# This file is distributed under the same license as the PACKAGE package.
+#
+# HeroP, 2012.
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2019-05-20 03:11+0200\n"
+"PO-Revision-Date: 2012-02-06 19:40+0700\n"
+"Last-Translator: HeroP\n"
+"Language-Team: Vietnamese <kde-i18n-vi@kde.org>\n"
+"Language: vi\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Lokalize 1.4\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#. i18n: ectx: property (windowTitle), widget (QWidget, MainOptionsWidget)
+#: main-options-widget.ui:20
+#, kde-format
+msgid "Account Preferences"
+msgstr "Các thiết lập danh khoản"
+
+#. i18n: ectx: property (text), widget (QLabel, accountLabel)
+#: main-options-widget.ui:29
+#, kde-format
+msgid "Email address:"
+msgstr "Thư điện tử:"
+
+#. i18n: ectx: property (text), widget (QLabel, label)
+#: main-options-widget.ui:46
+#, kde-format
+msgid "Example: user@hotmail.com"
+msgstr "Ví dụ: user@gmail.com"
+
+#. i18n: ectx: property (text), widget (QLabel, passwordLabel)
+#: main-options-widget.ui:53
+#, kde-format
+msgid "Password:"
+msgstr "Mật khẩu:"

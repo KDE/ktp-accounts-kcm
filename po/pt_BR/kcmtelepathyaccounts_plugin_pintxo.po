@@ -1,0 +1,37 @@
+# Translation of kcmtelepathyaccounts_plugins_pintxo.po to Brazilian Portuguese
+# Copyright (C) 2013 This_file_is_part_of_KDE
+# This file is distributed under the same license as the PACKAGE package.
+#
+# André Marcelo Alvarenga <alvarenga@kde.org>, 2013.
+msgid ""
+msgstr ""
+"Project-Id-Version: kcmtelepathyaccounts_plugins_pintxo\n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2019-05-20 03:11+0200\n"
+"PO-Revision-Date: 2013-09-04 00:23-0300\n"
+"Last-Translator: André Marcelo Alvarenga <alvarenga@kde.org>\n"
+"Language-Team: Brazilian Portuguese <kde-i18n-pt_br@kde.org>\n"
+"Language: pt_BR\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Generator: Lokalize 1.5\n"
+
+#. i18n: ectx: property (windowTitle), widget (QWidget, MainOptionsWidget)
+#: main-options-widget.ui:20
+#, kde-format
+msgid "Account Preferences"
+msgstr "Preferências da conta"
+
+#. i18n: ectx: property (text), widget (QLabel, numberLabel)
+#: main-options-widget.ui:28
+#, kde-format
+msgid "Account name:"
+msgstr "Nome da conta:"
+
+#. i18n: ectx: property (text), widget (QLabel, modemLabel)
+#: main-options-widget.ui:55
+#, kde-format
+msgid "Modem:"
+msgstr "Modem:"

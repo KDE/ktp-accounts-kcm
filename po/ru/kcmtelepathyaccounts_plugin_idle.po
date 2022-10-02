@@ -1,0 +1,90 @@
+# Copyright (C) YEAR This_file_is_part_of_KDE
+# This file is distributed under the same license as the PACKAGE package.
+#
+# Yuri Efremov <yur.arh@gmail.com>, 2012.
+# Alexander Yavorsky <kekcuha@gmail.com>, 2021.
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2021-07-05 00:17+0000\n"
+"PO-Revision-Date: 2021-08-01 12:57+0300\n"
+"Last-Translator: Alexander Yavorsky <kekcuha@gmail.com>\n"
+"Language-Team: Russian <kde-russian@lists.kde.ru>\n"
+"Language: ru\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Lokalize 21.04.3\n"
+"Plural-Forms: nplurals=4; plural=n==1 ? 3 : n%10==1 && n%100!=11 ? 0 : n"
+"%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"X-Environment: kde\n"
+"X-Accelerator-Marker: &\n"
+"X-Text-Markup: kde4\n"
+
+#. i18n: ectx: property (windowTitle), widget (QWidget, MainOptionsWidget)
+#. i18n: ectx: property (windowTitle), widget (QWidget, AdvancedOptionsWidget)
+#: advanced-options-widget.ui:14 main-options-widget.ui:14
+#, kde-format
+msgid "Account Preferences"
+msgstr "Параметры учётной записи"
+
+#. i18n: ectx: property (text), widget (QLabel, usernameLabel)
+#: advanced-options-widget.ui:23
+#, kde-format
+msgid "Username:"
+msgstr "Имя пользователя:"
+
+#. i18n: ectx: property (text), widget (QLabel, passwordLabel)
+#: advanced-options-widget.ui:43
+#, kde-format
+msgid "Password:"
+msgstr "Пароль:"
+
+#. i18n: ectx: property (text), widget (QLabel, charsetLabel)
+#: advanced-options-widget.ui:69
+#, kde-format
+msgid "Character set:"
+msgstr "Кодировка:"
+
+#. i18n: ectx: property (text), widget (QLabel, portLabel)
+#: advanced-options-widget.ui:82
+#, kde-format
+msgid "Server port:"
+msgstr "Порт сервера:"
+
+#. i18n: ectx: property (text), widget (QLabel, useSslLabel)
+#: advanced-options-widget.ui:99
+#, kde-format
+msgid "Use SSL?"
+msgstr "Использовать SSL?"
+
+#. i18n: ectx: property (text), widget (QLabel, serverLabel)
+#: main-options-widget.ui:23
+#, kde-format
+msgid "Server address:"
+msgstr "Адрес сервера:"
+
+#. i18n: ectx: property (text), widget (QLabel, label)
+#: main-options-widget.ui:36
+#, kde-format
+msgid "<i>Example:</i> irc.libera.chat"
+msgstr "<i>Например:</i> irc.libera.chat"
+
+#. i18n: ectx: property (text), widget (QLabel, accountLabel)
+#: main-options-widget.ui:43
+#, kde-format
+msgid "Nickname:"
+msgstr "Псевдоним:"
+
+#. i18n: ectx: property (text), widget (QLabel, fullnameLabel)
+#: main-options-widget.ui:56
+#, kde-format
+msgid "Real name:"
+msgstr "Настоящее имя:"
+
+#. i18n: ectx: property (text), widget (QLabel, label_2)
+#: main-options-widget.ui:69
+#, kde-format
+msgid "Real name can be left empty."
+msgstr "Настоящее имя можно оставить пустым."

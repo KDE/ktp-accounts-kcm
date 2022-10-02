@@ -1,0 +1,92 @@
+# Translation of kcmtelepathyaccounts_plugin_sunshine to Norwegian Nynorsk
+#
+# Karl Ove Hufthammer <karl@huftis.org>, 2016.
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2019-05-20 03:11+0200\n"
+"PO-Revision-Date: 2016-12-01 20:15+0100\n"
+"Last-Translator: Karl Ove Hufthammer <karl@huftis.org>\n"
+"Language-Team: Norwegian Nynorsk <l10n-no@lister.huftis.org>\n"
+"Language: nn\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Lokalize 2.0\n"
+"X-Environment: kde\n"
+"X-Accelerator-Marker: &\n"
+"X-Text-Markup: kde4\n"
+
+#. i18n: ectx: property (title), widget (QGroupBox, serverGroupBox)
+#: sunshine-advanced-options-widget.ui:17
+#, kde-format
+msgid "Custom Server Settings"
+msgstr "Tilpassa tenarinnstillingar"
+
+#. i18n: ectx: property (text), widget (QLabel, serverLabel)
+#: sunshine-advanced-options-widget.ui:32
+#, kde-format
+msgid "Server:"
+msgstr "Tenar:"
+
+#. i18n: ectx: property (toolTip), widget (QLineEdit, serverLineEdit)
+#: sunshine-advanced-options-widget.ui:39
+#, kde-format
+msgid "STUN server address (FQDN or IP address)"
+msgstr "STUN-tenaradresse (FQDN eller IP-adresse)"
+
+#. i18n: ectx: property (text), widget (QLabel, portLabel)
+#: sunshine-advanced-options-widget.ui:46
+#, kde-format
+msgid "Port:"
+msgstr "Port:"
+
+#. i18n: ectx: property (title), widget (QGroupBox, miscGroupBox)
+#: sunshine-advanced-options-widget.ui:63
+#, kde-format
+msgid "Miscellaneous Settings"
+msgstr "Ymse innstillingar"
+
+#. i18n: ectx: property (text), widget (QLabel, exportContactsLabel)
+#: sunshine-advanced-options-widget.ui:72
+#, kde-format
+msgid "Contacts:"
+msgstr "Kontaktar:"
+
+#. i18n: ectx: property (text), widget (QCheckBox, exportContactsCheckBox)
+#: sunshine-advanced-options-widget.ui:79
+#, kde-format
+msgid "Synchronize your contacts with the Gadu-Gadu server"
+msgstr "Synkroniser kontaktane dine med Gadu-Gadu-tenaren"
+
+#. i18n: ectx: property (text), widget (QLabel, sslLabel)
+#: sunshine-advanced-options-widget.ui:86
+#, kde-format
+msgid "Security:"
+msgstr "Tryggleik:"
+
+#. i18n: ectx: property (text), widget (QCheckBox, sslCheckBox)
+#: sunshine-advanced-options-widget.ui:93
+#, kde-format
+msgid "Use Transport Layer Security (TLS/SSL)"
+msgstr "Bruk Transport Layer Security (TLS/SSL)"
+
+#. i18n: ectx: property (windowTitle), widget (QWidget, SunshineMainOptionsWidget)
+#: sunshine-main-options-widget.ui:14
+#, kde-format
+msgid "Account Preferences"
+msgstr "Kontoinnstillingar"
+
+#. i18n: ectx: property (text), widget (QLabel, accountLabel)
+#: sunshine-main-options-widget.ui:25
+#, kde-format
+msgid "Account:"
+msgstr "Konto:"
+
+#. i18n: ectx: property (text), widget (QLabel, passwordLabel)
+#: sunshine-main-options-widget.ui:38
+#, kde-format
+msgid "Password:"
+msgstr "Passord:"

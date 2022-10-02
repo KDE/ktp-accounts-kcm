@@ -1,0 +1,66 @@
+# Copyright (C) YEAR This_file_is_part_of_KDE
+# This file is distributed under the same license as the PACKAGE package.
+# Vít Pelčák <vit@pelcak.org>, 2011, 2013, 2019.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2019-05-20 03:11+0200\n"
+"PO-Revision-Date: 2019-10-04 12:41+0200\n"
+"Last-Translator: Vit Pelcak <vit@pelcak.org>\n"
+"Language-Team: Czech <kde-i18n-doc@kde.org>\n"
+"Language: cs\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Lokalize 19.08.1\n"
+"Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
+
+#. i18n: ectx: property (title), widget (QGroupBox, additionalGroupBox)
+#: salut-advanced-options-widget.ui:17
+#, kde-format
+msgid "Additional Information"
+msgstr "Další informace"
+
+#. i18n: ectx: property (text), widget (QLabel, pubnameLabel)
+#: salut-advanced-options-widget.ui:26
+#, kde-format
+msgid "Published name:"
+msgstr "Zveřejněné jméno:"
+
+#. i18n: ectx: property (text), widget (QLabel, emailLabel)
+#: salut-advanced-options-widget.ui:40
+#, kde-format
+msgid "Email:"
+msgstr "E-mail:"
+
+#. i18n: ectx: property (text), widget (QLabel, jidLabel)
+#: salut-advanced-options-widget.ui:54
+#, kde-format
+msgid "Jabber ID:"
+msgstr "Jabber ID:"
+
+#. i18n: ectx: property (windowTitle), widget (QWidget, SalutMainOptionsWidget)
+#: salut-main-options-widget.ui:14
+#, kde-format
+msgid "Account Preferences"
+msgstr "Předvolby účtu"
+
+#. i18n: ectx: property (text), widget (QLabel, firstnameLabel)
+#: salut-main-options-widget.ui:25
+#, kde-format
+msgid "First name:"
+msgstr "Jméno:"
+
+#. i18n: ectx: property (text), widget (QLabel, lastnameLabel)
+#: salut-main-options-widget.ui:38
+#, kde-format
+msgid "Last name:"
+msgstr "Příjmení:"
+
+#. i18n: ectx: property (text), widget (QLabel, nicknameLabel)
+#: salut-main-options-widget.ui:51
+#, kde-format
+msgid "Nickname:"
+msgstr "Přezdívka:"

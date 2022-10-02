@@ -1,0 +1,90 @@
+# Copyright (C) YEAR This_file_is_part_of_KDE
+# This file is distributed under the same license as the PACKAGE package.
+#
+# Franklin Weng <franklin@mail.everfocus.com.tw>, 2012.
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2019-05-20 03:11+0200\n"
+"PO-Revision-Date: 2012-01-04 08:10+0800\n"
+"Last-Translator: Franklin Weng <franklin@mail.everfocus.com.tw>\n"
+"Language-Team: Chinese Traditional <zh-l10n@lists.linux.org.tw>\n"
+"Language: zh_TW\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Lokalize 1.2\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#. i18n: ectx: property (title), widget (QGroupBox, serverGroupBox)
+#: sunshine-advanced-options-widget.ui:17
+#, kde-format
+msgid "Custom Server Settings"
+msgstr "自訂伺服器設定"
+
+#. i18n: ectx: property (text), widget (QLabel, serverLabel)
+#: sunshine-advanced-options-widget.ui:32
+#, kde-format
+msgid "Server:"
+msgstr "伺服器："
+
+#. i18n: ectx: property (toolTip), widget (QLineEdit, serverLineEdit)
+#: sunshine-advanced-options-widget.ui:39
+#, kde-format
+msgid "STUN server address (FQDN or IP address)"
+msgstr "STUN 伺服器位址（FQDN 或 IP 位址）"
+
+#. i18n: ectx: property (text), widget (QLabel, portLabel)
+#: sunshine-advanced-options-widget.ui:46
+#, kde-format
+msgid "Port:"
+msgstr "連接埠："
+
+#. i18n: ectx: property (title), widget (QGroupBox, miscGroupBox)
+#: sunshine-advanced-options-widget.ui:63
+#, kde-format
+msgid "Miscellaneous Settings"
+msgstr "雜項設定"
+
+#. i18n: ectx: property (text), widget (QLabel, exportContactsLabel)
+#: sunshine-advanced-options-widget.ui:72
+#, kde-format
+msgid "Contacts:"
+msgstr "聯絡人："
+
+#. i18n: ectx: property (text), widget (QCheckBox, exportContactsCheckBox)
+#: sunshine-advanced-options-widget.ui:79
+#, kde-format
+msgid "Synchronize your contacts with the Gadu-Gadu server"
+msgstr "將您的聯絡人與 Gadu-Gadu 伺服器同步"
+
+#. i18n: ectx: property (text), widget (QLabel, sslLabel)
+#: sunshine-advanced-options-widget.ui:86
+#, kde-format
+msgid "Security:"
+msgstr "安全性："
+
+#. i18n: ectx: property (text), widget (QCheckBox, sslCheckBox)
+#: sunshine-advanced-options-widget.ui:93
+#, kde-format
+msgid "Use Transport Layer Security (TLS/SSL)"
+msgstr "使用 TLS/SSL"
+
+#. i18n: ectx: property (windowTitle), widget (QWidget, SunshineMainOptionsWidget)
+#: sunshine-main-options-widget.ui:14
+#, kde-format
+msgid "Account Preferences"
+msgstr "帳號喜好設定"
+
+#. i18n: ectx: property (text), widget (QLabel, accountLabel)
+#: sunshine-main-options-widget.ui:25
+#, kde-format
+msgid "Account:"
+msgstr "帳號："
+
+#. i18n: ectx: property (text), widget (QLabel, passwordLabel)
+#: sunshine-main-options-widget.ui:38
+#, kde-format
+msgid "Password:"
+msgstr "密碼："

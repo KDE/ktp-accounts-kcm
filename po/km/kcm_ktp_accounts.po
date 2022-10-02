@@ -1,0 +1,701 @@
+# translation of kcm_telepathy_accounts.po to Khmer
+# Copyright (C) YEAR This_file_is_part_of_KDE
+# This file is distributed under the same license as the PACKAGE package.
+# Khoem Sokhem <khoemsokhem@khmeros.info>, 2009.
+# sutha <sutha@khmeros.info>, 2012.
+msgid ""
+msgstr ""
+"Project-Id-Version: kcm_telepathy_accounts\n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2019-05-20 03:11+0200\n"
+"PO-Revision-Date: 2012-06-15 16:05+0700\n"
+"Last-Translator: sutha <sutha@khmeros.info>\n"
+"Language-Team: Khmer <support@khmeros>\n"
+"Language: km\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: WordForge 0.8 RC1\n"
+"X-Language: km-KH\n"
+
+#, kde-format
+msgctxt "NAME OF TRANSLATORS"
+msgid "Your names"
+msgstr "ខឹម សុខែម, ម៉ន ម៉េត, សេង សុត្ថា, ចាន់ សម្បត្តិរតនៈ, សុខ សុភា"
+
+#, kde-format
+msgctxt "EMAIL OF TRANSLATORS"
+msgid "Your emails"
+msgstr ""
+"khoemsokhem@khmeros.info,​​mornmet@khmeros.info,sutha@khmeros.info,"
+"ratanak@khmeros.info,sophea@khmeros.info"
+
+#: account-identity-dialog.cpp:42
+#, kde-format
+msgid "Edit Account Identity"
+msgstr "កែសម្រួល​អត្តសញ្ញាណ​គណនី"
+
+#. i18n: ectx: property (text), widget (QLabel, label_3)
+#: account-identity-dialog.ui:40
+#, kde-format
+msgid "Nickname:"
+msgstr "សម្មតិនាម ៖"
+
+#. i18n: ectx: property (text), widget (QLabel, label)
+#: account-identity-dialog.ui:50
+#, kde-format
+msgid "Account:"
+msgstr "គណនី"
+
+#. i18n: ectx: property (text), widget (AvatarButton, accountAvatar)
+#: account-identity-dialog.ui:87
+#, kde-format
+msgid "..."
+msgstr "..."
+
+#: accounts-list-delegate.cpp:70
+#, kde-format
+msgid "Change account icon"
+msgstr "ប្ដូរ​រូបតំណាង​គណនី"
+
+#: accounts-list-delegate.cpp:71
+#, fuzzy, kde-format
+#| msgid ""
+#| "This button allows to change the icon for your account.<br />This icon is "
+#| "just used locally on your computer, your contacts will not be able to see "
+#| "it."
+msgid ""
+"This button allows you to change the icon for your account.<br />This icon "
+"is just used locally on your computer, your contacts will not be able to see "
+"it."
+msgstr ""
+"ប៊ូតុង​នេះ​អនុញ្ញាត​ឲ្យ​ផ្លាស់ប្ដូរ​រូបតំណាង​សម្រាប់​គណនី​របស់​អ្នក ។<br />រូប​តំណាង​នេះ​ត្រូវ​បាន​ប្រើ​លើ​កុំព្យូទ័រ​របស់​"
+"អ្នក​ជា​មូលដ្ឋាន ទំនាក់ទំនង​របស់​អ្នក​នឹង​មិន​អាច​​ធ្វើ​បាន​ឡើយ សូម​មើល​វា ។"
+
+#: accounts-list-delegate.cpp:79
+#, kde-format
+msgid "Change account display name"
+msgstr "ផ្លាស់ប្ដូរ​ឈ្មោះ​ទិដ្ឋភាព​គណនី"
+
+#: accounts-list-delegate.cpp:80
+#, fuzzy, kde-format
+#| msgid ""
+#| "This button allows to change the display name for your account.<br />The "
+#| "display name is an alias for your account and is just used locally on "
+#| "your computer, your contacts will not be able to see it."
+msgid ""
+"This button allows you to change the display name for your account.<br />The "
+"display name is an alias for your account and is just used locally on your "
+"computer, your contacts will not be able to see it."
+msgstr ""
+"ប៊ូតុង​នេះ​អនុញ្ញាត​ឲ្យ​ផ្លាស់ប្ដូរ​ឈ្មោះ​ទិដ្ឋភាព​សម្រាប់​គណនី​របស់​អ្នក ។<br />ឈ្មោះ​ទិដ្ឋភាព​គឺ​ជា​ឈ្មោះ​​​"
+"ក្លែងក្លាយ​សម្រាប់​គណនី​របស់​អ្នក និង​ត្រូវ​បាន​ប្រើ​លើ​កុំព្យូទ័រ​របស់​អ្នក​ជា​មូលដ្ឋាន ទំនាក់ទំនង​របស់​អ្នក​នឹង​មិន​អាច​"
+"ធ្វើ​បាន​ឡើយ​ សូម​មើល​វា ។"
+
+#: accounts-list-delegate.cpp:134
+#, kde-format
+msgid "Click checkbox to enable"
+msgstr "គូស​ធីក​ដើម្បី​បើក"
+
+#: accounts-list-delegate.cpp:144
+#, kde-format
+msgid "Disable account"
+msgstr "បិទ​គណនី"
+
+#: accounts-list-delegate.cpp:147
+#, kde-format
+msgid "Enable account"
+msgstr "បើក​​គណនី"
+
+#: add-account-assistant.cpp:95 add-account-assistant.cpp:96
+#, kde-format
+msgid "Step 1: Select an Instant Messaging Network."
+msgstr "ជំហាន ១ ៖ ជ្រើស​បណ្ដាញ​ផ្ញើ​​សារ​ជា​បន្ទាន់ ។"
+
+#: add-account-assistant.cpp:120
+#, kde-format
+msgid "Step 2: Fill in the required Parameters."
+msgstr "ជំហាន​ ២ ៖ បំពេញ​ប៉ារ៉ាម៉ែត្រ​ដែល​ទាម​ទារ ។"
+
+#: add-account-assistant.cpp:172
+#, kde-format
+msgid ""
+"To connect to this IM network, you need to install additional plugins. "
+"Please install the telepathy-haze and telepathy-gabble packages using your "
+"package manager."
+msgstr ""
+"ទំនាក់ទំនង​ទៅកាន់​បណ្ដាញ IM នេះ អ្នក​ត្រូវ​ដំឡើង​កម្មវិធី​ជំនួយ​បន្ថែម ។ សូម​ដំឡើង​កញ្ចប់  telepathy-"
+"haze និង telepathy-gabble ដោយ​ប្រើ​កម្មវិធី​គ្រប់គ្រង​កញ្ចប់​របស់​អ្នក "
+
+#: add-account-assistant.cpp:172
+#, kde-format
+msgid "Missing Telepathy Connection Manager"
+msgstr "បាត់​កម្មវិធី​គ្រប់គ្រង​ការ​តភ្ជាប់ Telepathy"
+
+#: add-account-assistant.cpp:208 add-account-assistant.cpp:257
+#: salut-enabler.cpp:243
+#, kde-format
+msgid "Failed to create account"
+msgstr "បាន​បរាជ័យ​ក្នុង​ការ​បង្កើត​គណនី"
+
+#: add-account-assistant.cpp:258 salut-enabler.cpp:244
+#, kde-format
+msgid "Possibly not all required fields are valid"
+msgstr "ប្រហែល​ជា​មិនមែន​វាល​ដែល​ទាមទារ​ទាំងអស់​ត្រឹមត្រូវ​នោះ​ទេ"
+
+#: add-account-assistant.cpp:267 salut-enabler.cpp:253
+#, kde-format
+msgid "Something went wrong with Telepathy"
+msgstr "មាន​អ្វីមួយ​មិន​ត្រឹមត្រូវ​ជា​មួយ Telepathy"
+
+#: avatar-button.cpp:54
+#, kde-format
+msgid "Load from file..."
+msgstr "ផ្ទុក​ពី​ឯកសារ..."
+
+#: avatar-button.cpp:55
+#, kde-format
+msgid "Clear Avatar"
+msgstr "សម្អាត Avatar"
+
+#: avatar-button.cpp:106
+#, kde-format
+msgid "Please choose your avatar"
+msgstr "សូម​ជ្រើស avatar របស់​អ្នក"
+
+#: avatar-button.cpp:155
+#, fuzzy, kde-format
+#| msgid "Failed to create account"
+msgid "Failed to load avatar."
+msgstr "បាន​បរាជ័យ​ក្នុង​ការ​បង្កើត​គណនី"
+
+#: edit-display-name-button.cpp:61
+#, kde-format
+msgid "Edit Display Name"
+msgstr "កែសម្រួល​​​ឈ្មោះ​ទិដ្ឋភាព"
+
+#: edit-display-name-button.cpp:70
+#, kde-format
+msgid "Choose a new display name for your account"
+msgstr "ជ្រើស​ឈ្មោះ​​ទិដ្ឋភាព​ថ្មី​សម្រាប់​គណនី​របស់​អ្នក"
+
+#: edit-display-name-button.cpp:77 edit-display-name-button.cpp:87
+#, kde-format
+msgid ""
+"A display name is your local alias for the account, only you will see it."
+msgstr "ឈ្មោះ​ទិដ្ឋភាព​​គឺ​ជា​ឈ្មោះ​ក្លែងក្លាយ​មូលដ្ឋាន​របស់​អ្នក​សម្រាប់​គណនី អ្នក​នឹង​យល់​អំពីវា ។"
+
+#: edit-display-name-button.cpp:86
+#, kde-format
+msgid "New display name"
+msgstr "ឈ្មោះ​ទិដ្ឋភាព​ថ្មី"
+
+#: kcm-telepathy-accounts.cpp:76
+#, kde-format
+msgid "telepathy_accounts"
+msgstr "telepathy_accounts"
+
+#: kcm-telepathy-accounts.cpp:76
+#, kde-format
+msgid "Instant Messaging and VOIP Accounts"
+msgstr "ការ​ផ្ញើ​សារ​បន្ទាន់ និង​គណនី VOIP"
+
+#: kcm-telepathy-accounts.cpp:78
+#, kde-format
+msgid "George Goldberg"
+msgstr "George Goldberg"
+
+#: kcm-telepathy-accounts.cpp:78 kcm-telepathy-accounts.cpp:79
+#: kcm-telepathy-accounts.cpp:80 kcm-telepathy-accounts.cpp:81
+#: kcm-telepathy-accounts.cpp:82 kcm-telepathy-accounts.cpp:83
+#: kcm-telepathy-accounts.cpp:84
+#, kde-format
+msgid "Developer"
+msgstr "អ្នក​អភិវឌ្ឍន៍"
+
+#: kcm-telepathy-accounts.cpp:79
+#, kde-format
+msgid "David Edmundson"
+msgstr "David Edmundson"
+
+#: kcm-telepathy-accounts.cpp:80
+#, kde-format
+msgid "Dominik Schmidt"
+msgstr "Dominik Schmidt"
+
+#: kcm-telepathy-accounts.cpp:81
+#, kde-format
+msgid "Thomas Richard"
+msgstr "Thomas Richard"
+
+#: kcm-telepathy-accounts.cpp:82
+#, kde-format
+msgid "Florian Reinhard"
+msgstr "Florian Reinhard"
+
+#: kcm-telepathy-accounts.cpp:83
+#, kde-format
+msgid "Daniele E. Domenichelli"
+msgstr "Daniele E. Domenichelli"
+
+#: kcm-telepathy-accounts.cpp:84
+#, kde-format
+msgid "Martin Klapetek"
+msgstr "Martin Klapetek"
+
+#: kcm-telepathy-accounts.cpp:266
+#, kde-format
+msgid ""
+"We have found Kopete logs for this account. Do you want to import the logs "
+"to KDE Telepathy?"
+msgstr ""
+
+#: kcm-telepathy-accounts.cpp:267
+#, kde-format
+msgid "Import Logs?"
+msgstr ""
+
+#: kcm-telepathy-accounts.cpp:268
+#, kde-format
+msgid "Import Logs"
+msgstr ""
+
+#: kcm-telepathy-accounts.cpp:269
+#, kde-format
+msgid "Close"
+msgstr ""
+
+#: kcm-telepathy-accounts.cpp:276
+#, kde-format
+msgid "Importing logs..."
+msgstr ""
+
+#: kcm-telepathy-accounts.cpp:294 kcm-telepathy-accounts.cpp:303
+#, kde-format
+msgid "Kopete Logs Import"
+msgstr ""
+
+#: kcm-telepathy-accounts.cpp:303
+#, kde-format
+msgid "Kopete logs successfully imported"
+msgstr ""
+
+#. i18n: ectx: property (text), widget (KPushButton, removeAccountButton)
+#: kcm-telepathy-accounts.cpp:405 kcm-telepathy-accounts.cpp:406
+#: main-widget.ui:184
+#, kde-format
+msgid "Remove Account"
+msgstr "យក​គណនី​ចេញ"
+
+#: kcm-telepathy-accounts.cpp:409
+#, kde-format
+msgid "Remove conversations logs"
+msgstr ""
+
+#: kcm-telepathy-accounts.cpp:410
+#, kde-format
+msgid "Are you sure you want to remove the account \"%1\"?"
+msgstr "តើ​អ្នក​ពិត​ជា​ចង់​យក​គណនី​ \"%1\" ចេញ​ឬ ?"
+
+#: kcm-telepathy-accounts.cpp:492
+#, kde-format
+msgid "Install telepathy-salut to enable"
+msgstr "ដំឡើង telepathy-salut ដើម្បី​បើក"
+
+#: kcm-telepathy-accounts.cpp:534
+#, kde-format
+msgid ""
+"Something went terribly wrong and the IM system could not be initialized.\n"
+"It is likely your system is missing Telepathy Mission Control package.\n"
+"Please install it and restart this module."
+msgstr ""
+"មាន​អ្វីមួយ​មិន​ត្រឹមត្រូវ​ ហើយ​ប្រព័ន្ធ IM មិន​អាច​ត្រូវ​បាន​ចាប់ផ្ដើម​បាន​ទេ ។\n"
+" វា​ទំនង​ជា​ប្រព័ន្ធ​របស់​អ្នក​បាត់​កញ្ចប់​គ្រប់គ្រង​ Telepathy Mission ។ \n"
+" សូម​ដំឡើង​វា ហើយ​ចាប់ផ្ដើម​ម៉ូឌុល​នេះ​ឡើ​ងវិញ ។"
+
+#: KCMTelepathyAccounts/abstract-account-parameters-widget.cpp:59
+#, kde-format
+msgid "All mandatory fields must be filled"
+msgstr "ត្រូវ​តែ​បំពេញ​វាល​ដែល​ចាំបាច់​​ទាំងអស់"
+
+#: KCMTelepathyAccounts/account-edit-widget.cpp:108
+#, kde-format
+msgid "Connect when wizard is finished"
+msgstr "តភ្ជាប់​នៅ​ពេល​អ្នក​ជំនួយ​ការ​បាន​បញ្ចប់"
+
+#: KCMTelepathyAccounts/account-edit-widget.cpp:219
+#, kde-format
+msgid "Advanced Options"
+msgstr "ជម្រើស​កម្រិត​ខ្ពស់"
+
+#. i18n: ectx: property (text), widget (QPushButton, advancedButton)
+#: KCMTelepathyAccounts/account-edit-widget.ui:62
+#, kde-format
+msgid "Advanced"
+msgstr "កម្រិត​ខ្ពស់"
+
+#: KCMTelepathyAccounts/dictionary.cpp:33
+#, kde-format
+msgid "Password"
+msgstr "ពាក្យ​សម្ងាត់"
+
+#: KCMTelepathyAccounts/dictionary.cpp:34
+#, kde-format
+msgid "Account"
+msgstr "គណនី"
+
+#: KCMTelepathyAccounts/dictionary.cpp:35
+#, kde-format
+msgid "Priority"
+msgstr "អាទិភាព"
+
+#: KCMTelepathyAccounts/dictionary.cpp:36
+#, kde-format
+msgid "Port"
+msgstr "ច្រក"
+
+#: KCMTelepathyAccounts/dictionary.cpp:37
+#, kde-format
+msgid "Alias"
+msgstr "ឈ្មោះ​ក្លែងក្លាយ"
+
+#: KCMTelepathyAccounts/dictionary.cpp:38
+#, kde-format
+msgid "Register new Account"
+msgstr "ចុះ​ឈ្មោះ​គណនី​ថ្មី"
+
+#: KCMTelepathyAccounts/dictionary.cpp:39
+#, kde-format
+msgid "Server Address"
+msgstr "អាសយដ្ឋាន​ម៉ាស៊ីនបម្រើ"
+
+#: KCMTelepathyAccounts/dictionary.cpp:40
+#, kde-format
+msgid "Fallback STUN server address"
+msgstr "អាសយដ្ឋាន​ម៉ាស៊ីន​បម្រើ Fallback STUN"
+
+#: KCMTelepathyAccounts/dictionary.cpp:41
+#, kde-format
+msgid "Resource"
+msgstr "ធនធាន"
+
+#: KCMTelepathyAccounts/dictionary.cpp:42
+#, kde-format
+msgid "HTTPS Proxy Port"
+msgstr "ច្រក​ប្រូកស៊ី HTTPS"
+
+#: KCMTelepathyAccounts/dictionary.cpp:43
+#, kde-format
+msgid "Require Encryption"
+msgstr "ទាមទារ​ការអ៊ិនគ្រីប"
+
+#: KCMTelepathyAccounts/dictionary.cpp:44
+#, kde-format
+msgid "Old-style SSL support"
+msgstr "ការ​គាំទ្រ​ SSL ដែល​មាន​រចនាប័ទ្ម​ចាស់​ៗ"
+
+#: KCMTelepathyAccounts/dictionary.cpp:45
+#, kde-format
+msgid "Fallback STUN port"
+msgstr "ច្រក Fallback STUN"
+
+#: KCMTelepathyAccounts/dictionary.cpp:46
+#, kde-format
+msgid "Fallback Conference Server Address"
+msgstr "អាសយដ្ឋាន​ម៉ាស៊ីន​បម្រើ​សន្និសីទ Fallback"
+
+#: KCMTelepathyAccounts/dictionary.cpp:47
+#, kde-format
+msgid "Low Bandwidth Mode"
+msgstr "របៀប​កម្រិត​បញ្ជូន​ទាប"
+
+#: KCMTelepathyAccounts/dictionary.cpp:48
+#, kde-format
+msgid "STUN Server Address"
+msgstr "អាសយដ្ឋាន​ម៉ាស៊ីន​បម្រើ STUN"
+
+#: KCMTelepathyAccounts/dictionary.cpp:49
+#, kde-format
+msgid "STUN Port"
+msgstr "ច្រក STUN"
+
+#: KCMTelepathyAccounts/dictionary.cpp:50
+#, kde-format
+msgid "Fallback SOCKS5 Proxy Addresses"
+msgstr "អាសយដ្ឋាន​ប្រូកស៊ី Fallback SOCKS5"
+
+#: KCMTelepathyAccounts/dictionary.cpp:51
+#, kde-format
+msgid "HTTPS Proxy Server Address"
+msgstr "អាសយដ្ឋាន​ម៉ាស៊ីន​បម្រើ​ប្រូកស៊ី HTTPS"
+
+#: KCMTelepathyAccounts/dictionary.cpp:52
+#, kde-format
+msgid "Ignore SSL Errors"
+msgstr "មិន​អើពើ​កំហុស SSL"
+
+#: KCMTelepathyAccounts/dictionary.cpp:53
+#, kde-format
+msgid "Keepalive Interval"
+msgstr "ចន្លោះ​ពេល Keepalive"
+
+#: KCMTelepathyAccounts/dictionary.cpp:56
+#, kde-format
+msgid "AOL Instant Messenger"
+msgstr "កម្មវិធី​ផ្ញើ​សារ​ជាបន្ទាន់​របស់ ​AOL "
+
+#: KCMTelepathyAccounts/dictionary.cpp:57
+#: KCMTelepathyAccounts/dictionary.cpp:63
+#, kde-format
+msgid "Skype"
+msgstr "Skype"
+
+#. i18n: ectx: property (text), widget (QCommandLinkButton, buttonFacebook)
+#: KCMTelepathyAccounts/dictionary.cpp:58
+#: KCMTelepathyAccounts/simple-profile-select-widget.ui:124
+#, kde-format
+msgid "Facebook Chat"
+msgstr "ជជែក​តាម Facebook"
+
+#: KCMTelepathyAccounts/dictionary.cpp:59
+#, kde-format
+msgid "Gadu-Gadu"
+msgstr "Gadu-Gadu"
+
+#. i18n: ectx: property (text), widget (QCommandLinkButton, buttonGTalk)
+#: KCMTelepathyAccounts/dictionary.cpp:60
+#: KCMTelepathyAccounts/simple-profile-select-widget.ui:100
+#, kde-format
+msgid "Google Talk"
+msgstr "Google Talk"
+
+#: KCMTelepathyAccounts/dictionary.cpp:61
+#, kde-format
+msgid "Novell Groupwise"
+msgstr "Novell Groupwise"
+
+#: KCMTelepathyAccounts/dictionary.cpp:62
+#, kde-format
+msgid "ICQ"
+msgstr "ICQ"
+
+#: KCMTelepathyAccounts/dictionary.cpp:64
+#, kde-format
+msgid "Internet Relay Chat"
+msgstr "Internet Relay Chat"
+
+#. i18n: ectx: property (text), widget (QCommandLinkButton, buttonJabber)
+#: KCMTelepathyAccounts/dictionary.cpp:65
+#: KCMTelepathyAccounts/simple-profile-select-widget.ui:54
+#, kde-format
+msgid "Jabber/XMPP"
+msgstr "Jabber/XMPP"
+
+#: KCMTelepathyAccounts/dictionary.cpp:66
+#, kde-format
+msgid "Bonjour/Salut"
+msgstr "Bonjour/Salut"
+
+#: KCMTelepathyAccounts/dictionary.cpp:67
+#, kde-format
+msgid "MXit"
+msgstr "MXit"
+
+#: KCMTelepathyAccounts/dictionary.cpp:68
+#, kde-format
+msgid "Windows Live Messenger"
+msgstr "កម្មវិធី​ផ្ញើ​សារ​ផ្ទាល់​លើ​វីនដូ"
+
+#: KCMTelepathyAccounts/dictionary.cpp:69
+#, kde-format
+msgid "MySpaceIM"
+msgstr "MySpaceIM"
+
+#: KCMTelepathyAccounts/dictionary.cpp:70
+#, kde-format
+msgid "Tencent QQ"
+msgstr "Tencent QQ"
+
+#: KCMTelepathyAccounts/dictionary.cpp:71
+#, kde-format
+msgid "IBM Lotus Sametime"
+msgstr "IBM Lotus Sametime"
+
+#: KCMTelepathyAccounts/dictionary.cpp:72
+#, kde-format
+msgid "SILC"
+msgstr "SILC"
+
+#: KCMTelepathyAccounts/dictionary.cpp:73
+#, kde-format
+msgid "Session Initiation Protocol (SIP)"
+msgstr "ពិធីការ​ចាប់​ផ្ដើម​សម័យ​ (SIP)"
+
+#: KCMTelepathyAccounts/dictionary.cpp:74
+#, kde-format
+msgid "GSM Telephony"
+msgstr "ការ​​បញ្ជូន​សំឡេង​តាម​ទូរស័ព្ទ ​​GSM"
+
+#: KCMTelepathyAccounts/dictionary.cpp:75
+#, kde-format
+msgid "Trepia"
+msgstr "Trepia"
+
+#: KCMTelepathyAccounts/dictionary.cpp:76
+#, kde-format
+msgid "Yahoo! Messenger"
+msgstr "Yahoo! Messenger"
+
+#: KCMTelepathyAccounts/dictionary.cpp:77
+#, kde-format
+msgid "Yahoo! Messenger Japan"
+msgstr "Yahoo! Messenger Japan"
+
+#: KCMTelepathyAccounts/dictionary.cpp:78
+#, kde-format
+msgid "Zephyr"
+msgstr "Zephyr"
+
+#: KCMTelepathyAccounts/parameter-edit-model.cpp:301
+#, kde-format
+msgid "Parameter \"<b>%1</b>\" is not valid."
+msgstr "ប៉ារ៉ាម៉ែត្រ \"<b>%1</b>\" មិន​ត្រឹមត្រូវ​ទេ ។"
+
+#. i18n: ectx: property (text), widget (QCommandLinkButton, buttonKDETalk)
+#: KCMTelepathyAccounts/simple-profile-select-widget.ui:78
+#, kde-format
+msgid "KDETalk"
+msgstr ""
+
+#. i18n: ectx: property (text), widget (QCommandLinkButton, buttonOthers)
+#: KCMTelepathyAccounts/simple-profile-select-widget.ui:148
+#, kde-format
+msgid "All"
+msgstr ""
+
+#. i18n: ectx: property (description), widget (QCommandLinkButton, buttonOthers)
+#: KCMTelepathyAccounts/simple-profile-select-widget.ui:162
+#, fuzzy, kde-format
+#| msgid "AOL, Gadu-Gadu, IRC, Yahoo and more..."
+msgid "AOL, Gadu-Gadu, Yahoo and more..."
+msgstr "AOL, Gadu-Gadu, IRC, Yahoo and more..."
+
+#: KCMTelepathyAccounts/validated-line-edit.cpp:100
+#, kde-format
+msgid "This field is required"
+msgstr "វាល​នេះ​ត្រូវ​បាន​ទាមទារ"
+
+#: KCMTelepathyAccounts/validated-line-edit.cpp:121
+#, kde-format
+msgid "This field should not be empty"
+msgstr "វាល​នេះ​មិន​គួរ​ទទេ​នោះ​ទេ"
+
+#: KCMTelepathyAccounts/validated-line-edit.cpp:125
+#, kde-format
+msgid "This field should contain an email address"
+msgstr "វាល​នេះ​គួរ​មាន​អាសយដ្ឋាន​អ៊ីមែល​មួយ"
+
+#: KCMTelepathyAccounts/validated-line-edit.cpp:129
+#, kde-format
+msgid "This field should contain a hostname"
+msgstr "វាល​នេះ​គួរ​មាន​ឈ្មោះ​ម៉ាស៊ីន​មួយ"
+
+#: KCMTelepathyAccounts/validated-line-edit.cpp:133
+#, kde-format
+msgid "This field should contain an IP address"
+msgstr "វាល​នេះ​គួរ​មាន​អាសយដ្ឋាន​ IP មួយ"
+
+#: KCMTelepathyAccounts/validated-line-edit.cpp:178
+#, kde-format
+msgid "This field is valid"
+msgstr "វាល​នេះ​មិន​ត្រឹមត្រូវ​ទេ"
+
+#. i18n: ectx: property (text), widget (QLabel, salutEnableLabel)
+#: main-widget.ui:80
+#, kde-format
+msgid "Enable local network discovery"
+msgstr "បើក​ការ​រក​ឃើញ​បណ្ដាញ​មូលដ្ឋាន"
+
+#. i18n: ectx: property (text), widget (QLabel, salutEnableStatusLabel)
+#: main-widget.ui:100
+#, kde-format
+msgid "Connect to people near you"
+msgstr "តភ្ជាប់​ទៅ​កាន់​មនុស្ស​ដែល​​នៅ​ជិត​អ្នក"
+
+#. i18n: ectx: property (text), widget (KPushButton, addAccountButton)
+#: main-widget.ui:151
+#, kde-format
+msgid "Add Account"
+msgstr "បន្ថែម​គណនី"
+
+#. i18n: ectx: property (text), widget (KPushButton, editAccountButton)
+#: main-widget.ui:161
+#, kde-format
+msgid "Edit Account"
+msgstr "កែសម្រួល​គណនី"
+
+#. i18n: ectx: property (toolTip), widget (KPushButton, editAccountIdentityButton)
+#: main-widget.ui:171
+#, kde-format
+msgid "Edit how you appear to others. Requires the account to be online."
+msgstr "កែសម្រួល​របៀប​​ដែល​អ្នក​លេច​ឡើង​ទៅ​​កាន់​ផ្សេង​ទៀត ។ ទាមទារ​គណនី​ទៅ​លើ​បណ្ដាញ ។"
+
+#. i18n: ectx: property (text), widget (KPushButton, editAccountIdentityButton)
+#: main-widget.ui:174
+#, kde-format
+msgid "Edit Identity"
+msgstr "កែសម្រួល​អត្តសញ្ញាណ"
+
+#: salut-message-widget.cpp:50
+#, kde-format
+msgid "Configure manually..."
+msgstr "កំណត់​រចនាសម្ព័ន្ធ​ដោយ​ដៃ..."
+
+#: salut-message-widget.cpp:54
+#, kde-format
+msgid "Cancel"
+msgstr "បោះបង់"
+
+#: salut-message-widget.cpp:104
+#, kde-format
+msgid "You will appear as \"%1\" on your local network."
+msgstr "អ្នក​មាន​​ការ​លេច​ឡើង​ជា \"%1\" លើ​បណ្ដាញ​មូលដ្ឋាន​របស់​អ្នក ។"
+
+#~ msgid "Others"
+#~ msgstr "ផ្សេង​ទៀត"
+
+#~ msgid ""
+#~ "The file you have selected does not seem to be an image.\n"
+#~ "Please select an image file."
+#~ msgstr ""
+#~ "ឯកសារ​ដែល​អ្នក​បាន​ជ្រើស​មិន​គាំទ្រ​រូបភាព​ឡើយ ។\n"
+#~ "សូម​ជ្រើស​ឯកសារ​រូបភាព ។"
+
+#~ msgid "Online"
+#~ msgstr "លើ​បណ្ដាញ"
+
+#~ msgctxt "This is a connection state"
+#~ msgid "Connecting"
+#~ msgstr "ការ​តភ្ជាប់"
+
+#~ msgctxt "This is a connection state"
+#~ msgid "Disconnected"
+#~ msgstr "ផ្ដាច់"
+
+#~ msgctxt "This is an unknown connection state"
+#~ msgid "Unknown"
+#~ msgstr "មិន​ស្គាល់"
+
+#~ msgctxt "This is a disabled account"
+#~ msgid "Disabled"
+#~ msgstr "បាន​បិទ"
+
+#~ msgid "Authentication Failed"
+#~ msgstr "បាន​បរាជ័យ​ក្នុង​ការ​ផ្ទៀងផ្ទាត់​ភាពត្រឹមត្រូវ"
+
+#~ msgid "Network Error"
+#~ msgstr "កំហុស​បណ្ដាញ"
+
+#~ msgid "\"<b>%1</b>\" is not an acceptable value for <b>%2</b>"
+#~ msgstr "\"<b>%1</b>\" មិន​មែន​ជា​តម្លៃ​អាច​ទទួល​យក​បាន​សម្រាប់​ <b>%2</b>"

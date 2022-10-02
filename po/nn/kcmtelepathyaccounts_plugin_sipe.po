@@ -1,0 +1,140 @@
+# Translation of kcmtelepathyaccounts_plugin_sipe to Norwegian Nynorsk
+#
+# Karl Ove Hufthammer <karl@huftis.org>, 2016.
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2019-05-20 03:11+0200\n"
+"PO-Revision-Date: 2016-12-01 20:14+0100\n"
+"Last-Translator: Karl Ove Hufthammer <karl@huftis.org>\n"
+"Language-Team: Norwegian Nynorsk <l10n-no@lister.huftis.org>\n"
+"Language: nn\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Lokalize 2.0\n"
+"X-Environment: kde\n"
+"X-Accelerator-Marker: &\n"
+"X-Text-Markup: kde4\n"
+
+#. i18n: ectx: property (windowTitle), widget (QWidget, SipeAdvancedOptionsWidget)
+#: sipe-advanced-options-widget.ui:14
+#, kde-format
+msgid "Advanced Options"
+msgstr "Avanserte val"
+
+#. i18n: ectx: property (text), widget (QLabel, loginLabel)
+#: sipe-advanced-options-widget.ui:31
+#, kde-format
+msgid "Login:"
+msgstr "Brukarnamn:"
+
+#. i18n: ectx: property (text), widget (QLabel, serverLabel)
+#: sipe-advanced-options-widget.ui:41
+#, kde-format
+msgid "Server:"
+msgstr "Tenar:"
+
+#. i18n: ectx: property (text), widget (QLabel, portLabel)
+#: sipe-advanced-options-widget.ui:51
+#, kde-format
+msgid "Port:"
+msgstr "Port:"
+
+#. i18n: ectx: property (text), widget (QLabel, transportLabel)
+#: sipe-advanced-options-widget.ui:71
+#, kde-format
+msgid "Connection type:"
+msgstr "Tilkoplingtype:"
+
+#. i18n: ectx: property (text), item, widget (QComboBox, transportComboBox)
+#: sipe-advanced-options-widget.ui:79
+#, kde-format
+msgid "auto"
+msgstr "Auto"
+
+#. i18n: ectx: property (text), item, widget (QComboBox, transportComboBox)
+#: sipe-advanced-options-widget.ui:84
+#, kde-format
+msgid "ssl"
+msgstr "SSL"
+
+#. i18n: ectx: property (text), item, widget (QComboBox, transportComboBox)
+#: sipe-advanced-options-widget.ui:89
+#, kde-format
+msgid "tcp"
+msgstr "TCP"
+
+#. i18n: ectx: property (text), widget (QLabel, useragentLabel)
+#: sipe-advanced-options-widget.ui:97
+#, kde-format
+msgid "User Agent:"
+msgstr "Brukaragent:"
+
+#. i18n: ectx: property (text), widget (QLabel, authenticationLabel)
+#: sipe-advanced-options-widget.ui:107
+#, kde-format
+msgid "Authentication scheme:"
+msgstr "Autentiseringmetode:"
+
+#. i18n: ectx: property (text), item, widget (QComboBox, authenticationComboBox)
+#: sipe-advanced-options-widget.ui:115
+#, kde-format
+msgid "ntlm"
+msgstr "NTLM"
+
+#. i18n: ectx: property (text), item, widget (QComboBox, authenticationComboBox)
+#: sipe-advanced-options-widget.ui:120
+#, kde-format
+msgid "krb5"
+msgstr "KRB5"
+
+#. i18n: ectx: property (text), item, widget (QComboBox, authenticationComboBox)
+#: sipe-advanced-options-widget.ui:125
+#, kde-format
+msgid "tls-dsk"
+msgstr "TLS-DSK"
+
+#. i18n: ectx: property (text), widget (QCheckBox, singlesignonCheckBox)
+#: sipe-advanced-options-widget.ui:135
+#, kde-format
+msgid "Single Sign On"
+msgstr "Eingongspålogging"
+
+#. i18n: ectx: property (text), widget (QCheckBox, dontpublishcalendarCheckBox)
+#: sipe-advanced-options-widget.ui:142
+#, kde-format
+msgid "Do not publish my calendar information"
+msgstr "Ikkje publiser kalenderinformasjon"
+
+#. i18n: ectx: property (windowTitle), widget (QWidget, SipeMainOptionsWidget)
+#: sipe-main-options-widget.ui:20
+#, kde-format
+msgid "Account Preferences"
+msgstr "Kontoinnstillingar"
+
+#. i18n: ectx: property (text), widget (QLabel, accountLabel)
+#: sipe-main-options-widget.ui:34
+#, kde-format
+msgid "Username:"
+msgstr "Brukarnamn:"
+
+#. i18n: ectx: property (toolTip), widget (QLineEdit, accountLineEdit)
+#: sipe-main-options-widget.ui:41
+#, kde-format
+msgid "The Sipe username is your email address."
+msgstr "Sipe-brukarnamnet er e-postadressa di."
+
+#. i18n: ectx: property (placeholderText), widget (QLineEdit, accountLineEdit)
+#: sipe-main-options-widget.ui:47
+#, kde-format
+msgid "john@doe.com"
+msgstr "kari.nordmann@eksempel.no"
+
+#. i18n: ectx: property (text), widget (QLabel, passwordLabel)
+#: sipe-main-options-widget.ui:54
+#, kde-format
+msgid "Password:"
+msgstr "Passord:"

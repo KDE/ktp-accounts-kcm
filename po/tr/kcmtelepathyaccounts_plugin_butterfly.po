@@ -1,0 +1,54 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR This_file_is_part_of_KDE
+# This file is distributed under the same license as the PACKAGE package.
+#
+# Translators:
+# Volkan Gezer <volkangezer@gmail.com>, 2013
+msgid ""
+msgstr ""
+"Project-Id-Version: extragear-network-kde4\n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2019-05-20 03:11+0200\n"
+"PO-Revision-Date: 2015-05-19 10:20+0000\n"
+"Last-Translator: Necdet <necdetyucel@gmail.com>\n"
+"Language-Team: Turkish (http://www.transifex.com/projects/p/extragear-"
+"network-k-tr/language/tr/)\n"
+"Language: tr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#. i18n: ectx: property (windowTitle), widget (QWidget, MainOptionsWidget)
+#: main-options-widget.ui:20
+#, kde-format
+msgid "Account Preferences"
+msgstr "Hesap Tercihleri"
+
+#. i18n: ectx: property (text), widget (QLabel, accountLabel)
+#: main-options-widget.ui:29
+#, kde-format
+msgid "Email address:"
+msgstr "E-posta adresi:"
+
+#. i18n: ectx: property (text), widget (QLabel, label)
+#: main-options-widget.ui:46
+#, kde-format
+msgid "Example: user@hotmail.com"
+msgstr "Örnek: kullanıcı@hotmail.com"
+
+#. i18n: ectx: property (text), widget (QLabel, passwordLabel)
+#: main-options-widget.ui:53
+#, kde-format
+msgid "Password:"
+msgstr "Parola:"
+
+#~ msgctxt "name of the IM service Telegram"
+#~ msgid "Telegram (%1)"
+#~ msgstr "Telegram (%1)"
+
+#~ msgid "An authentication code will be texted to your phone on first login."
+#~ msgstr "İlk oturum açışınızda bir kimlik kanıtlama kodu gönderilecektir."
+
+#~ msgid "Phone Number:"
+#~ msgstr "Telefon Numarası:"
