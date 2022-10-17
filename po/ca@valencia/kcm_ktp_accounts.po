@@ -73,7 +73,7 @@ msgstr ""
 #: accounts-list-delegate.cpp:79
 #, kde-format
 msgid "Change account display name"
-msgstr "Canvia el nom que es mostrarà del compte"
+msgstr "Canvia el nom que s'ha de mostrar del compte"
 
 #: accounts-list-delegate.cpp:80
 #, kde-format
@@ -166,12 +166,12 @@ msgstr "No s'ha pogut carregar l'avatar."
 #: edit-display-name-button.cpp:61
 #, kde-format
 msgid "Edit Display Name"
-msgstr "Edita el nom que es mostrarà"
+msgstr "Edita el nom que s'ha de mostrar"
 
 #: edit-display-name-button.cpp:70
 #, kde-format
 msgid "Choose a new display name for your account"
-msgstr "Seleccioneu un nom nou a mostrar per al vostre compte"
+msgstr "Seleccioneu un nom nou que es mostrarà per al vostre compte"
 
 #: edit-display-name-button.cpp:77 edit-display-name-button.cpp:87
 #, kde-format
@@ -183,7 +183,7 @@ msgstr ""
 #: edit-display-name-button.cpp:86
 #, kde-format
 msgid "New display name"
-msgstr "Nom nou a mostrar"
+msgstr "Nom nou que s'ha de mostrar"
 
 #: kcm-telepathy-accounts.cpp:76
 #, kde-format
