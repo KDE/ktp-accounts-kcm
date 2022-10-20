@@ -18,6 +18,7 @@ Comment[gl]=Interface de usuario de configuración personalizada da conta para c
 Comment[hu]=Egyedi beállítófelület az Idle kapcsolatkezelőt használó azonosítókhoz.
 Comment[ia]=Interfacie de usator pro configuration de conto personalisate pro contos usante le gerente de connexion Idle.
 Comment[it]=Interfaccia utente personalizzata di configurazione account per account che usano il gestore di connessioni Idle.
+Comment[ka]=ხელით მითითებული ანგარიშის მორგების მომხმარებლის ინტერფეისი Idle -ის შეერთების მმართველის გამოყენებით.
 Comment[kk]=Idle байланыс менеджерін қолданатын тіркелгі пайдаланушы интерфейс параметрлерін ыңғайлау.
 Comment[km]=ចំណុច​ប្រទាក់​អ្នក​ប្រើ​ការ​កំណត់​រចនាសម្ព័ន្ធ​គណនី​ផ្ទាល់ខ្លួន​សម្រាប់​គណនី​ដោយ​ប្រើ​កម្មវិធី​ការ​តភ្ជាប់​​ឥត​បាន​ការ ។
 Comment[ko]=Idle 연결 관리자를 사용하는 계정 설정 사용자 인터페이스입니다.
