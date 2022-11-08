@@ -391,8 +391,3 @@ msgstr "Usa SSL en el servidor intermediari"
 #, kde-format
 msgid "Ignore invites"
 msgstr "Ignora les invitacions"
-
-#, fuzzy
-#~| msgid "Email address:"
-#~ msgid "Email address"
-#~ msgstr "Adreça de correu electrònic:"

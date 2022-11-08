@@ -44,15 +44,3 @@ msgstr "Exemple: usuari@hotmail.com"
 #, kde-format
 msgid "Password:"
 msgstr "Contrasenya:"
-
-#~ msgctxt "name of the IM service Telegram"
-#~ msgid "Telegram (%1)"
-#~ msgstr "Telegram (%1)"
-
-#~ msgid "An authentication code will be texted to your phone on first login."
-#~ msgstr ""
-#~ "En entrar per primer cop s'enviarà un missatge de text al vostre mòbil "
-#~ "amb un codi d'autenticació."
-
-#~ msgid "Phone Number:"
-#~ msgstr "Número de telèfon:"

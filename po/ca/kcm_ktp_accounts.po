@@ -657,35 +657,3 @@ msgstr "Cancel·la"
 #, kde-format
 msgid "You will appear as \"%1\" on your local network."
 msgstr "Apareixereu com a «%1» a la vostra xarxa local."
-
-#~ msgid "Others"
-#~ msgstr "Altres"
-
-#~ msgid ""
-#~ "The file you have selected does not seem to be an image.\n"
-#~ "Please select an image file."
-#~ msgstr ""
-#~ "El fitxer que heu seleccionat no sembla que sigui una imatge.\n"
-#~ "Si us plau, seleccioneu un fitxer d'imatge."
-
-#~ msgid "Online"
-#~ msgstr "Connectat"
-
-#~ msgctxt "This is a connection state"
-#~ msgid "Connecting"
-#~ msgstr "Connectant"
-
-#~ msgctxt "This is a connection state"
-#~ msgid "Disconnected"
-#~ msgstr "Desconnectat"
-
-#~ msgctxt "This is an unknown connection state"
-#~ msgid "Unknown"
-#~ msgstr "Desconegut"
-
-#~ msgctxt "This is a disabled account"
-#~ msgid "Disabled"
-#~ msgstr "Desactivat"
-
-#~ msgid "TextLabel"
-#~ msgstr "EtiquetaDeText"
