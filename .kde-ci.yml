@@ -7,7 +7,7 @@ Dependencies:
     'frameworks/extra-cmake-modules': '@stable'
     'frameworks/kio': '@stable'
     'frameworks/ki18n': '@stable'
-    'frameworks/kwidgetaddons': '@stable'
+    'frameworks/kwidgetsaddons': '@stable'
     'frameworks/kcodecs': '@stable'
     'frameworks/kcoreaddons': '@stable'
     'frameworks/kconfigwidgets': '@stable'
