@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: ktp-accounts-kcm\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2019-05-20 03:11+0200\n"
-"PO-Revision-Date: 2022-09-27 14:37+0200\n"
+"PO-Revision-Date: 2022-12-12 09:53+0100\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
 "Language: ka\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.1.1\n"
+"X-Generator: Poedit 3.2.2\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -63,6 +63,8 @@ msgid ""
 "is just used locally on your computer, your contacts will not be able to see "
 "it."
 msgstr ""
+"ეს ღილაკი თქვენი ანგარიშის ხატულის შეცვლის უფლებას გაძლევთ.<br />ეს ხატულა "
+"მხოლოდ თქვენს კომპიუტერზე გამოიყენება. კონტაქტები მას ვერ დაინახავენ."
 
 #: accounts-list-delegate.cpp:79
 #, kde-format
@@ -76,6 +78,9 @@ msgid ""
 "display name is an alias for your account and is just used locally on your "
 "computer, your contacts will not be able to see it."
 msgstr ""
+"ეს ღილაკები თქვენი ანგარიშის საჩვენებელ სახელს შეცვლის. <br /> საჩვენებელი "
+"სახელი თქვენი ანგარიშის მეტსახელია და ის მხოლოდ თქვენს კომპიუტერზე "
+"გამოიყენება. კონტაქტები მას ვერ დაინახავენ."
 
 #: accounts-list-delegate.cpp:134
 #, kde-format
@@ -95,12 +100,12 @@ msgstr "ანგარიშის ჩართვა"
 #: add-account-assistant.cpp:95 add-account-assistant.cpp:96
 #, kde-format
 msgid "Step 1: Select an Instant Messaging Network."
-msgstr ""
+msgstr "ნაბიჯი 1: აირჩიეთ IM ქსელი."
 
 #: add-account-assistant.cpp:120
 #, kde-format
 msgid "Step 2: Fill in the required Parameters."
-msgstr ""
+msgstr "ნაბიჯი 2: შეავსეთ საჭირო პარამეტრები."
 
 #: add-account-assistant.cpp:172
 #, kde-format
@@ -109,11 +114,13 @@ msgid ""
 "Please install the telepathy-haze and telepathy-gabble packages using your "
 "package manager."
 msgstr ""
+"ამ IM ქსელთან დაკავშირებას დამატების დაყენება ესაჭიროება. დააყენეთ telepathy-"
+"haze და telepathy-gabble პაკეტები."
 
 #: add-account-assistant.cpp:172
 #, kde-format
 msgid "Missing Telepathy Connection Manager"
-msgstr ""
+msgstr "Telepathy-ის შეერთებების მმართველი ვერ ვიპოვე"
 
 #: add-account-assistant.cpp:208 add-account-assistant.cpp:257
 #: salut-enabler.cpp:243
@@ -129,7 +136,7 @@ msgstr "შეაძლოა ყველა საჭირო ველი �
 #: add-account-assistant.cpp:267 salut-enabler.cpp:253
 #, kde-format
 msgid "Something went wrong with Telepathy"
-msgstr ""
+msgstr "Telepathy-ის რაღაც სჭირს"
 
 #: avatar-button.cpp:54
 #, kde-format
@@ -166,6 +173,8 @@ msgstr "აირჩიეთ თქვენი ანგარიშის ა
 msgid ""
 "A display name is your local alias for the account, only you will see it."
 msgstr ""
+"საჩვენებელი სახელი თქვენი ანგარიშის ლოკალური მეტსახელია. მას მხოლოდ თქვენ "
+"ხედავთ."
 
 #: edit-display-name-button.cpp:86
 #, kde-format
@@ -180,7 +189,7 @@ msgstr "telepathy_accounts"
 #: kcm-telepathy-accounts.cpp:76
 #, kde-format
 msgid "Instant Messaging and VOIP Accounts"
-msgstr ""
+msgstr "IM და VOIP ანგარიშები"
 
 #: kcm-telepathy-accounts.cpp:78
 #, kde-format
@@ -231,6 +240,8 @@ msgid ""
 "We have found Kopete logs for this account. Do you want to import the logs "
 "to KDE Telepathy?"
 msgstr ""
+"ამ ანგარიშისთვის აღმოჩენილია Kopete-ის ჟურნალი. გნებავთ ჟურნალის KDE "
+"Telepathy-ში შემოტანა?"
 
 #: kcm-telepathy-accounts.cpp:267
 #, kde-format
@@ -277,12 +288,12 @@ msgstr "საუბრის ჟურნალების წაშლა"
 #: kcm-telepathy-accounts.cpp:410
 #, kde-format
 msgid "Are you sure you want to remove the account \"%1\"?"
-msgstr ""
+msgstr "დარწმუნებული ბრძანდებით, რომ გნებავთ ამ ანგარიშის (\"%1\") წაშლა?"
 
 #: kcm-telepathy-accounts.cpp:492
 #, kde-format
 msgid "Install telepathy-salut to enable"
-msgstr ""
+msgstr "ჩასართავად დააყენეთ telepathy-salut"
 
 #: kcm-telepathy-accounts.cpp:534
 #, kde-format
@@ -291,16 +302,19 @@ msgid ""
 "It is likely your system is missing Telepathy Mission Control package.\n"
 "Please install it and restart this module."
 msgstr ""
+"რაღაც არასწორად წავიდა და IM სისტემის ინიციალიზაცია შეუძლებელია.\n"
+"როგორც ჩანს, Telepathy_ის მიის კონტროლის პაკეტი დაყენებული არ გაქვთ.\n"
+"დააყენეთ ის და გადატვირთეთ ეს მოდული."
 
 #: KCMTelepathyAccounts/abstract-account-parameters-widget.cpp:59
 #, kde-format
 msgid "All mandatory fields must be filled"
-msgstr ""
+msgstr "ყველა საჭირო ველის შევსება აუცილებელია"
 
 #: KCMTelepathyAccounts/account-edit-widget.cpp:108
 #, kde-format
 msgid "Connect when wizard is finished"
-msgstr ""
+msgstr "მიერთება ოსტატის დასრულებისას"
 
 #: KCMTelepathyAccounts/account-edit-widget.cpp:219
 #, kde-format
@@ -401,12 +415,12 @@ msgstr "STUN -ის პორტი"
 #: KCMTelepathyAccounts/dictionary.cpp:50
 #, kde-format
 msgid "Fallback SOCKS5 Proxy Addresses"
-msgstr ""
+msgstr "SOCKS5 პროქსის მისამართებზე გადართვა"
 
 #: KCMTelepathyAccounts/dictionary.cpp:51
 #, kde-format
 msgid "HTTPS Proxy Server Address"
-msgstr ""
+msgstr "HTTP პროქსი სერვერის მისამართი"
 
 #: KCMTelepathyAccounts/dictionary.cpp:52
 #, kde-format
@@ -617,6 +631,8 @@ msgstr "ანგარიშის ჩასწორება"
 #, kde-format
 msgid "Edit how you appear to others. Requires the account to be online."
 msgstr ""
+"ჩაასწორეთ, როგორ გამოჩნდებით სხვებისთვის. აუცილებელია, რომ ანგარიში "
+"მიერთებული იყოს."
 
 #. i18n: ectx: property (text), widget (KPushButton, editAccountIdentityButton)
 #: main-widget.ui:174
@@ -637,4 +653,4 @@ msgstr "გაუქმენა"
 #: salut-message-widget.cpp:104
 #, kde-format
 msgid "You will appear as \"%1\" on your local network."
-msgstr ""
+msgstr "ლოკალურ ქსელში გამოჩნდებით, როგორც \"%1\"."
