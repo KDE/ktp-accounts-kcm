@@ -18,6 +18,7 @@ Comment[gl]=Interface de usuario de configuración personalizada da conta para c
 Comment[hu]=Egyedi beállítófelület a Sunshine kapcsolatkezelőt használó Gadu-Gadu azonosítókhoz.
 Comment[ia]=Interfacie de usator pro configuration de conto personalisate pro contos usante le gerente de connexion Sunshine.
 Comment[it]=Interfaccia utente personalizzata di configurazione account per account che usano il gestore di connessioni Sunshine.
+Comment[ka]=Gadu-Gadu-ის ანგარიშების მორგების ინტერფეისი Sunshine-ის მიერთებების მმართველის გამოყენებით.
 Comment[kk]=Sunshine байланыс менеджерін қолданатын Gadu-Gadu тіркелгі пайдаланушы интерфейс параметрлерін ыңғайлау.
 Comment[km]=ចំណុច​ប្រទាក់​អ្នក​ប្រើ​ការ​កំណត់​រចនាសម្ព័ន្ធ​​គណនី​​ផ្ទាល់ខ្លួន​សម្រាប់​គណនី Gadu-Gadu ដែល​ប្រើ​កម្មវិធី​ការ​តភ្ជាប់ Sunshine ។
 Comment[ko]=Sunshine 연결 관리자를 사용하는 Gadu-Gadu 계정 설정 사용자 인터페이스입니다.
