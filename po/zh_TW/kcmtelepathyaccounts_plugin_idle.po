@@ -2,19 +2,20 @@
 # This file is distributed under the same license as the PACKAGE package.
 #
 # Franklin Weng <franklin@mail.everfocus.com.tw>, 2012.
+# Kisaragi Hiu <mail@kisaragi-hiu.com>, 2022.
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2021-07-05 00:17+0000\n"
-"PO-Revision-Date: 2012-01-02 16:23+0800\n"
-"Last-Translator: Franklin Weng <franklin@mail.everfocus.com.tw>\n"
-"Language-Team: Chinese Traditional <zh-l10n@lists.linux.org.tw>\n"
+"PO-Revision-Date: 2022-12-30 18:00+0900\n"
+"Last-Translator: Kisaragi Hiu <mail@kisaragi-hiu.com>\n"
+"Language-Team: Traditional Chinese <zh-l10n@linux.org.tw>\n"
 "Language: zh_TW\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 1.2\n"
+"X-Generator: Lokalize 22.12.0\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #. i18n: ectx: property (windowTitle), widget (QWidget, MainOptionsWidget)
@@ -62,10 +63,9 @@ msgstr "伺服器位址："
 
 #. i18n: ectx: property (text), widget (QLabel, label)
 #: main-options-widget.ui:36
-#, fuzzy, kde-format
-#| msgid "<i>Example:</i> chat.freenode.net"
+#, kde-format
 msgid "<i>Example:</i> irc.libera.chat"
-msgstr "<i>範例：</i> chat.freenode.net"
+msgstr "<i>範例：</i> irc.libera.chat"
 
 #. i18n: ectx: property (text), widget (QLabel, accountLabel)
 #: main-options-widget.ui:43
