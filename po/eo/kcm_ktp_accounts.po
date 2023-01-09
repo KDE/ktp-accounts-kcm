@@ -1,13 +1,16 @@
-# Translation of kcm_telepathy_accounts into esperanto.
+# Translation of kcm_ktp_accounts.pot into esperanto.
+# Copyright (C) 2009 Free Software Foundation, Inc.
+# This file is distributed under the same license as the ktp-accounts-kcm package.
 # Axel Rousseau <axel@esperanto-jeunes.org>, 2009.
+# Oliver Kellogg <okellogg@users.sourceforge.net>, 2023.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: kcm_telepathy_accounts\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2019-05-20 03:11+0200\n"
-"PO-Revision-Date: 2009-11-15 12:06+0100\n"
-"Last-Translator: Axel Rousseau <axel@esperanto-jeunes.org>\n"
+"PO-Revision-Date: 2023-01-08 12:30+0100\n"
+"Last-Translator: Oliver Kellogg <okellogg@users.sourceforge.net>\n"
 "Language-Team: esperanto <kde-i18n-eo@kde.org>\n"
 "Language: eo\n"
 "MIME-Version: 1.0\n"
@@ -19,30 +22,29 @@ msgstr ""
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
-msgstr ""
+msgstr "Axel Rousseau, Oliver Kellogg"
 
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
-msgstr ""
+msgstr "axel@esperanto-jeunes.org, okellogg@users.sourceforge.net"
 
 #: account-identity-dialog.cpp:42
 #, kde-format
 msgid "Edit Account Identity"
-msgstr ""
+msgstr "Redakti Kontoidentecon"
 
 #. i18n: ectx: property (text), widget (QLabel, label_3)
 #: account-identity-dialog.ui:40
 #, kde-format
 msgid "Nickname:"
-msgstr ""
+msgstr "Kromnomo:"
 
 #. i18n: ectx: property (text), widget (QLabel, label)
 #: account-identity-dialog.ui:50
-#, fuzzy, kde-format
-#| msgid "Add Account"
+#, kde-format
 msgid "Account:"
-msgstr "Aldoni konton"
+msgstr "Konto:"
 
 #. i18n: ectx: property (text), widget (AvatarButton, accountAvatar)
 #: account-identity-dialog.ui:87
@@ -53,7 +55,7 @@ msgstr "..."
 #: accounts-list-delegate.cpp:70
 #, kde-format
 msgid "Change account icon"
-msgstr ""
+msgstr "Ŝanĝi kontan piktogramon"
 
 #: accounts-list-delegate.cpp:71
 #, kde-format
@@ -66,7 +68,7 @@ msgstr ""
 #: accounts-list-delegate.cpp:79
 #, kde-format
 msgid "Change account display name"
-msgstr ""
+msgstr "Ŝanĝi montratan kontonomon"
 
 #: accounts-list-delegate.cpp:80
 #, kde-format
@@ -84,12 +86,12 @@ msgstr ""
 #: accounts-list-delegate.cpp:144
 #, kde-format
 msgid "Disable account"
-msgstr ""
+msgstr "Malebligi konton"
 
 #: accounts-list-delegate.cpp:147
 #, kde-format
 msgid "Enable account"
-msgstr ""
+msgstr "Ebligi konton"
 
 #: add-account-assistant.cpp:95 add-account-assistant.cpp:96
 #, kde-format
@@ -118,7 +120,7 @@ msgstr ""
 #: salut-enabler.cpp:243
 #, kde-format
 msgid "Failed to create account"
-msgstr ""
+msgstr "Malsukcesis krei konton"
 
 #: add-account-assistant.cpp:258 salut-enabler.cpp:244
 #, kde-format
@@ -133,12 +135,12 @@ msgstr ""
 #: avatar-button.cpp:54
 #, kde-format
 msgid "Load from file..."
-msgstr ""
+msgstr "Ŝargi el dosiero..."
 
 #: avatar-button.cpp:55
 #, kde-format
 msgid "Clear Avatar"
-msgstr ""
+msgstr "Forviŝi Avataron"
 
 #: avatar-button.cpp:106
 #, kde-format
@@ -153,7 +155,7 @@ msgstr ""
 #: edit-display-name-button.cpp:61
 #, kde-format
 msgid "Edit Display Name"
-msgstr ""
+msgstr "Redakti Montratan Nomon"
 
 #: edit-display-name-button.cpp:70
 #, kde-format
@@ -169,7 +171,7 @@ msgstr ""
 #: edit-display-name-button.cpp:86
 #, kde-format
 msgid "New display name"
-msgstr ""
+msgstr "Nova montrata nomo"
 
 #: kcm-telepathy-accounts.cpp:76
 #, kde-format
@@ -179,7 +181,7 @@ msgstr ""
 #: kcm-telepathy-accounts.cpp:76
 #, kde-format
 msgid "Instant Messaging and VOIP Accounts"
-msgstr ""
+msgstr "Tujmesaĝadaj kaj VOIP-aj Kontoj"
 
 #: kcm-telepathy-accounts.cpp:78
 #, kde-format
@@ -318,35 +320,34 @@ msgid "Password"
 msgstr ""
 
 #: KCMTelepathyAccounts/dictionary.cpp:34
-#, fuzzy, kde-format
-#| msgid "Add Account"
+#, kde-format
 msgid "Account"
-msgstr "Aldoni konton"
+msgstr "Konto"
 
 #: KCMTelepathyAccounts/dictionary.cpp:35
 #, kde-format
 msgid "Priority"
-msgstr ""
+msgstr "Prioritato"
 
 #: KCMTelepathyAccounts/dictionary.cpp:36
 #, kde-format
 msgid "Port"
-msgstr ""
+msgstr "Pordo"
 
 #: KCMTelepathyAccounts/dictionary.cpp:37
 #, kde-format
 msgid "Alias"
-msgstr ""
+msgstr "Alinomo"
 
 #: KCMTelepathyAccounts/dictionary.cpp:38
 #, kde-format
 msgid "Register new Account"
-msgstr ""
+msgstr "Registri novan Konton"
 
 #: KCMTelepathyAccounts/dictionary.cpp:39
 #, kde-format
 msgid "Server Address"
-msgstr ""
+msgstr "Serviladreso"
 
 #: KCMTelepathyAccounts/dictionary.cpp:40
 #, kde-format
@@ -356,12 +357,12 @@ msgstr ""
 #: KCMTelepathyAccounts/dictionary.cpp:41
 #, kde-format
 msgid "Resource"
-msgstr ""
+msgstr "Rizurco"
 
 #: KCMTelepathyAccounts/dictionary.cpp:42
 #, kde-format
 msgid "HTTPS Proxy Port"
-msgstr ""
+msgstr "HTTPS-Prokura Pordo"
 
 #: KCMTelepathyAccounts/dictionary.cpp:43
 #, kde-format
@@ -592,13 +593,13 @@ msgstr ""
 #: main-widget.ui:80
 #, kde-format
 msgid "Enable local network discovery"
-msgstr ""
+msgstr "Ebligi malkovron de lokaj retoj"
 
 #. i18n: ectx: property (text), widget (QLabel, salutEnableStatusLabel)
 #: main-widget.ui:100
 #, kde-format
 msgid "Connect to people near you"
-msgstr ""
+msgstr "Konekti al homoj proksimaj al vi"
 
 #. i18n: ectx: property (text), widget (KPushButton, addAccountButton)
 #: main-widget.ui:151
@@ -610,7 +611,7 @@ msgstr "Aldoni konton"
 #: main-widget.ui:161
 #, kde-format
 msgid "Edit Account"
-msgstr ""
+msgstr "Redakti Konton"
 
 #. i18n: ectx: property (toolTip), widget (KPushButton, editAccountIdentityButton)
 #: main-widget.ui:171
@@ -622,17 +623,17 @@ msgstr ""
 #: main-widget.ui:174
 #, kde-format
 msgid "Edit Identity"
-msgstr ""
+msgstr "Redakti Identecon"
 
 #: salut-message-widget.cpp:50
 #, kde-format
 msgid "Configure manually..."
-msgstr ""
+msgstr "Agordi mane..."
 
 #: salut-message-widget.cpp:54
 #, kde-format
 msgid "Cancel"
-msgstr ""
+msgstr "Nuligi"
 
 #: salut-message-widget.cpp:104
 #, kde-format
