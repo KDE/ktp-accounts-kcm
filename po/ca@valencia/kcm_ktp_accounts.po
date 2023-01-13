@@ -109,7 +109,7 @@ msgstr "Pas 1: Seleccioneu una xarxa de missatgeria instantània."
 #: add-account-assistant.cpp:120
 #, kde-format
 msgid "Step 2: Fill in the required Parameters."
-msgstr "Pas 2: Ompliu els paràmetres requerits."
+msgstr "Pas 2: Empleneu els paràmetres requerits."
 
 #: add-account-assistant.cpp:172
 #, kde-format
@@ -314,7 +314,7 @@ msgstr ""
 #: KCMTelepathyAccounts/abstract-account-parameters-widget.cpp:59
 #, kde-format
 msgid "All mandatory fields must be filled"
-msgstr "Cal omplir tots els camps obligatoris"
+msgstr "Cal emplenar tots els camps obligatoris"
 
 #: KCMTelepathyAccounts/account-edit-widget.cpp:108
 #, kde-format
