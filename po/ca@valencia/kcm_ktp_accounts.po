@@ -270,7 +270,7 @@ msgstr "S'estan important els registres..."
 #: kcm-telepathy-accounts.cpp:294 kcm-telepathy-accounts.cpp:303
 #, kde-format
 msgid "Kopete Logs Import"
-msgstr "Importació dels registres de Kopete"
+msgstr "Importeu els registres de Kopete"
 
 #: kcm-telepathy-accounts.cpp:303
 #, kde-format

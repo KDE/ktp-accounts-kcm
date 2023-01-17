@@ -121,7 +121,7 @@ msgstr "Opcions avançades"
 #: proxy-settings-widget.ui:20
 #, kde-format
 msgid "STUN Server Settings"
-msgstr "Configuració del servidor STUN"
+msgstr "Configureu el servidor STUN"
 
 #. i18n: ectx: property (text), widget (QLabel, stunServerLabel)
 #: proxy-settings-widget.ui:28
@@ -148,7 +148,7 @@ msgstr "Servidor STUN alternatiu:"
 #: proxy-settings-widget.ui:85
 #, kde-format
 msgid "Proxy Settings"
-msgstr "Configuració del servidor intermediari"
+msgstr "Configureu el servidor intermediari"
 
 #. i18n: ectx: property (text), widget (QLabel, httpsProxyServerLabel)
 #: proxy-settings-widget.ui:93
@@ -192,7 +192,7 @@ msgstr ""
 #: proxy-settings-widget.ui:143
 #, kde-format
 msgid "Conference Server Settings"
-msgstr "Configuració del servidor de conferències"
+msgstr "Configureu el servidor de conferències"
 
 #. i18n: ectx: property (text), widget (QLabel, fallbackConferenceServerLabel)
 #: proxy-settings-widget.ui:151
@@ -205,13 +205,13 @@ msgstr "Servidor de conferències alternatiu:"
 #: server-settings-widget.ui:14 server-settings-widget.ui:63
 #, kde-format
 msgid "Connection Settings"
-msgstr "Configuració de la connexió"
+msgstr "Configureu la connexió"
 
 #. i18n: ectx: property (title), widget (QGroupBox, serverGroupBox)
 #: server-settings-widget.ui:20
 #, kde-format
 msgid "Server Settings"
-msgstr "Configuració del servidor"
+msgstr "Configureu el servidor"
 
 #. i18n: ectx: property (text), widget (QLabel, serverLabel)
 #: server-settings-widget.ui:26

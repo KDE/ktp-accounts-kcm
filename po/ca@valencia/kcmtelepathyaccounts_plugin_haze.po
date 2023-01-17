@@ -156,7 +156,7 @@ msgstr "UIN:"
 #: icq-server-settings-widget.ui:14
 #, kde-format
 msgid "Connection Settings"
-msgstr "Configuració de la connexió"
+msgstr "Configureu la connexió"
 
 #. i18n: ectx: property (text), widget (QCheckBox, useSslCheckBox)
 #: icq-server-settings-widget.ui:87
