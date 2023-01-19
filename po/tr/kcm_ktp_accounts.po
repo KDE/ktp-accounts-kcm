@@ -4,13 +4,13 @@
 # Translators:
 # obsoleteman <tulliana@gmail.com>, 2009.
 # Volkan Gezer <volkangezer@gmail.com>, 2013-2014.
-# Emir SARI <emir_sari@icloud.com>, 2022.
+# Emir SARI <emir_sari@icloud.com>, 2022, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: extragear-network-kde4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2019-05-20 03:11+0200\n"
-"PO-Revision-Date: 2022-06-23 10:21+0300\n"
+"PO-Revision-Date: 2023-01-18 22:31+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Lokalize 22.04.2\n"
+"X-Generator: Lokalize 22.12.1\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -65,8 +65,9 @@ msgid ""
 "is just used locally on your computer, your contacts will not be able to see "
 "it."
 msgstr ""
-"Bu düğme hesabınız için simgeyi değiştirmenizi sağlar.<br />Bu simge sadece "
-"sizin bilgisayarınızda yerel olarak kullanılır, kişileriniz göremeyecekler."
+"Bu düğme hesabınız için simgeyi değiştirmenizi sağlar.<br />Bu simge "
+"yalnızca sizin bilgisayarınızda yerel olarak kullanılır, kişileriniz "
+"göremeyecekler."
 
 #: accounts-list-delegate.cpp:79
 #, kde-format
@@ -81,8 +82,8 @@ msgid ""
 "computer, your contacts will not be able to see it."
 msgstr ""
 "Bu düğme hesabınız için görüntü adınızı değiştirmenizi sağlar.<br />Bu "
-"görüntü adı sadece sizin bilgisayarınızda yerel olarak kullanılan bir takma "
-"isimdir ve kişileriniz göremeyecekler."
+"görüntü adı yalnızca sizin bilgisayarınızda yerel olarak kullanılan bir "
+"takma isimdir ve kişileriniz göremeyecekler."
 
 #: accounts-list-delegate.cpp:134
 #, kde-format
@@ -176,7 +177,7 @@ msgstr "Hesabınız için yeni bir görüntü adı seçin"
 msgid ""
 "A display name is your local alias for the account, only you will see it."
 msgstr ""
-"Bir görüntü adı hesabınız için takma bir isimdir ve sadece siz "
+"Bir görüntü adı hesabınız için takma bir isimdir ve yalnızca siz "
 "görebilirsiniz."
 
 #: edit-display-name-button.cpp:86
