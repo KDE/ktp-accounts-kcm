@@ -1,23 +1,23 @@
-# SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR This_file_is_part_of_KDE
 # This file is distributed under the same license as the PACKAGE package.
 #
 # Translators:
-# Volkan Gezer <volkangezer@gmail.com>, 2014
+# Volkan Gezer <volkangezer@gmail.com>, 2014.
+# Emir SARI <emir_sari@icloud.com>, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: extragear-network-kde4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2019-05-20 03:11+0200\n"
-"PO-Revision-Date: 2014-06-08 13:51+0000\n"
-"Last-Translator: Volkan Gezer <volkangezer@gmail.com>\n"
-"Language-Team: Turkish (http://www.transifex.com/projects/p/extragear-"
-"network-k-tr/language/tr/)\n"
+"PO-Revision-Date: 2023-02-08 20:14+0300\n"
+"Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
+"Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Generator: Lokalize 22.12.2\n"
 
 #. i18n: ectx: property (windowTitle), widget (QWidget, SipeAdvancedOptionsWidget)
 #: sipe-advanced-options-widget.ui:14
@@ -29,7 +29,7 @@ msgstr "Gelişmiş Seçenekler"
 #: sipe-advanced-options-widget.ui:31
 #, kde-format
 msgid "Login:"
-msgstr "Giriş:"
+msgstr "Oturum Aç:"
 
 #. i18n: ectx: property (text), widget (QLabel, serverLabel)
 #: sipe-advanced-options-widget.ui:41
