@@ -232,7 +232,7 @@ msgstr ""
 msgid ""
 "We have found Kopete logs for this account. Do you want to import the logs "
 "to KDE Telepathy?"
-msgstr "وجدنا سجلّات كوبيت لهذا الحساب. أتريد استيراد السّجلّات إلى كدي تلبثي؟"
+msgstr "وجدنا سجلّات كوبيت لهذا الحساب. أتريد استيراد السّجلّات إلى كِيدِي تلبثي؟"
 
 #: kcm-telepathy-accounts.cpp:267
 #, kde-format
