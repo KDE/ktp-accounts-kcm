@@ -1,21 +1,22 @@
 # Copyright (C) YEAR This_file_is_part_of_KDE
 # This file is distributed under the same license as the PACKAGE package.
-#
 # Xosé <xosecalvo@gmail.com>, 2012.
-# Adrián Chaves (Gallaecio) <adrian@chaves.io>, 2017.
+# Adrián Chaves (Gallaecio) <adrian@chaves.io>, 2017, 2023.
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2021-07-05 00:17+0000\n"
-"PO-Revision-Date: 2017-09-30 07:44+0100\n"
+"PO-Revision-Date: 2023-04-23 05:58+0200\n"
 "Last-Translator: Adrián Chaves (Gallaecio) <adrian@chaves.io>\n"
-"Language-Team: Galician <kde-i18n-doc@kde.org>\n"
+"Language-Team: Galician <proxecto@trasno.gal>\n"
 "Language: gl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Lokalize 22.12.3\n"
 
 #. i18n: ectx: property (windowTitle), widget (QWidget, MainOptionsWidget)
 #. i18n: ectx: property (windowTitle), widget (QWidget, AdvancedOptionsWidget)
@@ -62,10 +63,9 @@ msgstr "Enderezo do servidor:"
 
 #. i18n: ectx: property (text), widget (QLabel, label)
 #: main-options-widget.ui:36
-#, fuzzy, kde-format
-#| msgid "<i>Example:</i> chat.freenode.net"
+#, kde-format
 msgid "<i>Example:</i> irc.libera.chat"
-msgstr "<i>Exemplo:</i> chat.freenode.net"
+msgstr "<i>Exemplo:</i> irc.libera.chat"
 
 #. i18n: ectx: property (text), widget (QLabel, accountLabel)
 #: main-options-widget.ui:43
