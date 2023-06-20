@@ -158,7 +158,7 @@ msgstr "Permitir o encamiñamento vago segundo RFC 3261"
 #: rakia-advanced-options-widget.ui:186
 #, kde-format
 msgid "Use Loose Routing"
-msgstr "Empregar encamiñamento vago"
+msgstr "Usar encamiñamento vago"
 
 #. i18n: ectx: property (text), widget (QLabel, looseRoutingLabel)
 #: rakia-advanced-options-widget.ui:193
@@ -192,7 +192,7 @@ msgid ""
 "default interval)"
 msgstr ""
 "Intervalo entre as sondaxes de keepalive en segundos (0 = desactivado, nada "
-"= empregar o intervalo predeterminado)"
+"= usar o intervalo predeterminado)"
 
 #. i18n: ectx: property (toolTip), widget (KComboBox, keepaliveMechanismComboBox)
 #: rakia-advanced-options-widget.ui:242
@@ -321,7 +321,7 @@ msgid ""
 "If left blank, your SIP URI will be shown to the receiver instead of your "
 "Alias."
 msgstr ""
-"Este alcume xa o está a empregar SIMPLE, unha extensión de mensaxería "
+"Este alcume xa o está a usar SIMPLE, unha extensión de mensaxería "
 "instantánea para SIP. Se se deixa en branco, o receptor ve o URI do seu SIP "
 "no canto do seu alcume."
 

@@ -53,7 +53,7 @@ msgstr "Porto do servidor:"
 #: advanced-options-widget.ui:99
 #, kde-format
 msgid "Use SSL?"
-msgstr "Empregar SSL?"
+msgstr "Usar SSL?"
 
 #. i18n: ectx: property (text), widget (QLabel, serverLabel)
 #: main-options-widget.ui:23

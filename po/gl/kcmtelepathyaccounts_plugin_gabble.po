@@ -65,7 +65,7 @@ msgid ""
 msgstr ""
 "Este é o seu nome de usuario, non que insire normalmente en Facebook.<br/>\n"
 "Se en facebook.com vostede é <b>festeiro</b>, insira <b>festeiro</b>.<br/>\n"
-"Empregue <a href=\"http://www.facebook.com/username/\">esta páxina</a> para "
+"Use <a href=\"http://www.facebook.com/username/\">esta páxina</a> para "
 "escoller un nome de usuario en Facebook."
 
 #. i18n: ectx: property (text), widget (QLabel, accountLabel)
@@ -152,13 +152,13 @@ msgstr "Configuración do proxy"
 #: proxy-settings-widget.ui:93
 #, kde-format
 msgid "HTTPS proxy server:"
-msgstr "Servidor proxy de HTTPS:"
+msgstr "Servidor mandatario de HTTPS:"
 
 #. i18n: ectx: property (text), widget (QLabel, fallbackSocks5ProxiesLabel)
 #: proxy-settings-widget.ui:119
 #, kde-format
 msgid "Fallback SOCKS 5 proxy servers:"
-msgstr "Servidores proxy de SOCKS 5 de reserva:"
+msgstr "Servidores mandatarios de SOCKS 5 de reserva:"
 
 #. i18n: ectx: property (html), widget (QTextEdit, fallbackSocks5ProxiesTextEdit)
 #: proxy-settings-widget.ui:130
@@ -233,7 +233,7 @@ msgstr "Intervalo para manter viva:"
 #: server-settings-widget.ui:79
 #, kde-format
 msgid "Use low bandwidth mode"
-msgstr "Empregar o modo de pouca largura de banda"
+msgstr "Usar o modo de pouca largura de banda"
 
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox)
 #: server-settings-widget.ui:89
@@ -257,7 +257,7 @@ msgstr "Prioridade:"
 #: server-settings-widget.ui:118
 #, kde-format
 msgid "Security Settings"
-msgstr "Configuración de seguranza"
+msgstr "Configuración de seguridade"
 
 #. i18n: ectx: property (text), widget (QCheckBox, requireEncryptionCheckBox)
 #: server-settings-widget.ui:124
@@ -275,4 +275,4 @@ msgstr "Ignorar os erros de SSL"
 #: server-settings-widget.ui:138
 #, kde-format
 msgid "Use old-style SSL"
-msgstr "Empregar o vello estilo do SSL"
+msgstr "Usar o vello estilo do SSL"

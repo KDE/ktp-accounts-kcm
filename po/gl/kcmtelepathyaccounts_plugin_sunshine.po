@@ -62,13 +62,13 @@ msgstr "Sincronice os seus contactos co servidor de Gadu-Gadu"
 #: sunshine-advanced-options-widget.ui:86
 #, kde-format
 msgid "Security:"
-msgstr "Seguranza:"
+msgstr "Seguridade:"
 
 #. i18n: ectx: property (text), widget (QCheckBox, sslCheckBox)
 #: sunshine-advanced-options-widget.ui:93
 #, kde-format
 msgid "Use Transport Layer Security (TLS/SSL)"
-msgstr "Empregar a Seguranza da capa de transporte (TLS/SSL)"
+msgstr "Usar a Seguridade da capa de transporte (TLS/SSL)"
 
 #. i18n: ectx: property (windowTitle), widget (QWidget, SunshineMainOptionsWidget)
 #: sunshine-main-options-widget.ui:14
