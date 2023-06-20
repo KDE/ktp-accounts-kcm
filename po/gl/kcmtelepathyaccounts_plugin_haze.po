@@ -100,7 +100,7 @@ msgstr "Porto:"
 #: aim-server-settings-widget.ui:75 icq-server-settings-widget.ui:80
 #, kde-format
 msgid "<b>Security</b>"
-msgstr "<b>Seguranza</b>"
+msgstr "<b>Seguridade</b>"
 
 #. i18n: ectx: property (text), widget (QLabel, encryptionLabel)
 #: aim-server-settings-widget.ui:82
@@ -112,7 +112,7 @@ msgstr "Cifrado:"
 #: aim-server-settings-widget.ui:92
 #, kde-format
 msgid "Always use AIM proxy"
-msgstr "Empregar sempre un proxy de AIM"
+msgstr "Usar sempre un proxy de AIM"
 
 #. i18n: ectx: property (text), widget (QLabel, otherHeadlineLabel)
 #: aim-server-settings-widget.ui:108 icq-server-settings-widget.ui:114
@@ -125,7 +125,7 @@ msgstr "<b>Outras</b>"
 #: aim-server-settings-widget.ui:115
 #, kde-format
 msgid "Use clientLogin"
-msgstr "Empregar clientLogin"
+msgstr "Usar clientLogin"
 
 #. i18n: ectx: property (text), widget (QCheckBox, multipleLogins)
 #: aim-server-settings-widget.ui:122
@@ -162,7 +162,7 @@ msgstr "Configuración da conexión"
 #: icq-server-settings-widget.ui:87
 #, kde-format
 msgid "Use SSL"
-msgstr "Empregar SSL"
+msgstr "Usar SSL"
 
 #. i18n: ectx: property (text), widget (QCheckBox, allowMultipleLoginsCheckBox)
 #: icq-server-settings-widget.ui:94
@@ -174,7 +174,7 @@ msgstr "Permitir varios accesos"
 #: icq-server-settings-widget.ui:121
 #, kde-format
 msgid "Always use RV-Proxy"
-msgstr "Empregar sempre RV-Proxy"
+msgstr "Usar sempre RV-Proxy"
 
 #. i18n: ectx: property (text), widget (QLabel, charsetLabel)
 #: icq-server-settings-widget.ui:128
@@ -289,7 +289,7 @@ msgstr "O seu nome de usuario de Sipe é o seu enderezo de correo."
 #: skype-advanced-settings-widget.ui:31
 #, kde-format
 msgid "Show SkypeOut contacts as 'Online'"
-msgstr "Mostrar os contactos do SkypeOut como «En liña»"
+msgstr "Amosar os contactos do SkypeOut como «En liña»"
 
 #. i18n: ectx: property (text), widget (QCheckBox, syncCheckBox)
 #: skype-advanced-settings-widget.ui:38
@@ -383,7 +383,7 @@ msgstr "UTF-8"
 #: yahoo-server-settings-widget.ui:159
 #, kde-format
 msgid "Use SSL on proxy"
-msgstr "Empregar SSL no proxy"
+msgstr "Usar SSL no proxy"
 
 #. i18n: ectx: property (text), widget (QCheckBox, ignoreInvites)
 #: yahoo-server-settings-widget.ui:166
