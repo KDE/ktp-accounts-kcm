@@ -146,7 +146,7 @@ msgstr "Servidor de STUN de reserva:"
 #: proxy-settings-widget.ui:85
 #, kde-format
 msgid "Proxy Settings"
-msgstr "Configuración do proxy"
+msgstr "Configuración do mandatario"
 
 #. i18n: ectx: property (text), widget (QLabel, httpsProxyServerLabel)
 #: proxy-settings-widget.ui:93
