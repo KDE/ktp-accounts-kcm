@@ -380,7 +380,7 @@ msgstr "Recurso"
 #: KCMTelepathyAccounts/dictionary.cpp:42
 #, kde-format
 msgid "HTTPS Proxy Port"
-msgstr "Porto do proxy HTTPS"
+msgstr "Porto do mandatario HTTPS"
 
 #: KCMTelepathyAccounts/dictionary.cpp:43
 #, kde-format
@@ -420,12 +420,12 @@ msgstr "Porto STUN"
 #: KCMTelepathyAccounts/dictionary.cpp:50
 #, kde-format
 msgid "Fallback SOCKS5 Proxy Addresses"
-msgstr "Enderezos de reserva do proxy SOCKS5"
+msgstr "Enderezos de reserva do mandatario SOCKS5"
 
 #: KCMTelepathyAccounts/dictionary.cpp:51
 #, kde-format
 msgid "HTTPS Proxy Server Address"
-msgstr "Enderezo do servidos do proxy HTTPS"
+msgstr "Enderezo do servidos do mandatario HTTPS"
 
 #: KCMTelepathyAccounts/dictionary.cpp:52
 #, kde-format

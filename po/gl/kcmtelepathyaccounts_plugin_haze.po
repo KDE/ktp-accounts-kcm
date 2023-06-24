@@ -112,7 +112,7 @@ msgstr "Cifrado:"
 #: aim-server-settings-widget.ui:92
 #, kde-format
 msgid "Always use AIM proxy"
-msgstr "Usar sempre un proxy de AIM"
+msgstr "Usar sempre un mandatario de AIM"
 
 #. i18n: ectx: property (text), widget (QLabel, otherHeadlineLabel)
 #: aim-server-settings-widget.ui:108 icq-server-settings-widget.ui:114
@@ -383,7 +383,7 @@ msgstr "UTF-8"
 #: yahoo-server-settings-widget.ui:159
 #, kde-format
 msgid "Use SSL on proxy"
-msgstr "Usar SSL no proxy"
+msgstr "Usar SSL no mandatario"
 
 #. i18n: ectx: property (text), widget (QCheckBox, ignoreInvites)
 #: yahoo-server-settings-widget.ui:166
