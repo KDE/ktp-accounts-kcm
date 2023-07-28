@@ -9,6 +9,7 @@ Comment[da]=Brugerflade til brugertilpasset kontokonfiguration til konti der bru
 Comment[de]=Eigene Benutzeroberfläche zum Einrichten von Zugängen, die die Morse-Verbindungsverwaltung verwenden.
 Comment[el]=Περιβάλλον προσαρμοσμένης διαμόρφωσης λογαριασμού χρήστη για λογαριασμούς που χρησιμοποιούν το διαχειριστή συνδέσεων Morse.
 Comment[en_GB]=Custom account configuration user interface for accounts using the Morse connection manager.
+Comment[eo]=Propra konta agorda uzantinterfaco por kontoj uzantaj la Morse-konektadministranton.
 Comment[es]=Interfaz de configuración de cuentas personalizadas para las cuentas que usen el gestor de conexiones Morse.
 Comment[et]=Morse ühendusehaldurit kasutavate kontode kohandatud konto seadistamise kasutajaliides
 Comment[eu]=Kontuak konfiguratzeko norberak finkaturiko erabiltzaile interfazea «Morse» konexio kudeatzailea erabiltzen duten kontuetarako.

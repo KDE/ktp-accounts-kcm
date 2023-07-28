@@ -9,6 +9,7 @@ Comment[da]=Brugerflade til brugertilpasset kontokonfiguration til konti der bru
 Comment[de]=Eigene Benutzeroberfläche zum Einrichten von Zugängen, die die Butterfly-Verbindungsverwaltung verwenden.
 Comment[el]=Περιβάλλον προσαρμοσμένης διαμόρφωσης λογαριασμού χρήστη για λογαριασμούς που χρησιμοποιούν το διαχειριστή συνδέσεων Butterfly.
 Comment[en_GB]=Custom account configuration user interface for accounts using the Butterfly connection manager.
+Comment[eo]=Propra konta agorda uzantinterfaco por kontoj uzantaj la Butterfly-konektadministranton.
 Comment[es]=Interfaz de configuración de cuentas personalizadas para las cuentas que usen el gestor de conexiones Butterfly.
 Comment[et]=Butterfly ühendusehaldurit kasutavate kontode kohandatud konto seadistamise kasutajaliides
 Comment[eu]=Kontuak konfiguratzeko norberak finkaturiko erabiltzaile interfazea «Butterfly» konexio kudeatzailea erabiltzen duten kontuetarako.
