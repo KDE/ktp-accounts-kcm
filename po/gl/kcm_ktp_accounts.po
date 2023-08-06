@@ -103,7 +103,7 @@ msgstr "Activar a conta"
 #: add-account-assistant.cpp:95 add-account-assistant.cpp:96
 #, kde-format
 msgid "Step 1: Select an Instant Messaging Network."
-msgstr "Primeiro paso: escolla unha rede de mensaxería instantánea."
+msgstr "Primeiro paso: escolla unha rede de mensaxaría instantánea."
 
 #: add-account-assistant.cpp:120
 #, kde-format
@@ -117,7 +117,7 @@ msgid ""
 "Please install the telepathy-haze and telepathy-gabble packages using your "
 "package manager."
 msgstr ""
-"Para conectarse a esta rede de mensaxería instantánea, ten que instalar "
+"Para conectarse a esta rede de mensaxaría instantánea, ten que instalar "
 "complementos adicionais. Instale os paquetes «telepathy-haze» e «telepathy-"
 "gabble» co seu xestor de paquetes."
 
@@ -192,7 +192,7 @@ msgstr "contas_de_telepathy"
 #: kcm-telepathy-accounts.cpp:76
 #, kde-format
 msgid "Instant Messaging and VOIP Accounts"
-msgstr "Contas de mensaxería instantánea e VOIP"
+msgstr "Contas de mensaxaría instantánea e VOIP"
 
 #: kcm-telepathy-accounts.cpp:78
 #, kde-format
@@ -305,7 +305,7 @@ msgid ""
 "It is likely your system is missing Telepathy Mission Control package.\n"
 "Please install it and restart this module."
 msgstr ""
-"Algo foi moi mal e non se puido inicializar o sistema de mensaxería "
+"Algo foi moi mal e non se puido inicializar o sistema de mensaxaría "
 "instantánea.\n"
 "É probábel que no seu sistema falte o paquete de control de misións (Mission "
 "Control) de Telepathy.\n"
@@ -440,7 +440,7 @@ msgstr "Intervalo de keepalive"
 #: KCMTelepathyAccounts/dictionary.cpp:56
 #, kde-format
 msgid "AOL Instant Messenger"
-msgstr "Mensaxería instantánea AOL"
+msgstr "Mensaxaría instantánea AOL"
 
 #: KCMTelepathyAccounts/dictionary.cpp:57
 #: KCMTelepathyAccounts/dictionary.cpp:63
@@ -453,7 +453,7 @@ msgstr "Skype"
 #: KCMTelepathyAccounts/simple-profile-select-widget.ui:124
 #, kde-format
 msgid "Facebook Chat"
-msgstr "Conversa de Facebook"
+msgstr "Charla de Facebook"
 
 #: KCMTelepathyAccounts/dictionary.cpp:59
 #, kde-format

@@ -321,7 +321,7 @@ msgid ""
 "If left blank, your SIP URI will be shown to the receiver instead of your "
 "Alias."
 msgstr ""
-"Este alcume xa o está a usar SIMPLE, unha extensión de mensaxería "
+"Este alcume xa o está a usar SIMPLE, unha extensión de mensaxaría "
 "instantánea para SIP. Se se deixa en branco, o receptor ve o URI do seu SIP "
 "no canto do seu alcume."
 

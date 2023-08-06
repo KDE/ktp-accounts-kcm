@@ -271,7 +271,7 @@ msgstr "Contrasinal do correo electrónico:"
 #: sipe-advanced-settings-widget.ui:129
 #, kde-format
 msgid "Group chat proxy:"
-msgstr "Proxy da conversa en grupo:"
+msgstr "Proxy da charla en grupo:"
 
 #. i18n: ectx: property (text), widget (QLabel, serverLabel)
 #: sipe-advanced-settings-widget.ui:146
