@@ -365,7 +365,7 @@ msgstr "폴백 STUN 서버 주소"
 #: KCMTelepathyAccounts/dictionary.cpp:41
 #, kde-format
 msgid "Resource"
-msgstr "자원"
+msgstr "리소스"
 
 #: KCMTelepathyAccounts/dictionary.cpp:42
 #, kde-format

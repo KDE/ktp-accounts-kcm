@@ -236,13 +236,13 @@ msgstr "저대역 모드 사용"
 #: server-settings-widget.ui:89
 #, kde-format
 msgid "Resource"
-msgstr "자원"
+msgstr "리소스"
 
 #. i18n: ectx: property (text), widget (QLabel, resourceLabel)
 #: server-settings-widget.ui:101
 #, kde-format
 msgid "Resource name:"
-msgstr "자원 이름:"
+msgstr "리소스 이름:"
 
 #. i18n: ectx: property (text), widget (QLabel, priorityLabel)
 #: server-settings-widget.ui:108
