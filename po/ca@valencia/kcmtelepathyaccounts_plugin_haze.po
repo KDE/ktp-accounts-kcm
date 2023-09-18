@@ -333,7 +333,7 @@ msgstr "Nom:"
 #: steam-main-options-widget.ui:51
 #, kde-format
 msgid "Steam Guard code:"
-msgstr "Codi de l'Steam Guard:"
+msgstr "Codi d'Steam Guard:"
 
 #. i18n: 'Steam Guard' is a service name and should not be translated
 #. i18n: ectx: property (text), widget (QLabel, label)
@@ -341,8 +341,8 @@ msgstr "Codi de l'Steam Guard:"
 #, kde-format
 msgid "The Steam Guard code will be emailed to you after attempting to login"
 msgstr ""
-"El codi de l'Steam Guard s'enviarà per correu electrònic després d'intentar "
-"el registre"
+"El codi d'Steam Guard s'enviarà per correu electrònic després d'intentar el "
+"registre"
 
 #. i18n: ectx: property (text), widget (QLabel, transferHeadlineLabel)
 #: yahoo-server-settings-widget.ui:73
